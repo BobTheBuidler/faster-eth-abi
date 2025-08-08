@@ -147,8 +147,8 @@ struct export_table_5b955ff1c0e1f317068d {
     PyObject *(*CPyDef_from_type_str___parse_tuple_type_str)(PyObject *cpy_r_old_from_type_str);
     char (*CPyDef_from_type_str_____top_level__)(void);
     PyTypeObject **CPyType_io___ContextFramesBytesIO;
-    PyObject *(*CPyDef_io___ContextFramesBytesIO)(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-    char (*CPyDef_io___ContextFramesBytesIO_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+    PyObject *(*CPyDef_io___ContextFramesBytesIO)(PyObject *cpy_r_initial_bytes);
+    char (*CPyDef_io___ContextFramesBytesIO_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
     char (*CPyDef_io___ContextFramesBytesIO___seek_in_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
     char (*CPyDef_io___ContextFramesBytesIO___push_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
     PyObject *(*CPyDef_io___ContextFramesBytesIO___pop_frame)(PyObject *cpy_r_self);
