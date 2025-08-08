@@ -75,14 +75,14 @@ because the bit-width of ``int`` types must be a multiple of ``8``:
     >>> basic_type.validate()
     Traceback (most recent call last):
         ...
-    eth_abi.exceptions.ABITypeError: For 'uint9' type at column 1 in 'uint9': integer size must be multiple of 8
+    faster_eth_abi.exceptions.ABITypeError: For 'uint9' type at column 1 in 'uint9': integer size must be multiple of 8
 
     >>> tuple_type = parse('(bool,uint9)')
     >>> # The tuple type is not valid because it contains an int type with an invalid bit-width
     >>> tuple_type.validate()
     Traceback (most recent call last):
         ...
-    eth_abi.exceptions.ABITypeError: For 'uint9' type at column 7 in '(bool,uint9)': integer size must be multiple of 8
+    faster_eth_abi.exceptions.ABITypeError: For 'uint9' type at column 7 in '(bool,uint9)': integer size must be multiple of 8
 
 .. _grammar-normalizing-type-strings:
 

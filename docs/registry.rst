@@ -62,7 +62,7 @@ exact matches against the ``'null'`` type string.  We do this by calling
 :any:`register` on the `registry` object.
 
 When a call is made to one of the coding functions (such as
-:meth:`~eth_abi.codec.ABIEncoder.encode` or :meth:`~eth_abi.codec.ABIDecoder.decode`),
+:meth:`~faster_eth_abi.codec.ABIEncoder.encode` or :meth:`~faster_eth_abi.codec.ABIDecoder.decode`),
 the type string which is provided (which we'll call ``query``) is sent to the registry.
 This ``query`` will be checked against every registration in the registry.  Since we
 created a registration for the exact type string ``'null'``, coding operations for that

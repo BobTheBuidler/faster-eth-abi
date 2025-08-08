@@ -130,11 +130,11 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
     def _parse_uncached(self, type_str, **kwargs):
         """
         Parses a type string into an appropriate instance of
-        :class:`~eth_abi.grammar.ABIType`.  If a type string cannot be parsed,
-        throws :class:`~eth_abi.exceptions.ParseError`.
+        :class:`~faster_eth_abi.grammar.ABIType`.  If a type string cannot be parsed,
+        throws :class:`~faster_eth_abi.exceptions.ParseError`.
 
         :param type_str: The type string to be parsed.
-        :returns: An instance of :class:`~eth_abi.grammar.ABIType` containing
+        :returns: An instance of :class:`~faster_eth_abi.grammar.ABIType` containing
             information about the parsed type string.
         """
         if not isinstance(type_str, str):
@@ -197,7 +197,7 @@ class ABIType:
     def item_type(self) -> Self:
         """
         If this type is an array type, equal to an appropriate
-        :class:`~eth_abi.grammar.ABIType` instance for the array's items.
+        :class:`~faster_eth_abi.grammar.ABIType` instance for the array's items.
         """
         raise NotImplementedError("Must implement `item_type`")
 
@@ -207,7 +207,7 @@ class ABIType:
 
         https://solidity.readthedocs.io/en/develop/abi-spec.html
 
-        Raises :class:`~eth_abi.exceptions.ABITypeError` if validation fails.
+        Raises :class:`~faster_eth_abi.exceptions.ABITypeError` if validation fails.
         """
         raise NotImplementedError("Must implement `validate`")
 
@@ -265,7 +265,7 @@ class TupleType(ABIType):
 
         self.components: Final = components
         """
-        A tuple of :class:`~eth_abi.grammar.ABIType` instances for each of the
+        A tuple of :class:`~faster_eth_abi.grammar.ABIType` instances for each of the
         tuple type's components.
         """
 

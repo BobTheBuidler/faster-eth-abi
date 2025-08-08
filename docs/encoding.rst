@@ -26,7 +26,7 @@ follows:
     b'a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
 
-The :py:meth:`eth_abi.encoding.BaseEncoder.encode` function provides an API for
+The :py:meth:`faster_eth_abi.encoding.BaseEncoder.encode` function provides an API for
 encoding python values into binary values for ABI types. It accepts a sequence of ABI
 type strings as the first argument and a sequence of python values to be encoded into
 the respective ABI types as the second argument.
