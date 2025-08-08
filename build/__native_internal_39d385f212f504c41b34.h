@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[233];
+extern PyObject *CPyStatics[232];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -63,7 +63,6 @@ extern CPyModule *CPyModule_faster_eth_abi___base_internal;
 extern CPyModule *CPyModule_faster_eth_abi___base;
 extern PyObject *CPyStatic_base___globals;
 extern CPyModule *CPyModule_mypy_extensions;
-extern CPyModule *CPyModule_typing_extensions;
 extern PyObject *CPyStatic_abi___default_codec;
 extern PyObject *CPyStatic_abi___encode;
 extern PyObject *CPyStatic_abi___decode;
