@@ -149,9 +149,13 @@ struct export_table_5b955ff1c0e1f317068d {
     PyTypeObject **CPyType_io___ContextFramesBytesIO;
     PyObject *(*CPyDef_io___ContextFramesBytesIO)(PyObject *cpy_r_initial_bytes);
     char (*CPyDef_io___ContextFramesBytesIO_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
+    char (*CPyDef_io___ContextFramesBytesIO_____init___3__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
     char (*CPyDef_io___ContextFramesBytesIO___seek_in_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+    char (*CPyDef_io___ContextFramesBytesIO___seek_in_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
     char (*CPyDef_io___ContextFramesBytesIO___push_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
+    char (*CPyDef_io___ContextFramesBytesIO___push_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
     PyObject *(*CPyDef_io___ContextFramesBytesIO___pop_frame)(PyObject *cpy_r_self);
+    PyObject *(*CPyDef_io___ContextFramesBytesIO___pop_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self);
     char (*CPyDef_io_____top_level__)(void);
     PyObject **CPyStatic_packed___default_encoder_packed;
     PyObject **CPyStatic_packed___encode_packed;

@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[228];
+extern PyObject *CPyStatics[231];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -104,12 +104,20 @@ extern PyTypeObject *CPyType_io___ContextFramesBytesIO;
 extern PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_initial_bytes);
 extern char CPyDef_io___ContextFramesBytesIO_____init__(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
 extern PyObject *CPyPy_io___ContextFramesBytesIO_____init__(PyObject *self, PyObject *args, PyObject *kw);
+extern char CPyDef_io___ContextFramesBytesIO_____init___3__ContextFramesBytesIO_glue(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
+extern PyObject *CPyPy_io___ContextFramesBytesIO_____init___3__ContextFramesBytesIO_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_io___ContextFramesBytesIO___seek_in_frame(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___seek_in_frame(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_io___ContextFramesBytesIO___seek_in_frame__ContextFramesBytesIO_glue(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_io___ContextFramesBytesIO___seek_in_frame__ContextFramesBytesIO_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_io___ContextFramesBytesIO___push_frame(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___push_frame(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_io___ContextFramesBytesIO___push_frame__ContextFramesBytesIO_glue(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
+extern PyObject *CPyPy_io___ContextFramesBytesIO___push_frame__ContextFramesBytesIO_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_io___ContextFramesBytesIO___pop_frame(PyObject *cpy_r_self);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___pop_frame(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_io___ContextFramesBytesIO___pop_frame__ContextFramesBytesIO_glue(PyObject *cpy_r_self);
+extern PyObject *CPyPy_io___ContextFramesBytesIO___pop_frame__ContextFramesBytesIO_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_io_____top_level__(void);
 extern PyObject *CPyStatic_packed___default_encoder_packed;
 extern PyObject *CPyStatic_packed___encode_packed;
