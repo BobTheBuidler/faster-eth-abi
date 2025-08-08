@@ -337,16 +337,16 @@ class BasicType(ABIType):
         sub, arrlist = self.sub, self.arrlist
 
         if isinstance(sub, int):
-            sub = str(sub)
+            substr = str(sub)
         elif isinstance(sub, tuple):
-            sub = "x".join(str(s) for s in sub)
+            substr = "x".join(str(s) for s in sub)
         else:
-            sub = ""
+            substr = ""
 
         if isinstance(arrlist, tuple):
-            return self.base + sub + "".join(repr(list(a)) for a in arrlist)
+            return self.base + substr + "".join(repr(list(a)) for a in arrlist)
         else:
-            return self.base + sub
+            return self.base + substr
 
     @property
     def item_type(self) -> Self:
