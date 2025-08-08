@@ -1,6 +1,5 @@
 from typing import (
     Any,
-    ClassVar,
 )
 
 from eth_typing import (
@@ -20,7 +19,7 @@ class BaseCoder:
     Base class for all encoder and decoder classes.
     """
 
-    is_dynamic: ClassVar[bool] = False
+    is_dynamic: bool = False
 
     def __init__(self, **kwargs: Any) -> None:
         cls = type(self)
