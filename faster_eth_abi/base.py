@@ -1,5 +1,6 @@
 from typing import (
     Any,
+    TypeVar,
 )
 
 from eth_typing import (
@@ -12,6 +13,8 @@ from typing_extensions import (
     Self,
 )
 
+TCoder = TypeVar("TCoder", bound="BaseCoder")
+
 
 @mypyc_attr(native_class=False)
 class BaseCoder:
@@ -21,7 +24,7 @@ class BaseCoder:
 
     is_dynamic: bool = False
 
-    def __init__(self, **kwargs: Any) -> None:
+    def __init__(self: TCoder, **kwargs: Any) -> None:
         cls = type(self)
 
         # Ensure no unrecognized kwargs were given
@@ -45,7 +48,7 @@ class BaseCoder:
 
     @classmethod
     def from_type_str(  # pragma: no cover
-        cls, type_str: TypeStr, registry: Any
+        cls: TCoder, type_str: TypeStr, registry: Any
     ) -> Self:
         """
         Used by :any:`ABIRegistry` to get an appropriate encoder or decoder
