@@ -46,7 +46,7 @@ class BaseCoder:
 
     @classmethod
     def from_type_str(  # pragma: no cover
-        cls: TCoder, type_str: TypeStr, registry: Any
+        cls: Type[TCoder], type_str: TypeStr, registry: Any
     ) -> TCoder:
         """
         Used by :any:`ABIRegistry` to get an appropriate encoder or decoder
