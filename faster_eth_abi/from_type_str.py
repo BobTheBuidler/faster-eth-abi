@@ -28,7 +28,11 @@ if TYPE_CHECKING:
 
 TType = TypeVar("TType", bound=Type["BaseCoder"])
 OldFromTypeStr = Callable[["BaseCoder", ABIType, Any], TType]
-NewFromTypeStr = classmethod[TType, [TypeStr, Any], TType]
+
+if TYPE_CHECKING:
+    NewFromTypeStr = classmethod[TType, [TypeStr, Any], TType]
+else:
+    NewFromTypeStr = Callable[[TType, TypeStr, Any], TType]
 
 
 def parse_type_str(
