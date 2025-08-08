@@ -3,9 +3,9 @@ import re
 from typing import (
     Any,
     Final,
-    List,
     NoReturn,
     Optional,
+    Sequence,
     Tuple,
     TypeVar,
     final,
@@ -165,7 +165,7 @@ class ABIType:
     __slots__ = ("arrlist", "node")
 
     def __init__(
-        self, arrlist: Optional[List] = None, node: Optional[Node] = None
+        self, arrlist: Optional[Sequence] = None, node: Optional[Node] = None
     ) -> None:
         self.arrlist: Final = arrlist
         """
@@ -257,7 +257,7 @@ class TupleType(ABIType):
     def __init__(
         self,
         components: Tuple[TComp, ...],
-        arrlist: Optional[List] = None,
+        arrlist: Optional[Sequence] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
@@ -317,7 +317,7 @@ class BasicType(ABIType):
         self,
         base: str,
         sub: Any = None,
-        arrlist: Optional[List] = None,
+        arrlist: Optional[Sequence] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
