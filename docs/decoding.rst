@@ -11,7 +11,7 @@ follows:
 
 .. doctest::
 
-    >>> from eth_abi import decode
+    >>> from faster_eth_abi import decode
 
     >>> # decode a single ABI type
     >>> decode(['uint256'], b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0009')
@@ -43,7 +43,7 @@ area is also ignored.
 
 .. doctest::
 
-    >>> from eth_abi import abi
+    >>> from faster_eth_abi import abi
 
     >>> # decode a bytes value without strict mode
     >>> hex_val = (

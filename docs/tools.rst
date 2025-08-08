@@ -21,7 +21,7 @@ given ABI type specified by its canonical string representation:
 
 .. doctest::
 
-    >>> from eth_abi.tools import get_abi_strategy
+    >>> from faster_eth_abi.tools import get_abi_strategy
 
     >>> uint_st = get_abi_strategy('uint8')
     >>> uint_st

@@ -18,8 +18,8 @@ callables:
 
 .. testcode:: nulltype-callables
 
-    from eth_abi.exceptions import EncodingError, DecodingError
-    from eth_abi.registry import registry
+    from faster_eth_abi.exceptions import EncodingError, DecodingError
+    from faster_eth_abi.registry import registry
 
     # Define and register the coders
     NULL_ENCODING = b'\x00' * 32
@@ -39,7 +39,7 @@ callables:
     registry.register('null', encode_null, decode_null)
 
     # Try them out
-    from eth_abi import encode, decode
+    from faster_eth_abi import encode, decode
 
     assert encode(['null'], [None]) == NULL_ENCODING
 
@@ -54,7 +54,7 @@ callables:
 
 .. testcleanup:: nulltype-callables
 
-    from eth_abi.registry import registry
+    from faster_eth_abi.registry import registry
     registry.unregister('null')
 
 In the above example, we define two coder callables and register them to handle
@@ -90,10 +90,10 @@ stream.  We could do that in the following way:
 
 .. testcode:: nulltype-classes
 
-    from eth_abi.decoding import BaseDecoder
-    from eth_abi.encoding import BaseEncoder
-    from eth_abi.exceptions import EncodingError, DecodingError
-    from eth_abi.registry import registry
+    from faster_eth_abi.decoding import BaseDecoder
+    from faster_eth_abi.encoding import BaseEncoder
+    from faster_eth_abi.exceptions import EncodingError, DecodingError
+    from faster_eth_abi.registry import registry
 
     # Define and register the coders
     NULL_ENCODING = b'\x00' * 32
@@ -137,7 +137,7 @@ stream.  We could do that in the following way:
     )
 
     # Try them out
-    from eth_abi import encode, decode
+    from faster_eth_abi import encode, decode
 
     assert encode(['null2'], [None]) == NULL_ENCODING * 2
 
@@ -152,7 +152,7 @@ stream.  We could do that in the following way:
 
 .. testcleanup:: nulltype-classes
 
-    from eth_abi.registry import registry
+    from faster_eth_abi.registry import registry
     registry.unregister('null')
 
 There are a few differences here from our first example.  Now, we are providing
@@ -227,10 +227,10 @@ that attempting to encode a malformed string indicates user error.
 
 .. testcode:: handle-malformed-strings
 
-    from eth_abi import decode, encode
-    from eth_abi.decoding import StringDecoder
-    from eth_abi.encoding import TextStringEncoder
-    from eth_abi.registry import registry
+    from faster_eth_abi import decode, encode
+    from faster_eth_abi.decoding import StringDecoder
+    from faster_eth_abi.encoding import TextStringEncoder
+    from faster_eth_abi.registry import registry
 
     # encode a string
     test_string = encode(["string"], ["cat"])
@@ -269,6 +269,6 @@ that attempting to encode a malformed string indicates user error.
 
 .. testcleanup:: handle-malformed-strings
 
-    from eth_abi.registry import registry
+    from faster_eth_abi.registry import registry
     registry.unregister('surrogateescape_string')
     registry.unregister('backslashreplace_string')

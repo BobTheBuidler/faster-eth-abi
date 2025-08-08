@@ -11,7 +11,7 @@ follows:
 
 .. doctest::
 
-    >>> from eth_abi import encode
+    >>> from faster_eth_abi import encode
 
     >>> # encode a single ABI type
     >>> encode(['uint256'], [12345])
@@ -39,7 +39,7 @@ for a given ABI type using :any:`is_encodable`:
 
 .. doctest::
 
-    >>> from eth_abi import is_encodable
+    >>> from faster_eth_abi import is_encodable
 
     >>> is_encodable('int', 2)
     True
@@ -67,7 +67,7 @@ encoding.  You can encode values in this format like so:
 
 .. doctest::
 
-    >>> from eth_abi.packed import encode_packed
+    >>> from faster_eth_abi.packed import encode_packed
 
     >>> # encode_packed for a single ABI type
     >>> encode_packed(['uint32'], [12345])

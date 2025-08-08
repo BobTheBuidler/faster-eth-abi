@@ -16,7 +16,7 @@ and do various operations with the results:
 
 .. doctest::
 
-    >>> from eth_abi.grammar import ABIType, BasicType, TupleType, parse
+    >>> from faster_eth_abi.grammar import ABIType, BasicType, TupleType, parse
 
     >>> tuple_type = parse('(int256,bytes,ufixed128x18,bool[])[2]')
 
@@ -68,7 +68,7 @@ because the bit-width of ``int`` types must be a multiple of ``8``:
 
 .. doctest::
 
-    >>> from eth_abi.grammar import parse
+    >>> from faster_eth_abi.grammar import parse
 
     >>> basic_type = parse('uint9')
     >>> # The basic type is not valid because the int type's bit-width is not valid
@@ -94,7 +94,7 @@ converting type aliases like ``uint`` to ``uint256`` and so forth:
 
 .. doctest::
 
-    >>> from eth_abi.grammar import normalize
+    >>> from faster_eth_abi.grammar import normalize
     >>> normalize('uint')
     'uint256'
     >>> normalize('(uint,(ufixed,function))')
