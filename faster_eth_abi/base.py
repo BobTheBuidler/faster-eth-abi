@@ -1,14 +1,26 @@
 from typing import (
     Any,
+    ClassVar,
+)
+
+from eth_typing import (
+    TypeStr,
+)
+from mypy_extensions import (
+    mypyc_attr,
+)
+from typing_extensions import (
+    Self,
 )
 
 
+@mypyc_attr(native_class=False)
 class BaseCoder:
     """
     Base class for all encoder and decoder classes.
     """
 
-    is_dynamic = False
+    is_dynamic: ClassVar[bool] = False
 
     def __init__(self, **kwargs: Any) -> None:
         cls = type(self)
@@ -29,11 +41,13 @@ class BaseCoder:
         # Validate given combination of kwargs
         self.validate()
 
-    def validate(self):
+    def validate(self) -> None:
         pass
 
     @classmethod
-    def from_type_str(cls, type_str, registry):  # pragma: no cover
+    def from_type_str(  # pragma: no cover
+        cls, type_str: TypeStr, registry: Any
+    ) -> Self:
         """
         Used by :any:`ABIRegistry` to get an appropriate encoder or decoder
         instance for the given type string and type registry.

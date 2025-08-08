@@ -67,7 +67,7 @@ class HeadTailDecoder(BaseDecoder):
 
     tail_decoder = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.tail_decoder is None:
@@ -103,7 +103,7 @@ class TupleDecoder(BaseDecoder):
 
         self.is_dynamic = any(getattr(d, "is_dynamic", False) for d in self.decoders)
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.decoders is None:
@@ -161,7 +161,7 @@ class TupleDecoder(BaseDecoder):
 class SingleDecoder(BaseDecoder):
     decoder_fn = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.decoder_fn is None:
@@ -199,7 +199,7 @@ class BaseArrayDecoder(BaseDecoder):
                 tail_decoder=self.item_decoder,
             )
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.item_decoder is None:
@@ -286,7 +286,7 @@ class FixedByteSizeDecoder(SingleDecoder):
     data_byte_size = None
     is_big_endian = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.value_bit_size is None:
@@ -444,7 +444,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
     frac_places = None
     is_big_endian = True
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.frac_places is None:
