@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import sys
+
 from setuptools import (
     find_packages,
     setup,
@@ -52,15 +54,21 @@ try:
 except ImportError:
     ext_modules = []
 else:
+    to_compile = [
+        "faster_eth_abi/abi.py",
+        "faster_eth_abi/constants.py",
+        "faster_eth_abi/from_type_str.py",
+        # "faster_eth_abi/io.py",
+        "faster_eth_abi/packed.py",
+        "faster_eth_abi/tools",
+        "faster_eth_abi/utils",
+    ]
+    if sys.version_info >= (3, 9):
+        to_compile.append("faster_eth_abi/base.py")
+
     ext_modules = mypycify(
         [
-            "faster_eth_abi/abi.py",
-            "faster_eth_abi/constants.py",
-            "faster_eth_abi/from_type_str.py",
-            # "faster_eth_abi/io.py",
-            "faster_eth_abi/packed.py",
-            "faster_eth_abi/tools",
-            "faster_eth_abi/utils",
+            *to_compile,
             "--pretty",
             "--install-types",
             "--disable-error-code=override",

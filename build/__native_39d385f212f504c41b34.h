@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_5b955ff1c0e1f317068d_H
-#define MYPYC_NATIVE_5b955ff1c0e1f317068d_H
+#ifndef MYPYC_NATIVE_39d385f212f504c41b34_H
+#define MYPYC_NATIVE_39d385f212f504c41b34_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T2OO
@@ -19,6 +19,14 @@ typedef struct tuple_T3OOO {
 } tuple_T3OOO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T2IO
+#define MYPYC_DECLARED_tuple_T2IO
+typedef struct tuple_T2IO {
+    CPyTagged f0;
+    PyObject *f1;
+} tuple_T2IO;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T2II
 #define MYPYC_DECLARED_tuple_T2II
 typedef struct tuple_T2II {
@@ -27,12 +35,14 @@ typedef struct tuple_T2II {
 } tuple_T2II;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T2IO
-#define MYPYC_DECLARED_tuple_T2IO
-typedef struct tuple_T2IO {
-    CPyTagged f0;
-    PyObject *f1;
-} tuple_T2IO;
+#ifndef MYPYC_DECLARED_tuple_T4CIOO
+#define MYPYC_DECLARED_tuple_T4CIOO
+typedef struct tuple_T4CIOO {
+    char f0;
+    CPyTagged f1;
+    PyObject *f2;
+    PyObject *f3;
+} tuple_T4CIOO;
 #endif
 
 typedef struct {
@@ -90,13 +100,6 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *__frames;
-    CPyTagged __total_offset;
-} faster_eth_abi___io___ContextFramesBytesIOObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
     PyObject *__strategies;
 } faster_eth_abi___tools____strategies___StrategyRegistryObject;
 
@@ -116,8 +119,26 @@ typedef struct {
     PyObject *___mypyc_env__;
 } faster_eth_abi___utils___numeric___f_scale_places_objObject;
 
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___base_____init___3_BaseCoder_objObject;
 
-struct export_table_5b955ff1c0e1f317068d {
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___base___validate_BaseCoder_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___base___from_type_str_BaseCoder_objObject;
+
+
+struct export_table_39d385f212f504c41b34 {
     PyObject **CPyStatic_abi___default_codec;
     PyObject **CPyStatic_abi___encode;
     PyObject **CPyStatic_abi___decode;
@@ -146,17 +167,6 @@ struct export_table_5b955ff1c0e1f317068d {
     PyObject *(*CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_cls, PyObject *cpy_r_type_str, PyObject *cpy_r_registry);
     PyObject *(*CPyDef_from_type_str___parse_tuple_type_str)(PyObject *cpy_r_old_from_type_str);
     char (*CPyDef_from_type_str_____top_level__)(void);
-    PyTypeObject **CPyType_io___ContextFramesBytesIO;
-    PyObject *(*CPyDef_io___ContextFramesBytesIO)(PyObject *cpy_r_initial_bytes);
-    char (*CPyDef_io___ContextFramesBytesIO_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
-    char (*CPyDef_io___ContextFramesBytesIO_____init___3__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
-    char (*CPyDef_io___ContextFramesBytesIO___seek_in_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-    char (*CPyDef_io___ContextFramesBytesIO___seek_in_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-    char (*CPyDef_io___ContextFramesBytesIO___push_frame)(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
-    char (*CPyDef_io___ContextFramesBytesIO___push_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self, CPyTagged cpy_r_offset);
-    PyObject *(*CPyDef_io___ContextFramesBytesIO___pop_frame)(PyObject *cpy_r_self);
-    PyObject *(*CPyDef_io___ContextFramesBytesIO___pop_frame__ContextFramesBytesIO_glue)(PyObject *cpy_r_self);
-    char (*CPyDef_io_____top_level__)(void);
     PyObject **CPyStatic_packed___default_encoder_packed;
     PyObject **CPyStatic_packed___encode_packed;
     PyObject **CPyStatic_packed___is_encodable_packed;
@@ -212,5 +222,19 @@ struct export_table_5b955ff1c0e1f317068d {
     char (*CPyDef_validation___validate_bytes_param)(PyObject *cpy_r_param, PyObject *cpy_r_param_name);
     char (*CPyDef_validation___validate_list_like_param)(PyObject *cpy_r_param, PyObject *cpy_r_param_name);
     char (*CPyDef_validation_____top_level__)(void);
+    PyTypeObject **CPyType_base___BaseCoder;
+    PyTypeObject **CPyType_base_____init___3_BaseCoder_obj;
+    PyObject *(*CPyDef_base_____init___3_BaseCoder_obj)(void);
+    PyTypeObject **CPyType_base___validate_BaseCoder_obj;
+    PyObject *(*CPyDef_base___validate_BaseCoder_obj)(void);
+    PyTypeObject **CPyType_base___from_type_str_BaseCoder_obj;
+    PyObject *(*CPyDef_base___from_type_str_BaseCoder_obj)(void);
+    PyObject *(*CPyDef_base_____init___3_BaseCoder_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+    char (*CPyDef_base_____init___3_BaseCoder_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self, PyObject *cpy_r_kwargs);
+    PyObject *(*CPyDef_base___validate_BaseCoder_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+    char (*CPyDef_base___validate_BaseCoder_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self);
+    PyObject *(*CPyDef_base___from_type_str_BaseCoder_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+    PyObject *(*CPyDef_base___from_type_str_BaseCoder_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_cls, PyObject *cpy_r_type_str, PyObject *cpy_r_registry);
+    char (*CPyDef_base_____top_level__)(void);
 };
 #endif

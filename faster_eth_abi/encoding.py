@@ -104,7 +104,7 @@ class TupleEncoder(BaseEncoder):
 
         self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.encoders is None:
@@ -170,7 +170,7 @@ class FixedSizeEncoder(BaseEncoder):
     type_check_fn = None
     is_big_endian = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.value_bit_size is None:
@@ -245,7 +245,7 @@ class NumberEncoder(Fixed32ByteSizeEncoder):
     illegal_value_fn = None
     type_check_fn = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.bounds_fn is None:
@@ -357,7 +357,7 @@ class BaseFixedEncoder(NumberEncoder):
                 f"{self.frac_places}",
             )
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.frac_places is None:
@@ -456,7 +456,7 @@ class AddressEncoder(Fixed32ByteSizeEncoder):
         if not is_address(value):
             cls.invalidate_value(value)
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.value_bit_size != 20 * 8:
@@ -573,7 +573,7 @@ class PackedTextStringEncoder(TextStringEncoder):
 class BaseArrayEncoder(BaseEncoder):
     item_encoder = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.item_encoder is None:
@@ -665,7 +665,7 @@ class SizedArrayEncoder(BaseArrayEncoder):
 
         self.is_dynamic = self.item_encoder.is_dynamic
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.array_size is None:
