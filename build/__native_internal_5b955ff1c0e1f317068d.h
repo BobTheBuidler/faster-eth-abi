@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[225];
+extern PyObject *CPyStatics[228];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -34,6 +34,7 @@ extern CPyModule *CPyModule_faster_eth_abi___io_internal;
 extern CPyModule *CPyModule_faster_eth_abi___io;
 extern PyObject *CPyStatic_io___globals;
 extern CPyModule *CPyModule_io;
+extern CPyModule *CPyModule_mypy_extensions;
 extern CPyModule *CPyModule_faster_eth_abi___packed_internal;
 extern CPyModule *CPyModule_faster_eth_abi___packed;
 extern PyObject *CPyStatic_packed___globals;
@@ -100,8 +101,8 @@ extern PyObject *CPyDef_from_type_str___parse_tuple_type_str(PyObject *cpy_r_old
 extern PyObject *CPyPy_from_type_str___parse_tuple_type_str(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_from_type_str_____top_level__(void);
 extern PyTypeObject *CPyType_io___ContextFramesBytesIO;
-extern PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-extern char CPyDef_io___ContextFramesBytesIO_____init__(PyObject *cpy_r_self, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_initial_bytes);
+extern char CPyDef_io___ContextFramesBytesIO_____init__(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
 extern PyObject *CPyPy_io___ContextFramesBytesIO_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern char CPyDef_io___ContextFramesBytesIO___seek_in_frame(PyObject *cpy_r_self, CPyTagged cpy_r_pos, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___seek_in_frame(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
