@@ -4,7 +4,7 @@ from setuptools import (
     setup,
 )
 
-HYPOTHESIS_REQUIREMENT = "hypothesis>=6.22.0,<6.108.7"
+HYPOTHESIS_REQUIREMENT = "hypothesis>=6.137.1,<6.138.0"
 
 extras_require = {
     "dev": [
