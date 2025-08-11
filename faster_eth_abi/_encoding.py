@@ -20,8 +20,6 @@ if TYPE_CHECKING:
 def encode_tuple(
     values: Sequence[Any],
     encoders: Sequence["BaseEncoder"],
-    # this is only here to prevent circ import issues and will be removed
-    encode_uint_256: "UnsignedIntegerEncoder",
 ) -> bytes:
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
