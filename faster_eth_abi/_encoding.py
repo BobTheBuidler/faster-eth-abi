@@ -33,7 +33,7 @@ def encode_tuple(
     head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = (0, *accumulate(len(item) for item in tail_chunks[:-1]))
     head_chunks = tuple(
-        int_to_big_endian(head_length + offset) if chunk is None else chunk
+        encode_uint_256(head_length + offset) if chunk is None else chunk
         for chunk, offset in zip(raw_head_chunks, tail_offsets)
     )
 
@@ -75,13 +75,13 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     head_length = 32 * len(value)
     tail_offsets = (0, *accumulate(len(item) for item in tail_chunks[:-1]))
     head_chunks = tuple(
-        int_to_big_endian(head_length + offset) for offset in tail_offsets
+        encode_uint_256(head_length + offset) for offset in tail_offsets
     )
     return b"".join(head_chunks) + b"".join(tail_chunks)
 
 
 def encode_elements_dynamic(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
-    encoded_size = int_to_big_endian(len(value))
+    encoded_size = encode_uint_256(len(value))
     encoded_elements = encode_elements(item_encoder, value)
     return encoded_size + encoded_elements
 
