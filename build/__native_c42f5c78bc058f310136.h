@@ -114,9 +114,12 @@ struct export_table_c42f5c78bc058f310136 {
     PyObject *(*CPyDef__codec___encode_c)(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_args);
     PyObject *(*CPyDef__codec___decode_c)(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_data, char cpy_r_strict);
     char (*CPyDef__codec_____top_level__)(void);
-    PyObject *(*CPyDef__encoding___encode_tuple)(PyObject *cpy_r_values, PyObject *cpy_r_encoders, PyObject *cpy_r_encode_uint_256);
+    PyObject *(*CPyDef__encoding___encode_tuple)(PyObject *cpy_r_values, PyObject *cpy_r_encoders);
     PyObject *(*CPyDef__encoding___encode_fixed)(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
     PyObject *(*CPyDef__encoding___encode_signed)(CPyTagged cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
+    PyObject *(*CPyDef__encoding___encode_elements)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
+    PyObject *(*CPyDef__encoding___encode_elements_dynamic)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
+    PyObject *(*CPyDef__encoding___int_to_big_endian)(CPyTagged cpy_r_value);
     char (*CPyDef__encoding_____top_level__)(void);
     PyObject **CPyStatic_abi___default_codec;
     PyObject **CPyStatic_abi___encode;
