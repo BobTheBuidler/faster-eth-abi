@@ -119,6 +119,7 @@ struct export_table_c42f5c78bc058f310136 {
     PyObject *(*CPyDef__encoding___encode_signed)(CPyTagged cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
     PyObject *(*CPyDef__encoding___encode_elements)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
     PyObject *(*CPyDef__encoding___encode_elements_dynamic)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
+    PyObject *(*CPyDef__encoding___encode_uint_256)(CPyTagged cpy_r_i);
     PyObject *(*CPyDef__encoding___int_to_big_endian)(CPyTagged cpy_r_value);
     char (*CPyDef__encoding_____top_level__)(void);
     PyObject **CPyStatic_abi___default_codec;
