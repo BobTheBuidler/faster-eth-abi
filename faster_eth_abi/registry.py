@@ -468,7 +468,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
         return encoding.TupleEncoder(
-            encoders=[self.get_encoder(type_str) for type_str in type_strs]
+            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)
         )
 
     def has_encoder(self, type_str: TypeStr) -> bool:
@@ -504,7 +504,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         return decoding.TupleDecoder(
-            decoders=[self.get_decoder(type_str, strict) for type_str in type_strs]
+            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)
         )
 
     def copy(self):
