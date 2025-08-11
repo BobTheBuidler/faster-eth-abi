@@ -136,7 +136,7 @@ class TupleEncoder(BaseEncoder):
 
     def encode(self, values):
         self.validate_value(values)
-        return encode_tuple(values, self.encoders, encode_uint_256)
+        return encode_tuple(values, self.encoders)
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
