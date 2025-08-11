@@ -116,7 +116,7 @@ struct export_table_c42f5c78bc058f310136 {
     char (*CPyDef__codec_____top_level__)(void);
     PyObject *(*CPyDef__encoding___encode_tuple)(PyObject *cpy_r_values, PyObject *cpy_r_encoders);
     PyObject *(*CPyDef__encoding___encode_fixed)(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
-    PyObject *(*CPyDef__encoding___encode_signed)(CPyTagged cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
+    PyObject *(*CPyDef__encoding___encode_signed)(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
     PyObject *(*CPyDef__encoding___encode_elements)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
     PyObject *(*CPyDef__encoding___encode_elements_dynamic)(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
     PyObject *(*CPyDef__encoding___encode_uint_256)(CPyTagged cpy_r_i);
