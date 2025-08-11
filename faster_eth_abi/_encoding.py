@@ -8,12 +8,16 @@ from typing import (
     List,
     Optional,
     Sequence,
+    TypeVar,
 )
 
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
     )
+
+
+T = TypeVar("T")
 
 
 def encode_tuple(
@@ -54,8 +58,8 @@ def encode_fixed(
 
 
 def encode_signed(
-    value: int,
-    encode_fn: Callable[[int], bytes],
+    value: T,
+    encode_fn: Callable[[T], bytes],
     data_byte_size: int,
 ) -> bytes:
     base_encoded_value = encode_fn(value)
