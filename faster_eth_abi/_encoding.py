@@ -13,7 +13,6 @@ from typing import (
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
-        UnsignedIntegerEncoder,
     )
 
 
@@ -79,6 +78,12 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
         int_to_big_endian(head_length + offset) for offset in tail_offsets
     )
     return b"".join(head_chunks) + b"".join(tail_chunks)
+
+
+def encode_elements_dynamic(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
+    encoded_size = int_to_big_endian(len(value))
+    encoded_elements = encode_elements(item_encoder, value)
+    return encoded_size + encoded_elements
 
 
 def int_to_big_endian(value: int) -> bytes:

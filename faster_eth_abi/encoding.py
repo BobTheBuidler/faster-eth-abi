@@ -24,6 +24,7 @@ from faster_eth_utils import (
 
 from faster_eth_abi._encoding import (
     encode_elements,
+    encode_elements_dynamic,
     encode_fixed,
     encode_signed,
     encode_tuple,
@@ -554,9 +555,9 @@ class BaseArrayEncoder(BaseEncoder):
         for item in value:
             self.item_encoder.validate_value(item)
 
-    def encode_elements(self, value):
+    def encode_elements(self, value: Sequence[Any]) -> bytes:
         self.validate_value(value)
-        return encode_elements(self, value)
+        return encode_elements(self.item_encoder, value)
 
     @parse_type_str(with_arrlist=True)
     def from_type_str(cls, abi_type, registry):
@@ -589,7 +590,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
             )
 
     def encode(self, value: Sequence[Any]) -> bytes:
-        return self.encode_elements(value)
+        return encode_elements(self.item_encoder, value)
 
     @parse_type_str(with_arrlist=True)
     def from_type_str(cls, abi_type, registry):
@@ -631,13 +632,11 @@ class SizedArrayEncoder(BaseArrayEncoder):
             )
 
     def encode(self, value: Sequence[Any]) -> bytes:
-        return self.encode_elements(value)
+        return encode_elements(self.item_encoder, value)
 
 
 class DynamicArrayEncoder(BaseArrayEncoder):
     is_dynamic = True
 
     def encode(self, value: Sequence[Any]) -> bytes:
-        encoded_size = encode_uint_256(len(value))
-        encoded_elements = self.encode_elements(value)
-        return encoded_size + encoded_elements
+        return encode_elements_dynamic(self.item_encoder, value)
