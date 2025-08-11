@@ -8,16 +8,10 @@ from typing import (
     Any,
     NoReturn,
     Optional,
-    Sequence,
     Tuple,
     Type,
-    TypeGuard,
-    Union,
 )
 
-from eth_typing import (
-    HexAddress,
-)
 from faster_eth_utils import (
     int_to_big_endian,
     is_address,
@@ -203,7 +197,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = True
 
     @classmethod
-    def validate_value(cls, value: Any) -> TypeGuard[bool]:
+    def validate_value(cls, value: Any) -> None:
         if not is_boolean(value):
             cls.invalidate_value(value)
 
@@ -424,7 +418,7 @@ class AddressEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = True
 
     @classmethod
-    def validate_value(cls, value: Any) -> TypeGuard[HexAddress]:
+    def validate_value(cls, value: Any) -> None:
         if not is_address(value):
             cls.invalidate_value(value)
 
@@ -446,7 +440,7 @@ class PackedAddressEncoder(AddressEncoder):
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = False
 
-    def validate_value(self, value: Any) -> TypeGuard[Union[bytes, bytearray]]:
+    def validate_value(self, value: Any) -> None:
         if not is_bytes(value):
             self.invalidate_value(value)
 
@@ -480,7 +474,7 @@ class ByteStringEncoder(BaseEncoder):
     is_dynamic = True
 
     @classmethod
-    def validate_value(cls, value: Any) -> TypeGuard[bytes]:
+    def validate_value(cls, value: Any) -> None:
         if not is_bytes(value):
             cls.invalidate_value(value)
 
@@ -512,7 +506,7 @@ class TextStringEncoder(BaseEncoder):
     is_dynamic = True
 
     @classmethod
-    def validate_value(cls, value: Any) -> TypeGuard[str]:
+    def validate_value(cls, value: Any) -> None:
         if not is_text(value):
             cls.invalidate_value(value)
 
@@ -551,7 +545,7 @@ class BaseArrayEncoder(BaseEncoder):
         if self.item_encoder is None:
             raise ValueError("`item_encoder` may not be none")
 
-    def validate_value(self, value: Any) -> TypeGuard[Sequence[Any]]:
+    def validate_value(self, value: Any) -> None:
         if not is_list_like(value):
             self.invalidate_value(
                 value,
@@ -599,7 +593,7 @@ class BaseArrayEncoder(BaseEncoder):
 class PackedArrayEncoder(BaseArrayEncoder):
     array_size = None
 
-    def validate_value(self, value: Any) -> TypeGuard[Sequence[Any]]:
+    def validate_value(self, value: Any) -> None:
         super().validate_value(value)
 
         if self.array_size is not None and len(value) != self.array_size:
@@ -643,7 +637,7 @@ class SizedArrayEncoder(BaseArrayEncoder):
         if self.array_size is None:
             raise ValueError("`array_size` may not be none")
 
-    def validate_value(self, value: Any) -> TypeGuard[Sequence[Any]]:
+    def validate_value(self, value: Any) -> None:
         super().validate_value(value)
 
         if len(value) != self.array_size:
