@@ -86,6 +86,13 @@ def encode_elements_dynamic(item_encoder: "BaseEncoder", value: Sequence[Any]) -
     return encoded_size + encoded_elements
 
 
+def encode_uint_256(i: int) -> bytes:
+    # An optimized version of the `encode_uint_256` in `encoding.py` which does not perform any validation.
+    # We should not have any issues here unless you're encoding really really massive iterables.
+    big_endian = int_to_big_endian(i)
+    return big_endian.rjust(32, b"\x00")
+
+
 def int_to_big_endian(value: int) -> bytes:
     # vendored from eth-utils so it can compile nicely into faster-eth-abi's binary
     return value.to_bytes((value.bit_length() + 7) // 8 or 1, "big")
