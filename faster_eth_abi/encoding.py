@@ -1,13 +1,11 @@
 import abc
 import codecs
 import decimal
-from itertools import (
-    accumulate,
-)
 from typing import (
     Any,
     NoReturn,
     Optional,
+    Sequence,
     Tuple,
     Type,
 )
@@ -25,6 +23,7 @@ from faster_eth_utils import (
 )
 
 from faster_eth_abi._encoding import (
+    encode_elements,
     encode_fixed,
     encode_signed,
     encode_tuple,
@@ -557,22 +556,7 @@ class BaseArrayEncoder(BaseEncoder):
 
     def encode_elements(self, value):
         self.validate_value(value)
-
-        item_encoder = self.item_encoder
-        if item_encoder is None:
-            raise AssertionError("`item_encoder` is None")
-        tail_chunks = tuple(item_encoder(i) for i in value)
-
-        items_are_dynamic = getattr(item_encoder, "is_dynamic", False)
-        if not items_are_dynamic or len(value) == 0:
-            return b"".join(tail_chunks)
-
-        head_length = 32 * len(value)
-        tail_offsets = (0,) + tuple(accumulate(map(len, tail_chunks[:-1])))
-        head_chunks = tuple(
-            encode_uint_256(head_length + offset) for offset in tail_offsets
-        )
-        return b"".join(head_chunks + tail_chunks)
+        return encode_elements(self, value)
 
     @parse_type_str(with_arrlist=True)
     def from_type_str(cls, abi_type, registry):
@@ -604,10 +588,8 @@ class PackedArrayEncoder(BaseArrayEncoder):
                 "expected",
             )
 
-    def encode(self, value):
-        encoded_elements = self.encode_elements(value)
-
-        return encoded_elements
+    def encode(self, value: Sequence[Any]) -> bytes:
+        return self.encode_elements(value)
 
     @parse_type_str(with_arrlist=True)
     def from_type_str(cls, abi_type, registry):
@@ -648,18 +630,14 @@ class SizedArrayEncoder(BaseArrayEncoder):
                 "expected",
             )
 
-    def encode(self, value):
-        encoded_elements = self.encode_elements(value)
-
-        return encoded_elements
+    def encode(self, value: Sequence[Any]) -> bytes:
+        return self.encode_elements(value)
 
 
 class DynamicArrayEncoder(BaseArrayEncoder):
     is_dynamic = True
 
-    def encode(self, value):
+    def encode(self, value: Sequence[Any]) -> bytes:
         encoded_size = encode_uint_256(len(value))
         encoded_elements = self.encode_elements(value)
-        encoded_value = encoded_size + encoded_elements
-
-        return encoded_value
+        return encoded_size + encoded_elements

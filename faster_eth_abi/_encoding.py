@@ -36,7 +36,7 @@ def encode_tuple(
     head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = (0, *accumulate(len(item) for item in tail_chunks[:-1]))
     head_chunks = tuple(
-        encode_uint_256(head_length + offset) if chunk is None else chunk
+        int_to_big_endian(head_length + offset) if chunk is None else chunk
         for chunk, offset in zip(raw_head_chunks, tail_offsets)
     )
 
@@ -66,3 +66,23 @@ def encode_signed(
         return base_encoded_value.rjust(data_byte_size, b"\x00")
     else:
         return base_encoded_value.rjust(data_byte_size, b"\xff")
+
+
+def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
+    tail_chunks = tuple(item_encoder(i) for i in value)
+
+    items_are_dynamic = getattr(item_encoder, "is_dynamic", False)
+    if not items_are_dynamic or len(value) == 0:
+        return b"".join(tail_chunks)
+
+    head_length = 32 * len(value)
+    tail_offsets = (0, *accumulate(len(item) for item in tail_chunks[:-1]))
+    head_chunks = tuple(
+        int_to_big_endian(head_length + offset) for offset in tail_offsets
+    )
+    return b"".join(head_chunks) + b"".join(tail_chunks)
+
+
+def int_to_big_endian(value: int) -> bytes:
+    # vendored from eth-utils so it can compile nicely into faster-eth-abi's binary
+    return value.to_bytes((value.bit_length() + 7) // 8 or 1, "big")
