@@ -1,6 +1,6 @@
 import pytest
 
-import eth_abi.grammer
+import eth_abi.grammar
 from pytest_codspeed import (
     BenchmarkFixture,
 )
@@ -14,7 +14,7 @@ import faster_eth_abi.grammar
 @pytest.mark.benchmark(group="GrammarNormalize")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_normalize(benchmark: BenchmarkFixture, type_str):
-    benchmark(eth_abi.grammer.normalize, type_str)
+    benchmark(eth_abi.grammar.normalize, type_str)
 
 
 @pytest.mark.benchmark(group="GrammarNormalize")
@@ -26,7 +26,7 @@ def test_faster_normalize(benchmark: BenchmarkFixture, type_str):
 @pytest.mark.benchmark(group="GrammarParse")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_parse(benchmark: BenchmarkFixture, type_str):
-    benchmark(eth_abi.grammer.parse, type_str)
+    benchmark(eth_abi.grammar.parse, type_str)
 
 
 @pytest.mark.benchmark(group="GrammarParse")
