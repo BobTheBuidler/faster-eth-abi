@@ -76,12 +76,12 @@ jobs:
             const repo = `${context.repo.owner}/${context.repo.repo}`;
             const branch = context.payload.pull_request ? context.payload.pull_request.head.ref : context.ref.replace('refs/heads/', '');
             for (const [submodule, groupDiffs] of Object.entries(diff)) {
-              // Convert submodule name to submodule file path (e.g., faster_eth_utils.abi -> faster_eth_utils/types.py)
+              // Convert submodule name to submodule file path (e.g., faster_eth_abi.encoding -> faster_eth_abi/encoding.py)
               let submoduleFile = "unknown";
               let benchmarkFile = "unknown";
-              const m = submodule.match(/^faster_eth_utils\.(.+)$/);
+              const m = submodule.match(/^faster_eth_abi\.(.+)$/);
               if (m) {
-                submoduleFile = `faster_eth_utils/${m[1]}.py`;
+                submoduleFile = `faster_eth_abi/${m[1]}.py`;
                 benchmarkFile = `benchmarks/test_${m[1]}_benchmarks.py`;
               }
               const submoduleUrl = `https://github.com/${repo}/blob/${branch}/${submoduleFile}`;
