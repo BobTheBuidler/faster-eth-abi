@@ -1,52 +1,142 @@
 # Shared value lists for encoding/decoding/packed/abi benchmarks
 
-import decimal
+from decimal import Decimal
 
 # Granular lists for encoding/decoding
 booleans = [True, False]
 
-addresses = [b"\x00" * 19 + b"\x01", b"\xff" * 20]
+addresses = [
+    b"\x00" * 19 + b"\x01",
+    b"\xff" * 20,
+    b"\x01" * 20,
+    b"\x00" * 20,
+    b"\x12" * 20,
+    b"\x00" * 19 + b"\x02",
+    b"\x01" * 19 + b"\x00",
+]
 
-uint256s = [0, 1, 2**256 - 1]
+uint256s = [
+    0,
+    1,
+    2**256 - 1,
+    2**128,
+    2**64,
+    12345678901234567890,
+    2**255,
+    2**255 - 1,
+    2**32,
+    2**16,
+    42,
+    999999999999999999999999999999,
+]
 
-bytes32s = [b"\x00" * 32, b"\xff" * 32]
+bytes32s = [
+    b"\x00" * 32,
+    b"\xff" * 32,
+    b"abc" * 10 + b"def" * 2,
+    b"\x01" * 32,
+    b"\x12" * 32,
+    b"",  # empty
+    b"\x00" * 16,  # short
+    b"\x00" * 33,  # too long/edge
+]
 
-strings = ["", "hello world", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢"]
+strings = [
+    "",
+    "hello world",
+    "𝔘𝔫𝔦𝔠𝔬𝔡𝔢",
+    "a" * 256,
+    "b" * 1024,
+    "c" * 4096,
+    "d" * 8192,
+    "e" * 16384,
+    "f" * 32768,
+    "g" * 65536,
+    "\0",  # null byte
+    "a\nb",  # newline
+    "a" * 100000,  # very long
+]
 
 tuples = [
     ((1, True), ["uint256", "bool"]),
     ((b"\x00" * 32, "foo"), ["bytes32", "string"]),
+    ((2**255 - 1, False, "bar"), ["int256", "bool", "string"]),
+    (([1, 2, 3], [True, False]), ["uint8[3]", "bool[2]"]),
+    ((b"\x01" * 20, 0), ["address", "uint8"]),
+    (([b"\x00" * 32, b"\xff" * 32], ["a", "b"]), ["bytes32[2]", "string[2]"]),
+    ((None, ""), ["uint256", "string"]),  # edge/invalid
 ]
-tuple_ids = ["int-bool", "bytes-string"]
+tuple_ids = [
+    "int-bool",
+    "bytes-string",
+    "int-bool-string",
+    "arrs",
+    "addr-uint8",
+    "bytes32s-strings",
+    "none-string",
+]
 
 # --- Comprehensive ABI test cases for abi/packed benchmarks ---
 
 # Primitive types
-primitive_cases = [
-    ("uint8", 0),
-    ("uint8", 255),
-    ("uint256", 0),
-    ("uint256", 2**256 - 1),
-    ("int8", -128),
-    ("int8", 127),
-    ("int256", -(2**255)),
-    ("int256", 2**255 - 1),
-    ("bool", True),
-    ("bool", False),
-    ("address", b"\x00" * 19 + b"\x01"),
-    ("address", b"\xff" * 20),
-    ("bytes1", b"\x01"),
-    ("bytes32", b"\x00" * 32),
-    ("bytes32", b"\xff" * 32),
-    ("bytes", b""),
-    ("bytes", b"hello world"),
-    ("bytes", b"\x00" * 100),
-    ("string", ""),
-    ("string", "hello world"),
-    ("string", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢"),
-    ("fixed128x18", decimal.Decimal("1.234567890123456789")),
-    ("ufixed128x18", decimal.Decimal("1.234567890123456789")),
-]
+primitive_cases = (
+    [
+        ("uint8", 0),
+        ("uint8", 255),
+        ("uint16", 65535),
+        ("uint32", 2**32 - 1),
+        ("uint64", 2**64 - 1),
+        ("uint128", 2**128 - 1),
+        ("uint256", 0),
+        ("uint256", 2**256 - 1),
+        ("int8", -128),
+        ("int8", 127),
+        ("int16", -32768),
+        ("int16", 32767),
+        ("int32", -(2**31)),
+        ("int32", 2**31 - 1),
+        ("int64", -(2**63)),
+        ("int64", 2**63 - 1),
+        ("int128", -(2**127)),
+        ("int128", 2**127 - 1),
+        ("int256", -(2**255)),
+        ("int256", 2**255 - 1),
+        ("bool", True),
+        ("bool", False),
+        ("address", b"\x00" * 19 + b"\x01"),
+        ("address", b"\xff" * 20),
+        ("bytes1", b"\x01"),
+    ]
+    + [(f"bytes{M}", b"\x01" * M) for M in range(2, 33)]
+    + [
+        ("bytes", b""),
+        ("bytes", b"hello world"),
+        ("bytes", b"\x00" * 100),
+        ("bytes", b"a" * 256),
+        ("string", ""),
+        ("string", "hello world"),
+        ("string", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢"),
+        ("string", "a" * 256),
+        ("string", "b" * 1024),
+    ]
+    + [
+        (f"fixed{bits}x{exp}", Decimal(1.1) * (bits + exp))
+        for bits in (8, 16, 32, 64, 128, 256)
+        for exp in (1, 2, 10, 18, 80)
+    ]
+    + [
+        (f"ufixed{bits}x{exp}", Decimal(2.2) * (bits + exp))
+        for bits in (8, 16, 32, 64, 128, 256)
+        for exp in (1, 2, 10, 18, 80)
+    ]
+    + [
+        ("function", b"\x01" * 24),
+        ("function", b"\x00" * 24),
+        ("function", b"\xff" * 24),
+        ("uint8", -1),  # invalid/edge
+        ("int8", 256),  # invalid/edge
+    ]
+)
 primitive_ids = [f"{t}-{repr(v)[:16]}" for t, v in primitive_cases]
 
 # Arrays
@@ -62,6 +152,21 @@ array_cases = [
     ("bytes[]", [b"abc", b"def", b"ghi"]),
     ("uint256[2][2]", [[1, 2], [3, 4]]),
     ("bool[][2]", [[True, False], [False, True]]),
+    ("bytes8[4]", [b"\x01" * 8, b"\x02" * 8, b"\x03" * 8, b"\x04" * 8]),
+    ("fixed32x2[2]", [Decimal(3.14), Decimal(2.71)]),
+    ("uint8[0]", []),
+    ("bytes[0]", []),
+    ("fixed32x2[]", []),
+    ("uint8[10]", list(range(10))),
+    ("string[5]", ["a", "b", "c", "d", "e"]),
+    ("bytes16[3]", [b"\x01" * 16, b"\x02" * 16, b"\x03" * 16]),
+    ("uint8[100]", [0] * 100),
+    ("string[10]", [""] * 10),
+    ("bytes[10]", [b""] * 10),
+    ("uint8[0][0]", [[]]),
+    ("string[0]", []),
+    ("uint8[2][0]", []),
+    ("uint8[2][2][0]", []),
 ]
 array_ids = [f"{t}-{repr(v)[:16]}" for t, v in array_cases]
 
@@ -74,6 +179,14 @@ tuple_cases = [
     ("(uint8,(bool,string))", (7, (False, "hi"))),
     ("((uint8,uint8),uint8)", ((1, 2), 3)),
     ("(uint8[2],(string,bool[2]))", ([1, 2], ("x", [True, False]))),
+    ("(fixed32x2,uint8)", (Decimal(3.14), 255)),
+    (
+        "(bytes1,bytes2,bytes3,bytes4)",
+        (b"\x01", b"\x01\x02", b"\x01\x02\x03", b"\x01\x02\x03\x04"),
+    ),
+    ("(function,uint256)", (b"\x01" * 24, 123)),
+    ("(uint8[3],(string[2],bool[2]))", ([1, 2, 3], (["a", "b"], [True, False]))),
+    ("(bytes32[],string[])", ([b"\x00" * 32, b"\xff" * 32], ["foo", "bar"])),
 ]
 tuple_ids_full = [f"{t}-{repr(v)[:16]}" for t, v in tuple_cases]
 
@@ -84,6 +197,33 @@ nested_cases = [
     (
         "(uint8[2][2],(string[2],bool[2]))",
         ([[1, 2], [3, 4]], (["x", "y"], [True, False])),
+    ),
+    ("(uint8[2][2][2],string)", ([[[1, 2], [3, 4]], [[5, 6], [7, 8]]], "deep")),
+    (
+        "((uint8[2][2],(string[2],bool[2])),bytes32[2])",
+        (([[1, 2], [3, 4]], (["x", "y"], [True, False])), [b"\x00" * 32, b"\xff" * 32]),
+    ),
+    (
+        "(uint8[2][2][2][2],string[2])",
+        (
+            [
+                [[[1, 2], [3, 4]], [[5, 6], [7, 8]]],
+                [[[9, 10], [11, 12]], [[13, 14], [15, 16]]],
+            ],
+            ["deep", "deeper"],
+        ),
+    ),
+    (
+        "(uint8[2][2][2][2][2],string[2][2])",
+        (
+            [
+                [
+                    [[[1, 2], [3, 4]], [[5, 6], [7, 8]]],
+                    [[[9, 10], [11, 12]], [[13, 14], [15, 16]]],
+                ],
+                [["a", "b"], ["c", "d"]],
+            ]
+        ),
     ),
 ]
 nested_ids = [f"{t}-{repr(v)[:16]}" for t, v in nested_cases]
@@ -96,6 +236,18 @@ edge_cases = [
     ("string", "a" * 1024),
     ("(uint8[],string)", ([], "")),
     ("(string[],bytes[])", ([""], [b""])),
+    ("bytes[0]", []),
+    ("fixed32x2[]", []),
+    ("uint256[100]", [0] * 100),
+    ("string[10]", [""] * 10),
+    ("bytes[10]", [b""] * 10),
+    ("(uint8[0][0],string)", ([[]], "")),
+    ("(string[0],bytes[0])", ([], [])),
+    ("(uint8[2][0],string[0])", ([], [])),
+    ("(uint8[2][2][0],string[0])", ([], [])),
+    ("bytes[100]", [b"\x00" * 32] * 100),
+    ("(bytes[0],string[0])", ([], [])),
+    ("(uint8[2][2][2][2][0],string[0])", ([], [])),
 ]
 edge_ids = [f"{t}-{repr(v)[:16]}" for t, v in edge_cases]
 
