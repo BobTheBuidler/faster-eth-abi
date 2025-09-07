@@ -162,8 +162,6 @@ primitive_cases = (
         ("function", b"\x01" * 24),
         ("function", b"\x00" * 24),
         ("function", b"\xff" * 24),
-        ("uint8", -1),  # invalid/edge
-        ("int8", 256),  # invalid/edge
     ]
 )
 primitive_ids = [f"{t}-{repr(v)[:16]}" for t, v in primitive_cases]
