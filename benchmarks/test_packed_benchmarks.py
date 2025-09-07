@@ -1,6 +1,6 @@
 import pytest
 
-import eth_abi
+import eth_abi.packed
 from pytest_codspeed import (
     BenchmarkFixture,
 )
@@ -12,7 +12,7 @@ from benchmarks.data import (
     packed_cases,
     packed_ids,
 )
-import faster_eth_abi
+import faster_eth_abi.packed
 
 
 # Packed encoding
