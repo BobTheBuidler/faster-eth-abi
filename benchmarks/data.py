@@ -40,7 +40,6 @@ bytes32s = [
     b"\x12" * 32,
     b"",  # empty
     b"\x00" * 16,  # short
-    b"\x00" * 33,  # too long/edge
 ]
 
 strings = [
@@ -82,10 +81,18 @@ tuple_ids = [
 
 
 # Primitive types
-def quantize_fixed(val, exp):
-    # exp is the number of decimal places
-    fmt = "0." + "0" * exp
-    return val.quantize(Decimal(fmt))
+def make_fixed_decimal(exp: int) -> Decimal:
+    # Returns Decimal('1.111...') with exp decimal places
+    if exp == 0:
+        return Decimal("1")
+    return Decimal("1." + "1" * exp)
+
+
+def make_ufixed_decimal(exp: int) -> Decimal:
+    # Returns Decimal('2.222...') with exp decimal places
+    if exp == 0:
+        return Decimal("2")
+    return Decimal("2." + "2" * exp)
 
 
 primitive_cases = (
@@ -129,12 +136,12 @@ primitive_cases = (
         ("string", "b" * 1024),
     ]
     + [
-        (f"fixed{bits}x{exp}", quantize_fixed(Decimal(1.1) * (bits + exp), exp))
+        (f"fixed{bits}x{exp}", make_fixed_decimal(exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
     + [
-        (f"ufixed{bits}x{exp}", quantize_fixed(Decimal(2.2) * (bits + exp), exp))
+        (f"ufixed{bits}x{exp}", make_ufixed_decimal(exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
