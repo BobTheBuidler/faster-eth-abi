@@ -1,5 +1,7 @@
 # Shared value lists for encoding/decoding/packed/abi benchmarks
 
+import decimal
+
 # Granular lists for encoding/decoding
 booleans = [True, False]
 
@@ -41,9 +43,9 @@ primitive_cases = [
     ("bytes", b"\x00" * 100),
     ("string", ""),
     ("string", "hello world"),
-    ("string", "𝔘𝔫𝔦𝔬𝔡𝔢"),
-    ("fixed128x18", 1.234567890123456789),
-    ("ufixed128x18", 1.234567890123456789),
+    ("string", "𝔘𝔫𝔦𝔠𝔬𝔡𝔢"),
+    ("fixed128x18", decimal.Decimal("1.234567890123456789")),
+    ("ufixed128x18", decimal.Decimal("1.234567890123456789")),
 ]
 primitive_ids = [f"{t}-{repr(v)[:16]}" for t, v in primitive_cases]
 
