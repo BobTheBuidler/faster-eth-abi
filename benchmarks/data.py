@@ -84,7 +84,7 @@ def make_fixed_decimal(bits: int, exp: int) -> Decimal:
     # Range: [-2**(bits-1)/10**exp, 2**(bits-1)-1/10**exp]
     max_val = (2 ** (bits - 1) - 1) / (10**exp)
     min_val = -(2 ** (bits - 1)) / (10**exp)
-    # Use a value safely within the range, e.g., 0.1 or 1.2 if possible
+    # Use a value safely within the range, e.g., 1.2 or 0.1 if possible
     if max_val >= 1.2 and min_val <= -1.2:
         return Decimal("1.2").quantize(Decimal("1." + "0" * exp))
     elif max_val >= 0.1:
@@ -104,6 +104,18 @@ def make_ufixed_decimal(bits: int, exp: int) -> Decimal:
     else:
         return Decimal(str(max_val)).quantize(Decimal("1." + "0" * exp))
 
+
+decimal_cases = []
+for bits in (8, 16, 32, 64, 128, 256):
+    for exp in (1, 2, 10, 18, 80):
+        max_val_fixed = (2 ** (bits - 1) - 1) / (10**exp)
+        if max_val_fixed >= 1.0:
+            decimal_cases.append((f"fixed{bits}x{exp}", make_fixed_decimal(bits, exp)))
+        max_val_ufixed = (2**bits - 1) / (10**exp)
+        if max_val_ufixed >= 1.0:
+            decimal_cases.append(
+                (f"ufixed{bits}x{exp}", make_ufixed_decimal(bits, exp))
+            )
 
 primitive_cases = (
     [
@@ -145,16 +157,7 @@ primitive_cases = (
         ("string", "a" * 256),
         ("string", "b" * 1024),
     ]
-    + [
-        (f"fixed{bits}x{exp}", make_fixed_decimal(bits, exp))
-        for bits in (8, 16, 32, 64, 128, 256)
-        for exp in (1, 2, 10, 18, 80)
-    ]
-    + [
-        (f"ufixed{bits}x{exp}", make_ufixed_decimal(bits, exp))
-        for bits in (8, 16, 32, 64, 128, 256)
-        for exp in (1, 2, 10, 18, 80)
-    ]
+    + decimal_cases
     + [
         ("function", b"\x01" * 24),
         ("function", b"\x00" * 24),
