@@ -94,7 +94,7 @@ edge_cases = [
     ("string[]", []),
     ("bytes", b"\x00" * 1024),
     ("string", "a" * 1024),
-    ("(uint8[0],string)", ([], "")),
+    ("(uint8[],string)", ([], "")),
     ("(string[],bytes[])", ([""], [b""])),
 ]
 edge_ids = [f"{t}-{repr(v)[:16]}" for t, v in edge_cases]
