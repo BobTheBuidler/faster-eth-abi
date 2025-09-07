@@ -42,7 +42,7 @@ bytes32s = [
     b"\x00" * 16,  # short
 ]
 
-bytes32_ids = list(repr, bytes32s)
+bytes32_ids = list(map(repr, bytes32s))
 
 strings = [
     "",
