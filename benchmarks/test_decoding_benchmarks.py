@@ -88,20 +88,20 @@ def test_string_decoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, eth_abi.decode, ["string"], value)
 
 
-@pytest.mark.benchmark(group="TextStringDecoder", ids=strings)
-@pytest.mark.parametrize("value", strings_encoded)
+@pytest.mark.benchmark(group="TextStringDecoder")
+@pytest.mark.parametrize("value", strings_encoded, ids=strings)
 def test_faster_string_decoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, faster_eth_abi.decode, ["string"], value)
 
 
 # Tuple decoding
-@pytest.mark.benchmark(group="TupleDecoder", ids=booleans)
+@pytest.mark.benchmark(group="TupleDecoder")
 @pytest.mark.parametrize("value,types", tuples_encoded, ids=tuple_ids)
 def test_tuple_decoder(benchmark: BenchmarkFixture, value, types):
     benchmark(batch, 1000, eth_abi.decode, types, value)
 
 
-@pytest.mark.benchmark(group="TupleDecoder", ids=booleans)
+@pytest.mark.benchmark(group="TupleDecoder")
 @pytest.mark.parametrize("value,types", tuples_encoded, ids=tuple_ids)
 def test_faster_tuple_decoder(benchmark: BenchmarkFixture, value, types):
     benchmark(batch, 1000, faster_eth_abi.decode, types, value)
