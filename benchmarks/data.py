@@ -32,14 +32,15 @@ uint256s = [
     999999999999999999999999999999,
 ]
 
-# Only include valid bytes32 values (exactly 32 bytes)
 bytes32s = [
     b"\x00" * 32,
     b"\xff" * 32,
-    b"abc" * 10 + b"de" b"\x01" * 32,
+    b"abc" * 10 + b"de",
+    b"\x01" * 32,
     b"\x12" * 32,
     b"",  # empty
     b"\x00" * 16,  # short
+    b"\x00" * 33,  # too long/edge
 ]
 
 strings = [
