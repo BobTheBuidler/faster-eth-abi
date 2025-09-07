@@ -63,6 +63,7 @@ strings = [
 string_ids = [
     "empty",
     "hello-world",
+    "unicode",
     "'a' * 256",
     "'b' * 1024",
     "'c' * 4096",
