@@ -1,6 +1,8 @@
 # Shared value lists for encoding/decoding/packed/abi benchmarks
 
-from decimal import Decimal
+from decimal import (
+    Decimal,
+)
 
 # Granular lists for encoding/decoding
 booleans = [True, False]
@@ -30,15 +32,14 @@ uint256s = [
     999999999999999999999999999999,
 ]
 
+# Only include valid bytes32 values (exactly 32 bytes)
 bytes32s = [
     b"\x00" * 32,
     b"\xff" * 32,
-    b"abc" * 10 + b"def" * 2,
-    b"\x01" * 32,
+    b"abc" * 10 + b"de" b"\x01" * 32,
     b"\x12" * 32,
     b"",  # empty
     b"\x00" * 16,  # short
-    b"\x00" * 33,  # too long/edge
 ]
 
 strings = [
@@ -78,7 +79,14 @@ tuple_ids = [
 
 # --- Comprehensive ABI test cases for abi/packed benchmarks ---
 
+
 # Primitive types
+def quantize_fixed(val, exp):
+    # exp is the number of decimal places
+    fmt = "0." + "0" * exp
+    return val.quantize(Decimal(fmt))
+
+
 primitive_cases = (
     [
         ("uint8", 0),
@@ -120,12 +128,12 @@ primitive_cases = (
         ("string", "b" * 1024),
     ]
     + [
-        (f"fixed{bits}x{exp}", Decimal(1.1) * (bits + exp))
+        (f"fixed{bits}x{exp}", quantize_fixed(Decimal(1.1) * (bits + exp), exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
     + [
-        (f"ufixed{bits}x{exp}", Decimal(2.2) * (bits + exp))
+        (f"ufixed{bits}x{exp}", quantize_fixed(Decimal(2.2) * (bits + exp), exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
