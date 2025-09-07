@@ -180,7 +180,7 @@ array_cases = [
     ("uint256[2][2]", [[1, 2], [3, 4]]),
     ("bool[][2]", [[True, False], [False, True]]),
     ("bytes8[4]", [b"\x01" * 8, b"\x02" * 8, b"\x03" * 8, b"\x04" * 8]),
-    ("fixed32x2[2]", [Decimal(3.14), Decimal(2.71)]),
+    ("fixed32x2[2]", [Decimal("3.14"), Decimal("2.71")]),
     ("uint8[0]", []),
     ("bytes[0]", []),
     ("fixed32x2[]", []),
@@ -206,7 +206,7 @@ tuple_cases = [
     ("(uint8,(bool,string))", (7, (False, "hi"))),
     ("((uint8,uint8),uint8)", ((1, 2), 3)),
     ("(uint8[2],(string,bool[2]))", ([1, 2], ("x", [True, False]))),
-    ("(fixed32x2,uint8)", (Decimal(3.14), 255)),
+    ("(fixed32x2,uint8)", (Decimal("3.14"), 255)),
     (
         "(bytes1,bytes2,bytes3,bytes4)",
         (b"\x01", b"\x01\x02", b"\x01\x02\x03", b"\x01\x02\x03\x04"),
