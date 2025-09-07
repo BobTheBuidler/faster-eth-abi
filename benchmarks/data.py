@@ -65,7 +65,6 @@ tuples = [
     (([1, 2, 3], [True, False]), ["uint8[3]", "bool[2]"]),
     ((b"\x01" * 20, 0), ["address", "uint8"]),
     (([b"\x00" * 32, b"\xff" * 32], ["a", "b"]), ["bytes32[2]", "string[2]"]),
-    ((None, ""), ["uint256", "string"]),  # edge/invalid
 ]
 tuple_ids = [
     "int-bool",
@@ -74,25 +73,36 @@ tuple_ids = [
     "arrs",
     "addr-uint8",
     "bytes32s-strings",
-    "none-string",
 ]
 
 # --- Comprehensive ABI test cases for abi/packed benchmarks ---
 
 
 # Primitive types
-def make_fixed_decimal(exp: int) -> Decimal:
-    # Returns Decimal('1.111...') with exp decimal places
-    if exp == 0:
-        return Decimal("1")
-    return Decimal("1." + "1" * exp)
+def make_fixed_decimal(bits: int, exp: int) -> Decimal:
+    # For each (bits, exp), generate a value within the allowed range
+    # Range: [-2**(bits-1)/10**exp, 2**(bits-1)-1/10**exp]
+    max_val = (2 ** (bits - 1) - 1) / (10**exp)
+    min_val = -(2 ** (bits - 1)) / (10**exp)
+    # Use a value safely within the range, e.g., 0.1 or 1.2 if possible
+    if max_val >= 1.2 and min_val <= -1.2:
+        return Decimal("1.2").quantize(Decimal("1." + "0" * exp))
+    elif max_val >= 0.1:
+        return Decimal("0.1").quantize(Decimal("1." + "0" * exp))
+    else:
+        return Decimal(str(max_val)).quantize(Decimal("1." + "0" * exp))
 
 
-def make_ufixed_decimal(exp: int) -> Decimal:
-    # Returns Decimal('2.222...') with exp decimal places
-    if exp == 0:
-        return Decimal("2")
-    return Decimal("2." + "2" * exp)
+def make_ufixed_decimal(bits: int, exp: int) -> Decimal:
+    # For each (bits, exp), generate a value within the allowed range
+    # Range: [0, 2**bits-1/10**exp]
+    max_val = (2**bits - 1) / (10**exp)
+    if max_val >= 1.2:
+        return Decimal("1.2").quantize(Decimal("1." + "0" * exp))
+    elif max_val >= 0.1:
+        return Decimal("0.1").quantize(Decimal("1." + "0" * exp))
+    else:
+        return Decimal(str(max_val)).quantize(Decimal("1." + "0" * exp))
 
 
 primitive_cases = (
@@ -136,12 +146,12 @@ primitive_cases = (
         ("string", "b" * 1024),
     ]
     + [
-        (f"fixed{bits}x{exp}", make_fixed_decimal(exp))
+        (f"fixed{bits}x{exp}", make_fixed_decimal(bits, exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
     + [
-        (f"ufixed{bits}x{exp}", make_ufixed_decimal(exp))
+        (f"ufixed{bits}x{exp}", make_ufixed_decimal(bits, exp))
         for bits in (8, 16, 32, 64, 128, 256)
         for exp in (1, 2, 10, 18, 80)
     ]
