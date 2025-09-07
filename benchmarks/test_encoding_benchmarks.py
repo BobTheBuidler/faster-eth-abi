@@ -12,6 +12,7 @@ from benchmarks.data import (
     addresses,
     booleans,
     bytes32s,
+    string_ids,
     strings,
     tuple_ids,
     tuples,
@@ -74,13 +75,13 @@ def test_faster_bytes32_encoder(benchmark: BenchmarkFixture, value):
 
 # String encoding
 @pytest.mark.benchmark(group="TextStringEncoder")
-@pytest.mark.parametrize("value", strings)
+@pytest.mark.parametrize("value", strings, ids=string_ids)
 def test_string_encoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, eth_abi.encode, ["string"], [value])
 
 
 @pytest.mark.benchmark(group="TextStringEncoder")
-@pytest.mark.parametrize("value", strings)
+@pytest.mark.parametrize("value", strings, ids=string_ids)
 def test_faster_string_encoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, faster_eth_abi.encode, ["string"], [value])
 

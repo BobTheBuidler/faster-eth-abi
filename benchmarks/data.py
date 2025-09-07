@@ -58,6 +58,21 @@ strings = [
     "a" * 100000,  # very long
 ]
 
+string_ids = [
+    "empty",
+    "hello-world",
+    "'a' * 256",
+    "'b' * 1024",
+    "'c' * 4096",
+    "'d' * 8192",
+    "'e' * 16384",
+    "'f' * 32768",
+    "'g' * 65536",
+    "null-byte",
+    "newline",
+    "very-long",
+]
+
 tuples = [
     ((1, True), ["uint256", "bool"]),
     ((b"\x00" * 32, "foo"), ["bytes32", "string"]),
