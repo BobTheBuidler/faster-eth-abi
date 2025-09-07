@@ -11,6 +11,7 @@ from benchmarks.batch import (
 from benchmarks.data import (
     addresses,
     booleans,
+    bytes32_ids,
     bytes32s,
     string_ids,
     strings,
@@ -71,13 +72,13 @@ def test_faster_uint256_decoder(benchmark: BenchmarkFixture, value):
 
 # Bytes decoding
 @pytest.mark.benchmark(group="BytesDecoder")
-@pytest.mark.parametrize("value", bytes32s_encoded, ids=bytes32s)
+@pytest.mark.parametrize("value", bytes32s_encoded, ids=bytes32_ids)
 def test_bytes32_decoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, eth_abi.decode, ["bytes32"], value)
 
 
 @pytest.mark.benchmark(group="BytesDecoder")
-@pytest.mark.parametrize("value", bytes32s_encoded, ids=bytes32s)
+@pytest.mark.parametrize("value", bytes32s_encoded, ids=bytes32_ids)
 def test_faster_bytes32_decoder(benchmark: BenchmarkFixture, value):
     benchmark(batch, 1000, faster_eth_abi.decode, ["bytes32"], value)
 
