@@ -10,3 +10,4 @@ from faster_eth_abi.abi import (
 )
 
 __version__ = __version("faster-eth-abi")
+
