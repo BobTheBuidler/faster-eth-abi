@@ -6,6 +6,10 @@ on:
   push:
     branches: [main, master]
   workflow_dispatch:
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   benchmark:
@@ -30,4 +34,6 @@ jobs:
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v3
         with:
-          run: pytest --codspeed -k "test_faster_" benchmarks/
+          run: |
+            cd $(mktemp -d)
+            pytest --codspeed -k "test_faster_" ../benchmarks/
