@@ -2,8 +2,7 @@
 Benchmarks for faster_eth_abi.io.ContextFramesBytesIO
 
 This file benchmarks the performance of ContextFramesBytesIO, a subclass of BytesIO
-that supports contextual frame management for nested ABI decoding. It compares
-key operations to standard BytesIO where appropriate.
+that supports contextual frame management for nested ABI decoding.
 """
 
 import pytest
