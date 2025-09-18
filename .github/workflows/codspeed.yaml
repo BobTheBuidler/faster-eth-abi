@@ -6,7 +6,7 @@ on:
   push:
     branches: [main, master]
   workflow_dispatch:
-      
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -36,4 +36,4 @@ jobs:
         with:
           run: |
             cd $(mktemp -d)
-            pytest --codspeed -k "test_faster_" ../benchmarks/
+            pytest --codspeed -k "test_faster_" /home/runner/work/faster-eth-abi/faster-eth-abi/benchmarks/
