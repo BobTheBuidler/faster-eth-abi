@@ -70,14 +70,14 @@ class HeadTailDecoder(BaseDecoder):
 
     tail_decoder = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
 
     def decode(self, stream: ContextFramesBytesIO) -> Any:
-        return decode_head_tail(stream)
+        return decode_head_tail(self, stream)
 
 
 class TupleDecoder(BaseDecoder):
@@ -96,7 +96,7 @@ class TupleDecoder(BaseDecoder):
             getattr(decoder, "array_size", 1) for decoder in self.decoders
         )
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.decoders is None:
@@ -147,7 +147,7 @@ class TupleDecoder(BaseDecoder):
 class SingleDecoder(BaseDecoder):
     decoder_fn = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.decoder_fn is None:
@@ -176,7 +176,7 @@ class SingleDecoder(BaseDecoder):
 class BaseArrayDecoder(BaseDecoder):
     item_decoder = None
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         # Use a head-tail decoder to decode dynamic elements
@@ -185,7 +185,7 @@ class BaseArrayDecoder(BaseDecoder):
                 tail_decoder=self.item_decoder,
             )
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.item_decoder is None:
@@ -272,7 +272,7 @@ class FixedByteSizeDecoder(SingleDecoder):
     data_byte_size = None
     is_big_endian = None
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.value_bit_size is None:
@@ -430,7 +430,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
     frac_places = None
     is_big_endian = True
 
-    def validate(self):
+    def validate(self) -> None:
         super().validate()
 
         if self.frac_places is None:
