@@ -2,7 +2,6 @@ import abc
 import decimal
 from typing import (
     Any,
-    Generator,
     Tuple,
 )
 
@@ -12,6 +11,10 @@ from faster_eth_utils import (
     to_tuple,
 )
 
+from faster_eth_abi._decoding import (
+    decode_head_tail,
+    decode_tuple,
+)
 from faster_eth_abi.base import (
     BaseCoder,
 )
@@ -74,20 +77,7 @@ class HeadTailDecoder(BaseDecoder):
             raise ValueError("No `tail_decoder` set")
 
     def decode(self, stream: ContextFramesBytesIO) -> Any:
-        # Decode the offset and move the stream cursor forward 32 bytes
-        start_pos = decode_uint_256(stream)
-        # Jump ahead to the start of the value
-        stream.push_frame(start_pos)
-
-        # assertion check for mypy
-        if self.tail_decoder is None:
-            raise AssertionError("`tail_decoder` is None")
-        # Decode the value
-        value = self.tail_decoder(stream)
-        # Return the cursor
-        stream.pop_frame()
-
-        return value
+        return decode_head_tail(stream)
 
 
 class TupleDecoder(BaseDecoder):
@@ -142,11 +132,8 @@ class TupleDecoder(BaseDecoder):
         # return the stream to its original location for actual decoding
         stream.seek(current_location)
 
-    @to_tuple  # type: ignore [misc]
-    def decode(self, stream: ContextFramesBytesIO) -> Generator[Any, None, None]:
-        self.validate_pointers(stream)
-        for decoder in self.decoders:
-            yield decoder(stream)
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+        return decode_tuple(self, stream)
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
@@ -513,7 +500,7 @@ class ByteStringDecoder(SingleDecoder):
     def decoder_fn(data):
         return data
 
-    def read_data_from_stream(self, stream):
+    def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
         data_length = decode_uint_256(stream)
         padded_length = ceil32(data_length)
 
