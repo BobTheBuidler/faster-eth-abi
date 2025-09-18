@@ -22,10 +22,12 @@ _UINT256_DECODER: Optional["UnsignedIntegerDecoder"] = None
 
 def __set_uint256_decoder() -> "UnsignedIntegerDecoder":
     # this helper breaks a circular dependency on the non-compiled decoding module
-    global _UINT256_DECODER
-    from .decoding import (
-        decode_uint_256 as _UINT256_DECODER,
+    from . import (
+        decoding,
     )
+
+    global _UINT256_DECODER
+    _UINT256_DECODER = decoding.decode_uint_256
 
     return _UINT256_DECODER
 
@@ -33,8 +35,9 @@ def __set_uint256_decoder() -> "UnsignedIntegerDecoder":
 def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     decoder = _UINT256_DECODER
     if decoder is None:
-        return __set_uint256_decoder()(stream)
-    return decoder(stream)
+        decoder = __set_uint256_decoder()
+    decoded: int = decoder(stream)
+    return decoded
 
 
 # HeadTailDecoder
