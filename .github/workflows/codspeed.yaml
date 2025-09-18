@@ -35,5 +35,7 @@ jobs:
         uses: CodSpeedHQ/action@v3
         with:
           run: |
-            cd $(mktemp -d)
-            pytest --codspeed -k "test_faster_" /home/runner/work/faster-eth-abi/faster-eth-abi/benchmarks/
+            tempdir=$(mktemp -d)
+            cp -r $GITHUB_WORKSPACE/benchmarks $tempdir/
+            cd $tempdir
+            pytest --codspeed -k "test_faster_" benchmarks/
