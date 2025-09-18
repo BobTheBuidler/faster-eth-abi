@@ -2,7 +2,9 @@ import abc
 import decimal
 from typing import (
     Any,
+    Optional,
     Tuple,
+    Union,
 )
 
 from faster_eth_utils import (
@@ -36,6 +38,8 @@ from faster_eth_abi.utils.numeric import (
     ceil32,
 )
 
+DynamicDecoder = Union["HeadTailDecoder", "DynamicArrayDecoder", "ByteStringDecoder"]
+
 
 class BaseDecoder(BaseCoder, metaclass=abc.ABCMeta):
     """
@@ -68,7 +72,7 @@ class HeadTailDecoder(BaseDecoder):
 
     is_dynamic = True
 
-    tail_decoder = None
+    tail_decoder: Optional[DynamicDecoder] = None
 
     def validate(self) -> None:
         super().validate()
