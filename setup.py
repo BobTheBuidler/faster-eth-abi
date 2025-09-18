@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+from mypyc.build import (
+    mypycify,
+)
 from setuptools import (
     find_packages,
     setup,
@@ -47,37 +50,30 @@ with open("./README.md") as readme:
     long_description = readme.read()
 
 
-try:
-    from mypyc.build import (
-        mypycify,
-    )
-except ImportError:
-    ext_modules = []
-else:
-    ext_modules = mypycify(
-        [
-            "faster_eth_abi/_codec.py",
-            "faster_eth_abi/_encoding.py",
-            "faster_eth_abi/abi.py",
-            "faster_eth_abi/constants.py",
-            "faster_eth_abi/from_type_str.py",
-            # "faster_eth_abi/io.py",
-            "faster_eth_abi/packed.py",
-            "faster_eth_abi/tools",
-            "faster_eth_abi/utils",
-            "--pretty",
-            "--install-types",
-            "--disable-error-code=override",
-            "--disable-error-code=unused-ignore",
-        ],
-    )
+ext_modules = mypycify(
+    [
+        "faster_eth_abi/_codec.py",
+        "faster_eth_abi/_encoding.py",
+        "faster_eth_abi/abi.py",
+        "faster_eth_abi/constants.py",
+        "faster_eth_abi/from_type_str.py",
+        # "faster_eth_abi/io.py",
+        "faster_eth_abi/packed.py",
+        "faster_eth_abi/tools",
+        "faster_eth_abi/utils",
+        "--pretty",
+        "--install-types",
+        "--disable-error-code=override",
+        "--disable-error-code=unused-ignore",
+    ],
+)
 
 
 setup(
     name="faster_eth_abi",
     # *IMPORTANT*: Don't manually change the version here. See Contributing docs for the release process.
     version="5.2.7",
-    description="""A aster fork of eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding. Implemented in C.""",
+    description="""A faster fork of eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding. Implemented in C.""",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
