@@ -19,6 +19,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail,
     decode_sized_array,
     decode_tuple,
+    get_value_byte_size,
     read_fixed_byte_size_data_from_stream,
 )
 from faster_eth_abi.base import (
@@ -324,8 +325,7 @@ class FixedByteSizeDecoder(SingleDecoder):
                 f"Padding bytes were not empty: {padding_bytes!r}"
             )
 
-    def _get_value_byte_size(self) -> int:
-        return self.value_bit_size // 8
+    _get_value_byte_size = get_value_byte_size
 
 
 class Fixed32ByteSizeDecoder(FixedByteSizeDecoder):
