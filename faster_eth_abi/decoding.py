@@ -19,6 +19,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail,
     decode_sized_array,
     decode_tuple,
+    read_fixed_byte_size_data_from_stream,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -88,6 +89,8 @@ class HeadTailDecoder(BaseDecoder):
     def decode(self, stream: ContextFramesBytesIO) -> Any:
         return decode_head_tail(self, stream)
 
+    __call__ = decode
+
 
 class TupleDecoder(BaseDecoder):
     decoders: Tuple[BaseDecoder, ...] = ()
@@ -144,6 +147,8 @@ class TupleDecoder(BaseDecoder):
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
 
+    __call__ = decode
+
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
         decoders = tuple(
@@ -174,6 +179,8 @@ class SingleDecoder(BaseDecoder):
         self.validate_padding_bytes(value, padding_bytes)
 
         return value
+
+    __call__ = decode
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
         raise NotImplementedError("Must be implemented by subclasses")
@@ -251,6 +258,8 @@ class SizedArrayDecoder(BaseArrayDecoder):
     def decode(self, stream):
         return decode_sized_array(self, stream)
 
+    __call__ = decode
+
 
 class DynamicArrayDecoder(BaseArrayDecoder):
     # Dynamic arrays are always dynamic, regardless of their elements
@@ -258,6 +267,8 @@ class DynamicArrayDecoder(BaseArrayDecoder):
 
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_dynamic_array(self, stream)
+
+    __call__ = decode
 
 
 class FixedByteSizeDecoder(SingleDecoder):
@@ -287,15 +298,7 @@ class FixedByteSizeDecoder(SingleDecoder):
             raise ValueError("Value byte size exceeds data size")
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        data = stream.read(self.data_byte_size)
-
-        if len(data) != self.data_byte_size:
-            raise InsufficientDataBytes(
-                f"Tried to read {self.data_byte_size} bytes, "
-                f"only got {len(data)} bytes."
-            )
-
-        return data
+        return read_fixed_byte_size_data_from_stream(self, stream)
 
     def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
         value_byte_size = self._get_value_byte_size()
@@ -535,6 +538,8 @@ class StringDecoder(ByteStringDecoder):
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
         return self.decoder_fn(data, self.bytes_errors)
+
+    __call__ = decode
 
     @staticmethod
     def decoder_fn(data: bytes, handle_string_errors: str = "strict") -> str:
