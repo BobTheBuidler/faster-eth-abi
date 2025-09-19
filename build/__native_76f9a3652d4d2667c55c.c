@@ -1636,10 +1636,10 @@ CPyL6: ;
         goto CPyL8;
 CPyL7: ;
     cpy_r_r9 = CPyStatics[215]; /* b'' */
-    CPy_INCREF(cpy_r_r9);
     CPy_INCREF(cpy_r_raw_data);
-    cpy_r_r10.f0 = cpy_r_r9;
-    cpy_r_r10.f1 = cpy_r_raw_data;
+    CPy_INCREF(cpy_r_r9);
+    cpy_r_r10.f0 = cpy_r_raw_data;
+    cpy_r_r10.f1 = cpy_r_r9;
     return cpy_r_r10;
 CPyL8: ;
     cpy_r_r11 = CPyBytes_GetSlice(cpy_r_raw_data, 0, cpy_r_r4);
