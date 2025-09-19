@@ -258,7 +258,7 @@ class DynamicArrayDecoder(BaseArrayDecoder):
     # Dynamic arrays are always dynamic, regardless of their elements
     is_dynamic = True
 
-    def decode(self: "DynamicArrayDecoder", stream):
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_dynamic_array(self, stream)
 
 
