@@ -124,7 +124,7 @@ def split_data_and_padding_fixed_byte_size(
 
     if self.is_big_endian:
         if padding_size == 0:
-            return b"", raw_data
+            return raw_data, b""
         padding_bytes = raw_data[:padding_size]
         data = raw_data[padding_size:]
     else:
