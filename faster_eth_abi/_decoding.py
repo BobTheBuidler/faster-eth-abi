@@ -65,15 +65,19 @@ def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> A
 
 
 # TupleDecoder
-def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+def decode_tuple(self: "TupleDecoder", stream: BytesIO) -> Tuple[Any, ...]:
+    # NOTE: Use BytesIO here so mypyc doesn't type-check `stream`
+    # once we compile ContextFramesBytesIO. The actual value will
+    # be an instance of ContextFramesBytesIO.
     self.validate_pointers(stream)
     return tuple(decoder(stream) for decoder in self.decoders)
 
 
 # SizedArrayDecoder
-def decode_sized_array(
-    self: "SizedArrayDecoder", stream: ContextFramesBytesIO
-) -> Tuple[Any, ...]:
+def decode_sized_array(self: "SizedArrayDecoder", stream: BytesIO) -> Tuple[Any, ...]:
+    # NOTE: Use BytesIO here so mypyc doesn't type-check `stream`
+    # once we compile ContextFramesBytesIO. The actual value will
+    # be an instance of ContextFramesBytesIO.
     item_decoder = self.item_decoder
     if item_decoder is None:
         raise AssertionError("`item_decoder` is None")
@@ -102,11 +106,11 @@ def decode_dynamic_array(
 
 # FixedByteSizeDecoder
 def read_fixed_byte_size_data_from_stream(
-    self: "FixedByteSizeDecoder",
-    # NOTE: use BytesIO here so mypyc doesn't type-check
-    # `stream` once we compile ContextFramesBytesIO.
-    stream: BytesIO,
+    self: "FixedByteSizeDecoder", stream: BytesIO
 ) -> bytes:
+    # NOTE: Use BytesIO here so mypyc doesn't type-check `stream`
+    # once we compile ContextFramesBytesIO. The actual value will
+    # be an instance of ContextFramesBytesIO.
     data_byte_size = self.data_byte_size
     if len(data := stream.read(data_byte_size)) == data_byte_size:
         return data
