@@ -538,9 +538,7 @@ class StringDecoder(ByteStringDecoder):
     def decode(self, stream: ContextFramesBytesIO) -> str:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
-        value = self.decoder_fn(data, self.bytes_errors)
-        self.validate_padding_bytes(value, padding_bytes)
-        return value
+        return self.decoder_fn(data, self.bytes_errors)
 
     @staticmethod
     def decoder_fn(data: bytes, handle_string_errors: str = "strict") -> str:
