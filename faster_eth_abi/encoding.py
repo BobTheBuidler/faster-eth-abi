@@ -493,7 +493,7 @@ class ByteStringEncoder(BaseEncoder):
             cls.invalidate_value(value)
 
     @classmethod
-    def encode(cls, value):
+    def encode(cls, value: bytes) -> bytes:
         cls.validate_value(value)
         value_length = len(value)
 
@@ -502,7 +502,7 @@ class ByteStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__ = encode
+    __call__: Callable[[Type[Self], bytes], bytes] = encode
 
     @parse_type_str("bytes")
     def from_type_str(cls, abi_type, registry):
@@ -540,7 +540,7 @@ class TextStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__ = encode
+    __call__: Callable[[Type[Self], str], bytes] = encode
 
     @parse_type_str("string")
     def from_type_str(cls, abi_type, registry):
