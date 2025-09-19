@@ -2,7 +2,10 @@
 requires = [
 	"setuptools",
 	"wheel",
-	"git+https://github.com/python/mypy@b28b6d1afb4e373d63e881f7596ad564969e42e7",
+	# For Python < 3.9, use the regular PyPI mypy release
+	"mypy[mypyc]>=1.14.1,<1.17.1 ; python_version < '3.9'",
+	# For Python >= 3.9, install mypy from a specific Git commit
+	"mypy[mypyc] @ git+https://github.com/python/mypy.git@b28b6d1afb4e373d63e881f7596ad564969e42e7#egg=mypy[mypyc] ; python_version >= '3.9'",
 	"mypy_extensions",
 	"cchecksum>=0.2.6,<0.4",
  	# pydantic-core (installed with faster-eth-utils) is unable to build on Python3.14
