@@ -19,6 +19,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail,
     decode_sized_array,
     decode_tuple,
+    decoder_fn_string,
     get_value_byte_size,
     read_fixed_byte_size_data_from_stream,
 )
@@ -547,6 +548,4 @@ class StringDecoder(ByteStringDecoder):
 
     __call__ = decode
 
-    @staticmethod
-    def decoder_fn(data: bytes, handle_string_errors: str = "strict") -> str:
-        return data.decode("utf-8", errors=handle_string_errors)
+    decoder_fn = staticmethod(decoder_fn_string)

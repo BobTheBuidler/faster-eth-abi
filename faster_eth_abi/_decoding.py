@@ -112,3 +112,8 @@ def read_fixed_byte_size_data_from_stream(
     raise InsufficientDataBytes(
         f"Tried to read {data_byte_size} bytes, only got {len(data)} bytes."
     )
+
+
+# StringDecoder
+def decoder_fn_string(data: bytes, handle_string_errors: str = "strict") -> str:
+    return data.decode("utf-8", errors=handle_string_errors)
