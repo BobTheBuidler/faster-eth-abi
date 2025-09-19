@@ -199,7 +199,7 @@ class BaseArrayDecoder(BaseDecoder):
         # Use a head-tail decoder to decode dynamic elements
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
-            item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+            self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
 
     def validate(self) -> None:
         super().validate()
