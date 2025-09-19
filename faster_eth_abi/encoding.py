@@ -3,6 +3,7 @@ import codecs
 import decimal
 from typing import (
     Any,
+    Callable,
     NoReturn,
     Optional,
     Sequence,
@@ -19,6 +20,9 @@ from faster_eth_utils import (
     is_number,
     is_text,
     to_canonical_address,
+)
+from typing_extensions import (
+    Self,
 )
 
 from faster_eth_abi._encoding import (
@@ -140,7 +144,7 @@ class TupleEncoder(BaseEncoder):
         self.validate_value(values)
         return encode_tuple(values, self.encoders)
 
-    __call__ = encode
+    __call__: Callable[[Self, Sequence[Any]], bytes] = encode
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
