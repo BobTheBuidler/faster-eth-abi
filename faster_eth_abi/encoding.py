@@ -135,7 +135,7 @@ class TupleEncoder(BaseEncoder):
             except AttributeError:
                 encoder(item)
 
-    def encode(self, values):
+    def encode(self, values: Sequence[Any]) -> bytes:
         self.validate_value(values)
         return encode_tuple(values, self.encoders)
 
@@ -288,7 +288,7 @@ class SignedIntegerEncoder(NumberEncoder):
     def encode_fn(self, value: int) -> bytes:
         return int_to_big_endian(value % (2**self.value_bit_size))
 
-    def encode(self, value):
+    def encode(self, value: int) -> bytes:
         self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
@@ -523,7 +523,7 @@ class TextStringEncoder(BaseEncoder):
             cls.invalidate_value(value)
 
     @classmethod
-    def encode(cls, value):
+    def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
 
         value_as_bytes = codecs.encode(value, "utf8")
@@ -545,7 +545,7 @@ class PackedTextStringEncoder(TextStringEncoder):
     is_dynamic = False
 
     @classmethod
-    def encode(cls, value):
+    def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
         return codecs.encode(value, "utf8")
 
