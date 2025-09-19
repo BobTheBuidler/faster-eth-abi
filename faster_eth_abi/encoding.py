@@ -4,6 +4,7 @@ import decimal
 from typing import (
     Any,
     Callable,
+    ClassVar,
     NoReturn,
     Optional,
     Sequence,
@@ -502,7 +503,7 @@ class ByteStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__: Callable[[Type[Self], bytes], bytes] = encode  # type: ignore [misc]
+    __call__: ClassVar[Callable[[Type[Self], bytes], bytes]] = encode
 
     @parse_type_str("bytes")
     def from_type_str(cls, abi_type, registry):
@@ -540,7 +541,7 @@ class TextStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__: Callable[[Type[Self], str], bytes] = encode  # type: ignore [misc]
+    __call__: ClassVar[Callable[[Type[Self], str], bytes]] = encode
 
     @parse_type_str("string")
     def from_type_str(cls, abi_type, registry):
