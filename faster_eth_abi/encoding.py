@@ -507,7 +507,7 @@ class ByteStringEncoder(BaseEncoder):
 
     @parse_type_str("bytes")
     def from_type_str(cls, abi_type, registry):
-        return cls()
+        return cls()  # type: ignore [misc]
 
 
 class PackedByteStringEncoder(ByteStringEncoder):
@@ -545,7 +545,7 @@ class TextStringEncoder(BaseEncoder):
 
     @parse_type_str("string")
     def from_type_str(cls, abi_type, registry):
-        return cls()
+        return cls()  # type: ignore [misc]
 
 
 class PackedTextStringEncoder(TextStringEncoder):
