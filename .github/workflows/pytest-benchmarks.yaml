@@ -5,13 +5,11 @@ on:
     branches: [main, master]
     paths:
       - "faster_eth_abi/**"
-      - "eth_abi/**"
       - "benchmarks/**"
   push:
     branches: [main, master]
     paths:
       - "faster_eth_abi/**"
-      - "eth_abi/**"
       - "benchmarks/**"
   workflow_dispatch:
 
