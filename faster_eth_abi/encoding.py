@@ -502,7 +502,7 @@ class ByteStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__: Callable[[Type[Self], bytes], bytes] = encode
+    __call__: Callable[[Type[Self], bytes], bytes] = encode  # type: ignore [misc]
 
     @parse_type_str("bytes")
     def from_type_str(cls, abi_type, registry):
@@ -540,7 +540,7 @@ class TextStringEncoder(BaseEncoder):
 
         return encoded_size + padded_value
 
-    __call__: Callable[[Type[Self], str], bytes] = encode
+    __call__: Callable[[Type[Self], str], bytes] = encode  # type: ignore [misc]
 
     @parse_type_str("string")
     def from_type_str(cls, abi_type, registry):
