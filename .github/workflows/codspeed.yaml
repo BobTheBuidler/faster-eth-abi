@@ -11,6 +11,8 @@ on:
     paths:
       - "faster_eth_abi/**"
       - "benchmarks/**"
+  release:
+    types: [published]
   workflow_dispatch:
 
 concurrency:
