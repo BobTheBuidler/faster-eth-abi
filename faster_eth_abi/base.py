@@ -49,7 +49,7 @@ class BaseCoder:
     def from_type_str(  # pragma: no cover
         cls,
         type_str: TypeStr,
-        registry: ABIRegistry,
+        registry: "ABIRegistry",
     ) -> Self:
         """
         Used by :any:`ABIRegistry` to get an appropriate encoder or decoder
