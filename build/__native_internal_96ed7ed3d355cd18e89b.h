@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[291];
+extern PyObject *CPyStatics[298];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -41,6 +41,7 @@ extern CPyModule *CPyModule_faster_eth_abi___registry;
 extern CPyModule *CPyModule_faster_eth_abi___constants__internal;
 extern CPyModule *CPyModule_faster_eth_abi___constants;
 extern PyObject *CPyStatic_constants___globals;
+extern CPyModule *CPyModule_os;
 extern PyObject *CPyStatic_exceptions___globals;
 extern CPyModule *CPyModule_parsimonious;
 extern CPyModule *CPyModule_faster_eth_abi___from_type_str__internal;
@@ -121,6 +122,7 @@ extern PyObject *CPyStatic_abi___decode;
 extern PyObject *CPyStatic_abi___is_encodable;
 extern PyObject *CPyStatic_abi___is_encodable_type;
 extern char CPyDef_abi_____top_level__(void);
+extern char CPyStatic_constants___ETH_ABI_NOVALIDATE;
 extern char CPyDef_constants_____top_level__(void);
 extern PyTypeObject *CPyType_exceptions___EncodingError;
 extern PyTypeObject *CPyType_exceptions___EncodingTypeError;
