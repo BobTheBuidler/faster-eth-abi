@@ -37,6 +37,9 @@ from faster_eth_abi._encoding import (
 from faster_eth_abi.base import (
     BaseCoder,
 )
+from faster_eth_abi.constants import (
+    ETH_ABI_NOVALIDATE,
+)
 from faster_eth_abi.exceptions import (
     EncodingTypeError,
     IllegalValue,
@@ -142,7 +145,8 @@ class TupleEncoder(BaseEncoder):
                 encoder(item)
 
     def encode(self, values: Sequence[Any]) -> bytes:
-        self.validate_value(values)
+        if not ETH_ABI_NOVALIDATE:
+            self.validate_value(values)
         return encode_tuple(values, self.encoders)
 
     __call__: Callable[[Self, Sequence[Any]], bytes] = encode
@@ -189,7 +193,8 @@ class FixedSizeEncoder(BaseEncoder):
         raise NotImplementedError("Must be implemented by subclasses")
 
     def encode(self, value: Any) -> bytes:
-        self.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            self.validate_value(value)
         encode_fn = self.encode_fn
         if encode_fn is None:
             raise AssertionError("`encode_fn` is None")
@@ -295,7 +300,8 @@ class SignedIntegerEncoder(NumberEncoder):
         return int_to_big_endian(value % (2**self.value_bit_size))
 
     def encode(self, value: int) -> bytes:
-        self.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
     __call__ = encode
@@ -400,7 +406,8 @@ class SignedFixedEncoder(BaseFixedEncoder):
         return int_to_big_endian(unsigned_integer_value)
 
     def encode(self, value):
-        self.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
     __call__ = encode
@@ -495,7 +502,8 @@ class ByteStringEncoder(BaseEncoder):
 
     @classmethod
     def encode(cls, value: bytes) -> bytes:
-        cls.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            cls.validate_value(value)
         value_length = len(value)
 
         encoded_size = encode_uint_256(value_length)
@@ -515,7 +523,8 @@ class PackedByteStringEncoder(ByteStringEncoder):
 
     @classmethod
     def encode(cls, value):
-        cls.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            cls.validate_value(value)
         return value
 
     __call__ = encode
@@ -531,7 +540,8 @@ class TextStringEncoder(BaseEncoder):
 
     @classmethod
     def encode(cls, value: str) -> bytes:
-        cls.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            cls.validate_value(value)
 
         value_as_bytes = codecs.encode(value, "utf8")
         value_length = len(value_as_bytes)
@@ -553,7 +563,8 @@ class PackedTextStringEncoder(TextStringEncoder):
 
     @classmethod
     def encode(cls, value: str) -> bytes:
-        cls.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            cls.validate_value(value)
         return codecs.encode(value, "utf8")
 
     __call__ = encode
@@ -580,7 +591,8 @@ class BaseArrayEncoder(BaseEncoder):
             item_encoder.validate_value(item)
 
     def encode_elements(self, value: Sequence[Any]) -> bytes:
-        self.validate_value(value)
+        if not ETH_ABI_NOVALIDATE:
+            self.validate_value(value)
         return encode_elements(self.item_encoder, value)
 
     @parse_type_str(with_arrlist=True)
@@ -668,3 +680,5 @@ class DynamicArrayEncoder(BaseArrayEncoder):
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements_dynamic(self.item_encoder, value)
+
+    __call__ = encode

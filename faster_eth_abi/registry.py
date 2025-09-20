@@ -6,6 +6,7 @@ from typing import (
     Callable,
     Optional,
     Type,
+    TypeVar,
     Union,
 )
 
@@ -37,6 +38,9 @@ DecoderCallable = Callable[[ContextFramesBytesIO], Any]
 
 Encoder = Union[EncoderCallable, Type[encoding.BaseEncoder]]
 Decoder = Union[DecoderCallable, Type[decoding.BaseDecoder]]
+
+TEncoder = TypeVar("TEncoder", bound=encoding.BaseEncoder)
+TDecoder = TypeVar("TDecoder", bound=decoding.BaseDecoder)
 
 
 class Copyable(abc.ABC):
@@ -460,11 +464,11 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_encoder(label)
         self.unregister_decoder(label)
 
-    def _get_encoder_uncached(self, type_str: TypeStr):  # type: ignore [no-untyped-def]
+    def _get_encoder_uncached(self, type_str: TypeStr) -> TEncoder:
         return self._get_registration(self._encoders, type_str)
 
     def _get_tuple_encoder_uncached(
-        self, 
+        self,
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
         return encoding.TupleEncoder(
@@ -487,7 +491,7 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         return True
 
-    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True):  # type: ignore [no-untyped-def]
+    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True) -> TDecoder:
         decoder = self._get_registration(self._decoders, type_str)
 
         if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
@@ -499,8 +503,8 @@ class ABIRegistry(Copyable, BaseRegistry):
         return decoder
 
     def _get_tuple_decoder_uncached(
-        self, 
-        *type_strs: TypeStr, 
+        self,
+        *type_strs: TypeStr,
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         return decoding.TupleDecoder(
