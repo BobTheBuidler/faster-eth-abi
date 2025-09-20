@@ -38,6 +38,8 @@ jobs:
       - name: Remove source package to force use of installed C extensions
         run: rm -rf faster_eth_abi
       - name: Run Pytest Benchmark & Save Output
+        env:
+          ETH_ABI_NOVALIDATE: 1
         run: |
           pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
       - name: Upload Pytest Benchmark Results
