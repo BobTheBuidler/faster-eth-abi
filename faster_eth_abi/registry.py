@@ -50,7 +50,7 @@ class Copyable(abc.ABC):
     def __copy__(self) -> Self:
         return self.copy()
 
-    def __deepcopy__(self, *args) -> Self:
+    def __deepcopy__(self, *args: Any) -> Self:
         return self.copy()
 
 
@@ -61,7 +61,7 @@ class PredicateMapping(Copyable):
     also be labeled to facilitate removal from the mapping.
     """
 
-    def __init__(self, name) -> None:
+    def __init__(self, name):
         self._name = name
         self._values = {}
         self._labeled_predicates = {}
@@ -360,6 +360,7 @@ class ABIRegistry(Copyable, BaseRegistry):
     def _get_registration(
         self, mapping: PredicateMapping, type_str: TypeStr
     ) -> Union[encoding.BaseEncoder, decoding.BaseDecoder]:
+        coder: Union[encoding.BaseEncoder, decoding.BaseDecoder]
         coder = super()._get_registration(mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
