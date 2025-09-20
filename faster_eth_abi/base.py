@@ -1,6 +1,19 @@
 from typing import (
+    TYPE_CHECKING,
     Any,
 )
+
+from eth_typing import (
+    TypeStr,
+)
+from typing_extensions import (
+    Self,
+)
+
+if TYPE_CHECKING:
+    from faster_eth_abi.registry import (
+        ABIRegistry,
+    )
 
 
 class BaseCoder:
@@ -29,11 +42,15 @@ class BaseCoder:
         # Validate given combination of kwargs
         self.validate()
 
-    def validate(self):
+    def validate(self) -> None:
         pass
 
     @classmethod
-    def from_type_str(cls, type_str, registry):  # pragma: no cover
+    def from_type_str(  # pragma: no cover
+        cls,
+        type_str: TypeStr,
+        registry: "ABIRegistry",
+    ) -> Self:
         """
         Used by :any:`ABIRegistry` to get an appropriate encoder or decoder
         instance for the given type string and type registry.

@@ -45,6 +45,8 @@ jobs:
           python -c "import faster_eth_abi._codec; print('faster_eth_abi._codec:', faster_eth_abi._codec.__file__)"
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v3
+        env:
+          ETH_ABI_NOVALIDATE: 1
         with:
           run: |
             pytest --codspeed -k "test_faster_" benchmarks/
