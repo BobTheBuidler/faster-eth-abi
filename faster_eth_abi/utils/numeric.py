@@ -17,7 +17,8 @@ Decimal: Final = decimal.Decimal
 
 
 def ceil32(x: int) -> int:
-    return x if x % 32 == 0 else x + 32 - (x % 32)
+    remainder = x % 32
+    return x if remainder == 0 else x + 32 - (x % 32)
 
 
 _unsigned_integer_bounds_cache: Final[Dict[int, Tuple[int, int]]] = {}
