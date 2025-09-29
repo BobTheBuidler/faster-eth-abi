@@ -1,6 +1,3 @@
-from io import (
-    BytesIO,
-)
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -10,6 +7,9 @@ from typing import (
     final,
 )
 
+from _io import (
+    BytesIO,
+)
 from mypy_extensions import (
     mypyc_attr,
 )
