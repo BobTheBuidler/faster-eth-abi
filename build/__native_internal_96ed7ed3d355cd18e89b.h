@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[288];
+extern PyObject *CPyStatics[293];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -214,6 +214,10 @@ extern PyObject *CPyStatic_numeric___abi_decimal_context;
 extern PyObject *CPyStatic_numeric___ZERO;
 extern PyObject *CPyStatic_numeric___TEN;
 extern PyObject *CPyStatic_numeric___Decimal;
+extern PyObject *CPyStatic_numeric____unsigned_integer_bounds_cache;
+extern PyObject *CPyStatic_numeric____signed_integer_bounds_cache;
+extern PyObject *CPyStatic_numeric____unsigned_fixed_bounds_cache;
+extern PyObject *CPyStatic_numeric____signed_fixed_bounds_cache;
 extern PyTypeObject *CPyType_numeric___scale_places_env;
 extern PyObject *CPyDef_numeric___scale_places_env(void);
 extern CPyThreadLocal faster_eth_abi___utils___numeric___scale_places_envObject *numeric___scale_places_env_free_instance;
