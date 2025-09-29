@@ -1,6 +1,3 @@
-from itertools import (
-    accumulate,
-)
 from typing import (
     TYPE_CHECKING,
     Any,
