@@ -56,17 +56,19 @@ def compute_unsigned_fixed_bounds(
 ) -> Tuple[decimal.Decimal, decimal.Decimal]:
     upper = _unsigned_fixed_bounds_cache.get((num_bits, frac_places))
     if upper is None:
-        int_upper = 2 ** (num_bits - 1) - 1
-    
+        int_upper = 2**num_bits - 1
+
         with decimal_localcontext(abi_decimal_context):
             upper = Decimal(int_upper) * TEN**-frac_places
 
         _unsigned_fixed_bounds_cache[(num_bits, frac_places)] = upper
-        
+
     return ZERO, upper
 
 
-_signed_fixed_bounds_cache: Final[Dict[Tuple[int, int], Tuple[decimal.Decimal, decimal.Decimal]]] = {}
+_signed_fixed_bounds_cache: Final[
+    Dict[Tuple[int, int], Tuple[decimal.Decimal, decimal.Decimal]]
+] = {}
 
 
 def compute_signed_fixed_bounds(
@@ -76,7 +78,7 @@ def compute_signed_fixed_bounds(
     bounds = _signed_fixed_bounds_cache.get((num_bits, frac_places))
     if bounds is None:
         int_lower, int_upper = compute_signed_integer_bounds(num_bits)
-    
+
         with decimal_localcontext(abi_decimal_context):
             exp = TEN**-frac_places
             lower = Decimal(int_lower) * exp
