@@ -282,6 +282,7 @@ def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]
     @functools.wraps(old_method)
     def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
         self.get_encoder.cache_clear()
+        self.get_tuple_encoder.cache_clear()
         return old_method(self, *args, **kwargs)
 
     return new_method
@@ -291,6 +292,7 @@ def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]
     @functools.wraps(old_method)
     def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
         self.get_decoder.cache_clear()
+        self.get_tuple_decoder.cache_clear()
         return old_method(self, *args, **kwargs)
 
     return new_method
