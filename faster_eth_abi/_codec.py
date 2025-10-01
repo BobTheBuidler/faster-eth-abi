@@ -39,8 +39,6 @@ def encode_c(
     :returns: The head-tail encoded binary representation of the python
         values in ``args`` as values of the ABI types in ``types``.
     """
-    # validate encode types and args
-    validate_list_like_param(types, "types")
     validate_list_like_param(args, "args")
 
     encoder = self._registry.get_tuple_encoder(*types)
@@ -71,8 +69,6 @@ def decode_c(
     :returns: A tuple of equivalent python values for the ABI values
         represented in ``data``.
     """
-    # validate decode types and data
-    validate_list_like_param(types, "types")
     validate_bytes_param(data, "data")
 
     decoder = self._registry.get_tuple_decoder(*types, strict=strict)
