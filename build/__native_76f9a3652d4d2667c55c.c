@@ -10927,37 +10927,34 @@ CPyTagged CPyDef_numeric___ceil32(CPyTagged cpy_r_x) {
     CPyTagged cpy_r_r3;
     CPyTagged cpy_r_r4;
     CPyTagged cpy_r_r5;
-    CPyTagged cpy_r_r6;
     cpy_r_r0 = CPyTagged_Remainder(cpy_r_x, 64);
     if (unlikely(cpy_r_r0 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "ceil32", 21, CPyStatic_numeric___globals);
-        goto CPyL6;
+        goto CPyL5;
     }
     cpy_r_r1 = cpy_r_r0 == 0;
-    CPyTagged_DECREF(cpy_r_r0);
-    if (!cpy_r_r1) goto CPyL3;
+    if (cpy_r_r1) {
+        goto CPyL6;
+    } else
+        goto CPyL3;
+CPyL2: ;
     CPyTagged_INCREF(cpy_r_x);
     cpy_r_r2 = cpy_r_x;
-    goto CPyL5;
+    goto CPyL4;
 CPyL3: ;
     cpy_r_r3 = CPyTagged_Add(cpy_r_x, 64);
-    cpy_r_r4 = CPyTagged_Remainder(cpy_r_x, 64);
-    if (unlikely(cpy_r_r4 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "ceil32", 22, CPyStatic_numeric___globals);
-        goto CPyL7;
-    }
-    cpy_r_r5 = CPyTagged_Subtract(cpy_r_r3, cpy_r_r4);
+    cpy_r_r4 = CPyTagged_Subtract(cpy_r_r3, cpy_r_r0);
     CPyTagged_DECREF(cpy_r_r3);
-    CPyTagged_DECREF(cpy_r_r4);
-    cpy_r_r2 = cpy_r_r5;
-CPyL5: ;
+    CPyTagged_DECREF(cpy_r_r0);
+    cpy_r_r2 = cpy_r_r4;
+CPyL4: ;
     return cpy_r_r2;
+CPyL5: ;
+    cpy_r_r5 = CPY_INT_TAG;
+    return cpy_r_r5;
 CPyL6: ;
-    cpy_r_r6 = CPY_INT_TAG;
-    return cpy_r_r6;
-CPyL7: ;
-    CPyTagged_DecRef(cpy_r_r3);
-    goto CPyL6;
+    CPyTagged_DECREF(cpy_r_r0);
+    goto CPyL2;
 }
 
 PyObject *CPyPy_numeric___ceil32(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
