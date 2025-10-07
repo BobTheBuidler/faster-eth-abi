@@ -4,6 +4,12 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - '**.py'
+      - '.github/workflows/tox.yaml'
+      - 'pyproject.toml'
+      - 'setup.py'
+      - 'tox.ini'
   schedule:
     - cron: '0 12 * * 1-5'  # Weekdays 12:00 UTC
 
