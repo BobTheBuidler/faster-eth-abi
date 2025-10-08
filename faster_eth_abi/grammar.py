@@ -69,7 +69,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
     """
 
     def __init__(self) -> None:
-        self.parse = lru_cache(maxsize=None)(self._parse_uncached)
+        self.parse: Final = lru_cache(maxsize=None)(self._parse_uncached)
 
     grammar = grammar
 
