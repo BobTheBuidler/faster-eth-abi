@@ -52,7 +52,7 @@ class EncoderCache(_CacheBase[Union[TypeStr, Tuple[TypeStr, ...]], C]):
 class DecoderCache(_CacheBase[Tuple[TypeStr, bool], C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
     def __call__(self, arg: TypeStr, strict: bool = True) -> C:
-        coder = self._cache.get((arg, strict)
+        coder = self._cache.get((arg, strict))
         if coder is None:
             coder = self._cache[(arg, strict)] = self._func(arg, strict=strict)
         return coder
