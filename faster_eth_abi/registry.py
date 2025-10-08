@@ -493,17 +493,17 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
         try:
             self.get_encoder(type_str)
-        except Exception as e:
-            if isinstance(e, MultipleEntriesFound):
-                raise e
+        except MultipleEntriesFound:
+            raise
+        except:
             return False
-
-        return True
+        else:
+            return True
 
     def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True):  # type: ignore [no-untyped-def]
         decoder = self._get_registration(self._decoders, type_str)
 
-        if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
+        if getattr(decoder, "is_dynamic", False):
             # Set a transient flag each time a call is made to ``get_decoder()``.
             # Only dynamic decoders should be allowed these looser constraints. All
             # other decoders should keep the default value of ``True``.
