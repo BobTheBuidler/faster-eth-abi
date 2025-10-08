@@ -8,7 +8,6 @@ from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
     InvalidPointer,
     NoEntriesFound,
-    ValueOutOfBounds,
 )
 from faster_eth_abi.grammar import (
     parse,
@@ -103,9 +102,7 @@ def test_abi_decode_wrong_data_param_type_raises(data, strict):
     ),
 )
 def test_abi_decode_wrong_types_param_type_raises(types, strict):
-    if types in ("", b""):
-        expected_exc = ValueOutOfBounds
-    elif types == {"key": "val"}:
+    if types == {"key": "val"}:
         expected_exc = NoEntriesFound
     else:
         expected_exc = TypeError
