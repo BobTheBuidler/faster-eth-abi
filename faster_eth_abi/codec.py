@@ -74,20 +74,18 @@ class ABIEncoder(BaseABICoder):
         :returns: ``True`` if ``arg`` is encodable as a value of the ABI type
             ``typ``.  Otherwise, ``False``.
         """
-        if not self.is_encodable_type(typ):
+        try:
+            encoder = self._registry.get_encoder(typ)
+        except MultipleEntriesFound:
+            raise
+        except:
             return False
 
-        encoder = self._registry.get_encoder(typ)
-
+        validate = getattr(encoder, "validate_value", encoder)
         try:
-            encoder.validate_value(arg)
+            validate(arg)
         except EncodingError:
             return False
-        except AttributeError:
-            try:
-                encoder(arg)
-            except EncodingError:
-                return False
 
         return True
 
