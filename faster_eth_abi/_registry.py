@@ -17,9 +17,6 @@ from typing import (
 from eth_typing import (
     TypeStr,
 )
-from parsimonius import (
-    ParseError,
-)
 from typing_extensions import (
     Self,
 )
@@ -27,6 +24,7 @@ from typing_extensions import (
 from .exceptions import (
     MultipleEntriesFound,
     NoEntriesFound,
+    ParseError,
 )
 from .grammar import (
     BasicType,
