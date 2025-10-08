@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[333];
+extern PyObject *CPyStatics[338];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -36,6 +36,7 @@ extern CPyModule *CPyModule_faster_eth_abi____registry;
 extern PyObject *CPyStatic__registry___globals;
 extern CPyModule *CPyModule_abc;
 extern CPyModule *CPyModule_copy;
+extern CPyModule *CPyModule_mypy_extensions;
 extern CPyModule *CPyModule_typing_extensions;
 extern CPyModule *CPyModule_faster_eth_abi___grammar;
 extern CPyModule *CPyModule_faster_eth_abi___abi__internal;
@@ -133,10 +134,16 @@ extern PyObject *CPyDef__registry_____iter___3_Predicate_gen(void);
 extern CPyThreadLocal faster_eth_abi____registry_____iter___3_Predicate_genObject *_registry_____iter___3_Predicate_gen_free_instance;
 extern PyObject *CPyDef__registry___Copyable___copy(PyObject *cpy_r_self);
 extern PyObject *CPyPy__registry___Copyable___copy(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__registry___Copyable___copy__Copyable_glue(PyObject *cpy_r_self);
+extern PyObject *CPyPy__registry___Copyable___copy__Copyable_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__registry___Copyable_____copy__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__registry___Copyable_____copy__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__registry___Copyable_____copy___3__Copyable_glue(PyObject *cpy_r_self);
+extern PyObject *CPyPy__registry___Copyable_____copy___3__Copyable_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__registry___Copyable_____deepcopy__(PyObject *cpy_r_self, PyObject *cpy_r_args);
 extern PyObject *CPyPy__registry___Copyable_____deepcopy__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__registry___Copyable_____deepcopy___3__Copyable_glue(PyObject *cpy_r_self, PyObject *cpy_r_args);
+extern PyObject *CPyPy__registry___Copyable_____deepcopy___3__Copyable_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__registry___PredicateMapping_____init__(PyObject *cpy_r_self, PyObject *cpy_r_name);
 extern PyObject *CPyPy__registry___PredicateMapping_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern char CPyDef__registry___PredicateMapping___add(PyObject *cpy_r_self, PyObject *cpy_r_predicate, PyObject *cpy_r_value, PyObject *cpy_r_label);
@@ -196,6 +203,10 @@ extern char CPyDef__registry___BaseEquals_____call___3__Predicate_glue(PyObject 
 extern PyObject *CPyPy__registry___BaseEquals_____call___3__Predicate_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__registry___BaseEquals_____str__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__registry___BaseEquals_____str__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__registry___has_arrlist(PyObject *cpy_r_type_str);
+extern PyObject *CPyPy__registry___has_arrlist(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__registry___is_base_tuple(PyObject *cpy_r_type_str);
+extern PyObject *CPyPy__registry___is_base_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__registry_____top_level__(void);
 extern PyObject *CPyStatic_abi___default_codec;
 extern PyObject *CPyStatic_abi___encode;
