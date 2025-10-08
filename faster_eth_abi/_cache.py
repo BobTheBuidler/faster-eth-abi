@@ -23,10 +23,15 @@ if TYPE_CHECKING:
     from faster_eth_abi.registry import ABIRegistry
 
 
+K = TypeVar("K")
 C = TypeVar("C", bound=Callable)
 
 
-class _CacheBase(Generic[C]):
+class _CacheBase(Generic[K, C]):
+    def __init__(self, func: Callable[..., C]) -> None:
+        self._func: Final = func
+        self._cache: Final[Dict[EncoderKey, C]] = {}
+        functools.wraps(func)(self)
     def __repr__(self) -> str:
       return f"{type(self).__name__}({repr(self._func)}"
     def cache_clear(self) -> None:
@@ -34,12 +39,8 @@ class _CacheBase(Generic[C]):
 
 
 @final
-class EncoderCache(_CacheBase[C]):
+class EncoderCache(_CacheBase[Union[TypeStr, Tuple[TypeStr, ...]], C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __init__(self, func: Callable[..., C]) -> None:
-        self._func: Final = func
-        self._cache: Final[Dict[Tuple[TypeStr, ...], C]] = {}
-        functools.wraps(func)(self)
     def __call__(self, *args: TypeStr) -> C:
         coder = self._cache.get(args)
         if coder is None:
@@ -48,17 +49,22 @@ class EncoderCache(_CacheBase[C]):
 
 
 @final
-class DecoderCache(_CacheBase[C]):
+class DecoderCache(_CacheBase[Tuple[TypeStr, bool], C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __init__(self, func: Callable[..., C]) -> None:
-        self._func: Final = func
-        self._cache: Final[Dict[Tuple[Tuple[TypeStr, ...], bool], C]] = {}
-        functools.wraps(func)(self)
-    def __call__(self, *args: TypeStr, strict: bool = True) -> C:
-        key = args, strict
-        coder = self._cache.get(key)
+    def __call__(self, arg: TypeStr, strict: bool = True) -> C:
+        coder = self._cache.get((arg, strict)
         if coder is None:
-            coder = self._cache[key] = self._func(*args, strict=strict)
+            coder = self._cache[(arg, strict)] = self._func(arg, strict=strict)
+        return coder
+
+
+@final
+class TupleDecoderCache(_CacheBase[Tuple[Tuple[TypeStr, ...], bool], C]):
+    """A specialized lru_cache implementation for our use case with no maxsize."""
+    def __call__(self, *args: TypeStr, strict: bool = True) -> C:
+        coder = self._cache.get((args, strict))
+        if coder is None:
+            coder = self._cache[(args, strict)] = self._func(*args, strict=strict)
         return coder
 
 
