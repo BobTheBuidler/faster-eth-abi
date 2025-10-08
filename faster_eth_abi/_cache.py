@@ -34,7 +34,7 @@ class _CacheBase(Generic[C]):
 
 
 @final
-class EncoderCache(Generic[C]):
+class EncoderCache(_CacheBase[C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
     def __init__(self, func: Callable[..., C]) -> None:
         self._func: Final = func
@@ -48,7 +48,7 @@ class EncoderCache(Generic[C]):
 
 
 @final
-class DecoderCache(Generic[C]):
+class DecoderCache(_CacheBase[C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
     def __init__(self, func: Callable[..., C]) -> None:
         self._func: Final = func
