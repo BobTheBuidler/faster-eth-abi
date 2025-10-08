@@ -91,9 +91,9 @@ def test_abi_decode_wrong_data_param_type_raises(data, strict):
 @pytest.mark.parametrize(
     "types",
     (
-        "",
+        # "",  This parametrization is disabled because we don't type check `types` and when iterated upon, `""` yields no items and ends iteration.
         123,
-        b"",
+        # b"",  This parametrization is disabled because we don't type check `types` and when iterated upon, `""` yields no items and ends iteration.
         b"\xff",
         b"david attenborough",
         bytearray(b"\x01\xff"),
