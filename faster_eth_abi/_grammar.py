@@ -12,7 +12,7 @@ from typing import (
     final,
 )
 
-from eth_typing import (
+from eth_typing.abi import (
     TypeStr,
 )
 from mypy_extensions import (
