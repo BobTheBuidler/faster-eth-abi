@@ -4,6 +4,7 @@ from typing import (
     Callable,
     Dict,
     Final,
+    Generic,
     Tuple,
     TypeVar,
     final,
@@ -22,7 +23,7 @@ C = TypeVar("C", bound="BaseCoder")
 
 
 @final
-class coder_cache:
+class coder_cache(Generic[C]):
     """A specialized lru_cache implementation that only supports posargs and has no maxsize."""
     def __init__(self, func: Callable[[Tuple[TypeStr, ...]], C]) -> None:
         self._func: Final = func
