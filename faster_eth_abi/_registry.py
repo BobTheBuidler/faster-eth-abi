@@ -70,13 +70,14 @@ class PredicateMapping(Copyable):
             raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
 
         if label is not None:
-            if label in self._labeled_predicates:
+            labeled_predicates = self._labeled_predicates
+            if label in labeled_predicates:
                 raise ValueError(
                     f"Matcher {predicate!r} with label '{label}' "
                     f"already exists in {self._name}"
                 )
 
-            self._labeled_predicates[label] = predicate
+            labeled_predicates[label] = predicate
 
         self._values[predicate] = value
 
@@ -134,12 +135,10 @@ class PredicateMapping(Copyable):
         )
 
     def remove_by_label(self, label: str) -> None:
-        try:
-            predicate = self._labeled_predicates[label]
-        except KeyError:
+        predicate = self._labeled_predicates.pop(label, None)
+        if predicate is None:
             raise KeyError(f"Label '{label}' not found in {self._name}")
 
-        del self._labeled_predicates[label]
         del self._values[predicate]
 
     def remove(self, predicate_or_label: Union["Predicate", str]) -> None:
@@ -156,8 +155,8 @@ class PredicateMapping(Copyable):
     def copy(self) -> Self:
         cpy = type(self)(self._name)
 
-        cpy._values = copy.copy(self._values)
-        cpy._labeled_predicates = copy.copy(self._labeled_predicates)
+        cpy._values = copy(self._values)
+        cpy._labeled_predicates = copy(self._labeled_predicates)
 
         return cpy
 
@@ -248,12 +247,13 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
         return False
 
     def __str__(self) -> str:
+        with_sub = self.with_sub
         return (
             f"(base == {self.base!r}"
             + (
                 ""
-                if self.with_sub is None
-                else (" and sub is not None" if self.with_sub else " and sub is None")
+                if with_sub is None
+                else (" and sub is not None" if with_sub else " and sub is None")
             )
             + ")"
         )
