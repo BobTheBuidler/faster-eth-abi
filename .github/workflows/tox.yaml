@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - '**.py'
+      - '!benchmarks/**.py'
       - '.github/workflows/tox.yaml'
       - 'pyproject.toml'
       - 'setup.py'
