@@ -50,7 +50,7 @@ class EncoderCache(Generic[C]):
 @final
 class DecoderCache(Generic[C]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __init__(self, func: Callable[..., bool], C]) -> None:
+    def __init__(self, func: Callable[..., C]) -> None:
         self._func: Final = func
         self._cache: Final[Dict[Tuple[Tuple[TypeStr, ...], bool], C]] = {}
         functools.wraps(func)(self)
