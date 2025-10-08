@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 
 
 TKey = TypeVar("TKey")
-TCoder = TypeVar("TFunc", bound=Callable)
+TCoder = TypeVar("TCoder", bound=Callable)
 
 
 class _CacheBase(Generic[TKey, TCoder]):
