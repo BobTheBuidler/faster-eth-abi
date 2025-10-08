@@ -4,6 +4,8 @@ import functools
 from typing import (
     Any,
     Callable,
+    Dict,
+    Final,
     Generic,
     Optional,
     Type,
@@ -13,6 +15,9 @@ from typing import (
 
 from eth_typing import (
     TypeStr,
+)
+from typing_extensions import (
+    Self,
 )
 
 from . import (
