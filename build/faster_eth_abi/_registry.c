@@ -1,14 +1,14 @@
 #include <Python.h>
 
 PyMODINIT_FUNC
-PyInit_numeric(void)
+PyInit__registry(void)
 {
     PyObject *tmp;
     if (!(tmp = PyImport_ImportModule("fbb93ef20beda8d9a0f4__mypyc"))) return NULL;
-    PyObject *capsule = PyObject_GetAttrString(tmp, "init_faster_eth_abi___utils___numeric");
+    PyObject *capsule = PyObject_GetAttrString(tmp, "init_faster_eth_abi____registry");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "fbb93ef20beda8d9a0f4__mypyc.init_faster_eth_abi___utils___numeric");
+    void *init_func = PyCapsule_GetPointer(capsule, "fbb93ef20beda8d9a0f4__mypyc.init_faster_eth_abi____registry");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;
@@ -18,4 +18,4 @@ PyInit_numeric(void)
 
 // distutils sometimes spuriously tells cl to export CPyInit___init__,
 // so provide that so it chills out
-PyMODINIT_FUNC PyInit___init__(void) { return PyInit_numeric(); }
+PyMODINIT_FUNC PyInit___init__(void) { return PyInit__registry(); }

@@ -1,0 +1,304 @@
+import abc
+from copy import (
+    copy as stdlib_copy,
+)
+from typing import (
+    Any,
+    Callable,
+    ClassVar,
+    Dict,
+    Final,
+    Generic,
+    Iterator,
+    Optional,
+    TypeVar,
+    Union,
+    final,
+)
+
+from eth_typing import (
+    TypeStr,
+)
+from mypy_extensions import (
+    mypyc_attr,
+)
+from typing_extensions import (
+    Self,
+)
+
+from ._grammar import (
+    BasicType,
+    TupleType,
+)
+from .base import (
+    BaseCoder,
+)
+from .exceptions import (
+    MultipleEntriesFound,
+    NoEntriesFound,
+    ParseError,
+)
+from .grammar import (
+    parse,
+)
+
+
+_T = TypeVar("_T")
+
+Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
+
+
+copy: Final = stdlib_copy
+
+
+@mypyc_attr(allow_interpreted_subclasses=True)
+class Copyable(abc.ABC):
+    @abc.abstractmethod
+    def copy(self) -> Self:
+        pass
+
+    def __copy__(self) -> Self:
+        return self.copy()
+
+    def __deepcopy__(self, *args: Any) -> Self:
+        return self.copy()
+
+
+@final
+class PredicateMapping(Copyable):
+    """
+    Acts as a mapping from predicate functions to values.  Values are retrieved
+    when their corresponding predicate matches a given input.  Predicates can
+    also be labeled to facilitate removal from the mapping.
+    """
+
+    def __init__(self, name: str) -> None:
+        self._name: Final = name
+        self._values: Dict[Lookup, BaseCoder] = {}
+        self._labeled_predicates: Dict[str, Lookup] = {}
+
+    def add(self, predicate: Lookup, value: BaseCoder, label: Optional[str] = None) -> None:
+        if predicate in self._values:
+            raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
+
+        if label is not None:
+            labeled_predicates = self._labeled_predicates
+            if label in labeled_predicates:
+                raise ValueError(
+                    f"Matcher {predicate!r} with label '{label}' "
+                    f"already exists in {self._name}"
+                )
+
+            labeled_predicates[label] = predicate
+
+        self._values[predicate] = value
+
+    def find(
+        self, 
+        type_str: TypeStr,
+    ) -> BaseCoder:
+        results = tuple(
+            (predicate, value)
+            for predicate, value in self._values.items()
+            if predicate(type_str)
+        )
+
+        if len(results) == 0:
+            raise NoEntriesFound(
+                f"No matching entries for '{type_str}' in {self._name}"
+            )
+
+        predicates, values = tuple(zip(*results))
+
+        if len(results) > 1:
+            predicate_reprs = ", ".join(map(repr, predicates))
+            raise MultipleEntriesFound(
+                f"Multiple matching entries for '{type_str}' in {self._name}: "
+                f"{predicate_reprs}. This occurs when two registrations match the "
+                "same type string. You may need to delete one of the "
+                "registrations or modify its matching behavior to ensure it "
+                'doesn\'t collide with other registrations. See the "Registry" '
+                "documentation for more information."
+            )
+
+        return values[0]  # type: ignore [no-any-return]
+
+    def remove_by_equality(self, predicate: Lookup) -> None:
+        # Delete the predicate mapping to the previously stored value
+        try:
+            del self._values[predicate]
+        except KeyError:
+            raise KeyError(f"Matcher {predicate!r} not found in {self._name}")
+
+        # Delete any label which refers to this predicate
+        try:
+            label = self._label_for_predicate(predicate)
+        except ValueError:
+            pass
+        else:
+            del self._labeled_predicates[label]
+
+    def _label_for_predicate(self, predicate: Lookup) -> str:
+        # Both keys and values in `_labeled_predicates` are unique since the
+        # `add` method enforces this
+        for key, value in self._labeled_predicates.items():
+            if value is predicate:
+                return key
+
+        raise ValueError(
+            f"Matcher {predicate!r} not referred to by any label in {self._name}"
+        )
+
+    def remove_by_label(self, label: str) -> None:
+        predicate = self._labeled_predicates.pop(label, None)
+        if predicate is None:
+            raise KeyError(f"Label '{label}' not found in {self._name}")
+
+        del self._values[predicate]
+
+    def remove(self, predicate_or_label: Union[Lookup, str]) -> None:
+        if callable(predicate_or_label):
+            self.remove_by_equality(predicate_or_label)
+        elif isinstance(predicate_or_label, str):
+            self.remove_by_label(predicate_or_label)
+        else:
+            raise TypeError(
+                "Key to be removed must be callable or string: got "
+                f"{type(predicate_or_label)}"
+            )
+
+    def copy(self) -> Self:
+        cpy = type(self)(self._name)
+
+        cpy._values = copy(self._values)
+        cpy._labeled_predicates = copy(self._labeled_predicates)
+
+        return cpy
+
+
+class Predicate(Generic[_T]):
+    """
+    Represents a predicate function to be used for type matching in
+    ``ABIRegistry``.
+    """
+
+    __slots__ = tuple()
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = tuple()
+
+    def __call__(self, arg: TypeStr) -> bool:  # pragma: no cover
+        raise NotImplementedError("Must implement `__call__`")
+
+    def __str__(self) -> str:  # pragma: no cover
+        raise NotImplementedError("Must implement `__str__`")
+
+    def __repr__(self) -> str:
+        return f"<{type(self).__name__} {self}>"
+
+    def __iter__(self) -> Iterator[_T]:
+        for attr in self.__attrs__:
+            yield getattr(self, attr)
+
+    def __hash__(self) -> int:
+        return hash(tuple(self))
+
+    def __eq__(self, other: "Predicate") -> bool:
+        return type(self) is type(other) and tuple(self) == tuple(other)
+
+
+@final
+class Equals(Predicate[str]):
+    """
+    A predicate that matches any input equal to `value`.
+    """
+
+    __slots__ = ("value",)
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = ("value",)
+
+    def __init__(self, value: str) -> None:
+        self.value = value
+
+    def __call__(self, other: TypeStr) -> bool:
+        return bool(self.value == other)
+
+    def __str__(self) -> str:
+        return f"(== {self.value!r})"
+
+
+@final
+class BaseEquals(Predicate[Union[str, Optional[bool]]]):
+    """
+    A predicate that matches a basic type string with a base component equal to
+    `value` and no array component.  If `with_sub` is `True`, the type string
+    must have a sub component to match.  If `with_sub` is `False`, the type
+    string must *not* have a sub component to match.  If `with_sub` is None,
+    the type string's sub component is ignored.
+    """
+
+    __slots__ = ("base", "with_sub")
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = ("base", "with_sub")
+
+    def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None) -> None:
+        self.base: Final = base
+        self.with_sub: Final = with_sub
+
+    def __call__(self, type_str: TypeStr) -> bool:
+        try:
+            abi_type = parse(type_str)
+        except (ParseError, ValueError):
+            return False
+
+        if isinstance(abi_type, BasicType):
+            if abi_type.arrlist is not None:
+                return False
+
+            with_sub = self.with_sub
+            if with_sub is not None:
+                if with_sub and abi_type.sub is None:
+                    return False
+                if not with_sub and abi_type.sub is not None:
+                    return False
+
+            return abi_type.base == self.base
+
+        # We'd reach this point if `type_str` did not contain a basic type
+        # e.g. if it contained a tuple type
+        return False
+
+    def __str__(self) -> str:
+        with_sub = self.with_sub
+        return (
+            f"(base == {self.base!r}"
+            + (
+                ""
+                if with_sub is None
+                else (" and sub is not None" if with_sub else " and sub is None")
+            )
+            + ")"
+        )
+
+
+def has_arrlist(type_str: TypeStr) -> bool:
+    """
+    A predicate that matches a type string with an array dimension list.
+    """
+    try:
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
+        return False
+
+    return abi_type.arrlist is not None
+
+
+def is_base_tuple(type_str: TypeStr) -> bool:
+    """
+    A predicate that matches a tuple type with no array dimension list.
+    """
+    try:
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
+        return False
+
+    return isinstance(abi_type, TupleType) and abi_type.arrlist is None
