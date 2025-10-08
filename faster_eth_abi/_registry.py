@@ -91,7 +91,12 @@ class PredicateMapping(Copyable):
 
         self._values[predicate] = value
 
-    def find(self, type_str: TypeStr) -> BaseCoder:
+    def find(
+        self, 
+        # a TypeStr is expected for `type_str` but we need to use Any
+        # to ensure faster-eth-abi has the same exceptions as eth-abi
+        type_str: Any,
+    ) -> BaseCoder:
         results = tuple(
             (predicate, value)
             for predicate, value in self._values.items()
