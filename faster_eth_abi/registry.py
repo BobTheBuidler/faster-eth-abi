@@ -33,10 +33,6 @@ from .exceptions import (
     MultipleEntriesFound,
     ParseError,
 )
-from .grammar import (
-    TupleType,
-    parse,
-)
 from .io import (
     ContextFramesBytesIO,
 )
