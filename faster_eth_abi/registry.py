@@ -4,6 +4,7 @@ import functools
 from typing import (
     Any,
     Callable,
+    Final,
     Optional,
     Type,
     Union,
@@ -18,6 +19,11 @@ from . import (
     encoding,
     exceptions,
     grammar,
+)
+from ._cache import (
+    coder_cache,
+    _clear_decoder_cache,
+    _clear_encoder_cache,
 )
 from .base import (
     BaseCoder,
@@ -276,26 +282,6 @@ def is_base_tuple(type_str):
         return False
 
     return isinstance(abi_type, grammar.TupleType) and abi_type.arrlist is None
-
-
-def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
-    @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
-        self.get_encoder.cache_clear()
-        self.get_tuple_encoder.cache_clear()
-        return old_method(self, *args, **kwargs)
-
-    return new_method
-
-
-def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
-    @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
-        self.get_decoder.cache_clear()
-        self.get_tuple_decoder.cache_clear()
-        return old_method(self, *args, **kwargs)
-
-    return new_method
 
 
 class BaseRegistry:
