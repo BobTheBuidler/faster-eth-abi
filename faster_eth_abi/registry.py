@@ -347,17 +347,13 @@ class ABIRegistry(Copyable, BaseRegistry):
     def __init__(self):
         self._encoders = PredicateMapping("encoder registry")
         self._decoders = PredicateMapping("decoder registry")
-        self.get_encoder = functools.lru_cache(maxsize=None)(self._get_encoder_uncached)
-        self.get_decoder = functools.lru_cache(maxsize=None)(self._get_decoder_uncached)
-        self.get_tuple_encoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_encoder_uncached
-        )
-        self.get_tuple_decoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_decoder_uncached
-        )
+        self.get_encoder = coder_cache(self._get_encoder_uncached)
+        self.get_decoder = coder_cache(self._get_decoder_uncached)
+        self.get_tuple_encoder = coder_cache(self._get_tuple_encoder_uncached)
+        self.get_tuple_decoder = coder_cache(self._get_tuple_decoder_uncached)
 
-    def _get_registration(self, mapping, type_str):
-        coder = super()._get_registration(mapping, type_str)
+    def _get_registration(registry: ABIRegistry, mapping: PredicateMapping, type_str):
+        coder = BaseRegistry._get_registration(self, mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
             return coder.from_type_str(type_str, self)
