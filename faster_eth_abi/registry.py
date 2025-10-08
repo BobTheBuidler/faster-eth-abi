@@ -1,16 +1,23 @@
 import abc
-import copy
 import functools
+from copy import copy
 from typing import (
     Any,
     Callable,
+    Dict,
+    Final,
+    Generic,
     Optional,
     Type,
+    TypeVar,
     Union,
 )
 
 from eth_typing import (
     TypeStr,
+)
+from typing_extensions import (
+    Self,
 )
 
 from . import (
@@ -29,6 +36,8 @@ from .exceptions import (
 from .io import (
     ContextFramesBytesIO,
 )
+
+T = TypeVar("T")
 
 Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
 
@@ -51,34 +60,35 @@ class Copyable(abc.ABC):
         return self.copy()
 
 
-class PredicateMapping(Copyable):
+class PredicateMapping(Copyable, Generic[T]):
     """
     Acts as a mapping from predicate functions to values.  Values are retrieved
     when their corresponding predicate matches a given input.  Predicates can
     also be labeled to facilitate removal from the mapping.
     """
 
-    def __init__(self, name):
-        self._name = name
-        self._values = {}
-        self._labeled_predicates = {}
+    def __init__(self, name: str):
+        self._name: Final = name
+        self._values: Dict[Lookup, T] = {}
+        self._labeled_predicates: Dict[str, Lookup] = {}
 
-    def add(self, predicate, value, label=None):
+    def add(self, predicate: Lookup, value: T, label: Optional[str] = None) -> None:
         if predicate in self._values:
             raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
 
         if label is not None:
-            if label in self._labeled_predicates:
+            labeled_predicates = self._labeled_predicates
+            if label in labeled_predicates:
                 raise ValueError(
                     f"Matcher {predicate!r} with label '{label}' "
                     f"already exists in {self._name}"
                 )
 
-            self._labeled_predicates[label] = predicate
+            labeled_predicates[label] = predicate
 
         self._values[predicate] = value
 
-    def find(self, type_str):
+    def find(self, type_str: TypeStr) -> T:
         results = tuple(
             (predicate, value)
             for predicate, value in self._values.items()
@@ -103,9 +113,9 @@ class PredicateMapping(Copyable):
                 "documentation for more information."
             )
 
-        return values[0]
+        return values[0]  # type: ignore [no-any-return]
 
-    def remove_by_equality(self, predicate):
+    def remove_by_equality(self, predicate: Lookup) -> None:
         # Delete the predicate mapping to the previously stored value
         try:
             del self._values[predicate]
@@ -120,7 +130,7 @@ class PredicateMapping(Copyable):
         else:
             del self._labeled_predicates[label]
 
-    def _label_for_predicate(self, predicate):
+    def _label_for_predicate(self, predicate: Lookup) -> str:
         # Both keys and values in `_labeled_predicates` are unique since the
         # `add` method enforces this
         for key, value in self._labeled_predicates.items():
@@ -131,16 +141,17 @@ class PredicateMapping(Copyable):
             f"Matcher {predicate!r} not referred to by any label in {self._name}"
         )
 
-    def remove_by_label(self, label):
+    def remove_by_label(self, label: str) -> None:
+        labeled_predicates = self._labeled_predicates
         try:
-            predicate = self._labeled_predicates[label]
+            predicate = labeled_predicates[label]
         except KeyError:
             raise KeyError(f"Label '{label}' not found in {self._name}")
 
-        del self._labeled_predicates[label]
+        del labeled_predicates[label]
         del self._values[predicate]
 
-    def remove(self, predicate_or_label):
+    def remove(self, predicate_or_label: Union[Lookup, str]) -> None:
         if callable(predicate_or_label):
             self.remove_by_equality(predicate_or_label)
         elif isinstance(predicate_or_label, str):
@@ -151,11 +162,11 @@ class PredicateMapping(Copyable):
                 f"{type(predicate_or_label)}"
             )
 
-    def copy(self):
+    def copy(self) -> Self:
         cpy = type(self)(self._name)
 
-        cpy._values = copy.copy(self._values)
-        cpy._labeled_predicates = copy.copy(self._labeled_predicates)
+        cpy._values = copy(self._values)
+        cpy._labeled_predicates = copy(self._labeled_predicates)
 
         return cpy
 
@@ -345,8 +356,8 @@ class BaseRegistry:
 
 class ABIRegistry(Copyable, BaseRegistry):
     def __init__(self):
-        self._encoders = PredicateMapping("encoder registry")
-        self._decoders = PredicateMapping("decoder registry")
+        self._encoders: PredicateMapping[Encoder] = PredicateMapping("encoder registry")
+        self._decoders: PredicateMapping[Decoder] = PredicateMapping("decoder registry")
         self.get_encoder = functools.lru_cache(maxsize=None)(self._get_encoder_uncached)
         self.get_decoder = functools.lru_cache(maxsize=None)(self._get_decoder_uncached)
         self.get_tuple_encoder = functools.lru_cache(maxsize=None)(
@@ -520,8 +531,8 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
         cpy = type(self)()
 
-        cpy._encoders = copy.copy(self._encoders)
-        cpy._decoders = copy.copy(self._decoders)
+        cpy._encoders = copy(self._encoders)
+        cpy._decoders = copy(self._decoders)
 
         return cpy
 
