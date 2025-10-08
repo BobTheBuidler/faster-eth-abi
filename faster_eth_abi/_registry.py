@@ -26,6 +26,10 @@ from typing_extensions import (
     Self,
 )
 
+from ._grammar import (
+    BasicType,
+    TupleType,
+)
 from .base import (
     BaseCoder,
 )
@@ -35,8 +39,6 @@ from .exceptions import (
     ParseError,
 )
 from .grammar import (
-    BasicType,
-    TupleType,
     parse,
 )
 
