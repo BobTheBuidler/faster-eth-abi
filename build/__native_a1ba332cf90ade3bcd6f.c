@@ -8408,21 +8408,36 @@ fail: ;
 
 char CPyDef__registry___Equals_____call__(PyObject *cpy_r_self, PyObject *cpy_r_other) {
     PyObject *cpy_r_r0;
-    char cpy_r_r1;
-    char cpy_r_r2;
+    PyObject *cpy_r_r1;
+    int32_t cpy_r_r2;
+    char cpy_r_r3;
+    char cpy_r_r4;
+    char cpy_r_r5;
     cpy_r_r0 = ((faster_eth_abi____registry___EqualsObject *)cpy_r_self)->_value;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "Equals", "value", 223, CPyStatic__registry___globals);
-        goto CPyL2;
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "Equals", "value", 228, CPyStatic__registry___globals);
+        goto CPyL4;
     }
     CPy_INCREF(cpy_r_r0);
 CPyL1: ;
-    cpy_r_r1 = CPyStr_Equal(cpy_r_r0, cpy_r_other);
+    cpy_r_r1 = PyObject_RichCompare(cpy_r_r0, cpy_r_other, 2);
     CPy_DECREF(cpy_r_r0);
-    return cpy_r_r1;
-CPyL2: ;
-    cpy_r_r2 = 2;
-    return cpy_r_r2;
+    if (unlikely(cpy_r_r1 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_registry.py", "__call__", DIFFCHECK_PLACEHOLDER, CPyStatic__registry___globals);
+        goto CPyL4;
+    }
+    cpy_r_r2 = PyObject_IsTrue(cpy_r_r1);
+    CPy_DECREF(cpy_r_r1);
+    cpy_r_r3 = cpy_r_r2 >= 0;
+    if (unlikely(!cpy_r_r3)) {
+        CPy_AddTraceback("faster_eth_abi/_registry.py", "__call__", DIFFCHECK_PLACEHOLDER, CPyStatic__registry___globals);
+        goto CPyL4;
+    }
+    cpy_r_r4 = cpy_r_r2;
+    return cpy_r_r4;
+CPyL4: ;
+    cpy_r_r5 = 2;
+    return cpy_r_r5;
 }
 
 PyObject *CPyPy__registry___Equals_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -8440,13 +8455,7 @@ PyObject *CPyPy__registry___Equals_____call__(PyObject *self, PyObject *const *a
         CPy_TypeError("faster_eth_abi._registry.Equals", obj_self); 
         goto fail;
     }
-    PyObject *arg_other;
-    if (likely(PyUnicode_Check(obj_other)))
-        arg_other = obj_other;
-    else {
-        CPy_TypeError("str", obj_other); 
-        goto fail;
-    }
+    PyObject *arg_other = obj_other;
     char retval = CPyDef__registry___Equals_____call__(arg_self, arg_other);
     if (retval == 2) {
         return NULL;
@@ -8527,7 +8536,7 @@ PyObject *CPyDef__registry___Equals_____str__(PyObject *cpy_r_self) {
     cpy_r_r2 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
     cpy_r_r3 = ((faster_eth_abi____registry___EqualsObject *)cpy_r_self)->_value;
     if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "Equals", "value", 226, CPyStatic__registry___globals);
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "Equals", "value", 231, CPyStatic__registry___globals);
         goto CPyL6;
     }
     CPy_INCREF(cpy_r_r3);
@@ -8545,7 +8554,7 @@ CPyL1: ;
     if (likely(PyUnicode_Check(cpy_r_r8)))
         cpy_r_r9 = cpy_r_r8;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__str__", 226, CPyStatic__registry___globals, "str", cpy_r_r8);
+        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__str__", 231, CPyStatic__registry___globals, "str", cpy_r_r8);
         goto CPyL6;
     }
     cpy_r_r10 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ')' */
@@ -8842,7 +8851,7 @@ CPyL17: ;
 CPyL18: ;
     cpy_r_r27 = ((faster_eth_abi____registry___BaseEqualsObject *)cpy_r_self)->_with_sub;
     if (unlikely(cpy_r_r27 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "BaseEquals", "with_sub", 257, CPyStatic__registry___globals);
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "BaseEquals", "with_sub", 267, CPyStatic__registry___globals);
         goto CPyL38;
     }
     CPy_INCREF(cpy_r_r27);
@@ -8911,12 +8920,12 @@ CPyL30: ;
     if (likely(PyUnicode_Check(cpy_r_r41)))
         cpy_r_r42 = cpy_r_r41;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__call__", 264, CPyStatic__registry___globals, "str", cpy_r_r41);
+        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__call__", 274, CPyStatic__registry___globals, "str", cpy_r_r41);
         goto CPyL35;
     }
     cpy_r_r43 = ((faster_eth_abi____registry___BaseEqualsObject *)cpy_r_self)->_base;
     if (unlikely(cpy_r_r43 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "BaseEquals", "base", 264, CPyStatic__registry___globals);
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__call__", "BaseEquals", "base", 274, CPyStatic__registry___globals);
         goto CPyL45;
     }
     CPy_INCREF(cpy_r_r43);
@@ -8981,13 +8990,7 @@ PyObject *CPyPy__registry___BaseEquals_____call__(PyObject *self, PyObject *cons
         CPy_TypeError("faster_eth_abi._registry.BaseEquals", obj_self); 
         goto fail;
     }
-    PyObject *arg_type_str;
-    if (likely(PyUnicode_Check(obj_type_str)))
-        arg_type_str = obj_type_str;
-    else {
-        CPy_TypeError("str", obj_type_str); 
-        goto fail;
-    }
+    PyObject *arg_type_str = obj_type_str;
     char retval = CPyDef__registry___BaseEquals_____call__(arg_self, arg_type_str);
     if (retval == 2) {
         return NULL;
@@ -9075,7 +9078,7 @@ PyObject *CPyDef__registry___BaseEquals_____str__(PyObject *cpy_r_self) {
     PyObject *cpy_r_r27;
     cpy_r_r0 = ((faster_eth_abi____registry___BaseEqualsObject *)cpy_r_self)->_with_sub;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "BaseEquals", "with_sub", 271, CPyStatic__registry___globals);
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "BaseEquals", "with_sub", 281, CPyStatic__registry___globals);
         goto CPyL16;
     }
     CPy_INCREF(cpy_r_r0);
@@ -9085,7 +9088,7 @@ CPyL1: ;
     cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
     cpy_r_r4 = ((faster_eth_abi____registry___BaseEqualsObject *)cpy_r_self)->_base;
     if (unlikely(cpy_r_r4 == NULL)) {
-        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "BaseEquals", "base", 273, CPyStatic__registry___globals);
+        CPy_AttributeError("faster_eth_abi/_registry.py", "__str__", "BaseEquals", "base", 283, CPyStatic__registry___globals);
         goto CPyL17;
     }
     CPy_INCREF(cpy_r_r4);
@@ -9103,7 +9106,7 @@ CPyL2: ;
     if (likely(PyUnicode_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__str__", 273, CPyStatic__registry___globals, "str", cpy_r_r9);
+        CPy_TypeErrorTraceback("faster_eth_abi/_registry.py", "__str__", 283, CPyStatic__registry___globals, "str", cpy_r_r9);
         goto CPyL17;
     }
     cpy_r_r11 = PyList_New(2);
