@@ -31,6 +31,7 @@ from .exceptions import (
 )
 from .grammar import (
     BasicType,
+    TupleType,
     parse,
 )
 
