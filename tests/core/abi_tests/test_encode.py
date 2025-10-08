@@ -4,6 +4,10 @@ import re
 from faster_eth_abi import (
     encode,
 )
+from faster_eth_abi.exceptions import (
+    NoEntriesFound,
+    ValueOutOfBounds,
+)
 from faster_eth_abi.grammar import (
     parse,
 )
@@ -101,10 +105,16 @@ def test_abi_encode_for_single_dynamic_types(
 )
 def test_abi_encode_raises_for_non_list_like_params(non_list_like_value):
     # test raises when `types` param is not list-like
+    if non_list_like_value == {"key": "val"}:
+        expected_exc = NoEntriesFound
+    elif non_list_like_value in ("", b""):
+        expected_exc = ValueOutOfBounds
+    else:
+        expected_exc = TypeError
     with pytest.raises(
-        TypeError,
+        expected_exc,
         # NOTE The `match` arg was commented out because faster-eth-abi might not raise
-        # the same exception text, but it should still raise a TypeError like eth-abi
+        # the same exception, but it should still raise an Exception like eth-abi
         # match=f"The `types` value type must be one of list or tuple. Got {type(non_list_like_value)}",
     ):
         encode(non_list_like_value, ["bytes"])
