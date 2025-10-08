@@ -1,14 +1,13 @@
-#ifndef MYPYC_NATIVE_29859a9e7da9d19bb98c_H
-#define MYPYC_NATIVE_29859a9e7da9d19bb98c_H
+#ifndef MYPYC_NATIVE_e51aa50b7437b847861f_H
+#define MYPYC_NATIVE_e51aa50b7437b847861f_H
 #include <Python.h>
 #include <CPy.h>
-#ifndef MYPYC_DECLARED_tuple_T3OOO
-#define MYPYC_DECLARED_tuple_T3OOO
-typedef struct tuple_T3OOO {
+#ifndef MYPYC_DECLARED_tuple_T2OC
+#define MYPYC_DECLARED_tuple_T2OC
+typedef struct tuple_T2OC {
     PyObject *f0;
-    PyObject *f1;
-    PyObject *f2;
-} tuple_T3OOO;
+    char f1;
+} tuple_T2OC;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T2OO
@@ -17,6 +16,15 @@ typedef struct tuple_T2OO {
     PyObject *f0;
     PyObject *f1;
 } tuple_T2OO;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T3OOO
+#define MYPYC_DECLARED_tuple_T3OOO
+typedef struct tuple_T3OOO {
+    PyObject *f0;
+    PyObject *f1;
+    PyObject *f2;
+} tuple_T3OOO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T2II
@@ -34,6 +42,67 @@ typedef struct tuple_T2IO {
     PyObject *f1;
 } tuple_T2IO;
 #endif
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache____CacheBaseObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache___EncoderCacheObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache___DecoderCacheObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache___TupleDecoderCacheObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_old_method;
+    PyObject *_new_method;
+} faster_eth_abi____cache____clear_encoder_cache_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} faster_eth_abi____cache___new_method__clear_encoder_cache_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_old_method;
+    PyObject *_new_method;
+} faster_eth_abi____cache____clear_decoder_cache_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} faster_eth_abi____cache___new_method__clear_decoder_cache_objObject;
 
 typedef struct {
     PyObject_HEAD

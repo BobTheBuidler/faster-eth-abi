@@ -26,6 +26,11 @@ from . import (
     exceptions,
     grammar,
 )
+from ._cache import (
+    DecoderCache,
+    EncoderCache,
+    TupleDecoderCache,
+)
 from .base import (
     BaseCoder,
 )
@@ -289,26 +294,6 @@ def is_base_tuple(type_str):
     return isinstance(abi_type, grammar.TupleType) and abi_type.arrlist is None
 
 
-def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
-    @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
-        self.get_encoder.cache_clear()
-        self.get_tuple_encoder.cache_clear()
-        return old_method(self, *args, **kwargs)
-
-    return new_method
-
-
-def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
-    @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
-        self.get_decoder.cache_clear()
-        self.get_tuple_decoder.cache_clear()
-        return old_method(self, *args, **kwargs)
-
-    return new_method
-
-
 class BaseRegistry:
     @staticmethod
     def _register(mapping, lookup, value, label=None):
@@ -340,7 +325,7 @@ class BaseRegistry:
         )
 
     @staticmethod
-    def _get_registration(mapping, type_str):
+    def _get_registration(mapping: PredicateMapping, type_str: TypeStr) -> Union[Encoder, Decoder]:
         try:
             value = mapping.find(type_str)
         except ValueError as e:
@@ -351,27 +336,43 @@ class BaseRegistry:
 
             raise
 
-        return value
+        return value  # type: ignore [no-any-return]
+
+
+def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
+    @functools.wraps(old_method)
+    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
+        self.get_encoder.cache_clear()
+        self.get_tuple_encoder.cache_clear()
+        return old_method(self, *args, **kwargs)
+
+    return new_method
+
+
+def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
+    @functools.wraps(old_method)
+    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
+        self.get_decoder.cache_clear()
+        self.get_tuple_decoder.cache_clear()
+        return old_method(self, *args, **kwargs)
+
+    return new_method
 
 
 class ABIRegistry(Copyable, BaseRegistry):
     def __init__(self):
         self._encoders: PredicateMapping[Encoder] = PredicateMapping("encoder registry")
         self._decoders: PredicateMapping[Decoder] = PredicateMapping("decoder registry")
-        self.get_encoder = functools.lru_cache(maxsize=None)(self._get_encoder_uncached)
-        self.get_decoder = functools.lru_cache(maxsize=None)(self._get_decoder_uncached)
-        self.get_tuple_encoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_encoder_uncached
-        )
-        self.get_tuple_decoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_decoder_uncached
-        )
+        self.get_encoder: Final = EncoderCache(self._get_encoder_uncached)
+        self.get_decoder: Final = DecoderCache(self._get_decoder_uncached)
+        self.get_tuple_encoder: Final = EncoderCache(self._get_tuple_encoder_uncached)
+        self.get_tuple_decoder: Final = TupleDecoderCache(self._get_tuple_decoder_uncached)
 
-    def _get_registration(self, mapping, type_str):
-        coder = super()._get_registration(mapping, type_str)
+    def _get_registration(self, mapping: PredicateMapping, type_str: TypeStr) -> Union[Encoder, Decoder]:
+        coder = BaseRegistry._get_registration(mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
-            return coder.from_type_str(type_str, self)
+            return coder.from_type_str(type_str, self)  # type: ignore [no-any-return]
 
         return coder
 
@@ -473,15 +474,15 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_encoder(label)
         self.unregister_decoder(label)
 
-    def _get_encoder_uncached(self, type_str: TypeStr):  # type: ignore [no-untyped-def]
-        return self._get_registration(self._encoders, type_str)
+    def _get_encoder_uncached(self, type_str: TypeStr) -> Encoder:
+        return self._get_registration(self._encoders, type_str)  # type: ignore [return-value]
 
     def _get_tuple_encoder_uncached(
         self, 
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
         return encoding.TupleEncoder(
-            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)
+            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)  # type: ignore [misc]
         )
 
     def has_encoder(self, type_str: TypeStr) -> bool:
@@ -500,10 +501,10 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         return True
 
-    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True):  # type: ignore [no-untyped-def]
+    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True) -> Decoder:
         decoder = self._get_registration(self._decoders, type_str)
 
-        if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
+        if getattr(decoder, "is_dynamic", False):
             # Set a transient flag each time a call is made to ``get_decoder()``.
             # Only dynamic decoders should be allowed these looser constraints. All
             # other decoders should keep the default value of ``True``.
@@ -517,7 +518,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         return decoding.TupleDecoder(
-            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)
+            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)  # type: ignore [misc]
         )
 
     def copy(self):

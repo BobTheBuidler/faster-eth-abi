@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
-#define MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
+#ifndef MYPYC_NATIVE_INTERNAL_e51aa50b7437b847861f_H
+#define MYPYC_NATIVE_INTERNAL_e51aa50b7437b847861f_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_29859a9e7da9d19bb98c.h"
+#include "__native_e51aa50b7437b847861f.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[354];
+extern PyObject *CPyStatics[372];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -14,11 +14,17 @@ extern const double CPyLit_Float[];
 extern const double CPyLit_Complex[];
 extern const int CPyLit_Tuple[];
 extern const int CPyLit_FrozenSet[];
+extern CPyModule *CPyModule_faster_eth_abi____cache__internal;
+extern CPyModule *CPyModule_faster_eth_abi____cache;
+extern PyObject *CPyStatic__cache___globals;
+extern CPyModule *CPyModule_builtins;
+extern CPyModule *CPyModule_functools;
+extern CPyModule *CPyModule_typing;
+extern CPyModule *CPyModule_eth_typing___abi;
+extern CPyModule *CPyModule_faster_eth_abi___base;
 extern CPyModule *CPyModule_faster_eth_abi____codec__internal;
 extern CPyModule *CPyModule_faster_eth_abi____codec;
 extern PyObject *CPyStatic__codec___globals;
-extern CPyModule *CPyModule_builtins;
-extern CPyModule *CPyModule_typing;
 extern CPyModule *CPyModule_eth_typing;
 extern CPyModule *CPyModule_faster_eth_abi___utils___validation__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___validation;
@@ -35,7 +41,6 @@ extern CPyModule *CPyModule_faster_eth_abi____grammar__internal;
 extern CPyModule *CPyModule_faster_eth_abi____grammar;
 extern PyObject *CPyStatic__grammar___globals;
 extern CPyModule *CPyModule_re;
-extern CPyModule *CPyModule_eth_typing___abi;
 extern CPyModule *CPyModule_mypy_extensions;
 extern CPyModule *CPyModule_parsimonious___nodes;
 extern CPyModule *CPyModule_typing_extensions;
@@ -50,7 +55,6 @@ extern PyObject *CPyStatic_constants___globals;
 extern CPyModule *CPyModule_faster_eth_abi___from_type_str__internal;
 extern CPyModule *CPyModule_faster_eth_abi___from_type_str;
 extern PyObject *CPyStatic_from_type_str___globals;
-extern CPyModule *CPyModule_functools;
 extern CPyModule *CPyModule_faster_eth_abi___grammar;
 extern CPyModule *CPyModule_faster_eth_abi___packed__internal;
 extern CPyModule *CPyModule_faster_eth_abi___packed;
@@ -77,6 +81,51 @@ extern CPyModule *CPyModule_faster_eth_abi___utils___string__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___string;
 extern PyObject *CPyStatic_string___globals;
 extern PyObject *CPyStatic_validation___globals;
+extern PyTypeObject *CPyType__cache____CacheBase;
+extern PyObject *CPyDef__cache____CacheBase(PyObject *cpy_r_func);
+extern PyTypeObject *CPyType__cache___EncoderCache;
+extern PyObject *CPyDef__cache___EncoderCache(PyObject *cpy_r_func);
+extern PyTypeObject *CPyType__cache___DecoderCache;
+extern PyObject *CPyDef__cache___DecoderCache(PyObject *cpy_r_func);
+extern PyTypeObject *CPyType__cache___TupleDecoderCache;
+extern PyObject *CPyDef__cache___TupleDecoderCache(PyObject *cpy_r_func);
+extern PyTypeObject *CPyType__cache____clear_encoder_cache_env;
+extern PyObject *CPyDef__cache____clear_encoder_cache_env(void);
+extern CPyThreadLocal faster_eth_abi____cache____clear_encoder_cache_envObject *_cache____clear_encoder_cache_env_free_instance;
+extern PyTypeObject *CPyType__cache___new_method__clear_encoder_cache_obj;
+extern PyObject *CPyDef__cache___new_method__clear_encoder_cache_obj(void);
+extern CPyThreadLocal faster_eth_abi____cache___new_method__clear_encoder_cache_objObject *_cache___new_method__clear_encoder_cache_obj_free_instance;
+extern PyTypeObject *CPyType__cache____clear_decoder_cache_env;
+extern PyObject *CPyDef__cache____clear_decoder_cache_env(void);
+extern CPyThreadLocal faster_eth_abi____cache____clear_decoder_cache_envObject *_cache____clear_decoder_cache_env_free_instance;
+extern PyTypeObject *CPyType__cache___new_method__clear_decoder_cache_obj;
+extern PyObject *CPyDef__cache___new_method__clear_decoder_cache_obj(void);
+extern CPyThreadLocal faster_eth_abi____cache___new_method__clear_decoder_cache_objObject *_cache___new_method__clear_decoder_cache_obj_free_instance;
+extern char CPyDef__cache____CacheBase_____init__(PyObject *cpy_r_self, PyObject *cpy_r_func);
+extern PyObject *CPyPy__cache____CacheBase_____init__(PyObject *self, PyObject *args, PyObject *kw);
+extern PyObject *CPyDef__cache____CacheBase_____repr__(PyObject *cpy_r_self);
+extern PyObject *CPyPy__cache____CacheBase_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__cache____CacheBase___cache_clear(PyObject *cpy_r_self);
+extern PyObject *CPyPy__cache____CacheBase___cache_clear(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache___EncoderCache_____call__(PyObject *cpy_r_self, PyObject *cpy_r_args);
+extern PyObject *CPyPy__cache___EncoderCache_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache___DecoderCache_____call__(PyObject *cpy_r_self, PyObject *cpy_r_arg, char cpy_r_strict);
+extern PyObject *CPyPy__cache___DecoderCache_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache___TupleDecoderCache_____call__(PyObject *cpy_r_self, PyObject *cpy_r_args, char cpy_r_strict);
+extern PyObject *CPyPy__cache___TupleDecoderCache_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache___new_method__clear_encoder_cache_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy__cache___new_method__clear_encoder_cache_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__cache___new_method__clear_encoder_cache_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy__cache___new_method__clear_encoder_cache_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache____clear_encoder_cache(PyObject *cpy_r_old_method);
+extern PyObject *CPyPy__cache____clear_encoder_cache(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache___new_method__clear_decoder_cache_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy__cache___new_method__clear_decoder_cache_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__cache___new_method__clear_decoder_cache_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy__cache___new_method__clear_decoder_cache_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__cache____clear_decoder_cache(PyObject *cpy_r_old_method);
+extern PyObject *CPyPy__cache____clear_decoder_cache(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__cache_____top_level__(void);
 extern PyObject *CPyDef__codec___encode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_args);
 extern PyObject *CPyPy__codec___encode_c(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__codec___decode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_data, char cpy_r_strict);
