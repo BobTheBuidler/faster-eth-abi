@@ -227,17 +227,18 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
     def __call__(self, type_str: TypeStr) -> bool:
         try:
             abi_type = parse(type_str)
-        except (exceptions.ParseError, ValueError):
+        except (ParseError, ValueError):
             return False
 
         if isinstance(abi_type, BasicType):
             if abi_type.arrlist is not None:
                 return False
 
-            if self.with_sub is not None:
-                if self.with_sub and abi_type.sub is None:
+            with_sub = self.with_sub
+            if with_sub is not None:
+                if with_sub and abi_type.sub is None:
                     return False
-                if not self.with_sub and abi_type.sub is not None:
+                if not with_sub and abi_type.sub is not None:
                     return False
 
             return abi_type.base == self.base
