@@ -18,6 +18,7 @@ from faster_eth_abi.decoding import (
 )
 from faster_eth_abi.exceptions import (
     EncodingError,
+    MultipleEntriesFound,
 )
 from faster_eth_abi.registry import (
     ABIRegistry,
