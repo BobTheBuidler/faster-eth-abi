@@ -4,6 +4,7 @@ from copy import (
 )
 from typing import (
     Any,
+    ClassVar,
     Dict,
     Final,
     Generic,
@@ -174,6 +175,8 @@ class Predicate(Generic[_T]):
     """
 
     __slots__ = tuple()
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = tuple()
 
     def __call__(self, arg: str) -> bool:  # pragma: no cover
         raise NotImplementedError("Must implement `__call__`")
@@ -185,7 +188,7 @@ class Predicate(Generic[_T]):
         return f"<{type(self).__name__} {self}>"
 
     def __iter__(self) -> Iterator[_T]:
-        for attr in self.__slots__:
+        for attr in self.__attrs__:
             yield getattr(self, attr)
 
     def __hash__(self) -> int:
@@ -202,6 +205,8 @@ class Equals(Predicate[str]):
     """
 
     __slots__ = ("value",)
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = ("value",)
 
     def __init__(self, value: str) -> None:
         self.value = value
@@ -224,6 +229,8 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
     """
 
     __slots__ = ("base", "with_sub")
+    # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
+    __attrs__: ClassVar = ("base", "with_sub")
 
     def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None) -> None:
         self.base: Final = base
