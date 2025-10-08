@@ -20,10 +20,10 @@ from faster_eth_abi.base import (
 )
 
 if TYPE_CHECKING:
-    from faster_eth_abi.registry import ABIRegistry, Decoder, Encoder
+    from faster_eth_abi.registry import ABIRegistry
 
 
-C = TypeVar("C", "Decoder", "Encoder")
+C = TypeVar("C", Callable)
 
 
 @final
