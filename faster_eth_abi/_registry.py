@@ -186,7 +186,7 @@ class Equals(Predicate[str]):
 
 
 @final
-class BaseEquals(Predicate[Union[str, Optional[bool]]):
+class BaseEquals(Predicate[Union[str, Optional[bool]]]):
     """
     A predicate that matches a basic type string with a base component equal to
     `value` and no array component.  If `with_sub` is `True`, the type string
