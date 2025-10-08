@@ -16,9 +16,6 @@ from eth_typing import (
     TypeStr,
 )
 import parsimonious
-from parsimonious import (
-    ParseError,
-)
 from parsimonious.expressions import (
     OneOf,
     Quantifier,
@@ -30,7 +27,7 @@ from typing_extensions import (
     Self,
 )
 
-from faster_eth_abi.exceptions import (
+from .exceptions import (
     ABITypeError,
     ParseError,
 )
