@@ -1,3 +1,4 @@
+# mypy: disable-error-code="no-untyped-def"
 import re
 from functools import lru_cache
 from typing import (
