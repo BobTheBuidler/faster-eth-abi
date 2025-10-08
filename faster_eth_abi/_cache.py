@@ -54,7 +54,7 @@ class DecoderCache(Generic[C]):
         self._func: Final = func
         self._cache: Final[Dict[Tuple[Tuple[TypeStr, ...], bool], C]] = {}
         functools.wraps(func)(self)
-    def __call__(self, *args: TypeStr, strict: bool = False) -> C:
+    def __call__(self, *args: TypeStr, strict: bool = True) -> C:
         key = args, strict
         coder = self._cache.get(key)
         if coder is None:
