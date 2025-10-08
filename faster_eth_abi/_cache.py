@@ -29,11 +29,11 @@ class coder_cache(Generic[C]):
     def __init__(self, func: Callable[[Tuple[TypeStr, ...]], C]) -> None:
         self._func: Final = func
         self._cache: Final[Dict[Tuple[TypeStr, ...], C]] = {}
-        functools.wraps(fn)(self)
+        functools.wraps(func)(self)
     def __call__(self, *args: TypeStr) -> C:
         coder = self._cache.get(args)
         if coder is None:
-            coder = _cache[args] = self._func(*args)
+            coder = self._cache[args] = self._func(*args)
         return coder
     def __repr__(self) -> str:
       return f"coder_cache({repr(self._func)}"
