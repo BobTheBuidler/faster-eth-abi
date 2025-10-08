@@ -31,6 +31,7 @@ from faster_eth_abi._grammar import (
     ABIType,
     BasicType,
     TupleType,
+    normalize,
 )
 from faster_eth_abi.exceptions import (
     ABITypeError,
@@ -166,4 +167,4 @@ visitor: Final = NodeVisitor()
 parse: Final = visitor.parse
 
 
-__all__ = ["NodeVisitor", "ABIType", "TupleType", "BasicType", "grammar", "parse", "visitor", "TYPE_ALIASES", "TYPE_ALIAS_RE"]
+__all__ = ["NodeVisitor", "ABIType", "TupleType", "BasicType", "grammar", "parse", "normalize", "visitor", "TYPE_ALIASES", "TYPE_ALIAS_RE"]
