@@ -225,7 +225,7 @@ class Equals(Predicate[str]):
         # to ensure faster-eth-abi has the same exceptions as eth-abi
         other: Any,
     ) -> bool:
-        return self.value == other
+        return bool(self.value == other)
 
     def __str__(self) -> str:
         return f"(== {self.value!r})"
