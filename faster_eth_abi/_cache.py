@@ -27,9 +27,6 @@ C = TypeVar("C", bound=Callable)
 
 
 class _CacheBase(Generic[C]):
-    def __init__(self) -> None
-        self._cache: Final[Dict[Tuple[TypeStr, ...], C]] = {}
-        functools.wraps(func)(self)
     def __repr__(self) -> str:
       return f"{type(self).__name__}({repr(self._func)}"
     def cache_clear(self) -> None:
@@ -41,7 +38,8 @@ class EncoderCache(Generic[C]):
     """A specialized lru_cache implementation that only supports posargs and has no maxsize."""
     def __init__(self, func: Callable[..., C]) -> None:
         self._func: Final = func
-        super().__init__()
+        self._cache: Final[Dict[Tuple[TypeStr, ...], C]] = {}
+        functools.wraps(func)(self)
     def __call__(self, *args: TypeStr) -> C:
         coder = self._cache.get(args)
         if coder is None:
@@ -54,11 +52,13 @@ class DecoderCache(Generic[C]):
     """A specialized lru_cache implementation that only supports posargs and has no maxsize."""
     def __init__(self, func: Callable[..., bool], C]) -> None:
         self._func: Final = func
-        super().__init__()
-    def __call__(self, *args: TypeStr, strict: bool) -> C:
-        coder = self._cache.get(args)
+        self._cache: Final[Dict[Tuple[Tuple[TypeStr, ...], bool], C]] = {}
+        functools.wraps(func)(self)
+    def __call__(self, *args: TypeStr, strict: bool = False) -> C:
+        key = args, strict
+        coder = self._cache.get(key)
         if coder is None:
-            coder = self._cache[args] = self._func(*args, strict=strict)
+            coder = self._cache[key] = self._func(*args, strict=strict)
         return coder
 
 
