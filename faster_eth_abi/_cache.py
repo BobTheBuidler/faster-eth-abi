@@ -15,12 +15,15 @@ from eth_typing.abi import (
     TypeStr,
 )
 
+from faster_eth_abi.codec import (
+    BaseCoder,
+)
+
 if TYPE_CHECKING:
-    from faster_eth_abi.codec import BaseCoder
     from faster_eth_abi.registry import ABIRegistry
 
 
-C = TypeVar("C", bound="BaseCoder")
+C = TypeVar("C", bound=BaseCoder)
 
 
 @final
