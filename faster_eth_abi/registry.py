@@ -113,7 +113,7 @@ class PredicateMapping(Copyable, Generic[T]):
                 "documentation for more information."
             )
 
-        return values[0]
+        return values[0]  # type: ignore [no-any-return]
 
     def remove_by_equality(self, predicate: Lookup) -> None:
         # Delete the predicate mapping to the previously stored value
