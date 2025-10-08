@@ -1,5 +1,6 @@
-import functools
+# mypy: disable-error-code="no-untyped-def"
 import re
+from functools import lru_cache
 from typing import (
     Any,
     Final,
@@ -16,7 +17,11 @@ from eth_typing import (
 )
 import parsimonious
 from parsimonious import (
-    expressions,
+    ParseError as _ParseError,
+)
+from parsimonious.expressions import (
+    OneOf,
+    Quantifier,
 )
 from parsimonious.nodes import (
     Node,
@@ -25,7 +30,7 @@ from typing_extensions import (
     Self,
 )
 
-from faster_eth_abi.exceptions import (
+from .exceptions import (
     ABITypeError,
     ParseError,
 )
@@ -64,8 +69,8 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
     post-processing of parse trees.  Parsing operations are cached.
     """
 
-    def __init__(self):
-        self.parse = functools.lru_cache(maxsize=None)(self._parse_uncached)
+    def __init__(self) -> None:
+        self.parse: Final = lru_cache(maxsize=None)(self._parse_uncached)
 
     grammar = grammar
 
@@ -75,50 +80,50 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         return (first,) + rest
 
-    def visit_tuple_type(self, node, visited_children):
+    def visit_tuple_type(self, node, visited_children) -> "TupleType":
         components, arrlist = visited_children
 
         return TupleType(components, arrlist, node=node)
 
-    def visit_next_type(self, node, visited_children):
+    def visit_next_type(self, node, visited_children) -> "ABIType":
         # Ignore comma
         _, abi_type = visited_children
 
-        return abi_type
+        return abi_type  # type: ignore [no-any-return]
 
-    def visit_basic_type(self, node, visited_children):
+    def visit_basic_type(self, node: Node, visited_children) -> "BasicType":
         base, sub, arrlist = visited_children
 
         return BasicType(base, sub, arrlist, node=node)
 
-    def visit_two_size(self, node, visited_children):
+    def visit_two_size(self, node: Node, visited_children):
         # Ignore "x"
         first, _, second = visited_children
 
         return first, second
 
-    def visit_const_arr(self, node, visited_children):
+    def visit_const_arr(self, node, visited_children) -> Tuple[int]:
         # Ignore left and right brackets
         _, int_value, _ = visited_children
 
         return (int_value,)
 
-    def visit_dynam_arr(self, node, visited_children):
+    def visit_dynam_arr(self, node: Node, visited_children) -> Tuple[()]:
         return ()
 
-    def visit_alphas(self, node, visited_children):
+    def visit_alphas(self, node: Node, visited_children):
         return node.text
 
-    def visit_digits(self, node, visited_children):
+    def visit_digits(self, node: Node, visited_children):
         return int(node.text)
 
-    def generic_visit(self, node, visited_children):
+    def generic_visit(self, node: Node, visited_children):
         expr = node.expr
-        if isinstance(expr, expressions.OneOf):
+        if isinstance(expr, OneOf):
             # Unwrap value chosen from alternatives
             return visited_children[0]
 
-        if isinstance(expr, expressions.Quantifier) and expr.min == 0 and expr.max == 1:
+        if isinstance(expr, Quantifier) and expr.min == 0 and expr.max == 1:
             # Unwrap optional value or return `None`
             if len(visited_children) != 0:
                 return visited_children[0]
@@ -127,7 +132,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         return tuple(visited_children)
 
-    def _parse_uncached(self, type_str, **kwargs):
+    def _parse_uncached(self, type_str: TypeStr, **kwargs):
         """
         Parses a type string into an appropriate instance of
         :class:`~faster_eth_abi.grammar.ABIType`.  If a type string cannot be parsed,
@@ -142,7 +147,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         try:
             return super().parse(type_str, **kwargs)
-        except parsimonious.ParseError as e:
+        except _ParseError as e:
             # This is a good place to add some better messaging around the type string.
             # If this logic grows any bigger, we should abstract it to its own function.
             if "()" in type_str:
@@ -446,7 +451,7 @@ TYPE_ALIASES: Final = {
 }
 
 TYPE_ALIAS_RE: Final = re.compile(
-    rf"\b({'|'.join(re.escape(a) for a in TYPE_ALIASES.keys())})\b"
+    rf"\b({'|'.join(map(re.escape, TYPE_ALIASES.keys()))})\b"
 )
 
 
