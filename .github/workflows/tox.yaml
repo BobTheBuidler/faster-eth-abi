@@ -50,11 +50,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install tox
 
-      - name: Emit date stamp for scheduled run
-        if: github.event_name == 'schedule'
-        id: daystamp
-        run: echo "suffix=-$(date +'%Y%m%d')" >> "$GITHUB_OUTPUT"
-
       - name: Cache tox environment and hypothesis examples
         uses: actions/cache@v4
         with:
