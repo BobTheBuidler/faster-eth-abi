@@ -17,6 +17,9 @@ from typing import (
 from eth_typing import (
     TypeStr,
 )
+from mypy_extensions import (
+    mypyc_attr,
+)
 from typing_extensions import (
     Self,
 )
@@ -38,6 +41,7 @@ _T = TypeVar("_T")
 copy: Final = stdlib_copy
 
 
+@mypyc_attr(allow_interpreted_subclasses=True)
 class Copyable(abc.ABC):
     @abc.abstractmethod
     def copy(self) -> Self:
@@ -255,3 +259,27 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
             )
             + ")"
         )
+
+
+def has_arrlist(type_str: TypeStr) -> bool:
+    """
+    A predicate that matches a type string with an array dimension list.
+    """
+    try:
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
+        return False
+
+    return abi_type.arrlist is not None
+
+
+def is_base_tuple(type_str: TypeStr) -> bool:
+    """
+    A predicate that matches a tuple type with no array dimension list.
+    """
+    try:
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
+        return False
+
+    return isinstance(abi_type, TupleType) and abi_type.arrlist is None
