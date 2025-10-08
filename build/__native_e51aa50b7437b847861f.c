@@ -1990,19 +1990,19 @@ CPyL3: ;
     CPy_INCREF(CPyModule_eth_typing___abi);
     CPy_DECREF(cpy_r_r22);
     cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('BaseCoder',) */
-    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.codec' */
+    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.base' */
     cpy_r_r25 = CPyStatic__cache___globals;
     cpy_r_r26 = CPyImport_ImportFromMany(cpy_r_r24, cpy_r_r23, cpy_r_r23, cpy_r_r25);
     if (unlikely(cpy_r_r26 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_cache.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__cache___globals);
         goto CPyL22;
     }
-    CPyModule_faster_eth_abi___codec = cpy_r_r26;
-    CPy_INCREF(CPyModule_faster_eth_abi___codec);
+    CPyModule_faster_eth_abi___base = cpy_r_r26;
+    CPy_INCREF(CPyModule_faster_eth_abi___base);
     CPy_DECREF(cpy_r_r26);
     cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'C' */
     cpy_r_r28 = CPyStatic__cache___globals;
-    cpy_r_r29 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'BaseCoder' */
+    cpy_r_r29 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Callable' */
     cpy_r_r30 = CPyDict_GetItem(cpy_r_r28, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_cache.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__cache___globals);
@@ -23424,7 +23424,7 @@ int CPyGlobalsInit(void)
     CPyModule_functools = Py_None;
     CPyModule_typing = Py_None;
     CPyModule_eth_typing___abi = Py_None;
-    CPyModule_faster_eth_abi___codec = Py_None;
+    CPyModule_faster_eth_abi___base = Py_None;
     CPyModule_faster_eth_abi____codec = Py_None;
     CPyModule_builtins = Py_None;
     CPyModule_typing = Py_None;
@@ -23508,7 +23508,7 @@ const char * const CPyLit_Str[] = {
     "\004\vget_decoder\021get_tuple_decoder\bbuiltins\tfunctools",
     "\006\030faster_eth_abi/_cache.py\b<module>\rTYPE_CHECKING\003Any\bCallable\004Dict",
     "\b\005Final\aGeneric\005Tuple\aTypeVar\005final\006typing\aTypeStr\016eth_typing.abi",
-    "\005\tBaseCoder\024faster_eth_abi.codec\001C\005bound\025faster_eth_abi._cache",
+    "\005\tBaseCoder\023faster_eth_abi.base\001C\005bound\025faster_eth_abi._cache",
     "\a\017__mypyc_attrs__\006_cache\b__dict__\vcoder_cache\004args\t_registry\004data",
     "\005\006strict\fstream_class\bIterable\tDecodable\neth_typing",
     "\002\024validate_bytes_param\030validate_list_like_param",
@@ -23545,10 +23545,11 @@ const char * const CPyLit_Str[] = {
     "\a\auint256\vfixed128x18\fufixed128x18\bfunction\abytes24\004byte\006bytes1",
     "\b\fTYPE_ALIASES\003\\b(\001|\006escape\003)\\b\acompile\rTYPE_ALIAS_RE\nIntSubtype",
     "\006\fFixedSubtype\aSubtype\027faster_eth_abi._grammar\aABIType\005TComp\ncomponents",
-    "\006\tTupleType\004base\tBasicType\bABICodec\bregistry\027faster_eth_abi.registry",
-    "\006\rdefault_codec\006encode\006decode\fis_encodable\021is_encodable_type\005TT256",
-    "\005\aTT256M1\005TT255\005parse\020 (normalized to \016Cannot create ",
-    "\003\024 for non-basic type \n for type \033: expected type with base \'",
+    "\006\tTupleType\004base\tBasicType\bABICodec\024faster_eth_abi.codec\bregistry",
+    "\005\027faster_eth_abi.registry\rdefault_codec\006encode\006decode\fis_encodable",
+    "\006\021is_encodable_type\005TT256\aTT256M1\005TT255\005parse\020 (normalized to ",
+    "\003\016Cannot create \024 for non-basic type \n for type ",
+    "\001\033: expected type with base \'",
     "\001,: expected type with no array dimension list",
     "\002): expected type with array dimension list\021new_from_type_str",
     "\004\vclassmethod\024 for non-tuple type \037faster_eth_abi/from_type_str.py\004Type",
@@ -23591,16 +23592,16 @@ const char * const CPyLit_Int[] = {
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    47, 3, 12, 12, 12, 1, 320, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 1,
+    47, 3, 12, 12, 12, 1, 321, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 1,
     25, 1, 27, 1, 30, 4, 15, 16, 41, 21, 2, 42, 25, 2, 44, 45, 3, 15, 16,
     21, 1, 48, 2, 51, 71, 2, 75, 76, 7, 15, 16, 17, 84, 85, 86, 22, 1, 89,
-    3, 150, 150, 150, 1, 335, 10, 16, 19, 152, 153, 85, 86, 21, 22, 154,
-    23, 1, 155, 1, 157, 1, 159, 1, 111, 1, 19, 1, 186, 1, 187, 6, 15, 16,
-    17, 85, 209, 22, 4, 180, 185, 183, 210, 1, 197, 1, 215, 1, 216, 1,
-    220, 1, 225, 2, 231, 232, 3, 231, 232, 234, 2, 236, 237, 6, 17, 19,
-    85, 21, 154, 240, 1, 241, 1, 243, 1, 228, 6, 245, 246, 247, 223, 248,
-    249, 1, 250, 1, 264, 3, 282, 282, 282, 1, 362, 4, 17, 18, 19, 21, 1,
-    286, 1, 16
+    3, 150, 150, 150, 1, 336, 10, 16, 19, 152, 153, 85, 86, 21, 22, 154,
+    23, 1, 155, 1, 157, 1, 159, 1, 111, 1, 19, 1, 186, 1, 188, 6, 15, 16,
+    17, 85, 210, 22, 4, 180, 185, 183, 211, 1, 198, 1, 216, 1, 217, 1,
+    221, 1, 226, 2, 232, 233, 3, 232, 233, 235, 2, 237, 238, 6, 17, 19,
+    85, 21, 154, 241, 1, 242, 1, 244, 1, 229, 6, 246, 247, 248, 224, 249,
+    250, 1, 251, 1, 265, 3, 283, 283, 283, 1, 363, 4, 17, 18, 19, 21, 1,
+    287, 1, 16
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____cache__internal = NULL;
@@ -23610,7 +23611,7 @@ CPyModule *CPyModule_builtins;
 CPyModule *CPyModule_functools;
 CPyModule *CPyModule_typing;
 CPyModule *CPyModule_eth_typing___abi;
-CPyModule *CPyModule_faster_eth_abi___codec;
+CPyModule *CPyModule_faster_eth_abi___base;
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi____codec;
 PyObject *CPyStatic__codec___globals;
@@ -23636,6 +23637,7 @@ CPyModule *CPyModule_typing_extensions;
 CPyModule *CPyModule_faster_eth_abi___abi__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi___abi;
 PyObject *CPyStatic_abi___globals;
+CPyModule *CPyModule_faster_eth_abi___codec;
 CPyModule *CPyModule_faster_eth_abi___registry;
 CPyModule *CPyModule_faster_eth_abi___constants__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi___constants;
