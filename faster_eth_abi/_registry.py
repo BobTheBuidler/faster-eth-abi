@@ -4,6 +4,7 @@ from copy import (
 )
 from typing import (
     Any,
+    Callable,
     ClassVar,
     Dict,
     Final,
@@ -42,6 +43,8 @@ from .grammar import (
 
 _T = TypeVar("_T")
 
+Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
+
 
 copy: Final = stdlib_copy
 
@@ -69,10 +72,10 @@ class PredicateMapping(Copyable):
 
     def __init__(self, name: str) -> None:
         self._name: Final = name
-        self._values: Dict["Predicate", BaseCoder] = {}
-        self._labeled_predicates: Dict[str, "Predicate"] = {}
+        self._values: Dict[Lookup, BaseCoder] = {}
+        self._labeled_predicates: Dict[str, Lookup] = {}
 
-    def add(self, predicate: Predicate, value: BaseCoder, label: Optional[str] = None) -> None:
+    def add(self, predicate: Lookup, value: BaseCoder, label: Optional[str] = None) -> None:
         if predicate in self._values:
             raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
 
@@ -115,7 +118,7 @@ class PredicateMapping(Copyable):
 
         return values[0]  # type: ignore [no-any-return]
 
-    def remove_by_equality(self, predicate: "Predicate") -> None:
+    def remove_by_equality(self, predicate: Lookup) -> None:
         # Delete the predicate mapping to the previously stored value
         try:
             del self._values[predicate]
@@ -130,7 +133,7 @@ class PredicateMapping(Copyable):
         else:
             del self._labeled_predicates[label]
 
-    def _label_for_predicate(self, predicate: "Predicate") -> str:
+    def _label_for_predicate(self, predicate: Lookup) -> str:
         # Both keys and values in `_labeled_predicates` are unique since the
         # `add` method enforces this
         for key, value in self._labeled_predicates.items():
@@ -148,7 +151,7 @@ class PredicateMapping(Copyable):
 
         del self._values[predicate]
 
-    def remove(self, predicate_or_label: Union["Predicate", str]) -> None:
+    def remove(self, predicate_or_label: Union[Lookup, str]) -> None:
         if callable(predicate_or_label):
             self.remove_by_equality(predicate_or_label)
         elif isinstance(predicate_or_label, str):
