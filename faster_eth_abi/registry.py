@@ -23,6 +23,7 @@ from . import (
 from ._cache import (
     DecoderCache,
     EncoderCache,
+    TupleDecoderCache,
     _clear_decoder_cache,
     _clear_encoder_cache,
 )
@@ -337,7 +338,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.get_encoder: Final = EncoderCache(self._get_encoder_uncached)
         self.get_decoder: Final = DecoderCache(self._get_decoder_uncached)
         self.get_tuple_encoder: Final = EncoderCache(self._get_tuple_encoder_uncached)
-        self.get_tuple_decoder: Final = DecoderCache(self._get_tuple_decoder_uncached)
+        self.get_tuple_decoder: Final = TupleDecoderCache(self._get_tuple_decoder_uncached)
 
     def _get_registration(self, mapping: PredicateMapping, type_str: TypeStr) -> Union[Encoder, Decoder]:
         coder = BaseRegistry._get_registration(mapping, type_str)
