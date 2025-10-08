@@ -99,7 +99,6 @@ def test_abi_encode_for_single_dynamic_types(
         {1, 2},
     ),
 )
-
 def test_abi_encode_raises_for_non_list_like_params(non_list_like_value):
     # test raises when `types` param is not list-like
     with pytest.raises(
