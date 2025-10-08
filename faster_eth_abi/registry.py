@@ -326,7 +326,7 @@ class BaseRegistry:
 
             raise
 
-        return value
+        return value  # type: ignore [no-any-return]
 
 
 class ABIRegistry(Copyable, BaseRegistry):
@@ -342,7 +342,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         coder = BaseRegistry._get_registration(self, mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
-            return coder.from_type_str(type_str, self)
+            return coder.from_type_str(type_str, self)  # type: ignore [no-any-return]
 
         return coder
 
@@ -452,7 +452,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
         return encoding.TupleEncoder(
-            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)
+            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)  # type: ignore [misc]
         )
 
     def has_encoder(self, type_str: TypeStr) -> bool:
@@ -488,7 +488,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         return decoding.TupleDecoder(
-            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)
+            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)  # type: ignore [misc]
         )
 
     def copy(self):
