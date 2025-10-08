@@ -12,11 +12,13 @@ from eth_typing import (
     TypeStr,
 )
 
-from .grammar import (
+from ._grammar import (
     ABIType,
     BasicType,
     TupleType,
     normalize,
+)
+from .grammar import (
     parse,
 )
 

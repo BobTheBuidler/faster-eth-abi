@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_76f9a3652d4d2667c55c_H
-#define MYPYC_NATIVE_76f9a3652d4d2667c55c_H
+#ifndef MYPYC_NATIVE_29859a9e7da9d19bb98c_H
+#define MYPYC_NATIVE_29859a9e7da9d19bb98c_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -19,6 +19,14 @@ typedef struct tuple_T2OO {
 } tuple_T2OO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T2II
+#define MYPYC_DECLARED_tuple_T2II
+typedef struct tuple_T2II {
+    CPyTagged f0;
+    CPyTagged f1;
+} tuple_T2II;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T2IO
 #define MYPYC_DECLARED_tuple_T2IO
 typedef struct tuple_T2IO {
@@ -27,13 +35,29 @@ typedef struct tuple_T2IO {
 } tuple_T2IO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T2II
-#define MYPYC_DECLARED_tuple_T2II
-typedef struct tuple_T2II {
-    CPyTagged f0;
-    CPyTagged f1;
-} tuple_T2II;
-#endif
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *_arrlist;
+    PyObject *_node;
+} faster_eth_abi____grammar___ABITypeObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *_arrlist;
+    PyObject *_node;
+    PyObject *_components;
+} faster_eth_abi____grammar___TupleTypeObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *_arrlist;
+    PyObject *_node;
+    PyObject *_base;
+    PyObject *_sub;
+} faster_eth_abi____grammar___BasicTypeObject;
 
 typedef struct {
     PyObject_HEAD
