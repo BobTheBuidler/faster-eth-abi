@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from faster_eth_abi.registry import ABIRegistry
 
 
-C = TypeVar("C", Callable)
+C = TypeVar("C", bound=Callable)
 
 
 @final
