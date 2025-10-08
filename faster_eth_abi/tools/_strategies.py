@@ -3,6 +3,7 @@ from typing import (
     Final,
     Optional,
     Union,
+    cast,
 )
 
 from cchecksum import (
@@ -81,7 +82,7 @@ class StrategyRegistry(BaseRegistry):
 def get_uint_strategy(
     abi_type: BasicType, registry: StrategyRegistry
 ) -> st.SearchStrategy:
-    bits = abi_type.sub
+    bits = cast(int, abi_type.sub)
 
     return st.integers(
         min_value=0,
@@ -92,7 +93,7 @@ def get_uint_strategy(
 def get_int_strategy(
     abi_type: BasicType, registry: StrategyRegistry
 ) -> st.SearchStrategy:
-    bits = abi_type.sub
+    bits = cast(int, abi_type.sub)
 
     return st.integers(
         min_value=-(2 ** (bits - 1)),
@@ -107,7 +108,7 @@ bool_strategy: Final = st.booleans()
 def get_ufixed_strategy(
     abi_type: BasicType, registry: StrategyRegistry
 ) -> st.SearchStrategy:
-    bits, places = abi_type.sub
+    bits, places = cast(Tuple[int, int], abi_type.sub)
 
     return st.decimals(
         min_value=0,
@@ -119,7 +120,7 @@ def get_ufixed_strategy(
 def get_fixed_strategy(
     abi_type: BasicType, registry: StrategyRegistry
 ) -> st.SearchStrategy:
-    bits, places = abi_type.sub
+    bits, places = cast(Tuple[int, int], abi_type.sub)
 
     return st.decimals(
         min_value=-(2 ** (bits - 1)),
