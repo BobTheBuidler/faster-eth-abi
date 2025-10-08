@@ -1,6 +1,7 @@
-import abc
-import copy
 import functools
+from copy import (
+    copy,
+)
 from typing import (
     Any,
     Callable,
@@ -16,8 +17,6 @@ from eth_typing import (
 from . import (
     decoding,
     encoding,
-    exceptions,
-    grammar,
 )
 from ._registry import (
     BaseEquals,
@@ -30,7 +29,11 @@ from .base import (
 )
 from .exceptions import (
     MultipleEntriesFound,
-    NoEntriesFound,
+    ParseError,
+)
+from .grammar import (
+    TupleType,
+    parse,
 )
 from .io import (
     ContextFramesBytesIO,
@@ -51,8 +54,8 @@ def has_arrlist(type_str: TypeStr) -> bool:
     A predicate that matches a type string with an array dimension list.
     """
     try:
-        abi_type = grammar.parse(type_str)
-    except (exceptions.ParseError, ValueError):
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
         return False
 
     return abi_type.arrlist is not None
@@ -63,11 +66,11 @@ def is_base_tuple(type_str: TypeStr) -> bool:
     A predicate that matches a tuple type with no array dimension list.
     """
     try:
-        abi_type = grammar.parse(type_str)
-    except (exceptions.ParseError, ValueError):
+        abi_type = parse(type_str)
+    except (ParseError, ValueError):
         return False
 
-    return isinstance(abi_type, grammar.TupleType) and abi_type.arrlist is None
+    return isinstance(abi_type, TupleType) and abi_type.arrlist is None
 
 
 def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
@@ -128,7 +131,7 @@ class BaseRegistry:
             if "No matching" in e.args[0]:
                 # If no matches found, attempt to parse in case lack of matches
                 # was due to unparsability
-                grammar.parse(type_str)
+                parse(type_str)
 
             raise
 
@@ -312,8 +315,8 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
         cpy = type(self)()
 
-        cpy._encoders = copy.copy(self._encoders)
-        cpy._decoders = copy.copy(self._decoders)
+        cpy._encoders = copy(self._encoders)
+        cpy._decoders = copy(self._decoders)
 
         return cpy
 
