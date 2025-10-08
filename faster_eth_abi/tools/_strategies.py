@@ -17,11 +17,13 @@ from hypothesis import (
     strategies as st,
 )
 
-from faster_eth_abi.grammar import (
+from faster_eth_abi._grammar import (
     ABIType,
     BasicType,
     TupleType,
     normalize,
+)
+from faster_eth_abi.grammar import (
     parse,
 )
 from faster_eth_abi.registry import (
