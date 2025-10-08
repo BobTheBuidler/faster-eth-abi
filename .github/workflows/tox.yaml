@@ -5,15 +5,13 @@ on:
     branches:
       - master
     paths:
-      - 'faster_eth_abi/**.py'
-      - 'tests/**.py'
+      - '**.py'
       - '.github/workflows/tox.yaml'
       - 'pyproject.toml'
       - 'setup.py'
       - 'tox.ini'
   schedule:
     - cron: '0 12 * * 1-5'  # Weekdays 12:00 UTC
-  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -29,6 +27,13 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
         jobtype: [core, lint, wheel]
+        include:
+          - os: ubuntu-latest
+            pip-cache: ~/.cache/pip
+          - os: macos-latest
+            pip-cache: ~/Library/Caches/pip
+          - os: windows-latest
+            pip-cache: ~\AppData\Local\pip\Cache
     env:
       TOXENV: py${{ matrix.python-version }}-${{ matrix.jobtype }}
     steps:
@@ -38,21 +43,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: |
+            setup.py
+            tox.ini
 
       - name: Upgrade pip and install tox
         run: |
           python -m pip install --upgrade pip
           python -m pip install tox
 
-      - name: Cache tox, pip, and hypothesis
+      - name: Cache tox environment and hypothesis examples
         uses: actions/cache@v4
         with:
           path: |
             .tox
             .hypothesis
-            ~/.cache/pip
-            ~/.local
-          key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.jobtype }}-${{ hashFiles('setup.py', 'tox.ini') }}
+          key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.jobtype }}-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.jobtype }}-
+            ${{ runner.os }}-tox-
 
       - name: Run tox
         run: python -m tox run -r
