@@ -219,7 +219,12 @@ class Equals(Predicate[str]):
     def __init__(self, value: str) -> None:
         self.value = value
 
-    def __call__(self, other: str) -> bool:
+    def __call__(
+        self,
+        # a string is expected for `other` but we need to use Any
+        # to ensure faster-eth-abi has the same exceptions as eth-abi
+        other: Any,
+    ) -> bool:
         return self.value == other
 
     def __str__(self) -> str:
@@ -244,7 +249,12 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
         self.base: Final = base
         self.with_sub: Final = with_sub
 
-    def __call__(self, type_str: TypeStr) -> bool:
+    def __call__(
+        self,
+        # a TypeStr is expected for `type_str` but we need to use Any
+        # to ensure faster-eth-abi has the same exceptions as eth-abi
+        type_str: Any,
+    ) -> bool:
         try:
             abi_type = parse(type_str)
         except (ParseError, ValueError):
