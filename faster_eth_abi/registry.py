@@ -23,6 +23,8 @@ from ._registry import (
     Copyable,
     Equals,
     PredicateMapping,
+    has_arrlist,
+    is_base_tuple,
 )
 from .base import (
     BaseCoder,
@@ -47,30 +49,6 @@ DecoderCallable = Callable[[ContextFramesBytesIO], Any]
 
 Encoder = Union[EncoderCallable, Type[encoding.BaseEncoder]]
 Decoder = Union[DecoderCallable, Type[decoding.BaseDecoder]]
-
-
-def has_arrlist(type_str: TypeStr) -> bool:
-    """
-    A predicate that matches a type string with an array dimension list.
-    """
-    try:
-        abi_type = parse(type_str)
-    except (ParseError, ValueError):
-        return False
-
-    return abi_type.arrlist is not None
-
-
-def is_base_tuple(type_str: TypeStr) -> bool:
-    """
-    A predicate that matches a tuple type with no array dimension list.
-    """
-    try:
-        abi_type = parse(type_str)
-    except (ParseError, ValueError):
-        return False
-
-    return isinstance(abi_type, TupleType) and abi_type.arrlist is None
 
 
 def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
