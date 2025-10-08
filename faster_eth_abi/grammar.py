@@ -80,18 +80,18 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         return (first,) + rest
 
-    def visit_tuple_type(self, node, visited_children) -> TupleType:
+    def visit_tuple_type(self, node, visited_children) -> "TupleType":
         components, arrlist = visited_children
 
         return TupleType(components, arrlist, node=node)
 
-    def visit_next_type(self, node, visited_children) -> ABIType:
+    def visit_next_type(self, node, visited_children) -> "ABIType":
         # Ignore comma
         _, abi_type = visited_children
 
         return abi_type  # type: ignore [no-any-return]
 
-    def visit_basic_type(self, node: Node, visited_children) -> BasicType:
+    def visit_basic_type(self, node: Node, visited_children) -> "BasicType":
         base, sub, arrlist = visited_children
 
         return BasicType(base, sub, arrlist, node=node)
