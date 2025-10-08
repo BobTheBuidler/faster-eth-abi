@@ -1,6 +1,6 @@
 import abc
-import copy
 import functools
+from copy import copy
 from typing import (
     Any,
     Callable,
@@ -531,8 +531,8 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
         cpy = type(self)()
 
-        cpy._encoders = copy.copy(self._encoders)
-        cpy._decoders = copy.copy(self._decoders)
+        cpy._encoders = copy(self._encoders)
+        cpy._decoders = copy(self._decoders)
 
         return cpy
 
