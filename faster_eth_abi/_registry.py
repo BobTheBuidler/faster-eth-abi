@@ -1,20 +1,43 @@
 import abc
+from copy import (
+    copy as stdlib_copy,
+)
 from typing import (
+    Any,
     Dict,
     Final,
     Generic,
+    Iterator,
+    Optional,
     TypeVar,
     Union,
     final,
 )
 
-from faster_eth_abi.grammar import (
+from eth_typing import (
+    TypeStr,
+)
+from parsimonius import (
+    ParseError,
+)
+from typing_extensions import (
+    Self,
+)
+
+from .exceptions import (
+    MultipleEntriesFound,
+    NoEntriesFound,
+)
+from .grammar import (
     BasicType,
     parse,
 )
 
 
 _T = TypeVar("_T")
+
+
+copy: Final = stdlib_copy
 
 
 class Copyable(abc.ABC):
@@ -25,7 +48,7 @@ class Copyable(abc.ABC):
     def __copy__(self) -> Self:
         return self.copy()
 
-    def __deepcopy__(self, *args) -> Self:
+    def __deepcopy__(self, *args: Any) -> Self:
         return self.copy()
 
 
@@ -39,10 +62,10 @@ class PredicateMapping(Copyable):
 
     def __init__(self, name: str) -> None:
         self._name: Final = name
-        self._values: Final[Dict["Predicate", str]] = {}
-        self._labeled_predicates: Final[Dict[str, "Predicate"]] = {}
+        self._values: Dict["Predicate", str] = {}
+        self._labeled_predicates: Dict[str, "Predicate"] = {}
 
-    def add(self, predicate, value, label=None):
+    def add(self, predicate: Predicate, value: str, label: Optional[str] = None) -> None:
         if predicate in self._values:
             raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
 
@@ -147,7 +170,7 @@ class Predicate(Generic[_T]):
 
     __slots__ = tuple()
 
-    def __call__(self, *args, **kwargs) -> bool:  # pragma: no cover
+    def __call__(self, arg: str) -> bool:  # pragma: no cover
         raise NotImplementedError("Must implement `__call__`")
 
     def __str__(self) -> str:  # pragma: no cover
