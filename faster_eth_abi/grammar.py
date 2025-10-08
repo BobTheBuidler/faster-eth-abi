@@ -16,6 +16,9 @@ from eth_typing import (
     TypeStr,
 )
 import parsimonious
+from parsimonious import (
+    ParseError as _ParseError,
+)
 from parsimonious.expressions import (
     OneOf,
     Quantifier,
@@ -144,7 +147,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         try:
             return super().parse(type_str, **kwargs)
-        except ParseError as e:
+        except _ParseError as e:
             # This is a good place to add some better messaging around the type string.
             # If this logic grows any bigger, we should abstract it to its own function.
             if "()" in type_str:
