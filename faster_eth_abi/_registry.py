@@ -95,9 +95,7 @@ class PredicateMapping(Copyable):
 
     def find(
         self, 
-        # a TypeStr is expected for `type_str` but we need to use Any
-        # to ensure faster-eth-abi has the same exceptions as eth-abi
-        type_str: Any,
+        type_str: TypeStr,
     ) -> BaseCoder:
         results = tuple(
             (predicate, value)
@@ -188,7 +186,7 @@ class Predicate(Generic[_T]):
     # apparently mypyc cannot read from __slots__  # TODO: make an issue for this
     __attrs__: ClassVar = tuple()
 
-    def __call__(self, arg: str) -> bool:  # pragma: no cover
+    def __call__(self, arg: TypeStr) -> bool:  # pragma: no cover
         raise NotImplementedError("Must implement `__call__`")
 
     def __str__(self) -> str:  # pragma: no cover
@@ -221,12 +219,7 @@ class Equals(Predicate[str]):
     def __init__(self, value: str) -> None:
         self.value = value
 
-    def __call__(
-        self,
-        # a string is expected for `other` but we need to use Any
-        # to ensure faster-eth-abi has the same exceptions as eth-abi
-        other: Any,
-    ) -> bool:
+    def __call__(self, other: TypeStr) -> bool:
         return bool(self.value == other)
 
     def __str__(self) -> str:
@@ -251,12 +244,7 @@ class BaseEquals(Predicate[Union[str, Optional[bool]]]):
         self.base: Final = base
         self.with_sub: Final = with_sub
 
-    def __call__(
-        self,
-        # a TypeStr is expected for `type_str` but we need to use Any
-        # to ensure faster-eth-abi has the same exceptions as eth-abi
-        type_str: Any,
-    ) -> bool:
+    def __call__(self, type_str: TypeStr) -> bool:
         try:
             abi_type = parse(type_str)
         except (ParseError, ValueError):
