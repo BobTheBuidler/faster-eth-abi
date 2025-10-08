@@ -10,6 +10,14 @@ typedef struct tuple_T2OC {
 } tuple_T2OC;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T2OO
+#define MYPYC_DECLARED_tuple_T2OO
+typedef struct tuple_T2OO {
+    PyObject *f0;
+    PyObject *f1;
+} tuple_T2OO;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T3OOO
 #define MYPYC_DECLARED_tuple_T3OOO
 typedef struct tuple_T3OOO {
@@ -17,14 +25,6 @@ typedef struct tuple_T3OOO {
     PyObject *f1;
     PyObject *f2;
 } tuple_T3OOO;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T2OO
-#define MYPYC_DECLARED_tuple_T2OO
-typedef struct tuple_T2OO {
-    PyObject *f0;
-    PyObject *f1;
-} tuple_T2OO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T2II
@@ -46,6 +46,8 @@ typedef struct tuple_T2IO {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    PyObject *__func;
+    PyObject *__cache;
 } faster_eth_abi____cache____CacheBaseObject;
 
 typedef struct {
@@ -63,6 +65,14 @@ typedef struct {
     PyObject *__func;
     PyObject *__cache;
 } faster_eth_abi____cache___DecoderCacheObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache___TupleDecoderCacheObject;
 
 typedef struct {
     PyObject_HEAD
