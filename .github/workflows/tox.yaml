@@ -42,6 +42,7 @@ jobs:
           cache: pip
           cache-dependency-path: |
             setup.py
+            pyproject.toml
             tox.ini
 
       - name: Upgrade pip and install tox
