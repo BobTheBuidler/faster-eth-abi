@@ -1,16 +1,19 @@
 import re
 from typing import (
+    Any,
     Final,
     NewType,
     NoReturn,
     Optional,
     Sequence,
     Tuple,
+    TypeVar,
     Union,
+    final,
 )
 
-from eth_typing import (
-    HexStr,
+from eth_typing.abi import (
+    TypeStr,
 )
 from mypy_extensions import (
     mypyc_attr,
@@ -101,6 +104,7 @@ class ABIType:
         """
         raise NotImplementedError("Must implement `validate`")
 
+    @final
     def invalidate(self, error_msg: str) -> NoReturn:
         # Invalidates an ABI type with the given error message.  Expects that a
         # parsimonious node was provided from the original parsing operation
@@ -181,7 +185,7 @@ class TupleType(ABIType):
         arrlist = self.arrlist[:-1] or None  # type: ignore [index]
         cls = type(self)
         if cls is TupleType:
-            return TupleType(self.components, arrlist, node=self.node)
+            return TupleType(self.components, arrlist, node=self.node)  # type: ignore [return-value]
         else:
             return cls(self.components, arrlist, node=self.node)
 
@@ -251,19 +255,20 @@ class BasicType(ABIType):
         cls = type(self)
         arrlist = self.arrlist[:-1] or None  # type: ignore [index]
         if cls is BasicType:
-            return BasicType(self.base, self.sub, arrlist, self.node)
+            return BasicType(self.base, self.sub, arrlist, node=self.node)  # type: ignore [return-value]
         else:
-            return cls(self.base, self.sub, arrlist, self.node)
+            return cls(self.base, self.sub, arrlist, node=self.node)
 
     @property
     def is_dynamic(self) -> bool:
         if self._has_dynamic_arrlist:
             return True
 
-        if self.base == "string":
+        base = self.base
+        if base == "string":
             return True
 
-        if self.base == "bytes" and self.sub is None:
+        if base == "bytes" and self.sub is None:
             return True
 
         return False
