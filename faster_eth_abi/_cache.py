@@ -8,6 +8,7 @@ from typing import (
     Generic,
     Tuple,
     TypeVar,
+    Union,
     final,
 )
 
@@ -23,14 +24,14 @@ if TYPE_CHECKING:
     from faster_eth_abi.registry import ABIRegistry
 
 
-K = TypeVar("K")
-C = TypeVar("C", bound=Callable)
+TKey = TypeVar("TKey")
+TCoder = TypeVar("TFunc", bound=Callable)
 
 
-class _CacheBase(Generic[K, C]):
-    def __init__(self, func: Callable[..., C]) -> None:
+class _CacheBase(Generic[TKey, TCoder]):
+    def __init__(self, func: Callable[..., TCoder]) -> None:
         self._func: Final = func
-        self._cache: Final[Dict[EncoderKey, C]] = {}
+        self._cache: Final[Dict[TKey, TCoder]] = {}
         functools.wraps(func)(self)
     def __repr__(self) -> str:
       return f"{type(self).__name__}({repr(self._func)}"
@@ -39,9 +40,9 @@ class _CacheBase(Generic[K, C]):
 
 
 @final
-class EncoderCache(_CacheBase[Union[TypeStr, Tuple[TypeStr, ...]], C]):
+class EncoderCache(_CacheBase[Union[TypeStr, Tuple[TypeStr, ...]], TCoder]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __call__(self, *args: TypeStr) -> C:
+    def __call__(self, *args: TypeStr) -> TCoder:
         coder = self._cache.get(args)
         if coder is None:
             coder = self._cache[args] = self._func(*args)
@@ -49,9 +50,9 @@ class EncoderCache(_CacheBase[Union[TypeStr, Tuple[TypeStr, ...]], C]):
 
 
 @final
-class DecoderCache(_CacheBase[Tuple[TypeStr, bool], C]):
+class DecoderCache(_CacheBase[Tuple[TypeStr, bool], TCoder]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __call__(self, arg: TypeStr, strict: bool = True) -> C:
+    def __call__(self, arg: TypeStr, strict: bool = True) -> TCoder:
         coder = self._cache.get((arg, strict))
         if coder is None:
             coder = self._cache[(arg, strict)] = self._func(arg, strict=strict)
@@ -59,9 +60,9 @@ class DecoderCache(_CacheBase[Tuple[TypeStr, bool], C]):
 
 
 @final
-class TupleDecoderCache(_CacheBase[Tuple[Tuple[TypeStr, ...], bool], C]):
+class TupleDecoderCache(_CacheBase[Tuple[Tuple[TypeStr, ...], bool], TCoder]):
     """A specialized lru_cache implementation for our use case with no maxsize."""
-    def __call__(self, *args: TypeStr, strict: bool = True) -> C:
+    def __call__(self, *args: TypeStr, strict: bool = True) -> TCoder:
         coder = self._cache.get((args, strict))
         if coder is None:
             coder = self._cache[(args, strict)] = self._func(*args, strict=strict)
