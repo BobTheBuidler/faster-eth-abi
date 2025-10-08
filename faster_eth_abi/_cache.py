@@ -31,7 +31,7 @@ class coder_cache:
     def __call__(self, *args: TypeStr) -> C:
         coder = self._cache.get(args)
         if coder is None:
-            coder = _cache[args] = fn(*args)
+            coder = _cache[args] = self._func(*args)
         return coder
     def __repr__(self) -> str:
       return f"coder_cache({repr(self._func)}"
