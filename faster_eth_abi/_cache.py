@@ -15,7 +15,7 @@ from eth_typing.abi import (
     TypeStr,
 )
 
-from faster_eth_abi.codec import (
+from faster_eth_abi.base import (
     BaseCoder,
 )
 
