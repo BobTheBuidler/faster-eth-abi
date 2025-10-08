@@ -33,6 +33,9 @@ from .exceptions import (
     MultipleEntriesFound,
     ParseError,
 )
+from .grammar import (
+    parse,
+)
 from .io import (
     ContextFramesBytesIO,
 )
