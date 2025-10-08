@@ -104,6 +104,7 @@ class ABIType:
         """
         raise NotImplementedError("Must implement `validate`")
 
+    @final
     def invalidate(self, error_msg: str) -> NoReturn:
         # Invalidates an ABI type with the given error message.  Expects that a
         # parsimonious node was provided from the original parsing operation
@@ -263,10 +264,11 @@ class BasicType(ABIType):
         if self._has_dynamic_arrlist:
             return True
 
-        if self.base == "string":
+        base = self.base
+        if base == "string":
             return True
 
-        if self.base == "bytes" and self.sub is None:
+        if base == "bytes" and self.sub is None:
             return True
 
         return False
