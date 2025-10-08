@@ -24,6 +24,9 @@ from typing_extensions import (
     Self,
 )
 
+from .base import (
+    BaseCoder,
+)
 from .exceptions import (
     MultipleEntriesFound,
     NoEntriesFound,
@@ -65,10 +68,10 @@ class PredicateMapping(Copyable):
 
     def __init__(self, name: str) -> None:
         self._name: Final = name
-        self._values: Dict["Predicate", str] = {}
+        self._values: Dict["Predicate", BaseCoder] = {}
         self._labeled_predicates: Dict[str, "Predicate"] = {}
 
-    def add(self, predicate: Predicate, value: str, label: Optional[str] = None) -> None:
+    def add(self, predicate: Predicate, value: BaseCoder, label: Optional[str] = None) -> None:
         if predicate in self._values:
             raise ValueError(f"Matcher {predicate!r} already exists in {self._name}")
 
@@ -84,7 +87,7 @@ class PredicateMapping(Copyable):
 
         self._values[predicate] = value
 
-    def find(self, type_str: TypeStr) -> str:
+    def find(self, type_str: TypeStr) -> BaseCoder:
         results = tuple(
             (predicate, value)
             for predicate, value in self._values.items()
