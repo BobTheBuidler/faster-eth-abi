@@ -7,6 +7,8 @@ from faster_eth_abi.abi import (
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
     InvalidPointer,
+    NoEntriesFound,
+    ValueOutOfBounds,
 )
 from faster_eth_abi.grammar import (
     parse,
