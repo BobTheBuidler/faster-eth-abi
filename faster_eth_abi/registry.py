@@ -331,12 +331,12 @@ class BaseRegistry:
 
 class ABIRegistry(Copyable, BaseRegistry):
     def __init__(self):
-        self._encoders = PredicateMapping("encoder registry")
-        self._decoders = PredicateMapping("decoder registry")
-        self.get_encoder = coder_cache(self._get_encoder_uncached)
-        self.get_decoder = coder_cache(self._get_decoder_uncached)
-        self.get_tuple_encoder = coder_cache(self._get_tuple_encoder_uncached)
-        self.get_tuple_decoder = coder_cache(self._get_tuple_decoder_uncached)
+        self._encoders: Final = PredicateMapping("encoder registry")
+        self._decoders: Final = PredicateMapping("decoder registry")
+        self.get_encoder: Final = coder_cache(self._get_encoder_uncached)
+        self.get_decoder: Final = coder_cache(self._get_decoder_uncached)
+        self.get_tuple_encoder: Final = coder_cache(self._get_tuple_encoder_uncached)
+        self.get_tuple_decoder: Final = coder_cache(self._get_tuple_decoder_uncached)
 
     def _get_registration(registry: ABIRegistry, mapping: PredicateMapping, type_str):
         coder = BaseRegistry._get_registration(self, mapping, type_str)
