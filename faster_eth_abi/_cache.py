@@ -1,5 +1,6 @@
 import functools
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -27,7 +28,7 @@ class coder_cache(Generic[C]):
     """A specialized lru_cache implementation that only supports posargs and has no maxsize."""
     def __init__(self, func: Callable[[Tuple[TypeStr, ...]], C]) -> None:
         self._func: Final = func
-        self._cache: Final[Dict[Tuple[TypeStr, ...], C]]
+        self._cache: Final[Dict[Tuple[TypeStr, ...], C]] = {}
         functools.wraps(fn)(self)
     def __call__(self, *args: TypeStr) -> C:
         coder = self._cache.get(args)
@@ -36,7 +37,7 @@ class coder_cache(Generic[C]):
         return coder
     def __repr__(self) -> str:
       return f"coder_cache({repr(self._func)}"
-    def cache_clear() -> None:
+    def cache_clear(self) -> None:
         self._cache.clear()
 
 
