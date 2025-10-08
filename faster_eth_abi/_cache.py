@@ -24,7 +24,7 @@ C = TypeVar("C", bound="BaseCoder")
 @final
 class coder_cache:
     """A specialized lru_cache implementation that only supports posargs and has no maxsize."""
-    def __init__(self, func: Callable[[Tuple[TypeStr, ...], C]) -> None:
+    def __init__(self, func: Callable[[Tuple[TypeStr, ...]], C]) -> None:
         self._func: Final = func
         self._cache: Final[Dict[Tuple[TypeStr, ...], C]]
         functools.wraps(fn)(self)
