@@ -108,9 +108,9 @@ def test_abi_decode_wrong_types_param_type_raises(types, strict):
     elif types == {"key": "val"}:
         expected_exc = NoEntriesFound
     else:
-        expected = TypeError
+        expected_exc = TypeError
     with pytest.raises(
-        expected,
+        expected_exc,
         # NOTE The `match` arg was commented out because faster-eth-abi might not raise
         # the same exception, but we should still test that it raises an Exception like eth-abi
         # match=f"The `types` value type must be one of list or tuple. Got {type(types)}",
