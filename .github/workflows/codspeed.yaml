@@ -6,11 +6,13 @@ on:
     paths:
       - "faster_eth_abi/**"
       - "benchmarks/**"
+      - ".github/workflows/codspeed.yaml"
   push:
     branches: [main, master]
     paths:
       - "faster_eth_abi/**"
       - "benchmarks/**"
+      - ".github/workflows/codspeed.yaml"
   workflow_dispatch:
 
 concurrency:
