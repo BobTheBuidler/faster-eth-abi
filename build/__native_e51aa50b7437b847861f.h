@@ -2,6 +2,14 @@
 #define MYPYC_NATIVE_e51aa50b7437b847861f_H
 #include <Python.h>
 #include <CPy.h>
+#ifndef MYPYC_DECLARED_tuple_T2OC
+#define MYPYC_DECLARED_tuple_T2OC
+typedef struct tuple_T2OC {
+    PyObject *f0;
+    char f1;
+} tuple_T2OC;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T3OOO
 #define MYPYC_DECLARED_tuple_T3OOO
 typedef struct tuple_T3OOO {
@@ -38,10 +46,23 @@ typedef struct tuple_T2IO {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+} faster_eth_abi____cache____CacheBaseObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     vectorcallfunc vectorcall;
     PyObject *__func;
     PyObject *__cache;
-} faster_eth_abi____cache___coder_cacheObject;
+} faster_eth_abi____cache___EncoderCacheObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *__func;
+    PyObject *__cache;
+} faster_eth_abi____cache___DecoderCacheObject;
 
 typedef struct {
     PyObject_HEAD
