@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - '**.py'
-      - '!benchmarks/**.py'
+      - 'faster_eth_abi/**.py'
+      - 'tests/**.py'
       - '.github/workflows/tox.yaml'
       - 'pyproject.toml'
       - 'setup.py'
