@@ -444,7 +444,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_encoder(label)
         self.unregister_decoder(label)
 
-    def _get_encoder_uncached(self, type_str: TypeStr):  # type: ignore [no-untyped-def]
+    def _get_encoder_uncached(self, type_str: TypeStr) -> Encoder:
         return self._get_registration(self._encoders, type_str)
 
     def _get_tuple_encoder_uncached(
@@ -471,10 +471,10 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         return True
 
-    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True):  # type: ignore [no-untyped-def]
+    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True) -> Decoder:
         decoder = self._get_registration(self._decoders, type_str)
 
-        if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
+        if getattr(decoder, "is_dynamic", False):
             # Set a transient flag each time a call is made to ``get_decoder()``.
             # Only dynamic decoders should be allowed these looser constraints. All
             # other decoders should keep the default value of ``True``.
