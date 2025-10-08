@@ -163,8 +163,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
 visitor: Final = NodeVisitor()
 
-
-__all__ = ["NodeVisitor", "ABIType", "TupleType", "BasicType", "grammar", "visitor", "parse", "TYPE_ALIASES", "TYPE_ALIAS_RE"]
-
-# TODO: try moving this to _grammar and importing it here and seeing if mypyc resolves that?
 parse: Final = visitor.parse
+
+
+__all__ = ["NodeVisitor", "ABIType", "TupleType", "BasicType", "grammar", "parse", "visitor", "TYPE_ALIASES", "TYPE_ALIAS_RE"]
