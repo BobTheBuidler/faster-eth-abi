@@ -89,7 +89,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
         # Ignore comma
         _, abi_type = visited_children
 
-        return abi_type
+        return abi_type  # type: ignore [no-any-return]
 
     def visit_basic_type(self, node: Node, visited_children) -> BasicType:
         base, sub, arrlist = visited_children
