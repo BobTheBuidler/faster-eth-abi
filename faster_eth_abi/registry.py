@@ -445,7 +445,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_decoder(label)
 
     def _get_encoder_uncached(self, type_str: TypeStr) -> Encoder:
-        return self._get_registration(self._encoders, type_str)
+        return self._get_registration(self._encoders, type_str)  # type: ignore [no-any-return]
 
     def _get_tuple_encoder_uncached(
         self, 
