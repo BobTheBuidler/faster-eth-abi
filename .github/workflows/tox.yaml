@@ -61,10 +61,8 @@ jobs:
           path: |
             .tox
             .hypothesis
-          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.jobtype }}-${{ steps.daystamp.outputs.suffix || '' }}
-          restore-keys: |
-            ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.jobtype }}-
-          save-on-cache-miss: ${{ env.TOX_RECREATE_FLAG == '-r' }}
+          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.jobtype }}
+          save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
       - name: Run tox
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }}
