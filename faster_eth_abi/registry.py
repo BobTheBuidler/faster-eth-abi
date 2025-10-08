@@ -22,6 +22,7 @@ from ._registry import (
     BaseEquals,
     Copyable,
     Equals,
+    Lookup,
     PredicateMapping,
     has_arrlist,
     is_base_tuple,
@@ -39,9 +40,6 @@ from .grammar import (
 from .io import (
     ContextFramesBytesIO,
 )
-
-
-Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
 
 EncoderCallable = Callable[[Any], bytes]
 DecoderCallable = Callable[[ContextFramesBytesIO], Any]
