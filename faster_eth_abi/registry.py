@@ -338,7 +338,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.get_tuple_encoder: Final = coder_cache(self._get_tuple_encoder_uncached)
         self.get_tuple_decoder: Final = coder_cache(self._get_tuple_decoder_uncached)
 
-    def _get_registration(registry: ABIRegistry, mapping: PredicateMapping, type_str):
+    def _get_registration(self, mapping: PredicateMapping, type_str: TypeStr) -> BaseCoder:
         coder = BaseRegistry._get_registration(self, mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
