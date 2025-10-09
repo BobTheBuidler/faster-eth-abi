@@ -30,10 +30,10 @@ jobs:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
         jobtype: [core, lint, wheel]
         architecture: [x64, x86]
-      exclude:
-        # Exclude x86 (32-bit) builds for macos, which doesn't support 32-bit at all
-        - os: macos-latest
-          architecture: x86
+        exclude:
+          # Exclude x86 (32-bit) builds for macos, which doesn't support 32-bit at all
+          - os: macos-latest
+            architecture: x86
     env:
       IS_UBUNTU_32BIT: ${{ matrix.os == 'ubuntu-latest' && matrix.architecture == 'x86' }}
       TOXENV: py${{ matrix.python-version }}-${{ matrix.jobtype }}
