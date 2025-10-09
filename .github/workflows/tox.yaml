@@ -55,13 +55,24 @@ jobs:
             python -m pip install tox
             python -m tox -e ${{ env.TOXENV }} ${{ env.TOX_RECREATE_FLAG }}
 
-      # All other builds (64-bit Linux, Mac, Win; 32-bit Windows)
-      - name: Set up Python
-        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
+      - name: Set up Python (macos)
+        if: ${{ matrix.os == 'macos-latest' }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: ${{ (matrix.os == 'macos-latest' && '' ) || matrix.architecture }}
+          cache: pip
+          cache-dependency-path: |
+            setup.py
+            pyproject.toml
+            tox.ini
+        
+      # All other builds (64-bit Linux, Mac, Win; 32-bit Windows)
+      - name: Set up Python
+        if:  ${{ matrix.os != 'macos-latest' || env.IS_UBUNTU_32BIT != 'true' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: ${{ matrix.architecture }}
           cache: pip
           cache-dependency-path: |
             setup.py
