@@ -5,6 +5,8 @@ on:
     branches:
       - master
     types: [published]
+  # workflow dispatch trigger will perform a dry run with no upload to pypi
+  workflow_dispatch:
 
 jobs:
   build_wheels:
@@ -175,9 +177,10 @@ jobs:
           path: wheelhouse/windows-x86
 
       # ----------------------------------------------------
-      # Publish all built artifacts to PyPI
+      # Publish all built artifacts to PyPI (if not dry run)
       # ----------------------------------------------------
       - name: Publish sdist and wheels to PyPI
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
