@@ -5,8 +5,7 @@ requires = [
 	"mypy[mypyc]>=1.14.1,<1.18.3",
 	"mypy_extensions",
 	"cchecksum>=0.2.6,<0.4",
- 	# pydantic-core (installed with faster-eth-utils) is unable to build on Python3.14
-	"faster-eth-utils>=2.0.0; python_version<'3.14'",
+	"faster-eth-utils>=2.0.0",
 	"eth-typing>=3.0.0",
 	"parsimonious>=0.10.0,<0.11.0",
 ]
