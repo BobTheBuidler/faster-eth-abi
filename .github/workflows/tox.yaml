@@ -68,7 +68,7 @@ jobs:
         
       # All other builds (64-bit Linux, Mac, Win; 32-bit Windows)
       - name: Set up Python
-        if:  ${{ matrix.os != 'macos-latest' || env.IS_UBUNTU_32BIT != 'true' }}
+        if: ${{ matrix.os != 'macos-latest' && env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
