@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Use i386/python Docker for *all* 32-bit Ubuntu jobs (not just core now)
+      # Use i386/python Docker for all 32-bit Ubuntu jobs
       - name: Run job in 32-bit Ubuntu Docker container
         if: ${{ env.IS_UBUNTU_32BIT == 'true' }}
         uses: addnab/docker-run-action@v3
