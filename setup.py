@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 from mypyc.build import (
     mypycify,
 )
@@ -50,25 +51,33 @@ with open("./README.md") as readme:
     long_description = readme.read()
 
 
-ext_modules = mypycify(
-    [
-        "faster_eth_abi/_codec.py",
-        "faster_eth_abi/_decoding.py",
-        "faster_eth_abi/_encoding.py",
-        "faster_eth_abi/_grammar.py",
-        "faster_eth_abi/abi.py",
-        "faster_eth_abi/constants.py",
-        "faster_eth_abi/from_type_str.py",
-        # "faster_eth_abi/io.py",
-        "faster_eth_abi/packed.py",
-        "faster_eth_abi/tools",
-        "faster_eth_abi/utils",
-        "--pretty",
-        "--install-types",
-        "--disable-error-code=override",
-        "--disable-error-code=unused-ignore",
-    ],
+skip_mypyc = any(
+    cmd in sys.argv
+    for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
 )
+
+if skip_mypyc:
+    ext_modules = []
+else:
+    ext_modules = mypycify(
+        [
+            "faster_eth_abi/_codec.py",
+            "faster_eth_abi/_decoding.py",
+            "faster_eth_abi/_encoding.py",
+            "faster_eth_abi/_grammar.py",
+            "faster_eth_abi/abi.py",
+            "faster_eth_abi/constants.py",
+            "faster_eth_abi/from_type_str.py",
+            # "faster_eth_abi/io.py",
+            "faster_eth_abi/packed.py",
+            "faster_eth_abi/tools",
+            "faster_eth_abi/utils",
+            "--pretty",
+            "--install-types",
+            "--disable-error-code=override",
+            "--disable-error-code=unused-ignore",
+        ],
+    )
 
 
 setup(
