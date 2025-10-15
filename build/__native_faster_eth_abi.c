@@ -3706,7 +3706,13 @@ static PyObject *CPyDunder__RichCompare__grammar___ABIType(PyObject *obj_lhs, Py
                 return NULL;
             }
             PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            char retval = CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
         case Py_NE: {
             PyObject *arg_lhs;
@@ -3716,8 +3722,20 @@ static PyObject *CPyDunder__RichCompare__grammar___ABIType(PyObject *obj_lhs, Py
                 CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                 return NULL;
             }
-            PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            PyObject *arg_rhs;
+            if (likely(PyObject_TypeCheck(obj_rhs, CPyType__grammar___ABIType)))
+                arg_rhs = obj_rhs;
+            else {
+                CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
+                return NULL;
+            }
+            char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
     }
     Py_INCREF(Py_NotImplemented);
@@ -4060,7 +4078,13 @@ static PyObject *CPyDunder__RichCompare__grammar___TupleType(PyObject *obj_lhs, 
                 return NULL;
             }
             PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            char retval = CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
         case Py_NE: {
             PyObject *arg_lhs;
@@ -4070,8 +4094,20 @@ static PyObject *CPyDunder__RichCompare__grammar___TupleType(PyObject *obj_lhs, 
                 CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                 return NULL;
             }
-            PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            PyObject *arg_rhs;
+            if (likely(PyObject_TypeCheck(obj_rhs, CPyType__grammar___ABIType)))
+                arg_rhs = obj_rhs;
+            else {
+                CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
+                return NULL;
+            }
+            char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
     }
     Py_INCREF(Py_NotImplemented);
@@ -4324,7 +4360,13 @@ static PyObject *CPyDunder__RichCompare__grammar___BasicType(PyObject *obj_lhs, 
                 return NULL;
             }
             PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            char retval = CPyDef__grammar___ABIType_____eq__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
         case Py_NE: {
             PyObject *arg_lhs;
@@ -4334,8 +4376,20 @@ static PyObject *CPyDunder__RichCompare__grammar___BasicType(PyObject *obj_lhs, 
                 CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                 return NULL;
             }
-            PyObject *arg_rhs = obj_rhs;
-            return CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            PyObject *arg_rhs;
+            if (likely(PyObject_TypeCheck(obj_rhs, CPyType__grammar___ABIType)))
+                arg_rhs = obj_rhs;
+            else {
+                CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
+                return NULL;
+            }
+            char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
+            if (retval == 2) {
+                return NULL;
+            }
+            PyObject *retbox = retval ? Py_True : Py_False;
+            CPy_INCREF(retbox);
+            return retbox;
         }
     }
     Py_INCREF(Py_NotImplemented);
@@ -5145,7 +5199,7 @@ fail: ;
     return NULL;
 }
 
-PyObject *CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other) {
+char CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     char cpy_r_r2;
@@ -5156,7 +5210,8 @@ PyObject *CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy
     PyObject **cpy_r_r8;
     PyObject *cpy_r_r9;
     PyObject *cpy_r_r10;
-    PyObject *cpy_r_r11;
+    char cpy_r_r11;
+    char cpy_r_r12;
     cpy_r_r0 = CPy_TYPE(cpy_r_self);
     cpy_r_r1 = CPy_TYPE(cpy_r_other);
     cpy_r_r2 = cpy_r_r0 == cpy_r_r1;
@@ -5170,7 +5225,7 @@ CPyL2: ;
     cpy_r_r5 = CPY_GET_METHOD(cpy_r_self, CPyType__grammar___ABIType, 3, faster_eth_abi____grammar___ABITypeObject, PyObject * (*)(PyObject *))(cpy_r_self); /* to_type_str */
     if (unlikely(cpy_r_r5 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq__", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL7;
+        goto CPyL8;
     }
     cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'to_type_str' */
     PyObject *cpy_r_r7[1] = {cpy_r_other};
@@ -5178,24 +5233,33 @@ CPyL2: ;
     cpy_r_r9 = PyObject_VectorcallMethod(cpy_r_r6, cpy_r_r8, 9223372036854775809ULL, 0);
     if (unlikely(cpy_r_r9 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq__", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL8;
+        goto CPyL9;
     }
     cpy_r_r10 = PyObject_RichCompare(cpy_r_r5, cpy_r_r9, 2);
     CPy_DECREF(cpy_r_r5);
     CPy_DECREF(cpy_r_r9);
     if (unlikely(cpy_r_r10 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq__", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL7;
+        goto CPyL8;
     }
     cpy_r_r4 = cpy_r_r10;
 CPyL6: ;
-    return cpy_r_r4;
-CPyL7: ;
-    cpy_r_r11 = NULL;
+    if (unlikely(!PyBool_Check(cpy_r_r4))) {
+        CPy_TypeError("bool", cpy_r_r4); cpy_r_r11 = 2;
+    } else
+        cpy_r_r11 = cpy_r_r4 == Py_True;
+    CPy_DECREF(cpy_r_r4);
+    if (unlikely(cpy_r_r11 == 2)) {
+        CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq__", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
+        goto CPyL8;
+    }
     return cpy_r_r11;
 CPyL8: ;
+    cpy_r_r12 = 2;
+    return cpy_r_r12;
+CPyL9: ;
     CPy_DecRef(cpy_r_r5);
-    goto CPyL7;
+    goto CPyL8;
 }
 
 PyObject *CPyPy__grammar___ABIType_____eq__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -5214,27 +5278,39 @@ PyObject *CPyPy__grammar___ABIType_____eq__(PyObject *self, PyObject *const *arg
         goto fail;
     }
     PyObject *arg_other = obj_other;
-    PyObject *retval = CPyDef__grammar___ABIType_____eq__(arg_self, arg_other);
-    return retval;
+    char retval = CPyDef__grammar___ABIType_____eq__(arg_self, arg_other);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = retval ? Py_True : Py_False;
+    CPy_INCREF(retbox);
+    return retbox;
 fail: ;
     CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq__", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
     return NULL;
 }
 
-PyObject *CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other) {
+char CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other) {
     PyObject *cpy_r_r0;
     PyObject **cpy_r_r2;
     PyObject *cpy_r_r3;
-    PyObject *cpy_r_r4;
+    char cpy_r_r4;
+    char cpy_r_r5;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__eq__' */
     PyObject *cpy_r_r1[2] = {cpy_r_self, cpy_r_other};
     cpy_r_r2 = (PyObject **)&cpy_r_r1;
     cpy_r_r3 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r2, 9223372036854775810ULL, 0);
-    if (cpy_r_r3 == NULL) goto CPyL2;
-    return cpy_r_r3;
-CPyL2: ;
-    cpy_r_r4 = NULL;
+    if (cpy_r_r3 == NULL) goto CPyL3;
+    if (unlikely(!PyBool_Check(cpy_r_r3))) {
+        CPy_TypeError("bool", cpy_r_r3); cpy_r_r4 = 2;
+    } else
+        cpy_r_r4 = cpy_r_r3 == Py_True;
+    CPy_DECREF(cpy_r_r3);
+    if (cpy_r_r4 == 2) goto CPyL3;
     return cpy_r_r4;
+CPyL3: ;
+    cpy_r_r5 = 2;
+    return cpy_r_r5;
 }
 
 PyObject *CPyPy__grammar___ABIType_____eq___3__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -5253,8 +5329,13 @@ PyObject *CPyPy__grammar___ABIType_____eq___3__ABIType_glue(PyObject *self, PyOb
         goto fail;
     }
     PyObject *arg_other = obj_other;
-    PyObject *retval = CPyDef__grammar___ABIType_____eq___3__ABIType_glue(arg_self, arg_other);
-    return retval;
+    char retval = CPyDef__grammar___ABIType_____eq___3__ABIType_glue(arg_self, arg_other);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = retval ? Py_True : Py_False;
+    CPy_INCREF(retbox);
+    return retbox;
 fail: ;
     CPy_AddTraceback("faster_eth_abi/_grammar.py", "__eq____ABIType_glue", -1, CPyStatic__grammar___globals);
     return NULL;
@@ -6136,69 +6217,17 @@ fail: ;
     return NULL;
 }
 
-PyObject *CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs) {
-    PyObject *cpy_r_r0;
-    PyObject *cpy_r_r1;
+char CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs) {
+    char cpy_r_r0;
+    char cpy_r_r1;
     char cpy_r_r2;
-    PyObject *cpy_r_r3;
-    char cpy_r_r4;
-    char cpy_r_r5;
-    PyObject *cpy_r_r6;
-    char cpy_r_r7;
-    int32_t cpy_r_r8;
-    char cpy_r_r9;
-    char cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
-    cpy_r_r0 = CPY_GET_METHOD(cpy_r___mypyc_self__, CPyType__grammar___ABIType, 2, faster_eth_abi____grammar___ABITypeObject, PyObject * (*)(PyObject *, PyObject *))(cpy_r___mypyc_self__, cpy_r_rhs); /* __eq__ */
-    if (cpy_r_r0 == NULL) goto CPyL10;
-    cpy_r_r1 = (PyObject *)&_Py_NotImplementedStruct;
-    cpy_r_r2 = cpy_r_r0 == cpy_r_r1;
-    if (cpy_r_r2) goto CPyL11;
-    cpy_r_r3 = Py_True;
-    cpy_r_r4 = cpy_r_r0 == cpy_r_r3;
-    if (cpy_r_r4) {
-        goto CPyL12;
-    } else
-        goto CPyL4;
-CPyL3: ;
-    cpy_r_r5 = 0;
-    goto CPyL8;
-CPyL4: ;
-    cpy_r_r6 = Py_False;
-    cpy_r_r7 = cpy_r_r0 == cpy_r_r6;
-    if (cpy_r_r7) {
-        goto CPyL13;
-    } else
-        goto CPyL6;
-CPyL5: ;
-    cpy_r_r5 = 1;
-    goto CPyL8;
-CPyL6: ;
-    cpy_r_r8 = PyObject_Not(cpy_r_r0);
-    CPy_DECREF(cpy_r_r0);
-    cpy_r_r9 = cpy_r_r8 >= 0;
-    if (!cpy_r_r9) goto CPyL10;
-    cpy_r_r10 = cpy_r_r8;
-    cpy_r_r5 = cpy_r_r10;
-CPyL8: ;
-    cpy_r_r11 = cpy_r_r5 ? Py_True : Py_False;
-    return cpy_r_r11;
-CPyL9: ;
-    CPy_INCREF(cpy_r_r1);
+    cpy_r_r0 = CPY_GET_METHOD(cpy_r___mypyc_self__, CPyType__grammar___ABIType, 2, faster_eth_abi____grammar___ABITypeObject, char (*)(PyObject *, PyObject *))(cpy_r___mypyc_self__, cpy_r_rhs); /* __eq__ */
+    if (cpy_r_r0 == 2) goto CPyL2;
+    cpy_r_r1 = cpy_r_r0 ^ 1;
     return cpy_r_r1;
-CPyL10: ;
-    cpy_r_r12 = NULL;
-    return cpy_r_r12;
-CPyL11: ;
-    CPy_DECREF(cpy_r_r0);
-    goto CPyL9;
-CPyL12: ;
-    CPy_DECREF(cpy_r_r0);
-    goto CPyL3;
-CPyL13: ;
-    CPy_DECREF(cpy_r_r0);
-    goto CPyL5;
+CPyL2: ;
+    cpy_r_r2 = 2;
+    return cpy_r_r2;
 }
 
 PyObject *CPyPy__grammar___ABIType_____ne__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -6216,9 +6245,20 @@ PyObject *CPyPy__grammar___ABIType_____ne__(PyObject *self, PyObject *const *arg
         CPy_TypeError("faster_eth_abi._grammar.ABIType", obj___mypyc_self__); 
         goto fail;
     }
-    PyObject *arg_rhs = obj_rhs;
-    PyObject *retval = CPyDef__grammar___ABIType_____ne__(arg___mypyc_self__, arg_rhs);
-    return retval;
+    PyObject *arg_rhs;
+    if (likely(PyObject_TypeCheck(obj_rhs, CPyType__grammar___ABIType)))
+        arg_rhs = obj_rhs;
+    else {
+        CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
+        goto fail;
+    }
+    char retval = CPyDef__grammar___ABIType_____ne__(arg___mypyc_self__, arg_rhs);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = retval ? Py_True : Py_False;
+    CPy_INCREF(retbox);
+    return retbox;
 fail: ;
     CPy_AddTraceback("faster_eth_abi/_grammar.py", "__ne__", -1, CPyStatic__grammar___globals);
     return NULL;
@@ -21616,9 +21656,9 @@ PyObject *CPyDef__grammar___ABIType_____repr__(PyObject *cpy_r_self);
 PyObject *CPyPy__grammar___ABIType_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__grammar___ABIType_____repr___3__ABIType_glue(PyObject *cpy_r_self);
 PyObject *CPyPy__grammar___ABIType_____repr___3__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other);
+char CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other);
 PyObject *CPyPy__grammar___ABIType_____eq__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other);
+char CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other);
 PyObject *CPyPy__grammar___ABIType_____eq___3__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__grammar___ABIType___to_type_str(PyObject *cpy_r_self);
 PyObject *CPyPy__grammar___ABIType___to_type_str(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
@@ -21648,7 +21688,7 @@ char CPyDef__grammar___ABIType____has_dynamic_arrlist(PyObject *cpy_r_self);
 PyObject *CPyPy__grammar___ABIType____has_dynamic_arrlist(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__grammar___ABIType____has_dynamic_arrlist__ABIType_glue(PyObject *cpy_r___mypyc_self__);
 PyObject *CPyPy__grammar___ABIType____has_dynamic_arrlist__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs);
+char CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs);
 PyObject *CPyPy__grammar___ABIType_____ne__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__grammar___TupleType_____init__(PyObject *cpy_r_self, PyObject *cpy_r_components, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
 PyObject *CPyPy__grammar___TupleType_____init__(PyObject *self, PyObject *args, PyObject *kw);
