@@ -39,6 +39,9 @@ jobs:
           path: .mypy_cache
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
+      - name: Delete existing build files
+        run: rm -rf build
+        
       - name: Run Mypyc
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1

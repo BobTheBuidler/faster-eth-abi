@@ -16,8 +16,8 @@
 #include "misc_ops.c"
 #include "generic_ops.c"
 #include "pythonsupport.c"
-#include "__native_29859a9e7da9d19bb98c.h"
-#include "__native_internal_29859a9e7da9d19bb98c.h"
+#include "__native_faster_eth_abi.h"
+#include "__native_internal_faster_eth_abi.h"
 static PyMethodDef _codecmodule_methods[] = {
     {"encode_c", (PyCFunction)CPyPy__codec___encode_c, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_c(self, types, args)\n--\n\n") /* docstring */},
     {"decode_c", (PyCFunction)CPyPy__codec___decode_c, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("decode_c(self, types, data, strict=True)\n--\n\n") /* docstring */},
@@ -21872,14 +21872,14 @@ char CPyDef_validation___validate_list_like_param(PyObject *cpy_r_param, PyObjec
 PyObject *CPyPy_validation___validate_list_like_param(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef_validation_____top_level__(void);
 
-static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
+static int exec_faster_eth_abi__mypyc(PyObject *module)
 {
     int res;
     PyObject *capsule;
     PyObject *tmp;
     
     extern PyObject *CPyInit_faster_eth_abi____codec(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____codec, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi____codec", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____codec, "faster_eth_abi__mypyc.init_faster_eth_abi____codec", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21890,7 +21890,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi____decoding(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____decoding, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi____decoding", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____decoding, "faster_eth_abi__mypyc.init_faster_eth_abi____decoding", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21901,7 +21901,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi____encoding(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____encoding, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi____encoding", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____encoding, "faster_eth_abi__mypyc.init_faster_eth_abi____encoding", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21912,7 +21912,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi____grammar(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____grammar, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi____grammar", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi____grammar, "faster_eth_abi__mypyc.init_faster_eth_abi____grammar", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21923,7 +21923,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___abi(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___abi, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___abi", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___abi, "faster_eth_abi__mypyc.init_faster_eth_abi___abi", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21934,7 +21934,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___constants(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___constants, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___constants", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___constants, "faster_eth_abi__mypyc.init_faster_eth_abi___constants", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21945,7 +21945,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___from_type_str(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___from_type_str, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___from_type_str", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___from_type_str, "faster_eth_abi__mypyc.init_faster_eth_abi___from_type_str", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21956,7 +21956,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___packed(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___packed, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___packed", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___packed, "faster_eth_abi__mypyc.init_faster_eth_abi___packed", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21967,7 +21967,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___tools(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___tools, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___tools", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___tools, "faster_eth_abi__mypyc.init_faster_eth_abi___tools", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21978,7 +21978,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___tools____strategies(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___tools____strategies, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___tools____strategies", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___tools____strategies, "faster_eth_abi__mypyc.init_faster_eth_abi___tools____strategies", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -21989,7 +21989,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___utils(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___utils", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils, "faster_eth_abi__mypyc.init_faster_eth_abi___utils", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -22000,7 +22000,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___utils___numeric(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___numeric, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___utils___numeric", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___numeric, "faster_eth_abi__mypyc.init_faster_eth_abi___utils___numeric", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -22011,7 +22011,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___utils___padding(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___padding, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___utils___padding", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___padding, "faster_eth_abi__mypyc.init_faster_eth_abi___utils___padding", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -22022,7 +22022,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___utils___string(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___string, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___utils___string", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___string, "faster_eth_abi__mypyc.init_faster_eth_abi___utils___string", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -22033,7 +22033,7 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_faster_eth_abi___utils___validation(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___validation, "29859a9e7da9d19bb98c__mypyc.init_faster_eth_abi___utils___validation", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___utils___validation, "faster_eth_abi__mypyc.init_faster_eth_abi___utils___validation", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -22047,24 +22047,24 @@ static int exec_29859a9e7da9d19bb98c__mypyc(PyObject *module)
     fail:
     return -1;
 }
-static PyModuleDef module_def_29859a9e7da9d19bb98c__mypyc = {
+static PyModuleDef module_def_faster_eth_abi__mypyc = {
     PyModuleDef_HEAD_INIT,
-    .m_name = "29859a9e7da9d19bb98c__mypyc",
+    .m_name = "faster_eth_abi__mypyc",
     .m_doc = NULL,
     .m_size = -1,
     .m_methods = NULL,
 };
-PyMODINIT_FUNC PyInit_29859a9e7da9d19bb98c__mypyc(void) {
+PyMODINIT_FUNC PyInit_faster_eth_abi__mypyc(void) {
     static PyObject *module = NULL;
     if (module) {
         Py_INCREF(module);
         return module;
     }
-    module = PyModule_Create(&module_def_29859a9e7da9d19bb98c__mypyc);
+    module = PyModule_Create(&module_def_faster_eth_abi__mypyc);
     if (!module) {
         return NULL;
     }
-    if (exec_29859a9e7da9d19bb98c__mypyc(module) < 0) {
+    if (exec_faster_eth_abi__mypyc(module) < 0) {
         Py_DECREF(module);
         return NULL;
     }

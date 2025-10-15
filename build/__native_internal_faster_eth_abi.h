@@ -1,8 +1,8 @@
-#ifndef MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
-#define MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
+#ifndef MYPYC_NATIVE_INTERNAL_faster_eth_abi_H
+#define MYPYC_NATIVE_INTERNAL_faster_eth_abi_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_29859a9e7da9d19bb98c.h"
+#include "__native_faster_eth_abi.h"
 
 int CPyGlobalsInit(void);
 
