@@ -77,6 +77,7 @@ else:
             "--disable-error-code=override",
             "--disable-error-code=unused-ignore",
         ],
+        strict_dunder_typing=True,
     )
 
 
