@@ -41,7 +41,7 @@ jobs:
       TOX_RECREATE_FLAG: ${{ github.event_name == 'schedule' && '-r' || '' }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Use i386/python Docker for all 32-bit Ubuntu jobs (TODO cache some of this)
       - name: Run job in 32-bit Ubuntu Docker container
