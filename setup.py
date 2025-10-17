@@ -76,6 +76,7 @@ else:
             "--install-types",
             "--disable-error-code=override",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=misc",
         ],
         group_name="faster_eth_abi",
         strict_dunder_typing=True,
