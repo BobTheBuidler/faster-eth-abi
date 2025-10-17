@@ -44,7 +44,7 @@ class ValueOutOfBounds(IllegalValue, eth_abi.exceptions.ValueOutOfBounds):
     """
 
 
-class DecodingError(Exception, eth_abi.exceptions.DecodingError):
+class DecodingError(eth_abi.exceptions.DecodingError):
     """
     Base exception for any error that occurs during decoding.
     """
@@ -68,7 +68,7 @@ class InvalidPointer(DecodingError, eth_abi.exceptions.InvalidPointer):
     """
 
 
-class ParseError(parsimonious.ParseError, eth_abi.exceptions.ParseError):  # type: ignore[misc] # subclasses Any
+class ParseError(parsimonious.ParseError, eth_abi.exceptions.ParseError):
     """
     Raised when an ABI type string cannot be parsed.
     """
@@ -88,7 +88,7 @@ class ABITypeError(ValueError, eth_abi.exceptions.ABITypeError):
     """
 
 
-class PredicateMappingError(Exception, eth_abi.exceptions.PredicateMappingError):
+class PredicateMappingError(eth_abi.exceptions.PredicateMappingError):
     """
     Raised when an error occurs in a registry's internal mapping.
     """
