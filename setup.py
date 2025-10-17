@@ -15,7 +15,7 @@ extras_require = {
         "build>=0.9.0",
         "bump_my_version>=0.19.0",
         "ipython",
-        "mypy==1.10.0",
+        f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}",
         "pre-commit>=3.4.0",
         "tox>=4.0.0",
         "twine",
