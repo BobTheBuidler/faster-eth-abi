@@ -68,7 +68,7 @@ class InvalidPointer(DecodingError, eth_abi.exceptions.InvalidPointer):
     """
 
 
-class ParseError(parsimonious.ParseError, eth_abi.exceptions.ParseError):
+class ParseError(eth_abi.exceptions.ParseError):
     """
     Raised when an ABI type string cannot be parsed.
     """
@@ -80,7 +80,7 @@ class ParseError(parsimonious.ParseError, eth_abi.exceptions.ParseError):
         )
 
 
-class ABITypeError(ValueError, eth_abi.exceptions.ABITypeError):
+class ABITypeError(eth_abi.exceptions.ABITypeError):
     """
     Raised when a parsed ABI type has inconsistent properties; for example,
     when trying to parse the type string ``'uint7'`` (which has a bit-width
@@ -94,7 +94,7 @@ class PredicateMappingError(eth_abi.exceptions.PredicateMappingError):
     """
 
 
-class NoEntriesFound(ValueError, PredicateMappingError, eth_abi.exceptions.NoEntriesFound):
+class NoEntriesFound(PredicateMappingError, eth_abi.exceptions.NoEntriesFound):
     """
     Raised when no registration is found for a type string in a registry's
     internal mapping.
@@ -106,7 +106,7 @@ class NoEntriesFound(ValueError, PredicateMappingError, eth_abi.exceptions.NoEnt
     """
 
 
-class MultipleEntriesFound(ValueError, PredicateMappingError, eth_abi.exceptions.MultipleEntriesFound):
+class MultipleEntriesFound(PredicateMappingError, eth_abi.exceptions.MultipleEntriesFound):
     """
     Raised when multiple registrations are found for a type string in a
     registry's internal mapping.  This error is non-recoverable and indicates
