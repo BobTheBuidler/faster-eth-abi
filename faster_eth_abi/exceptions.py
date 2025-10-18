@@ -1,7 +1,11 @@
+# mypy: disable-error-code="misc"
+# cannot subclass `Any`
+
 """
 faster-eth-abi exceptions always inherit from eth-abi exceptions, so porting to faster-eth-abi
 does not require any change to your existing exception handlers. They will continue to work.
 """
+
 import eth_abi.exceptions
 import parsimonious
 
