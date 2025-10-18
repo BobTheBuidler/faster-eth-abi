@@ -71,6 +71,7 @@ else:
             "faster_eth_abi/_grammar.py",
             "faster_eth_abi/abi.py",
             "faster_eth_abi/constants.py",
+            # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
             "faster_eth_abi/from_type_str.py",
             # "faster_eth_abi/io.py",
             "faster_eth_abi/packed.py",
@@ -99,6 +100,7 @@ setup(
     install_requires=[
         "cchecksum>=0.2.6,<0.4",
         "faster-eth-utils>=2.0.0",
+        "eth-abi>=5.0.1,<6",
         "eth-typing>=3.0.0",
         "mypy_extensions",
         "parsimonious>=0.10.0,<0.11.0",
