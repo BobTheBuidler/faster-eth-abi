@@ -67,7 +67,7 @@ else:
             "faster_eth_abi/_grammar.py",
             "faster_eth_abi/abi.py",
             "faster_eth_abi/constants.py",
-            "faster_eth_abi/exceptions.py",
+            # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
             "faster_eth_abi/from_type_str.py",
             # "faster_eth_abi/io.py",
             "faster_eth_abi/packed.py",
@@ -77,7 +77,6 @@ else:
             "--install-types",
             "--disable-error-code=override",
             "--disable-error-code=unused-ignore",
-            "--disable-error-code=misc",
         ],
         group_name="faster_eth_abi",
         strict_dunder_typing=True,
