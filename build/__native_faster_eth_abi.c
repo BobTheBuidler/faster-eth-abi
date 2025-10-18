@@ -470,10 +470,11 @@ CPyTagged CPyDef__decoding___decode_uint_256(PyObject *cpy_r_stream) {
     PyObject *cpy_r_r22;
     PyObject *cpy_r_r23;
     PyObject *cpy_r_r24;
-    PyObject **cpy_r_r26;
-    PyObject *cpy_r_r27;
-    PyObject *cpy_r_r28;
-    CPyTagged cpy_r_r29;
+    PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
+    PyObject **cpy_r_r28;
+    PyObject *cpy_r_r29;
+    CPyTagged cpy_r_r30;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'read' */
     cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 32 */
     PyObject *cpy_r_r2[2] = {cpy_r_stream, cpy_r_r1};
@@ -541,31 +542,32 @@ CPyL7: ;
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_uint_256", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL13;
     }
-    cpy_r_r24 = (PyObject *)CPyType_exceptions___InsufficientDataBytes;
-    PyObject *cpy_r_r25[1] = {cpy_r_r23};
-    cpy_r_r26 = (PyObject **)&cpy_r_r25;
-    cpy_r_r27 = PyObject_Vectorcall(cpy_r_r24, cpy_r_r26, 1, 0);
-    if (unlikely(cpy_r_r27 == NULL)) {
+    cpy_r_r24 = CPyStatic__decoding___globals;
+    cpy_r_r25 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InsufficientDataBytes' */
+    cpy_r_r26 = CPyDict_GetItem(cpy_r_r24, cpy_r_r25);
+    if (unlikely(cpy_r_r26 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_uint_256", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL15;
+    }
+    PyObject *cpy_r_r27[1] = {cpy_r_r23};
+    cpy_r_r28 = (PyObject **)&cpy_r_r27;
+    cpy_r_r29 = PyObject_Vectorcall(cpy_r_r26, cpy_r_r28, 1, 0);
+    CPy_DECREF(cpy_r_r26);
+    if (unlikely(cpy_r_r29 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_uint_256", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL15;
     }
     CPy_DECREF(cpy_r_r23);
-    if (likely(Py_TYPE(cpy_r_r27) == CPyType_exceptions___InsufficientDataBytes))
-        cpy_r_r28 = cpy_r_r27;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decode_uint_256", 41, CPyStatic__decoding___globals, "faster_eth_abi.exceptions.InsufficientDataBytes", cpy_r_r27);
-        goto CPyL13;
-    }
-    CPy_Raise(cpy_r_r28);
-    CPy_DECREF_NO_IMM(cpy_r_r28);
+    CPy_Raise(cpy_r_r29);
+    CPy_DECREF(cpy_r_r29);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_uint_256", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL13;
     }
     CPy_Unreachable();
 CPyL13: ;
-    cpy_r_r29 = CPY_INT_TAG;
-    return cpy_r_r29;
+    cpy_r_r30 = CPY_INT_TAG;
+    return cpy_r_r30;
 CPyL14: ;
     CPy_DecRef(cpy_r_r5);
     goto CPyL13;
@@ -1412,10 +1414,11 @@ PyObject *CPyDef__decoding___read_fixed_byte_size_data_from_stream(PyObject *cpy
     PyObject *cpy_r_r20;
     PyObject *cpy_r_r21;
     PyObject *cpy_r_r22;
-    PyObject **cpy_r_r24;
-    PyObject *cpy_r_r25;
-    PyObject *cpy_r_r26;
+    PyObject *cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject **cpy_r_r26;
     PyObject *cpy_r_r27;
+    PyObject *cpy_r_r28;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'data_byte_size' */
     cpy_r_r1 = CPyObject_GetAttr(cpy_r_self, cpy_r_r0);
     if (unlikely(cpy_r_r1 == NULL)) {
@@ -1487,31 +1490,32 @@ CPyL6: ;
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL13;
     }
-    cpy_r_r22 = (PyObject *)CPyType_exceptions___InsufficientDataBytes;
-    PyObject *cpy_r_r23[1] = {cpy_r_r21};
-    cpy_r_r24 = (PyObject **)&cpy_r_r23;
-    cpy_r_r25 = PyObject_Vectorcall(cpy_r_r22, cpy_r_r24, 1, 0);
-    if (unlikely(cpy_r_r25 == NULL)) {
+    cpy_r_r22 = CPyStatic__decoding___globals;
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InsufficientDataBytes' */
+    cpy_r_r24 = CPyDict_GetItem(cpy_r_r22, cpy_r_r23);
+    if (unlikely(cpy_r_r24 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL19;
+    }
+    PyObject *cpy_r_r25[1] = {cpy_r_r21};
+    cpy_r_r26 = (PyObject **)&cpy_r_r25;
+    cpy_r_r27 = PyObject_Vectorcall(cpy_r_r24, cpy_r_r26, 1, 0);
+    CPy_DECREF(cpy_r_r24);
+    if (unlikely(cpy_r_r27 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL19;
     }
     CPy_DECREF(cpy_r_r21);
-    if (likely(Py_TYPE(cpy_r_r25) == CPyType_exceptions___InsufficientDataBytes))
-        cpy_r_r26 = cpy_r_r25;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", 113, CPyStatic__decoding___globals, "faster_eth_abi.exceptions.InsufficientDataBytes", cpy_r_r25);
-        goto CPyL13;
-    }
-    CPy_Raise(cpy_r_r26);
-    CPy_DECREF_NO_IMM(cpy_r_r26);
+    CPy_Raise(cpy_r_r27);
+    CPy_DECREF(cpy_r_r27);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL13;
     }
     CPy_Unreachable();
 CPyL13: ;
-    cpy_r_r27 = NULL;
-    return cpy_r_r27;
+    cpy_r_r28 = NULL;
+    return cpy_r_r28;
 CPyL14: ;
     CPyTagged_DecRef(cpy_r_r2);
     CPy_DecRef(cpy_r_r4);
@@ -1749,10 +1753,11 @@ char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_s
     CPyPtr cpy_r_r24;
     PyObject *cpy_r_r25;
     PyObject *cpy_r_r26;
-    PyObject **cpy_r_r28;
-    PyObject *cpy_r_r29;
-    PyObject *cpy_r_r30;
-    char cpy_r_r31;
+    PyObject *cpy_r_r27;
+    PyObject *cpy_r_r28;
+    PyObject **cpy_r_r30;
+    PyObject *cpy_r_r31;
+    char cpy_r_r32;
     cpy_r_r0 = CPyDef__decoding___get_value_byte_size(cpy_r_self);
     if (unlikely(cpy_r_r0 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
@@ -1835,23 +1840,24 @@ char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_s
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL16;
     }
-    cpy_r_r26 = (PyObject *)CPyType_exceptions___NonEmptyPaddingBytes;
-    PyObject *cpy_r_r27[1] = {cpy_r_r25};
-    cpy_r_r28 = (PyObject **)&cpy_r_r27;
-    cpy_r_r29 = PyObject_Vectorcall(cpy_r_r26, cpy_r_r28, 1, 0);
-    if (unlikely(cpy_r_r29 == NULL)) {
+    cpy_r_r26 = CPyStatic__decoding___globals;
+    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
+    cpy_r_r28 = CPyDict_GetItem(cpy_r_r26, cpy_r_r27);
+    if (unlikely(cpy_r_r28 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL19;
+    }
+    PyObject *cpy_r_r29[1] = {cpy_r_r25};
+    cpy_r_r30 = (PyObject **)&cpy_r_r29;
+    cpy_r_r31 = PyObject_Vectorcall(cpy_r_r28, cpy_r_r30, 1, 0);
+    CPy_DECREF(cpy_r_r28);
+    if (unlikely(cpy_r_r31 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL19;
     }
     CPy_DECREF(cpy_r_r25);
-    if (likely(Py_TYPE(cpy_r_r29) == CPyType_exceptions___NonEmptyPaddingBytes))
-        cpy_r_r30 = cpy_r_r29;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 146, CPyStatic__decoding___globals, "faster_eth_abi.exceptions.NonEmptyPaddingBytes", cpy_r_r29);
-        goto CPyL16;
-    }
-    CPy_Raise(cpy_r_r30);
-    CPy_DECREF_NO_IMM(cpy_r_r30);
+    CPy_Raise(cpy_r_r31);
+    CPy_DECREF(cpy_r_r31);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL16;
@@ -1860,8 +1866,8 @@ char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_s
 CPyL15: ;
     return 1;
 CPyL16: ;
-    cpy_r_r31 = 2;
-    return cpy_r_r31;
+    cpy_r_r32 = 2;
+    return cpy_r_r32;
 CPyL17: ;
     CPyTagged_DecRef(cpy_r_r0);
     goto CPyL16;
@@ -1926,10 +1932,11 @@ char CPyDef__decoding___decoder_fn_boolean(PyObject *cpy_r_data) {
     CPyPtr cpy_r_r20;
     PyObject *cpy_r_r21;
     PyObject *cpy_r_r22;
-    PyObject **cpy_r_r24;
-    PyObject *cpy_r_r25;
-    PyObject *cpy_r_r26;
-    char cpy_r_r27;
+    PyObject *cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject **cpy_r_r26;
+    PyObject *cpy_r_r27;
+    char cpy_r_r28;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
     cpy_r_r1 = CPyBytes_Compare(cpy_r_data, cpy_r_r0);
     cpy_r_r2 = cpy_r_r1 >= 0;
@@ -1987,31 +1994,32 @@ CPyL6: ;
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL14;
     }
-    cpy_r_r22 = (PyObject *)CPyType_exceptions___NonEmptyPaddingBytes;
-    PyObject *cpy_r_r23[1] = {cpy_r_r21};
-    cpy_r_r24 = (PyObject **)&cpy_r_r23;
-    cpy_r_r25 = PyObject_Vectorcall(cpy_r_r22, cpy_r_r24, 1, 0);
-    if (unlikely(cpy_r_r25 == NULL)) {
+    cpy_r_r22 = CPyStatic__decoding___globals;
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
+    cpy_r_r24 = CPyDict_GetItem(cpy_r_r22, cpy_r_r23);
+    if (unlikely(cpy_r_r24 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL16;
+    }
+    PyObject *cpy_r_r25[1] = {cpy_r_r21};
+    cpy_r_r26 = (PyObject **)&cpy_r_r25;
+    cpy_r_r27 = PyObject_Vectorcall(cpy_r_r24, cpy_r_r26, 1, 0);
+    CPy_DECREF(cpy_r_r24);
+    if (unlikely(cpy_r_r27 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL16;
     }
     CPy_DECREF(cpy_r_r21);
-    if (likely(Py_TYPE(cpy_r_r25) == CPyType_exceptions___NonEmptyPaddingBytes))
-        cpy_r_r26 = cpy_r_r25;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", 155, CPyStatic__decoding___globals, "faster_eth_abi.exceptions.NonEmptyPaddingBytes", cpy_r_r25);
-        goto CPyL14;
-    }
-    CPy_Raise(cpy_r_r26);
-    CPy_DECREF_NO_IMM(cpy_r_r26);
+    CPy_Raise(cpy_r_r27);
+    CPy_DECREF(cpy_r_r27);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL14;
     }
     CPy_Unreachable();
 CPyL14: ;
-    cpy_r_r27 = 2;
-    return cpy_r_r27;
+    cpy_r_r28 = 2;
+    return cpy_r_r28;
 CPyL15: ;
     CPy_DecRef(cpy_r_r16);
     goto CPyL14;
@@ -5667,10 +5675,11 @@ PyObject *CPyDef__grammar___ABIType___invalidate(PyObject *cpy_r_self, PyObject 
     PyObject *cpy_r_r18;
     PyObject *cpy_r_r19;
     PyObject *cpy_r_r20;
-    PyObject **cpy_r_r22;
-    PyObject *cpy_r_r23;
-    PyObject *cpy_r_r24;
+    PyObject *cpy_r_r21;
+    PyObject *cpy_r_r22;
+    PyObject **cpy_r_r24;
     PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
     cpy_r_r0 = ((faster_eth_abi____grammar___ABITypeObject *)cpy_r_self)->_node;
     if (unlikely(cpy_r_r0 == NULL)) {
         CPy_AttributeError("faster_eth_abi/_grammar.py", "invalidate", "ABIType", "node", 112, CPyStatic__grammar___globals);
@@ -5741,31 +5750,32 @@ CPyL1: ;
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "invalidate", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
         goto CPyL16;
     }
-    cpy_r_r20 = (PyObject *)CPyType_exceptions___ABITypeError;
-    PyObject *cpy_r_r21[1] = {cpy_r_r19};
-    cpy_r_r22 = (PyObject **)&cpy_r_r21;
-    cpy_r_r23 = PyObject_Vectorcall(cpy_r_r20, cpy_r_r22, 1, 0);
-    if (unlikely(cpy_r_r23 == NULL)) {
+    cpy_r_r20 = CPyStatic__grammar___globals;
+    cpy_r_r21 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ABITypeError' */
+    cpy_r_r22 = CPyDict_GetItem(cpy_r_r20, cpy_r_r21);
+    if (unlikely(cpy_r_r22 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_grammar.py", "invalidate", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
+        goto CPyL20;
+    }
+    PyObject *cpy_r_r23[1] = {cpy_r_r19};
+    cpy_r_r24 = (PyObject **)&cpy_r_r23;
+    cpy_r_r25 = PyObject_Vectorcall(cpy_r_r22, cpy_r_r24, 1, 0);
+    CPy_DECREF(cpy_r_r22);
+    if (unlikely(cpy_r_r25 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "invalidate", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
         goto CPyL20;
     }
     CPy_DECREF(cpy_r_r19);
-    if (likely(Py_TYPE(cpy_r_r23) == CPyType_exceptions___ABITypeError))
-        cpy_r_r24 = cpy_r_r23;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "invalidate", 114, CPyStatic__grammar___globals, "faster_eth_abi.exceptions.ABITypeError", cpy_r_r23);
-        goto CPyL16;
-    }
-    CPy_Raise(cpy_r_r24);
-    CPy_DECREF_NO_IMM(cpy_r_r24);
+    CPy_Raise(cpy_r_r25);
+    CPy_DECREF(cpy_r_r25);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "invalidate", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
         goto CPyL16;
     }
     CPy_Unreachable();
 CPyL16: ;
-    cpy_r_r25 = NULL;
-    return cpy_r_r25;
+    cpy_r_r26 = NULL;
+    return cpy_r_r26;
 CPyL17: ;
     CPy_DecRef(cpy_r_r0);
     goto CPyL16;
@@ -10565,1595 +10575,6 @@ CPyL3: ;
 CPyL8: ;
     cpy_r_r27 = 2;
     return cpy_r_r27;
-}
-
-PyMemberDef exceptions___EncodingError_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___EncodingError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___EncodingError_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___EncodingError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "EncodingError",
-    .tp_getset = exceptions___EncodingError_getseters,
-    .tp_methods = exceptions___EncodingError_methods,
-    .tp_members = exceptions___EncodingError_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("EncodingError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___EncodingError_template = &CPyType_exceptions___EncodingError_template_;
-
-
-PyMemberDef exceptions___EncodingTypeError_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___EncodingTypeError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___EncodingTypeError_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___EncodingTypeError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "EncodingTypeError",
-    .tp_getset = exceptions___EncodingTypeError_getseters,
-    .tp_methods = exceptions___EncodingTypeError_methods,
-    .tp_members = exceptions___EncodingTypeError_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("EncodingTypeError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___EncodingTypeError_template = &CPyType_exceptions___EncodingTypeError_template_;
-
-
-PyMemberDef exceptions___IllegalValue_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___IllegalValue_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___IllegalValue_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___IllegalValue_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "IllegalValue",
-    .tp_getset = exceptions___IllegalValue_getseters,
-    .tp_methods = exceptions___IllegalValue_methods,
-    .tp_members = exceptions___IllegalValue_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("IllegalValue()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___IllegalValue_template = &CPyType_exceptions___IllegalValue_template_;
-
-
-PyMemberDef exceptions___ValueOutOfBounds_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___ValueOutOfBounds_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___ValueOutOfBounds_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___ValueOutOfBounds_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "ValueOutOfBounds",
-    .tp_getset = exceptions___ValueOutOfBounds_getseters,
-    .tp_methods = exceptions___ValueOutOfBounds_methods,
-    .tp_members = exceptions___ValueOutOfBounds_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("ValueOutOfBounds()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___ValueOutOfBounds_template = &CPyType_exceptions___ValueOutOfBounds_template_;
-
-
-PyMemberDef exceptions___DecodingError_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___DecodingError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___DecodingError_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___DecodingError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "DecodingError",
-    .tp_getset = exceptions___DecodingError_getseters,
-    .tp_methods = exceptions___DecodingError_methods,
-    .tp_members = exceptions___DecodingError_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("DecodingError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___DecodingError_template = &CPyType_exceptions___DecodingError_template_;
-
-
-PyMemberDef exceptions___InsufficientDataBytes_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___InsufficientDataBytes_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___InsufficientDataBytes_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___InsufficientDataBytes_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "InsufficientDataBytes",
-    .tp_getset = exceptions___InsufficientDataBytes_getseters,
-    .tp_methods = exceptions___InsufficientDataBytes_methods,
-    .tp_members = exceptions___InsufficientDataBytes_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("InsufficientDataBytes()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___InsufficientDataBytes_template = &CPyType_exceptions___InsufficientDataBytes_template_;
-
-
-PyMemberDef exceptions___NonEmptyPaddingBytes_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___NonEmptyPaddingBytes_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___NonEmptyPaddingBytes_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___NonEmptyPaddingBytes_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "NonEmptyPaddingBytes",
-    .tp_getset = exceptions___NonEmptyPaddingBytes_getseters,
-    .tp_methods = exceptions___NonEmptyPaddingBytes_methods,
-    .tp_members = exceptions___NonEmptyPaddingBytes_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("NonEmptyPaddingBytes()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___NonEmptyPaddingBytes_template = &CPyType_exceptions___NonEmptyPaddingBytes_template_;
-
-
-PyMemberDef exceptions___InvalidPointer_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___InvalidPointer_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___InvalidPointer_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___InvalidPointer_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "InvalidPointer",
-    .tp_getset = exceptions___InvalidPointer_getseters,
-    .tp_methods = exceptions___InvalidPointer_methods,
-    .tp_members = exceptions___InvalidPointer_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("InvalidPointer()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___InvalidPointer_template = &CPyType_exceptions___InvalidPointer_template_;
-
-
-PyObject *CPyDef_exceptions_____mypyc__ParseError_setup(PyObject *cpy_r_type);
-PyObject *CPyDef_exceptions___ParseError(void);
-
-static PyObject *
-exceptions___ParseError_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-{
-    if (type != CPyType_exceptions___ParseError) {
-        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-        return NULL;
-    }
-    PyObject *self = CPyDef_exceptions_____mypyc__ParseError_setup((PyObject*)type);
-    if (self == NULL)
-        return NULL;
-    return self;
-}
-
-static int
-exceptions___ParseError_traverse(faster_eth_abi___exceptions___ParseErrorObject *self, visitproc visit, void *arg)
-{
-    PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-    return 0;
-}
-
-static int
-exceptions___ParseError_clear(faster_eth_abi___exceptions___ParseErrorObject *self)
-{
-    PyObject_ClearManagedDict((PyObject *)self);
-    return 0;
-}
-
-static void
-exceptions___ParseError_dealloc(faster_eth_abi___exceptions___ParseErrorObject *self)
-{
-    PyObject_GC_UnTrack(self);
-    CPy_TRASHCAN_BEGIN(self, exceptions___ParseError_dealloc)
-    exceptions___ParseError_clear(self);
-    Py_TYPE(self)->tp_free((PyObject *)self);
-    CPy_TRASHCAN_END(self)
-}
-
-static CPyVTableItem exceptions___ParseError_vtable[1];
-static bool
-CPyDef_exceptions___ParseError_trait_vtable_setup(void)
-{
-    CPyVTableItem exceptions___ParseError_vtable_scratch[] = {
-        (CPyVTableItem)CPyDef_exceptions___ParseError_____str__,
-    };
-    memcpy(exceptions___ParseError_vtable, exceptions___ParseError_vtable_scratch, sizeof(exceptions___ParseError_vtable));
-    return 1;
-}
-
-
-static PyGetSetDef exceptions___ParseError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___ParseError_methods[] = {
-    {"__str__",
-     (PyCFunction)CPyPy_exceptions___ParseError_____str__,
-     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__str__($self, /)\n--\n\n")},
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___ParseError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "ParseError",
-    .tp_new = exceptions___ParseError_new,
-    .tp_dealloc = (destructor)exceptions___ParseError_dealloc,
-    .tp_traverse = (traverseproc)exceptions___ParseError_traverse,
-    .tp_clear = (inquiry)exceptions___ParseError_clear,
-    .tp_getset = exceptions___ParseError_getseters,
-    .tp_methods = exceptions___ParseError_methods,
-    .tp_str = CPyDef_exceptions___ParseError_____str__,
-    .tp_basicsize = sizeof(faster_eth_abi___exceptions___ParseErrorObject),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_MANAGED_DICT,
-    .tp_doc = PyDoc_STR("ParseError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___ParseError_template = &CPyType_exceptions___ParseError_template_;
-
-PyObject *CPyDef_exceptions_____mypyc__ParseError_setup(PyObject *cpy_r_type)
-{
-    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
-    faster_eth_abi___exceptions___ParseErrorObject *self;
-    self = (faster_eth_abi___exceptions___ParseErrorObject *)type->tp_alloc(type, 0);
-    if (self == NULL)
-        return NULL;
-    self->vtable = exceptions___ParseError_vtable;
-    return (PyObject *)self;
-}
-
-PyObject *CPyDef_exceptions___ParseError(void)
-{
-    PyObject *self = CPyDef_exceptions_____mypyc__ParseError_setup((PyObject *)CPyType_exceptions___ParseError);
-    if (self == NULL)
-        return NULL;
-    return self;
-}
-
-
-PyMemberDef exceptions___ABITypeError_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___ABITypeError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___ABITypeError_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___ABITypeError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "ABITypeError",
-    .tp_getset = exceptions___ABITypeError_getseters,
-    .tp_methods = exceptions___ABITypeError_methods,
-    .tp_members = exceptions___ABITypeError_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("ABITypeError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___ABITypeError_template = &CPyType_exceptions___ABITypeError_template_;
-
-
-PyMemberDef exceptions___PredicateMappingError_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___PredicateMappingError_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___PredicateMappingError_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___PredicateMappingError_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "PredicateMappingError",
-    .tp_getset = exceptions___PredicateMappingError_getseters,
-    .tp_methods = exceptions___PredicateMappingError_methods,
-    .tp_members = exceptions___PredicateMappingError_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("PredicateMappingError()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___PredicateMappingError_template = &CPyType_exceptions___PredicateMappingError_template_;
-
-
-PyMemberDef exceptions___NoEntriesFound_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___NoEntriesFound_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___NoEntriesFound_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___NoEntriesFound_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "NoEntriesFound",
-    .tp_getset = exceptions___NoEntriesFound_getseters,
-    .tp_methods = exceptions___NoEntriesFound_methods,
-    .tp_members = exceptions___NoEntriesFound_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("NoEntriesFound()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___NoEntriesFound_template = &CPyType_exceptions___NoEntriesFound_template_;
-
-
-PyMemberDef exceptions___MultipleEntriesFound_members[] = {
-    {"__dict__", T_OBJECT_EX, sizeof(PyBaseExceptionObject), 0, NULL},
-    {"__weakref__", T_OBJECT_EX, sizeof(PyBaseExceptionObject) + sizeof(PyObject *), 0, NULL},
-    {0}
-};
-
-static PyGetSetDef exceptions___MultipleEntriesFound_getseters[] = {
-    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
-    {NULL}  /* Sentinel */
-};
-
-static PyMethodDef exceptions___MultipleEntriesFound_methods[] = {
-    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
-    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
-    {NULL}  /* Sentinel */
-};
-
-static PyTypeObject CPyType_exceptions___MultipleEntriesFound_template_ = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "MultipleEntriesFound",
-    .tp_getset = exceptions___MultipleEntriesFound_getseters,
-    .tp_methods = exceptions___MultipleEntriesFound_methods,
-    .tp_members = exceptions___MultipleEntriesFound_members,
-    .tp_basicsize = sizeof(PyBaseExceptionObject) + 2*sizeof(PyObject *),
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE,
-    .tp_doc = PyDoc_STR("MultipleEntriesFound()\n--\n\n"),
-};
-static PyTypeObject *CPyType_exceptions___MultipleEntriesFound_template = &CPyType_exceptions___MultipleEntriesFound_template_;
-
-static PyMethodDef exceptionsmodule_methods[] = {
-    {NULL, NULL, 0, NULL}
-};
-
-int CPyExec_faster_eth_abi___exceptions(PyObject *module)
-{
-    PyObject* modname = NULL;
-    modname = PyObject_GetAttrString((PyObject *)CPyModule_faster_eth_abi___exceptions__internal, "__name__");
-    CPyStatic_exceptions___globals = PyModule_GetDict(CPyModule_faster_eth_abi___exceptions__internal);
-    if (unlikely(CPyStatic_exceptions___globals == NULL))
-        goto fail;
-    if (CPyGlobalsInit() < 0)
-        goto fail;
-    char result = CPyDef_exceptions_____top_level__();
-    if (result == 2)
-        goto fail;
-    Py_DECREF(modname);
-    return 0;
-    fail:
-    Py_CLEAR(CPyModule_faster_eth_abi___exceptions__internal);
-    Py_CLEAR(modname);
-    Py_CLEAR(CPyType_exceptions___EncodingError);
-    Py_CLEAR(CPyType_exceptions___EncodingTypeError);
-    Py_CLEAR(CPyType_exceptions___IllegalValue);
-    Py_CLEAR(CPyType_exceptions___ValueOutOfBounds);
-    Py_CLEAR(CPyType_exceptions___DecodingError);
-    Py_CLEAR(CPyType_exceptions___InsufficientDataBytes);
-    Py_CLEAR(CPyType_exceptions___NonEmptyPaddingBytes);
-    Py_CLEAR(CPyType_exceptions___InvalidPointer);
-    Py_CLEAR(CPyType_exceptions___ParseError);
-    Py_CLEAR(CPyType_exceptions___ABITypeError);
-    Py_CLEAR(CPyType_exceptions___PredicateMappingError);
-    Py_CLEAR(CPyType_exceptions___NoEntriesFound);
-    Py_CLEAR(CPyType_exceptions___MultipleEntriesFound);
-    return -1;
-}
-static struct PyModuleDef exceptionsmodule = {
-    PyModuleDef_HEAD_INIT,
-    "faster_eth_abi.exceptions",
-    NULL, /* docstring */
-    0,       /* size of per-interpreter state of the module */
-    exceptionsmodule_methods,
-    NULL,
-};
-
-PyObject *CPyInit_faster_eth_abi___exceptions(void)
-{
-    if (CPyModule_faster_eth_abi___exceptions__internal) {
-        Py_INCREF(CPyModule_faster_eth_abi___exceptions__internal);
-        return CPyModule_faster_eth_abi___exceptions__internal;
-    }
-    CPyModule_faster_eth_abi___exceptions__internal = PyModule_Create(&exceptionsmodule);
-    if (unlikely(CPyModule_faster_eth_abi___exceptions__internal == NULL))
-        goto fail;
-    if (CPyExec_faster_eth_abi___exceptions(CPyModule_faster_eth_abi___exceptions__internal) != 0)
-        goto fail;
-    return CPyModule_faster_eth_abi___exceptions__internal;
-    fail:
-    return NULL;
-}
-
-PyObject *CPyDef_exceptions___ParseError_____str__(PyObject *cpy_r_self) {
-    PyObject *cpy_r_r0;
-    PyObject *cpy_r_r1;
-    PyObject *cpy_r_r2;
-    PyObject *cpy_r_r3;
-    PyObject *cpy_r_r4;
-    PyObject *cpy_r_r5;
-    PyObject *cpy_r_r6;
-    PyObject *cpy_r_r7;
-    PyObject *cpy_r_r8;
-    PyObject *cpy_r_r9;
-    PyObject *cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
-    PyObject *cpy_r_r13;
-    PyObject *cpy_r_r14;
-    PyObject **cpy_r_r16;
-    PyObject *cpy_r_r17;
-    PyObject *cpy_r_r18;
-    PyObject *cpy_r_r19;
-    PyObject *cpy_r_r20;
-    PyObject *cpy_r_r21;
-    PyObject *cpy_r_r22;
-    PyObject *cpy_r_r23;
-    PyObject *cpy_r_r24;
-    PyObject *cpy_r_r25;
-    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* "Parse error at '" */
-    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'text' */
-    cpy_r_r2 = CPyObject_GetAttr(cpy_r_self, cpy_r_r1);
-    if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL13;
-    }
-    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'pos' */
-    cpy_r_r4 = CPyObject_GetAttr(cpy_r_self, cpy_r_r3);
-    if (unlikely(cpy_r_r4 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL14;
-    }
-    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'pos' */
-    cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
-    if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL15;
-    }
-    cpy_r_r7 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 5 */
-    cpy_r_r8 = PyNumber_Add(cpy_r_r6, cpy_r_r7);
-    CPy_DECREF(cpy_r_r6);
-    if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL15;
-    }
-    cpy_r_r9 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r10 = PySlice_New(cpy_r_r4, cpy_r_r8, cpy_r_r9);
-    CPy_DECREF(cpy_r_r4);
-    CPy_DECREF(cpy_r_r8);
-    if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL14;
-    }
-    cpy_r_r11 = PyObject_GetItem(cpy_r_r2, cpy_r_r10);
-    CPy_DECREF(cpy_r_r2);
-    CPy_DECREF(cpy_r_r10);
-    if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL13;
-    }
-    cpy_r_r12 = PyObject_Str(cpy_r_r11);
-    CPy_DECREF(cpy_r_r11);
-    if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL13;
-    }
-    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* "' (column " */
-    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'column' */
-    PyObject *cpy_r_r15[1] = {cpy_r_self};
-    cpy_r_r16 = (PyObject **)&cpy_r_r15;
-    cpy_r_r17 = PyObject_VectorcallMethod(cpy_r_r14, cpy_r_r16, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL16;
-    }
-    cpy_r_r18 = PyObject_Str(cpy_r_r17);
-    CPy_DECREF(cpy_r_r17);
-    if (unlikely(cpy_r_r18 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL16;
-    }
-    cpy_r_r19 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ") in type string '" */
-    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'text' */
-    cpy_r_r21 = CPyObject_GetAttr(cpy_r_self, cpy_r_r20);
-    if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL17;
-    }
-    cpy_r_r22 = PyObject_Str(cpy_r_r21);
-    CPy_DECREF(cpy_r_r21);
-    if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL17;
-    }
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* "'" */
-    cpy_r_r24 = CPyStr_Build(7, cpy_r_r0, cpy_r_r12, cpy_r_r13, cpy_r_r18, cpy_r_r19, cpy_r_r22, cpy_r_r23);
-    CPy_DECREF(cpy_r_r12);
-    CPy_DECREF(cpy_r_r18);
-    CPy_DECREF(cpy_r_r22);
-    if (unlikely(cpy_r_r24 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL13;
-    }
-    return cpy_r_r24;
-CPyL13: ;
-    cpy_r_r25 = NULL;
-    return cpy_r_r25;
-CPyL14: ;
-    CPy_DecRef(cpy_r_r2);
-    goto CPyL13;
-CPyL15: ;
-    CPy_DecRef(cpy_r_r2);
-    CPy_DecRef(cpy_r_r4);
-    goto CPyL13;
-CPyL16: ;
-    CPy_DecRef(cpy_r_r12);
-    goto CPyL13;
-CPyL17: ;
-    CPy_DecRef(cpy_r_r12);
-    CPy_DecRef(cpy_r_r18);
-    goto CPyL13;
-}
-
-PyObject *CPyPy_exceptions___ParseError_____str__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
-    PyObject *obj_self = self;
-    static const char * const kwlist[] = {0};
-    static CPyArg_Parser parser = {":__str__", kwlist, 0};
-    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
-        return NULL;
-    }
-    PyObject *arg_self;
-    if (likely(Py_TYPE(obj_self) == CPyType_exceptions___ParseError))
-        arg_self = obj_self;
-    else {
-        CPy_TypeError("faster_eth_abi.exceptions.ParseError", obj_self); 
-        goto fail;
-    }
-    PyObject *retval = CPyDef_exceptions___ParseError_____str__(arg_self);
-    return retval;
-fail: ;
-    CPy_AddTraceback("faster_eth_abi/exceptions.py", "__str__", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-    return NULL;
-}
-
-char CPyDef_exceptions_____top_level__(void) {
-    PyObject *cpy_r_r0;
-    PyObject *cpy_r_r1;
-    char cpy_r_r2;
-    PyObject *cpy_r_r3;
-    PyObject *cpy_r_r4;
-    PyObject **cpy_r_r5;
-    PyObject **cpy_r_r6;
-    void *cpy_r_r8;
-    void *cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
-    PyObject *cpy_r_r13;
-    PyObject *cpy_r_r14;
-    char cpy_r_r15;
-    PyObject *cpy_r_r16;
-    PyObject *cpy_r_r17;
-    PyObject *cpy_r_r18;
-    PyObject *cpy_r_r19;
-    PyObject *cpy_r_r20;
-    PyObject *cpy_r_r21;
-    PyObject *cpy_r_r22;
-    PyObject *cpy_r_r23;
-    PyObject *cpy_r_r24;
-    PyObject *cpy_r_r25;
-    int32_t cpy_r_r26;
-    char cpy_r_r27;
-    PyObject *cpy_r_r28;
-    PyObject *cpy_r_r29;
-    int32_t cpy_r_r30;
-    char cpy_r_r31;
-    PyObject *cpy_r_r32;
-    PyObject *cpy_r_r33;
-    PyObject *cpy_r_r34;
-    PyObject *cpy_r_r35;
-    PyObject *cpy_r_r36;
-    PyObject *cpy_r_r37;
-    PyObject *cpy_r_r38;
-    PyObject *cpy_r_r39;
-    PyObject *cpy_r_r40;
-    PyObject *cpy_r_r41;
-    PyObject *cpy_r_r42;
-    int32_t cpy_r_r43;
-    char cpy_r_r44;
-    PyObject *cpy_r_r45;
-    PyObject *cpy_r_r46;
-    int32_t cpy_r_r47;
-    char cpy_r_r48;
-    PyObject *cpy_r_r49;
-    PyObject *cpy_r_r50;
-    PyObject *cpy_r_r51;
-    PyObject *cpy_r_r52;
-    PyObject *cpy_r_r53;
-    PyObject *cpy_r_r54;
-    PyObject *cpy_r_r55;
-    PyObject *cpy_r_r56;
-    PyObject *cpy_r_r57;
-    PyObject *cpy_r_r58;
-    PyObject *cpy_r_r59;
-    int32_t cpy_r_r60;
-    char cpy_r_r61;
-    PyObject *cpy_r_r62;
-    PyObject *cpy_r_r63;
-    int32_t cpy_r_r64;
-    char cpy_r_r65;
-    PyObject *cpy_r_r66;
-    PyObject *cpy_r_r67;
-    PyObject *cpy_r_r68;
-    PyObject *cpy_r_r69;
-    PyObject *cpy_r_r70;
-    PyObject *cpy_r_r71;
-    PyObject *cpy_r_r72;
-    PyObject *cpy_r_r73;
-    PyObject *cpy_r_r74;
-    PyObject *cpy_r_r75;
-    PyObject *cpy_r_r76;
-    int32_t cpy_r_r77;
-    char cpy_r_r78;
-    PyObject *cpy_r_r79;
-    PyObject *cpy_r_r80;
-    int32_t cpy_r_r81;
-    char cpy_r_r82;
-    PyObject *cpy_r_r83;
-    PyObject *cpy_r_r84;
-    PyObject *cpy_r_r85;
-    PyObject *cpy_r_r86;
-    PyObject *cpy_r_r87;
-    PyObject *cpy_r_r88;
-    PyObject *cpy_r_r89;
-    PyObject *cpy_r_r90;
-    PyObject *cpy_r_r91;
-    PyObject *cpy_r_r92;
-    int32_t cpy_r_r93;
-    char cpy_r_r94;
-    PyObject *cpy_r_r95;
-    PyObject *cpy_r_r96;
-    int32_t cpy_r_r97;
-    char cpy_r_r98;
-    PyObject *cpy_r_r99;
-    PyObject *cpy_r_r100;
-    PyObject *cpy_r_r101;
-    PyObject *cpy_r_r102;
-    PyObject *cpy_r_r103;
-    PyObject *cpy_r_r104;
-    PyObject *cpy_r_r105;
-    PyObject *cpy_r_r106;
-    PyObject *cpy_r_r107;
-    PyObject *cpy_r_r108;
-    PyObject *cpy_r_r109;
-    int32_t cpy_r_r110;
-    char cpy_r_r111;
-    PyObject *cpy_r_r112;
-    PyObject *cpy_r_r113;
-    int32_t cpy_r_r114;
-    char cpy_r_r115;
-    PyObject *cpy_r_r116;
-    PyObject *cpy_r_r117;
-    PyObject *cpy_r_r118;
-    PyObject *cpy_r_r119;
-    PyObject *cpy_r_r120;
-    PyObject *cpy_r_r121;
-    PyObject *cpy_r_r122;
-    PyObject *cpy_r_r123;
-    PyObject *cpy_r_r124;
-    PyObject *cpy_r_r125;
-    PyObject *cpy_r_r126;
-    int32_t cpy_r_r127;
-    char cpy_r_r128;
-    PyObject *cpy_r_r129;
-    PyObject *cpy_r_r130;
-    int32_t cpy_r_r131;
-    char cpy_r_r132;
-    PyObject *cpy_r_r133;
-    PyObject *cpy_r_r134;
-    PyObject *cpy_r_r135;
-    PyObject *cpy_r_r136;
-    PyObject *cpy_r_r137;
-    PyObject *cpy_r_r138;
-    PyObject *cpy_r_r139;
-    PyObject *cpy_r_r140;
-    PyObject *cpy_r_r141;
-    PyObject *cpy_r_r142;
-    PyObject *cpy_r_r143;
-    int32_t cpy_r_r144;
-    char cpy_r_r145;
-    PyObject *cpy_r_r146;
-    PyObject *cpy_r_r147;
-    int32_t cpy_r_r148;
-    char cpy_r_r149;
-    PyObject *cpy_r_r150;
-    PyObject *cpy_r_r151;
-    PyObject *cpy_r_r152;
-    PyObject *cpy_r_r153;
-    PyObject *cpy_r_r154;
-    PyObject *cpy_r_r155;
-    PyObject *cpy_r_r156;
-    char cpy_r_r157;
-    PyObject *cpy_r_r158;
-    PyObject *cpy_r_r159;
-    PyObject *cpy_r_r160;
-    int32_t cpy_r_r161;
-    char cpy_r_r162;
-    PyObject *cpy_r_r163;
-    PyObject *cpy_r_r164;
-    int32_t cpy_r_r165;
-    char cpy_r_r166;
-    PyObject *cpy_r_r167;
-    PyObject *cpy_r_r168;
-    PyObject *cpy_r_r169;
-    PyObject *cpy_r_r170;
-    PyObject *cpy_r_r171;
-    PyObject *cpy_r_r172;
-    PyObject *cpy_r_r173;
-    PyObject *cpy_r_r174;
-    PyObject *cpy_r_r175;
-    PyObject *cpy_r_r176;
-    int32_t cpy_r_r177;
-    char cpy_r_r178;
-    PyObject *cpy_r_r179;
-    PyObject *cpy_r_r180;
-    int32_t cpy_r_r181;
-    char cpy_r_r182;
-    PyObject *cpy_r_r183;
-    PyObject *cpy_r_r184;
-    PyObject *cpy_r_r185;
-    PyObject *cpy_r_r186;
-    PyObject *cpy_r_r187;
-    PyObject *cpy_r_r188;
-    PyObject *cpy_r_r189;
-    PyObject *cpy_r_r190;
-    PyObject *cpy_r_r191;
-    PyObject *cpy_r_r192;
-    int32_t cpy_r_r193;
-    char cpy_r_r194;
-    PyObject *cpy_r_r195;
-    PyObject *cpy_r_r196;
-    int32_t cpy_r_r197;
-    char cpy_r_r198;
-    PyObject *cpy_r_r199;
-    PyObject *cpy_r_r200;
-    PyObject *cpy_r_r201;
-    PyObject *cpy_r_r202;
-    PyObject *cpy_r_r203;
-    PyObject *cpy_r_r204;
-    PyObject *cpy_r_r205;
-    PyObject *cpy_r_r206;
-    PyObject *cpy_r_r207;
-    PyObject *cpy_r_r208;
-    PyObject *cpy_r_r209;
-    int32_t cpy_r_r210;
-    char cpy_r_r211;
-    PyObject *cpy_r_r212;
-    PyObject *cpy_r_r213;
-    int32_t cpy_r_r214;
-    char cpy_r_r215;
-    PyObject *cpy_r_r216;
-    PyObject *cpy_r_r217;
-    PyObject *cpy_r_r218;
-    PyObject *cpy_r_r219;
-    PyObject *cpy_r_r220;
-    PyObject *cpy_r_r221;
-    PyObject *cpy_r_r222;
-    PyObject *cpy_r_r223;
-    PyObject *cpy_r_r224;
-    PyObject *cpy_r_r225;
-    PyObject *cpy_r_r226;
-    int32_t cpy_r_r227;
-    char cpy_r_r228;
-    PyObject *cpy_r_r229;
-    PyObject *cpy_r_r230;
-    int32_t cpy_r_r231;
-    char cpy_r_r232;
-    char cpy_r_r233;
-    cpy_r_r0 = CPyModule_builtins;
-    cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
-    if (cpy_r_r2) goto CPyL3;
-    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'builtins' */
-    cpy_r_r4 = PyImport_Import(cpy_r_r3);
-    if (unlikely(cpy_r_r4 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", -1, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    CPyModule_builtins = cpy_r_r4;
-    CPy_INCREF(CPyModule_builtins);
-    CPy_DECREF(cpy_r_r4);
-CPyL3: ;
-    cpy_r_r5 = (PyObject **)&CPyModule_eth_abi___exceptions;
-    cpy_r_r6 = (PyObject **)&CPyModule_parsimonious;
-    PyObject **cpy_r_r7[2] = {cpy_r_r5, cpy_r_r6};
-    cpy_r_r8 = (void *)&cpy_r_r7;
-    int64_t cpy_r_r9[2] = {5, 6};
-    cpy_r_r10 = (void *)&cpy_r_r9;
-    cpy_r_r11 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* (('eth_abi.exceptions', 'eth_abi', 'eth_abi'),
-                                    ('parsimonious', 'parsimonious', 'parsimonious')) */
-    cpy_r_r12 = CPyStatic_exceptions___globals;
-    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi/exceptions.py' */
-    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
-    cpy_r_r15 = CPyImport_ImportMany(cpy_r_r11, cpy_r_r8, cpy_r_r12, cpy_r_r13, cpy_r_r14, cpy_r_r10);
-    if (!cpy_r_r15) goto CPyL84;
-    cpy_r_r16 = CPyModule_eth_abi___exceptions;
-    cpy_r_r17 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'EncodingError' */
-    cpy_r_r18 = CPyObject_GetAttr(cpy_r_r16, cpy_r_r17);
-    if (unlikely(cpy_r_r18 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r19 = PyTuple_Pack(1, cpy_r_r18);
-    CPy_DECREF(cpy_r_r18);
-    if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r21 = (PyObject *)CPyType_exceptions___EncodingError_template;
-    cpy_r_r22 = CPyType_FromTemplate(cpy_r_r21, cpy_r_r19, cpy_r_r20);
-    CPy_DECREF(cpy_r_r19);
-    if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r25 = PyTuple_Pack(1, cpy_r_r24);
-    if (unlikely(cpy_r_r25 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL85;
-    }
-    cpy_r_r26 = PyObject_SetAttr(cpy_r_r22, cpy_r_r23, cpy_r_r25);
-    CPy_DECREF(cpy_r_r25);
-    cpy_r_r27 = cpy_r_r26 >= 0;
-    if (unlikely(!cpy_r_r27)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL85;
-    }
-    CPyType_exceptions___EncodingError = (PyTypeObject *)cpy_r_r22;
-    CPy_INCREF(CPyType_exceptions___EncodingError);
-    cpy_r_r28 = CPyStatic_exceptions___globals;
-    cpy_r_r29 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'EncodingError' */
-    cpy_r_r30 = PyDict_SetItem(cpy_r_r28, cpy_r_r29, cpy_r_r22);
-    CPy_DECREF(cpy_r_r22);
-    cpy_r_r31 = cpy_r_r30 >= 0;
-    if (unlikely(!cpy_r_r31)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r32 = (PyObject *)CPyType_exceptions___EncodingError;
-    cpy_r_r33 = CPyModule_eth_abi___exceptions;
-    cpy_r_r34 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'EncodingTypeError' */
-    cpy_r_r35 = CPyObject_GetAttr(cpy_r_r33, cpy_r_r34);
-    if (unlikely(cpy_r_r35 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r36 = PyTuple_Pack(2, cpy_r_r32, cpy_r_r35);
-    CPy_DECREF(cpy_r_r35);
-    if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r38 = (PyObject *)CPyType_exceptions___EncodingTypeError_template;
-    cpy_r_r39 = CPyType_FromTemplate(cpy_r_r38, cpy_r_r36, cpy_r_r37);
-    CPy_DECREF(cpy_r_r36);
-    if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r42 = PyTuple_Pack(1, cpy_r_r41);
-    if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL86;
-    }
-    cpy_r_r43 = PyObject_SetAttr(cpy_r_r39, cpy_r_r40, cpy_r_r42);
-    CPy_DECREF(cpy_r_r42);
-    cpy_r_r44 = cpy_r_r43 >= 0;
-    if (unlikely(!cpy_r_r44)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL86;
-    }
-    CPyType_exceptions___EncodingTypeError = (PyTypeObject *)cpy_r_r39;
-    CPy_INCREF(CPyType_exceptions___EncodingTypeError);
-    cpy_r_r45 = CPyStatic_exceptions___globals;
-    cpy_r_r46 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'EncodingTypeError' */
-    cpy_r_r47 = PyDict_SetItem(cpy_r_r45, cpy_r_r46, cpy_r_r39);
-    CPy_DECREF(cpy_r_r39);
-    cpy_r_r48 = cpy_r_r47 >= 0;
-    if (unlikely(!cpy_r_r48)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r49 = (PyObject *)CPyType_exceptions___EncodingError;
-    cpy_r_r50 = CPyModule_eth_abi___exceptions;
-    cpy_r_r51 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IllegalValue' */
-    cpy_r_r52 = CPyObject_GetAttr(cpy_r_r50, cpy_r_r51);
-    if (unlikely(cpy_r_r52 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r53 = PyTuple_Pack(2, cpy_r_r49, cpy_r_r52);
-    CPy_DECREF(cpy_r_r52);
-    if (unlikely(cpy_r_r53 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r55 = (PyObject *)CPyType_exceptions___IllegalValue_template;
-    cpy_r_r56 = CPyType_FromTemplate(cpy_r_r55, cpy_r_r53, cpy_r_r54);
-    CPy_DECREF(cpy_r_r53);
-    if (unlikely(cpy_r_r56 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r57 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r58 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r59 = PyTuple_Pack(1, cpy_r_r58);
-    if (unlikely(cpy_r_r59 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL87;
-    }
-    cpy_r_r60 = PyObject_SetAttr(cpy_r_r56, cpy_r_r57, cpy_r_r59);
-    CPy_DECREF(cpy_r_r59);
-    cpy_r_r61 = cpy_r_r60 >= 0;
-    if (unlikely(!cpy_r_r61)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL87;
-    }
-    CPyType_exceptions___IllegalValue = (PyTypeObject *)cpy_r_r56;
-    CPy_INCREF(CPyType_exceptions___IllegalValue);
-    cpy_r_r62 = CPyStatic_exceptions___globals;
-    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IllegalValue' */
-    cpy_r_r64 = PyDict_SetItem(cpy_r_r62, cpy_r_r63, cpy_r_r56);
-    CPy_DECREF(cpy_r_r56);
-    cpy_r_r65 = cpy_r_r64 >= 0;
-    if (unlikely(!cpy_r_r65)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r66 = (PyObject *)CPyType_exceptions___IllegalValue;
-    cpy_r_r67 = CPyModule_eth_abi___exceptions;
-    cpy_r_r68 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ValueOutOfBounds' */
-    cpy_r_r69 = CPyObject_GetAttr(cpy_r_r67, cpy_r_r68);
-    if (unlikely(cpy_r_r69 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r70 = PyTuple_Pack(2, cpy_r_r66, cpy_r_r69);
-    CPy_DECREF(cpy_r_r69);
-    if (unlikely(cpy_r_r70 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r71 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r72 = (PyObject *)CPyType_exceptions___ValueOutOfBounds_template;
-    cpy_r_r73 = CPyType_FromTemplate(cpy_r_r72, cpy_r_r70, cpy_r_r71);
-    CPy_DECREF(cpy_r_r70);
-    if (unlikely(cpy_r_r73 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r76 = PyTuple_Pack(1, cpy_r_r75);
-    if (unlikely(cpy_r_r76 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL88;
-    }
-    cpy_r_r77 = PyObject_SetAttr(cpy_r_r73, cpy_r_r74, cpy_r_r76);
-    CPy_DECREF(cpy_r_r76);
-    cpy_r_r78 = cpy_r_r77 >= 0;
-    if (unlikely(!cpy_r_r78)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL88;
-    }
-    CPyType_exceptions___ValueOutOfBounds = (PyTypeObject *)cpy_r_r73;
-    CPy_INCREF(CPyType_exceptions___ValueOutOfBounds);
-    cpy_r_r79 = CPyStatic_exceptions___globals;
-    cpy_r_r80 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ValueOutOfBounds' */
-    cpy_r_r81 = PyDict_SetItem(cpy_r_r79, cpy_r_r80, cpy_r_r73);
-    CPy_DECREF(cpy_r_r73);
-    cpy_r_r82 = cpy_r_r81 >= 0;
-    if (unlikely(!cpy_r_r82)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r83 = CPyModule_eth_abi___exceptions;
-    cpy_r_r84 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DecodingError' */
-    cpy_r_r85 = CPyObject_GetAttr(cpy_r_r83, cpy_r_r84);
-    if (unlikely(cpy_r_r85 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r86 = PyTuple_Pack(1, cpy_r_r85);
-    CPy_DECREF(cpy_r_r85);
-    if (unlikely(cpy_r_r86 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r87 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r88 = (PyObject *)CPyType_exceptions___DecodingError_template;
-    cpy_r_r89 = CPyType_FromTemplate(cpy_r_r88, cpy_r_r86, cpy_r_r87);
-    CPy_DECREF(cpy_r_r86);
-    if (unlikely(cpy_r_r89 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r90 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r91 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r92 = PyTuple_Pack(1, cpy_r_r91);
-    if (unlikely(cpy_r_r92 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL89;
-    }
-    cpy_r_r93 = PyObject_SetAttr(cpy_r_r89, cpy_r_r90, cpy_r_r92);
-    CPy_DECREF(cpy_r_r92);
-    cpy_r_r94 = cpy_r_r93 >= 0;
-    if (unlikely(!cpy_r_r94)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL89;
-    }
-    CPyType_exceptions___DecodingError = (PyTypeObject *)cpy_r_r89;
-    CPy_INCREF(CPyType_exceptions___DecodingError);
-    cpy_r_r95 = CPyStatic_exceptions___globals;
-    cpy_r_r96 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DecodingError' */
-    cpy_r_r97 = PyDict_SetItem(cpy_r_r95, cpy_r_r96, cpy_r_r89);
-    CPy_DECREF(cpy_r_r89);
-    cpy_r_r98 = cpy_r_r97 >= 0;
-    if (unlikely(!cpy_r_r98)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r99 = (PyObject *)CPyType_exceptions___DecodingError;
-    cpy_r_r100 = CPyModule_eth_abi___exceptions;
-    cpy_r_r101 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InsufficientDataBytes' */
-    cpy_r_r102 = CPyObject_GetAttr(cpy_r_r100, cpy_r_r101);
-    if (unlikely(cpy_r_r102 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r103 = PyTuple_Pack(2, cpy_r_r99, cpy_r_r102);
-    CPy_DECREF(cpy_r_r102);
-    if (unlikely(cpy_r_r103 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r104 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r105 = (PyObject *)CPyType_exceptions___InsufficientDataBytes_template;
-    cpy_r_r106 = CPyType_FromTemplate(cpy_r_r105, cpy_r_r103, cpy_r_r104);
-    CPy_DECREF(cpy_r_r103);
-    if (unlikely(cpy_r_r106 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r107 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r108 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r109 = PyTuple_Pack(1, cpy_r_r108);
-    if (unlikely(cpy_r_r109 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL90;
-    }
-    cpy_r_r110 = PyObject_SetAttr(cpy_r_r106, cpy_r_r107, cpy_r_r109);
-    CPy_DECREF(cpy_r_r109);
-    cpy_r_r111 = cpy_r_r110 >= 0;
-    if (unlikely(!cpy_r_r111)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL90;
-    }
-    CPyType_exceptions___InsufficientDataBytes = (PyTypeObject *)cpy_r_r106;
-    CPy_INCREF(CPyType_exceptions___InsufficientDataBytes);
-    cpy_r_r112 = CPyStatic_exceptions___globals;
-    cpy_r_r113 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InsufficientDataBytes' */
-    cpy_r_r114 = PyDict_SetItem(cpy_r_r112, cpy_r_r113, cpy_r_r106);
-    CPy_DECREF(cpy_r_r106);
-    cpy_r_r115 = cpy_r_r114 >= 0;
-    if (unlikely(!cpy_r_r115)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r116 = (PyObject *)CPyType_exceptions___DecodingError;
-    cpy_r_r117 = CPyModule_eth_abi___exceptions;
-    cpy_r_r118 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
-    cpy_r_r119 = CPyObject_GetAttr(cpy_r_r117, cpy_r_r118);
-    if (unlikely(cpy_r_r119 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r120 = PyTuple_Pack(2, cpy_r_r116, cpy_r_r119);
-    CPy_DECREF(cpy_r_r119);
-    if (unlikely(cpy_r_r120 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r121 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r122 = (PyObject *)CPyType_exceptions___NonEmptyPaddingBytes_template;
-    cpy_r_r123 = CPyType_FromTemplate(cpy_r_r122, cpy_r_r120, cpy_r_r121);
-    CPy_DECREF(cpy_r_r120);
-    if (unlikely(cpy_r_r123 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r124 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r125 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r126 = PyTuple_Pack(1, cpy_r_r125);
-    if (unlikely(cpy_r_r126 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL91;
-    }
-    cpy_r_r127 = PyObject_SetAttr(cpy_r_r123, cpy_r_r124, cpy_r_r126);
-    CPy_DECREF(cpy_r_r126);
-    cpy_r_r128 = cpy_r_r127 >= 0;
-    if (unlikely(!cpy_r_r128)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL91;
-    }
-    CPyType_exceptions___NonEmptyPaddingBytes = (PyTypeObject *)cpy_r_r123;
-    CPy_INCREF(CPyType_exceptions___NonEmptyPaddingBytes);
-    cpy_r_r129 = CPyStatic_exceptions___globals;
-    cpy_r_r130 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
-    cpy_r_r131 = PyDict_SetItem(cpy_r_r129, cpy_r_r130, cpy_r_r123);
-    CPy_DECREF(cpy_r_r123);
-    cpy_r_r132 = cpy_r_r131 >= 0;
-    if (unlikely(!cpy_r_r132)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r133 = (PyObject *)CPyType_exceptions___DecodingError;
-    cpy_r_r134 = CPyModule_eth_abi___exceptions;
-    cpy_r_r135 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InvalidPointer' */
-    cpy_r_r136 = CPyObject_GetAttr(cpy_r_r134, cpy_r_r135);
-    if (unlikely(cpy_r_r136 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r137 = PyTuple_Pack(2, cpy_r_r133, cpy_r_r136);
-    CPy_DECREF(cpy_r_r136);
-    if (unlikely(cpy_r_r137 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r138 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r139 = (PyObject *)CPyType_exceptions___InvalidPointer_template;
-    cpy_r_r140 = CPyType_FromTemplate(cpy_r_r139, cpy_r_r137, cpy_r_r138);
-    CPy_DECREF(cpy_r_r137);
-    if (unlikely(cpy_r_r140 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r141 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r142 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r143 = PyTuple_Pack(1, cpy_r_r142);
-    if (unlikely(cpy_r_r143 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL92;
-    }
-    cpy_r_r144 = PyObject_SetAttr(cpy_r_r140, cpy_r_r141, cpy_r_r143);
-    CPy_DECREF(cpy_r_r143);
-    cpy_r_r145 = cpy_r_r144 >= 0;
-    if (unlikely(!cpy_r_r145)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL92;
-    }
-    CPyType_exceptions___InvalidPointer = (PyTypeObject *)cpy_r_r140;
-    CPy_INCREF(CPyType_exceptions___InvalidPointer);
-    cpy_r_r146 = CPyStatic_exceptions___globals;
-    cpy_r_r147 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InvalidPointer' */
-    cpy_r_r148 = PyDict_SetItem(cpy_r_r146, cpy_r_r147, cpy_r_r140);
-    CPy_DECREF(cpy_r_r140);
-    cpy_r_r149 = cpy_r_r148 >= 0;
-    if (unlikely(!cpy_r_r149)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r150 = CPyModule_eth_abi___exceptions;
-    cpy_r_r151 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ParseError' */
-    cpy_r_r152 = CPyObject_GetAttr(cpy_r_r150, cpy_r_r151);
-    if (unlikely(cpy_r_r152 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r153 = PyTuple_Pack(1, cpy_r_r152);
-    CPy_DECREF(cpy_r_r152);
-    if (unlikely(cpy_r_r153 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r154 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r155 = (PyObject *)CPyType_exceptions___ParseError_template;
-    cpy_r_r156 = CPyType_FromTemplate(cpy_r_r155, cpy_r_r153, cpy_r_r154);
-    CPy_DECREF(cpy_r_r153);
-    if (unlikely(cpy_r_r156 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r157 = CPyDef_exceptions___ParseError_trait_vtable_setup();
-    if (unlikely(cpy_r_r157 == 2)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", -1, CPyStatic_exceptions___globals);
-        goto CPyL93;
-    }
-    cpy_r_r158 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r159 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r160 = PyTuple_Pack(1, cpy_r_r159);
-    if (unlikely(cpy_r_r160 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL93;
-    }
-    cpy_r_r161 = PyObject_SetAttr(cpy_r_r156, cpy_r_r158, cpy_r_r160);
-    CPy_DECREF(cpy_r_r160);
-    cpy_r_r162 = cpy_r_r161 >= 0;
-    if (unlikely(!cpy_r_r162)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL93;
-    }
-    CPyType_exceptions___ParseError = (PyTypeObject *)cpy_r_r156;
-    CPy_INCREF(CPyType_exceptions___ParseError);
-    cpy_r_r163 = CPyStatic_exceptions___globals;
-    cpy_r_r164 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ParseError' */
-    cpy_r_r165 = PyDict_SetItem(cpy_r_r163, cpy_r_r164, cpy_r_r156);
-    CPy_DECREF(cpy_r_r156);
-    cpy_r_r166 = cpy_r_r165 >= 0;
-    if (unlikely(!cpy_r_r166)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r167 = CPyModule_eth_abi___exceptions;
-    cpy_r_r168 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ABITypeError' */
-    cpy_r_r169 = CPyObject_GetAttr(cpy_r_r167, cpy_r_r168);
-    if (unlikely(cpy_r_r169 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r170 = PyTuple_Pack(1, cpy_r_r169);
-    CPy_DECREF(cpy_r_r169);
-    if (unlikely(cpy_r_r170 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r171 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r172 = (PyObject *)CPyType_exceptions___ABITypeError_template;
-    cpy_r_r173 = CPyType_FromTemplate(cpy_r_r172, cpy_r_r170, cpy_r_r171);
-    CPy_DECREF(cpy_r_r170);
-    if (unlikely(cpy_r_r173 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r174 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r175 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r176 = PyTuple_Pack(1, cpy_r_r175);
-    if (unlikely(cpy_r_r176 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL94;
-    }
-    cpy_r_r177 = PyObject_SetAttr(cpy_r_r173, cpy_r_r174, cpy_r_r176);
-    CPy_DECREF(cpy_r_r176);
-    cpy_r_r178 = cpy_r_r177 >= 0;
-    if (unlikely(!cpy_r_r178)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL94;
-    }
-    CPyType_exceptions___ABITypeError = (PyTypeObject *)cpy_r_r173;
-    CPy_INCREF(CPyType_exceptions___ABITypeError);
-    cpy_r_r179 = CPyStatic_exceptions___globals;
-    cpy_r_r180 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ABITypeError' */
-    cpy_r_r181 = PyDict_SetItem(cpy_r_r179, cpy_r_r180, cpy_r_r173);
-    CPy_DECREF(cpy_r_r173);
-    cpy_r_r182 = cpy_r_r181 >= 0;
-    if (unlikely(!cpy_r_r182)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r183 = CPyModule_eth_abi___exceptions;
-    cpy_r_r184 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'PredicateMappingError' */
-    cpy_r_r185 = CPyObject_GetAttr(cpy_r_r183, cpy_r_r184);
-    if (unlikely(cpy_r_r185 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r186 = PyTuple_Pack(1, cpy_r_r185);
-    CPy_DECREF(cpy_r_r185);
-    if (unlikely(cpy_r_r186 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r187 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r188 = (PyObject *)CPyType_exceptions___PredicateMappingError_template;
-    cpy_r_r189 = CPyType_FromTemplate(cpy_r_r188, cpy_r_r186, cpy_r_r187);
-    CPy_DECREF(cpy_r_r186);
-    if (unlikely(cpy_r_r189 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r190 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r191 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r192 = PyTuple_Pack(1, cpy_r_r191);
-    if (unlikely(cpy_r_r192 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL95;
-    }
-    cpy_r_r193 = PyObject_SetAttr(cpy_r_r189, cpy_r_r190, cpy_r_r192);
-    CPy_DECREF(cpy_r_r192);
-    cpy_r_r194 = cpy_r_r193 >= 0;
-    if (unlikely(!cpy_r_r194)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL95;
-    }
-    CPyType_exceptions___PredicateMappingError = (PyTypeObject *)cpy_r_r189;
-    CPy_INCREF(CPyType_exceptions___PredicateMappingError);
-    cpy_r_r195 = CPyStatic_exceptions___globals;
-    cpy_r_r196 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'PredicateMappingError' */
-    cpy_r_r197 = PyDict_SetItem(cpy_r_r195, cpy_r_r196, cpy_r_r189);
-    CPy_DECREF(cpy_r_r189);
-    cpy_r_r198 = cpy_r_r197 >= 0;
-    if (unlikely(!cpy_r_r198)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r199 = (PyObject *)CPyType_exceptions___PredicateMappingError;
-    cpy_r_r200 = CPyModule_eth_abi___exceptions;
-    cpy_r_r201 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NoEntriesFound' */
-    cpy_r_r202 = CPyObject_GetAttr(cpy_r_r200, cpy_r_r201);
-    if (unlikely(cpy_r_r202 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r203 = PyTuple_Pack(2, cpy_r_r199, cpy_r_r202);
-    CPy_DECREF(cpy_r_r202);
-    if (unlikely(cpy_r_r203 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r204 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r205 = (PyObject *)CPyType_exceptions___NoEntriesFound_template;
-    cpy_r_r206 = CPyType_FromTemplate(cpy_r_r205, cpy_r_r203, cpy_r_r204);
-    CPy_DECREF(cpy_r_r203);
-    if (unlikely(cpy_r_r206 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r207 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r208 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r209 = PyTuple_Pack(1, cpy_r_r208);
-    if (unlikely(cpy_r_r209 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL96;
-    }
-    cpy_r_r210 = PyObject_SetAttr(cpy_r_r206, cpy_r_r207, cpy_r_r209);
-    CPy_DECREF(cpy_r_r209);
-    cpy_r_r211 = cpy_r_r210 >= 0;
-    if (unlikely(!cpy_r_r211)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL96;
-    }
-    CPyType_exceptions___NoEntriesFound = (PyTypeObject *)cpy_r_r206;
-    CPy_INCREF(CPyType_exceptions___NoEntriesFound);
-    cpy_r_r212 = CPyStatic_exceptions___globals;
-    cpy_r_r213 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NoEntriesFound' */
-    cpy_r_r214 = PyDict_SetItem(cpy_r_r212, cpy_r_r213, cpy_r_r206);
-    CPy_DECREF(cpy_r_r206);
-    cpy_r_r215 = cpy_r_r214 >= 0;
-    if (unlikely(!cpy_r_r215)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r216 = (PyObject *)CPyType_exceptions___PredicateMappingError;
-    cpy_r_r217 = CPyModule_eth_abi___exceptions;
-    cpy_r_r218 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'MultipleEntriesFound' */
-    cpy_r_r219 = CPyObject_GetAttr(cpy_r_r217, cpy_r_r218);
-    if (unlikely(cpy_r_r219 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r220 = PyTuple_Pack(2, cpy_r_r216, cpy_r_r219);
-    CPy_DECREF(cpy_r_r219);
-    if (unlikely(cpy_r_r220 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r221 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_abi.exceptions' */
-    cpy_r_r222 = (PyObject *)CPyType_exceptions___MultipleEntriesFound_template;
-    cpy_r_r223 = CPyType_FromTemplate(cpy_r_r222, cpy_r_r220, cpy_r_r221);
-    CPy_DECREF(cpy_r_r220);
-    if (unlikely(cpy_r_r223 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    cpy_r_r224 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
-    cpy_r_r225 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
-    cpy_r_r226 = PyTuple_Pack(1, cpy_r_r225);
-    if (unlikely(cpy_r_r226 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL97;
-    }
-    cpy_r_r227 = PyObject_SetAttr(cpy_r_r223, cpy_r_r224, cpy_r_r226);
-    CPy_DECREF(cpy_r_r226);
-    cpy_r_r228 = cpy_r_r227 >= 0;
-    if (unlikely(!cpy_r_r228)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL97;
-    }
-    CPyType_exceptions___MultipleEntriesFound = (PyTypeObject *)cpy_r_r223;
-    CPy_INCREF(CPyType_exceptions___MultipleEntriesFound);
-    cpy_r_r229 = CPyStatic_exceptions___globals;
-    cpy_r_r230 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'MultipleEntriesFound' */
-    cpy_r_r231 = PyDict_SetItem(cpy_r_r229, cpy_r_r230, cpy_r_r223);
-    CPy_DECREF(cpy_r_r223);
-    cpy_r_r232 = cpy_r_r231 >= 0;
-    if (unlikely(!cpy_r_r232)) {
-        CPy_AddTraceback("faster_eth_abi/exceptions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_exceptions___globals);
-        goto CPyL84;
-    }
-    return 1;
-CPyL84: ;
-    cpy_r_r233 = 2;
-    return cpy_r_r233;
-CPyL85: ;
-    CPy_DecRef(cpy_r_r22);
-    goto CPyL84;
-CPyL86: ;
-    CPy_DecRef(cpy_r_r39);
-    goto CPyL84;
-CPyL87: ;
-    CPy_DecRef(cpy_r_r56);
-    goto CPyL84;
-CPyL88: ;
-    CPy_DecRef(cpy_r_r73);
-    goto CPyL84;
-CPyL89: ;
-    CPy_DecRef(cpy_r_r89);
-    goto CPyL84;
-CPyL90: ;
-    CPy_DecRef(cpy_r_r106);
-    goto CPyL84;
-CPyL91: ;
-    CPy_DecRef(cpy_r_r123);
-    goto CPyL84;
-CPyL92: ;
-    CPy_DecRef(cpy_r_r140);
-    goto CPyL84;
-CPyL93: ;
-    CPy_DecRef(cpy_r_r156);
-    goto CPyL84;
-CPyL94: ;
-    CPy_DecRef(cpy_r_r173);
-    goto CPyL84;
-CPyL95: ;
-    CPy_DecRef(cpy_r_r189);
-    goto CPyL84;
-CPyL96: ;
-    CPy_DecRef(cpy_r_r206);
-    goto CPyL84;
-CPyL97: ;
-    CPy_DecRef(cpy_r_r223);
-    goto CPyL84;
 }
 
 PyObject *CPyDef_from_type_str_____mypyc__parse_type_str_env_setup(PyObject *cpy_r_type);
@@ -22970,10 +21391,6 @@ int CPyGlobalsInit(void)
     CPyModule_faster_eth_abi___constants = Py_None;
     CPyModule_builtins = Py_None;
     CPyModule_typing = Py_None;
-    CPyModule_faster_eth_abi___exceptions = Py_None;
-    CPyModule_builtins = Py_None;
-    CPyModule_eth_abi___exceptions = Py_None;
-    CPyModule_parsimonious = Py_None;
     CPyModule_faster_eth_abi___from_type_str = Py_None;
     CPyModule_builtins = Py_None;
     CPyModule_functools = Py_None;
@@ -23027,12 +21444,12 @@ const char * const CPyLit_Str[] = {
     "\004\tDecodable\aTypeStr\neth_typing\024validate_bytes_param",
     "\003\030validate_list_like_param\037faster_eth_abi.utils.validation\004read",
     "\003\021big_endian_to_int!Tried to read 32 bytes, only got \a bytes.",
-    "\004\016value_bit_size\npush_frame\ftail_decoder\026`tail_decoder` is None",
-    "\005\016AssertionError\tpop_frame\021validate_pointers\bdecoders\fitem_decoder",
-    "\004\026`item_decoder` is None\narray_size\016data_byte_size\016Tried to read ",
-    "\004\021 bytes, only got \ris_big_endian\000\036Padding bytes were not empty: ",
-    "\003\a{!r:{}}\006format)Boolean must be either 0x0 or 0x1.  Got: ",
-    "\003\020faster_eth_utils\025InsufficientDataBytes\024NonEmptyPaddingBytes",
+    "\004\025InsufficientDataBytes\016value_bit_size\npush_frame\ftail_decoder",
+    "\004\026`tail_decoder` is None\016AssertionError\tpop_frame\021validate_pointers",
+    "\004\bdecoders\fitem_decoder\026`item_decoder` is None\narray_size",
+    "\005\016data_byte_size\016Tried to read \021 bytes, only got \ris_big_endian\000",
+    "\004\036Padding bytes were not empty: \a{!r:{}}\006format\024NonEmptyPaddingBytes",
+    "\002)Boolean must be either 0x0 or 0x1.  Got: \020faster_eth_utils",
     "\003\031faster_eth_abi.exceptions\aBytesIO\024ContextFramesBytesIO",
     "\a\021faster_eth_abi.io\nis_dynamic\005rjust\005ljust\nbit_length\003big\bto_bytes",
     "\n\bCallable\004List\bOptional\bSequence\aTypeVar\001T\b__init__\004node\001<\005{:{}}",
@@ -23040,9 +21457,10 @@ const char * const CPyLit_Str[] = {
     "\002\034Must implement `to_type_str`\023NotImplementedError",
     "\003\032Must implement `item_type`\titem_type\031Must implement `validate`",
     "\b\bvalidate\005For \'\004text\021\' type at column \005start\005 in \'\tfull_text\003\': ",
-    "\004\ninvalidate\bis_array\033Must implement `is_dynamic`\024_has_dynamic_arrlist",
-    "\a\004repr\003map\001(\001,\001)/Cannot determine item type for non-array type \'\001\'",
-    "\006\nValueError\aarrlist\001x\006string\005bytes\036string type cannot have suffix",
+    "\004\fABITypeError\ninvalidate\bis_array\033Must implement `is_dynamic`",
+    "\006\024_has_dynamic_arrlist\004repr\003map\001(\001,\001)",
+    "\004/Cannot determine item type for non-array type \'\001\'\nValueError\aarrlist",
+    "\004\001x\006string\005bytes\036string type cannot have suffix",
     "\001;bytes type must have either no suffix or a numerical suffix",
     "\003\'maximum 32 bytes for fixed-length bytes\003int\004uint",
     "\001\'integer type must have numerical suffix",
@@ -23055,19 +21473,15 @@ const char * const CPyLit_Str[] = {
     "\005\032address cannot have suffix\v__normalize\003sub\005group\002re",
     "\006\032faster_eth_abi/_grammar.py\b<module>\005Final\aNewType\bNoReturn\005Union",
     "\005\005final\016eth_typing.abi\nmypyc_attr\017mypy_extensions\004Node",
-    "\006\022parsimonious.nodes\004Self\021typing_extensions\fABITypeError\006int256\auint256",
-    "\a\vfixed128x18\fufixed128x18\bfunction\abytes24\004byte\006bytes1\fTYPE_ALIASES",
-    "\b\003\\b(\001|\006escape\003)\\b\acompile\rTYPE_ALIAS_RE\nIntSubtype\fFixedSubtype",
-    "\006\aSubtype\027faster_eth_abi._grammar\017__mypyc_attrs__\aABIType\005TComp\005bound",
+    "\006\022parsimonious.nodes\004Self\021typing_extensions\006int256\auint256\vfixed128x18",
+    "\t\fufixed128x18\bfunction\abytes24\004byte\006bytes1\fTYPE_ALIASES\003\\b(\001|\006escape",
+    "\006\003)\\b\acompile\rTYPE_ALIAS_RE\nIntSubtype\fFixedSubtype\aSubtype",
+    "\005\027faster_eth_abi._grammar\017__mypyc_attrs__\aABIType\005TComp\005bound",
     "\006\ncomponents\tTupleType\004base\tBasicType\bABICodec\024faster_eth_abi.codec",
     "\005\bregistry\027faster_eth_abi.registry\rdefault_codec\006encode\006decode",
-    "\006\fis_encodable\021is_encodable_type\005TT256\aTT256M1\005TT255\020Parse error at \'",
-    "\006\003pos\n\' (column \006column\022) in type string \'\022eth_abi.exceptions\aeth_abi",
-    "\004\fparsimonious\034faster_eth_abi/exceptions.py\rEncodingError\b__dict__",
-    "\004\021EncodingTypeError\fIllegalValue\020ValueOutOfBounds\rDecodingError",
-    "\004\016InvalidPointer\nParseError\025PredicateMappingError\016NoEntriesFound",
-    "\004\024MultipleEntriesFound\005parse\020 (normalized to \016Cannot create ",
-    "\003\024 for non-basic type \n for type \033: expected type with base \'",
+    "\006\fis_encodable\021is_encodable_type\005TT256\aTT256M1\005TT255\005parse",
+    "\004\020 (normalized to \016Cannot create \024 for non-basic type \n for type ",
+    "\001\033: expected type with base \'",
     "\001,: expected type with no array dimension list",
     "\003): expected type with array dimension list\005wraps\021new_from_type_str",
     "\003\vclassmethod\024 for non-tuple type \tfunctools",
@@ -23081,7 +21495,7 @@ const char * const CPyLit_Str[] = {
     "\005\023to_checksum_address\tcchecksum\nstrategies\nhypothesis\nBaseEquals",
     "\005\fBaseRegistry\006Lookup\vhas_arrlist\ris_base_tuple\fscale_places",
     "\003\034faster_eth_abi.utils.numeric\020StrategyRegistry\017StrategyFactory",
-    "\004\024StrategyRegistration\v_strategies\020address_strategy\bbooleans",
+    "\005\024StrategyRegistration\v_strategies\b__dict__\020address_strategy\bbooleans",
     "\004\rbool_strategy\016bytes_strategy\017string_strategy\021strategy_registry",
     "\005\021get_uint_strategy\020get_int_strategy\bwith_sub\004bool\023get_ufixed_strategy",
     "\004\022get_fixed_strategy\022get_bytes_strategy\bbytes<M>\022get_array_strategy",
@@ -23105,22 +21519,21 @@ const char * const CPyLit_Int[] = {
     "\001115792089237316195423570985008687907853269984665640564039457584007913129639936",
     "\001115792089237316195423570985008687907853269984665640564039457584007913129639935",
     "\00157896044618658097711785492504343953926634992332820282019728792003956564819968",
-    "\0065\0002\00020\0004096\000999\00010",
+    "\0052\00020\0004096\000999\00010",
     "",
 };
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    48, 4, 11, 12, 13, 14, 2, 16, 17, 2, 19, 20, 3, 11, 12, 14, 1, 23,
-    2, 47, 48, 2, 50, 51, 7, 11, 12, 59, 60, 61, 62, 63, 1, 66, 3, 126,
-    126, 126, 1, 338, 10, 12, 129, 130, 131, 61, 62, 14, 63, 132, 133, 1,
-    17, 1, 135, 1, 137, 1, 139, 1, 141, 1, 164, 1, 129, 1, 169, 1, 171, 3,
-    186, 187, 187, 3, 188, 188, 188, 2, 350, 351, 3, 213, 213, 213, 1,
-    353, 6, 11, 12, 59, 61, 215, 63, 4, 162, 168, 166, 216, 1, 201, 1,
-    222, 1, 223, 1, 227, 1, 232, 2, 238, 239, 3, 238, 239, 241, 2, 243,
-    244, 6, 59, 129, 61, 14, 132, 247, 1, 248, 1, 250, 1, 235, 6, 252,
-    253, 254, 230, 255, 256, 1, 257, 1, 271, 3, 289, 289, 289, 1, 372, 4,
-    59, 291, 129, 14, 1, 294, 1, 12
+    45, 4, 11, 12, 13, 14, 2, 16, 17, 2, 19, 20, 3, 11, 12, 14, 1, 23,
+    2, 26, 46, 2, 50, 51, 7, 11, 12, 59, 60, 61, 62, 63, 1, 66, 3, 127,
+    127, 127, 1, 318, 10, 12, 130, 131, 132, 61, 62, 14, 63, 133, 134, 1,
+    17, 1, 136, 1, 138, 1, 140, 1, 88, 1, 164, 1, 130, 1, 169, 1, 171, 3,
+    193, 193, 193, 1, 330, 6, 11, 12, 59, 61, 195, 63, 4, 162, 168, 166,
+    196, 1, 181, 1, 202, 1, 203, 1, 207, 1, 212, 2, 218, 219, 3, 218, 219,
+    221, 2, 223, 224, 6, 59, 130, 61, 14, 133, 227, 1, 228, 1, 230, 1,
+    215, 6, 232, 233, 234, 210, 235, 236, 1, 237, 1, 252, 3, 270, 270,
+    270, 1, 349, 4, 59, 272, 130, 14, 1, 275, 1, 12
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
@@ -23135,7 +21548,6 @@ CPyModule *CPyModule_faster_eth_abi____decoding__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi____decoding;
 PyObject *CPyStatic__decoding___globals;
 CPyModule *CPyModule_faster_eth_utils;
-CPyModule *CPyModule_faster_eth_abi___exceptions__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi___exceptions;
 CPyModule *CPyModule_faster_eth_abi___io;
 CPyModule *CPyModule_faster_eth_abi____encoding__internal = NULL;
@@ -23157,9 +21569,6 @@ CPyModule *CPyModule_faster_eth_abi___registry;
 CPyModule *CPyModule_faster_eth_abi___constants__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi___constants;
 PyObject *CPyStatic_constants___globals;
-PyObject *CPyStatic_exceptions___globals;
-CPyModule *CPyModule_eth_abi___exceptions;
-CPyModule *CPyModule_parsimonious;
 CPyModule *CPyModule_faster_eth_abi___from_type_str__internal = NULL;
 CPyModule *CPyModule_faster_eth_abi___from_type_str;
 PyObject *CPyStatic_from_type_str___globals;
@@ -23337,23 +21746,6 @@ PyObject *CPyStatic_abi___is_encodable = NULL;
 PyObject *CPyStatic_abi___is_encodable_type = NULL;
 char CPyDef_abi_____top_level__(void);
 char CPyDef_constants_____top_level__(void);
-PyTypeObject *CPyType_exceptions___EncodingError;
-PyTypeObject *CPyType_exceptions___EncodingTypeError;
-PyTypeObject *CPyType_exceptions___IllegalValue;
-PyTypeObject *CPyType_exceptions___ValueOutOfBounds;
-PyTypeObject *CPyType_exceptions___DecodingError;
-PyTypeObject *CPyType_exceptions___InsufficientDataBytes;
-PyTypeObject *CPyType_exceptions___NonEmptyPaddingBytes;
-PyTypeObject *CPyType_exceptions___InvalidPointer;
-PyTypeObject *CPyType_exceptions___ParseError;
-PyObject *CPyDef_exceptions___ParseError(void);
-PyTypeObject *CPyType_exceptions___ABITypeError;
-PyTypeObject *CPyType_exceptions___PredicateMappingError;
-PyTypeObject *CPyType_exceptions___NoEntriesFound;
-PyTypeObject *CPyType_exceptions___MultipleEntriesFound;
-PyObject *CPyDef_exceptions___ParseError_____str__(PyObject *cpy_r_self);
-PyObject *CPyPy_exceptions___ParseError_____str__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-char CPyDef_exceptions_____top_level__(void);
 PyTypeObject *CPyType_from_type_str___parse_type_str_env;
 PyObject *CPyDef_from_type_str___parse_type_str_env(void);
 CPyThreadLocal faster_eth_abi___from_type_str___parse_type_str_envObject *from_type_str___parse_type_str_env_free_instance;
@@ -23547,17 +21939,6 @@ static int exec_faster_eth_abi__mypyc(PyObject *module)
         goto fail;
     }
     res = PyObject_SetAttrString(module, "init_faster_eth_abi___constants", capsule);
-    Py_DECREF(capsule);
-    if (res < 0) {
-        goto fail;
-    }
-    
-    extern PyObject *CPyInit_faster_eth_abi___exceptions(void);
-    capsule = PyCapsule_New((void *)CPyInit_faster_eth_abi___exceptions, "faster_eth_abi__mypyc.init_faster_eth_abi___exceptions", NULL);
-    if (!capsule) {
-        goto fail;
-    }
-    res = PyObject_SetAttrString(module, "init_faster_eth_abi___exceptions", capsule);
     Py_DECREF(capsule);
     if (res < 0) {
         goto fail;
