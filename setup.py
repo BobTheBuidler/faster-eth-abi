@@ -59,6 +59,10 @@ skip_mypyc = any(
 if skip_mypyc:
     ext_modules = []
 else:
+    mypycify_kwargs = {"strict_dunder_typing": True}
+    if sys.version_info >= (3, 9):
+        mypycify_kwargs["group_name"] = "faster_eth_abi"
+    
     ext_modules = mypycify(
         [
             "faster_eth_abi/_codec.py",
@@ -77,8 +81,7 @@ else:
             "--disable-error-code=override",
             "--disable-error-code=unused-ignore",
         ],
-        group_name="faster_eth_abi",
-        strict_dunder_typing=True,
+        **mypycify_kwargs,
     )
 
 
