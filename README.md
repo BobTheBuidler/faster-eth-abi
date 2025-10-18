@@ -6,9 +6,13 @@
 
 ##### This fork will be kept up-to-date with [eth-abi](https://github.com/ethereum/eth-abi). I will pull updates as they are released and push new [faster-eth-abi](https://github.com/BobTheBuidler/faster-eth-abi) releases to [PyPI](https://pypi.org/project/faster-eth-abi/).
 
-##### You can find the compiled C code on faster-eth-abi [master](https://github.com/BobTheBuidler/eth-abi/tree/master) branch.
+##### Starting in [v5.2.12](https://github.com/BobTheBuidler/faster-eth-abi/releases/tag/v5.2.12), all `faster-eth-abi` Exception classes inherit from the matching Exception class in `eth-abi`, so porting to `faster-eth-abi` does not require any change to your existing exception handlers. All existing exception handling in your codebase will continue to work as it did when originaly implemented.
 
 ##### We benchmark `faster-eth-abi` against the original `eth-abi` for your convenience. [See results](https://github.com/BobTheBuidler/faster-eth-abi/tree/master/benchmarks/results).
+
+##### You can find the compiled C code and header files in the [build](https://github.com/BobTheBuidler/faster-eth-abi/tree/master/build) directory.
+
+###### You may also be interested in: [faster-web3.py](https://github.com/BobTheBuidler/faster-web3.py/), [faster-hexbytes](https://github.com/BobTheBuidler/faster-hexbytes/), and [faster-eth-utils](https://github.com/BobTheBuidler/faster-eth-utils/)
 
 ##### The original eth-abi readme is below:
 
