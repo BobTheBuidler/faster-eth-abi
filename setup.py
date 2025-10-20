@@ -96,6 +96,13 @@ setup(
     author="The Ethereum Foundation",
     author_email="snakecharmers@ethereum.org",
     url="https://github.com/BobTheBuidler/faster-eth-abi",
+    project_urls={
+        "Documentation": "https://eth-abi.readthedocs.io/en/stable/",
+        "Release Notes": "https://github.com/BobTheBuidler/faster-eth-abi/releases",
+        "Issues": "https://github.com/BobTheBuidler/faster-eth-abi/issues",
+        "Source": "https://github.com/BobTheBuidler/faster-eth-abi",
+        "Original": "https://github.com/ethereum/eth-abi",
+    },
     include_package_data=True,
     install_requires=[
         "cchecksum>=0.2.6,<0.4",
