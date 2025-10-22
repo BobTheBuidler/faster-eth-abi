@@ -205,6 +205,10 @@ class BaseArrayDecoder(BaseDecoder):
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+        else:
+            def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
+                ...
+            self.validate_pointers_array = noop
 
     def validate(self) -> None:
         super().validate()
