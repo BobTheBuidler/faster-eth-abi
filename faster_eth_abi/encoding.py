@@ -113,7 +113,7 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self.is_dynamic: Final = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
 
         validators = []
         for encoder in self.encoders:
