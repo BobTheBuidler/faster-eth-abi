@@ -163,10 +163,7 @@ class SingleDecoder(BaseDecoder):
     def decode(self, stream: ContextFramesBytesIO) -> Any:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
-        decoder_fn = self.decoder_fn
-        if decoder_fn is None:
-            raise AssertionError("`decoder_fn` is None")
-        value = decoder_fn(data)
+        value = self.decoder_fn(data)
         self.validate_padding_bytes(value, padding_bytes)
 
         return value
@@ -190,6 +187,7 @@ class BaseArrayDecoder(BaseDecoder):
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+            self.validate_pointers = MethodType(validate_pointers_array, self)
         else:
 
             def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
@@ -353,6 +351,11 @@ decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 #
 class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
     is_big_endian = True
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        if self.validate_padding_bytes is SignedIntegerDecoder.validate_padding_bytes:
+            self.validate_padding_bytes = MethodType(validate_padding_bytes_signed_integer, self)
 
     @cached_property
     def neg_threshold(self) -> int:
