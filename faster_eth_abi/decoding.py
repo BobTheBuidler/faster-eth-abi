@@ -270,7 +270,7 @@ class FixedByteSizeDecoder(SingleDecoder):
         self._get_value_byte_size = MethodType(get_value_byte_size, self)
 
         # Only assign validate_padding_bytes if not overridden in subclass
-        if type(self).validate_padding_bytes is SingleDecoder.validate_padding_bytes:  # type: ignore [comparison-overlap]  # noqa: E501
+        if type(self).validate_padding_bytes is SingleDecoder.validate_padding_bytes:
             self.validate_padding_bytes = MethodType(
                 validate_padding_bytes_fixed_byte_size, self
             )
