@@ -130,8 +130,8 @@ class TupleDecoder(BaseDecoder):
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         validate_pointers_tuple(self, stream)
 
-    @overload
-    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+    @overload  # type: ignore [misc]
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:  # type: ignore [empty-body]
         ...
 
     decode = __call__ = decode_tuple
@@ -269,14 +269,14 @@ class FixedByteSizeDecoder(SingleDecoder):
         if value_bit_size > data_byte_size * 8:
             raise ValueError("Value byte size exceeds data size")
 
-    @overload
-    def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
+    @overload  # type: ignore [misc]
+    def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:  # type: ignore [empty-body]
         ...
 
     read_data_from_stream = read_fixed_byte_size_data_from_stream
 
-    @overload
-    def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
+    @overload  # type: ignore [misc]
+    def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:  # type: ignore [empty-body]
         ...
     
     split_data_and_padding = split_data_and_padding_fixed_byte_size
