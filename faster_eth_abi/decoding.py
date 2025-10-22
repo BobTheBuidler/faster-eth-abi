@@ -10,7 +10,6 @@ from typing import (
     Optional,
     Tuple,
     Union,
-    cast,
     final,
 )
 
@@ -38,7 +37,6 @@ from faster_eth_abi.base import (
 )
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
-    InvalidPointer,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
@@ -119,7 +117,9 @@ class TupleDecoder(BaseDecoder):
         self.len_of_head = sum(
             getattr(decoder, "array_size", 1) for decoder in decoders
         )
-        self._is_head_tail = tuple(isinstance(decoder, HeadTailDecoder) for decoder in decoders)
+        self._is_head_tail = tuple(
+            isinstance(decoder, HeadTailDecoder) for decoder in decoders
+        )
         self._no_head_tail = not any(self._is_head_tail)
 
     def validate(self) -> None:
@@ -189,8 +189,10 @@ class BaseArrayDecoder(BaseDecoder):
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
         else:
+
             def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
                 ...
+
             self.validate_pointers = noop
 
     def validate(self) -> None:
@@ -335,13 +337,12 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
 
     @cached_property
     def neg_threshold(self) -> int:
-        value_bit_size = cast(int, self.value_bit_size)
-        return 2 ** (value_bit_size - 1)
-        
+        return 2 ** (self.value_bit_size - 1)
+
     @cached_property
     def neg_offset(self) -> int:
-        return 2**cast(int, self.value_bit_size)
-        
+        return 2**self.value_bit_size
+
     def decoder_fn(self, data):
         value = big_endian_to_int(data)
         if value >= self.neg_threshold:
