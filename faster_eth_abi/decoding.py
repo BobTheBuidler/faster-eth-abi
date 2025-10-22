@@ -3,6 +3,9 @@ import decimal
 from functools import (
     cached_property,
 )
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
@@ -30,7 +33,6 @@ from faster_eth_abi._decoding import (
     validate_padding_bytes_fixed_byte_size,
     validate_padding_bytes_signed_integer,
     validate_pointers_array,
-    validate_pointers_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -130,7 +132,7 @@ class TupleDecoder(BaseDecoder):
 
     @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
-        validate_pointers_tuple(self, stream)
+        raise NotImplementedError("didnt call __init__")
 
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
@@ -155,10 +157,10 @@ class SingleDecoder(BaseDecoder):
         if self.decoder_fn is None:
             raise ValueError("No `decoder_fn` set")
 
-    def validate_padding_bytes(self, value, padding_bytes):
+    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
-    def decode(self, stream):
+    def decode(self, stream: ContextFramesBytesIO) -> Any:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
         decoder_fn = self.decoder_fn
@@ -194,6 +196,9 @@ class BaseArrayDecoder(BaseDecoder):
                 ...
 
             self.validate_pointers = noop
+
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+        raise NotImplementedError  # this is a type stub
 
     def validate(self) -> None:
         super().validate()
@@ -253,6 +258,23 @@ class FixedByteSizeDecoder(SingleDecoder):
     data_byte_size: int = None
     is_big_endian: bool = None
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.read_data_from_stream = MethodType(
+            read_fixed_byte_size_data_from_stream, self
+        )
+        self.split_data_and_padding = MethodType(
+            split_data_and_padding_fixed_byte_size, self
+        )
+        self._get_value_byte_size = MethodType(get_value_byte_size, self)
+
+        # Only assign validate_padding_bytes if not overridden in subclass
+        if type(self).validate_padding_bytes is SingleDecoder.validate_padding_bytes:
+            self.validate_padding_bytes = MethodType(
+                validate_padding_bytes_fixed_byte_size, self
+            )
+
     def validate(self) -> None:
         super().validate()
 
@@ -276,17 +298,14 @@ class FixedByteSizeDecoder(SingleDecoder):
             raise ValueError("Value byte size exceeds data size")
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        return read_fixed_byte_size_data_from_stream(self, stream)
+        raise NotImplementedError("didnt call __init__")
 
     def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
-        return split_data_and_padding_fixed_byte_size(self, raw_data)
+        raise NotImplementedError("didnt call __init__")
 
-    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        validate_padding_bytes_fixed_byte_size(self, value, padding_bytes)
-
+    # This is unused, but it is kept in to preserve the eth-abi api
     def _get_value_byte_size(self) -> int:
-        # This is unused, but it is kept in to preserve the eth-abi api
-        return get_value_byte_size(self)
+        raise NotImplementedError("didnt call __init__")
 
 
 class Fixed32ByteSizeDecoder(FixedByteSizeDecoder):
@@ -384,7 +403,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
             raise ValueError("must specify `frac_places`")
 
         if frac_places <= 0 or frac_places > 80:
-            raise ValueError("`frac_places` must be in range (0, 80]")
+            raise ValueError("`frac_places` must be in range (0, 80)")
 
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
