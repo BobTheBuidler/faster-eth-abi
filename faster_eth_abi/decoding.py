@@ -115,6 +115,7 @@ class TupleDecoder(BaseDecoder):
             getattr(decoder, "array_size", 1) for decoder in decoders
         )
         self._is_head_tail = tuple(isinstance(decoder, HeadTailDecoder) for decoder in decoders)
+        self._no_head_tail = not any(self._is_head_tail)
 
     def validate(self) -> None:
         super().validate()
