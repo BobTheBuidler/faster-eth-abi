@@ -90,7 +90,7 @@ def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[An
             # the next 32 bytes are a pointer that we should validate
             # checkpoint the stream location so we can reset it after validation
             step_location = stream.tell()
-            
+
             offset = decode_uint_256(stream)
             indicated_idx = current_location + offset
             if indicated_idx < end_of_offsets or indicated_idx >= total_stream_length:
@@ -104,12 +104,12 @@ def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[An
 
             # reset the stream so we can decode
             stream.seek(step_location)
-            
+
         items.append(decoder(stream))
-                
+
     # return the stream to its original location for actual decoding
     stream.seek(current_location)
-    
+
     return tuple(items)
 
 
@@ -135,7 +135,10 @@ def validate_pointers_tuple(
                 # the next 32 bytes are a pointer
                 offset = decode_uint_256(stream)
                 indicated_idx = current_location + offset
-                if indicated_idx < end_of_offsets or indicated_idx >= total_stream_length:
+                if (
+                    indicated_idx < end_of_offsets
+                    or indicated_idx >= total_stream_length
+                ):
                     # the pointer is indicating its data is located either within the
                     # offsets section of the stream or beyond the end of the stream,
                     # both of which are invalid
@@ -148,7 +151,9 @@ def validate_pointers_tuple(
 
 
 # BaseArrayDecoder
-def validate_pointers_array(self: "BaseArrayDecoder", stream: ContextFramesBytesIO, array_size: int) -> None:
+def validate_pointers_array(
+    self: "BaseArrayDecoder", stream: ContextFramesBytesIO, array_size: int
+) -> None:
     """
     Verify that all pointers point to a valid location in the stream.
     """
@@ -242,20 +247,22 @@ def validate_padding_bytes_fixed_byte_size(
         raise NonEmptyPaddingBytes(f"Padding bytes were not empty: {padding_bytes!r}")
 
 
-_expected_padding_bytes_cache: Final[Dict["FixedByteSizeDecoder", bytes]] = {}
+_expected_padding_bytes_cache: Final[
+    Dict["FixedByteSizeDecoder", Dict[bytes, bytes]]
+] = {}
 
 
 def get_expected_padding_bytes(self: "FixedByteSizeDecoder", chunk: bytes) -> bytes:
-    cache = _expected_padding_bytes_cache
-    expected_padding_bytes = cache.get(self)
+    instance_cache = _expected_padding_bytes_cache.setdefault(self, {})
+    expected_padding_bytes = instance_cache.get(chunk)
     if expected_padding_bytes is None:
         value_byte_size = get_value_byte_size(self)
         padding_size = self.data_byte_size - value_byte_size
         expected_padding_bytes = chunk * padding_size
-        cache[self] = expected_padding_bytes
+        instance_cache[chunk] = expected_padding_bytes
     return expected_padding_bytes
 
-    
+
 def validate_padding_bytes_signed_integer(
     self: "SignedIntegerDecoder",
     value: int,
@@ -267,9 +274,7 @@ def validate_padding_bytes_signed_integer(
         expected_padding_bytes = get_expected_padding_bytes(self, b"\xff")
 
     if padding_bytes != expected_padding_bytes:
-        raise NonEmptyPaddingBytes(
-            f"Padding bytes were not empty: {padding_bytes!r}"
-        )
+        raise NonEmptyPaddingBytes(f"Padding bytes were not empty: {padding_bytes!r}")
 
 
 # BooleanDecoder
