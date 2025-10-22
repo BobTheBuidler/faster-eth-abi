@@ -396,7 +396,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
     is_big_endian = True
     
     @cached_property
-    def denominator(self) -> int:
+    def denominator(self) -> decimal.Decimal:
         return TEN**self.frac_places
 
     def validate(self) -> None:
