@@ -130,6 +130,10 @@ class TupleDecoder(BaseDecoder):
 
         if self.decoders is None:
             raise ValueError("No `decoders` set")
+    
+    @final
+    def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
+        raise NotImplementedError("didnt call __init__")
 
     @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
