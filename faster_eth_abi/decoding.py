@@ -33,7 +33,6 @@ from faster_eth_abi._decoding import (
     validate_padding_bytes_fixed_byte_size,
     validate_padding_bytes_signed_integer,
     validate_pointers_array,
-    validate_pointers_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -98,7 +97,7 @@ class HeadTailDecoder(BaseDecoder):
 
         if self.tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
-    
+
     def decode(self, stream: ContextFramesBytesIO) -> Any:
         return decode_head_tail(self, stream)
 
@@ -130,11 +129,11 @@ class TupleDecoder(BaseDecoder):
 
         if self.decoders is None:
             raise ValueError("No `decoders` set")
-    
+
     @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         raise NotImplementedError("didnt call __init__")
-    
+
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
 
@@ -200,7 +199,7 @@ class BaseArrayDecoder(BaseDecoder):
 
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         raise NotImplementedError  # this is a type stub
-    
+
     def validate(self) -> None:
         super().validate()
 
@@ -236,7 +235,7 @@ class SizedArrayDecoder(BaseArrayDecoder):
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_decoder.is_dynamic
-    
+
     def decode(self, stream):
         return decode_sized_array(self, stream)
 
@@ -246,7 +245,7 @@ class SizedArrayDecoder(BaseArrayDecoder):
 class DynamicArrayDecoder(BaseArrayDecoder):
     # Dynamic arrays are always dynamic, regardless of their elements
     is_dynamic = True
-    
+
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_dynamic_array(self, stream)
 
@@ -261,10 +260,19 @@ class FixedByteSizeDecoder(SingleDecoder):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.read_data_from_stream = MethodType(read_fixed_byte_size_data_from_stream, self)
-        self.split_data_and_padding = MethodType(split_data_and_padding_fixed_byte_size, self)
-        self.validate_padding_bytes = MethodType(validate_padding_bytes_fixed_byte_size, self)
+
+        self.read_data_from_stream = MethodType(
+            read_fixed_byte_size_data_from_stream, self
+        )
+        self.split_data_and_padding = MethodType(
+            split_data_and_padding_fixed_byte_size, self
+        )
         self._get_value_byte_size = MethodType(get_value_byte_size, self)
+        # Only assign validate_padding_bytes if not overridden in subclass
+        if type(self) is FixedByteSizeDecoder:
+            self.validate_padding_bytes = MethodType(
+                validate_padding_bytes_fixed_byte_size, self
+            )
 
     def validate(self) -> None:
         super().validate()
