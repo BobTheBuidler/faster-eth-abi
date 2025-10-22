@@ -787,80 +787,566 @@ fail: ;
 }
 
 PyObject *CPyDef__decoding___decode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_stream) {
-    char cpy_r_r0;
-    PyObject *cpy_r_r1;
-    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r0;
+    PyObject **cpy_r_r2;
     PyObject *cpy_r_r3;
-    CPyPtr cpy_r_r4;
-    int64_t cpy_r_r5;
+    CPyTagged cpy_r_r4;
+    PyObject *cpy_r_r5;
     PyObject *cpy_r_r6;
-    CPyPtr cpy_r_r7;
-    int64_t cpy_r_r8;
-    int64_t cpy_r_r9;
-    char cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject **cpy_r_r13;
-    PyObject *cpy_r_r14;
+    char cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    CPyPtr cpy_r_r11;
+    int64_t cpy_r_r12;
+    PyObject *cpy_r_r13;
+    CPyPtr cpy_r_r14;
     int64_t cpy_r_r15;
-    PyObject *cpy_r_r16;
-    cpy_r_r0 = CPyDef__decoding___validate_pointers_tuple(cpy_r_self, cpy_r_stream);
-    if (unlikely(cpy_r_r0 == 2)) {
+    int64_t cpy_r_r16;
+    char cpy_r_r17;
+    PyObject *cpy_r_r18;
+    PyObject **cpy_r_r20;
+    PyObject *cpy_r_r21;
+    int64_t cpy_r_r22;
+    PyObject *cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
+    CPyTagged cpy_r_r27;
+    CPyTagged cpy_r_r28;
+    PyObject *cpy_r_r29;
+    PyObject **cpy_r_r31;
+    PyObject *cpy_r_r32;
+    CPyTagged cpy_r_r33;
+    PyObject *cpy_r_r34;
+    PyObject *cpy_r_r35;
+    PyObject *cpy_r_r36;
+    PyObject *cpy_r_r37;
+    CPyPtr cpy_r_r38;
+    int64_t cpy_r_r39;
+    int64_t cpy_r_r40;
+    PyObject *cpy_r_r41;
+    PyObject *cpy_r_r42;
+    PyObject *cpy_r_r43;
+    CPyPtr cpy_r_r44;
+    int64_t cpy_r_r45;
+    int64_t cpy_r_r46;
+    char cpy_r_r47;
+    char cpy_r_r48;
+    PyObject *cpy_r_r49;
+    PyObject *cpy_r_r50;
+    char cpy_r_r51;
+    PyObject *cpy_r_r52;
+    PyObject **cpy_r_r54;
+    PyObject *cpy_r_r55;
+    CPyTagged cpy_r_r56;
+    CPyTagged cpy_r_r57;
+    CPyTagged cpy_r_r58;
+    int64_t cpy_r_r59;
+    char cpy_r_r60;
+    int64_t cpy_r_r61;
+    char cpy_r_r62;
+    char cpy_r_r63;
+    char cpy_r_r64;
+    int64_t cpy_r_r65;
+    char cpy_r_r66;
+    int64_t cpy_r_r67;
+    char cpy_r_r68;
+    char cpy_r_r69;
+    char cpy_r_r70;
+    char cpy_r_r71;
+    char cpy_r_r72;
+    PyObject *cpy_r_r73;
+    PyObject *cpy_r_r74;
+    PyObject **cpy_r_r76;
+    PyObject *cpy_r_r77;
+    CPyTagged cpy_r_r78;
+    CPyTagged cpy_r_r79;
+    PyObject *cpy_r_r80;
+    PyObject *cpy_r_r81;
+    PyObject *cpy_r_r82;
+    PyObject *cpy_r_r83;
+    PyObject *cpy_r_r84;
+    PyObject *cpy_r_r85;
+    PyObject **cpy_r_r87;
+    PyObject *cpy_r_r88;
+    PyObject *cpy_r_r89;
+    PyObject *cpy_r_r90;
+    PyObject **cpy_r_r92;
+    PyObject *cpy_r_r93;
+    PyObject **cpy_r_r95;
+    PyObject *cpy_r_r96;
+    int32_t cpy_r_r97;
+    char cpy_r_r98;
+    int64_t cpy_r_r99;
+    int64_t cpy_r_r100;
+    PyObject *cpy_r_r101;
+    PyObject *cpy_r_r102;
+    PyObject **cpy_r_r104;
+    PyObject *cpy_r_r105;
+    PyObject *cpy_r_r106;
+    PyObject *cpy_r_r107;
+    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
+    PyObject *cpy_r_r1[1] = {cpy_r_stream};
+    cpy_r_r2 = (PyObject **)&cpy_r_r1;
+    cpy_r_r3 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r2, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL10;
+        goto CPyL57;
     }
-    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
-    cpy_r_r2 = CPyObject_GetAttr(cpy_r_self, cpy_r_r1);
-    if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL10;
-    }
-    if (likely(PyTuple_Check(cpy_r_r2)))
-        cpy_r_r3 = cpy_r_r2;
+    if (likely(PyLong_Check(cpy_r_r3)))
+        cpy_r_r4 = CPyTagged_FromObject(cpy_r_r3);
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decode_tuple", 72, CPyStatic__decoding___globals, "tuple", cpy_r_r2);
-        goto CPyL10;
+        CPy_TypeError("int", cpy_r_r3); cpy_r_r4 = CPY_INT_TAG;
     }
-    cpy_r_r4 = (CPyPtr)&((PyVarObject *)cpy_r_r3)->ob_size;
-    cpy_r_r5 = *(int64_t *)cpy_r_r4;
-    cpy_r_r6 = PyTuple_New(cpy_r_r5);
+    CPy_DECREF(cpy_r_r3);
+    if (unlikely(cpy_r_r4 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_no_head_tail' */
+    cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL11;
+        goto CPyL58;
     }
-    cpy_r_r7 = (CPyPtr)&((PyVarObject *)cpy_r_r3)->ob_size;
-    cpy_r_r8 = *(int64_t *)cpy_r_r7;
-    cpy_r_r9 = 0;
-CPyL5: ;
-    cpy_r_r10 = cpy_r_r9 < cpy_r_r8;
-    if (!cpy_r_r10) goto CPyL12;
-    cpy_r_r11 = CPySequenceTuple_GetItemUnsafe(cpy_r_r3, cpy_r_r9);
-    PyObject *cpy_r_r12[1] = {cpy_r_stream};
-    cpy_r_r13 = (PyObject **)&cpy_r_r12;
-    cpy_r_r14 = PyObject_Vectorcall(cpy_r_r11, cpy_r_r13, 1, 0);
-    CPy_DECREF(cpy_r_r11);
-    if (unlikely(cpy_r_r14 == NULL)) {
+    if (unlikely(!PyBool_Check(cpy_r_r6))) {
+        CPy_TypeError("bool", cpy_r_r6); cpy_r_r7 = 2;
+    } else
+        cpy_r_r7 = cpy_r_r6 == Py_True;
+    CPy_DECREF(cpy_r_r6);
+    if (unlikely(cpy_r_r7 == 2)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL13;
+        goto CPyL58;
     }
-    CPySequenceTuple_SetItemUnsafe(cpy_r_r6, cpy_r_r9, cpy_r_r14);
-    cpy_r_r15 = cpy_r_r9 + 1;
-    cpy_r_r9 = cpy_r_r15;
-    goto CPyL5;
+    if (cpy_r_r7) {
+        goto CPyL59;
+    } else
+        goto CPyL14;
+CPyL5: ;
+    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
+    cpy_r_r9 = CPyObject_GetAttr(cpy_r_self, cpy_r_r8);
+    if (unlikely(cpy_r_r9 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    if (likely(PyTuple_Check(cpy_r_r9)))
+        cpy_r_r10 = cpy_r_r9;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decode_tuple", 80, CPyStatic__decoding___globals, "tuple", cpy_r_r9);
+        goto CPyL57;
+    }
+    cpy_r_r11 = (CPyPtr)&((PyVarObject *)cpy_r_r10)->ob_size;
+    cpy_r_r12 = *(int64_t *)cpy_r_r11;
+    cpy_r_r13 = PyTuple_New(cpy_r_r12);
+    if (unlikely(cpy_r_r13 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL60;
+    }
+    cpy_r_r14 = (CPyPtr)&((PyVarObject *)cpy_r_r10)->ob_size;
+    cpy_r_r15 = *(int64_t *)cpy_r_r14;
+    cpy_r_r16 = 0;
 CPyL9: ;
-    return cpy_r_r6;
-CPyL10: ;
-    cpy_r_r16 = NULL;
-    return cpy_r_r16;
-CPyL11: ;
-    CPy_DecRef(cpy_r_r3);
-    goto CPyL10;
-CPyL12: ;
-    CPy_DECREF(cpy_r_r3);
+    cpy_r_r17 = cpy_r_r16 < cpy_r_r15;
+    if (!cpy_r_r17) goto CPyL61;
+    cpy_r_r18 = CPySequenceTuple_GetItemUnsafe(cpy_r_r10, cpy_r_r16);
+    PyObject *cpy_r_r19[1] = {cpy_r_stream};
+    cpy_r_r20 = (PyObject **)&cpy_r_r19;
+    cpy_r_r21 = PyObject_Vectorcall(cpy_r_r18, cpy_r_r20, 1, 0);
+    CPy_DECREF(cpy_r_r18);
+    if (unlikely(cpy_r_r21 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL62;
+    }
+    CPySequenceTuple_SetItemUnsafe(cpy_r_r13, cpy_r_r16, cpy_r_r21);
+    cpy_r_r22 = cpy_r_r16 + 1;
+    cpy_r_r16 = cpy_r_r22;
     goto CPyL9;
 CPyL13: ;
-    CPy_DecRef(cpy_r_r3);
-    CPy_DecRef(cpy_r_r6);
-    goto CPyL10;
+    return cpy_r_r13;
+CPyL14: ;
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'len_of_head' */
+    cpy_r_r24 = CPyObject_GetAttr(cpy_r_self, cpy_r_r23);
+    if (unlikely(cpy_r_r24 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL58;
+    }
+    cpy_r_r25 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 32 */
+    cpy_r_r26 = PyNumber_Multiply(cpy_r_r25, cpy_r_r24);
+    CPy_DECREF(cpy_r_r24);
+    if (unlikely(cpy_r_r26 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL58;
+    }
+    if (likely(PyLong_Check(cpy_r_r26)))
+        cpy_r_r27 = CPyTagged_FromObject(cpy_r_r26);
+    else {
+        CPy_TypeError("int", cpy_r_r26); cpy_r_r27 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r26);
+    if (unlikely(cpy_r_r27 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL58;
+    }
+    cpy_r_r28 = CPyTagged_Add(cpy_r_r4, cpy_r_r27);
+    CPyTagged_DECREF(cpy_r_r27);
+    cpy_r_r29 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getbuffer' */
+    PyObject *cpy_r_r30[1] = {cpy_r_stream};
+    cpy_r_r31 = (PyObject **)&cpy_r_r30;
+    cpy_r_r32 = PyObject_VectorcallMethod(cpy_r_r29, cpy_r_r31, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r32 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL63;
+    }
+    cpy_r_r33 = CPyObject_Size(cpy_r_r32);
+    CPy_DECREF(cpy_r_r32);
+    if (unlikely(cpy_r_r33 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL63;
+    }
+    cpy_r_r34 = PyList_New(0);
+    if (unlikely(cpy_r_r34 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL64;
+    }
+    cpy_r_r35 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
+    cpy_r_r36 = CPyObject_GetAttr(cpy_r_self, cpy_r_r35);
+    if (unlikely(cpy_r_r36 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL65;
+    }
+    if (likely(PyTuple_Check(cpy_r_r36)))
+        cpy_r_r37 = cpy_r_r36;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decode_tuple", 85, CPyStatic__decoding___globals, "tuple", cpy_r_r36);
+        goto CPyL65;
+    }
+    cpy_r_r38 = (CPyPtr)&((PyVarObject *)cpy_r_r37)->ob_size;
+    cpy_r_r39 = *(int64_t *)cpy_r_r38;
+    cpy_r_r40 = 0;
+    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_is_head_tail' */
+    cpy_r_r42 = CPyObject_GetAttr(cpy_r_self, cpy_r_r41);
+    if (unlikely(cpy_r_r42 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL66;
+    }
+    if (likely(PyTuple_Check(cpy_r_r42)))
+        cpy_r_r43 = cpy_r_r42;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decode_tuple", 85, CPyStatic__decoding___globals, "tuple", cpy_r_r42);
+        goto CPyL66;
+    }
+    cpy_r_r44 = (CPyPtr)&((PyVarObject *)cpy_r_r43)->ob_size;
+    cpy_r_r45 = *(int64_t *)cpy_r_r44;
+    cpy_r_r46 = 0;
+CPyL25: ;
+    cpy_r_r47 = cpy_r_r40 < cpy_r_r39;
+    if (!cpy_r_r47) goto CPyL67;
+    cpy_r_r48 = cpy_r_r46 < cpy_r_r45;
+    if (!cpy_r_r48) goto CPyL67;
+    cpy_r_r49 = CPySequenceTuple_GetItemUnsafe(cpy_r_r37, cpy_r_r40);
+    cpy_r_r50 = CPySequenceTuple_GetItemUnsafe(cpy_r_r43, cpy_r_r46);
+    if (unlikely(!PyBool_Check(cpy_r_r50))) {
+        CPy_TypeError("bool", cpy_r_r50); cpy_r_r51 = 2;
+    } else
+        cpy_r_r51 = cpy_r_r50 == Py_True;
+    CPy_DECREF(cpy_r_r50);
+    if (unlikely(cpy_r_r51 == 2)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL68;
+    }
+    if (!cpy_r_r51) goto CPyL51;
+    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
+    PyObject *cpy_r_r53[1] = {cpy_r_stream};
+    cpy_r_r54 = (PyObject **)&cpy_r_r53;
+    cpy_r_r55 = PyObject_VectorcallMethod(cpy_r_r52, cpy_r_r54, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r55 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL68;
+    }
+    if (likely(PyLong_Check(cpy_r_r55)))
+        cpy_r_r56 = CPyTagged_FromObject(cpy_r_r55);
+    else {
+        CPy_TypeError("int", cpy_r_r55); cpy_r_r56 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r55);
+    if (unlikely(cpy_r_r56 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL68;
+    }
+    cpy_r_r57 = CPyDef__decoding___decode_uint_256(cpy_r_stream);
+    if (unlikely(cpy_r_r57 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL69;
+    }
+    cpy_r_r58 = CPyTagged_Add(cpy_r_r4, cpy_r_r57);
+    CPyTagged_DECREF(cpy_r_r57);
+    cpy_r_r59 = cpy_r_r58 & 1;
+    cpy_r_r60 = cpy_r_r59 != 0;
+    if (cpy_r_r60) goto CPyL34;
+    cpy_r_r61 = cpy_r_r28 & 1;
+    cpy_r_r62 = cpy_r_r61 != 0;
+    if (!cpy_r_r62) goto CPyL35;
+CPyL34: ;
+    cpy_r_r63 = CPyTagged_IsLt_(cpy_r_r58, cpy_r_r28);
+    if (cpy_r_r63) {
+        goto CPyL70;
+    } else
+        goto CPyL36;
+CPyL35: ;
+    cpy_r_r64 = (Py_ssize_t)cpy_r_r58 < (Py_ssize_t)cpy_r_r28;
+    if (cpy_r_r64) goto CPyL70;
+CPyL36: ;
+    cpy_r_r65 = cpy_r_r58 & 1;
+    cpy_r_r66 = cpy_r_r65 != 0;
+    if (cpy_r_r66) goto CPyL38;
+    cpy_r_r67 = cpy_r_r33 & 1;
+    cpy_r_r68 = cpy_r_r67 != 0;
+    if (!cpy_r_r68) goto CPyL39;
+CPyL38: ;
+    cpy_r_r69 = CPyTagged_IsLt_(cpy_r_r58, cpy_r_r33);
+    cpy_r_r70 = cpy_r_r69 ^ 1;
+    cpy_r_r71 = cpy_r_r70;
+    goto CPyL40;
+CPyL39: ;
+    cpy_r_r72 = (Py_ssize_t)cpy_r_r58 >= (Py_ssize_t)cpy_r_r33;
+    cpy_r_r71 = cpy_r_r72;
+CPyL40: ;
+    CPyTagged_DECREF(cpy_r_r58);
+    if (cpy_r_r71) {
+        goto CPyL71;
+    } else
+        goto CPyL49;
+CPyL41: ;
+    cpy_r_r73 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Invalid pointer in tuple at location ' */
+    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
+    PyObject *cpy_r_r75[1] = {cpy_r_stream};
+    cpy_r_r76 = (PyObject **)&cpy_r_r75;
+    cpy_r_r77 = PyObject_VectorcallMethod(cpy_r_r74, cpy_r_r76, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r77 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    if (likely(PyLong_Check(cpy_r_r77)))
+        cpy_r_r78 = CPyTagged_FromObject(cpy_r_r77);
+    else {
+        CPy_TypeError("int", cpy_r_r77); cpy_r_r78 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r77);
+    if (unlikely(cpy_r_r78 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    cpy_r_r79 = CPyTagged_Subtract(cpy_r_r78, 64);
+    CPyTagged_DECREF(cpy_r_r78);
+    cpy_r_r80 = CPyTagged_Str(cpy_r_r79);
+    CPyTagged_DECREF(cpy_r_r79);
+    if (unlikely(cpy_r_r80 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' in payload' */
+    cpy_r_r82 = CPyStr_Build(3, cpy_r_r73, cpy_r_r80, cpy_r_r81);
+    CPy_DECREF(cpy_r_r80);
+    if (unlikely(cpy_r_r82 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    cpy_r_r83 = CPyStatic__decoding___globals;
+    cpy_r_r84 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InvalidPointer' */
+    cpy_r_r85 = CPyDict_GetItem(cpy_r_r83, cpy_r_r84);
+    if (unlikely(cpy_r_r85 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL72;
+    }
+    PyObject *cpy_r_r86[1] = {cpy_r_r82};
+    cpy_r_r87 = (PyObject **)&cpy_r_r86;
+    cpy_r_r88 = PyObject_Vectorcall(cpy_r_r85, cpy_r_r87, 1, 0);
+    CPy_DECREF(cpy_r_r85);
+    if (unlikely(cpy_r_r88 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL72;
+    }
+    CPy_DECREF(cpy_r_r82);
+    CPy_Raise(cpy_r_r88);
+    CPy_DECREF(cpy_r_r88);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    CPy_Unreachable();
+CPyL49: ;
+    cpy_r_r89 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'seek' */
+    cpy_r_r90 = CPyTagged_StealAsObject(cpy_r_r56);
+    PyObject *cpy_r_r91[2] = {cpy_r_stream, cpy_r_r90};
+    cpy_r_r92 = (PyObject **)&cpy_r_r91;
+    cpy_r_r93 = PyObject_VectorcallMethod(cpy_r_r89, cpy_r_r92, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r93 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL73;
+    } else
+        goto CPyL74;
+CPyL50: ;
+    CPy_DECREF(cpy_r_r90);
+CPyL51: ;
+    PyObject *cpy_r_r94[1] = {cpy_r_stream};
+    cpy_r_r95 = (PyObject **)&cpy_r_r94;
+    cpy_r_r96 = PyObject_Vectorcall(cpy_r_r49, cpy_r_r95, 1, 0);
+    CPy_DECREF(cpy_r_r49);
+    if (unlikely(cpy_r_r96 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL75;
+    }
+    cpy_r_r97 = PyList_Append(cpy_r_r34, cpy_r_r96);
+    CPy_DECREF(cpy_r_r96);
+    cpy_r_r98 = cpy_r_r97 >= 0;
+    if (unlikely(!cpy_r_r98)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL75;
+    }
+    cpy_r_r99 = cpy_r_r40 + 1;
+    cpy_r_r40 = cpy_r_r99;
+    cpy_r_r100 = cpy_r_r46 + 1;
+    cpy_r_r46 = cpy_r_r100;
+    goto CPyL25;
+CPyL54: ;
+    cpy_r_r101 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'seek' */
+    cpy_r_r102 = CPyTagged_StealAsObject(cpy_r_r4);
+    PyObject *cpy_r_r103[2] = {cpy_r_stream, cpy_r_r102};
+    cpy_r_r104 = (PyObject **)&cpy_r_r103;
+    cpy_r_r105 = PyObject_VectorcallMethod(cpy_r_r101, cpy_r_r104, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r105 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL76;
+    } else
+        goto CPyL77;
+CPyL55: ;
+    CPy_DECREF(cpy_r_r102);
+    cpy_r_r106 = PyList_AsTuple(cpy_r_r34);
+    CPy_DECREF_NO_IMM(cpy_r_r34);
+    if (unlikely(cpy_r_r106 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "decode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL57;
+    }
+    return cpy_r_r106;
+CPyL57: ;
+    cpy_r_r107 = NULL;
+    return cpy_r_r107;
+CPyL58: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    goto CPyL57;
+CPyL59: ;
+    CPyTagged_DECREF(cpy_r_r4);
+    goto CPyL5;
+CPyL60: ;
+    CPy_DecRef(cpy_r_r10);
+    goto CPyL57;
+CPyL61: ;
+    CPy_DECREF(cpy_r_r10);
+    goto CPyL13;
+CPyL62: ;
+    CPy_DecRef(cpy_r_r10);
+    CPy_DecRef(cpy_r_r13);
+    goto CPyL57;
+CPyL63: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    goto CPyL57;
+CPyL64: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    goto CPyL57;
+CPyL65: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    goto CPyL57;
+CPyL66: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r37);
+    goto CPyL57;
+CPyL67: ;
+    CPyTagged_DECREF(cpy_r_r28);
+    CPyTagged_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r37);
+    CPy_DECREF(cpy_r_r43);
+    goto CPyL54;
+CPyL68: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r37);
+    CPy_DecRef(cpy_r_r43);
+    CPy_DecRef(cpy_r_r49);
+    goto CPyL57;
+CPyL69: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r37);
+    CPy_DecRef(cpy_r_r43);
+    CPy_DecRef(cpy_r_r49);
+    CPyTagged_DecRef(cpy_r_r56);
+    goto CPyL57;
+CPyL70: ;
+    CPyTagged_DECREF(cpy_r_r4);
+    CPyTagged_DECREF(cpy_r_r28);
+    CPyTagged_DECREF(cpy_r_r33);
+    CPy_DECREF_NO_IMM(cpy_r_r34);
+    CPy_DECREF(cpy_r_r37);
+    CPy_DECREF(cpy_r_r43);
+    CPy_DECREF(cpy_r_r49);
+    CPyTagged_DECREF(cpy_r_r56);
+    CPyTagged_DECREF(cpy_r_r58);
+    goto CPyL41;
+CPyL71: ;
+    CPyTagged_DECREF(cpy_r_r4);
+    CPyTagged_DECREF(cpy_r_r28);
+    CPyTagged_DECREF(cpy_r_r33);
+    CPy_DECREF_NO_IMM(cpy_r_r34);
+    CPy_DECREF(cpy_r_r37);
+    CPy_DECREF(cpy_r_r43);
+    CPy_DECREF(cpy_r_r49);
+    CPyTagged_DECREF(cpy_r_r56);
+    goto CPyL41;
+CPyL72: ;
+    CPy_DecRef(cpy_r_r82);
+    goto CPyL57;
+CPyL73: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r37);
+    CPy_DecRef(cpy_r_r43);
+    CPy_DecRef(cpy_r_r49);
+    CPy_DecRef(cpy_r_r90);
+    goto CPyL57;
+CPyL74: ;
+    CPy_DECREF(cpy_r_r93);
+    goto CPyL50;
+CPyL75: ;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r28);
+    CPyTagged_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r37);
+    CPy_DecRef(cpy_r_r43);
+    goto CPyL57;
+CPyL76: ;
+    CPy_DecRef(cpy_r_r34);
+    CPy_DecRef(cpy_r_r102);
+    goto CPyL57;
+CPyL77: ;
+    CPy_DECREF(cpy_r_r105);
+    goto CPyL55;
 }
 
 PyObject *CPyPy__decoding___decode_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -972,7 +1458,7 @@ char CPyDef__decoding___validate_pointers_tuple(PyObject *cpy_r_self, PyObject *
     cpy_r_r3 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r2, 9223372036854775809ULL, 0);
     if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
     if (likely(PyLong_Check(cpy_r_r3)))
         cpy_r_r4 = CPyTagged_FromObject(cpy_r_r3);
@@ -997,342 +1483,343 @@ char CPyDef__decoding___validate_pointers_tuple(PyObject *cpy_r_self, PyObject *
     CPy_DECREF(cpy_r_r6);
     if (unlikely(cpy_r_r7 == 2)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
-    if (!cpy_r_r7) goto CPyL10;
-    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_decoders' */
+    if (!cpy_r_r7) goto CPyL11;
+    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
     cpy_r_r9 = CPyObject_GetAttr(cpy_r_self, cpy_r_r8);
     if (unlikely(cpy_r_r9 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
-    cpy_r_r10 = PyObject_GetIter(cpy_r_r9);
-    CPy_DECREF(cpy_r_r9);
-    if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+    if (likely(PyTuple_Check(cpy_r_r9)))
+        cpy_r_r10 = cpy_r_r9;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", 122, CPyStatic__decoding___globals, "tuple", cpy_r_r9);
+        goto CPyL48;
     }
-CPyL7: ;
-    cpy_r_r11 = PyIter_Next(cpy_r_r10);
-    if (cpy_r_r11 == NULL) goto CPyL48;
-    cpy_r_decoder = cpy_r_r11;
-    PyObject *cpy_r_r12[1] = {cpy_r_stream};
-    cpy_r_r13 = (PyObject **)&cpy_r_r12;
-    cpy_r_r14 = PyObject_Vectorcall(cpy_r_decoder, cpy_r_r13, 1, 0);
+    cpy_r_r11 = (CPyPtr)&((PyVarObject *)cpy_r_r10)->ob_size;
+    cpy_r_r12 = *(int64_t *)cpy_r_r11;
+    cpy_r_r13 = 0;
+CPyL8: ;
+    cpy_r_r14 = cpy_r_r13 < cpy_r_r12;
+    if (!cpy_r_r14) goto CPyL49;
+    cpy_r_r15 = CPySequenceTuple_GetItemUnsafe(cpy_r_r10, cpy_r_r13);
+    cpy_r_decoder = cpy_r_r15;
+    PyObject *cpy_r_r16[1] = {cpy_r_stream};
+    cpy_r_r17 = (PyObject **)&cpy_r_r16;
+    cpy_r_r18 = PyObject_Vectorcall(cpy_r_decoder, cpy_r_r17, 1, 0);
     CPy_DECREF(cpy_r_decoder);
-    if (unlikely(cpy_r_r14 == NULL)) {
+    if (unlikely(cpy_r_r18 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL49;
-    } else
         goto CPyL50;
-CPyL9: ;
-    cpy_r_r15 = CPy_NoErrOccurred();
-    if (unlikely(!cpy_r_r15)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
     } else
-        goto CPyL44;
+        goto CPyL51;
 CPyL10: ;
-    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'len_of_head' */
-    cpy_r_r17 = CPyObject_GetAttr(cpy_r_self, cpy_r_r16);
-    if (unlikely(cpy_r_r17 == NULL)) {
+    cpy_r_r19 = cpy_r_r13 + 1;
+    cpy_r_r13 = cpy_r_r19;
+    goto CPyL8;
+CPyL11: ;
+    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'len_of_head' */
+    cpy_r_r21 = CPyObject_GetAttr(cpy_r_self, cpy_r_r20);
+    if (unlikely(cpy_r_r21 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
-    cpy_r_r18 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 32 */
-    cpy_r_r19 = PyNumber_Multiply(cpy_r_r18, cpy_r_r17);
-    CPy_DECREF(cpy_r_r17);
-    if (unlikely(cpy_r_r19 == NULL)) {
+    cpy_r_r22 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 32 */
+    cpy_r_r23 = PyNumber_Multiply(cpy_r_r22, cpy_r_r21);
+    CPy_DECREF(cpy_r_r21);
+    if (unlikely(cpy_r_r23 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
-    if (likely(PyLong_Check(cpy_r_r19)))
-        cpy_r_r20 = CPyTagged_FromObject(cpy_r_r19);
+    if (likely(PyLong_Check(cpy_r_r23)))
+        cpy_r_r24 = CPyTagged_FromObject(cpy_r_r23);
     else {
-        CPy_TypeError("int", cpy_r_r19); cpy_r_r20 = CPY_INT_TAG;
+        CPy_TypeError("int", cpy_r_r23); cpy_r_r24 = CPY_INT_TAG;
     }
-    CPy_DECREF(cpy_r_r19);
-    if (unlikely(cpy_r_r20 == CPY_INT_TAG)) {
+    CPy_DECREF(cpy_r_r23);
+    if (unlikely(cpy_r_r24 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
-    cpy_r_r21 = CPyTagged_Add(cpy_r_r4, cpy_r_r20);
-    CPyTagged_DECREF(cpy_r_r20);
-    cpy_r_r22 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getbuffer' */
-    PyObject *cpy_r_r23[1] = {cpy_r_stream};
-    cpy_r_r24 = (PyObject **)&cpy_r_r23;
-    cpy_r_r25 = PyObject_VectorcallMethod(cpy_r_r22, cpy_r_r24, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r25 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL51;
-    }
-    cpy_r_r26 = CPyObject_Size(cpy_r_r25);
-    CPy_DECREF(cpy_r_r25);
-    if (unlikely(cpy_r_r26 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL51;
-    }
-    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
-    cpy_r_r28 = CPyObject_GetAttr(cpy_r_self, cpy_r_r27);
-    if (unlikely(cpy_r_r28 == NULL)) {
+    cpy_r_r25 = CPyTagged_Add(cpy_r_r4, cpy_r_r24);
+    CPyTagged_DECREF(cpy_r_r24);
+    cpy_r_r26 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getbuffer' */
+    PyObject *cpy_r_r27[1] = {cpy_r_stream};
+    cpy_r_r28 = (PyObject **)&cpy_r_r27;
+    cpy_r_r29 = PyObject_VectorcallMethod(cpy_r_r26, cpy_r_r28, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r29 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL52;
     }
-    if (likely(PyTuple_Check(cpy_r_r28)))
-        cpy_r_r29 = cpy_r_r28;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", 89, CPyStatic__decoding___globals, "tuple", cpy_r_r28);
+    cpy_r_r30 = CPyObject_Size(cpy_r_r29);
+    CPy_DECREF(cpy_r_r29);
+    if (unlikely(cpy_r_r30 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL52;
     }
-    cpy_r_r30 = (CPyPtr)&((PyVarObject *)cpy_r_r29)->ob_size;
-    cpy_r_r31 = *(int64_t *)cpy_r_r30;
-    cpy_r_r32 = 0;
-    cpy_r_r33 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_is_head_tail' */
-    cpy_r_r34 = CPyObject_GetAttr(cpy_r_self, cpy_r_r33);
-    if (unlikely(cpy_r_r34 == NULL)) {
+    cpy_r_r31 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decoders' */
+    cpy_r_r32 = CPyObject_GetAttr(cpy_r_self, cpy_r_r31);
+    if (unlikely(cpy_r_r32 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL53;
     }
-    if (likely(PyTuple_Check(cpy_r_r34)))
-        cpy_r_r35 = cpy_r_r34;
+    if (likely(PyTuple_Check(cpy_r_r32)))
+        cpy_r_r33 = cpy_r_r32;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", 89, CPyStatic__decoding___globals, "tuple", cpy_r_r34);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", 127, CPyStatic__decoding___globals, "tuple", cpy_r_r32);
         goto CPyL53;
     }
-    cpy_r_r36 = (CPyPtr)&((PyVarObject *)cpy_r_r35)->ob_size;
-    cpy_r_r37 = *(int64_t *)cpy_r_r36;
-    cpy_r_r38 = 0;
-CPyL20: ;
-    cpy_r_r39 = cpy_r_r32 < cpy_r_r31;
-    if (!cpy_r_r39) goto CPyL54;
-    cpy_r_r40 = cpy_r_r38 < cpy_r_r37;
-    if (!cpy_r_r40) goto CPyL54;
-    cpy_r_r41 = CPySequenceTuple_GetItemUnsafe(cpy_r_r29, cpy_r_r32);
-    cpy_r_decoder = cpy_r_r41;
-    cpy_r_r42 = CPySequenceTuple_GetItemUnsafe(cpy_r_r35, cpy_r_r38);
-    if (unlikely(!PyBool_Check(cpy_r_r42))) {
-        CPy_TypeError("bool", cpy_r_r42); cpy_r_r43 = 2;
+    cpy_r_r34 = (CPyPtr)&((PyVarObject *)cpy_r_r33)->ob_size;
+    cpy_r_r35 = *(int64_t *)cpy_r_r34;
+    cpy_r_r36 = 0;
+    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_is_head_tail' */
+    cpy_r_r38 = CPyObject_GetAttr(cpy_r_self, cpy_r_r37);
+    if (unlikely(cpy_r_r38 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL54;
+    }
+    if (likely(PyTuple_Check(cpy_r_r38)))
+        cpy_r_r39 = cpy_r_r38;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", 127, CPyStatic__decoding___globals, "tuple", cpy_r_r38);
+        goto CPyL54;
+    }
+    cpy_r_r40 = (CPyPtr)&((PyVarObject *)cpy_r_r39)->ob_size;
+    cpy_r_r41 = *(int64_t *)cpy_r_r40;
+    cpy_r_r42 = 0;
+CPyL21: ;
+    cpy_r_r43 = cpy_r_r36 < cpy_r_r35;
+    if (!cpy_r_r43) goto CPyL55;
+    cpy_r_r44 = cpy_r_r42 < cpy_r_r41;
+    if (!cpy_r_r44) goto CPyL55;
+    cpy_r_r45 = CPySequenceTuple_GetItemUnsafe(cpy_r_r33, cpy_r_r36);
+    cpy_r_decoder = cpy_r_r45;
+    cpy_r_r46 = CPySequenceTuple_GetItemUnsafe(cpy_r_r39, cpy_r_r42);
+    if (unlikely(!PyBool_Check(cpy_r_r46))) {
+        CPy_TypeError("bool", cpy_r_r46); cpy_r_r47 = 2;
     } else
-        cpy_r_r43 = cpy_r_r42 == Py_True;
-    CPy_DECREF(cpy_r_r42);
-    if (unlikely(cpy_r_r43 == 2)) {
+        cpy_r_r47 = cpy_r_r46 == Py_True;
+    CPy_DECREF(cpy_r_r46);
+    if (unlikely(cpy_r_r47 == 2)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL55;
+        goto CPyL56;
     }
-    if (cpy_r_r43) goto CPyL56;
-    PyObject *cpy_r_r44[1] = {cpy_r_stream};
-    cpy_r_r45 = (PyObject **)&cpy_r_r44;
-    cpy_r_r46 = PyObject_Vectorcall(cpy_r_decoder, cpy_r_r45, 1, 0);
+    if (cpy_r_r47) goto CPyL57;
+    PyObject *cpy_r_r48[1] = {cpy_r_stream};
+    cpy_r_r49 = (PyObject **)&cpy_r_r48;
+    cpy_r_r50 = PyObject_Vectorcall(cpy_r_decoder, cpy_r_r49, 1, 0);
     CPy_DECREF(cpy_r_decoder);
-    if (unlikely(cpy_r_r46 == NULL)) {
+    if (unlikely(cpy_r_r50 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL57;
-    } else
         goto CPyL58;
-CPyL25: ;
-    cpy_r_r47 = CPyDef__decoding___decode_uint_256(cpy_r_stream);
-    if (unlikely(cpy_r_r47 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL57;
-    }
-    cpy_r_r48 = CPyTagged_Add(cpy_r_r4, cpy_r_r47);
-    CPyTagged_DECREF(cpy_r_r47);
-    cpy_r_r49 = cpy_r_r48 & 1;
-    cpy_r_r50 = cpy_r_r49 != 0;
-    if (cpy_r_r50) goto CPyL28;
-    cpy_r_r51 = cpy_r_r21 & 1;
-    cpy_r_r52 = cpy_r_r51 != 0;
-    if (!cpy_r_r52) goto CPyL29;
-CPyL28: ;
-    cpy_r_r53 = CPyTagged_IsLt_(cpy_r_r48, cpy_r_r21);
-    if (cpy_r_r53) {
-        goto CPyL59;
     } else
-        goto CPyL30;
-CPyL29: ;
-    cpy_r_r54 = (Py_ssize_t)cpy_r_r48 < (Py_ssize_t)cpy_r_r21;
-    if (cpy_r_r54) goto CPyL59;
-CPyL30: ;
-    cpy_r_r55 = cpy_r_r48 & 1;
+        goto CPyL59;
+CPyL26: ;
+    cpy_r_r51 = CPyDef__decoding___decode_uint_256(cpy_r_stream);
+    if (unlikely(cpy_r_r51 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL58;
+    }
+    cpy_r_r52 = CPyTagged_Add(cpy_r_r4, cpy_r_r51);
+    CPyTagged_DECREF(cpy_r_r51);
+    cpy_r_r53 = cpy_r_r52 & 1;
+    cpy_r_r54 = cpy_r_r53 != 0;
+    if (cpy_r_r54) goto CPyL29;
+    cpy_r_r55 = cpy_r_r25 & 1;
     cpy_r_r56 = cpy_r_r55 != 0;
-    if (cpy_r_r56) goto CPyL32;
-    cpy_r_r57 = cpy_r_r26 & 1;
-    cpy_r_r58 = cpy_r_r57 != 0;
-    if (!cpy_r_r58) goto CPyL33;
-CPyL32: ;
-    cpy_r_r59 = CPyTagged_IsLt_(cpy_r_r48, cpy_r_r26);
-    cpy_r_r60 = cpy_r_r59 ^ 1;
-    cpy_r_r61 = cpy_r_r60;
-    goto CPyL34;
-CPyL33: ;
-    cpy_r_r62 = (Py_ssize_t)cpy_r_r48 >= (Py_ssize_t)cpy_r_r26;
-    cpy_r_r61 = cpy_r_r62;
-CPyL34: ;
-    CPyTagged_DECREF(cpy_r_r48);
-    if (cpy_r_r61) {
+    if (!cpy_r_r56) goto CPyL30;
+CPyL29: ;
+    cpy_r_r57 = CPyTagged_IsLt_(cpy_r_r52, cpy_r_r25);
+    if (cpy_r_r57) {
         goto CPyL60;
     } else
-        goto CPyL43;
+        goto CPyL31;
+CPyL30: ;
+    cpy_r_r58 = (Py_ssize_t)cpy_r_r52 < (Py_ssize_t)cpy_r_r25;
+    if (cpy_r_r58) goto CPyL60;
+CPyL31: ;
+    cpy_r_r59 = cpy_r_r52 & 1;
+    cpy_r_r60 = cpy_r_r59 != 0;
+    if (cpy_r_r60) goto CPyL33;
+    cpy_r_r61 = cpy_r_r30 & 1;
+    cpy_r_r62 = cpy_r_r61 != 0;
+    if (!cpy_r_r62) goto CPyL34;
+CPyL33: ;
+    cpy_r_r63 = CPyTagged_IsLt_(cpy_r_r52, cpy_r_r30);
+    cpy_r_r64 = cpy_r_r63 ^ 1;
+    cpy_r_r65 = cpy_r_r64;
+    goto CPyL35;
+CPyL34: ;
+    cpy_r_r66 = (Py_ssize_t)cpy_r_r52 >= (Py_ssize_t)cpy_r_r30;
+    cpy_r_r65 = cpy_r_r66;
 CPyL35: ;
-    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Invalid pointer in tuple at location ' */
-    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
-    PyObject *cpy_r_r65[1] = {cpy_r_stream};
-    cpy_r_r66 = (PyObject **)&cpy_r_r65;
-    cpy_r_r67 = PyObject_VectorcallMethod(cpy_r_r64, cpy_r_r66, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r67 == NULL)) {
+    CPyTagged_DECREF(cpy_r_r52);
+    if (cpy_r_r65) {
+        goto CPyL61;
+    } else
+        goto CPyL44;
+CPyL36: ;
+    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Invalid pointer in tuple at location ' */
+    cpy_r_r68 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
+    PyObject *cpy_r_r69[1] = {cpy_r_stream};
+    cpy_r_r70 = (PyObject **)&cpy_r_r69;
+    cpy_r_r71 = PyObject_VectorcallMethod(cpy_r_r68, cpy_r_r70, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r71 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
-    if (likely(PyLong_Check(cpy_r_r67)))
-        cpy_r_r68 = CPyTagged_FromObject(cpy_r_r67);
+    if (likely(PyLong_Check(cpy_r_r71)))
+        cpy_r_r72 = CPyTagged_FromObject(cpy_r_r71);
     else {
-        CPy_TypeError("int", cpy_r_r67); cpy_r_r68 = CPY_INT_TAG;
+        CPy_TypeError("int", cpy_r_r71); cpy_r_r72 = CPY_INT_TAG;
     }
-    CPy_DECREF(cpy_r_r67);
-    if (unlikely(cpy_r_r68 == CPY_INT_TAG)) {
+    CPy_DECREF(cpy_r_r71);
+    if (unlikely(cpy_r_r72 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
-    cpy_r_r69 = CPyTagged_Subtract(cpy_r_r68, 64);
-    CPyTagged_DECREF(cpy_r_r68);
-    cpy_r_r70 = CPyTagged_Str(cpy_r_r69);
-    CPyTagged_DECREF(cpy_r_r69);
-    if (unlikely(cpy_r_r70 == NULL)) {
+    cpy_r_r73 = CPyTagged_Subtract(cpy_r_r72, 64);
+    CPyTagged_DECREF(cpy_r_r72);
+    cpy_r_r74 = CPyTagged_Str(cpy_r_r73);
+    CPyTagged_DECREF(cpy_r_r73);
+    if (unlikely(cpy_r_r74 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
-    cpy_r_r71 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' in payload' */
-    cpy_r_r72 = CPyStr_Build(3, cpy_r_r63, cpy_r_r70, cpy_r_r71);
-    CPy_DECREF(cpy_r_r70);
-    if (unlikely(cpy_r_r72 == NULL)) {
+    cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' in payload' */
+    cpy_r_r76 = CPyStr_Build(3, cpy_r_r67, cpy_r_r74, cpy_r_r75);
+    CPy_DECREF(cpy_r_r74);
+    if (unlikely(cpy_r_r76 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
-    cpy_r_r73 = CPyStatic__decoding___globals;
-    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InvalidPointer' */
-    cpy_r_r75 = CPyDict_GetItem(cpy_r_r73, cpy_r_r74);
-    if (unlikely(cpy_r_r75 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL61;
-    }
-    PyObject *cpy_r_r76[1] = {cpy_r_r72};
-    cpy_r_r77 = (PyObject **)&cpy_r_r76;
-    cpy_r_r78 = PyObject_Vectorcall(cpy_r_r75, cpy_r_r77, 1, 0);
-    CPy_DECREF(cpy_r_r75);
-    if (unlikely(cpy_r_r78 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL61;
-    }
-    CPy_DECREF(cpy_r_r72);
-    CPy_Raise(cpy_r_r78);
-    CPy_DECREF(cpy_r_r78);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
-    }
-    CPy_Unreachable();
-CPyL43: ;
-    cpy_r_r79 = cpy_r_r32 + 1;
-    cpy_r_r32 = cpy_r_r79;
-    cpy_r_r80 = cpy_r_r38 + 1;
-    cpy_r_r38 = cpy_r_r80;
-    goto CPyL20;
-CPyL44: ;
-    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'seek' */
-    cpy_r_r82 = CPyTagged_StealAsObject(cpy_r_r4);
-    PyObject *cpy_r_r83[2] = {cpy_r_stream, cpy_r_r82};
-    cpy_r_r84 = (PyObject **)&cpy_r_r83;
-    cpy_r_r85 = PyObject_VectorcallMethod(cpy_r_r81, cpy_r_r84, 9223372036854775810ULL, 0);
-    if (unlikely(cpy_r_r85 == NULL)) {
+    cpy_r_r77 = CPyStatic__decoding___globals;
+    cpy_r_r78 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'InvalidPointer' */
+    cpy_r_r79 = CPyDict_GetItem(cpy_r_r77, cpy_r_r78);
+    if (unlikely(cpy_r_r79 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL62;
-    } else
-        goto CPyL63;
-CPyL45: ;
+    }
+    PyObject *cpy_r_r80[1] = {cpy_r_r76};
+    cpy_r_r81 = (PyObject **)&cpy_r_r80;
+    cpy_r_r82 = PyObject_Vectorcall(cpy_r_r79, cpy_r_r81, 1, 0);
+    CPy_DECREF(cpy_r_r79);
+    if (unlikely(cpy_r_r82 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL62;
+    }
+    CPy_DECREF(cpy_r_r76);
+    CPy_Raise(cpy_r_r82);
     CPy_DECREF(cpy_r_r82);
-    return 1;
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL47;
+    }
+    CPy_Unreachable();
+CPyL44: ;
+    cpy_r_r83 = cpy_r_r36 + 1;
+    cpy_r_r36 = cpy_r_r83;
+    cpy_r_r84 = cpy_r_r42 + 1;
+    cpy_r_r42 = cpy_r_r84;
+    goto CPyL21;
+CPyL45: ;
+    cpy_r_r85 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'seek' */
+    cpy_r_r86 = CPyTagged_StealAsObject(cpy_r_r4);
+    PyObject *cpy_r_r87[2] = {cpy_r_stream, cpy_r_r86};
+    cpy_r_r88 = (PyObject **)&cpy_r_r87;
+    cpy_r_r89 = PyObject_VectorcallMethod(cpy_r_r85, cpy_r_r88, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r89 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL63;
+    } else
+        goto CPyL64;
 CPyL46: ;
-    cpy_r_r86 = 2;
-    return cpy_r_r86;
+    CPy_DECREF(cpy_r_r86);
+    return 1;
 CPyL47: ;
-    CPyTagged_DecRef(cpy_r_r4);
-    goto CPyL46;
+    cpy_r_r90 = 2;
+    return cpy_r_r90;
 CPyL48: ;
-    CPy_DECREF(cpy_r_r10);
-    goto CPyL9;
+    CPyTagged_DecRef(cpy_r_r4);
+    goto CPyL47;
 CPyL49: ;
+    CPy_DECREF(cpy_r_r10);
+    goto CPyL45;
+CPyL50: ;
     CPyTagged_DecRef(cpy_r_r4);
     CPy_DecRef(cpy_r_r10);
-    goto CPyL46;
-CPyL50: ;
-    CPy_DECREF(cpy_r_r14);
-    goto CPyL7;
+    goto CPyL47;
 CPyL51: ;
-    CPyTagged_DecRef(cpy_r_r4);
-    CPyTagged_DecRef(cpy_r_r21);
-    goto CPyL46;
+    CPy_DECREF(cpy_r_r18);
+    goto CPyL10;
 CPyL52: ;
     CPyTagged_DecRef(cpy_r_r4);
-    CPyTagged_DecRef(cpy_r_r21);
-    CPyTagged_DecRef(cpy_r_r26);
-    goto CPyL46;
+    CPyTagged_DecRef(cpy_r_r25);
+    goto CPyL47;
 CPyL53: ;
     CPyTagged_DecRef(cpy_r_r4);
-    CPyTagged_DecRef(cpy_r_r21);
-    CPyTagged_DecRef(cpy_r_r26);
-    CPy_DecRef(cpy_r_r29);
-    goto CPyL46;
+    CPyTagged_DecRef(cpy_r_r25);
+    CPyTagged_DecRef(cpy_r_r30);
+    goto CPyL47;
 CPyL54: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    CPyTagged_DECREF(cpy_r_r26);
-    CPy_DECREF(cpy_r_r29);
-    CPy_DECREF(cpy_r_r35);
-    goto CPyL44;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r25);
+    CPyTagged_DecRef(cpy_r_r30);
+    CPy_DecRef(cpy_r_r33);
+    goto CPyL47;
 CPyL55: ;
+    CPyTagged_DECREF(cpy_r_r25);
+    CPyTagged_DECREF(cpy_r_r30);
+    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r39);
+    goto CPyL45;
+CPyL56: ;
     CPyTagged_DecRef(cpy_r_r4);
     CPy_DecRef(cpy_r_decoder);
-    CPyTagged_DecRef(cpy_r_r21);
-    CPyTagged_DecRef(cpy_r_r26);
-    CPy_DecRef(cpy_r_r29);
-    CPy_DecRef(cpy_r_r35);
-    goto CPyL46;
-CPyL56: ;
-    CPy_DECREF(cpy_r_decoder);
-    goto CPyL25;
+    CPyTagged_DecRef(cpy_r_r25);
+    CPyTagged_DecRef(cpy_r_r30);
+    CPy_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r39);
+    goto CPyL47;
 CPyL57: ;
-    CPyTagged_DecRef(cpy_r_r4);
-    CPyTagged_DecRef(cpy_r_r21);
-    CPyTagged_DecRef(cpy_r_r26);
-    CPy_DecRef(cpy_r_r29);
-    CPy_DecRef(cpy_r_r35);
-    goto CPyL46;
+    CPy_DECREF(cpy_r_decoder);
+    goto CPyL26;
 CPyL58: ;
-    CPy_DECREF(cpy_r_r46);
-    goto CPyL43;
+    CPyTagged_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r25);
+    CPyTagged_DecRef(cpy_r_r30);
+    CPy_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r39);
+    goto CPyL47;
 CPyL59: ;
-    CPyTagged_DECREF(cpy_r_r4);
-    CPyTagged_DECREF(cpy_r_r21);
-    CPyTagged_DECREF(cpy_r_r26);
-    CPy_DECREF(cpy_r_r29);
-    CPy_DECREF(cpy_r_r35);
-    CPyTagged_DECREF(cpy_r_r48);
-    goto CPyL35;
+    CPy_DECREF(cpy_r_r50);
+    goto CPyL44;
 CPyL60: ;
     CPyTagged_DECREF(cpy_r_r4);
-    CPyTagged_DECREF(cpy_r_r21);
-    CPyTagged_DECREF(cpy_r_r26);
-    CPy_DECREF(cpy_r_r29);
-    CPy_DECREF(cpy_r_r35);
-    goto CPyL35;
+    CPyTagged_DECREF(cpy_r_r25);
+    CPyTagged_DECREF(cpy_r_r30);
+    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r39);
+    CPyTagged_DECREF(cpy_r_r52);
+    goto CPyL36;
 CPyL61: ;
-    CPy_DecRef(cpy_r_r72);
-    goto CPyL46;
+    CPyTagged_DECREF(cpy_r_r4);
+    CPyTagged_DECREF(cpy_r_r25);
+    CPyTagged_DECREF(cpy_r_r30);
+    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r39);
+    goto CPyL36;
 CPyL62: ;
-    CPy_DecRef(cpy_r_r82);
-    goto CPyL46;
+    CPy_DecRef(cpy_r_r76);
+    goto CPyL47;
 CPyL63: ;
-    CPy_DECREF(cpy_r_r85);
-    goto CPyL45;
+    CPy_DecRef(cpy_r_r86);
+    goto CPyL47;
+CPyL64: ;
+    CPy_DECREF(cpy_r_r89);
+    goto CPyL46;
 }
 
 PyObject *CPyPy__decoding___validate_pointers_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -2227,7 +2714,7 @@ PyObject *CPyDef__decoding___read_fixed_byte_size_data_from_stream(PyObject *cpy
     if (likely(PyBytes_Check(cpy_r_r7) || PyByteArray_Check(cpy_r_r7)))
         cpy_r_r8 = cpy_r_r7;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", 169, CPyStatic__decoding___globals, "bytes", cpy_r_r7);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "read_fixed_byte_size_data_from_stream", 207, CPyStatic__decoding___globals, "bytes", cpy_r_r7);
         goto CPyL15;
     }
     CPy_INCREF(cpy_r_r8);
@@ -2571,7 +3058,7 @@ char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_s
     if (likely(PyBytes_Check(cpy_r_r7) || PyByteArray_Check(cpy_r_r7)))
         cpy_r_r8 = cpy_r_r7;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 203, CPyStatic__decoding___globals, "bytes", cpy_r_r7);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 241, CPyStatic__decoding___globals, "bytes", cpy_r_r7);
         goto CPyL16;
     }
     cpy_r_r9 = CPyBytes_Compare(cpy_r_padding_bytes, cpy_r_r8);
@@ -2598,7 +3085,7 @@ char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_s
     if (likely(PyUnicode_Check(cpy_r_r19)))
         cpy_r_r20 = cpy_r_r19;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 204, CPyStatic__decoding___globals, "str", cpy_r_r19);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 242, CPyStatic__decoding___globals, "str", cpy_r_r19);
         goto CPyL16;
     }
     cpy_r_r21 = PyList_New(2);
@@ -2752,7 +3239,7 @@ CPyL6: ;
     if (likely(PyUnicode_Check(cpy_r_r15)))
         cpy_r_r16 = cpy_r_r15;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", 213, CPyStatic__decoding___globals, "str", cpy_r_r15);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", 251, CPyStatic__decoding___globals, "str", cpy_r_r15);
         goto CPyL14;
     }
     cpy_r_r17 = PyList_New(2);
@@ -22224,8 +22711,8 @@ const char * const CPyLit_Str[] = {
     "\003\030validate_list_like_param\037faster_eth_abi.utils.validation\004read",
     "\003\021big_endian_to_int!Tried to read 32 bytes, only got \a bytes.",
     "\004\025InsufficientDataBytes\016value_bit_size\npush_frame\ftail_decoder",
-    "\005\026`tail_decoder` is None\016AssertionError\tpop_frame\bdecoders\004tell",
-    "\004\r_no_head_tail\vlen_of_head\tgetbuffer\r_is_head_tail",
+    "\005\026`tail_decoder` is None\016AssertionError\tpop_frame\004tell\r_no_head_tail",
+    "\004\bdecoders\vlen_of_head\tgetbuffer\r_is_head_tail",
     "\004%Invalid pointer in tuple at location \v in payload\016InvalidPointer\004seek",
     "\002%Invalid pointer in array at location \fitem_decoder",
     "\004\026`item_decoder` is None\narray_size\021validate_pointers\016data_byte_size",
