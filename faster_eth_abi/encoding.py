@@ -332,7 +332,7 @@ class BaseFixedEncoder(NumberEncoder):
         return False
 
     @cached_property
-    def denominator(self) -> int:
+    def denominator(self) -> decimal.Decimal:
         return TEN**self.frac_places
 
     @cached_property
