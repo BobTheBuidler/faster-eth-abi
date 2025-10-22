@@ -1,5 +1,8 @@
 import abc
 import decimal
+from functools import (
+    cached_property,
+)
 from typing import (
     Any,
     Callable,
@@ -332,13 +335,19 @@ decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
     is_big_endian = True
 
+    @cached_property
+    def neg_threshold(self) -> int:
+        return int(2 ** (self.value_bit_size - 1))
+
+    @cached_property
+    def neg_offset(self) -> int:
+        return int(2**self.value_bit_size)
+
     def decoder_fn(self, data: bytes) -> int:
         value = big_endian_to_int(data)
-        value_bit_size = self.value_bit_size
-        if value >= 2 ** (value_bit_size - 1):
-            return value - 2**value_bit_size  # type: ignore [no-any-return]
-        else:
-            return value
+        if value >= self.neg_threshold:
+            value -= self.neg_offset
+        return value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         return validate_padding_bytes_signed_integer(self, value, padding_bytes)
