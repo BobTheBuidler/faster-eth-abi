@@ -7,6 +7,7 @@ from typing import (
     Optional,
     Tuple,
     Union,
+    final,
 )
 
 from faster_eth_utils import (
@@ -25,6 +26,8 @@ from faster_eth_abi._decoding import (
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
     validate_padding_bytes_signed_integer,
+    validate_pointers_array,
+    validate_pointers_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -112,6 +115,8 @@ class TupleDecoder(BaseDecoder):
         self.len_of_head = sum(
             getattr(decoder, "array_size", 1) for decoder in decoders
         )
+        self._is_head_tail = tuple(isinstance(decoder, HeadTailDecoder) for decoder in decoders)
+        self._no_head_tail = not any(self._is_head_tail)
 
     def validate(self) -> None:
         super().validate()
@@ -119,35 +124,9 @@ class TupleDecoder(BaseDecoder):
         if self.decoders is None:
             raise ValueError("No `decoders` set")
 
+    @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
-        """
-        Verify that all pointers point to a valid location in the stream.
-        """
-        current_location = stream.tell()
-        end_of_offsets = current_location + 32 * self.len_of_head
-        total_stream_length = len(stream.getbuffer())
-        for decoder in self.decoders:
-            if isinstance(decoder, HeadTailDecoder):
-                # the next 32 bytes are a pointer
-                offset = decode_uint_256(stream)
-                indicated_idx = current_location + offset
-                if (
-                    indicated_idx < end_of_offsets
-                    or indicated_idx >= total_stream_length
-                ):
-                    # the pointer is indicating its data is located either within the
-                    # offsets section of the stream or beyond the end of the stream,
-                    # both of which are invalid
-                    raise InvalidPointer(
-                        "Invalid pointer in tuple at location "
-                        f"{stream.tell() - 32} in payload"
-                    )
-            else:
-                # the next 32 bytes are not a pointer, so progress the stream per
-                # the decoder
-                decoder(stream)
-        # return the stream to its original location for actual decoding
-        stream.seek(current_location)
+        validate_pointers_tuple(self, stream)
 
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
@@ -205,6 +184,10 @@ class BaseArrayDecoder(BaseDecoder):
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+        else:
+            def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
+                ...
+            self.validate_pointers = noop
 
     def validate(self) -> None:
         super().validate()
@@ -231,25 +214,7 @@ class BaseArrayDecoder(BaseDecoder):
         """
         Verify that all pointers point to a valid location in the stream.
         """
-        if isinstance(self.item_decoder, HeadTailDecoder):
-            current_location = stream.tell()
-            end_of_offsets = current_location + 32 * array_size
-            total_stream_length = len(stream.getbuffer())
-            for _ in range(array_size):
-                offset = decode_uint_256(stream)
-                indicated_idx = current_location + offset
-                if (
-                    indicated_idx < end_of_offsets
-                    or indicated_idx >= total_stream_length
-                ):
-                    # the pointer is indicating its data is located either within the
-                    # offsets section of the stream or beyond the end of the stream,
-                    # both of which are invalid
-                    raise InvalidPointer(
-                        "Invalid pointer in array at location "
-                        f"{stream.tell() - 32} in payload"
-                    )
-            stream.seek(current_location)
+        validate_pointers_array(self, stream, array_size)
 
 
 class SizedArrayDecoder(BaseArrayDecoder):

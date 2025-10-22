@@ -20,7 +20,6 @@ extras_require = {
         "tox>=4.0.0",
         "twine",
         "wheel",
-        "pytest-codspeed",
         "pytest-benchmark",
     ],
     "docs": [
@@ -39,6 +38,11 @@ extras_require = {
     ],
     "tools": [
         HYPOTHESIS_REQUIREMENT,
+    ],
+    "codspeed": [
+        "pytest>=7.0.0",
+        "pytest-codspeed",
+        "pytest-test-groups",
     ],
 }
 
