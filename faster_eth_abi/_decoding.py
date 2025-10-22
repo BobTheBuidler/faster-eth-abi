@@ -12,6 +12,7 @@ from faster_eth_utils import (
 
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
+    InvalidPointer,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.io import (
@@ -21,6 +22,7 @@ from faster_eth_abi.io import (
 
 if TYPE_CHECKING:
     from .decoding import (
+        BaseArrayDecoder,
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
@@ -71,6 +73,28 @@ def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> A
 def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
     self.validate_pointers(stream)
     return tuple(decoder(stream) for decoder in self.decoders)
+
+
+# BaseArrayDecoder
+def validate_pointers_array(self: "BaseArrayDecoder", stream: ContextFramesBytesIO, array_size: int) -> None:
+    """
+    Verify that all pointers point to a valid location in the stream.
+    """
+    current_location = stream.tell()
+    end_of_offsets = current_location + 32 * array_size
+    total_stream_length = len(stream.getbuffer())
+    for _ in range(array_size):
+        offset = decode_uint_256(stream)
+        indicated_idx = current_location + offset
+        if indicated_idx < end_of_offsets or indicated_idx >= total_stream_length:
+            # the pointer is indicating its data is located either within the
+            # offsets section of the stream or beyond the end of the stream,
+            # both of which are invalid
+            raise InvalidPointer(
+                "Invalid pointer in array at location "
+                f"{stream.tell() - 32} in payload"
+            )
+    stream.seek(current_location)
 
 
 # SizedArrayDecoder
