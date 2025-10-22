@@ -24,6 +24,7 @@ from faster_eth_abi._decoding import (
     read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
+    validate_padding_bytes_signed_integer,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -372,18 +373,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
             return value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        value_byte_size = get_value_byte_size(self)
-        padding_size = self.data_byte_size - value_byte_size
-
-        if value >= 0:
-            expected_padding_bytes = b"\x00" * padding_size
-        else:
-            expected_padding_bytes = b"\xff" * padding_size
-
-        if padding_bytes != expected_padding_bytes:
-            raise NonEmptyPaddingBytes(
-                f"Padding bytes were not empty: {padding_bytes!r}"
-            )
+        return validate_padding_bytes_signed_integer(self, value, padding_bytes)
 
     @parse_type_str("int")
     def from_type_str(cls, abi_type, registry):
