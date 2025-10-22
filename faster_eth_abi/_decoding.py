@@ -68,8 +68,42 @@ def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> A
 
 # TupleDecoder
 def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
-    self.validate_pointers(stream)
+    validate_pointers_tuple(self, stream)
     return tuple(decoder(stream) for decoder in self.decoders)
+
+
+def validate_pointers_tuple(
+    self: "TupleDecoder",
+    stream: ContextFramesBytesIO,
+) -> None:
+    """
+    Verify that all pointers point to a valid location in the stream.
+    """
+    current_location = stream.tell()
+    if self._no_head_tail:
+        for decoder in self.decoders:
+            decoder(stream)
+    else:
+        end_of_offsets = current_location + 32 * self.len_of_head
+        total_stream_length = len(stream.getbuffer())
+        for decoder, is_head_tail in zip(self.decoders, self._is_head_tail):
+            if not is_head_tail:
+                # the next 32 bytes are not a pointer, so progress the stream per the decoder
+                decoder(stream)
+            else:
+                # the next 32 bytes are a pointer
+                offset = decode_uint_256(stream)
+                indicated_idx = current_location + offset
+                if indicated_idx < end_of_offsets or indicated_idx >= total_stream_length:
+                    # the pointer is indicating its data is located either within the
+                    # offsets section of the stream or beyond the end of the stream,
+                    # both of which are invalid
+                    raise InvalidPointer(
+                        "Invalid pointer in tuple at location "
+                        f"{stream.tell() - 32} in payload"
+                    )
+    # return the stream to its original location for actual decoding
+    stream.seek(current_location)
 
 
 # BaseArrayDecoder
