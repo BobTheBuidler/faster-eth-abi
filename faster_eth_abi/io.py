@@ -1,6 +1,3 @@
-from io import (
-    BytesIO,
-)
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -10,6 +7,9 @@ from typing import (
     final,
 )
 
+from _io import (
+    BytesIO,
+)
 from mypy_extensions import (
     mypyc_attr,
 )
@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 
 
 @final
-@mypyc_attr(allow_interpreted_subclasses=True)
+@mypyc_attr(native_class=False)
 class ContextFramesBytesIO(BytesIO):
     """
     A byte stream which can track a series of contextual frames in a stack. This
