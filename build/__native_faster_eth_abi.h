@@ -114,6 +114,30 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___io_____init___3_ContextFramesBytesIO_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___io___seek_in_frame_ContextFramesBytesIO_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___io___push_frame_ContextFramesBytesIO_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_abi___io___pop_frame_ContextFramesBytesIO_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *__strategies;
 } faster_eth_abi___tools____strategies___StrategyRegistryObject;
 
