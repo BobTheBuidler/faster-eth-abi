@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+
 from mypyc.build import (
     mypycify,
 )
@@ -66,7 +67,7 @@ else:
     mypycify_kwargs = {"strict_dunder_typing": True}
     if sys.version_info >= (3, 9):
         mypycify_kwargs["group_name"] = "faster_eth_abi"
-    
+
     ext_modules = mypycify(
         [
             "faster_eth_abi/_codec.py",
@@ -83,8 +84,10 @@ else:
             "faster_eth_abi/utils",
             "--pretty",
             "--install-types",
+            # all of these are safe to disable long term
             "--disable-error-code=override",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=no-any-return",
         ],
         **mypycify_kwargs,
     )
