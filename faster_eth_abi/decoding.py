@@ -134,10 +134,6 @@ class TupleDecoder(BaseDecoder):
     @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         raise NotImplementedError("didnt call __init__")
-
-    @final
-    def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
-        validate_pointers_tuple(self, stream)
     
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
