@@ -4,15 +4,19 @@ on:
   pull_request:
     branches: [main, master]
     paths:
+      - ".github/workflows/pytest-benchmarks.yaml"
       - "faster_eth_abi/**"
       - "benchmarks/**"
-      - ".github/workflows/pytest-benchmarks.yaml"
+      - "pyproject.toml"
+      - "setup.py"
   push:
     branches: [main, master]
     paths:
+      - ".github/workflows/pytest-benchmarks.yaml"
       - "faster_eth_abi/**"
       - "benchmarks/**"
-      - ".github/workflows/pytest-benchmarks.yaml"
+      - "pyproject.toml"
+      - "setup.py"
   workflow_dispatch:
 
 concurrency:
