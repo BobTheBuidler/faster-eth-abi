@@ -1,6 +1,8 @@
 from typing import (
     TYPE_CHECKING,
     Any,
+    Dict,
+    Final,
     Tuple,
 )
 
@@ -24,6 +26,7 @@ if TYPE_CHECKING:
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
+        SignedIntegerDecoder,
         SizedArrayDecoder,
         TupleDecoder,
     )
@@ -240,6 +243,39 @@ def validate_padding_bytes_fixed_byte_size(
 
     if padding_bytes != b"\x00" * padding_size:
         raise NonEmptyPaddingBytes(f"Padding bytes were not empty: {padding_bytes!r}")
+
+
+__expected_padding_bytes_cache: Final[Dict["FixedByteSizeDecoder", bytes]] = {}
+
+
+def get_expected_padding_bytes(self: "FixedByteSizeDecoder", chunk: bytes) -> bytes:
+    cache = __expected_padding_bytes_cache
+    expected_padding_bytes = cache.get(self)
+    if expected_padding_bytes is None:
+        value_byte_size = get_value_byte_size(self)
+        padding_size = self.data_byte_size - value_byte_size
+        expected_padding_bytes = chunk * padding_size
+        cache[self] = expected_padding_bytes
+    return expected_padding_bytes
+
+    
+def validate_padding_bytes_signed_integer(
+    self: "SignedIntegerDecoder",
+    value: int,
+    padding_bytes: bytes,
+) -> None:
+    value_byte_size = get_value_byte_size(self)
+    padding_size = self.data_byte_size - value_byte_size
+
+    if value >= 0:
+        expected_padding_bytes = b"\x00" * padding_size
+    else:
+        expected_padding_bytes = b"\xff" * padding_size
+
+    if padding_bytes != expected_padding_bytes:
+        raise NonEmptyPaddingBytes(
+            f"Padding bytes were not empty: {padding_bytes!r}"
+        )
 
 
 # BooleanDecoder
