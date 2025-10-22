@@ -5,6 +5,7 @@ from typing import (
     Any,
     Callable,
     ClassVar,
+    Final,
     NoReturn,
     Optional,
     Sequence,
@@ -33,6 +34,7 @@ from faster_eth_abi._encoding import (
     encode_signed,
     encode_tuple,
     int_to_big_endian,
+    validate_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -111,7 +113,18 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self.is_dynamic: Final = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+
+        validators = []
+        for encoder in self.encoders:
+            try:
+                validator = encoder.validate_value
+            except AttributeError:
+                validators.append(encoder)
+            else:
+                validators.append(validator)
+        
+        self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
     def validate(self) -> None:
         super().validate()
@@ -120,26 +133,7 @@ class TupleEncoder(BaseEncoder):
             raise ValueError("`encoders` may not be none")
 
     def validate_value(self, value: Sequence[Any]) -> None:
-        if not is_list_like(value):
-            self.invalidate_value(
-                value,
-                msg="must be list-like object such as array or tuple",
-            )
-
-        encoders = self.encoders
-        if len(value) != len(encoders):
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {len(encoders)} "
-                "were expected",
-            )
-
-        for item, encoder in zip(value, encoders):
-            try:
-                encoder.validate_value(item)
-            except AttributeError:
-                encoder(item)
+        validate_tuple(self, value)
 
     def encode(self, values: Sequence[Any]) -> bytes:
         self.validate_value(values)
