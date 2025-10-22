@@ -8,13 +8,39 @@ from typing import (
     TypeVar,
 )
 
+from faster_eth_utils import (
+    is_list_like,
+)
+
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
+        TupleEncoder,
     )
 
 
 T = TypeVar("T")
+
+
+# TupleEncoder
+def validate_tuple(self: "TupleEncoder", self, value: Sequence[Any]) -> None:
+    if not is_list_like(value):
+        self.invalidate_value(
+            value,
+            msg="must be list-like object such as array or tuple",
+        )
+
+    validators = self.validators
+    if len(value) != len(validators):
+        self.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {len(validators)} "
+            "were expected",
+        )
+
+    for item, validator in zip(value, validators):
+        validator(item)
 
 
 def encode_tuple(
