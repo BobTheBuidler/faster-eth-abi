@@ -268,6 +268,7 @@ class FixedByteSizeDecoder(SingleDecoder):
             split_data_and_padding_fixed_byte_size, self
         )
         self._get_value_byte_size = MethodType(get_value_byte_size, self)
+
         # Only assign validate_padding_bytes if not overridden in subclass
         if self.validate_padding_bytes is FixedByteSizeDecoder.validate_padding_bytes:
             self.validate_padding_bytes = MethodType(
