@@ -1,6 +1,8 @@
 from typing import (
     TYPE_CHECKING,
     Any,
+    Dict,
+    Final,
     Tuple,
 )
 
@@ -22,6 +24,7 @@ if TYPE_CHECKING:
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
+        SignedIntegerDecoder,
         SizedArrayDecoder,
         TupleDecoder,
     )
