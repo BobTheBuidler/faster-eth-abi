@@ -24,6 +24,7 @@ from faster_eth_abi._decoding import (
     read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
+    validate_pointers_array,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -204,6 +205,10 @@ class BaseArrayDecoder(BaseDecoder):
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+        else:
+            def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
+                ...
+            self.validate_pointers = noop
 
     def validate(self) -> None:
         super().validate()
@@ -230,25 +235,7 @@ class BaseArrayDecoder(BaseDecoder):
         """
         Verify that all pointers point to a valid location in the stream.
         """
-        if isinstance(self.item_decoder, HeadTailDecoder):
-            current_location = stream.tell()
-            end_of_offsets = current_location + 32 * array_size
-            total_stream_length = len(stream.getbuffer())
-            for _ in range(array_size):
-                offset = decode_uint_256(stream)
-                indicated_idx = current_location + offset
-                if (
-                    indicated_idx < end_of_offsets
-                    or indicated_idx >= total_stream_length
-                ):
-                    # the pointer is indicating its data is located either within the
-                    # offsets section of the stream or beyond the end of the stream,
-                    # both of which are invalid
-                    raise InvalidPointer(
-                        "Invalid pointer in array at location "
-                        f"{stream.tell() - 32} in payload"
-                    )
-            stream.seek(current_location)
+        validate_pointers_array(self, stream, array_size)
 
 
 class SizedArrayDecoder(BaseArrayDecoder):
