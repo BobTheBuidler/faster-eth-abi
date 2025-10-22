@@ -12,6 +12,10 @@ from faster_eth_utils import (
     is_list_like,
 )
 
+from faster_eth_abi.exceptions import (
+    ValueOutOfBounds,
+)
+
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
