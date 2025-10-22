@@ -455,7 +455,7 @@ class SignedFixedDecoder(BaseFixedDecoder):
             value -= self.neg_offset
 
         with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(signed_value) / self.denominator
+            decimal_value = decimal.Decimal(value) / self.denominator
 
         return decimal_value
 
