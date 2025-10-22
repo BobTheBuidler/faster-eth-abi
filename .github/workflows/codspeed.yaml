@@ -27,10 +27,16 @@ jobs:
   benchmark:
     name: Run Benchmarks
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - uses: actions/checkout@v5
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
       
       - name: Set up Python
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
         uses: actions/setup-python@v6
         with:
           python-version: "3.13"
@@ -40,21 +46,31 @@ jobs:
             pyproject.toml
             
       - name: Cache .mypy_cache
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
         uses: actions/cache@v4
         with:
           path: .mypy_cache
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
           
       - name: Install dependencies
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
         run: |
           python -m pip install --upgrade pip
-          pip install --no-binary :faster_eth_abi: .[dev] pytest-codspeed eth-abi
+          pip install --no-binary :faster_eth_abi: .[codspeed]
           
       - name: Remove source package to force use of installed C extensions
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
         run: rm -rf faster_eth_abi
         
       - name: Run CodSpeed
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 }}
         uses: CodSpeedHQ/action@v4
         with:
           mode: instrumentation
-          run: pytest --codspeed -k "test_faster_" benchmarks/
+          run: |
+            pytest \
+              --codspeed \
+              -k "test_faster_" \
+              --test-group=${{ matrix.shard }} \
+              --test-group-count=${{ github.event_name == 'push' && 1 || 10 }} \
+              benchmarks/
