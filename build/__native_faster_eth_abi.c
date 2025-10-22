@@ -891,77 +891,81 @@ char CPyDef__decoding___validate_pointers_tuple(PyObject *cpy_r_self, PyObject *
     PyObject *cpy_r_r8;
     PyObject *cpy_r_r9;
     PyObject *cpy_r_r10;
-    PyObject *cpy_r_r11;
+    CPyPtr cpy_r_r11;
+    int64_t cpy_r_r12;
+    int64_t cpy_r_r13;
+    char cpy_r_r14;
+    PyObject *cpy_r_r15;
     PyObject *cpy_r_decoder;
-    PyObject **cpy_r_r13;
-    PyObject *cpy_r_r14;
-    char cpy_r_r15;
-    PyObject *cpy_r_r16;
-    PyObject *cpy_r_r17;
+    PyObject **cpy_r_r17;
     PyObject *cpy_r_r18;
-    PyObject *cpy_r_r19;
-    CPyTagged cpy_r_r20;
-    CPyTagged cpy_r_r21;
+    int64_t cpy_r_r19;
+    PyObject *cpy_r_r20;
+    PyObject *cpy_r_r21;
     PyObject *cpy_r_r22;
-    PyObject **cpy_r_r24;
-    PyObject *cpy_r_r25;
-    CPyTagged cpy_r_r26;
-    PyObject *cpy_r_r27;
-    PyObject *cpy_r_r28;
+    PyObject *cpy_r_r23;
+    CPyTagged cpy_r_r24;
+    CPyTagged cpy_r_r25;
+    PyObject *cpy_r_r26;
+    PyObject **cpy_r_r28;
     PyObject *cpy_r_r29;
-    CPyPtr cpy_r_r30;
-    int64_t cpy_r_r31;
-    int64_t cpy_r_r32;
+    CPyTagged cpy_r_r30;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
     PyObject *cpy_r_r33;
-    PyObject *cpy_r_r34;
-    PyObject *cpy_r_r35;
-    CPyPtr cpy_r_r36;
-    int64_t cpy_r_r37;
-    int64_t cpy_r_r38;
-    char cpy_r_r39;
-    char cpy_r_r40;
-    PyObject *cpy_r_r41;
-    PyObject *cpy_r_r42;
+    CPyPtr cpy_r_r34;
+    int64_t cpy_r_r35;
+    int64_t cpy_r_r36;
+    PyObject *cpy_r_r37;
+    PyObject *cpy_r_r38;
+    PyObject *cpy_r_r39;
+    CPyPtr cpy_r_r40;
+    int64_t cpy_r_r41;
+    int64_t cpy_r_r42;
     char cpy_r_r43;
-    PyObject **cpy_r_r45;
+    char cpy_r_r44;
+    PyObject *cpy_r_r45;
     PyObject *cpy_r_r46;
-    CPyTagged cpy_r_r47;
-    CPyTagged cpy_r_r48;
-    int64_t cpy_r_r49;
-    char cpy_r_r50;
-    int64_t cpy_r_r51;
-    char cpy_r_r52;
-    char cpy_r_r53;
+    char cpy_r_r47;
+    PyObject **cpy_r_r49;
+    PyObject *cpy_r_r50;
+    CPyTagged cpy_r_r51;
+    CPyTagged cpy_r_r52;
+    int64_t cpy_r_r53;
     char cpy_r_r54;
     int64_t cpy_r_r55;
     char cpy_r_r56;
-    int64_t cpy_r_r57;
+    char cpy_r_r57;
     char cpy_r_r58;
-    char cpy_r_r59;
+    int64_t cpy_r_r59;
     char cpy_r_r60;
-    char cpy_r_r61;
+    int64_t cpy_r_r61;
     char cpy_r_r62;
-    PyObject *cpy_r_r63;
-    PyObject *cpy_r_r64;
-    PyObject **cpy_r_r66;
+    char cpy_r_r63;
+    char cpy_r_r64;
+    char cpy_r_r65;
+    char cpy_r_r66;
     PyObject *cpy_r_r67;
-    CPyTagged cpy_r_r68;
-    CPyTagged cpy_r_r69;
-    PyObject *cpy_r_r70;
+    PyObject *cpy_r_r68;
+    PyObject **cpy_r_r70;
     PyObject *cpy_r_r71;
-    PyObject *cpy_r_r72;
-    PyObject *cpy_r_r73;
+    CPyTagged cpy_r_r72;
+    CPyTagged cpy_r_r73;
     PyObject *cpy_r_r74;
     PyObject *cpy_r_r75;
-    PyObject **cpy_r_r77;
+    PyObject *cpy_r_r76;
+    PyObject *cpy_r_r77;
     PyObject *cpy_r_r78;
-    int64_t cpy_r_r79;
-    int64_t cpy_r_r80;
-    PyObject *cpy_r_r81;
+    PyObject *cpy_r_r79;
+    PyObject **cpy_r_r81;
     PyObject *cpy_r_r82;
-    PyObject **cpy_r_r84;
+    int64_t cpy_r_r83;
+    int64_t cpy_r_r84;
     PyObject *cpy_r_r85;
-    char cpy_r_r86;
+    PyObject *cpy_r_r86;
+    PyObject **cpy_r_r88;
+    PyObject *cpy_r_r89;
+    char cpy_r_r90;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tell' */
     PyObject *cpy_r_r1[1] = {cpy_r_stream};
     cpy_r_r2 = (PyObject **)&cpy_r_r1;
@@ -978,13 +982,13 @@ char CPyDef__decoding___validate_pointers_tuple(PyObject *cpy_r_self, PyObject *
     CPy_DECREF(cpy_r_r3);
     if (unlikely(cpy_r_r4 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL46;
+        goto CPyL47;
     }
     cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_no_head_tail' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_pointers_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL47;
+        goto CPyL48;
     }
     if (unlikely(!PyBool_Check(cpy_r_r6))) {
         CPy_TypeError("bool", cpy_r_r6); cpy_r_r7 = 2;
@@ -22221,7 +22225,7 @@ const char * const CPyLit_Str[] = {
     "\003\021big_endian_to_int!Tried to read 32 bytes, only got \a bytes.",
     "\004\025InsufficientDataBytes\016value_bit_size\npush_frame\ftail_decoder",
     "\005\026`tail_decoder` is None\016AssertionError\tpop_frame\bdecoders\004tell",
-    "\005\r_no_head_tail\t_decoders\vlen_of_head\tgetbuffer\r_is_head_tail",
+    "\004\r_no_head_tail\vlen_of_head\tgetbuffer\r_is_head_tail",
     "\004%Invalid pointer in tuple at location \v in payload\016InvalidPointer\004seek",
     "\002%Invalid pointer in array at location \fitem_decoder",
     "\004\026`item_decoder` is None\narray_size\021validate_pointers\016data_byte_size",
@@ -22304,14 +22308,14 @@ const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
     45, 4, 11, 12, 13, 14, 2, 16, 17, 2, 19, 20, 3, 11, 12, 14, 1, 23,
-    3, 26, 42, 57, 2, 61, 62, 7, 11, 12, 70, 71, 72, 73, 74, 1, 77, 3,
-    138, 138, 138, 1, 329, 10, 12, 141, 142, 143, 72, 73, 14, 74, 144,
-    145, 1, 17, 1, 147, 1, 149, 1, 151, 1, 99, 1, 175, 1, 141, 1, 180, 1,
-    182, 3, 204, 204, 204, 1, 341, 6, 11, 12, 70, 72, 206, 74, 4, 173,
-    179, 177, 207, 1, 192, 1, 213, 1, 214, 1, 218, 1, 223, 2, 229, 230, 3,
-    229, 230, 232, 2, 234, 235, 6, 70, 141, 72, 14, 144, 238, 1, 239, 1,
-    241, 1, 226, 6, 243, 244, 245, 221, 246, 247, 1, 248, 1, 263, 3, 281,
-    281, 281, 1, 360, 4, 70, 283, 141, 14, 1, 286, 1, 12
+    3, 26, 41, 56, 2, 60, 61, 7, 11, 12, 69, 70, 71, 72, 73, 1, 76, 3,
+    137, 137, 137, 1, 328, 10, 12, 140, 141, 142, 71, 72, 14, 73, 143,
+    144, 1, 17, 1, 146, 1, 148, 1, 150, 1, 98, 1, 174, 1, 140, 1, 179, 1,
+    181, 3, 203, 203, 203, 1, 340, 6, 11, 12, 69, 71, 205, 73, 4, 172,
+    178, 176, 206, 1, 191, 1, 212, 1, 213, 1, 217, 1, 222, 2, 228, 229, 3,
+    228, 229, 231, 2, 233, 234, 6, 69, 140, 71, 14, 143, 237, 1, 238, 1,
+    240, 1, 225, 6, 242, 243, 244, 220, 245, 246, 1, 247, 1, 262, 3, 280,
+    280, 280, 1, 359, 4, 69, 282, 140, 14, 1, 285, 1, 12
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
