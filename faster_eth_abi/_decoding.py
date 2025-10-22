@@ -81,7 +81,7 @@ def validate_pointers_tuple(
     """
     current_location = stream.tell()
     if self._no_head_tail:
-        for decoder in self._decoders:
+        for decoder in self.decoders:
             decoder(stream)
     else:
         end_of_offsets = current_location + 32 * self.len_of_head
