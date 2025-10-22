@@ -343,9 +343,8 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
     def decoder_fn(self, data):
         value = big_endian_to_int(data)
         if value >= self.neg_threshold:
-            return value - self.neg_offset
-        else:
-            return value
+            value -= self.neg_offset
+        return value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         return validate_padding_bytes_signed_integer(self, value, padding_bytes)
