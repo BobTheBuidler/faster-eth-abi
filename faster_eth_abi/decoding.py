@@ -89,17 +89,14 @@ class HeadTailDecoder(BaseDecoder):
     is_dynamic = True
 
     tail_decoder: Optional[DynamicDecoder] = None
+    
+    decode = __call__ = decode_head_tail
 
     def validate(self) -> None:
         super().validate()
 
         if self.tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
-
-    def decode(self, stream: ContextFramesBytesIO) -> Any:
-        return decode_head_tail(self, stream)
-
-    __call__ = decode
 
 
 class TupleDecoder(BaseDecoder):
@@ -132,10 +129,11 @@ class TupleDecoder(BaseDecoder):
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         validate_pointers_tuple(self, stream)
 
+    @overload
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
-        return decode_tuple(self, stream)
+        ...
 
-    __call__ = decode
+    decode = __call__ = decode_tuple
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
@@ -155,10 +153,10 @@ class SingleDecoder(BaseDecoder):
         if self.decoder_fn is None:
             raise ValueError("No `decoder_fn` set")
 
-    def validate_padding_bytes(self, value, padding_bytes):
+    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
-    def decode(self, stream):
+    def decode(self, stream: ContextFramesBytesIO) -> Any:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
         decoder_fn = self.decoder_fn
@@ -195,6 +193,9 @@ class BaseArrayDecoder(BaseDecoder):
 
             self.validate_pointers = noop
 
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+        raise NotImplementedError  # this is a type stub
+    
     def validate(self) -> None:
         super().validate()
 
@@ -225,26 +226,18 @@ class BaseArrayDecoder(BaseDecoder):
 
 class SizedArrayDecoder(BaseArrayDecoder):
     array_size: int = None
+    decode = __call__ = decode_sized_array
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_decoder.is_dynamic
 
-    def decode(self, stream):
-        return decode_sized_array(self, stream)
-
-    __call__ = decode
-
 
 class DynamicArrayDecoder(BaseArrayDecoder):
     # Dynamic arrays are always dynamic, regardless of their elements
     is_dynamic = True
-
-    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
-        return decode_dynamic_array(self, stream)
-
-    __call__ = decode
+    decode = __call__ = decode_dynamic_array
 
 
 class FixedByteSizeDecoder(SingleDecoder):
@@ -275,18 +268,22 @@ class FixedByteSizeDecoder(SingleDecoder):
         if value_bit_size > data_byte_size * 8:
             raise ValueError("Value byte size exceeds data size")
 
+    @overload
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        return read_fixed_byte_size_data_from_stream(self, stream)
+        ...
 
+    read_data_from_stream = read_fixed_byte_size_data_from_stream
+
+    @overload
     def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
-        return split_data_and_padding_fixed_byte_size(self, raw_data)
+        ...
+    
+    split_data_and_padding = split_data_and_padding_fixed_byte_size
+    
+    validate_padding_bytes = validate_padding_bytes_fixed_byte_size
 
-    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        validate_padding_bytes_fixed_byte_size(self, value, padding_bytes)
-
-    def _get_value_byte_size(self) -> int:
-        # This is unused, but it is kept in to preserve the eth-abi api
-        return get_value_byte_size(self)
+    # This is unused, but it is kept in to preserve the eth-abi api
+    _get_value_byte_size = get_value_byte_size
 
 
 class Fixed32ByteSizeDecoder(FixedByteSizeDecoder):
@@ -384,7 +381,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
             raise ValueError("must specify `frac_places`")
 
         if frac_places <= 0 or frac_places > 80:
-            raise ValueError("`frac_places` must be in range (0, 80]")
+            raise ValueError("`frac_places` must be in range (0, 80)")
 
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
