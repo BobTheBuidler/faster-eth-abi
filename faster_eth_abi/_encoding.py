@@ -23,8 +23,9 @@ T = TypeVar("T")
 
 
 # TupleEncoder
-def validate_tuple(self: "TupleEncoder", self, value: Sequence[Any]) -> None:
-    if not is_list_like(value):
+def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
+    # if we check list and tuple first it compiles to much quicker C code
+    if not isinstance(value, (list, tuple) and not is_list_like(value):
         self.invalidate_value(
             value,
             msg="must be list-like object such as array or tuple",
