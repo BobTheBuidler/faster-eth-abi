@@ -10,6 +10,7 @@ from typing import (
     Optional,
     Tuple,
     Union,
+    cast,
     final,
 )
 
@@ -334,11 +335,12 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
 
     @cached_property
     def neg_threshold(self) -> int:
-        return 2 ** (self.value_bit_size - 1)
+        value_bit_size = cast(int, self.value_bit_size)
+        return 2 ** (value_bit_size - 1)
         
     @cached_property
     def neg_offset(self) -> int:
-        return 2**self.value_bit_size
+        return 2**cast(int, self.value_bit_size)
         
     def decoder_fn(self, data):
         value = big_endian_to_int(data)
