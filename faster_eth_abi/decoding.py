@@ -337,11 +337,11 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
 
     @cached_property
     def neg_threshold(self) -> int:
-        return 2 ** (self.value_bit_size - 1)
+        return int(2 ** (self.value_bit_size - 1))
 
     @cached_property
     def neg_offset(self) -> int:
-        return 2**self.value_bit_size
+        return int(2**self.value_bit_size)
 
     def decoder_fn(self, data: bytes) -> int:
         value = big_endian_to_int(data)
