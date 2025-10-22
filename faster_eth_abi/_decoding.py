@@ -10,6 +10,7 @@ from faster_eth_utils import (
 
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
+    InvalidPointer,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.io import (
