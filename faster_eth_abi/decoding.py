@@ -336,7 +336,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
         value = big_endian_to_int(data)
         value_bit_size = self.value_bit_size
         if value >= 2 ** (value_bit_size - 1):
-            return value - 2**value_bit_size
+            return value - 2**value_bit_size  # type: ignore [no-any-return]
         else:
             return value
 
