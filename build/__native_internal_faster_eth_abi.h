@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[354];
+extern PyObject *CPyStatics[355];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -82,6 +82,7 @@ extern PyObject *CPyPy__codec___encode_c(PyObject *self, PyObject *const *args, 
 extern PyObject *CPyDef__codec___decode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_data, char cpy_r_strict);
 extern PyObject *CPyPy__codec___decode_c(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__codec_____top_level__(void);
+extern PyObject *CPyStatic__decoding_____expected_padding_bytes_cache;
 extern CPyTagged CPyDef__decoding___decode_uint_256(PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_uint_256(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern CPyTagged CPyDef__decoding___get_value_byte_size(PyObject *cpy_r_decoder);
@@ -100,6 +101,10 @@ extern tuple_T2OO CPyDef__decoding___split_data_and_padding_fixed_byte_size(PyOb
 extern PyObject *CPyPy__decoding___split_data_and_padding_fixed_byte_size(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_self, PyObject *cpy_r_value, PyObject *cpy_r_padding_bytes);
 extern PyObject *CPyPy__decoding___validate_padding_bytes_fixed_byte_size(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__decoding___get_expected_padding_bytes(PyObject *cpy_r_self, PyObject *cpy_r_chunk);
+extern PyObject *CPyPy__decoding___get_expected_padding_bytes(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__decoding___validate_padding_bytes_signed_integer(PyObject *cpy_r_self, CPyTagged cpy_r_value, PyObject *cpy_r_padding_bytes);
+extern PyObject *CPyPy__decoding___validate_padding_bytes_signed_integer(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding___decoder_fn_boolean(PyObject *cpy_r_data);
 extern PyObject *CPyPy__decoding___decoder_fn_boolean(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
