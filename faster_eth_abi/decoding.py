@@ -208,7 +208,7 @@ class BaseArrayDecoder(BaseDecoder):
         else:
             def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
                 ...
-            self.validate_pointers_array = noop
+            self.validate_pointers = noop
 
     def validate(self) -> None:
         super().validate()
