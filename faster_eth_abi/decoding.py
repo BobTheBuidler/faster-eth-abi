@@ -38,7 +38,6 @@ from faster_eth_abi.base import (
 )
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
-    InvalidPointer,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
@@ -119,7 +118,9 @@ class TupleDecoder(BaseDecoder):
         self.len_of_head = sum(
             getattr(decoder, "array_size", 1) for decoder in decoders
         )
-        self._is_head_tail = tuple(isinstance(decoder, HeadTailDecoder) for decoder in decoders)
+        self._is_head_tail = tuple(
+            isinstance(decoder, HeadTailDecoder) for decoder in decoders
+        )
         self._no_head_tail = not any(self._is_head_tail)
 
     def validate(self) -> None:
@@ -189,8 +190,10 @@ class BaseArrayDecoder(BaseDecoder):
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
         else:
+
             def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
                 ...
+
             self.validate_pointers = noop
 
     def validate(self) -> None:
@@ -342,7 +345,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
     def neg_offset(self) -> int:
         return 2**cast(int, self.value_bit_size)
         
-    def decoder_fn(self, data):
+    def decoder_fn(self, data: bytes) -> int:
         value = big_endian_to_int(data)
         if value >= self.neg_threshold:
             value -= self.neg_offset
@@ -363,7 +366,7 @@ class BytesDecoder(Fixed32ByteSizeDecoder):
     is_big_endian = False
 
     @staticmethod
-    def decoder_fn(data):
+    def decoder_fn(data: bytes) -> bytes:
         return data
 
     @parse_type_str("bytes")
@@ -387,7 +390,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
 
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
-    def decoder_fn(self, data):
+    def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
 
         with decimal.localcontext(abi_decimal_context):
@@ -403,7 +406,7 @@ class UnsignedFixedDecoder(BaseFixedDecoder):
 
 
 class SignedFixedDecoder(BaseFixedDecoder):
-    def decoder_fn(self, data):
+    def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
         value_bit_size = self.value_bit_size
         if value >= 2 ** (value_bit_size - 1):
@@ -444,7 +447,7 @@ class ByteStringDecoder(SingleDecoder):
     is_dynamic = True
 
     @staticmethod
-    def decoder_fn(data):
+    def decoder_fn(data: bytes) -> bytes:
         return data
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
