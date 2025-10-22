@@ -1,6 +1,9 @@
 import abc
 import codecs
 import decimal
+from functools import (
+    cached_property,
+)
 from typing import (
     Any,
     Callable,
@@ -328,11 +331,19 @@ class BaseFixedEncoder(NumberEncoder):
 
         return False
 
+    @cached_property
+    def denominator(self) -> int:
+        return TEN**self.frac_places
+
+    @cached_property
+    def precision(self) -> int:
+        return TEN**-self.frac_places
+
     def validate_value(self, value):
         super().validate_value(value)
 
         with decimal.localcontext(abi_decimal_context):
-            residue = value % (TEN**-self.frac_places)
+            residue = value % self.precision
 
         if residue > 0:
             self.invalidate_value(
@@ -359,7 +370,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
 
     def encode_fn(self, value):
         with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * TEN**self.frac_places
+            scaled_value = value * self.denominator
             integer_value = int(scaled_value)
 
         return int_to_big_endian(integer_value)
@@ -392,7 +403,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
 
     def encode_fn(self, value):
         with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * TEN**self.frac_places
+            scaled_value = value * self.denominator
             integer_value = int(scaled_value)
 
         unsigned_integer_value = integer_value % (2**self.value_bit_size)
