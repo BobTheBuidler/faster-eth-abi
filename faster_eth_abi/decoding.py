@@ -14,7 +14,6 @@ from typing import (
     Tuple,
     Union,
     final,
-    overload,
 )
 
 from faster_eth_utils import (
