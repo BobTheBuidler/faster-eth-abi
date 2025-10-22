@@ -423,8 +423,8 @@ int CPyExec_faster_eth_abi____decoding(PyObject *module)
     fail:
     Py_CLEAR(CPyModule_faster_eth_abi____decoding__internal);
     Py_CLEAR(modname);
-    CPy_XDECREF(CPyStatic__decoding_____expected_padding_bytes_cache);
-    CPyStatic__decoding_____expected_padding_bytes_cache = NULL;
+    CPy_XDECREF(CPyStatic__decoding____expected_padding_bytes_cache);
+    CPyStatic__decoding____expected_padding_bytes_cache = NULL;
     return -1;
 }
 static struct PyModuleDef _decodingmodule = {
@@ -2996,156 +2996,114 @@ fail: ;
 }
 
 char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_self, PyObject *cpy_r_value, PyObject *cpy_r_padding_bytes) {
-    CPyTagged cpy_r_r0;
+    PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
-    PyObject *cpy_r_r2;
-    CPyTagged cpy_r_r3;
-    CPyTagged cpy_r_r4;
+    int32_t cpy_r_r2;
+    char cpy_r_r3;
+    char cpy_r_r4;
     PyObject *cpy_r_r5;
     PyObject *cpy_r_r6;
     PyObject *cpy_r_r7;
     PyObject *cpy_r_r8;
-    int32_t cpy_r_r9;
-    char cpy_r_r10;
-    char cpy_r_r11;
+    PyObject *cpy_r_r9;
+    PyObject **cpy_r_r11;
     PyObject *cpy_r_r12;
     PyObject *cpy_r_r13;
     PyObject *cpy_r_r14;
-    PyObject *cpy_r_r15;
-    PyObject *cpy_r_r16;
-    PyObject **cpy_r_r18;
+    CPyPtr cpy_r_r15;
+    CPyPtr cpy_r_r16;
+    CPyPtr cpy_r_r17;
+    PyObject *cpy_r_r18;
     PyObject *cpy_r_r19;
     PyObject *cpy_r_r20;
     PyObject *cpy_r_r21;
-    CPyPtr cpy_r_r22;
-    CPyPtr cpy_r_r23;
-    CPyPtr cpy_r_r24;
-    PyObject *cpy_r_r25;
-    PyObject *cpy_r_r26;
-    PyObject *cpy_r_r27;
-    PyObject *cpy_r_r28;
-    PyObject **cpy_r_r30;
-    PyObject *cpy_r_r31;
-    char cpy_r_r32;
-    cpy_r_r0 = CPyDef__decoding___get_value_byte_size(cpy_r_self);
-    if (unlikely(cpy_r_r0 == CPY_INT_TAG)) {
+    PyObject **cpy_r_r23;
+    PyObject *cpy_r_r24;
+    char cpy_r_r25;
+    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
+    cpy_r_r1 = CPyDef__decoding___get_expected_padding_bytes(cpy_r_self, cpy_r_r0);
+    if (unlikely(cpy_r_r1 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
+        goto CPyL12;
     }
-    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'data_byte_size' */
-    cpy_r_r2 = CPyObject_GetAttr(cpy_r_self, cpy_r_r1);
-    if (unlikely(cpy_r_r2 == NULL)) {
+    cpy_r_r2 = CPyBytes_Compare(cpy_r_padding_bytes, cpy_r_r1);
+    CPy_DECREF(cpy_r_r1);
+    cpy_r_r3 = cpy_r_r2 >= 0;
+    if (unlikely(!cpy_r_r3)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL17;
+        goto CPyL12;
     }
-    if (likely(PyLong_Check(cpy_r_r2)))
-        cpy_r_r3 = CPyTagged_FromObject(cpy_r_r2);
+    cpy_r_r4 = cpy_r_r2 != 1;
+    if (!cpy_r_r4) goto CPyL11;
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Padding bytes were not empty: ' */
+    cpy_r_r7 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
+    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    PyObject *cpy_r_r10[3] = {cpy_r_r7, cpy_r_padding_bytes, cpy_r_r8};
+    cpy_r_r11 = (PyObject **)&cpy_r_r10;
+    cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r12 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL12;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r12)))
+        cpy_r_r13 = cpy_r_r12;
     else {
-        CPy_TypeError("int", cpy_r_r2); cpy_r_r3 = CPY_INT_TAG;
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 242, CPyStatic__decoding___globals, "str", cpy_r_r12);
+        goto CPyL12;
     }
-    CPy_DECREF(cpy_r_r2);
-    if (unlikely(cpy_r_r3 == CPY_INT_TAG)) {
+    cpy_r_r14 = PyList_New(2);
+    if (unlikely(cpy_r_r14 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL17;
+        goto CPyL13;
     }
-    cpy_r_r4 = CPyTagged_Subtract(cpy_r_r3, cpy_r_r0);
-    CPyTagged_DECREF(cpy_r_r3);
-    CPyTagged_DECREF(cpy_r_r0);
-    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
-    cpy_r_r6 = CPyTagged_StealAsObject(cpy_r_r4);
-    cpy_r_r7 = PyNumber_Multiply(cpy_r_r5, cpy_r_r6);
-    CPy_DECREF(cpy_r_r6);
-    if (unlikely(cpy_r_r7 == NULL)) {
+    cpy_r_r15 = (CPyPtr)&((PyListObject *)cpy_r_r14)->ob_item;
+    cpy_r_r16 = *(CPyPtr *)cpy_r_r15;
+    CPy_INCREF(cpy_r_r6);
+    *(PyObject * *)cpy_r_r16 = cpy_r_r6;
+    cpy_r_r17 = cpy_r_r16 + 8;
+    *(PyObject * *)cpy_r_r17 = cpy_r_r13;
+    cpy_r_r18 = PyUnicode_Join(cpy_r_r5, cpy_r_r14);
+    CPy_DECREF_NO_IMM(cpy_r_r14);
+    if (unlikely(cpy_r_r18 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
+        goto CPyL12;
     }
-    if (likely(PyBytes_Check(cpy_r_r7) || PyByteArray_Check(cpy_r_r7)))
-        cpy_r_r8 = cpy_r_r7;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 244, CPyStatic__decoding___globals, "bytes", cpy_r_r7);
-        goto CPyL16;
-    }
-    cpy_r_r9 = CPyBytes_Compare(cpy_r_padding_bytes, cpy_r_r8);
-    CPy_DECREF(cpy_r_r8);
-    cpy_r_r10 = cpy_r_r9 >= 0;
-    if (unlikely(!cpy_r_r10)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
-    }
-    cpy_r_r11 = cpy_r_r9 != 1;
-    if (!cpy_r_r11) goto CPyL15;
-    cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
-    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Padding bytes were not empty: ' */
-    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
-    cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
-    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
-    PyObject *cpy_r_r17[3] = {cpy_r_r14, cpy_r_padding_bytes, cpy_r_r15};
-    cpy_r_r18 = (PyObject **)&cpy_r_r17;
-    cpy_r_r19 = PyObject_VectorcallMethod(cpy_r_r16, cpy_r_r18, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
-    }
-    if (likely(PyUnicode_Check(cpy_r_r19)))
-        cpy_r_r20 = cpy_r_r19;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", 245, CPyStatic__decoding___globals, "str", cpy_r_r19);
-        goto CPyL16;
-    }
-    cpy_r_r21 = PyList_New(2);
+    cpy_r_r19 = CPyStatic__decoding___globals;
+    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
+    cpy_r_r21 = CPyDict_GetItem(cpy_r_r19, cpy_r_r20);
     if (unlikely(cpy_r_r21 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL18;
+        goto CPyL14;
     }
-    cpy_r_r22 = (CPyPtr)&((PyListObject *)cpy_r_r21)->ob_item;
-    cpy_r_r23 = *(CPyPtr *)cpy_r_r22;
-    CPy_INCREF(cpy_r_r13);
-    *(PyObject * *)cpy_r_r23 = cpy_r_r13;
-    cpy_r_r24 = cpy_r_r23 + 8;
-    *(PyObject * *)cpy_r_r24 = cpy_r_r20;
-    cpy_r_r25 = PyUnicode_Join(cpy_r_r12, cpy_r_r21);
-    CPy_DECREF_NO_IMM(cpy_r_r21);
-    if (unlikely(cpy_r_r25 == NULL)) {
+    PyObject *cpy_r_r22[1] = {cpy_r_r18};
+    cpy_r_r23 = (PyObject **)&cpy_r_r22;
+    cpy_r_r24 = PyObject_Vectorcall(cpy_r_r21, cpy_r_r23, 1, 0);
+    CPy_DECREF(cpy_r_r21);
+    if (unlikely(cpy_r_r24 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
+        goto CPyL14;
     }
-    cpy_r_r26 = CPyStatic__decoding___globals;
-    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
-    cpy_r_r28 = CPyDict_GetItem(cpy_r_r26, cpy_r_r27);
-    if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL19;
-    }
-    PyObject *cpy_r_r29[1] = {cpy_r_r25};
-    cpy_r_r30 = (PyObject **)&cpy_r_r29;
-    cpy_r_r31 = PyObject_Vectorcall(cpy_r_r28, cpy_r_r30, 1, 0);
-    CPy_DECREF(cpy_r_r28);
-    if (unlikely(cpy_r_r31 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL19;
-    }
-    CPy_DECREF(cpy_r_r25);
-    CPy_Raise(cpy_r_r31);
-    CPy_DECREF(cpy_r_r31);
+    CPy_DECREF(cpy_r_r18);
+    CPy_Raise(cpy_r_r24);
+    CPy_DECREF(cpy_r_r24);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL16;
+        goto CPyL12;
     }
     CPy_Unreachable();
-CPyL15: ;
+CPyL11: ;
     return 1;
-CPyL16: ;
-    cpy_r_r32 = 2;
-    return cpy_r_r32;
-CPyL17: ;
-    CPyTagged_DecRef(cpy_r_r0);
-    goto CPyL16;
-CPyL18: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL16;
-CPyL19: ;
-    CPy_DecRef(cpy_r_r25);
-    goto CPyL16;
+CPyL12: ;
+    cpy_r_r25 = 2;
+    return cpy_r_r25;
+CPyL13: ;
+    CPy_DecRef(cpy_r_r13);
+    goto CPyL12;
+CPyL14: ;
+    CPy_DecRef(cpy_r_r18);
+    goto CPyL12;
 }
 
 PyObject *CPyPy__decoding___validate_padding_bytes_fixed_byte_size(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -3199,9 +3157,9 @@ PyObject *CPyDef__decoding___get_expected_padding_bytes(PyObject *cpy_r_self, Py
     char cpy_r_r16;
     PyObject *cpy_r_r17;
     PyObject *cpy_r_r18;
-    cpy_r_r0 = CPyStatic__decoding_____expected_padding_bytes_cache;
+    cpy_r_r0 = CPyStatic__decoding____expected_padding_bytes_cache;
     if (likely(cpy_r_r0 != NULL)) goto CPyL3;
-    PyErr_SetString(PyExc_NameError, "value for final name \"__expected_padding_bytes_cache\" was not set");
+    PyErr_SetString(PyExc_NameError, "value for final name \"_expected_padding_bytes_cache\" was not set");
     cpy_r_r1 = 0;
     if (unlikely(!cpy_r_r1)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
@@ -3227,7 +3185,7 @@ CPyL3: ;
         cpy_r_r3 = NULL;
     }
     if (cpy_r_r3 != NULL) goto __LL6;
-    CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 253, CPyStatic__decoding___globals, "bytes or None", cpy_r_r2);
+    CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 250, CPyStatic__decoding___globals, "bytes or None", cpy_r_r2);
     goto CPyL16;
 __LL6: ;
     cpy_r_expected_padding_bytes = cpy_r_r3;
@@ -3272,7 +3230,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r12) || PyByteArray_Check(cpy_r_r12)))
         cpy_r_r13 = cpy_r_r12;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 257, CPyStatic__decoding___globals, "bytes", cpy_r_r12);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 254, CPyStatic__decoding___globals, "bytes", cpy_r_r12);
         goto CPyL16;
     }
     cpy_r_expected_padding_bytes = cpy_r_r13;
@@ -3280,7 +3238,7 @@ CPyL6: ;
     if (likely(cpy_r_expected_padding_bytes != Py_None))
         cpy_r_r14 = cpy_r_expected_padding_bytes;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 258, CPyStatic__decoding___globals, "bytes", cpy_r_expected_padding_bytes);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 255, CPyStatic__decoding___globals, "bytes", cpy_r_expected_padding_bytes);
         goto CPyL20;
     }
     cpy_r_r15 = CPyDict_SetItem(cpy_r_r0, cpy_r_self, cpy_r_r14);
@@ -3295,7 +3253,7 @@ CPyL13: ;
     if (likely(cpy_r_expected_padding_bytes != Py_None))
         cpy_r_r17 = cpy_r_expected_padding_bytes;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 259, CPyStatic__decoding___globals, "bytes", cpy_r_expected_padding_bytes);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "get_expected_padding_bytes", 256, CPyStatic__decoding___globals, "bytes", cpy_r_expected_padding_bytes);
         goto CPyL15;
     }
     return cpy_r_r17;
@@ -3348,204 +3306,152 @@ fail: ;
 }
 
 char CPyDef__decoding___validate_padding_bytes_signed_integer(PyObject *cpy_r_self, CPyTagged cpy_r_value, PyObject *cpy_r_padding_bytes) {
-    CPyTagged cpy_r_r0;
-    PyObject *cpy_r_r1;
-    PyObject *cpy_r_r2;
-    CPyTagged cpy_r_r3;
-    CPyTagged cpy_r_r4;
-    int64_t cpy_r_r5;
+    int64_t cpy_r_r0;
+    char cpy_r_r1;
+    int64_t cpy_r_r2;
+    char cpy_r_r3;
+    char cpy_r_r4;
+    char cpy_r_r5;
     char cpy_r_r6;
-    int64_t cpy_r_r7;
-    char cpy_r_r8;
-    char cpy_r_r9;
-    char cpy_r_r10;
-    char cpy_r_r11;
-    PyObject *cpy_r_r12;
-    PyObject *cpy_r_r13;
+    PyObject *cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_expected_padding_bytes;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    int32_t cpy_r_r11;
+    char cpy_r_r12;
+    char cpy_r_r13;
     PyObject *cpy_r_r14;
     PyObject *cpy_r_r15;
-    PyObject *cpy_r_expected_padding_bytes;
     PyObject *cpy_r_r16;
     PyObject *cpy_r_r17;
     PyObject *cpy_r_r18;
-    PyObject *cpy_r_r19;
-    int32_t cpy_r_r20;
-    char cpy_r_r21;
-    char cpy_r_r22;
+    PyObject **cpy_r_r20;
+    PyObject *cpy_r_r21;
+    PyObject *cpy_r_r22;
     PyObject *cpy_r_r23;
-    PyObject *cpy_r_r24;
-    PyObject *cpy_r_r25;
-    PyObject *cpy_r_r26;
+    CPyPtr cpy_r_r24;
+    CPyPtr cpy_r_r25;
+    CPyPtr cpy_r_r26;
     PyObject *cpy_r_r27;
-    PyObject **cpy_r_r29;
+    PyObject *cpy_r_r28;
+    PyObject *cpy_r_r29;
     PyObject *cpy_r_r30;
-    PyObject *cpy_r_r31;
-    PyObject *cpy_r_r32;
-    CPyPtr cpy_r_r33;
-    CPyPtr cpy_r_r34;
-    CPyPtr cpy_r_r35;
-    PyObject *cpy_r_r36;
-    PyObject *cpy_r_r37;
-    PyObject *cpy_r_r38;
-    PyObject *cpy_r_r39;
-    PyObject **cpy_r_r41;
-    PyObject *cpy_r_r42;
-    char cpy_r_r43;
-    cpy_r_r0 = CPyDef__decoding___get_value_byte_size(cpy_r_self);
-    if (unlikely(cpy_r_r0 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
-    }
-    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'data_byte_size' */
-    cpy_r_r2 = CPyObject_GetAttr(cpy_r_self, cpy_r_r1);
-    if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL25;
-    }
-    if (likely(PyLong_Check(cpy_r_r2)))
-        cpy_r_r3 = CPyTagged_FromObject(cpy_r_r2);
-    else {
-        CPy_TypeError("int", cpy_r_r2); cpy_r_r3 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r2);
-    if (unlikely(cpy_r_r3 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL25;
-    }
-    cpy_r_r4 = CPyTagged_Subtract(cpy_r_r3, cpy_r_r0);
-    CPyTagged_DECREF(cpy_r_r3);
-    CPyTagged_DECREF(cpy_r_r0);
-    cpy_r_r5 = cpy_r_value & 1;
-    cpy_r_r6 = cpy_r_r5 != 0;
-    if (cpy_r_r6) goto CPyL5;
-    cpy_r_r7 = 0 & 1;
-    cpy_r_r8 = cpy_r_r7 != 0;
-    if (!cpy_r_r8) goto CPyL6;
-CPyL5: ;
-    cpy_r_r9 = CPyTagged_IsLt_(cpy_r_value, 0);
-    cpy_r_r10 = cpy_r_r9 ^ 1;
-    if (cpy_r_r10) {
-        goto CPyL7;
+    PyObject **cpy_r_r32;
+    PyObject *cpy_r_r33;
+    char cpy_r_r34;
+    cpy_r_r0 = cpy_r_value & 1;
+    cpy_r_r1 = cpy_r_r0 != 0;
+    if (cpy_r_r1) goto CPyL2;
+    cpy_r_r2 = 0 & 1;
+    cpy_r_r3 = cpy_r_r2 != 0;
+    if (!cpy_r_r3) goto CPyL3;
+CPyL2: ;
+    cpy_r_r4 = CPyTagged_IsLt_(cpy_r_value, 0);
+    cpy_r_r5 = cpy_r_r4 ^ 1;
+    if (cpy_r_r5) {
+        goto CPyL4;
     } else
-        goto CPyL10;
+        goto CPyL6;
+CPyL3: ;
+    cpy_r_r6 = (Py_ssize_t)cpy_r_value >= (Py_ssize_t)0;
+    if (!cpy_r_r6) goto CPyL6;
+CPyL4: ;
+    cpy_r_r7 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
+    cpy_r_r8 = CPyDef__decoding___get_expected_padding_bytes(cpy_r_self, cpy_r_r7);
+    if (unlikely(cpy_r_r8 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL19;
+    }
+    cpy_r_expected_padding_bytes = cpy_r_r8;
+    goto CPyL8;
 CPyL6: ;
-    cpy_r_r11 = (Py_ssize_t)cpy_r_value >= (Py_ssize_t)0;
-    if (!cpy_r_r11) goto CPyL10;
-CPyL7: ;
-    cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
-    cpy_r_r13 = CPyTagged_StealAsObject(cpy_r_r4);
-    cpy_r_r14 = PyNumber_Multiply(cpy_r_r12, cpy_r_r13);
-    CPy_DECREF(cpy_r_r13);
-    if (unlikely(cpy_r_r14 == NULL)) {
+    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\xff' */
+    cpy_r_r10 = CPyDef__decoding___get_expected_padding_bytes(cpy_r_self, cpy_r_r9);
+    if (unlikely(cpy_r_r10 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
+        goto CPyL19;
     }
-    if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
-        cpy_r_r15 = cpy_r_r14;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", 271, CPyStatic__decoding___globals, "bytes", cpy_r_r14);
-        goto CPyL24;
-    }
-    cpy_r_expected_padding_bytes = cpy_r_r15;
-    goto CPyL13;
-CPyL10: ;
-    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\xff' */
-    cpy_r_r17 = CPyTagged_StealAsObject(cpy_r_r4);
-    cpy_r_r18 = PyNumber_Multiply(cpy_r_r16, cpy_r_r17);
-    CPy_DECREF(cpy_r_r17);
-    if (unlikely(cpy_r_r18 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
-    }
-    if (likely(PyBytes_Check(cpy_r_r18) || PyByteArray_Check(cpy_r_r18)))
-        cpy_r_r19 = cpy_r_r18;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", 273, CPyStatic__decoding___globals, "bytes", cpy_r_r18);
-        goto CPyL24;
-    }
-    cpy_r_expected_padding_bytes = cpy_r_r19;
-CPyL13: ;
-    cpy_r_r20 = CPyBytes_Compare(cpy_r_padding_bytes, cpy_r_expected_padding_bytes);
+    cpy_r_expected_padding_bytes = cpy_r_r10;
+CPyL8: ;
+    cpy_r_r11 = CPyBytes_Compare(cpy_r_padding_bytes, cpy_r_expected_padding_bytes);
     CPy_DECREF(cpy_r_expected_padding_bytes);
-    cpy_r_r21 = cpy_r_r20 >= 0;
-    if (unlikely(!cpy_r_r21)) {
+    cpy_r_r12 = cpy_r_r11 >= 0;
+    if (unlikely(!cpy_r_r12)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
+        goto CPyL19;
     }
-    cpy_r_r22 = cpy_r_r20 != 1;
-    if (!cpy_r_r22) goto CPyL23;
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
-    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Padding bytes were not empty: ' */
-    cpy_r_r25 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
-    cpy_r_r26 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
-    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
-    PyObject *cpy_r_r28[3] = {cpy_r_r25, cpy_r_padding_bytes, cpy_r_r26};
-    cpy_r_r29 = (PyObject **)&cpy_r_r28;
-    cpy_r_r30 = PyObject_VectorcallMethod(cpy_r_r27, cpy_r_r29, 9223372036854775811ULL, 0);
+    cpy_r_r13 = cpy_r_r11 != 1;
+    if (!cpy_r_r13) goto CPyL18;
+    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Padding bytes were not empty: ' */
+    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
+    cpy_r_r17 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r18 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    PyObject *cpy_r_r19[3] = {cpy_r_r16, cpy_r_padding_bytes, cpy_r_r17};
+    cpy_r_r20 = (PyObject **)&cpy_r_r19;
+    cpy_r_r21 = PyObject_VectorcallMethod(cpy_r_r18, cpy_r_r20, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r21 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL19;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r21)))
+        cpy_r_r22 = cpy_r_r21;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", 271, CPyStatic__decoding___globals, "str", cpy_r_r21);
+        goto CPyL19;
+    }
+    cpy_r_r23 = PyList_New(2);
+    if (unlikely(cpy_r_r23 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL20;
+    }
+    cpy_r_r24 = (CPyPtr)&((PyListObject *)cpy_r_r23)->ob_item;
+    cpy_r_r25 = *(CPyPtr *)cpy_r_r24;
+    CPy_INCREF(cpy_r_r15);
+    *(PyObject * *)cpy_r_r25 = cpy_r_r15;
+    cpy_r_r26 = cpy_r_r25 + 8;
+    *(PyObject * *)cpy_r_r26 = cpy_r_r22;
+    cpy_r_r27 = PyUnicode_Join(cpy_r_r14, cpy_r_r23);
+    CPy_DECREF_NO_IMM(cpy_r_r23);
+    if (unlikely(cpy_r_r27 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
+        goto CPyL19;
+    }
+    cpy_r_r28 = CPyStatic__decoding___globals;
+    cpy_r_r29 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
+    cpy_r_r30 = CPyDict_GetItem(cpy_r_r28, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
+        goto CPyL21;
     }
-    if (likely(PyUnicode_Check(cpy_r_r30)))
-        cpy_r_r31 = cpy_r_r30;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", 277, CPyStatic__decoding___globals, "str", cpy_r_r30);
-        goto CPyL24;
-    }
-    cpy_r_r32 = PyList_New(2);
-    if (unlikely(cpy_r_r32 == NULL)) {
+    PyObject *cpy_r_r31[1] = {cpy_r_r27};
+    cpy_r_r32 = (PyObject **)&cpy_r_r31;
+    cpy_r_r33 = PyObject_Vectorcall(cpy_r_r30, cpy_r_r32, 1, 0);
+    CPy_DECREF(cpy_r_r30);
+    if (unlikely(cpy_r_r33 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL26;
+        goto CPyL21;
     }
-    cpy_r_r33 = (CPyPtr)&((PyListObject *)cpy_r_r32)->ob_item;
-    cpy_r_r34 = *(CPyPtr *)cpy_r_r33;
-    CPy_INCREF(cpy_r_r24);
-    *(PyObject * *)cpy_r_r34 = cpy_r_r24;
-    cpy_r_r35 = cpy_r_r34 + 8;
-    *(PyObject * *)cpy_r_r35 = cpy_r_r31;
-    cpy_r_r36 = PyUnicode_Join(cpy_r_r23, cpy_r_r32);
-    CPy_DECREF_NO_IMM(cpy_r_r32);
-    if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
-    }
-    cpy_r_r37 = CPyStatic__decoding___globals;
-    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NonEmptyPaddingBytes' */
-    cpy_r_r39 = CPyDict_GetItem(cpy_r_r37, cpy_r_r38);
-    if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL27;
-    }
-    PyObject *cpy_r_r40[1] = {cpy_r_r36};
-    cpy_r_r41 = (PyObject **)&cpy_r_r40;
-    cpy_r_r42 = PyObject_Vectorcall(cpy_r_r39, cpy_r_r41, 1, 0);
-    CPy_DECREF(cpy_r_r39);
-    if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL27;
-    }
-    CPy_DECREF(cpy_r_r36);
-    CPy_Raise(cpy_r_r42);
-    CPy_DECREF(cpy_r_r42);
+    CPy_DECREF(cpy_r_r27);
+    CPy_Raise(cpy_r_r33);
+    CPy_DECREF(cpy_r_r33);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "validate_padding_bytes_signed_integer", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
-        goto CPyL24;
+        goto CPyL19;
     }
     CPy_Unreachable();
-CPyL23: ;
+CPyL18: ;
     return 1;
-CPyL24: ;
-    cpy_r_r43 = 2;
-    return cpy_r_r43;
-CPyL25: ;
-    CPyTagged_DecRef(cpy_r_r0);
-    goto CPyL24;
-CPyL26: ;
-    CPy_DecRef(cpy_r_r31);
-    goto CPyL24;
-CPyL27: ;
-    CPy_DecRef(cpy_r_r36);
-    goto CPyL24;
+CPyL19: ;
+    cpy_r_r34 = 2;
+    return cpy_r_r34;
+CPyL20: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL19;
+CPyL21: ;
+    CPy_DecRef(cpy_r_r27);
+    goto CPyL19;
 }
 
 PyObject *CPyPy__decoding___validate_padding_bytes_signed_integer(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -3648,7 +3554,7 @@ CPyL6: ;
     if (likely(PyUnicode_Check(cpy_r_r15)))
         cpy_r_r16 = cpy_r_r15;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", 287, CPyStatic__decoding___globals, "str", cpy_r_r15);
+        CPy_TypeErrorTraceback("faster_eth_abi/_decoding.py", "decoder_fn_boolean", 281, CPyStatic__decoding___globals, "str", cpy_r_r15);
         goto CPyL14;
     }
     cpy_r_r17 = PyList_New(2);
@@ -3820,10 +3726,10 @@ CPyL3: ;
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
         goto CPyL11;
     }
-    CPyStatic__decoding_____expected_padding_bytes_cache = cpy_r_r21;
-    CPy_INCREF(CPyStatic__decoding_____expected_padding_bytes_cache);
+    CPyStatic__decoding____expected_padding_bytes_cache = cpy_r_r21;
+    CPy_INCREF(CPyStatic__decoding____expected_padding_bytes_cache);
     cpy_r_r22 = CPyStatic__decoding___globals;
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__expected_padding_bytes_cache' */
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_expected_padding_bytes_cache' */
     cpy_r_r24 = CPyDict_SetItem(cpy_r_r22, cpy_r_r23, cpy_r_r21);
     CPy_DECREF(cpy_r_r21);
     cpy_r_r25 = cpy_r_r24 >= 0;
@@ -23150,7 +23056,7 @@ const char * const CPyLit_Str[] = {
     "\004\036Padding bytes were not empty: \a{!r:{}}\006format\024NonEmptyPaddingBytes",
     "\004)Boolean must be either 0x0 or 0x1.  Got: \004Dict\005Final\020faster_eth_utils",
     "\003\031faster_eth_abi.exceptions\aBytesIO\024ContextFramesBytesIO",
-    "\004\021faster_eth_abi.io\036__expected_padding_bytes_cache\nis_dynamic\005rjust",
+    "\004\021faster_eth_abi.io\035_expected_padding_bytes_cache\nis_dynamic\005rjust",
     "\t\005ljust\nbit_length\003big\bto_bytes\bCallable\004List\bOptional\bSequence\aTypeVar",
     "\v\001T\b__init__\004node\001<\005{:{}}\f__qualname__\001 \001>\b__repr__\vto_type_str\006__eq__",
     "\002\034Must implement `to_type_str`\023NotImplementedError",
@@ -23303,7 +23209,7 @@ PyObject *CPyPy__codec___encode_c(PyObject *self, PyObject *const *args, size_t 
 PyObject *CPyDef__codec___decode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_data, char cpy_r_strict);
 PyObject *CPyPy__codec___decode_c(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__codec_____top_level__(void);
-PyObject *CPyStatic__decoding_____expected_padding_bytes_cache = NULL;
+PyObject *CPyStatic__decoding____expected_padding_bytes_cache = NULL;
 CPyTagged CPyDef__decoding___decode_uint_256(PyObject *cpy_r_stream);
 PyObject *CPyPy__decoding___decode_uint_256(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 CPyTagged CPyDef__decoding___get_value_byte_size(PyObject *cpy_r_decoder);
