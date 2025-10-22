@@ -3,6 +3,9 @@ import decimal
 from functools import (
     cached_property,
 )
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
@@ -90,14 +93,17 @@ class HeadTailDecoder(BaseDecoder):
     is_dynamic = True
 
     tail_decoder: Optional[DynamicDecoder] = None
-    
-    decode = __call__ = decode_head_tail
 
     def validate(self) -> None:
         super().validate()
 
         if self.tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
+    
+    def decode(self, stream: ContextFramesBytesIO) -> Any:
+        return decode_head_tail(self, stream)
+
+    __call__ = decode
 
 
 class TupleDecoder(BaseDecoder):
@@ -129,12 +135,11 @@ class TupleDecoder(BaseDecoder):
     @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         validate_pointers_tuple(self, stream)
+    
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+        return decode_tuple(self, stream)
 
-    @overload  # type: ignore [misc]
-    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:  # type: ignore [empty-body]
-        ...
-
-    decode = __call__ = decode_tuple
+    __call__ = decode
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
@@ -227,18 +232,26 @@ class BaseArrayDecoder(BaseDecoder):
 
 class SizedArrayDecoder(BaseArrayDecoder):
     array_size: int = None
-    decode = __call__ = decode_sized_array
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_decoder.is_dynamic
+    
+    def decode(self, stream):
+        return decode_sized_array(self, stream)
+
+    __call__ = decode
 
 
 class DynamicArrayDecoder(BaseArrayDecoder):
     # Dynamic arrays are always dynamic, regardless of their elements
     is_dynamic = True
-    decode = __call__ = decode_dynamic_array
+    
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+        return decode_dynamic_array(self, stream)
+
+    __call__ = decode
 
 
 class FixedByteSizeDecoder(SingleDecoder):
@@ -246,6 +259,13 @@ class FixedByteSizeDecoder(SingleDecoder):
     value_bit_size: int = None
     data_byte_size: int = None
     is_big_endian: bool = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.read_data_from_stream = MethodType(read_fixed_byte_size_data_from_stream, self)
+        self.split_data_and_padding = MethodType(split_data_and_padding_fixed_byte_size, self)
+        self.validate_padding_bytes = MethodType(validate_padding_bytes_fixed_byte_size, self)
+        self._get_value_byte_size = MethodType(get_value_byte_size, self)
 
     def validate(self) -> None:
         super().validate()
@@ -269,22 +289,15 @@ class FixedByteSizeDecoder(SingleDecoder):
         if value_bit_size > data_byte_size * 8:
             raise ValueError("Value byte size exceeds data size")
 
-    @overload  # type: ignore [misc]
-    def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:  # type: ignore [empty-body]
-        ...
+    def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
+        raise NotImplementedError("didnt call __init__")
 
-    read_data_from_stream = read_fixed_byte_size_data_from_stream
-
-    @overload  # type: ignore [misc]
-    def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:  # type: ignore [empty-body]
-        ...
-    
-    split_data_and_padding = split_data_and_padding_fixed_byte_size
-    
-    validate_padding_bytes = validate_padding_bytes_fixed_byte_size
+    def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
+        raise NotImplementedError("didnt call __init__")
 
     # This is unused, but it is kept in to preserve the eth-abi api
-    _get_value_byte_size = get_value_byte_size
+    def _get_value_byte_size(self) -> int:
+        raise NotImplementedError("didnt call __init__")
 
 
 class Fixed32ByteSizeDecoder(FixedByteSizeDecoder):
