@@ -75,8 +75,9 @@ def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[An
     current_location = stream.tell()
     if self._no_head_tail:
         # TODO: if all(isinstance(d, TupleDecoder) for d in self._decoders)
-        #           return tuple(decode_tuple(stream) for _ in range(len(self._decoders))
-        return tuple(decoder(stream) for decoder in self._decoders)
+        #           return tuple(decode_tuple(stream) for _ in range(len(self.decoders))
+        #       and other types with compiled decode funcs
+        return tuple(decoder(stream) for decoder in self.decoders)
 
     end_of_offsets = current_location + 32 * self.len_of_head
     total_stream_length = len(stream.getbuffer())
