@@ -40,6 +40,12 @@ extras_require = {
     "tools": [
         HYPOTHESIS_REQUIREMENT,
     ],
+    "codspeed": [
+        "pytest>=7.0.0",
+        "pytest-codspeed",
+        "pytest-test-groups",
+        "eth-abi>=5.3.1,<6",
+    ],
 }
 
 extras_require["dev"] = (
