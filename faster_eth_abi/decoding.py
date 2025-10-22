@@ -163,7 +163,7 @@ class SingleDecoder(BaseDecoder):
     def decode(self, stream: ContextFramesBytesIO) -> Any:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
-        value = self.decoder_fn(data)
+        value = self.decoder_fn(data)  # type: ignore [misc]
         self.validate_padding_bytes(value, padding_bytes)
 
         return value
@@ -354,7 +354,9 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        if self.validate_padding_bytes is SignedIntegerDecoder.validate_padding_bytes:
+    
+        # Only assign validate_padding_bytes if not overridden in subclass
+        if type(self).validate_padding_bytes is SignedIntegerDecoder.validate_padding_bytes:
             self.validate_padding_bytes = MethodType(validate_padding_bytes_signed_integer, self)
 
     @cached_property
