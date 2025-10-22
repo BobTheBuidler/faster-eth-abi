@@ -394,6 +394,10 @@ class BytesDecoder(Fixed32ByteSizeDecoder):
 class BaseFixedDecoder(Fixed32ByteSizeDecoder):
     frac_places: int = None
     is_big_endian = True
+    
+    @cached_property
+    def denominator(self) -> int:
+        return TEN**self.frac_places
 
     def validate(self) -> None:
         super().validate()
@@ -407,11 +411,12 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
 
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
+    
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
 
         with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / TEN**self.frac_places
+            decimal_value = decimal.Decimal(value) / self.denominator
 
         return decimal_value
 
@@ -423,27 +428,42 @@ class UnsignedFixedDecoder(BaseFixedDecoder):
 
 
 class SignedFixedDecoder(BaseFixedDecoder):
+    
+    @cached_property
+    def neg_threshold(self) -> int:
+        return int(2 ** (self.value_bit_size - 1))
+
+    @cached_property
+    def neg_offset(self) -> int:
+        return int(2**self.value_bit_size)
+
+    @cached_property
+    def expected_padding_pos(self) -> bytes:
+        value_byte_size = get_value_byte_size(self)
+        padding_size = self.data_byte_size - value_byte_size
+        return b"\x00" * padding_size
+
+    @cached_property
+    def expected_padding_neg(self) -> bytes:
+        value_byte_size = get_value_byte_size(self)
+        padding_size = self.data_byte_size - value_byte_size
+        return b"\xff" * padding_size
+
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
-        value_bit_size = self.value_bit_size
-        if value >= 2 ** (value_bit_size - 1):
-            signed_value = value - 2**value_bit_size
-        else:
-            signed_value = value
+        if value >= self.neg_threshold:
+            value -= self.neg_offset
 
         with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(signed_value) / TEN**self.frac_places
+            decimal_value = decimal.Decimal(signed_value) / self.denominator
 
         return decimal_value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        value_byte_size = get_value_byte_size(self)
-        padding_size = self.data_byte_size - value_byte_size
-
         if value >= 0:
-            expected_padding_bytes = b"\x00" * padding_size
+            expected_padding_bytes = self.expected_padding_pos
         else:
-            expected_padding_bytes = b"\xff" * padding_size
+            expected_padding_bytes = self.expected_padding_neg
 
         if padding_bytes != expected_padding_bytes:
             raise NonEmptyPaddingBytes(
