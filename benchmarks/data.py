@@ -529,16 +529,16 @@ def make_all_tup_combos(length, max_depth=2, _depth=0):
 
 for typestr in make_all_dyn_array_combos(1, 3, 1):
     add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
-for typestr in make_all_dyn_array_combos(5, 26, 10):
-    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
-for typestr in make_all_dyn_array_combos(50, 151, 50):
-    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
-
-for typestr in make_all_fixed_array_combos(1, 10, 2):
-    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="fixarr")
-
-for tup_len in range(2, 10):
-    for typestr in make_all_tup_combos(tup_len):
-        add_matrixed_case(typestr, tuple_cases, tuple_ids, id_prefix="tup")
+# for typestr in make_all_dyn_array_combos(5, 26, 10):
+#    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
+# for typestr in make_all_dyn_array_combos(50, 151, 50):
+#    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
+#
+# for typestr in make_all_fixed_array_combos(1, 10, 2):
+#    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="fixarr")
+#
+# for tup_len in range(2, 10):
+#    for typestr in make_all_tup_combos(tup_len):
+#        add_matrixed_case(typestr, tuple_cases, tuple_ids, id_prefix="tup")
 
 # --- END: USAGE FOR MATRIXED TEST CASES ---
