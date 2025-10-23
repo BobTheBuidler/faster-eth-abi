@@ -139,7 +139,7 @@ class TupleEncoder(BaseEncoder):
         if type(self).encode is TupleEncoder.encode:
             if all(self._is_dynamic):
                 self.encode = MethodType(encode_tuple_all_dynamic, self)
-            if not self.is_dynamic:
+            elif not self.is_dynamic:
                 self.encode = MethodType(encode_tuple_no_dynamic, self)
             else:
                 self.encode = MethodType(encode_tuple, self)
