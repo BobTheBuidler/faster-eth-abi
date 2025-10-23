@@ -4,6 +4,9 @@ import decimal
 from functools import (
     cached_property,
 )
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
@@ -37,6 +40,8 @@ from faster_eth_abi._encoding import (
     encode_fixed,
     encode_signed,
     encode_tuple,
+    encode_tuple_all_dynamic,
+    encode_tuple_no_dynamic,
     int_to_big_endian,
     validate_tuple,
 )
@@ -131,6 +136,14 @@ class TupleEncoder(BaseEncoder):
         
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
+        if type(self).encode is TupleEncoder.encode:
+            if all(self._is_dynamic):
+                self.encode = MethodType(encode_tuple_all_dynamic, self)
+            if not self.is_dynamic:
+                self.encode = MethodType(encode_tuple_no_dynamic, self)
+            else:
+                self.encode = MethodType(encode_tuple, self)
+
     def validate(self) -> None:
         super().validate()
 
@@ -142,7 +155,6 @@ class TupleEncoder(BaseEncoder):
         validate_tuple(self, value)
 
     def encode(self, values: Sequence[Any]) -> bytes:
-        validate_value(self, values)
         return encode_tuple(self, values)
 
     __call__: Callable[[Self, Sequence[Any]], bytes] = encode
