@@ -4917,7 +4917,7 @@ CPyL11: ;
     CPy_DECREF(cpy_r_r3);
     cpy_r_r22 = cpy_r_r21 << 1;
     cpy_r_r23 = CPyTagged_Multiply(64, cpy_r_r22);
-    cpy_r_r24 = CPyDef__encoding___encode_uint_256(0);
+    cpy_r_r24 = CPyDef__encoding___encode_uint_256(cpy_r_r23);
     if (unlikely(cpy_r_r24 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
         goto CPyL32;
