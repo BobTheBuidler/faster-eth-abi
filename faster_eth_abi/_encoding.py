@@ -76,7 +76,7 @@ def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byte
     validate_tuple(self, values)
     encoders = self.encoders
     raw_head_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
-    head_length = sum(map(len, raw_head_chunks))
+    head_length = sum(len(chunk) for chunk in raw_head_chunks)
     tail_chunks = [b""] * len(encoders)
     return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
 
