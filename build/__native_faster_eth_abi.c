@@ -77,10 +77,11 @@ PyObject *CPyDef__codec___encode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, 
     PyObject *cpy_r_r5;
     PyObject *cpy_r_r6;
     PyObject *cpy_r_r7;
-    PyObject **cpy_r_r9;
-    PyObject *cpy_r_r10;
+    PyObject *cpy_r_r8;
+    PyObject **cpy_r_r10;
     PyObject *cpy_r_r11;
     PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'args' */
     cpy_r_r1 = CPyDef_validation___validate_list_like_param(cpy_r_args, cpy_r_r0);
     if (unlikely(cpy_r_r1 == 2)) {
@@ -112,26 +113,30 @@ PyObject *CPyDef__codec___encode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, 
         CPy_AddTraceback("faster_eth_abi/_codec.py", "encode_c", DIFFCHECK_PLACEHOLDER, CPyStatic__codec___globals);
         goto CPyL8;
     }
-    PyObject *cpy_r_r8[1] = {cpy_r_args};
-    cpy_r_r9 = (PyObject **)&cpy_r_r8;
-    cpy_r_r10 = PyObject_Vectorcall(cpy_r_r7, cpy_r_r9, 1, 0);
-    CPy_DECREF(cpy_r_r7);
-    if (unlikely(cpy_r_r10 == NULL)) {
+    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'encode' */
+    PyObject *cpy_r_r9[2] = {cpy_r_r7, cpy_r_args};
+    cpy_r_r10 = (PyObject **)&cpy_r_r9;
+    cpy_r_r11 = PyObject_VectorcallMethod(cpy_r_r8, cpy_r_r10, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r11 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_codec.py", "encode_c", DIFFCHECK_PLACEHOLDER, CPyStatic__codec___globals);
-        goto CPyL8;
+        goto CPyL10;
     }
-    if (likely(PyBytes_Check(cpy_r_r10) || PyByteArray_Check(cpy_r_r10)))
-        cpy_r_r11 = cpy_r_r10;
+    CPy_DECREF(cpy_r_r7);
+    if (likely(PyBytes_Check(cpy_r_r11) || PyByteArray_Check(cpy_r_r11)))
+        cpy_r_r12 = cpy_r_r11;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_codec.py", "encode_c", 46, CPyStatic__codec___globals, "bytes", cpy_r_r10);
+        CPy_TypeErrorTraceback("faster_eth_abi/_codec.py", "encode_c", 46, CPyStatic__codec___globals, "bytes", cpy_r_r11);
         goto CPyL8;
     }
-    return cpy_r_r11;
-CPyL8: ;
-    cpy_r_r12 = NULL;
     return cpy_r_r12;
+CPyL8: ;
+    cpy_r_r13 = NULL;
+    return cpy_r_r13;
 CPyL9: ;
     CPy_DecRef(cpy_r_r5);
+    goto CPyL8;
+CPyL10: ;
+    CPy_DecRef(cpy_r_r7);
     goto CPyL8;
 }
 
@@ -23830,7 +23835,7 @@ int CPyGlobalsInit(void)
 
 PyObject *CPyStatics[DIFFCHECK_PLACEHOLDER];
 const char * const CPyLit_Str[] = {
-    "\006\004args\t_registry\021get_tuple_encoder\004data\021get_tuple_decoder\006strict",
+    "\a\004args\t_registry\021get_tuple_encoder\006encode\004data\021get_tuple_decoder\006strict",
     "\a\fstream_class\bbuiltins\rTYPE_CHECKING\003Any\bIterable\005Tuple\006typing",
     "\004\tDecodable\aTypeStr\neth_typing\024validate_bytes_param",
     "\003\030validate_list_like_param\037faster_eth_abi.utils.validation\004read",
@@ -23875,7 +23880,7 @@ const char * const CPyLit_Str[] = {
     "\005\rTYPE_ALIAS_RE\nIntSubtype\fFixedSubtype\aSubtype\027faster_eth_abi._grammar",
     "\a\017__mypyc_attrs__\aABIType\005TComp\005bound\ncomponents\tTupleType\004base",
     "\004\tBasicType\bABICodec\024faster_eth_abi.codec\bregistry",
-    "\005\027faster_eth_abi.registry\rdefault_codec\006encode\006decode\fis_encodable",
+    "\004\027faster_eth_abi.registry\rdefault_codec\006decode\fis_encodable",
     "\006\021is_encodable_type\005TT256\aTT256M1\005TT255\005parse\020 (normalized to ",
     "\003\016Cannot create \024 for non-basic type \n for type ",
     "\001\033: expected type with base \'",
@@ -23922,16 +23927,16 @@ const char * const CPyLit_Int[] = {
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    49, 4, 11, 12, 13, 14, 2, 16, 17, 2, 19, 20, 5, 11, 12, 58, 59, 14,
-    1, 23, 3, 26, 41, 56, 2, 62, 63, 1, 69, 2, 75, 69, 7, 11, 12, 84, 85,
-    86, 87, 88, 1, 66, 1, 71, 1, 91, 3, 152, 152, 152, 1, 345, 10, 12, 59,
-    155, 156, 86, 87, 14, 88, 157, 158, 1, 17, 1, 160, 1, 162, 1, 164, 1,
-    113, 1, 188, 1, 59, 1, 193, 1, 195, 3, 217, 217, 217, 1, 357, 6, 11,
-    12, 84, 86, 219, 88, 4, 186, 192, 190, 220, 1, 205, 1, 226, 1, 227, 1,
-    231, 1, 236, 2, 242, 243, 3, 242, 243, 245, 2, 247, 248, 6, 84, 59,
-    86, 14, 157, 251, 1, 252, 1, 254, 1, 239, 6, 256, 257, 258, 234, 259,
-    260, 1, 261, 1, 276, 3, 294, 294, 294, 1, 376, 4, 84, 58, 59, 14, 1,
-    298, 1, 12
+    49, 4, 12, 13, 14, 15, 2, 17, 18, 2, 20, 21, 5, 12, 13, 59, 60, 15,
+    1, 24, 3, 27, 42, 57, 2, 63, 64, 1, 70, 2, 76, 70, 7, 12, 13, 85, 86,
+    87, 88, 89, 1, 67, 1, 72, 1, 92, 3, 153, 153, 153, 1, 345, 10, 13, 60,
+    156, 157, 87, 88, 15, 89, 158, 159, 1, 18, 1, 161, 1, 163, 1, 165, 1,
+    114, 1, 189, 1, 60, 1, 194, 1, 196, 3, 217, 217, 217, 1, 357, 6, 12,
+    13, 85, 87, 219, 89, 4, 187, 193, 191, 220, 1, 205, 1, 226, 1, 227, 1,
+    231, 1, 236, 2, 242, 243, 3, 242, 243, 245, 2, 247, 248, 6, 85, 60,
+    87, 15, 158, 251, 1, 252, 1, 254, 1, 239, 6, 256, 257, 258, 234, 259,
+    260, 1, 261, 1, 276, 3, 294, 294, 294, 1, 376, 4, 85, 59, 60, 15, 1,
+    298, 1, 13
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
