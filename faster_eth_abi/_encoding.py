@@ -78,7 +78,10 @@ def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byte
     return __encode_tuple_chunks(raw_head_chunks, tail_chunks)
 
 
-def __encode_tuple_chunks(raw_head_chunks: List[Optional[bytes]], tail_chunks: List[bytes]
+def __encode_tuple_chunks(
+    raw_head_chunks: List[Optional[bytes]],
+    tail_chunks: List[bytes],
+) -> bytes:
     head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = [0]
     total_offset = 0
