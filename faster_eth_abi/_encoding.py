@@ -178,6 +178,23 @@ def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> by
     return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
 
 
+encode_tuple_no_dynamic_funcs: Dict[
+    int, 
+    Callable[["TupleEncoder", Sequence[Any]], bytes]
+] = {
+    1: encode_tuple_no_dynamic1,
+    2: encode_tuple_no_dynamic2,
+    3: encode_tuple_no_dynamic3,
+    4: encode_tuple_no_dynamic4,
+    5: encode_tuple_no_dynamic5,
+    6: encode_tuple_no_dynamic6,
+    7: encode_tuple_no_dynamic7,
+    8: encode_tuple_no_dynamic8,
+    9: encode_tuple_no_dynamic9,
+    10: encode_tuple_no_dynamic10,
+}
+
+
 def __encode_tuple_chunks(
     head_length: int,
     raw_head_chunks: List[Optional[bytes]],
