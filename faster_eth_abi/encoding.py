@@ -42,6 +42,7 @@ from faster_eth_abi._encoding import (
     encode_tuple,
     encode_tuple_all_dynamic,
     encode_tuple_no_dynamic,
+    encode_tuple_no_dynamic_funcs,
     int_to_big_endian,
     validate_tuple,
 )
@@ -137,12 +138,18 @@ class TupleEncoder(BaseEncoder):
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
         if type(self).encode is TupleEncoder.encode:
-            if all(self._is_dynamic):
-                self.encode = MethodType(encode_tuple_all_dynamic, self)
-            elif not self.is_dynamic:
-                self.encode = MethodType(encode_tuple_no_dynamic, self)
-            else:
-                self.encode = MethodType(encode_tuple, self)
+            encode_func = (
+                encode_tuple_all_dynamic
+                if all(self._is_dynamic)
+                else encode_tuple_no_dynamic_funcs.get(
+                    len(self.encoders),
+                    encode_tuple_no_dynamic,
+                )
+                if not self.is_dynamic
+                else encode_tuple
+            )
+                
+            self.encode = MethodType(encode_func, self)
 
     def validate(self) -> None:
         super().validate()

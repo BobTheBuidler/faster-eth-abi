@@ -19,6 +19,13 @@ typedef struct tuple_T2OO {
 } tuple_T2OO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T1O
+#define MYPYC_DECLARED_tuple_T1O
+typedef struct tuple_T1O {
+    PyObject *f0;
+} tuple_T1O;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T2II
 #define MYPYC_DECLARED_tuple_T2II
 typedef struct tuple_T2II {
