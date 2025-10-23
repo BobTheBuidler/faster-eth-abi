@@ -299,7 +299,7 @@ def _clear_encoder_cache(
     old_method: Callable[Concatenate["ABIRegistry", P], T]
 ) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> None:
+    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> T:
         self.get_encoder.cache_clear()
         self.get_tuple_encoder.cache_clear()
         return old_method(self, *args, **kwargs)
@@ -311,7 +311,7 @@ def _clear_decoder_cache(
     old_method: Callable[Concatenate["ABIRegistry", P], T]
 ) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> None:
+    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> T:
         self.get_decoder.cache_clear()
         self.get_tuple_decoder.cache_clear()
         return old_method(self, *args, **kwargs)
@@ -495,9 +495,8 @@ class ABIRegistry(Copyable, BaseRegistry):
         self,
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
-        return encoding.TupleEncoder(
-            encoders=tuple(self.get_encoder(type_str) for type_str in type_strs)
-        )
+        encoders = tuple(map(self.get_encoder, type_strs))
+        return encoding.TupleEncoder(encoders=encoders)
 
     def has_encoder(self, type_str: TypeStr) -> bool:
         """
@@ -531,9 +530,11 @@ class ABIRegistry(Copyable, BaseRegistry):
         *type_strs: TypeStr,
         strict: bool = True,
     ) -> decoding.TupleDecoder:
-        return decoding.TupleDecoder(
-            decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)
+        decoders = tuple(
+            self.get_decoder(type_str, strict)  # type: ignore [misc]
+            for type_str in type_strs
         )
+        return decoding.TupleDecoder(decoders=decoders)
 
     def copy(self) -> Self:
         """
