@@ -527,7 +527,7 @@ for typestr in make_all_dyn_array_combos(50, 151, 50):
 for typestr in make_all_fixed_array_combos(1, 10, 2):
     add_matrixed_case(typestr, array_cases, array_ids, id_prefix="fixarr")
 
-for tup_len in range(1, 10):
+for tup_len in range(2, 10):
     for typestr in make_all_tup_combos(tup_len):
         add_matrixed_case(typestr, tuple_cases, tuple_ids, id_prefix="tup")
 
