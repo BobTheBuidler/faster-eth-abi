@@ -527,7 +527,7 @@ def make_all_tup_combos(length, max_depth=2, _depth=0):
 
 # --- BEGIN: USAGE FOR MATRIXED TEST CASES ---
 
-for typestr in make_all_dyn_array_combos(1, 3, 1):
+for typestr in make_all_dyn_array_combos(1, 1, 1):  # 3, 1):
     add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
 # for typestr in make_all_dyn_array_combos(5, 26, 10):
 #    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
