@@ -1,12 +1,16 @@
 import abc
+from copy import (
+    copy,
+)
 import functools
-from copy import copy
 from typing import (
     Any,
     Callable,
+    Concatenate,
     Dict,
     Final,
     Generic,
+    Iterator,
     Optional,
     Type,
     TypeVar,
@@ -17,6 +21,7 @@ from eth_typing import (
     TypeStr,
 )
 from typing_extensions import (
+    ParamSpec,
     Self,
 )
 
@@ -38,6 +43,7 @@ from .io import (
 )
 
 T = TypeVar("T")
+P = ParamSpec("P")
 
 Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
 
@@ -177,25 +183,25 @@ class Predicate:
     ``ABIRegistry``.
     """
 
-    __slots__ = tuple()
+    __slots__ = ()
 
     def __call__(self, *args, **kwargs):  # pragma: no cover
         raise NotImplementedError("Must implement `__call__`")
 
-    def __str__(self):  # pragma: no cover
+    def __str__(self) -> str:
         raise NotImplementedError("Must implement `__str__`")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<{type(self).__name__} {self}>"
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Any]:
         for attr in self.__slots__:
             yield getattr(self, attr)
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(tuple(self))
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         return type(self) is type(other) and tuple(self) == tuple(other)
 
 
@@ -209,10 +215,10 @@ class Equals(Predicate):
     def __init__(self, value):
         self.value = value
 
-    def __call__(self, other):
+    def __call__(self, other: Any) -> bool:
         return self.value == other
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"(== {self.value!r})"
 
 
@@ -231,7 +237,7 @@ class BaseEquals(Predicate):
         self.base = base
         self.with_sub = with_sub
 
-    def __call__(self, type_str):
+    def __call__(self, type_str: TypeStr) -> bool:
         try:
             abi_type = grammar.parse(type_str)
         except (exceptions.ParseError, ValueError):
@@ -253,7 +259,7 @@ class BaseEquals(Predicate):
         # e.g. if it contained a tuple type
         return False
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"(base == {self.base!r}"
             + (
@@ -265,7 +271,7 @@ class BaseEquals(Predicate):
         )
 
 
-def has_arrlist(type_str):
+def has_arrlist(type_str: TypeStr) -> bool:
     """
     A predicate that matches a type string with an array dimension list.
     """
@@ -277,7 +283,7 @@ def has_arrlist(type_str):
     return abi_type.arrlist is not None
 
 
-def is_base_tuple(type_str):
+def is_base_tuple(type_str: TypeStr) -> bool:
     """
     A predicate that matches a tuple type with no array dimension list.
     """
@@ -289,9 +295,11 @@ def is_base_tuple(type_str):
     return isinstance(abi_type, grammar.TupleType) and abi_type.arrlist is None
 
 
-def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
+def _clear_encoder_cache(
+    old_method: Callable[Concatenate["ABIRegistry", P], T]
+) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
+    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> None:
         self.get_encoder.cache_clear()
         self.get_tuple_encoder.cache_clear()
         return old_method(self, *args, **kwargs)
@@ -299,9 +307,11 @@ def _clear_encoder_cache(old_method: Callable[..., None]) -> Callable[..., None]
     return new_method
 
 
-def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]:
+def _clear_decoder_cache(
+    old_method: Callable[Concatenate["ABIRegistry", P], T]
+) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
-    def new_method(self: "ABIRegistry", *args: Any, **kwargs: Any) -> None:
+    def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> None:
         self.get_decoder.cache_clear()
         self.get_tuple_decoder.cache_clear()
         return old_method(self, *args, **kwargs)
@@ -311,7 +321,12 @@ def _clear_decoder_cache(old_method: Callable[..., None]) -> Callable[..., None]
 
 class BaseRegistry:
     @staticmethod
-    def _register(mapping, lookup, value, label=None):
+    def _register(
+        mapping: PredicateMapping[T],
+        lookup: Lookup,
+        value: T,
+        label: Optional[str] = None,
+    ) -> None:
         if callable(lookup):
             mapping.add(lookup, value, label)
             return
@@ -325,7 +340,7 @@ class BaseRegistry:
         )
 
     @staticmethod
-    def _unregister(mapping, lookup_or_label):
+    def _unregister(mapping: PredicateMapping[Any], lookup_or_label: Lookup) -> None:
         if callable(lookup_or_label):
             mapping.remove_by_equality(lookup_or_label)
             return
@@ -340,7 +355,7 @@ class BaseRegistry:
         )
 
     @staticmethod
-    def _get_registration(mapping, type_str):
+    def _get_registration(mapping: PredicateMapping[T], type_str: TypeStr) -> T:
         try:
             value = mapping.find(type_str)
         except ValueError as e:
@@ -473,11 +488,11 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_encoder(label)
         self.unregister_decoder(label)
 
-    def _get_encoder_uncached(self, type_str: TypeStr):  # type: ignore [no-untyped-def]
+    def _get_encoder_uncached(self, type_str: TypeStr) -> Encoder:
         return self._get_registration(self._encoders, type_str)
 
     def _get_tuple_encoder_uncached(
-        self, 
+        self,
         *type_strs: TypeStr,
     ) -> encoding.TupleEncoder:
         return encoding.TupleEncoder(
@@ -500,7 +515,7 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         return True
 
-    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True):  # type: ignore [no-untyped-def]
+    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True) -> Decoder:
         decoder = self._get_registration(self._decoders, type_str)
 
         if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
@@ -512,15 +527,15 @@ class ABIRegistry(Copyable, BaseRegistry):
         return decoder
 
     def _get_tuple_decoder_uncached(
-        self, 
-        *type_strs: TypeStr, 
+        self,
+        *type_strs: TypeStr,
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         return decoding.TupleDecoder(
             decoders=tuple(self.get_decoder(type_str, strict) for type_str in type_strs)
         )
 
-    def copy(self):
+    def copy(self) -> Self:
         """
         Copies a registry such that new registrations can be made or existing
         registrations can be unregistered without affecting any instance from
