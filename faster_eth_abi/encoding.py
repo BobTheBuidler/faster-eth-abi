@@ -4,6 +4,9 @@ import decimal
 from functools import (
     cached_property,
 )
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
@@ -14,6 +17,7 @@ from typing import (
     Sequence,
     Tuple,
     Type,
+    final,
 )
 
 from faster_eth_utils import (
@@ -36,6 +40,8 @@ from faster_eth_abi._encoding import (
     encode_fixed,
     encode_signed,
     encode_tuple,
+    encode_tuple_all_dynamic,
+    encode_tuple_no_dynamic,
     int_to_big_endian,
     validate_tuple,
 )
@@ -116,7 +122,8 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self.is_dynamic = any(self._is_dynamic)
 
         validators = []
         for encoder in self.encoders:
@@ -129,20 +136,29 @@ class TupleEncoder(BaseEncoder):
         
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
+        if type(self).encode is TupleEncoder.encode:
+            if all(self._is_dynamic):
+                self.encode = MethodType(encode_tuple_all_dynamic, self)
+            if not self.is_dynamic:
+                self.encode = MethodType(encode_tuple_no_dynamic, self)
+            else:
+                self.encode = MethodType(encode_tuple, self)
+
     def validate(self) -> None:
         super().validate()
 
         if self.encoders is None:
             raise ValueError("`encoders` may not be none")
 
+    @final
     def validate_value(self, value: Sequence[Any]) -> None:
         validate_tuple(self, value)
 
     def encode(self, values: Sequence[Any]) -> bytes:
-        self.validate_value(values)
-        return encode_tuple(values, self.encoders)
+        return encode_tuple(self, values)
 
-    __call__: Callable[[Self, Sequence[Any]], bytes] = encode
+    def __call__(self, values: Sequence[Any]) -> bytes:
+        return self.encode(values)
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
