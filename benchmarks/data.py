@@ -3,6 +3,8 @@
 from decimal import (
     Decimal,
 )
+import itertools
+import re
 
 # Granular lists for encoding/decoding
 booleans = [True, False]
@@ -311,3 +313,222 @@ packed_cases = [
     ("(uint256,bool)", (42, False)),
 ]
 packed_ids = ["uint256", "address", "bytes", "bool", "string", "tuple"]
+
+# --- BEGIN: ATOMIC TYPE VALUE MAPPING AND RECURSIVE GENERATOR ---
+
+# Atomic type value mapping (no containers)
+atomic_type_values = {}
+
+for w in range(8, 257, 8):
+    t = f"uint{w}"
+    atomic_type_values[t] = [0, 1, 2**w - 1, 2 ** (w - 1), 42]
+for w in range(8, 257, 8):
+    t = f"int{w}"
+    vals = [1, 2 ** (w - 1) - 1, 42]
+    vals.extend(-v for v in vals)
+    vals.append(0)
+    atomic_type_values[t] = vals
+for N in range(1, 33):
+    vals = [
+        b"\x00" * N,
+        b"\xff" * N,
+        bytes(range(N)) if N <= 256 else bytes([i % 256 for i in range(N)]),
+        b"AB" * (N // 2) + b"A" * (N % 2),
+    ]
+    if N % 4 == 0:
+        vals.append(b"deadbeef" * (N // 4))
+    atomic_type_values[f"bytes{N}"] = vals
+
+atomic_type_values["bytes"] = [
+    b"",
+    b"hello",
+    b"\x00" * 32,
+    b"\xff" * 32,
+    b"a" * 100,
+]
+
+atomic_type_values["address"] = [
+    b"\x00" * 19 + b"\x01",
+    b"\xff" * 20,
+    b"\x12" * 20,
+    bytes.fromhex("deadbeef" * 5),
+    bytes(range(20)),
+]
+
+atomic_type_values["function"] = [
+    b"\x01" * 24,
+    b"\x00" * 24,
+    b"\xff" * 24,
+    b"\x69" * 24,
+]
+
+atomic_type_values["string"] = [
+    "",
+    "foobar",
+    "0xdeadbeef",
+    "12345",
+    "The quick brown fox jumps over the lazy dog",
+    "你好",
+    "𝔘𝔫𝔦𝔠𝔬𝔡𝔢",
+    "🚀🌕",
+    "a" * 32,
+    "b" * 100,
+    1000,
+    "b" * 4096,
+    "c" * 16384,
+    "\0",
+    "a\nb",
+    "a\tb",
+    "a\rb",
+    "a\\b",
+    'a"b',
+    "a'b",
+    '{"foo": 1, "bar": 2}',
+    "<html><body>test</body></html>",
+]
+
+for w in [8, 16, 32, 64, 128, 256]:
+    for exp in [1, 2, 10, 18]:
+        t = f"fixed{w}x{exp}"
+        atomic_type_values[t] = [Decimal("1.2"), Decimal("0.1"), Decimal("0")]
+        t = f"ufixed{w}x{exp}"
+        atomic_type_values[t] = [Decimal("1.2"), Decimal("0.1"), Decimal("0")]
+
+
+def parse_tuple_types(typestr):
+    assert typestr.startswith("(") and typestr.endswith(")")
+    types = []
+    depth = 0
+    cur = ""
+    for c in typestr[1:-1]:
+        if c == "," and depth == 0:
+            types.append(cur.strip())
+            cur = ""
+        else:
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                depth -= 1
+            cur += c
+    if cur:
+        types.append(cur.strip())
+    return types
+
+
+def generate_values_for_type(typestr):
+    typestr = typestr.strip()
+    array_match = re.match(r"^(.*)\[(\d*)\]$", typestr)
+    if array_match:
+        elem_type = array_match.group(1)
+        length = array_match.group(2)
+        elem_values = generate_values_for_type(elem_type)
+        if length == "":
+            return [
+                [],
+                [elem_values[0]],
+                elem_values[:2] if len(elem_values) >= 2 else elem_values * 2,
+            ]
+        else:
+            n = int(length)
+            combos = list(itertools.product(elem_values, repeat=n))
+            return [list(c) for c in combos[:3]]
+    if typestr.startswith("(") and typestr.endswith(")"):
+        elem_types = parse_tuple_types(typestr)
+        elem_values_lists = [generate_values_for_type(t) for t in elem_types]
+        combos = list(itertools.product(*elem_values_lists))
+        return [tuple(c) for c in combos[:3]]
+    if typestr in atomic_type_values:
+        return atomic_type_values[typestr]
+    raise ValueError(f"Unknown type string: {typestr}")
+
+
+def add_matrixed_case(type_str, case_list, id_list, id_prefix=None):
+    values = generate_values_for_type(type_str)
+    for i, v in enumerate(values):
+        # Deduplication: skip if already present
+        if (type_str, v) in case_list:
+            continue
+        case_list.append((type_str, v))
+        if id_prefix is not None:
+            id_list.append(f"{id_prefix}-{i}")
+        else:
+            id_list.append(f"{type_str}-{repr(v)[:16]}")
+
+
+# --- BEGIN: RECURSIVE TYPE STRING GENERATORS FOR MATRIXING ---
+
+
+def make_all_dyn_array_combos(start, stop, step, max_depth=2, _depth=0):
+    if _depth >= max_depth:
+        return []
+    combos = []
+    for t in atomic_type_values:
+        combos.append(f"{t}[]")
+    for tup_len in range(start, stop, step):
+        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1):
+            combos.append(f"{tup}[]")
+    for arr_len in range(start, stop, step):
+        for arr in make_all_fixed_array_combos(
+            arr_len, arr_len + 1, 1, max_depth, _depth + 1
+        ):
+            combos.append(f"{arr}[]")
+    return combos
+
+
+def make_all_fixed_array_combos(start, stop, step, max_depth=2, _depth=0):
+    if _depth >= max_depth:
+        return []
+    combos = []
+    for t in atomic_type_values:
+        for n in range(start, stop, step):
+            combos.append(f"{t}[{n}]")
+    for tup_len in range(start, stop, step):
+        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1):
+            for n in range(start, stop, step):
+                combos.append(f"{tup}[{n}]")
+    for arr_len in range(start, stop, step):
+        for arr in make_all_fixed_array_combos(
+            arr_len, arr_len + 1, 1, max_depth, _depth + 1
+        ):
+            for n in range(start, stop, step):
+                combos.append(f"{arr}[{n}]")
+    return combos
+
+
+def make_all_tup_combos(length, max_depth=2, _depth=0):
+    if _depth >= max_depth or length == 0:
+        return []
+    combos = []
+    atomic_types = list(atomic_type_values.keys())
+    element_type_options = atomic_types
+    if _depth + 1 < max_depth:
+        for arr_len in range(1, 3):
+            element_type_options += [f"{t}[{arr_len}]" for t in atomic_types]
+        for tup_len in range(1, 3):
+            element_type_options += [
+                f"({','.join([t for t in atomic_types[:1]])})" for _ in range(tup_len)
+            ]
+    for type_combo in itertools.product(element_type_options, repeat=length):
+        combos.append(f"({','.join(type_combo)})")
+    return combos
+
+
+# --- END: RECURSIVE TYPE STRING GENERATORS FOR MATRIXING ---
+
+# --- BEGIN: USAGE FOR MATRIXED TEST CASES ---
+
+for typestr in make_all_dyn_array_combos(1, 3, 1):
+    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
+for typestr in make_all_dyn_array_combos(5, 26, 10):
+    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
+for typestr in make_all_dyn_array_combos(50, 151, 50):
+    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="dynarr")
+
+for typestr in make_all_fixed_array_combos(1, 10, 2):
+    add_matrixed_case(typestr, array_cases, array_ids, id_prefix="fixarr")
+
+for tup_len in range(1, 10):
+    for typestr in make_all_tup_combos(tup_len):
+        add_matrixed_case(typestr, tuple_cases, tuple_ids, id_prefix="tup")
+
+# --- END: USAGE FOR MATRIXED TEST CASES ---
