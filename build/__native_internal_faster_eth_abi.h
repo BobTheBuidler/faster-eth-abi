@@ -120,7 +120,7 @@ extern PyObject *CPyDef__encoding___encode_tuple_all_dynamic(PyObject *cpy_r_sel
 extern PyObject *CPyPy__encoding___encode_tuple_all_dynamic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic(PyObject *cpy_r_self, PyObject *cpy_r_values);
 extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__encoding_____encode_tuple_chunks(PyObject *cpy_r_raw_head_chunks, PyObject *cpy_r_tail_chunks);
+extern PyObject *CPyDef__encoding_____encode_tuple_chunks(CPyTagged cpy_r_head_length, PyObject *cpy_r_raw_head_chunks, PyObject *cpy_r_tail_chunks);
 extern PyObject *CPyPy__encoding_____encode_tuple_chunks(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
 extern PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
