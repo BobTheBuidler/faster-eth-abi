@@ -1,4 +1,4 @@
-### I forked eth-abi and compiled it to C. It does the same stuff, now faster
+### I forked eth-abi and compiled it to C. It does the same stuff, now ~2-6x faster
 
 [![PyPI](https://img.shields.io/pypi/v/faster-eth-abi.svg?logo=Python&logoColor=white)](https://pypi.org/project/faster-eth-abi/)
 [![Monthly Downloads](https://img.shields.io/pypi/dm/faster-eth-abi)](https://pypistats.org/packages/faster-eth-abi)
