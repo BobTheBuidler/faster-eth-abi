@@ -83,7 +83,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     total_offset = 0
     head_length = 32 * len(encoders)
-    head_chunks = [encode_uint_256(0)]
+    head_chunks = [encode_uint_256(head_length)]
     for item in tail_chunks[:-1]:
         total_offset += len(item)
         head_chunks.append(encode_uint_256(head_length + total_offset))
