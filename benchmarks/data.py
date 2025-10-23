@@ -461,44 +461,50 @@ def add_matrixed_case(type_str, case_list, id_list, id_prefix=None):
 def make_all_dyn_array_combos(start, stop, step, max_depth=2, _depth=0):
     if _depth >= max_depth:
         return []
-    combos = []
-    for t in atomic_type_values:
-        combos.append(f"{t}[]")
-    for tup_len in range(start, stop, step):
-        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1):
-            combos.append(f"{tup}[]")
-    for arr_len in range(start, stop, step):
+    combos = [f"{t}[]" for t in atomic_type_values]
+    combos.extend(
+        f"{tup}[]"
+        for tup_len in range(start, stop, step)
+        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1)
+    )
+    combos.extend(
+        f"{arr}[]"
+        for arr_len in range(start, stop, step)
         for arr in make_all_fixed_array_combos(
             arr_len, arr_len + 1, 1, max_depth, _depth + 1
-        ):
-            combos.append(f"{arr}[]")
+        )
+    )
+    print(f"[MATRIX] Total array_cases: {len(array_cases)}")
+    print(f"[MATRIX] Total all_cases: {len(all_cases)}")
     return combos
 
 
 def make_all_fixed_array_combos(start, stop, step, max_depth=2, _depth=0):
     if _depth >= max_depth:
         return []
-    combos = []
-    for t in atomic_type_values:
-        for n in range(start, stop, step):
-            combos.append(f"{t}[{n}]")
-    for tup_len in range(start, stop, step):
-        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1):
-            for n in range(start, stop, step):
-                combos.append(f"{tup}[{n}]")
-    for arr_len in range(start, stop, step):
+    combos = [f"{t}[{n}]" for t in atomic_type_values for n in range(start, stop, step)]
+    combos.extend(
+        f"{tup}[{n}]"
+        for n in range(start, stop, step)
+        for tup_len in range(start, stop, step)
+        for tup in make_all_tup_combos(tup_len, max_depth, _depth + 1)
+    )
+    combos.extend(
+        f"{arr}[{n}]"
+        for n in range(start, stop, step)
+        for arr_len in range(start, stop, step)
         for arr in make_all_fixed_array_combos(
             arr_len, arr_len + 1, 1, max_depth, _depth + 1
-        ):
-            for n in range(start, stop, step):
-                combos.append(f"{arr}[{n}]")
+        )
+    )
+    print(f"[MATRIX] Total array_cases: {len(array_cases)}")
+    print(f"[MATRIX] Total all_cases: {len(all_cases)}")
     return combos
 
 
 def make_all_tup_combos(length, max_depth=2, _depth=0):
     if _depth >= max_depth or length == 0:
         return []
-    combos = []
     atomic_types = list(atomic_type_values.keys())
     element_type_options = atomic_types
     if _depth + 1 < max_depth:
@@ -506,10 +512,14 @@ def make_all_tup_combos(length, max_depth=2, _depth=0):
             element_type_options += [f"{t}[{arr_len}]" for t in atomic_types]
         for tup_len in range(1, 3):
             element_type_options += [
-                f"({','.join([t for t in atomic_types[:1]])})" for _ in range(tup_len)
+                f"({','.join(list(atomic_types[:1]))})" for _ in range(tup_len)
             ]
-    for type_combo in itertools.product(element_type_options, repeat=length):
-        combos.append(f"({','.join(type_combo)})")
+    combos = [
+        f"({','.join(type_combo)})"
+        for type_combo in itertools.product(element_type_options, repeat=length)
+    ]
+    print(f"[MATRIX] Total tuple_cases: {len(tuple_cases)}")
+    print(f"[MATRIX] Total all_cases: {len(all_cases)}")
     return combos
 
 
