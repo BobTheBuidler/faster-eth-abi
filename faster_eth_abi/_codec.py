@@ -43,7 +43,7 @@ def encode_c(
 
     encoder = self._registry.get_tuple_encoder(*types)
 
-    return encoder(args)
+    return encoder.encode(args)
 
 
 def decode_c(
