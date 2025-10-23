@@ -157,7 +157,8 @@ class TupleEncoder(BaseEncoder):
     def encode(self, values: Sequence[Any]) -> bytes:
         return encode_tuple(self, values)
 
-    __call__: Callable[[Self, Sequence[Any]], bytes] = encode
+    def __call__(self, values: Sequence[Any]) -> None:
+        return self.encode(values)
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
