@@ -2,9 +2,11 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
+    Dict,
     List,
     Optional,
     Sequence,
+    Tuple,
     TypeVar,
 )
 
@@ -40,8 +42,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
         self.invalidate_value(
             value,
             exc=ValueOutOfBounds,
-            msg=f"value has {len(value)} items when {len(validators)} "
-            "were expected",
+            msg=f"value has {len(value)} items when {len(validators)} " "were expected",
         )
 
     for item, validator in zip(value, validators):
@@ -179,8 +180,7 @@ def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> by
 
 
 encode_tuple_no_dynamic_funcs: Dict[
-    int, 
-    Callable[["TupleEncoder", Sequence[Any]], bytes]
+    int, Callable[["TupleEncoder", Sequence[Any]], bytes]
 ] = {
     1: encode_tuple_no_dynamic1,
     2: encode_tuple_no_dynamic2,
