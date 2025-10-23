@@ -107,7 +107,7 @@ def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> byt
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(2))
+    return encoders[0](values[0]) + encoders[1](values[1])
 
 
 def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
