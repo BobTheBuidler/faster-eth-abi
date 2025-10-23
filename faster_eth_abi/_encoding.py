@@ -59,30 +59,33 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
         else:
             raw_head_chunks.append(encoder(value))
             tail_chunks.append(b"")
-    return __encode_tuple_chunks(raw_head_chunks, tail_chunks)
+    head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
 
 
 def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
-    raw_head_chunks = [None] * len(encoders)
+    num_vals = len(encoders)
+    raw_head_chunks = [None] * num_vals
     tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
-    return __encode_tuple_chunks(raw_head_chunks, tail_chunks)
+    return __encode_tuple_chunks(32 * num_vals, raw_head_chunks, tail_chunks)
 
 
 def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     raw_head_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+    head_length = sum(map(len, raw_head_chunks))
     tail_chunks = [b""] * len(encoders)
-    return __encode_tuple_chunks(raw_head_chunks, tail_chunks)
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
 
 
 def __encode_tuple_chunks(
+    head_length: int,
     raw_head_chunks: List[Optional[bytes]],
     tail_chunks: List[bytes],
 ) -> bytes:
-    head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = [0]
     total_offset = 0
     for item in tail_chunks[:-1]:
