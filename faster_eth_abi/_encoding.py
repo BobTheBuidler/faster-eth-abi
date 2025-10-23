@@ -81,6 +81,103 @@ def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byte
     return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
 
 
+def encode_tuple_no_dynamic1(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders: Tuple["BaseEncoder"] = self.encoders
+    encoded = encoders[0](values[0])
+    return __encode_tuple_chunks(len(encoded), [encoded], [b""])
+
+
+def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(2)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(2))
+    tail_chunks = [b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(3)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(3))
+    tail_chunks = [b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(4)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(4))
+    tail_chunks = [b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(5)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(5))
+    tail_chunks = [b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(6)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(6))
+    tail_chunks = [b"", b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(7)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(7))
+    tail_chunks = [b"", b"", b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(8)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(8))
+    tail_chunks = [b"", b"", b"", b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(9)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(9))
+    tail_chunks = [b"", b"", b"", b"", b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
+def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
+    encoders = self.encoders
+    # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
+    raw_head_chunks = [encoders[i](values[i]) for i in range(10)]
+    head_length = sum(len(raw_head_chunks[i]) for i in range(10))
+    tail_chunks = [b"", b"", b"", b"", b"", b"", b"", b"", b"", b""]
+    return __encode_tuple_chunks(head_length, raw_head_chunks, tail_chunks)
+
+
 def __encode_tuple_chunks(
     head_length: int,
     raw_head_chunks: List[Optional[bytes]],
