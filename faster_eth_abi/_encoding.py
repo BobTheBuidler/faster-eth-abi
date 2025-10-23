@@ -49,6 +49,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
 
 
 def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
     for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
@@ -62,6 +63,7 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
 
 
 def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
     encoders = self.encoders
     raw_head_chunks = [None] * len(encoders)
     tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
@@ -69,6 +71,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+    validate_tuple(self, values)
     encoders = self.encoders
     raw_head_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
     tail_chunks = [b""] * len(encoders)
