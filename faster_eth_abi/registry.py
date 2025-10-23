@@ -6,7 +6,6 @@ import functools
 from typing import (
     Any,
     Callable,
-    Concatenate,
     Dict,
     Final,
     Generic,
@@ -21,6 +20,7 @@ from eth_typing import (
     TypeStr,
 )
 from typing_extensions import (
+    Concatenate,
     ParamSpec,
     Self,
 )
