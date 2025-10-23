@@ -14,6 +14,7 @@ from typing import (
     Sequence,
     Tuple,
     Type,
+    final,
 )
 
 from faster_eth_utils import (
@@ -116,7 +117,8 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self.is_dynamic = any(self._is_dynamic)
 
         validators = []
         for encoder in self.encoders:
@@ -135,12 +137,13 @@ class TupleEncoder(BaseEncoder):
         if self.encoders is None:
             raise ValueError("`encoders` may not be none")
 
+    @final
     def validate_value(self, value: Sequence[Any]) -> None:
         validate_tuple(self, value)
 
     def encode(self, values: Sequence[Any]) -> bytes:
-        self.validate_value(values)
-        return encode_tuple(values, self.encoders)
+        validate_value(self, values)
+        return encode_tuple(self, values)
 
     __call__: Callable[[Self, Sequence[Any]], bytes] = encode
 
