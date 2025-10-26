@@ -2,6 +2,7 @@ import re
 from typing import (
     Any,
     Final,
+    Literal,
     NewType,
     NoReturn,
     Optional,
@@ -47,6 +48,7 @@ TYPE_ALIAS_RE: Final = re.compile(
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
+TSub = TypeVar("TSub", Subtype, Literal[None])
 
 
 @mypyc_attr(allow_interpreted_subclasses=True)
@@ -202,7 +204,7 @@ class TupleType(ABIType):
 
 
 @mypyc_attr(allow_interpreted_subclasses=True)
-class BasicType(ABIType):
+class BasicType(ABIType, Generic[TSub]):
     """
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
@@ -213,7 +215,7 @@ class BasicType(ABIType):
     def __init__(
         self,
         base: str,
-        sub: Optional[Subtype] = None,
+        sub: Optional[TSub] = None,
         arrlist: Optional[Sequence] = None,
         *,
         node: Optional[Node] = None,
@@ -332,6 +334,10 @@ class BasicType(ABIType):
         elif base == "address":
             if sub is not None:
                 self.invalidate("address cannot have suffix")
+
+
+BytesType = BasicType[IntSubtype]
+FixedType = BasicType[FixedSubtype]
 
 
 def normalize(type_str: TypeStr) -> TypeStr:
