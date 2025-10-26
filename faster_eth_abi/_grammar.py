@@ -2,6 +2,7 @@ import re
 from typing import (
     Any,
     Final,
+    Generic,
     Literal,
     NewType,
     NoReturn,
