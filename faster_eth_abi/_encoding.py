@@ -7,7 +7,6 @@ from typing import (
     Optional,
     Sequence,
     Tuple,
-    TypeVar,
 )
 
 from faster_eth_utils import (
@@ -17,6 +16,9 @@ from faster_eth_utils import (
 from faster_eth_abi.exceptions import (
     ValueOutOfBounds,
 )
+from faster_eth_abi.typing import (
+    T,
+)
 
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
@@ -25,11 +27,8 @@ if TYPE_CHECKING:
     )
 
 
-T = TypeVar("T")
-
-
 # TupleEncoder
-def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
+def validate_tuple(self: "TupleEncoder[T]", value: Sequence[T]) -> None:
     # if we check list and tuple first it compiles to much quicker C code
     if not isinstance(value, (list, tuple)) and not is_list_like(value):
         self.invalidate_value(
@@ -49,7 +48,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
         validator(item)
 
 
-def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
@@ -76,11 +75,11 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     return b"".join(head_chunks) + b"".join(tail_chunks)
 
 
-def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_all_dynamic(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
-    
+
     total_offset = 0
     head_length = 32 * len(encoders)
     head_chunks = [encode_uint_256(head_length)]
@@ -91,82 +90,83 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
     return b"".join(head_chunks) + b"".join(tail_chunks)
 
 
-def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
 
 
-def encode_tuple_no_dynamic1(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic1(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders: Tuple["BaseEncoder"] = self.encoders
     return encoders[0](values[0])
 
 
-def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic2(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder"] = self.encoders
     return encoders[0](values[0]) + encoders[1](values[1])
 
 
-def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic3(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(3))
 
 
-def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic4(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(4))
 
 
-def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic5(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(5))
 
 
-def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic6(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(6))
 
 
-def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic7(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(7))
 
 
-def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic8(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(8))
 
 
-def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic9(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(9))
 
 
-def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
+def encode_tuple_no_dynamic10(self: "TupleEncoder[T]", values: Sequence[T]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(10))
 
+
 encode_tuple_no_dynamic_funcs: Dict[
-    int, Callable[["TupleEncoder", Sequence[Any]], bytes]
+    int, Callable[["TupleEncoder[T]", Sequence[T]], bytes]
 ] = {
     1: encode_tuple_no_dynamic1,
     2: encode_tuple_no_dynamic2,
@@ -206,7 +206,7 @@ def encode_signed(
         return base_encoded_value.rjust(data_byte_size, b"\xff")
 
 
-def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
+def encode_elements(item_encoder: "BaseEncoder[T]", value: Sequence[T]) -> bytes:
     tail_chunks = tuple(item_encoder(i) for i in value)
 
     items_are_dynamic: bool = getattr(item_encoder, "is_dynamic", False)
@@ -226,7 +226,9 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     return b"".join(head_chunks) + b"".join(tail_chunks)
 
 
-def encode_elements_dynamic(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
+def encode_elements_dynamic(
+    item_encoder: "BaseEncoder[T]", value: Sequence[T]
+) -> bytes:
     encoded_size = encode_uint_256(len(value))
     encoded_elements = encode_elements(item_encoder, value)
     return encoded_size + encoded_elements
