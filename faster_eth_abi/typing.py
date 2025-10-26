@@ -72,6 +72,8 @@ UintTypeStr = Literal[
     "uint256",
 ]
 
+BoolTypeStr = Literal["bool"]
+
 BytesTypeStr = Literal[
     "bytes",
     # do we need more? probs
