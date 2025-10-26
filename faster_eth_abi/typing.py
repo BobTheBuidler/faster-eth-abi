@@ -1,6 +1,10 @@
 from typing import (
     Literal,
+    TypeVar,
 )
+
+T = TypeVar("T")
+
 
 IntTypeStr = Literal[
     "int8",
