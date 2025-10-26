@@ -42,7 +42,7 @@ extras_require = {
     ],
     "codspeed": [
         "pytest>=7.0.0",
-        "pytest-codspeed",
+        "pytest-codspeed>=4.2,<4.3",
         "pytest-test-groups",
     ],
 }
