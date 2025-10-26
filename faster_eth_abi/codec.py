@@ -1,3 +1,4 @@
+# mypy: disable-error-code="overload-overlap"
 from typing import (
     Any,
     Iterable,
