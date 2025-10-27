@@ -279,7 +279,7 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
 
     def __str__(self) -> str:
         # NOTE should this just be done at init time? is it always cal;ed?
-        string = self.__string
+        string = self._string
         if string is None:
             if self.with_sub is None:
                 string = f"(base == {self.base!r})"
@@ -287,7 +287,7 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
                 string = f"(base == {self.base!r} and sub is not None)"
             else:
                 string = f"(base == {self.base!r} and sub is None)"
-            self.__string = string
+            self._string = string
         return string
 
 
