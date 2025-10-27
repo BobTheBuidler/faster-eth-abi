@@ -229,7 +229,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     value_bit_size = 8
     is_big_endian = True
 
-    encode = classmethod(encode_boolean)
+    __call__ = encode = classmethod(encode_boolean)
 
     @classmethod
     def validate_value(cls, value: Any) -> None:
@@ -249,8 +249,6 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     @parse_type_str("bool")
     def from_type_str(cls, abi_type, registry):
         return cls()
-
-    __call__ = classmethod(encode_boolean)
 
 
 class PackedBooleanEncoder(BooleanEncoder):
