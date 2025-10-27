@@ -1,14 +1,25 @@
 import abc
 import decimal
+from functools import (
+    cached_property,
+)
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
     Final,
-    Optional,
+    Generic,
     Tuple,
+    TypeVar,
     Union,
+    final,
 )
 
+from eth_typing import (
+    HexAddress,
+)
 from faster_eth_utils import (
     big_endian_to_int,
     to_normalized_address,
@@ -24,13 +35,14 @@ from faster_eth_abi._decoding import (
     read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
+    validate_padding_bytes_signed_integer,
+    validate_pointers_array,
 )
 from faster_eth_abi.base import (
     BaseCoder,
 )
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes,
-    InvalidPointer,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
@@ -40,18 +52,19 @@ from faster_eth_abi.from_type_str import (
 from faster_eth_abi.io import (
     ContextFramesBytesIO,
 )
+from faster_eth_abi.typing import (
+    T,
+)
 from faster_eth_abi.utils.numeric import (
     TEN,
     abi_decimal_context,
     ceil32,
 )
 
-DynamicDecoder = Union[
-    "HeadTailDecoder", "SizedArrayDecoder", "DynamicArrayDecoder", "ByteStringDecoder"
-]
+TByteStr = TypeVar("TByteStr", bytes, str)
 
 
-class BaseDecoder(BaseCoder, metaclass=abc.ABCMeta):
+class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
     """
     Base class for all decoder classes.  Subclass this if you want to define a
     custom decoder class.  Subclasses must also implement
@@ -61,18 +74,18 @@ class BaseDecoder(BaseCoder, metaclass=abc.ABCMeta):
     strict = True
 
     @abc.abstractmethod
-    def decode(self, stream: ContextFramesBytesIO) -> Any:  # pragma: no cover
+    def decode(self, stream: ContextFramesBytesIO) -> T:  # pragma: no cover
         """
         Decodes the given stream of bytes into a python value.  Should raise
         :any:`exceptions.DecodingError` if a python value cannot be decoded
         from the given byte stream.
         """
 
-    def __call__(self, stream: ContextFramesBytesIO) -> Any:
+    def __call__(self, stream: ContextFramesBytesIO) -> T:
         return self.decode(stream)
 
 
-class HeadTailDecoder(BaseDecoder):
+class HeadTailDecoder(BaseDecoder[T]):
     """
     Decoder for a dynamic element of a dynamic container (a dynamic array, or a sized
     array or tuple that contains dynamic elements). A dynamic element consists of a
@@ -82,24 +95,33 @@ class HeadTailDecoder(BaseDecoder):
 
     is_dynamic = True
 
-    tail_decoder: Optional[DynamicDecoder] = None
+    def __init__(
+        self,
+        tail_decoder: Union[  # type: ignore [type-var]
+            "HeadTailDecoder[T]",
+            "SizedArrayDecoder[T]",
+            "DynamicArrayDecoder[T]",
+            "ByteStringDecoder[T]",
+        ],
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(**kwargs)
 
-    def validate(self) -> None:
-        super().validate()
-
-        if self.tail_decoder is None:
+        if tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
 
-    def decode(self, stream: ContextFramesBytesIO) -> Any:
+        self.tail_decoder: Final = tail_decoder
+
+    def decode(self, stream: ContextFramesBytesIO) -> T:
         return decode_head_tail(self, stream)
 
     __call__ = decode
 
 
-class TupleDecoder(BaseDecoder):
-    decoders: Tuple[BaseDecoder, ...] = ()
+class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
+    decoders: Tuple[BaseDecoder[T], ...] = ()
 
-    def __init__(self, decoders: Tuple[BaseDecoder, ...], **kwargs: Any) -> None:
+    def __init__(self, decoders: Tuple[BaseDecoder[T], ...], **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         self.decoders = decoders = tuple(
@@ -111,6 +133,10 @@ class TupleDecoder(BaseDecoder):
         self.len_of_head = sum(
             getattr(decoder, "array_size", 1) for decoder in decoders
         )
+        self._is_head_tail = tuple(
+            isinstance(decoder, HeadTailDecoder) for decoder in decoders
+        )
+        self._no_head_tail = not any(self._is_head_tail)
 
     def validate(self) -> None:
         super().validate()
@@ -118,35 +144,9 @@ class TupleDecoder(BaseDecoder):
         if self.decoders is None:
             raise ValueError("No `decoders` set")
 
+    @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
-        """
-        Verify that all pointers point to a valid location in the stream.
-        """
-        current_location = stream.tell()
-        end_of_offsets = current_location + 32 * self.len_of_head
-        total_stream_length = len(stream.getbuffer())
-        for decoder in self.decoders:
-            if isinstance(decoder, HeadTailDecoder):
-                # the next 32 bytes are a pointer
-                offset = decode_uint_256(stream)
-                indicated_idx = current_location + offset
-                if (
-                    indicated_idx < end_of_offsets
-                    or indicated_idx >= total_stream_length
-                ):
-                    # the pointer is indicating its data is located either within the
-                    # offsets section of the stream or beyond the end of the stream,
-                    # both of which are invalid
-                    raise InvalidPointer(
-                        "Invalid pointer in tuple at location "
-                        f"{stream.tell() - 32} in payload"
-                    )
-            else:
-                # the next 32 bytes are not a pointer, so progress the stream per
-                # the decoder
-                decoder(stream)
-        # return the stream to its original location for actual decoding
-        stream.seek(current_location)
+        raise NotImplementedError("didnt call __init__")
 
     def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
         return decode_tuple(self, stream)
@@ -162,7 +162,7 @@ class TupleDecoder(BaseDecoder):
         return cls(decoders=decoders)
 
 
-class SingleDecoder(BaseDecoder):
+class SingleDecoder(BaseDecoder[T]):
     decoder_fn = None
 
     def validate(self) -> None:
@@ -171,16 +171,13 @@ class SingleDecoder(BaseDecoder):
         if self.decoder_fn is None:
             raise ValueError("No `decoder_fn` set")
 
-    def validate_padding_bytes(self, value, padding_bytes):
+    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
-    def decode(self, stream):
+    def decode(self, stream: ContextFramesBytesIO) -> Any:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
-        decoder_fn = self.decoder_fn
-        if decoder_fn is None:
-            raise AssertionError("`decoder_fn` is None")
-        value = decoder_fn(data)
+        value = self.decoder_fn(data)  # type: ignore [misc]
         self.validate_padding_bytes(value, padding_bytes)
 
         return value
@@ -194,7 +191,7 @@ class SingleDecoder(BaseDecoder):
         return raw_data, b""
 
 
-class BaseArrayDecoder(BaseDecoder):
+class BaseArrayDecoder(BaseDecoder[Tuple[T, ...]]):
     item_decoder: BaseDecoder = None
 
     def __init__(self, **kwargs: Any) -> None:
@@ -204,6 +201,16 @@ class BaseArrayDecoder(BaseDecoder):
         item_decoder = self.item_decoder
         if item_decoder.is_dynamic:
             self.item_decoder = HeadTailDecoder(tail_decoder=item_decoder)
+            self.validate_pointers = MethodType(validate_pointers_array, self)
+        else:
+
+            def noop(stream: ContextFramesBytesIO, array_size: int) -> None:
+                ...
+
+            self.validate_pointers = noop
+
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[T, ...]:
+        raise NotImplementedError  # this is a type stub
 
     def validate(self) -> None:
         super().validate()
@@ -230,28 +237,10 @@ class BaseArrayDecoder(BaseDecoder):
         """
         Verify that all pointers point to a valid location in the stream.
         """
-        if isinstance(self.item_decoder, HeadTailDecoder):
-            current_location = stream.tell()
-            end_of_offsets = current_location + 32 * array_size
-            total_stream_length = len(stream.getbuffer())
-            for _ in range(array_size):
-                offset = decode_uint_256(stream)
-                indicated_idx = current_location + offset
-                if (
-                    indicated_idx < end_of_offsets
-                    or indicated_idx >= total_stream_length
-                ):
-                    # the pointer is indicating its data is located either within the
-                    # offsets section of the stream or beyond the end of the stream,
-                    # both of which are invalid
-                    raise InvalidPointer(
-                        "Invalid pointer in array at location "
-                        f"{stream.tell() - 32} in payload"
-                    )
-            stream.seek(current_location)
+        validate_pointers_array(self, stream, array_size)
 
 
-class SizedArrayDecoder(BaseArrayDecoder):
+class SizedArrayDecoder(BaseArrayDecoder[T]):
     array_size: int = None
 
     def __init__(self, **kwargs):
@@ -259,27 +248,44 @@ class SizedArrayDecoder(BaseArrayDecoder):
 
         self.is_dynamic = self.item_decoder.is_dynamic
 
-    def decode(self, stream):
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[T, ...]:
         return decode_sized_array(self, stream)
 
     __call__ = decode
 
 
-class DynamicArrayDecoder(BaseArrayDecoder):
+class DynamicArrayDecoder(BaseArrayDecoder[T]):
     # Dynamic arrays are always dynamic, regardless of their elements
     is_dynamic = True
 
-    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[T, ...]:
         return decode_dynamic_array(self, stream)
 
     __call__ = decode
 
 
-class FixedByteSizeDecoder(SingleDecoder):
-    decoder_fn: Callable[[bytes], Any] = None
+class FixedByteSizeDecoder(SingleDecoder[T]):
+    decoder_fn: Callable[[bytes], T] = None
     value_bit_size: int = None
     data_byte_size: int = None
     is_big_endian: bool = None
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.read_data_from_stream = MethodType(
+            read_fixed_byte_size_data_from_stream, self
+        )
+        self.split_data_and_padding = MethodType(
+            split_data_and_padding_fixed_byte_size, self
+        )
+        self._get_value_byte_size = MethodType(get_value_byte_size, self)
+
+        # Only assign validate_padding_bytes if not overridden in subclass
+        if type(self).validate_padding_bytes is SingleDecoder.validate_padding_bytes:
+            self.validate_padding_bytes = MethodType(
+                validate_padding_bytes_fixed_byte_size, self
+            )
 
     def validate(self) -> None:
         super().validate()
@@ -304,24 +310,21 @@ class FixedByteSizeDecoder(SingleDecoder):
             raise ValueError("Value byte size exceeds data size")
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        return read_fixed_byte_size_data_from_stream(self, stream)
+        raise NotImplementedError("didnt call __init__")
 
     def split_data_and_padding(self, raw_data: bytes) -> Tuple[bytes, bytes]:
-        return split_data_and_padding_fixed_byte_size(self, raw_data)
+        raise NotImplementedError("didnt call __init__")
 
-    def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        validate_padding_bytes_fixed_byte_size(self, value, padding_bytes)
-
+    # This is unused, but it is kept in to preserve the eth-abi api
     def _get_value_byte_size(self) -> int:
-        # This is unused, but it is kept in to preserve the eth-abi api
-        return get_value_byte_size(self)
+        raise NotImplementedError("didnt call __init__")
 
 
-class Fixed32ByteSizeDecoder(FixedByteSizeDecoder):
+class Fixed32ByteSizeDecoder(FixedByteSizeDecoder[T]):
     data_byte_size = 32
 
 
-class BooleanDecoder(Fixed32ByteSizeDecoder):
+class BooleanDecoder(Fixed32ByteSizeDecoder[bool]):
     value_bit_size = 8
     is_big_endian = True
 
@@ -332,7 +335,7 @@ class BooleanDecoder(Fixed32ByteSizeDecoder):
         return cls()
 
 
-class AddressDecoder(Fixed32ByteSizeDecoder):
+class AddressDecoder(Fixed32ByteSizeDecoder[HexAddress]):
     value_bit_size = 20 * 8
     is_big_endian = True
     decoder_fn = staticmethod(to_normalized_address)
@@ -345,7 +348,7 @@ class AddressDecoder(Fixed32ByteSizeDecoder):
 #
 # Unsigned Integer Decoders
 #
-class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder):
+class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     decoder_fn = staticmethod(big_endian_to_int)
     is_big_endian = True
 
@@ -360,30 +363,37 @@ decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 #
 # Signed Integer Decoders
 #
-class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
+class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     is_big_endian = True
 
-    def decoder_fn(self, data):
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+
+        # Only assign validate_padding_bytes if not overridden in subclass
+        if (
+            type(self).validate_padding_bytes
+            is SignedIntegerDecoder.validate_padding_bytes
+        ):
+            self.validate_padding_bytes = MethodType(
+                validate_padding_bytes_signed_integer, self
+            )
+
+    @cached_property
+    def neg_threshold(self) -> int:
+        return int(2 ** (self.value_bit_size - 1))
+
+    @cached_property
+    def neg_offset(self) -> int:
+        return int(2**self.value_bit_size)
+
+    def decoder_fn(self, data: bytes) -> int:
         value = big_endian_to_int(data)
-        value_bit_size = self.value_bit_size
-        if value >= 2 ** (value_bit_size - 1):
-            return value - 2**value_bit_size
-        else:
-            return value
+        if value >= self.neg_threshold:
+            value -= self.neg_offset
+        return value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        value_byte_size = get_value_byte_size(self)
-        padding_size = self.data_byte_size - value_byte_size
-
-        if value >= 0:
-            expected_padding_bytes = b"\x00" * padding_size
-        else:
-            expected_padding_bytes = b"\xff" * padding_size
-
-        if padding_bytes != expected_padding_bytes:
-            raise NonEmptyPaddingBytes(
-                f"Padding bytes were not empty: {padding_bytes!r}"
-            )
+        return validate_padding_bytes_signed_integer(self, value, padding_bytes)
 
     @parse_type_str("int")
     def from_type_str(cls, abi_type, registry):
@@ -393,11 +403,11 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder):
 #
 # Bytes1..32
 #
-class BytesDecoder(Fixed32ByteSizeDecoder):
+class BytesDecoder(Fixed32ByteSizeDecoder[bytes]):
     is_big_endian = False
 
     @staticmethod
-    def decoder_fn(data):
+    def decoder_fn(data: bytes) -> bytes:
         return data
 
     @parse_type_str("bytes")
@@ -405,9 +415,13 @@ class BytesDecoder(Fixed32ByteSizeDecoder):
         return cls(value_bit_size=abi_type.sub * 8)
 
 
-class BaseFixedDecoder(Fixed32ByteSizeDecoder):
+class BaseFixedDecoder(Fixed32ByteSizeDecoder[decimal.Decimal]):
     frac_places: int = None
     is_big_endian = True
+
+    @cached_property
+    def denominator(self) -> decimal.Decimal:
+        return TEN**self.frac_places
 
     def validate(self) -> None:
         super().validate()
@@ -417,15 +431,15 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder):
             raise ValueError("must specify `frac_places`")
 
         if frac_places <= 0 or frac_places > 80:
-            raise ValueError("`frac_places` must be in range (0, 80]")
+            raise ValueError("`frac_places` must be in range (0, 80)")
 
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
-    def decoder_fn(self, data):
+    def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
 
         with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / TEN**self.frac_places
+            decimal_value = decimal.Decimal(value) / self.denominator
 
         return decimal_value
 
@@ -437,27 +451,41 @@ class UnsignedFixedDecoder(BaseFixedDecoder):
 
 
 class SignedFixedDecoder(BaseFixedDecoder):
-    def decoder_fn(self, data):
+    @cached_property
+    def neg_threshold(self) -> int:
+        return int(2 ** (self.value_bit_size - 1))
+
+    @cached_property
+    def neg_offset(self) -> int:
+        return int(2**self.value_bit_size)
+
+    @cached_property
+    def expected_padding_pos(self) -> bytes:
+        value_byte_size = get_value_byte_size(self)
+        padding_size = self.data_byte_size - value_byte_size
+        return b"\x00" * padding_size
+
+    @cached_property
+    def expected_padding_neg(self) -> bytes:
+        value_byte_size = get_value_byte_size(self)
+        padding_size = self.data_byte_size - value_byte_size
+        return b"\xff" * padding_size
+
+    def decoder_fn(self, data: bytes) -> decimal.Decimal:
         value = big_endian_to_int(data)
-        value_bit_size = self.value_bit_size
-        if value >= 2 ** (value_bit_size - 1):
-            signed_value = value - 2**value_bit_size
-        else:
-            signed_value = value
+        if value >= self.neg_threshold:
+            value -= self.neg_offset
 
         with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(signed_value) / TEN**self.frac_places
+            decimal_value = decimal.Decimal(value) / self.denominator
 
         return decimal_value
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
-        value_byte_size = get_value_byte_size(self)
-        padding_size = self.data_byte_size - value_byte_size
-
         if value >= 0:
-            expected_padding_bytes = b"\x00" * padding_size
+            expected_padding_bytes = self.expected_padding_pos
         else:
-            expected_padding_bytes = b"\xff" * padding_size
+            expected_padding_bytes = self.expected_padding_neg
 
         if padding_bytes != expected_padding_bytes:
             raise NonEmptyPaddingBytes(
@@ -474,11 +502,11 @@ class SignedFixedDecoder(BaseFixedDecoder):
 #
 # String and Bytes
 #
-class ByteStringDecoder(SingleDecoder):
+class ByteStringDecoder(SingleDecoder[TByteStr]):
     is_dynamic = True
 
     @staticmethod
-    def decoder_fn(data):
+    def decoder_fn(data: bytes) -> bytes:
         return data
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
@@ -509,7 +537,7 @@ class ByteStringDecoder(SingleDecoder):
         return cls()
 
 
-class StringDecoder(ByteStringDecoder):
+class StringDecoder(ByteStringDecoder[str]):
     def __init__(self, handle_string_errors: str = "strict") -> None:
         self.bytes_errors: Final = handle_string_errors
         super().__init__()

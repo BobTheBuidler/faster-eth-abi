@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
-#define MYPYC_NATIVE_INTERNAL_29859a9e7da9d19bb98c_H
+#ifndef MYPYC_NATIVE_INTERNAL_faster_eth_abi_H
+#define MYPYC_NATIVE_INTERNAL_faster_eth_abi_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_29859a9e7da9d19bb98c.h"
+#include "__native_faster_eth_abi.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[354];
+extern PyObject *CPyStatics[408];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -28,6 +28,7 @@ extern PyObject *CPyStatic__decoding___globals;
 extern CPyModule *CPyModule_faster_eth_utils;
 extern CPyModule *CPyModule_faster_eth_abi___exceptions;
 extern CPyModule *CPyModule_faster_eth_abi___io;
+extern CPyModule *CPyModule_faster_eth_abi___typing;
 extern CPyModule *CPyModule_faster_eth_abi____encoding__internal;
 extern CPyModule *CPyModule_faster_eth_abi____encoding;
 extern PyObject *CPyStatic__encoding___globals;
@@ -82,6 +83,7 @@ extern PyObject *CPyPy__codec___encode_c(PyObject *self, PyObject *const *args, 
 extern PyObject *CPyDef__codec___decode_c(PyObject *cpy_r_self, PyObject *cpy_r_types, PyObject *cpy_r_data, char cpy_r_strict);
 extern PyObject *CPyPy__codec___decode_c(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__codec_____top_level__(void);
+extern PyObject *CPyStatic__decoding____expected_padding_bytes_cache;
 extern CPyTagged CPyDef__decoding___decode_uint_256(PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_uint_256(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern CPyTagged CPyDef__decoding___get_value_byte_size(PyObject *cpy_r_decoder);
@@ -90,6 +92,10 @@ extern PyObject *CPyDef__decoding___decode_head_tail(PyObject *cpy_r_self, PyObj
 extern PyObject *CPyPy__decoding___decode_head_tail(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__decoding___decode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__decoding___validate_pointers_tuple(PyObject *cpy_r_self, PyObject *cpy_r_stream);
+extern PyObject *CPyPy__decoding___validate_pointers_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__decoding___validate_pointers_array(PyObject *cpy_r_self, PyObject *cpy_r_stream, CPyTagged cpy_r_array_size);
+extern PyObject *CPyPy__decoding___validate_pointers_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__decoding___decode_sized_array(PyObject *cpy_r_self, PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_sized_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__decoding___decode_dynamic_array(PyObject *cpy_r_self, PyObject *cpy_r_stream);
@@ -100,11 +106,41 @@ extern tuple_T2OO CPyDef__decoding___split_data_and_padding_fixed_byte_size(PyOb
 extern PyObject *CPyPy__decoding___split_data_and_padding_fixed_byte_size(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding___validate_padding_bytes_fixed_byte_size(PyObject *cpy_r_self, PyObject *cpy_r_value, PyObject *cpy_r_padding_bytes);
 extern PyObject *CPyPy__decoding___validate_padding_bytes_fixed_byte_size(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__decoding___get_expected_padding_bytes(PyObject *cpy_r_self, PyObject *cpy_r_chunk);
+extern PyObject *CPyPy__decoding___get_expected_padding_bytes(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__decoding___validate_padding_bytes_signed_integer(PyObject *cpy_r_self, CPyTagged cpy_r_value, PyObject *cpy_r_padding_bytes);
+extern PyObject *CPyPy__decoding___validate_padding_bytes_signed_integer(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding___decoder_fn_boolean(PyObject *cpy_r_data);
 extern PyObject *CPyPy__decoding___decoder_fn_boolean(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
-extern PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_values, PyObject *cpy_r_encoders);
+extern char CPyDef__encoding___validate_tuple(PyObject *cpy_r_self, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___validate_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_values);
 extern PyObject *CPyPy__encoding___encode_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_all_dynamic(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_all_dynamic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic1(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic1(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic2(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic3(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic3(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic4(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic4(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic5(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic5(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic6(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic6(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic7(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic7(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic8(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic8(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic9(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic9(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic10(PyObject *cpy_r_self, PyObject *cpy_r_values);
+extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic10(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
 extern PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
@@ -134,9 +170,9 @@ extern PyObject *CPyDef__grammar___ABIType_____repr__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__grammar___ABIType_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__grammar___ABIType_____repr___3__ABIType_glue(PyObject *cpy_r_self);
 extern PyObject *CPyPy__grammar___ABIType_____repr___3__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other);
+extern char CPyDef__grammar___ABIType_____eq__(PyObject *cpy_r_self, PyObject *cpy_r_other);
 extern PyObject *CPyPy__grammar___ABIType_____eq__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other);
+extern char CPyDef__grammar___ABIType_____eq___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_other);
 extern PyObject *CPyPy__grammar___ABIType_____eq___3__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__grammar___ABIType___to_type_str(PyObject *cpy_r_self);
 extern PyObject *CPyPy__grammar___ABIType___to_type_str(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
@@ -166,7 +202,7 @@ extern char CPyDef__grammar___ABIType____has_dynamic_arrlist(PyObject *cpy_r_sel
 extern PyObject *CPyPy__grammar___ABIType____has_dynamic_arrlist(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__grammar___ABIType____has_dynamic_arrlist__ABIType_glue(PyObject *cpy_r___mypyc_self__);
 extern PyObject *CPyPy__grammar___ABIType____has_dynamic_arrlist__ABIType_glue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs);
+extern char CPyDef__grammar___ABIType_____ne__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_rhs);
 extern PyObject *CPyPy__grammar___ABIType_____ne__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__grammar___TupleType_____init__(PyObject *cpy_r_self, PyObject *cpy_r_components, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
 extern PyObject *CPyPy__grammar___TupleType_____init__(PyObject *self, PyObject *args, PyObject *kw);

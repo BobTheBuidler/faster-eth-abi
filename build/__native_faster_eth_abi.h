@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_29859a9e7da9d19bb98c_H
-#define MYPYC_NATIVE_29859a9e7da9d19bb98c_H
+#ifndef MYPYC_NATIVE_faster_eth_abi_H
+#define MYPYC_NATIVE_faster_eth_abi_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -17,6 +17,13 @@ typedef struct tuple_T2OO {
     PyObject *f0;
     PyObject *f1;
 } tuple_T2OO;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T1O
+#define MYPYC_DECLARED_tuple_T1O
+typedef struct tuple_T1O {
+    PyObject *f0;
+} tuple_T1O;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T2II

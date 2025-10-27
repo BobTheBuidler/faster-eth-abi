@@ -5,6 +5,8 @@ on:
     branches:
       - master
     types: [published]
+  # workflow dispatch trigger will perform a dry run with no upload to pypi
+  workflow_dispatch:
 
 jobs:
   build_wheels:
@@ -70,12 +72,12 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -86,6 +88,12 @@ jobs:
       - name: Install cibuildwheel
         run: |
           python -m pip install --upgrade pip setuptools wheel cibuildwheel
+          
+      - name: Cache .mypy_cache
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
       - name: Build wheels
         env:
@@ -101,7 +109,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
 
       - name: Upload wheels
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.artifact_name }}
           path: wheelhouse/*.whl
@@ -112,12 +120,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -139,45 +147,46 @@ jobs:
       # Download wheels built on each runner
       # ----------------------------------------------------
       - name: Download manylinux 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-manylinux-x64"
           path: wheelhouse/linux-many-x64
 
       - name: Download manylinux 32-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-manylinux-x86"
           path: wheelhouse/linux-many-x86
 
       - name: Download musllinux 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-musllinux-x64"
           path: wheelhouse/linux-musl-x64
 
       - name: Download macOS wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-macos-latest"
           path: wheelhouse/macos
 
       - name: Download Windows 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-windows-latest-x64"
           path: wheelhouse/windows-x64
 
       - name: Download Windows 32-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-windows-latest-x86"
           path: wheelhouse/windows-x86
 
       # ----------------------------------------------------
-      # Publish all built artifacts to PyPI
+      # Publish all built artifacts to PyPI (if not dry run)
       # ----------------------------------------------------
       - name: Publish sdist and wheels to PyPI
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

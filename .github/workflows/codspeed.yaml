@@ -4,49 +4,73 @@ on:
   pull_request:
     branches: [main, master]
     paths:
+      - ".github/workflows/codspeed.yaml"
       - "faster_eth_abi/**"
       - "benchmarks/**"
-      - ".github/workflows/codspeed.yaml"
+      - "setup.py"
+      - "pyproject.toml"
   push:
     branches: [main, master]
     paths:
+      - ".github/workflows/codspeed.yaml"
       - "faster_eth_abi/**"
       - "benchmarks/**"
-      - ".github/workflows/codspeed.yaml"
+      - "setup.py"
+      - "pyproject.toml"
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
 
 jobs:
   benchmark:
     name: Run Benchmarks
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
+      
       - name: Set up Python
-        uses: actions/setup-python@v5
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
+        uses: actions/setup-python@v6
         with:
           python-version: "3.14"
           cache: pip
           cache-dependency-path: |
             setup.py
             pyproject.toml
+            
+      - name: Cache .mypy_cache
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+          
       - name: Install dependencies
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         run: |
           python -m pip install --upgrade pip
-          pip install --no-binary :faster_eth_abi: .[dev] pytest-codspeed eth-abi
+          pip install --no-binary :faster_eth_abi: .[codspeed]
+          
       - name: Remove source package to force use of installed C extensions
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         run: rm -rf faster_eth_abi
-      - name: List compiled extension modules
-        run: |
-          find $(python -c "import site; print(site.getsitepackages()[0])") -name "*.so" || true
-      - name: Print module file locations
-        run: |
-          python -c "import faster_eth_abi._codec; print('faster_eth_abi._codec:', faster_eth_abi._codec.__file__)"
+        
       - name: Run CodSpeed
-        uses: CodSpeedHQ/action@v3
+        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
+        uses: CodSpeedHQ/action@v4
         with:
+          mode: instrumentation
           run: |
-            pytest --codspeed -k "test_faster_" benchmarks/
+            pytest \
+              --codspeed \
+              -k "test_faster_" \
+              --test-group=${{ matrix.shard }} \
+              --test-group-count=${{ github.event_name == 'push' && 3 || 10 }} \
+              benchmarks/

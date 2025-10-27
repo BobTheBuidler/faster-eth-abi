@@ -1,15 +1,23 @@
 import abc
 import codecs
 import decimal
+from functools import (
+    cached_property,
+)
+from types import (
+    MethodType,
+)
 from typing import (
     Any,
     Callable,
     ClassVar,
+    Final,
     NoReturn,
     Optional,
     Sequence,
     Tuple,
     Type,
+    final,
 )
 
 from faster_eth_utils import (
@@ -32,7 +40,11 @@ from faster_eth_abi._encoding import (
     encode_fixed,
     encode_signed,
     encode_tuple,
+    encode_tuple_all_dynamic,
+    encode_tuple_no_dynamic,
+    encode_tuple_no_dynamic_funcs,
     int_to_big_endian,
+    validate_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -111,7 +123,33 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self.is_dynamic = any(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self.is_dynamic = any(self._is_dynamic)
+
+        validators = []
+        for encoder in self.encoders:
+            try:
+                validator = encoder.validate_value
+            except AttributeError:
+                validators.append(encoder)
+            else:
+                validators.append(validator)
+        
+        self.validators: Final[Callable[[Any], None]] = tuple(validators)
+
+        if type(self).encode is TupleEncoder.encode:
+            encode_func = (
+                encode_tuple_all_dynamic
+                if all(self._is_dynamic)
+                else encode_tuple_no_dynamic_funcs.get(
+                    len(self.encoders),
+                    encode_tuple_no_dynamic,
+                )
+                if not self.is_dynamic
+                else encode_tuple
+            )
+                
+            self.encode = MethodType(encode_func, self)
 
     def validate(self) -> None:
         super().validate()
@@ -119,33 +157,15 @@ class TupleEncoder(BaseEncoder):
         if self.encoders is None:
             raise ValueError("`encoders` may not be none")
 
+    @final
     def validate_value(self, value: Sequence[Any]) -> None:
-        if not is_list_like(value):
-            self.invalidate_value(
-                value,
-                msg="must be list-like object such as array or tuple",
-            )
-
-        encoders = self.encoders
-        if len(value) != len(encoders):
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {len(encoders)} "
-                "were expected",
-            )
-
-        for item, encoder in zip(value, encoders):
-            try:
-                encoder.validate_value(item)
-            except AttributeError:
-                encoder(item)
+        validate_tuple(self, value)
 
     def encode(self, values: Sequence[Any]) -> bytes:
-        self.validate_value(values)
-        return encode_tuple(values, self.encoders)
+        return encode_tuple(self, values)
 
-    __call__: Callable[[Self, Sequence[Any]], bytes] = encode
+    def __call__(self, values: Sequence[Any]) -> bytes:
+        return self.encode(values)
 
     @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry):
@@ -328,11 +348,19 @@ class BaseFixedEncoder(NumberEncoder):
 
         return False
 
+    @cached_property
+    def denominator(self) -> decimal.Decimal:
+        return TEN**self.frac_places
+
+    @cached_property
+    def precision(self) -> int:
+        return TEN**-self.frac_places
+
     def validate_value(self, value):
         super().validate_value(value)
 
         with decimal.localcontext(abi_decimal_context):
-            residue = value % (TEN**-self.frac_places)
+            residue = value % self.precision
 
         if residue > 0:
             self.invalidate_value(
@@ -359,7 +387,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
 
     def encode_fn(self, value):
         with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * TEN**self.frac_places
+            scaled_value = value * self.denominator
             integer_value = int(scaled_value)
 
         return int_to_big_endian(integer_value)
@@ -392,7 +420,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
 
     def encode_fn(self, value):
         with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * TEN**self.frac_places
+            scaled_value = value * self.denominator
             integer_value = int(scaled_value)
 
         unsigned_integer_value = integer_value % (2**self.value_bit_size)

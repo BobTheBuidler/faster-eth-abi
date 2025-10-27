@@ -18,25 +18,28 @@ from faster_eth_abi.registry import (
 )
 
 
+ITERATIONS = 50_000
+
+
 @pytest.mark.benchmark(group="RegistryGetEncoder")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_get_encoder(benchmark: BenchmarkFixture, type_str):
-    benchmark(batch, 1000, registry.get_encoder, type_str)
+    benchmark(batch, ITERATIONS, registry.get_encoder, type_str)
 
 
 @pytest.mark.benchmark(group="RegistryGetEncoder")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_faster_get_encoder(benchmark: BenchmarkFixture, type_str):
-    benchmark(batch, 1000, faster_registry.get_encoder, type_str)
+    benchmark(batch, ITERATIONS, faster_registry.get_encoder, type_str)
 
 
 @pytest.mark.benchmark(group="RegistryGetDecoder")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_get_decoder(benchmark: BenchmarkFixture, type_str):
-    benchmark(batch, 1000, registry.get_decoder, type_str)
+    benchmark(batch, ITERATIONS, registry.get_decoder, type_str)
 
 
 @pytest.mark.benchmark(group="RegistryGetDecoder")
 @pytest.mark.parametrize("type_str", type_strings)
 def test_faster_get_decoder(benchmark: BenchmarkFixture, type_str):
-    benchmark(batch, 1000, faster_registry.get_decoder, type_str)
+    benchmark(batch, ITERATIONS, faster_registry.get_decoder, type_str)
