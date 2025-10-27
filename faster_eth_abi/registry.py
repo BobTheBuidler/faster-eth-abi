@@ -319,8 +319,10 @@ def _clear_decoder_cache(
 ) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
     def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> T:
-        self._decoder_cache.clear()
-        self._tuple_decoder_cache.clear()
+        self._decoder_cache[True].clear()
+        self._decoder_cache[False].clear()
+        self._tuple_decoder_cache[True].clear()
+        self._tuple_decoder_cache[False].clear()
         return old_method(self, *args, **kwargs)
 
     return new_method
