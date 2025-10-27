@@ -42,7 +42,7 @@ extras_require = {
     ],
     "codspeed": [
         "pytest>=7.0.0",
-        "pytest-codspeed",
+        "pytest-codspeed>=4.2,<4.3",
         "pytest-test-groups",
     ],
 }
@@ -96,7 +96,7 @@ else:
 setup(
     name="faster_eth_abi",
     # *IMPORTANT*: Don't manually change the version here. See Contributing docs for the release process.
-    version="5.2.14",
+    version="5.2.15",
     description="""A ~2-6x faster fork of eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding. Implemented in C.""",
     long_description=long_description,
     long_description_content_type="text/markdown",
