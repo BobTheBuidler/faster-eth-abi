@@ -250,6 +250,8 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     def from_type_str(cls, abi_type, registry):
         return cls()
 
+    __call__ = classmethod(encode_boolean)
+
 
 class PackedBooleanEncoder(BooleanEncoder):
     data_byte_size = 1
