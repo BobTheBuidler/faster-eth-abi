@@ -97,11 +97,11 @@ class HeadTailDecoder(BaseDecoder[T]):
 
     def __init__(
         self,
-        tail_decoder: Union[
+        tail_decoder: Union[  # type: ignore [type-var]
             "HeadTailDecoder[T]",
             "SizedArrayDecoder[T]",
             "DynamicArrayDecoder[T]",
-            "ByteStringDecoder[Union[bytes, str]]",
+            "ByteStringDecoder[T]",
         ],
         **kwargs: Any,
     ) -> None:
