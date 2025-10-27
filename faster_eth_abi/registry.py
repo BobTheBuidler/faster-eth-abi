@@ -184,7 +184,9 @@ class Predicate(Generic[T]):
     ``ABIRegistry``.
     """
 
-    __slots__ = ("__hash",)
+    __slots__ = ("_string", "__hash")
+
+    _string: Optional[str]
 
     def __call__(self, arg: TypeStr) -> None:
         raise NotImplementedError("Must implement `__call__`")
@@ -220,12 +222,18 @@ class Equals(Predicate[str]):
 
     def __init__(self, value: str) -> None:
         self.value: Final = value
+        self._string = None
 
     def __call__(self, other: TypeStr) -> bool:
         return self.value == other
 
     def __str__(self) -> str:
-        return f"(== {self.value!r})"
+        # NOTE should this just be done at init time? is it always cal;ed?
+        string = self._string
+        if string is None:
+            string = f"(== {self.value!r})"
+            self._string = string
+        return string
 
 
 @final
@@ -243,7 +251,7 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
     def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None):
         self.base: Final = base
         self.with_sub: Final = with_sub
-        self.__string: Optional[str] = None
+        self._string = None
 
     def __call__(self, type_str: TypeStr) -> bool:
         try:
@@ -255,10 +263,12 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
             if abi_type.arrlist is not None:
                 return False
 
-            if self.with_sub is not None:
-                if self.with_sub and abi_type.sub is None:
+            with_sub = self.with_sub
+            if with_sub is not None:
+                abi_subtype = abi_type.sub
+                if with_sub and abi_subtype is None:
                     return False
-                if not self.with_sub and abi_type.sub is not None:
+                if not with_sub and abi_subtype is not None:
                     return False
 
             return abi_type.base == self.base
@@ -268,6 +278,7 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
         return False
 
     def __str__(self) -> str:
+        # NOTE should this just be done at init time? is it always cal;ed?
         string = self.__string
         if string is None:
             if self.with_sub is None:
