@@ -42,17 +42,17 @@ from typing import Any, Iterable, Tuple, Union, overload
 from eth_typing import HexAddress
 from eth_typing.abi import Decodable, TypeStr
 from faster_eth_abi.typing import (
-    AddressTypeStr,
     AddressArrayTypeStr,
-    BoolTypeStr,
+    AddressTypeStr,
     BoolArrayTypeStr,
-    BytesTypeStr,
+    BoolTypeStr,
     BytesArrayTypeStr,
+    BytesTypeStr,
     IntegerTypeStr,
-    IntTypeStr,
     IntArrayTypeStr,
-    StringTypeStr,
+    IntTypeStr,
     StringArrayTypeStr,
+    StringTypeStr,
     TupleAddressAddressTypeStr,
     TupleAddressIntTypeStr,
     TupleBoolBoolTypeStr,
@@ -77,10 +77,10 @@ def generate_overloads(length: int) -> Iterator[str]:
         types = BASIC_TYPES | DYN_ARRAY_TYPES
     elif length == 2:
         types = BASIC_TYPES | DYN_ARRAY_TYPES | TUPLE_TYPES
-        # put this last
-        types["TypeStr"] = "Any"
     else:
         types = BASIC_TYPES
+    # make sure this is always last
+    types["TypeStr"] = types.pop("TypeStr")
     for combo in itertools.product(types, repeat=length):
         yield "@overload"
         yield "def decode("
@@ -94,7 +94,7 @@ def generate_overloads(length: int) -> Iterator[str]:
 def main():
     with open("faster_eth_abi/codec.pyi", "w") as f:
         f.write(HEADER)
-        for length in [1, 2, 3, 4]:
+        for length in [1, 2, 3]:
             if length == 1 or length == 3:
                 extra = "basic and array types only"
             elif length == 2:
@@ -116,7 +116,7 @@ def main():
         f.write("        strict: bool = True,\n")
         f.write("    ) -> Tuple[Any, ...]: ...\n")
 
-        f.write("\n" * 5)
+        f.write("\n\n")
         f.write("\n# these should type check properly")
         f.write('\nab = ABIDecoder().decode(("uint256", "address", "string"), b"")')
         f.write('\ncd = ABIDecoder().decode(("int256", "bytes", "string"), b"")')
