@@ -31,7 +31,6 @@ from faster_eth_abi.exceptions import (
     ABITypeError,
 )
 
-
 TYPE_ALIASES: Final = {
     "int": "int256",
     "uint": "uint256",
@@ -49,7 +48,7 @@ TYPE_ALIAS_RE: Final = re.compile(
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
-TSub = TypeVar("TSub", Subtype, Literal[None])
+TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 
 
 @mypyc_attr(allow_interpreted_subclasses=True)
