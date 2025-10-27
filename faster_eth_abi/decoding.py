@@ -62,7 +62,10 @@ from faster_eth_abi.utils.numeric import (
 )
 
 DynamicDecoder = Union[
-    "HeadTailDecoder", "SizedArrayDecoder", "DynamicArrayDecoder", "ByteStringDecoder"
+    "HeadTailDecoder[T]",
+    "SizedArrayDecoder[T]",
+    "DynamicArrayDecoder[T]",
+    "ByteStringDecoder",
 ]
 
 
@@ -97,7 +100,7 @@ class HeadTailDecoder(BaseDecoder[T]):
 
     is_dynamic = True
 
-    tail_decoder: Optional[DynamicDecoder] = None
+    tail_decoder: Optional[DynamicDecoder[T]] = None
 
     def validate(self) -> None:
         super().validate()

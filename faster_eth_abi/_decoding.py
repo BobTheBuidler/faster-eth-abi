@@ -65,7 +65,7 @@ def decode_head_tail(self: "HeadTailDecoder[T]", stream: ContextFramesBytesIO) -
     if tail_decoder is None:
         raise AssertionError("`tail_decoder` is None")
     # Decode the value
-    value = tail_decoder(stream)
+    value: T = tail_decoder(stream)
     # Return the cursor
     stream.pop_frame()
 
