@@ -24,7 +24,6 @@ from faster_eth_abi.typing import (
     BytesTypeStr,
     IntArrayTypeStr,
     IntegerTypeStr,
-    IntTypeStr,
     StringArrayTypeStr,
     StringTypeStr,
     TupleAddressAddressTypeStr,
@@ -36,7 +35,6 @@ from faster_eth_abi.typing import (
     TupleIntIntTypeStr,
     TupleStrIntTypeStr,
     TupleStrStrTypeStr,
-    UintTypeStr,
 )
 
 # TODO TupleVarStringTypeStr = Union[]
@@ -44,77 +42,77 @@ from faster_eth_abi.typing import (
 class ABIDecoder:
     # Tuple length 1 overloads - basic and array types only
 
-    @overload
+    @overload  # 1
     def decode(
         self,
         types: Tuple[AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress]: ...
-    @overload
+    @overload  # 2
     def decode(
         self,
         types: Tuple[BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool]: ...
-    @overload
+    @overload  # 3
     def decode(
         self,
         types: Tuple[BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes]: ...
-    @overload
+    @overload  # 4
     def decode(
         self,
         types: Tuple[StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str]: ...
-    @overload
+    @overload  # 5
     def decode(
         self,
         types: Tuple[IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int]: ...
-    @overload
+    @overload  # 6
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 7
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 8
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 9
     def decode(
         self,
         types: Tuple[IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...]]: ...
-    @overload
+    @overload  # 10
     def decode(
         self,
         types: Tuple[StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...]]: ...
-    @overload
+    @overload  # 11
     def decode(
         self,
         types: Tuple[TypeStr],
@@ -124,2800 +122,2800 @@ class ABIDecoder:
 
     # Tuple length 2 overloads - all implemented TypeStr literals
 
-    @overload
+    @overload  # 12
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 13
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool]: ...
-    @overload
+    @overload  # 14
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes]: ...
-    @overload
+    @overload  # 15
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str]: ...
-    @overload
+    @overload  # 16
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int]: ...
-    @overload
+    @overload  # 17
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 18
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 19
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 20
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 21
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 22
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 23
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 24
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 25
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 26
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 27
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 28
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, int]]: ...
-    @overload
+    @overload  # 29
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, int]]: ...
-    @overload
+    @overload  # 30
     def decode(
         self,
         types: Tuple[AddressTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, str]]: ...
-    @overload
+    @overload  # 31
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any]: ...
-    @overload
+    @overload  # 32
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress]: ...
-    @overload
+    @overload  # 33
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool]: ...
-    @overload
+    @overload  # 34
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes]: ...
-    @overload
+    @overload  # 35
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str]: ...
-    @overload
+    @overload  # 36
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int]: ...
-    @overload
+    @overload  # 37
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 38
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 39
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 40
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 41
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 42
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 43
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 44
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 45
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 46
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 47
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 48
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, int]]: ...
-    @overload
+    @overload  # 49
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, int]]: ...
-    @overload
+    @overload  # 50
     def decode(
         self,
         types: Tuple[BoolTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, str]]: ...
-    @overload
+    @overload  # 51
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any]: ...
-    @overload
+    @overload  # 52
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress]: ...
-    @overload
+    @overload  # 53
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool]: ...
-    @overload
+    @overload  # 54
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes]: ...
-    @overload
+    @overload  # 55
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str]: ...
-    @overload
+    @overload  # 56
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int]: ...
-    @overload
+    @overload  # 57
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 58
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 59
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 60
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 61
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 62
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 63
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 64
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 65
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 66
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 67
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 68
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, int]]: ...
-    @overload
+    @overload  # 69
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, int]]: ...
-    @overload
+    @overload  # 70
     def decode(
         self,
         types: Tuple[BytesTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, str]]: ...
-    @overload
+    @overload  # 71
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any]: ...
-    @overload
+    @overload  # 72
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress]: ...
-    @overload
+    @overload  # 73
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool]: ...
-    @overload
+    @overload  # 74
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes]: ...
-    @overload
+    @overload  # 75
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str]: ...
-    @overload
+    @overload  # 76
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int]: ...
-    @overload
+    @overload  # 77
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 78
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 79
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 80
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 81
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 82
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 83
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 84
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 85
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 86
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 87
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 88
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, int]]: ...
-    @overload
+    @overload  # 89
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, int]]: ...
-    @overload
+    @overload  # 90
     def decode(
         self,
         types: Tuple[StringTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, str]]: ...
-    @overload
+    @overload  # 91
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any]: ...
-    @overload
+    @overload  # 92
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress]: ...
-    @overload
+    @overload  # 93
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool]: ...
-    @overload
+    @overload  # 94
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes]: ...
-    @overload
+    @overload  # 95
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str]: ...
-    @overload
+    @overload  # 96
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int]: ...
-    @overload
+    @overload  # 97
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 98
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 99
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 100
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 101
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 102
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 103
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 104
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 105
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 106
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 107
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 108
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, int]]: ...
-    @overload
+    @overload  # 109
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, int]]: ...
-    @overload
+    @overload  # 110
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, str]]: ...
-    @overload
+    @overload  # 111
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any]: ...
-    @overload
+    @overload  # 112
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 113
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 114
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 115
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 116
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 117
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 118
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 119
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 120
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 121
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 122
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 123
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 124
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 125
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 126
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 127
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 128
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, int]]: ...
-    @overload
+    @overload  # 129
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, int]]: ...
-    @overload
+    @overload  # 130
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, str]]: ...
-    @overload
+    @overload  # 131
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 132
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 133
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 134
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 135
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 136
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 137
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 138
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 139
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 140
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 141
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 142
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 143
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 144
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 145
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 146
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 147
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 148
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, int]]: ...
-    @overload
+    @overload  # 149
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, int]]: ...
-    @overload
+    @overload  # 150
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, str]]: ...
-    @overload
+    @overload  # 151
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 152
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 153
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 154
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 155
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 156
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 157
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 158
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 159
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 160
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 161
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 162
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 163
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 164
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 165
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 166
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 167
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 168
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, int]]: ...
-    @overload
+    @overload  # 169
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, int]]: ...
-    @overload
+    @overload  # 170
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, str]]: ...
-    @overload
+    @overload  # 171
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 172
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 173
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 174
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 175
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 176
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 177
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 178
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 179
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 180
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 181
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 182
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 183
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 184
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 185
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 186
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 187
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 188
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, int]]: ...
-    @overload
+    @overload  # 189
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, int]]: ...
-    @overload
+    @overload  # 190
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, str]]: ...
-    @overload
+    @overload  # 191
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 192
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 193
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 194
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 195
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 196
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 197
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 198
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 199
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 200
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 201
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 202
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 203
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 204
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 205
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 206
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 207
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 208
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, int]]: ...
-    @overload
+    @overload  # 209
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, int]]: ...
-    @overload
+    @overload  # 210
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, str]]: ...
-    @overload
+    @overload  # 211
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 212
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], HexAddress]: ...
-    @overload
+    @overload  # 213
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], bool]: ...
-    @overload
+    @overload  # 214
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], bytes]: ...
-    @overload
+    @overload  # 215
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], str]: ...
-    @overload
+    @overload  # 216
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], int]: ...
-    @overload
+    @overload  # 217
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 218
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 219
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 220
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 221
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 222
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 223
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 224
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 225
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 226
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 227
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 228
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[int, int]]: ...
-    @overload
+    @overload  # 229
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[str, int]]: ...
-    @overload
+    @overload  # 230
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Tuple[str, str]]: ...
-    @overload
+    @overload  # 231
     def decode(
         self,
         types: Tuple[TupleAddressAddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, HexAddress], Any]: ...
-    @overload
+    @overload  # 232
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], HexAddress]: ...
-    @overload
+    @overload  # 233
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], bool]: ...
-    @overload
+    @overload  # 234
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], bytes]: ...
-    @overload
+    @overload  # 235
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], str]: ...
-    @overload
+    @overload  # 236
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], int]: ...
-    @overload
+    @overload  # 237
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 238
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 239
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 240
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 241
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 242
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 243
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 244
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 245
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 246
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 247
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 248
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[int, int]]: ...
-    @overload
+    @overload  # 249
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[str, int]]: ...
-    @overload
+    @overload  # 250
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Tuple[str, str]]: ...
-    @overload
+    @overload  # 251
     def decode(
         self,
         types: Tuple[TupleAddressIntTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, int], Any]: ...
-    @overload
+    @overload  # 252
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], HexAddress]: ...
-    @overload
+    @overload  # 253
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], bool]: ...
-    @overload
+    @overload  # 254
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], bytes]: ...
-    @overload
+    @overload  # 255
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], str]: ...
-    @overload
+    @overload  # 256
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], int]: ...
-    @overload
+    @overload  # 257
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 258
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 259
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 260
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 261
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 262
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 263
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 264
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 265
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 266
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 267
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 268
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[int, int]]: ...
-    @overload
+    @overload  # 269
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[str, int]]: ...
-    @overload
+    @overload  # 270
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Tuple[str, str]]: ...
-    @overload
+    @overload  # 271
     def decode(
         self,
         types: Tuple[TupleBoolBoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, bool], Any]: ...
-    @overload
+    @overload  # 272
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], HexAddress]: ...
-    @overload
+    @overload  # 273
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], bool]: ...
-    @overload
+    @overload  # 274
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], bytes]: ...
-    @overload
+    @overload  # 275
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], str]: ...
-    @overload
+    @overload  # 276
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], int]: ...
-    @overload
+    @overload  # 277
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 278
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 279
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 280
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 281
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 282
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 283
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 284
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 285
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 286
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 287
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 288
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[int, int]]: ...
-    @overload
+    @overload  # 289
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[str, int]]: ...
-    @overload
+    @overload  # 290
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Tuple[str, str]]: ...
-    @overload
+    @overload  # 291
     def decode(
         self,
         types: Tuple[TupleBoolIntTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, int], Any]: ...
-    @overload
+    @overload  # 292
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], HexAddress]: ...
-    @overload
+    @overload  # 293
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], bool]: ...
-    @overload
+    @overload  # 294
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], bytes]: ...
-    @overload
+    @overload  # 295
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], str]: ...
-    @overload
+    @overload  # 296
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], int]: ...
-    @overload
+    @overload  # 297
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 298
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 299
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 300
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 301
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 302
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 303
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 304
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 305
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 306
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 307
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 308
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[int, int]]: ...
-    @overload
+    @overload  # 309
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[str, int]]: ...
-    @overload
+    @overload  # 310
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Tuple[str, str]]: ...
-    @overload
+    @overload  # 311
     def decode(
         self,
         types: Tuple[TupleBytesIntTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, int], Any]: ...
-    @overload
+    @overload  # 312
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], HexAddress]: ...
-    @overload
+    @overload  # 313
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], bool]: ...
-    @overload
+    @overload  # 314
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], bytes]: ...
-    @overload
+    @overload  # 315
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], str]: ...
-    @overload
+    @overload  # 316
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], int]: ...
-    @overload
+    @overload  # 317
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 318
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 319
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 320
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 321
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 322
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 323
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 324
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 325
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 326
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 327
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 328
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[int, int]]: ...
-    @overload
+    @overload  # 329
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[str, int]]: ...
-    @overload
+    @overload  # 330
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Tuple[str, str]]: ...
-    @overload
+    @overload  # 331
     def decode(
         self,
         types: Tuple[TupleBytesBytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, bytes], Any]: ...
-    @overload
+    @overload  # 332
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], HexAddress]: ...
-    @overload
+    @overload  # 333
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], bool]: ...
-    @overload
+    @overload  # 334
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], bytes]: ...
-    @overload
+    @overload  # 335
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], str]: ...
-    @overload
+    @overload  # 336
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], int]: ...
-    @overload
+    @overload  # 337
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 338
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 339
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 340
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 341
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 342
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 343
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 344
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 345
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 346
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 347
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 348
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[int, int]]: ...
-    @overload
+    @overload  # 349
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[str, int]]: ...
-    @overload
+    @overload  # 350
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Tuple[str, str]]: ...
-    @overload
+    @overload  # 351
     def decode(
         self,
         types: Tuple[TupleIntIntTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, int], Any]: ...
-    @overload
+    @overload  # 352
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], HexAddress]: ...
-    @overload
+    @overload  # 353
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], bool]: ...
-    @overload
+    @overload  # 354
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], bytes]: ...
-    @overload
+    @overload  # 355
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], str]: ...
-    @overload
+    @overload  # 356
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], int]: ...
-    @overload
+    @overload  # 357
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 358
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 359
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 360
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 361
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 362
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 363
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 364
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 365
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 366
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 367
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 368
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[int, int]]: ...
-    @overload
+    @overload  # 369
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[str, int]]: ...
-    @overload
+    @overload  # 370
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Tuple[str, str]]: ...
-    @overload
+    @overload  # 371
     def decode(
         self,
         types: Tuple[TupleStrIntTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, int], Any]: ...
-    @overload
+    @overload  # 372
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], HexAddress]: ...
-    @overload
+    @overload  # 373
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], bool]: ...
-    @overload
+    @overload  # 374
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], bytes]: ...
-    @overload
+    @overload  # 375
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], str]: ...
-    @overload
+    @overload  # 376
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], int]: ...
-    @overload
+    @overload  # 377
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 378
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 379
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 380
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 381
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 382
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 383
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 384
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 385
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bool, int]]: ...
-    @overload
+    @overload  # 386
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 387
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 388
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[int, int]]: ...
-    @overload
+    @overload  # 389
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[str, int]]: ...
-    @overload
+    @overload  # 390
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Tuple[str, str]]: ...
-    @overload
+    @overload  # 391
     def decode(
         self,
         types: Tuple[TupleStrStrTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, str], Any]: ...
-    @overload
+    @overload  # 392
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress]: ...
-    @overload
+    @overload  # 393
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool]: ...
-    @overload
+    @overload  # 394
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes]: ...
-    @overload
+    @overload  # 395
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str]: ...
-    @overload
+    @overload  # 396
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int]: ...
-    @overload
+    @overload  # 397
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 398
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 399
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 400
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 401
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 402
     def decode(
         self,
         types: Tuple[TypeStr, TupleAddressAddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, HexAddress]]: ...
-    @overload
+    @overload  # 403
     def decode(
         self,
         types: Tuple[TypeStr, TupleAddressIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, int]]: ...
-    @overload
+    @overload  # 404
     def decode(
         self,
         types: Tuple[TypeStr, TupleBoolBoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, bool]]: ...
-    @overload
+    @overload  # 405
     def decode(
         self,
         types: Tuple[TypeStr, TupleBoolIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, int]]: ...
-    @overload
+    @overload  # 406
     def decode(
         self,
         types: Tuple[TypeStr, TupleBytesIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, int]]: ...
-    @overload
+    @overload  # 407
     def decode(
         self,
         types: Tuple[TypeStr, TupleBytesBytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, bytes]]: ...
-    @overload
+    @overload  # 408
     def decode(
         self,
         types: Tuple[TypeStr, TupleIntIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, int]]: ...
-    @overload
+    @overload  # 409
     def decode(
         self,
         types: Tuple[TypeStr, TupleStrIntTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, int]]: ...
-    @overload
+    @overload  # 410
     def decode(
         self,
         types: Tuple[TypeStr, TupleStrStrTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, str]]: ...
-    @overload
+    @overload  # 411
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr],
@@ -2927,4662 +2925,4662 @@ class ABIDecoder:
 
     # Tuple length 3 overloads - basic and array types only
 
-    @overload
+    @overload  # 412
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 413
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, bool]: ...
-    @overload
+    @overload  # 414
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, bytes]: ...
-    @overload
+    @overload  # 415
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, str]: ...
-    @overload
+    @overload  # 416
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, int]: ...
-    @overload
+    @overload  # 417
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 418
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 419
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 420
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 421
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 422
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Any]: ...
-    @overload
+    @overload  # 423
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, HexAddress]: ...
-    @overload
+    @overload  # 424
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, bool]: ...
-    @overload
+    @overload  # 425
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, bytes]: ...
-    @overload
+    @overload  # 426
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, str]: ...
-    @overload
+    @overload  # 427
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, int]: ...
-    @overload
+    @overload  # 428
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 429
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 430
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 431
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 432
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 433
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Any]: ...
-    @overload
+    @overload  # 434
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, HexAddress]: ...
-    @overload
+    @overload  # 435
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, bool]: ...
-    @overload
+    @overload  # 436
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, bytes]: ...
-    @overload
+    @overload  # 437
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, str]: ...
-    @overload
+    @overload  # 438
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, int]: ...
-    @overload
+    @overload  # 439
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 440
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 441
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 442
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 443
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 444
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Any]: ...
-    @overload
+    @overload  # 445
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, HexAddress]: ...
-    @overload
+    @overload  # 446
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, bool]: ...
-    @overload
+    @overload  # 447
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, bytes]: ...
-    @overload
+    @overload  # 448
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, str]: ...
-    @overload
+    @overload  # 449
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, int]: ...
-    @overload
+    @overload  # 450
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 451
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 452
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 453
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 454
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 455
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Any]: ...
-    @overload
+    @overload  # 456
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, HexAddress]: ...
-    @overload
+    @overload  # 457
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, bool]: ...
-    @overload
+    @overload  # 458
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, bytes]: ...
-    @overload
+    @overload  # 459
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, str]: ...
-    @overload
+    @overload  # 460
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, int]: ...
-    @overload
+    @overload  # 461
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 462
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 463
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 464
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 465
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 466
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Any]: ...
-    @overload
+    @overload  # 467
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 468
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 469
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 470
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 471
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 472
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 473
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 474
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 475
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 476
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 477
     def decode(
         self,
         types: Tuple[AddressTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 478
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 479
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 480
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 481
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 482
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 483
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 484
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 485
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 486
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 487
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 488
     def decode(
         self,
         types: Tuple[AddressTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 489
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 490
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 491
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 492
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 493
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 494
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 495
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 496
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 497
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 498
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 499
     def decode(
         self,
         types: Tuple[AddressTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 500
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 501
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 502
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 503
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 504
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 505
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 506
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 507
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 508
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 509
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 510
     def decode(
         self,
         types: Tuple[AddressTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 511
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 512
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 513
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 514
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 515
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 516
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 517
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 518
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 519
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 520
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 521
     def decode(
         self,
         types: Tuple[AddressTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 522
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, HexAddress]: ...
-    @overload
+    @overload  # 523
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, bool]: ...
-    @overload
+    @overload  # 524
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, bytes]: ...
-    @overload
+    @overload  # 525
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, str]: ...
-    @overload
+    @overload  # 526
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, int]: ...
-    @overload
+    @overload  # 527
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 528
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 529
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 530
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 531
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 532
     def decode(
         self,
         types: Tuple[AddressTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Any]: ...
-    @overload
+    @overload  # 533
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 534
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, bool]: ...
-    @overload
+    @overload  # 535
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, bytes]: ...
-    @overload
+    @overload  # 536
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, str]: ...
-    @overload
+    @overload  # 537
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, int]: ...
-    @overload
+    @overload  # 538
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 539
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 540
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 541
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 542
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 543
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, HexAddress, Any]: ...
-    @overload
+    @overload  # 544
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, HexAddress]: ...
-    @overload
+    @overload  # 545
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, bool]: ...
-    @overload
+    @overload  # 546
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, bytes]: ...
-    @overload
+    @overload  # 547
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, str]: ...
-    @overload
+    @overload  # 548
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, int]: ...
-    @overload
+    @overload  # 549
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 550
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 551
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 552
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 553
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 554
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bool, Any]: ...
-    @overload
+    @overload  # 555
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, HexAddress]: ...
-    @overload
+    @overload  # 556
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, bool]: ...
-    @overload
+    @overload  # 557
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, bytes]: ...
-    @overload
+    @overload  # 558
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, str]: ...
-    @overload
+    @overload  # 559
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, int]: ...
-    @overload
+    @overload  # 560
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 561
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 562
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 563
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 564
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 565
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, bytes, Any]: ...
-    @overload
+    @overload  # 566
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, HexAddress]: ...
-    @overload
+    @overload  # 567
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, bool]: ...
-    @overload
+    @overload  # 568
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, bytes]: ...
-    @overload
+    @overload  # 569
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, str]: ...
-    @overload
+    @overload  # 570
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, int]: ...
-    @overload
+    @overload  # 571
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 572
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 573
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 574
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 575
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 576
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, str, Any]: ...
-    @overload
+    @overload  # 577
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, HexAddress]: ...
-    @overload
+    @overload  # 578
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, bool]: ...
-    @overload
+    @overload  # 579
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, bytes]: ...
-    @overload
+    @overload  # 580
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, str]: ...
-    @overload
+    @overload  # 581
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, int]: ...
-    @overload
+    @overload  # 582
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 583
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 584
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 585
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 586
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 587
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, int, Any]: ...
-    @overload
+    @overload  # 588
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 589
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 590
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 591
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 592
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 593
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 594
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 595
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 596
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 597
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 598
     def decode(
         self,
         types: Tuple[BoolTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 599
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 600
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 601
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 602
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 603
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 604
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 605
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 606
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 607
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 608
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 609
     def decode(
         self,
         types: Tuple[BoolTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 610
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 611
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 612
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 613
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 614
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 615
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 616
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 617
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 618
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 619
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 620
     def decode(
         self,
         types: Tuple[BoolTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 621
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 622
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 623
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 624
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 625
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 626
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 627
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 628
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 629
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 630
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 631
     def decode(
         self,
         types: Tuple[BoolTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 632
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 633
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 634
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 635
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 636
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 637
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 638
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 639
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 640
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 641
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 642
     def decode(
         self,
         types: Tuple[BoolTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 643
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, HexAddress]: ...
-    @overload
+    @overload  # 644
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, bool]: ...
-    @overload
+    @overload  # 645
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, bytes]: ...
-    @overload
+    @overload  # 646
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, str]: ...
-    @overload
+    @overload  # 647
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, int]: ...
-    @overload
+    @overload  # 648
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 649
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 650
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 651
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 652
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 653
     def decode(
         self,
         types: Tuple[BoolTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool, Any, Any]: ...
-    @overload
+    @overload  # 654
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 655
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, bool]: ...
-    @overload
+    @overload  # 656
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, bytes]: ...
-    @overload
+    @overload  # 657
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, str]: ...
-    @overload
+    @overload  # 658
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, int]: ...
-    @overload
+    @overload  # 659
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 660
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 661
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 662
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 663
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 664
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, Any]: ...
-    @overload
+    @overload  # 665
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, HexAddress]: ...
-    @overload
+    @overload  # 666
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, bool]: ...
-    @overload
+    @overload  # 667
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, bytes]: ...
-    @overload
+    @overload  # 668
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, str]: ...
-    @overload
+    @overload  # 669
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, int]: ...
-    @overload
+    @overload  # 670
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 671
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 672
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 673
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 674
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 675
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bool, Any]: ...
-    @overload
+    @overload  # 676
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, HexAddress]: ...
-    @overload
+    @overload  # 677
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, bool]: ...
-    @overload
+    @overload  # 678
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, bytes]: ...
-    @overload
+    @overload  # 679
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, str]: ...
-    @overload
+    @overload  # 680
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, int]: ...
-    @overload
+    @overload  # 681
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 682
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 683
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 684
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 685
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 686
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, bytes, Any]: ...
-    @overload
+    @overload  # 687
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, HexAddress]: ...
-    @overload
+    @overload  # 688
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, bool]: ...
-    @overload
+    @overload  # 689
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, bytes]: ...
-    @overload
+    @overload  # 690
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, str]: ...
-    @overload
+    @overload  # 691
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, int]: ...
-    @overload
+    @overload  # 692
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 693
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 694
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 695
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 696
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 697
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, str, Any]: ...
-    @overload
+    @overload  # 698
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, HexAddress]: ...
-    @overload
+    @overload  # 699
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, bool]: ...
-    @overload
+    @overload  # 700
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, bytes]: ...
-    @overload
+    @overload  # 701
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, str]: ...
-    @overload
+    @overload  # 702
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, int]: ...
-    @overload
+    @overload  # 703
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 704
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 705
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 706
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 707
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 708
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, int, Any]: ...
-    @overload
+    @overload  # 709
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 710
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 711
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 712
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 713
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 714
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 715
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 716
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 717
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 718
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 719
     def decode(
         self,
         types: Tuple[BytesTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 720
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 721
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 722
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 723
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 724
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 725
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 726
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 727
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 728
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 729
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 730
     def decode(
         self,
         types: Tuple[BytesTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 731
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 732
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 733
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 734
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 735
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 736
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 737
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 738
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 739
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 740
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 741
     def decode(
         self,
         types: Tuple[BytesTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 742
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 743
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 744
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 745
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 746
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 747
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 748
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 749
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 750
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 751
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 752
     def decode(
         self,
         types: Tuple[BytesTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 753
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 754
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 755
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 756
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 757
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 758
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 759
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 760
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 761
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 762
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 763
     def decode(
         self,
         types: Tuple[BytesTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 764
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, HexAddress]: ...
-    @overload
+    @overload  # 765
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, bool]: ...
-    @overload
+    @overload  # 766
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, bytes]: ...
-    @overload
+    @overload  # 767
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, str]: ...
-    @overload
+    @overload  # 768
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, int]: ...
-    @overload
+    @overload  # 769
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 770
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 771
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 772
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 773
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 774
     def decode(
         self,
         types: Tuple[BytesTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, Any, Any]: ...
-    @overload
+    @overload  # 775
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 776
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, bool]: ...
-    @overload
+    @overload  # 777
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, bytes]: ...
-    @overload
+    @overload  # 778
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, str]: ...
-    @overload
+    @overload  # 779
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, int]: ...
-    @overload
+    @overload  # 780
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 781
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 782
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 783
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 784
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 785
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, HexAddress, Any]: ...
-    @overload
+    @overload  # 786
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, HexAddress]: ...
-    @overload
+    @overload  # 787
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, bool]: ...
-    @overload
+    @overload  # 788
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, bytes]: ...
-    @overload
+    @overload  # 789
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, str]: ...
-    @overload
+    @overload  # 790
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, int]: ...
-    @overload
+    @overload  # 791
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 792
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 793
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 794
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 795
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 796
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bool, Any]: ...
-    @overload
+    @overload  # 797
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, HexAddress]: ...
-    @overload
+    @overload  # 798
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, bool]: ...
-    @overload
+    @overload  # 799
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, bytes]: ...
-    @overload
+    @overload  # 800
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, str]: ...
-    @overload
+    @overload  # 801
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, int]: ...
-    @overload
+    @overload  # 802
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 803
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 804
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 805
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 806
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 807
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, bytes, Any]: ...
-    @overload
+    @overload  # 808
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, HexAddress]: ...
-    @overload
+    @overload  # 809
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, bool]: ...
-    @overload
+    @overload  # 810
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, bytes]: ...
-    @overload
+    @overload  # 811
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, str]: ...
-    @overload
+    @overload  # 812
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, int]: ...
-    @overload
+    @overload  # 813
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 814
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 815
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 816
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 817
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 818
     def decode(
         self,
         types: Tuple[StringTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, str, Any]: ...
-    @overload
+    @overload  # 819
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, HexAddress]: ...
-    @overload
+    @overload  # 820
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, bool]: ...
-    @overload
+    @overload  # 821
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, bytes]: ...
-    @overload
+    @overload  # 822
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, str]: ...
-    @overload
+    @overload  # 823
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, int]: ...
-    @overload
+    @overload  # 824
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 825
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 826
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 827
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 828
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 829
     def decode(
         self,
         types: Tuple[StringTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, int, Any]: ...
-    @overload
+    @overload  # 830
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 831
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 832
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 833
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 834
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 835
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 836
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 837
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 838
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 839
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 840
     def decode(
         self,
         types: Tuple[StringTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 841
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 842
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 843
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 844
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 845
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 846
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 847
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 848
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 849
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 850
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 851
     def decode(
         self,
         types: Tuple[StringTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 852
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 853
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 854
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 855
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 856
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 857
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 858
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 859
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 860
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 861
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 862
     def decode(
         self,
         types: Tuple[StringTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 863
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 864
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 865
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 866
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 867
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 868
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 869
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 870
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 871
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 872
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 873
     def decode(
         self,
         types: Tuple[StringTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 874
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 875
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 876
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 877
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 878
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 879
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 880
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 881
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 882
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 883
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 884
     def decode(
         self,
         types: Tuple[StringTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 885
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, HexAddress]: ...
-    @overload
+    @overload  # 886
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, bool]: ...
-    @overload
+    @overload  # 887
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, bytes]: ...
-    @overload
+    @overload  # 888
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, str]: ...
-    @overload
+    @overload  # 889
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, int]: ...
-    @overload
+    @overload  # 890
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 891
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 892
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 893
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 894
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 895
     def decode(
         self,
         types: Tuple[StringTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[str, Any, Any]: ...
-    @overload
+    @overload  # 896
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 897
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, bool]: ...
-    @overload
+    @overload  # 898
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, bytes]: ...
-    @overload
+    @overload  # 899
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, str]: ...
-    @overload
+    @overload  # 900
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, int]: ...
-    @overload
+    @overload  # 901
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 902
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 903
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 904
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 905
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 906
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Any]: ...
-    @overload
+    @overload  # 907
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, HexAddress]: ...
-    @overload
+    @overload  # 908
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, bool]: ...
-    @overload
+    @overload  # 909
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, bytes]: ...
-    @overload
+    @overload  # 910
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, str]: ...
-    @overload
+    @overload  # 911
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, int]: ...
-    @overload
+    @overload  # 912
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 913
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 914
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 915
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 916
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 917
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bool, Any]: ...
-    @overload
+    @overload  # 918
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, HexAddress]: ...
-    @overload
+    @overload  # 919
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, bool]: ...
-    @overload
+    @overload  # 920
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, bytes]: ...
-    @overload
+    @overload  # 921
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, str]: ...
-    @overload
+    @overload  # 922
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, int]: ...
-    @overload
+    @overload  # 923
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 924
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 925
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 926
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 927
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 928
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, bytes, Any]: ...
-    @overload
+    @overload  # 929
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, HexAddress]: ...
-    @overload
+    @overload  # 930
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, bool]: ...
-    @overload
+    @overload  # 931
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, bytes]: ...
-    @overload
+    @overload  # 932
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, str]: ...
-    @overload
+    @overload  # 933
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, int]: ...
-    @overload
+    @overload  # 934
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 935
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 936
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 937
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 938
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 939
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, str, Any]: ...
-    @overload
+    @overload  # 940
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, HexAddress]: ...
-    @overload
+    @overload  # 941
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, bool]: ...
-    @overload
+    @overload  # 942
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, bytes]: ...
-    @overload
+    @overload  # 943
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, str]: ...
-    @overload
+    @overload  # 944
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, int]: ...
-    @overload
+    @overload  # 945
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 946
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 947
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 948
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 949
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 950
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, int, Any]: ...
-    @overload
+    @overload  # 951
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 952
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 953
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 954
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 955
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 956
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 957
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 958
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 959
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 960
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 961
     def decode(
         self,
         types: Tuple[IntegerTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 962
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 963
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 964
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 965
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 966
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 967
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 968
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 969
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 970
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 971
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 972
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 973
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 974
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 975
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 976
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 977
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 978
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 979
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 980
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 981
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 982
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 983
     def decode(
         self,
         types: Tuple[IntegerTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 984
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 985
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 986
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 987
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 988
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 989
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 990
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 991
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 992
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 993
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 994
     def decode(
         self,
         types: Tuple[IntegerTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 995
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 996
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 997
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 998
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 999
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1000
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1001
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1002
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1003
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1004
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1005
     def decode(
         self,
         types: Tuple[IntegerTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1006
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, HexAddress]: ...
-    @overload
+    @overload  # 1007
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, bool]: ...
-    @overload
+    @overload  # 1008
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, bytes]: ...
-    @overload
+    @overload  # 1009
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, str]: ...
-    @overload
+    @overload  # 1010
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, int]: ...
-    @overload
+    @overload  # 1011
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1012
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1013
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1014
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1015
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1016
     def decode(
         self,
         types: Tuple[IntegerTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[int, Any, Any]: ...
-    @overload
+    @overload  # 1017
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1018
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, bool]: ...
-    @overload
+    @overload  # 1019
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, bytes]: ...
-    @overload
+    @overload  # 1020
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, str]: ...
-    @overload
+    @overload  # 1021
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, int]: ...
-    @overload
+    @overload  # 1022
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1023
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1024
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1025
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1026
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1027
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], HexAddress, Any]: ...
-    @overload
+    @overload  # 1028
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, HexAddress]: ...
-    @overload
+    @overload  # 1029
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, bool]: ...
-    @overload
+    @overload  # 1030
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, bytes]: ...
-    @overload
+    @overload  # 1031
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, str]: ...
-    @overload
+    @overload  # 1032
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, int]: ...
-    @overload
+    @overload  # 1033
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1034
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1035
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1036
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1037
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1038
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bool, Any]: ...
-    @overload
+    @overload  # 1039
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, HexAddress]: ...
-    @overload
+    @overload  # 1040
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, bool]: ...
-    @overload
+    @overload  # 1041
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, bytes]: ...
-    @overload
+    @overload  # 1042
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, str]: ...
-    @overload
+    @overload  # 1043
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, int]: ...
-    @overload
+    @overload  # 1044
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1045
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1046
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1047
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1048
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1049
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], bytes, Any]: ...
-    @overload
+    @overload  # 1050
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, HexAddress]: ...
-    @overload
+    @overload  # 1051
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, bool]: ...
-    @overload
+    @overload  # 1052
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, bytes]: ...
-    @overload
+    @overload  # 1053
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, str]: ...
-    @overload
+    @overload  # 1054
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, int]: ...
-    @overload
+    @overload  # 1055
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1056
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1057
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1058
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1059
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1060
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], str, Any]: ...
-    @overload
+    @overload  # 1061
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, HexAddress]: ...
-    @overload
+    @overload  # 1062
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, bool]: ...
-    @overload
+    @overload  # 1063
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, bytes]: ...
-    @overload
+    @overload  # 1064
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, str]: ...
-    @overload
+    @overload  # 1065
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, int]: ...
-    @overload
+    @overload  # 1066
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1067
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1068
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1069
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1070
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1071
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], int, Any]: ...
-    @overload
+    @overload  # 1072
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1073
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1074
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1075
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1076
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1077
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
@@ -7591,4655 +7589,4655 @@ class ABIDecoder:
     ) -> Tuple[
         Tuple[HexAddress, ...], Tuple[HexAddress, ...], Tuple[HexAddress, ...]
     ]: ...
-    @overload
+    @overload  # 1078
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1079
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1080
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1081
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1082
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1083
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1084
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1085
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1086
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1087
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1088
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1089
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1090
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1091
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1092
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1093
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1094
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1095
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1096
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1097
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1098
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1099
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1100
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1101
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1102
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1103
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1104
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1105
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1106
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1107
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1108
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1109
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1110
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1111
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1112
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1113
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1114
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1115
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1116
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1117
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1118
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1119
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1120
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1121
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1122
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1123
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1124
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1125
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1126
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1127
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, HexAddress]: ...
-    @overload
+    @overload  # 1128
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, bool]: ...
-    @overload
+    @overload  # 1129
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, bytes]: ...
-    @overload
+    @overload  # 1130
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, str]: ...
-    @overload
+    @overload  # 1131
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, int]: ...
-    @overload
+    @overload  # 1132
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1133
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1134
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1135
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1136
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1137
     def decode(
         self,
         types: Tuple[AddressArrayTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[HexAddress, ...], Any, Any]: ...
-    @overload
+    @overload  # 1138
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1139
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, bool]: ...
-    @overload
+    @overload  # 1140
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, bytes]: ...
-    @overload
+    @overload  # 1141
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, str]: ...
-    @overload
+    @overload  # 1142
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, int]: ...
-    @overload
+    @overload  # 1143
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1144
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1145
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1146
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1147
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1148
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], HexAddress, Any]: ...
-    @overload
+    @overload  # 1149
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, HexAddress]: ...
-    @overload
+    @overload  # 1150
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, bool]: ...
-    @overload
+    @overload  # 1151
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, bytes]: ...
-    @overload
+    @overload  # 1152
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, str]: ...
-    @overload
+    @overload  # 1153
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, int]: ...
-    @overload
+    @overload  # 1154
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1155
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1156
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1157
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1158
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1159
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bool, Any]: ...
-    @overload
+    @overload  # 1160
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, HexAddress]: ...
-    @overload
+    @overload  # 1161
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, bool]: ...
-    @overload
+    @overload  # 1162
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, bytes]: ...
-    @overload
+    @overload  # 1163
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, str]: ...
-    @overload
+    @overload  # 1164
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, int]: ...
-    @overload
+    @overload  # 1165
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1166
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1167
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1168
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1169
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1170
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], bytes, Any]: ...
-    @overload
+    @overload  # 1171
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, HexAddress]: ...
-    @overload
+    @overload  # 1172
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, bool]: ...
-    @overload
+    @overload  # 1173
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, bytes]: ...
-    @overload
+    @overload  # 1174
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, str]: ...
-    @overload
+    @overload  # 1175
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, int]: ...
-    @overload
+    @overload  # 1176
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1177
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1178
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1179
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1180
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1181
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], str, Any]: ...
-    @overload
+    @overload  # 1182
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, HexAddress]: ...
-    @overload
+    @overload  # 1183
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, bool]: ...
-    @overload
+    @overload  # 1184
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, bytes]: ...
-    @overload
+    @overload  # 1185
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, str]: ...
-    @overload
+    @overload  # 1186
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, int]: ...
-    @overload
+    @overload  # 1187
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1188
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1189
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1190
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1191
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1192
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], int, Any]: ...
-    @overload
+    @overload  # 1193
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1194
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1195
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1196
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1197
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1198
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1199
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1200
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1201
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1202
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1203
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1204
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1205
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1206
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1207
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1208
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1209
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1210
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1211
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1212
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1213
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1214
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1215
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1216
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1217
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1218
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1219
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1220
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1221
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1222
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1223
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1224
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1225
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1226
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1227
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1228
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1229
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1230
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1231
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1232
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1233
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1234
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1235
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1236
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1237
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1238
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1239
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1240
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1241
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1242
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1243
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1244
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1245
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1246
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1247
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1248
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, HexAddress]: ...
-    @overload
+    @overload  # 1249
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, bool]: ...
-    @overload
+    @overload  # 1250
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, bytes]: ...
-    @overload
+    @overload  # 1251
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, str]: ...
-    @overload
+    @overload  # 1252
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, int]: ...
-    @overload
+    @overload  # 1253
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1254
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1255
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1256
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1257
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1258
     def decode(
         self,
         types: Tuple[BoolArrayTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bool, ...], Any, Any]: ...
-    @overload
+    @overload  # 1259
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1260
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, bool]: ...
-    @overload
+    @overload  # 1261
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, bytes]: ...
-    @overload
+    @overload  # 1262
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, str]: ...
-    @overload
+    @overload  # 1263
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, int]: ...
-    @overload
+    @overload  # 1264
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1265
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1266
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1267
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1268
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1269
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], HexAddress, Any]: ...
-    @overload
+    @overload  # 1270
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, HexAddress]: ...
-    @overload
+    @overload  # 1271
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, bool]: ...
-    @overload
+    @overload  # 1272
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, bytes]: ...
-    @overload
+    @overload  # 1273
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, str]: ...
-    @overload
+    @overload  # 1274
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, int]: ...
-    @overload
+    @overload  # 1275
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1276
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1277
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1278
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1279
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1280
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bool, Any]: ...
-    @overload
+    @overload  # 1281
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, HexAddress]: ...
-    @overload
+    @overload  # 1282
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, bool]: ...
-    @overload
+    @overload  # 1283
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, bytes]: ...
-    @overload
+    @overload  # 1284
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, str]: ...
-    @overload
+    @overload  # 1285
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, int]: ...
-    @overload
+    @overload  # 1286
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1287
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1288
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1289
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1290
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1291
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], bytes, Any]: ...
-    @overload
+    @overload  # 1292
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, HexAddress]: ...
-    @overload
+    @overload  # 1293
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, bool]: ...
-    @overload
+    @overload  # 1294
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, bytes]: ...
-    @overload
+    @overload  # 1295
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, str]: ...
-    @overload
+    @overload  # 1296
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, int]: ...
-    @overload
+    @overload  # 1297
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1298
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1299
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1300
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1301
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1302
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], str, Any]: ...
-    @overload
+    @overload  # 1303
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, HexAddress]: ...
-    @overload
+    @overload  # 1304
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, bool]: ...
-    @overload
+    @overload  # 1305
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, bytes]: ...
-    @overload
+    @overload  # 1306
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, str]: ...
-    @overload
+    @overload  # 1307
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, int]: ...
-    @overload
+    @overload  # 1308
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1309
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1310
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1311
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1312
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1313
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], int, Any]: ...
-    @overload
+    @overload  # 1314
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1315
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1316
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1317
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1318
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1319
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1320
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1321
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1322
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1323
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1324
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1325
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1326
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1327
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1328
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1329
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1330
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1331
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1332
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1333
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1334
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1335
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1336
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1337
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1338
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1339
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1340
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1341
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1342
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1343
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1344
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1345
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1346
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1347
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1348
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1349
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1350
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1351
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1352
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1353
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1354
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1355
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1356
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1357
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1358
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1359
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1360
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1361
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1362
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1363
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1364
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1365
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1366
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1367
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1368
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1369
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, HexAddress]: ...
-    @overload
+    @overload  # 1370
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, bool]: ...
-    @overload
+    @overload  # 1371
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, bytes]: ...
-    @overload
+    @overload  # 1372
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, str]: ...
-    @overload
+    @overload  # 1373
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, int]: ...
-    @overload
+    @overload  # 1374
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1375
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1376
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1377
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1378
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1379
     def decode(
         self,
         types: Tuple[BytesArrayTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[bytes, ...], Any, Any]: ...
-    @overload
+    @overload  # 1380
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1381
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, bool]: ...
-    @overload
+    @overload  # 1382
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, bytes]: ...
-    @overload
+    @overload  # 1383
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, str]: ...
-    @overload
+    @overload  # 1384
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, int]: ...
-    @overload
+    @overload  # 1385
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1386
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1387
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1388
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1389
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1390
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], HexAddress, Any]: ...
-    @overload
+    @overload  # 1391
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, HexAddress]: ...
-    @overload
+    @overload  # 1392
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, bool]: ...
-    @overload
+    @overload  # 1393
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, bytes]: ...
-    @overload
+    @overload  # 1394
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, str]: ...
-    @overload
+    @overload  # 1395
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, int]: ...
-    @overload
+    @overload  # 1396
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1397
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1398
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1399
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1400
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1401
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bool, Any]: ...
-    @overload
+    @overload  # 1402
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, HexAddress]: ...
-    @overload
+    @overload  # 1403
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, bool]: ...
-    @overload
+    @overload  # 1404
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, bytes]: ...
-    @overload
+    @overload  # 1405
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, str]: ...
-    @overload
+    @overload  # 1406
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, int]: ...
-    @overload
+    @overload  # 1407
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1408
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1409
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1410
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1411
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1412
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], bytes, Any]: ...
-    @overload
+    @overload  # 1413
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, HexAddress]: ...
-    @overload
+    @overload  # 1414
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, bool]: ...
-    @overload
+    @overload  # 1415
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, bytes]: ...
-    @overload
+    @overload  # 1416
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, str]: ...
-    @overload
+    @overload  # 1417
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, int]: ...
-    @overload
+    @overload  # 1418
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1419
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1420
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1421
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1422
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1423
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], str, Any]: ...
-    @overload
+    @overload  # 1424
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, HexAddress]: ...
-    @overload
+    @overload  # 1425
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, bool]: ...
-    @overload
+    @overload  # 1426
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, bytes]: ...
-    @overload
+    @overload  # 1427
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, str]: ...
-    @overload
+    @overload  # 1428
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, int]: ...
-    @overload
+    @overload  # 1429
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1430
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1431
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1432
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1433
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1434
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], int, Any]: ...
-    @overload
+    @overload  # 1435
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1436
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1437
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1438
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1439
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1440
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1441
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1442
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1443
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1444
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1445
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1446
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1447
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1448
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1449
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1450
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1451
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1452
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1453
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1454
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1455
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1456
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1457
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1458
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1459
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1460
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1461
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1462
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1463
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1464
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1465
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1466
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1467
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1468
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1469
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1470
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1471
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1472
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1473
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1474
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1475
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1476
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1477
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1478
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1479
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1480
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1481
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1482
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1483
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1484
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1485
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1486
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1487
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1488
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1489
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1490
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, HexAddress]: ...
-    @overload
+    @overload  # 1491
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, bool]: ...
-    @overload
+    @overload  # 1492
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, bytes]: ...
-    @overload
+    @overload  # 1493
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, str]: ...
-    @overload
+    @overload  # 1494
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, int]: ...
-    @overload
+    @overload  # 1495
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1496
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1497
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1498
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1499
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1500
     def decode(
         self,
         types: Tuple[IntArrayTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[int, ...], Any, Any]: ...
-    @overload
+    @overload  # 1501
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1502
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, bool]: ...
-    @overload
+    @overload  # 1503
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, bytes]: ...
-    @overload
+    @overload  # 1504
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, str]: ...
-    @overload
+    @overload  # 1505
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, int]: ...
-    @overload
+    @overload  # 1506
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1507
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1508
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1509
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1510
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1511
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], HexAddress, Any]: ...
-    @overload
+    @overload  # 1512
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, HexAddress]: ...
-    @overload
+    @overload  # 1513
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, bool]: ...
-    @overload
+    @overload  # 1514
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, bytes]: ...
-    @overload
+    @overload  # 1515
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, str]: ...
-    @overload
+    @overload  # 1516
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, int]: ...
-    @overload
+    @overload  # 1517
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1518
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1519
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1520
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1521
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1522
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bool, Any]: ...
-    @overload
+    @overload  # 1523
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, HexAddress]: ...
-    @overload
+    @overload  # 1524
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, bool]: ...
-    @overload
+    @overload  # 1525
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, bytes]: ...
-    @overload
+    @overload  # 1526
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, str]: ...
-    @overload
+    @overload  # 1527
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, int]: ...
-    @overload
+    @overload  # 1528
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1529
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1530
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1531
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1532
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1533
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], bytes, Any]: ...
-    @overload
+    @overload  # 1534
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, HexAddress]: ...
-    @overload
+    @overload  # 1535
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, bool]: ...
-    @overload
+    @overload  # 1536
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, bytes]: ...
-    @overload
+    @overload  # 1537
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, str]: ...
-    @overload
+    @overload  # 1538
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, int]: ...
-    @overload
+    @overload  # 1539
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1540
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1541
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1542
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1543
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1544
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], str, Any]: ...
-    @overload
+    @overload  # 1545
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, HexAddress]: ...
-    @overload
+    @overload  # 1546
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, bool]: ...
-    @overload
+    @overload  # 1547
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, bytes]: ...
-    @overload
+    @overload  # 1548
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, str]: ...
-    @overload
+    @overload  # 1549
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, int]: ...
-    @overload
+    @overload  # 1550
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1551
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1552
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1553
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1554
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1555
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], int, Any]: ...
-    @overload
+    @overload  # 1556
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1557
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1558
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1559
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1560
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1561
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1562
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1563
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1564
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1565
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1566
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1567
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1568
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1569
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1570
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1571
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1572
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1573
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1574
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1575
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1576
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1577
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1578
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1579
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1580
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1581
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1582
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1583
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1584
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1585
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1586
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1587
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1588
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1589
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1590
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1591
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1592
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1593
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1594
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1595
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1596
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1597
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1598
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1599
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1600
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1601
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1602
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1603
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1604
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1605
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1606
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1607
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1608
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1609
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1610
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1611
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, HexAddress]: ...
-    @overload
+    @overload  # 1612
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, bool]: ...
-    @overload
+    @overload  # 1613
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, bytes]: ...
-    @overload
+    @overload  # 1614
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, str]: ...
-    @overload
+    @overload  # 1615
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, int]: ...
-    @overload
+    @overload  # 1616
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1617
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1618
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1619
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1620
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1621
     def decode(
         self,
         types: Tuple[StringArrayTypeStr, TypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Tuple[str, ...], Any, Any]: ...
-    @overload
+    @overload  # 1622
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, HexAddress]: ...
-    @overload
+    @overload  # 1623
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, bool]: ...
-    @overload
+    @overload  # 1624
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, bytes]: ...
-    @overload
+    @overload  # 1625
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, str]: ...
-    @overload
+    @overload  # 1626
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, int]: ...
-    @overload
+    @overload  # 1627
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1628
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1629
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1630
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1631
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1632
     def decode(
         self,
         types: Tuple[TypeStr, AddressTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, HexAddress, Any]: ...
-    @overload
+    @overload  # 1633
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, HexAddress]: ...
-    @overload
+    @overload  # 1634
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, bool]: ...
-    @overload
+    @overload  # 1635
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, bytes]: ...
-    @overload
+    @overload  # 1636
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, str]: ...
-    @overload
+    @overload  # 1637
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, int]: ...
-    @overload
+    @overload  # 1638
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1639
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1640
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1641
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1642
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1643
     def decode(
         self,
         types: Tuple[TypeStr, BoolTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bool, Any]: ...
-    @overload
+    @overload  # 1644
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, HexAddress]: ...
-    @overload
+    @overload  # 1645
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, bool]: ...
-    @overload
+    @overload  # 1646
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, bytes]: ...
-    @overload
+    @overload  # 1647
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, str]: ...
-    @overload
+    @overload  # 1648
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, int]: ...
-    @overload
+    @overload  # 1649
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1650
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1651
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1652
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1653
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1654
     def decode(
         self,
         types: Tuple[TypeStr, BytesTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, bytes, Any]: ...
-    @overload
+    @overload  # 1655
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, HexAddress]: ...
-    @overload
+    @overload  # 1656
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, bool]: ...
-    @overload
+    @overload  # 1657
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, bytes]: ...
-    @overload
+    @overload  # 1658
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, str]: ...
-    @overload
+    @overload  # 1659
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, int]: ...
-    @overload
+    @overload  # 1660
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1661
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1662
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1663
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1664
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1665
     def decode(
         self,
         types: Tuple[TypeStr, StringTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, str, Any]: ...
-    @overload
+    @overload  # 1666
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, HexAddress]: ...
-    @overload
+    @overload  # 1667
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, bool]: ...
-    @overload
+    @overload  # 1668
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, bytes]: ...
-    @overload
+    @overload  # 1669
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, str]: ...
-    @overload
+    @overload  # 1670
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, int]: ...
-    @overload
+    @overload  # 1671
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1672
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1673
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1674
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1675
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1676
     def decode(
         self,
         types: Tuple[TypeStr, IntegerTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, int, Any]: ...
-    @overload
+    @overload  # 1677
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], HexAddress]: ...
-    @overload
+    @overload  # 1678
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], bool]: ...
-    @overload
+    @overload  # 1679
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], bytes]: ...
-    @overload
+    @overload  # 1680
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], str]: ...
-    @overload
+    @overload  # 1681
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], int]: ...
-    @overload
+    @overload  # 1682
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1683
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1684
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1685
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1686
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1687
     def decode(
         self,
         types: Tuple[TypeStr, AddressArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[HexAddress, ...], Any]: ...
-    @overload
+    @overload  # 1688
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], HexAddress]: ...
-    @overload
+    @overload  # 1689
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], bool]: ...
-    @overload
+    @overload  # 1690
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], bytes]: ...
-    @overload
+    @overload  # 1691
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], str]: ...
-    @overload
+    @overload  # 1692
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], int]: ...
-    @overload
+    @overload  # 1693
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1694
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1695
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1696
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1697
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1698
     def decode(
         self,
         types: Tuple[TypeStr, BoolArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bool, ...], Any]: ...
-    @overload
+    @overload  # 1699
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], HexAddress]: ...
-    @overload
+    @overload  # 1700
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], bool]: ...
-    @overload
+    @overload  # 1701
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], bytes]: ...
-    @overload
+    @overload  # 1702
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], str]: ...
-    @overload
+    @overload  # 1703
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], int]: ...
-    @overload
+    @overload  # 1704
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1705
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1706
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1707
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1708
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1709
     def decode(
         self,
         types: Tuple[TypeStr, BytesArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[bytes, ...], Any]: ...
-    @overload
+    @overload  # 1710
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], HexAddress]: ...
-    @overload
+    @overload  # 1711
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], bool]: ...
-    @overload
+    @overload  # 1712
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], bytes]: ...
-    @overload
+    @overload  # 1713
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], str]: ...
-    @overload
+    @overload  # 1714
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], int]: ...
-    @overload
+    @overload  # 1715
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1716
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1717
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1718
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1719
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1720
     def decode(
         self,
         types: Tuple[TypeStr, IntArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[int, ...], Any]: ...
-    @overload
+    @overload  # 1721
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], HexAddress]: ...
-    @overload
+    @overload  # 1722
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], bool]: ...
-    @overload
+    @overload  # 1723
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], bytes]: ...
-    @overload
+    @overload  # 1724
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], str]: ...
-    @overload
+    @overload  # 1725
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], int]: ...
-    @overload
+    @overload  # 1726
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1727
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1728
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1729
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1730
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1731
     def decode(
         self,
         types: Tuple[TypeStr, StringArrayTypeStr, TypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Tuple[str, ...], Any]: ...
-    @overload
+    @overload  # 1732
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, HexAddress]: ...
-    @overload
+    @overload  # 1733
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, BoolTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, bool]: ...
-    @overload
+    @overload  # 1734
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, bytes]: ...
-    @overload
+    @overload  # 1735
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, StringTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, str]: ...
-    @overload
+    @overload  # 1736
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, IntegerTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, int]: ...
-    @overload
+    @overload  # 1737
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, AddressArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, Tuple[HexAddress, ...]]: ...
-    @overload
+    @overload  # 1738
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, BoolArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, Tuple[bool, ...]]: ...
-    @overload
+    @overload  # 1739
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, BytesArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, Tuple[bytes, ...]]: ...
-    @overload
+    @overload  # 1740
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, IntArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, Tuple[int, ...]]: ...
-    @overload
+    @overload  # 1741
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, StringArrayTypeStr],
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Any, Any, Tuple[str, ...]]: ...
-    @overload
+    @overload  # 1742
     def decode(
         self,
         types: Tuple[TypeStr, TypeStr, TypeStr],

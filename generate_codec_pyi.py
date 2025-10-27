@@ -50,7 +50,6 @@ from faster_eth_abi.typing import (
     BytesTypeStr,
     IntegerTypeStr,
     IntArrayTypeStr,
-    IntTypeStr,
     StringArrayTypeStr,
     StringTypeStr,
     TupleAddressAddressTypeStr,
@@ -62,7 +61,6 @@ from faster_eth_abi.typing import (
     TupleIntIntTypeStr,
     TupleStrIntTypeStr,
     TupleStrStrTypeStr,
-    UintTypeStr,
 )
 
 # TODO TupleVarStringTypeStr = Union[]
