@@ -35,6 +35,8 @@ from typing_extensions import (
 )
 
 from faster_eth_abi._encoding import (
+    encode_boolean,
+    encode_boolean_packed,
     encode_elements,
     encode_elements_dynamic,
     encode_fixed,
@@ -123,7 +125,9 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(
+            getattr(e, "is_dynamic", False) for e in self.encoders
+        )
         self.is_dynamic = any(self._is_dynamic)
 
         validators = []
@@ -134,7 +138,7 @@ class TupleEncoder(BaseEncoder):
                 validators.append(encoder)
             else:
                 validators.append(validator)
-        
+
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
         if type(self).encode is TupleEncoder.encode:
@@ -148,7 +152,7 @@ class TupleEncoder(BaseEncoder):
                 if not self.is_dynamic
                 else encode_tuple
             )
-                
+
             self.encode = MethodType(encode_func, self)
 
     def validate(self) -> None:
@@ -226,6 +230,8 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     value_bit_size = 8
     is_big_endian = True
 
+    __call__ = encode = classmethod(encode_boolean)
+
     @classmethod
     def validate_value(cls, value: Any) -> None:
         if not is_boolean(value):
@@ -233,6 +239,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
 
     @classmethod
     def encode_fn(cls, value: bool) -> bytes:
+        # This is unused but we keep it to match the eth-abi interface
         if value is True:
             return b"\x01"
         elif value is False:
@@ -247,6 +254,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
 
 class PackedBooleanEncoder(BooleanEncoder):
     data_byte_size = 1
+    __call__ = encode = classmethod(encode_boolean_packed)
 
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
