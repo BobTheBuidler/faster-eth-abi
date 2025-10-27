@@ -12,6 +12,7 @@ from typing import (
     Final,
     Generic,
     Tuple,
+    TypeVar,
     Union,
     final,
 )
@@ -60,6 +61,8 @@ from faster_eth_abi.utils.numeric import (
     ceil32,
 )
 
+TByteStr = TypeVar("TByteStr", bytes, str)
+
 
 class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
     """
@@ -98,7 +101,7 @@ class HeadTailDecoder(BaseDecoder[T]):
             "HeadTailDecoder[T]",
             "SizedArrayDecoder[T]",
             "DynamicArrayDecoder[T]",
-            "ByteStringDecoder",
+            "ByteStringDecoder[T]",
         ],
         **kwargs: Any,
     ) -> None:
@@ -499,7 +502,7 @@ class SignedFixedDecoder(BaseFixedDecoder):
 #
 # String and Bytes
 #
-class ByteStringDecoder(SingleDecoder[bytes]):
+class ByteStringDecoder(SingleDecoder[TByteStr]):
     is_dynamic = True
 
     @staticmethod
