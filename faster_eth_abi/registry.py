@@ -188,6 +188,10 @@ class Predicate(Generic[T]):
 
     _string: Optional[str]
 
+    def __init__(self) -> None:
+        self._string = None
+        self.__hash = None
+
     def __call__(self, arg: TypeStr) -> None:
         raise NotImplementedError("Must implement `__call__`")
 
@@ -221,8 +225,8 @@ class Equals(Predicate[str]):
     __slots__ = ("value",)
 
     def __init__(self, value: str) -> None:
+        super().__init__()
         self.value: Final = value
-        self._string = None
 
     def __call__(self, other: TypeStr) -> bool:
         return self.value == other
@@ -248,9 +252,9 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
     __slots__ = ("base", "with_sub")
 
     def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None):
+        super().__init__()
         self.base: Final = base
         self.with_sub: Final = with_sub
-        self._string = None
 
     def __call__(self, type_str: TypeStr) -> bool:
         try:
