@@ -14,6 +14,7 @@ from typing import (
     Type,
     TypeVar,
     Union,
+    final,
 )
 
 from eth_typing import (
@@ -177,7 +178,7 @@ class PredicateMapping(Copyable, Generic[T]):
         return cpy
 
 
-class Predicate:
+class Predicate(Generic[T]):
     """
     Represents a predicate function to be used for type matching in
     ``ABIRegistry``.
@@ -185,7 +186,7 @@ class Predicate:
 
     __slots__ = ("__hash",)
 
-    def __call__(self, *args, **kwargs):  # pragma: no cover
+    def __call__(self, arg: TypeStr) -> None:
         raise NotImplementedError("Must implement `__call__`")
 
     def __str__(self) -> str:
@@ -194,7 +195,7 @@ class Predicate:
     def __repr__(self) -> str:
         return f"<{type(self).__name__} {self}>"
 
-    def __iter__(self) -> Iterator[Any]:
+    def __iter__(self) -> Iterator[T]:
         for attr in self.__slots__:
             if attr != "__hash":
                 yield getattr(self, attr)
@@ -205,28 +206,30 @@ class Predicate:
             self.__hash = hashval = hash(tuple(self))
         return hashval
 
-    def __eq__(self, other: Any) -> bool:
+    def __eq__(self, other: "Predicate") -> bool:
         return type(self) is type(other) and tuple(self) == tuple(other)
 
 
-class Equals(Predicate):
+@final
+class Equals(Predicate[str]):
     """
     A predicate that matches any input equal to `value`.
     """
 
     __slots__ = ("value",)
 
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, value: str) -> None:
+        self.value: Final = value
 
-    def __call__(self, other: Any) -> bool:
+    def __call__(self, other: TypeStr) -> bool:
         return self.value == other
 
     def __str__(self) -> str:
         return f"(== {self.value!r})"
 
 
-class BaseEquals(Predicate):
+@final
+class BaseEquals(Predicate[Union[str, bool, None]]):
     """
     A predicate that matches a basic type string with a base component equal to
     `value` and no array component.  If `with_sub` is `True`, the type string
@@ -237,9 +240,10 @@ class BaseEquals(Predicate):
 
     __slots__ = ("base", "with_sub")
 
-    def __init__(self, base, *, with_sub=None):
-        self.base = base
-        self.with_sub = with_sub
+    def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None):
+        self.base: Final = base
+        self.with_sub: Final = with_sub
+        self.__string: Optional[str] = None
 
     def __call__(self, type_str: TypeStr) -> bool:
         try:
@@ -264,15 +268,16 @@ class BaseEquals(Predicate):
         return False
 
     def __str__(self) -> str:
-        return (
-            f"(base == {self.base!r}"
-            + (
-                ""
-                if self.with_sub is None
-                else (" and sub is not None" if self.with_sub else " and sub is None")
-            )
-            + ")"
-        )
+        string = self.__string
+        if string is None:
+            if self.with_sub is None:
+                string = f"(base == {self.base!r})"
+            if self.with_sub:
+                string = f"(base == {self.base!r} and sub is not None)"
+            else:
+                string = f"(base == {self.base!r} and sub is None)"
+            self.__string = string
+        return string
 
 
 def has_arrlist(type_str: TypeStr) -> bool:
