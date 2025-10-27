@@ -585,12 +585,12 @@ class ABIRegistry(Copyable, BaseRegistry):
         cpy._encoder_cache = copy(self._encoder_cache)
         cpy._decoder_cache = {
             True: copy(self._decoder_cache[True]),
-            False: copy(self._decoder_cache[False),
+            False: copy(self._decoder_cache[False]),
         }
         cpy._tuple_encoder_cache = copy(self._tuple_encoder_cache)
         cpy._tuple_decoder_cache = {
             True: copy(self._tuple_decoder_cache[True]),
-            False: copy(self._tuple_decoder_cache[False),
+            False: copy(self._tuple_decoder_cache[False]),
         }
 
         return cpy
