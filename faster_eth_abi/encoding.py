@@ -230,7 +230,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
     value_bit_size = 8
     is_big_endian = True
 
-    encode = classmethod(encode_boolean)
+    __call__ = encode = classmethod(encode_boolean)
 
     @classmethod
     def validate_value(cls, value: Any) -> None:
