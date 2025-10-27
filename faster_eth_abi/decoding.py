@@ -101,7 +101,7 @@ class HeadTailDecoder(BaseDecoder[T]):
             "HeadTailDecoder[T]",
             "SizedArrayDecoder[T]",
             "DynamicArrayDecoder[T]",
-            "ByteStringDecoder[T]",
+            "ByteStringDecoder[Union[bytes, str]]",
         ],
         **kwargs: Any,
     ) -> None:
