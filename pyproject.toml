@@ -3,7 +3,7 @@ requires = [
 	"setuptools",
 	"wheel",
 	"mypy[mypyc]==1.14.1; python_version == '3.8'",
-	"mypy[mypyc]==1.18.2, python_version != '3.8'",
+	"mypy[mypyc]==1.18.2; python_version != '3.8'",
 	"mypy_extensions",
 	"cchecksum==0.3.3",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
