@@ -61,13 +61,6 @@ from faster_eth_abi.utils.numeric import (
     ceil32,
 )
 
-DynamicDecoder = Union[
-    "HeadTailDecoder[T]",
-    "SizedArrayDecoder[T]",
-    "DynamicArrayDecoder[T]",
-    "ByteStringDecoder",
-]
-
 
 class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
     """
@@ -100,13 +93,25 @@ class HeadTailDecoder(BaseDecoder[T]):
 
     is_dynamic = True
 
-    tail_decoder: Optional[DynamicDecoder[T]] = None
+    def __init__(
+        self,
+        *args: Any,
+        tail_decoder: Optional[
+            Union[
+                "HeadTailDecoder[T]",
+                "SizedArrayDecoder[T]",
+                "DynamicArrayDecoder[T]",
+                "ByteStringDecoder",
+            ],
+        ] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(*args, **kwargs)
 
-    def validate(self) -> None:
-        super().validate()
-
-        if self.tail_decoder is None:
+        if tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
+
+        self.tail_decoder: Final = tail_decoder
 
     def decode(self, stream: ContextFramesBytesIO) -> T:
         return decode_head_tail(self, stream)
