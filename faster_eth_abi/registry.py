@@ -231,8 +231,7 @@ class Equals(Predicate[str]):
         # NOTE should this just be done at init time? is it always cal;ed?
         string = self._string
         if string is None:
-            string = f"(== {self.value!r})"
-            self._string = string
+            self._string = string = f"(== {self.value!r})"
         return string
 
 
