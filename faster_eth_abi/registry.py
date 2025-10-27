@@ -199,7 +199,7 @@ class Predicate(Generic[T]):
 
     def __iter__(self) -> Iterator[T]:
         for attr in self.__slots__:
-            if attr != "__hash":
+            if attr not in ("_string", "__hash"):
                 yield getattr(self, attr)
 
     def __hash__(self) -> int:
