@@ -19,7 +19,7 @@ TupleTypeStr = Union[
     "TupleBoolIntTypeStr",
     "TupleBytesIntTypeStr",
     "TupleIntIntTypeStr",
-    "TupleStringIntTypeStr",
+    "TupleStrIntTypeStr",
 ]
 
 
