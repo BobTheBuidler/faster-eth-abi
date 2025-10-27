@@ -196,7 +196,8 @@ class Predicate:
 
     def __iter__(self) -> Iterator[Any]:
         for attr in self.__slots__:
-            yield getattr(self, attr)
+            if attr != "__hash":
+                yield getattr(self, attr)
 
     def __hash__(self) -> int:
         hashval = self.__hash
