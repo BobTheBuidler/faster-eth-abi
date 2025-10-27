@@ -7,6 +7,7 @@ from typing import (
     Optional,
     Sequence,
     Tuple,
+    Type,
     TypeVar,
 )
 
@@ -21,6 +22,7 @@ from faster_eth_abi.exceptions import (
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
+        BooleanEncoder,
         TupleEncoder,
     )
 
@@ -80,7 +82,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
     validate_tuple(self, values)
     encoders = self.encoders
     tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
-    
+
     total_offset = 0
     head_length = 32 * len(encoders)
     head_chunks = [encode_uint_256(head_length)]
@@ -165,6 +167,7 @@ def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> by
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(10))
 
+
 encode_tuple_no_dynamic_funcs: Dict[
     int, Callable[["TupleEncoder", Sequence[Any]], bytes]
 ] = {
@@ -181,6 +184,7 @@ encode_tuple_no_dynamic_funcs: Dict[
 }
 
 
+# FixedSizeEncoder
 def encode_fixed(
     value: Any,
     encode_fn: Callable[[Any], bytes],
@@ -192,6 +196,15 @@ def encode_fixed(
         return base_encoded_value.rjust(data_byte_size, b"\x00")
     else:
         return base_encoded_value.ljust(data_byte_size, b"\x00")
+
+
+# BooleanEncoder
+def encode_boolean(cls: Type["BooleanEncoder"], value: Any) -> bytes:
+    if value is False:
+        return b"\x00".rjust(32, b"\x00")
+    elif value is True:
+        return b"\x01".rjust(32, b"\x00")
+    cls.invalidate_value(value)
 
 
 def encode_signed(
