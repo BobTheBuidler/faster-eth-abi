@@ -36,6 +36,7 @@ from typing_extensions import (
 
 from faster_eth_abi._encoding import (
     encode_boolean,
+    encode_boolean_packed,
     encode_elements,
     encode_elements_dynamic,
     encode_fixed,
@@ -253,6 +254,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
 
 class PackedBooleanEncoder(BooleanEncoder):
     data_byte_size = 1
+    __call__ = encode = classmethod(encode_boolean_packed)
 
 
 class NumberEncoder(Fixed32ByteSizeEncoder):

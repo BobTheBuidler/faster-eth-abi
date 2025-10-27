@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseEncoder,
         BooleanEncoder,
+        PackedBooleanEncoder,
         TupleEncoder,
     )
 
@@ -204,6 +205,15 @@ def encode_boolean(cls: Type["BooleanEncoder"], value: Any) -> bytes:
         return b"\x00".rjust(32, b"\x00")
     elif value is True:
         return b"\x01".rjust(32, b"\x00")
+    cls.invalidate_value(value)
+
+
+# PackedBooleanEncoder
+def encode_boolean_packed(cls: Type["PackedBooleanEncoder"], value: Any) -> bytes:
+    if value is False:
+        return b"\x00"
+    elif value is True:
+        return b"\x01"
     cls.invalidate_value(value)
 
 
