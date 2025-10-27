@@ -9,6 +9,14 @@ T = TypeVar("T")
 
 IntegerTypeStr = Union["IntTypeStr", "UintTypeStr"]
 
+AddressTypeStr = Literal["address"]
+BoolTypeStr = Literal["bool"]
+StringTypeStr = Literal["string"]
+
+AddressArrayTypeStr = Literal["address[]"]
+StringArrayTypeStr = Literal["string[]"]
+BoolArrayTypeStr = Literal["bool[]"]
+
 ArrayTypeStr = Union[
     "AddressArrayTypeStr",
     "BoolArrayTypeStr",
@@ -96,19 +104,41 @@ UintTypeStr = Literal[
     "uint256",
 ]
 
-BoolTypeStr = Literal["bool"]
-
 BytesTypeStr = Literal[
     "bytes",
-    # do we need more? probs
+    "bytes1",
+    "bytes2",
+    "bytes3",
+    "bytes4",
+    "bytes5",
+    "bytes6",
+    "bytes7",
+    "bytes8",
+    "bytes9",
+    "bytes10",
+    "bytes11",
+    "bytes12",
+    "bytes13",
+    "bytes14",
+    "bytes15",
+    "bytes16",
+    "bytes17",
+    "bytes18",
+    "bytes19",
+    "bytes20",
+    "bytes21",
+    "bytes22",
+    "bytes23",
+    "bytes24",
+    "bytes25",
+    "bytes26",
+    "bytes27",
+    "bytes28",
+    "bytes29",
+    "bytes30",
+    "bytes31",
+    "bytes32",
 ]
-
-StringTypeStr = Literal["string"]
-
-AddressArrayTypeStr = Literal["address[]"]
-BytesArrayTypeStr = Literal["bytes[]"]
-StringArrayTypeStr = Literal["string[]"]
-BoolArrayTypeStr = Literal["bool[]"]
 
 IntArrayTypeStr = Literal[
     "int8[]",
@@ -175,6 +205,42 @@ IntArrayTypeStr = Literal[
     "uint240[]",
     "uint248[]",
     "uint256[]",
+]
+
+BytesArrayTypeStr = Literal[
+    "bytes[]",
+    "bytes1[]",
+    "bytes2[]",
+    "bytes3[]",
+    "bytes4[]",
+    "bytes5[]",
+    "bytes6[]",
+    "bytes7[]",
+    "bytes8[]",
+    "bytes9[]",
+    "bytes10[]",
+    "bytes11[]",
+    "bytes12[]",
+    "bytes13[]",
+    "bytes14[]",
+    "bytes15[]",
+    "bytes16[]",
+    "bytes17[]",
+    "bytes18[]",
+    "bytes19[]",
+    "bytes20[]",
+    "bytes21[]",
+    "bytes22[]",
+    "bytes23[]",
+    "bytes24[]",
+    "bytes25[]",
+    "bytes26[]",
+    "bytes27[]",
+    "bytes28[]",
+    "bytes29[]",
+    "bytes30[]",
+    "bytes31[]",
+    "bytes32[]",
 ]
 
 # New tuple type strings
