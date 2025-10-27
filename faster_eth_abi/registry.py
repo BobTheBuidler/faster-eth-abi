@@ -11,6 +11,7 @@ from typing import (
     Generic,
     Iterator,
     Optional,
+    Tuple,
     Type,
     TypeVar,
     Union,
@@ -33,6 +34,12 @@ from . import (
 )
 from .base import (
     BaseCoder,
+)
+from .decoding import (
+    TupleDecoder,
+)
+from .encoding import (
+    TupleEncoder,
 )
 from .exceptions import (
     MultipleEntriesFound,
@@ -300,8 +307,8 @@ def _clear_encoder_cache(
 ) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
     def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> T:
-        self.get_encoder.cache_clear()
-        self.get_tuple_encoder.cache_clear()
+        self._encoder_cache.clear()
+        self._tuple_encoder_cache.clear()
         return old_method(self, *args, **kwargs)
 
     return new_method
@@ -312,8 +319,8 @@ def _clear_decoder_cache(
 ) -> Callable[Concatenate["ABIRegistry", P], T]:
     @functools.wraps(old_method)
     def new_method(self: "ABIRegistry", *args: P.args, **kwargs: P.kwargs) -> T:
-        self.get_decoder.cache_clear()
-        self.get_tuple_decoder.cache_clear()
+        self._decoder_cache.clear()
+        self._tuple_decoder_cache.clear()
         return old_method(self, *args, **kwargs)
 
     return new_method
@@ -373,14 +380,12 @@ class ABIRegistry(Copyable, BaseRegistry):
     def __init__(self):
         self._encoders: PredicateMapping[Encoder] = PredicateMapping("encoder registry")
         self._decoders: PredicateMapping[Decoder] = PredicateMapping("decoder registry")
-        self.get_encoder = functools.lru_cache(maxsize=None)(self._get_encoder_uncached)
-        self.get_decoder = functools.lru_cache(maxsize=None)(self._get_decoder_uncached)
-        self.get_tuple_encoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_encoder_uncached
-        )
-        self.get_tuple_decoder = functools.lru_cache(maxsize=None)(
-            self._get_tuple_decoder_uncached
-        )
+        self._encoder_cache: Dict[TypeStr, Encoder] = {}
+        self._decoder_cache: Dict[bool, Dict[TypeStr, Decoder]] = {True: {}, False: {}}
+        self._tuple_encoder_cache: Dict[Tuple[TypeStr, ...], TupleEncoder] = {}
+        self._tuple_decoder_cache: Dict[
+            bool, Dict[Tuple[TypeStr, ...], TupleDecoder]
+        ] = {True: {}, False: {}}
 
     def _get_registration(self, mapping, type_str):
         coder = super()._get_registration(mapping, type_str)
@@ -488,15 +493,23 @@ class ABIRegistry(Copyable, BaseRegistry):
         self.unregister_encoder(label)
         self.unregister_decoder(label)
 
-    def _get_encoder_uncached(self, type_str: TypeStr) -> Encoder:
-        return self._get_registration(self._encoders, type_str)
+    def get_encoder(self, type_str: TypeStr) -> Encoder:
+        encoder = self._encoder_cache.get(type_str)
+        if encoder is None:
+            encoder = self._get_registration(self._encoders, type_str)
+            self._encoder_cache[type_str] = encoder
+        return encoder
 
-    def _get_tuple_encoder_uncached(
+    def get_tuple_encoder(
         self,
         *type_strs: TypeStr,
-    ) -> encoding.TupleEncoder:
-        encoders = tuple(map(self.get_encoder, type_strs))
-        return encoding.TupleEncoder(encoders=encoders)
+    ) -> TupleEncoder:
+        encoder = self._tuple_encoder_cache.get(type_strs)
+        if encoder is None:
+            encoders = tuple(map(self.get_encoder, type_strs))
+            encoder = TupleEncoder(encoders=encoders)
+            self._tuple_encoder_cache[type_strs] = encoder
+        return encoder
 
     def has_encoder(self, type_str: TypeStr) -> bool:
         """
@@ -514,27 +527,45 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         return True
 
-    def _get_decoder_uncached(self, type_str: TypeStr, strict: bool = True) -> Decoder:
-        decoder = self._get_registration(self._decoders, type_str)
+    def get_decoder(self, type_str: TypeStr, strict: bool = True) -> Decoder:
+        strictness_cache = self._decoder_cache.get(strict)
+        if strictness_cache is None:
+            raise TypeError(f"must be bool, not {strict}")
 
-        if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
-            # Set a transient flag each time a call is made to ``get_decoder()``.
-            # Only dynamic decoders should be allowed these looser constraints. All
-            # other decoders should keep the default value of ``True``.
-            decoder.strict = strict
+        decoder = strictness_cache.get(type_str)
+        if decoder is None:
+            decoder = self._get_registration(self._decoders, type_str)
+
+            if hasattr(decoder, "is_dynamic") and decoder.is_dynamic:
+                # Set a transient flag each time a call is made to ``get_decoder()``.
+                # Only dynamic decoders should be allowed these looser constraints. All
+                # other decoders should keep the default value of ``True``.
+                decoder.strict = strict
+
+            self._decoder_cache[strict][type_str] = decoder
 
         return decoder
 
-    def _get_tuple_decoder_uncached(
+    def get_tuple_decoder(
         self,
         *type_strs: TypeStr,
         strict: bool = True,
-    ) -> decoding.TupleDecoder:
-        decoders = tuple(
-            self.get_decoder(type_str, strict)  # type: ignore [misc]
-            for type_str in type_strs
-        )
-        return decoding.TupleDecoder(decoders=decoders)
+    ) -> TupleDecoder:
+        strictness_cache = self._tuple_decoder_cache.get(strict)
+        if strictness_cache is None:
+            raise TypeError(f"must be bool, not {strict}")
+
+        decoder = strictness_cache.get(type_strs)
+        if decoder is None:
+            decoders = tuple(
+                self.get_decoder(type_str, strict)  # type: ignore [misc]
+                for type_str in type_strs
+            )
+            decoder = TupleDecoder(decoders=decoders)
+
+            self._tuple_decoder_cache[strict][type_strs] = decoder
+
+        return decoder
 
     def copy(self) -> Self:
         """
@@ -549,6 +580,10 @@ class ABIRegistry(Copyable, BaseRegistry):
 
         cpy._encoders = copy(self._encoders)
         cpy._decoders = copy(self._decoders)
+        cpy._encoder_cache = copy(self._encoder_cache)
+        cpy._decoder_cache = copy(self._decoder_cache)
+        cpy._tuple_encoder_cache = copy(self._tuple_encoder_cache)
+        cpy._tuple_decoder_cache = copy(self._tuple_decoder_cache)
 
         return cpy
 
@@ -623,8 +658,8 @@ registry.register(
 )
 registry.register(
     is_base_tuple,
-    encoding.TupleEncoder,
-    decoding.TupleDecoder,
+    TupleEncoder,
+    TupleDecoder,
     label="is_base_tuple",
 )
 
@@ -687,6 +722,6 @@ registry_packed.register_encoder(
 )
 registry_packed.register_encoder(
     is_base_tuple,
-    encoding.TupleEncoder,
+    TupleEncoder,
     label="is_base_tuple",
 )
