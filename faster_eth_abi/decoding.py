@@ -11,7 +11,6 @@ from typing import (
     Callable,
     Final,
     Generic,
-    Optional,
     Tuple,
     Union,
     final,
@@ -95,18 +94,15 @@ class HeadTailDecoder(BaseDecoder[T]):
 
     def __init__(
         self,
-        *args: Any,
-        tail_decoder: Optional[
-            Union[
-                "HeadTailDecoder[T]",
-                "SizedArrayDecoder[T]",
-                "DynamicArrayDecoder[T]",
-                "ByteStringDecoder",
-            ],
-        ] = None,
+        tail_decoder: Union[
+            "HeadTailDecoder[T]",
+            "SizedArrayDecoder[T]",
+            "DynamicArrayDecoder[T]",
+            "ByteStringDecoder",
+        ],
         **kwargs: Any,
     ) -> None:
-        super().__init__(*args, **kwargs)
+        super().__init__(**kwargs)
 
         if tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
@@ -271,8 +267,8 @@ class FixedByteSizeDecoder(SingleDecoder[T]):
     data_byte_size: int = None
     is_big_endian: bool = None
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
         self.read_data_from_stream = MethodType(
             read_fixed_byte_size_data_from_stream, self
@@ -367,8 +363,8 @@ decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     is_big_endian = True
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
 
         # Only assign validate_padding_bytes if not overridden in subclass
         if (
