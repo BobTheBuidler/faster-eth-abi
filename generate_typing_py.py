@@ -15,6 +15,14 @@ T = TypeVar("T")
 
 IntegerTypeStr = Union["IntTypeStr", "UintTypeStr"]
 
+AddressTypeStr = Literal["address"]
+BoolTypeStr = Literal["bool"]
+StringTypeStr = Literal["string"]
+
+AddressArrayTypeStr = Literal["address[]"]
+StringArrayTypeStr = Literal["string[]"]
+BoolArrayTypeStr = Literal["bool[]"]
+
 ArrayTypeStr = Union[
     "AddressArrayTypeStr",
     "BoolArrayTypeStr",
@@ -36,6 +44,8 @@ TupleTypeStr = Union[
 INT_SUFFIXES = range(8, 257, 8)
 INT_TYPES = [f'"int{i}"' for i in INT_SUFFIXES]
 UINT_TYPES = [f'"uint{i}"' for i in INT_SUFFIXES]
+ALL_INT_TYPES = INT_TYPES + UINT_TYPES
+BYTES_TYPES = ["bytes"] + [f"bytes{i}" for i in range(1, 33)]
 
 
 def gen_int_types(prefix: str, suffix: str, int_types: list[str]) -> list[str]:
@@ -46,23 +56,18 @@ def write_typing_py():
     int_types = ",\n    ".join(INT_TYPES)
     uint_types = ",\n    ".join(UINT_TYPES)
 
-    address_int_types = ",\n    ".join(
-        gen_int_types("(address,", ")", INT_TYPES + UINT_TYPES)
-    )
-    bool_int_types = ",\n    ".join(
-        gen_int_types("(bool,", ")", INT_TYPES + UINT_TYPES)
-    )
-    bytes_int_types = ",\n    ".join(
-        gen_int_types("(bytes,", ")", INT_TYPES + UINT_TYPES)
-    )
-    string_int_types = ",\n    ".join(
-        gen_int_types("(string,", ")", INT_TYPES + UINT_TYPES)
-    )
+    address_int_types = ",\n    ".join(gen_int_types("(address,", ")", ALL_INT_TYPES))
+    bool_int_types = ",\n    ".join(gen_int_types("(bool,", ")", ALL_INT_TYPES))
+    bytes_int_types = ",\n    ".join(gen_int_types("(bytes,", ")", ALL_INT_TYPES))
+    string_int_types = ",\n    ".join(gen_int_types("(string,", ")", ALL_INT_TYPES))
 
-    int_array_types = ",\n    ".join(f'{t[:-1]}[]"' for t in INT_TYPES + UINT_TYPES)
+    bytes_types = ",\n    ".join(f'"{t}"' for t in BYTES_TYPES)
+    bytes_array_types = ",\n    ".join(f'"{t}[]"' for t in BYTES_TYPES)
+
+    int_array_types = ",\n    ".join(f'{t[:-1]}[]"' for t in ALL_INT_TYPES)
     int_int_types = ",\n    ".join(
         f'"({a[1:-1]},{b[1:-1]})"'
-        for a, b in itertools.product(INT_TYPES + UINT_TYPES, repeat=2)
+        for a, b in itertools.product(ALL_INT_TYPES, repeat=2)
     )
 
     content = HEADER
@@ -75,22 +80,16 @@ UintTypeStr = Literal[
     {uint_types},
 ]
 
-BoolTypeStr = Literal["bool"]
-
 BytesTypeStr = Literal[
-    "bytes",
-    # do we need more? probs
+    {bytes_types},
 ]
-
-StringTypeStr = Literal["string"]
-
-AddressArrayTypeStr = Literal["address[]"]
-BytesArrayTypeStr = Literal["bytes[]"]
-StringArrayTypeStr = Literal["string[]"]
-BoolArrayTypeStr = Literal["bool[]"]
 
 IntArrayTypeStr = Literal[
     {int_array_types},
+]
+
+BytesArrayTypeStr = Literal[
+    {bytes_array_types},
 ]
 
 # New tuple type strings
