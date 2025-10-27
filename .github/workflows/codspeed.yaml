@@ -39,7 +39,7 @@ jobs:
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
           cache: pip
           cache-dependency-path: |
             setup.py
