@@ -228,7 +228,7 @@ class Equals(Predicate[str]):
         return self.value == other
 
     def __str__(self) -> str:
-        # NOTE should this just be done at init time? is it always cal;ed?
+        # NOTE should this just be done at init time? is it always called?
         string = self._string
         if string is None:
             self._string = string = f"(== {self.value!r})"
@@ -277,12 +277,12 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
         return False
 
     def __str__(self) -> str:
-        # NOTE should this just be done at init time? is it always cal;ed?
+        # NOTE should this just be done at init time? is it always called?
         string = self._string
         if string is None:
             if self.with_sub is None:
                 string = f"(base == {self.base!r})"
-            if self.with_sub:
+            elif self.with_sub:
                 string = f"(base == {self.base!r} and sub is not None)"
             else:
                 string = f"(base == {self.base!r} and sub is None)"
