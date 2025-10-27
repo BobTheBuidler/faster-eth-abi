@@ -70,9 +70,12 @@ from faster_eth_abi.typing import (
 class ABIDecoder:
 """
 
+index = 0
+
 
 def generate_overloads(length: int) -> Iterator[str]:
     # All combinations of TYPES for the given length
+    global index
     if length == 1 or length == 3:
         types = BASIC_TYPES | DYN_ARRAY_TYPES
     elif length == 2:
@@ -82,7 +85,8 @@ def generate_overloads(length: int) -> Iterator[str]:
     # make sure this is always last
     types["TypeStr"] = types.pop("TypeStr")
     for combo in itertools.product(types, repeat=length):
-        yield "@overload"
+        index += 1
+        yield f"@overload  # {index}"
         yield "def decode("
         yield "    self,"
         yield f"    types: Tuple[{', '.join(combo)}],"

@@ -12,20 +12,42 @@ from typing import (
 
 IntegerTypeStr = Union["IntTypeStr", "UintTypeStr"]
 
+AddressTypeStr = Literal["address"]
+BoolTypeStr = Literal["bool"]
+StringTypeStr = Literal["string"]
+
+AddressArrayTypeStr = Literal["address[]"]
+StringArrayTypeStr = Literal["string[]"]
+BoolArrayTypeStr = Literal["bool[]"]
+
+BytesTypeStr = Literal[
+    "bytes",
+    # do we need more? probs
+]
+
+BytesArrayTypeStr = Literal[
+    "bytes[]"
+    # do we need more? probs
+]
+
 ArrayTypeStr = Union[
-    "AddressArrayTypeStr",
-    "BoolArrayTypeStr",
-    "BytesArrayTypeStr",
+    AddressArrayTypeStr,
+    BoolArrayTypeStr,
+    BytesArrayTypeStr,
     "IntArrayTypeStr",
-    "StringArrayTypeStr",
+    StringArrayTypeStr,
 ]
 
 TupleTypeStr = Union[
+    "TupleAddressAddressTypeStr",
     "TupleAddressIntTypeStr",
+    "TupleBoolBoolTypeStr",
     "TupleBoolIntTypeStr",
+    "TupleBytesBytesTypeStr",
     "TupleBytesIntTypeStr",
     "TupleIntIntTypeStr",
     "TupleStrIntTypeStr",
+    "TupleStrStrTypeStr",
 ]
 
 """
@@ -72,20 +94,6 @@ UintTypeStr = Literal[
     {uint_types},
 ]
 
-BoolTypeStr = Literal["bool"]
-
-BytesTypeStr = Literal[
-    "bytes",
-    # do we need more? probs
-]
-
-StringTypeStr = Literal["string"]
-
-AddressArrayTypeStr = Literal["address[]"]
-BytesArrayTypeStr = Literal["bytes[]"]
-StringArrayTypeStr = Literal["string[]"]
-BoolArrayTypeStr = Literal["bool[]"]
-
 IntArrayTypeStr = Literal[
     {int_array_types},
 ]
@@ -95,7 +103,7 @@ IntArrayTypeStr = Literal[
 TupleAddressAddressTypeStr = Literal["(address,address)"]
 TupleBoolBoolTypeStr = Literal["(bool,bool)"]
 TupleBytesBytesTypeStr = Literal["(bytes,bytes)"]
-TupleStringStringTypeStr = Literal["(string,string)"]
+TupleStrStrTypeStr = Literal["(string,string)"]
 
 TupleAddressIntTypeStr = Literal[
     {address_int_types},
