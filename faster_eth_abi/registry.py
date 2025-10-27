@@ -183,7 +183,7 @@ class Predicate:
     ``ABIRegistry``.
     """
 
-    __slots__ = ()
+    __slots__ = ("__hash",)
 
     def __call__(self, *args, **kwargs):  # pragma: no cover
         raise NotImplementedError("Must implement `__call__`")
@@ -199,7 +199,10 @@ class Predicate:
             yield getattr(self, attr)
 
     def __hash__(self) -> int:
-        return hash(tuple(self))
+        hashval = self.__hash
+        if hashval is None:
+            self.__hash = hashval = hash(tuple(self))
+        return hashval
 
     def __eq__(self, other: Any) -> bool:
         return type(self) is type(other) and tuple(self) == tuple(other)
