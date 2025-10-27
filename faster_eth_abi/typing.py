@@ -15,11 +15,15 @@ ArrayTypeStr = Union[
 ]
 
 TupleTypeStr = Union[
+    "TupleAddressAddressTypeStr",
     "TupleAddressIntTypeStr",
+    "TupleBoolBoolTypeStr",
     "TupleBoolIntTypeStr",
+    "TupleBytesBytesTypeStr",
     "TupleBytesIntTypeStr",
     "TupleIntIntTypeStr",
     "TupleStrIntTypeStr",
+    "TupleStringStringTypeStr",
 ]
 
 
@@ -175,6 +179,12 @@ IntArrayTypeStr = Literal[
 ]
 
 # New tuple type strings
+
+TupleAddressAddressTypeStr = Literal["(address,address)"]
+TupleBoolBoolTypeStr = Literal["(bool,bool)"]
+TupleBytesBytesTypeStr = Literal["(bytes,bytes)"]
+TupleStringStringTypeStr = Literal["(string,string)"]
+
 TupleAddressIntTypeStr = Literal[
     "(address,int8)",
     "(address,int16)",

@@ -91,6 +91,12 @@ IntArrayTypeStr = Literal[
 ]
 
 # New tuple type strings
+
+TupleAddressAddressTypeStr = Literal["(address,address)"]
+TupleBoolBoolTypeStr = Literal["(bool,bool)"]
+TupleBytesBytesTypeStr = Literal["(bytes,bytes)"]
+TupleStringStringTypeStr = Literal["(string,string)"]
+
 TupleAddressIntTypeStr = Literal[
     {address_int_types},
 ]
