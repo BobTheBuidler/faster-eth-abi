@@ -1,5 +1,5 @@
 """Shared list of all ABI type strings used in benchmarks"""
-
+import itertools
 
 TYPE_STRINGS = [
     "uint256",
@@ -25,3 +25,19 @@ TYPE_STRINGS = [
     "fixed128x18",
     "ufixed128x18",
 ]
+
+
+TUPLE_TYPE_STRINGS = list(
+    itertools.chain(
+        TYPE_STRINGS,
+        list(itertools.product(TYPE_STRINGS, repeat=2))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=3))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=4))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=5))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=6))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=7))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=8))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=9))[:25],
+        list(itertools.product(TYPE_STRINGS, repeat=10))[:25],
+    )
+)

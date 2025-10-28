@@ -9,6 +9,7 @@ from benchmarks.batch import (
     batch,
 )
 from benchmarks.type_strings import (
+    TUPLE_TYPE_STRINGS,
     TYPE_STRINGS,
 )
 import faster_eth_abi.registry
@@ -38,6 +39,44 @@ def test_ABIRegistry_get_decoder(benchmark: BenchmarkFixture, type_str):
 @pytest.mark.parametrize("type_str", TYPE_STRINGS)
 def test_faster_ABIRegistry_get_decoder(benchmark: BenchmarkFixture, type_str):
     benchmark(batch, ITERATIONS, faster_eth_abi.registry.registry.get_decoder, type_str)
+
+
+@pytest.mark.benchmark(group="RegistryGetTupleEncoder")
+@pytest.mark.parametrize("type_strs", TUPLE_TYPE_STRINGS)
+def test_ABIRegistry_get_tuple_encoder(benchmark: BenchmarkFixture, type_strs):
+    benchmark(
+        batch, ITERATIONS, eth_abi.registry.registry.get_tuple_encoder, *type_strs
+    )
+
+
+@pytest.mark.benchmark(group="RegistryGetTupleEncoder")
+@pytest.mark.parametrize("type_strs", TUPLE_TYPE_STRINGS)
+def test_faster_ABIRegistry_get_tuple_encoder(benchmark: BenchmarkFixture, type_strs):
+    benchmark(
+        batch,
+        ITERATIONS,
+        faster_eth_abi.registry.registry.get_tuple_encoder,
+        *type_strs,
+    )
+
+
+@pytest.mark.benchmark(group="RegistryGetTupleDecoder")
+@pytest.mark.parametrize("type_strs", TUPLE_TYPE_STRINGS)
+def test_ABIRegistry_get_tuple_decoder(benchmark: BenchmarkFixture, type_strs):
+    benchmark(
+        batch, ITERATIONS, eth_abi.registry.registry.get_tuple_decoder, *type_strs
+    )
+
+
+@pytest.mark.benchmark(group="RegistryGetTupleDecoder")
+@pytest.mark.parametrize("type_strs", TUPLE_TYPE_STRINGS)
+def test_faster_ABIRegistry_get_tuple_decoder(benchmark: BenchmarkFixture, type_strs):
+    benchmark(
+        batch,
+        ITERATIONS,
+        faster_eth_abi.registry.registry.get_tuple_decoder,
+        *type_strs,
+    )
 
 
 @pytest.mark.benchmark(group="PredicateMappingFind")
