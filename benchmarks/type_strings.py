@@ -1,6 +1,7 @@
-# Shared list of all ABI type strings used in benchmarks
+"""Shared list of all ABI type strings used in benchmarks"""
 
-type_strings = [
+
+TYPE_STRINGS = [
     "uint256",
     "int8",
     "address",
