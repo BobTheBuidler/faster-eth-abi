@@ -202,9 +202,7 @@ class Predicate(Generic[T]):
         return f"<{type(self).__name__} {self}>"
 
     def __iter__(self) -> Iterator[T]:
-        for attr in self.__slots__:
-            if attr not in ("_string", "__hash"):
-                yield getattr(self, attr)
+        raise NotImplementedError("must be implemented by subclass")
 
     def __hash__(self) -> int:
         hashval = self.__hash
@@ -237,6 +235,9 @@ class Equals(Predicate[str]):
         if string is None:
             self._string = string = f"(== {self.value!r})"
         return string
+
+    def __iter__(self) -> Iterator[str]:
+        yield self.value
 
 
 @final
@@ -292,6 +293,10 @@ class BaseEquals(Predicate[Union[str, bool, None]]):
                 string = f"(base == {self.base!r} and sub is None)"
             self._string = string
         return string
+
+    def __iter__(self) -> Iterator[Union[str, bool, None]]:
+        yield self.base
+        yield self.with_sub
 
 
 def has_arrlist(type_str: TypeStr) -> bool:
