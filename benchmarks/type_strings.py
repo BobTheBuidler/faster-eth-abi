@@ -30,8 +30,12 @@ TYPE_STRINGS = [
 def first_x_of_product(repeat: int, first_x: int):
     product = itertools.product(TYPE_STRINGS, repeat=repeat)
     for i in range(first_x):
-        yield next(product)
-    
+        try:
+            yield next(product)
+        except StopIteration:
+            return
+
+
 TUPLE_TYPE_STRINGS = list(
     itertools.chain(*(first_x_of_product(i, 25) for i in range(1, 11)))
 )
