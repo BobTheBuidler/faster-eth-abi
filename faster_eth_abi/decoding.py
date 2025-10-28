@@ -148,7 +148,7 @@ class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None:
         raise NotImplementedError("didnt call __init__")
 
-    def decode(self, stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+    def decode(self, stream: ContextFramesBytesIO) -> Tuple[T, ...]:
         return decode_tuple(self, stream)
 
     __call__ = decode
@@ -174,7 +174,7 @@ class SingleDecoder(BaseDecoder[T]):
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
-    def decode(self, stream: ContextFramesBytesIO) -> Any:
+    def decode(self, stream: ContextFramesBytesIO) -> T:
         raw_data = self.read_data_from_stream(stream)
         data, padding_bytes = self.split_data_and_padding(raw_data)
         value = self.decoder_fn(data)  # type: ignore [misc]
