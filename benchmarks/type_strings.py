@@ -27,17 +27,11 @@ TYPE_STRINGS = [
 ]
 
 
+def first_x_of_product(repeat: int, first_x: int):
+    product = itertools.product(TYPE_STRINGS, repeat=repeat)
+    for i in range(first_x):
+        yield next(product)
+    
 TUPLE_TYPE_STRINGS = list(
-    itertools.chain(
-        TYPE_STRINGS,
-        list(itertools.product(TYPE_STRINGS, repeat=2))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=3))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=4))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=5))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=6))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=7))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=8))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=9))[:25],
-        list(itertools.product(TYPE_STRINGS, repeat=10))[:25],
-    )
+    itertools.chain(*(first_x_of_product(i, 25) for i in range(1, 11)))
 )
