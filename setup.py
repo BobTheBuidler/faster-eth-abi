@@ -116,7 +116,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "cchecksum>=0.2.6,<0.4",
-        "faster-eth-utils>=2.0.0",
+        "faster-eth-utils==5.3.16",
         "eth-abi>=5.0.1,<6",
         "eth-typing==5.2.1",
         "mypy_extensions",
