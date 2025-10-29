@@ -5,12 +5,18 @@
   ],
   "packageRules": [
     {
-      "matchPaths": ["pyproject.toml"],
-      "matchDepTypes": ["build-system"],
+      "matchFileNames": [
+        "pyproject.toml"
+      ],
+      "matchDepTypes": [
+        "build-system"
+      ],
       "prTitle": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
     },
     {
-      "matchManagers": ["circleci"],
+      "matchManagers": [
+        "circleci"
+      ],
       "enabled": false
     }
   ]
