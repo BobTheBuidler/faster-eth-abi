@@ -19,6 +19,9 @@ from faster_eth_abi.io import (
     BytesIO,
     ContextFramesBytesIO,
 )
+from faster_eth_abi.typing import (
+    T,
+)
 
 if TYPE_CHECKING:
     from .decoding import (
@@ -35,7 +38,7 @@ if TYPE_CHECKING:
 # Helpers
 def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     """
-    This function is a faster version of decode_uint_256 in decoding.py.
+    A faster version of :func:`~decoding.decode_uint_256` in decoding.py.
 
     It recreates the logic from the UnsignedIntegerDecoder, but we can
     skip a lot because we know the value of many vars.
@@ -51,7 +54,7 @@ def get_value_byte_size(decoder: "FixedByteSizeDecoder") -> int:
 
 
 # HeadTailDecoder
-def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> Any:
+def decode_head_tail(self: "HeadTailDecoder[T]", stream: ContextFramesBytesIO) -> T:
     # Decode the offset and move the stream cursor forward 32 bytes
     start_pos = decode_uint_256(stream)
     # Jump ahead to the start of the value
@@ -62,7 +65,7 @@ def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> A
     if tail_decoder is None:
         raise AssertionError("`tail_decoder` is None")
     # Decode the value
-    value = tail_decoder(stream)
+    value: T = tail_decoder(stream)
     # Return the cursor
     stream.pop_frame()
 
@@ -70,7 +73,9 @@ def decode_head_tail(self: "HeadTailDecoder", stream: ContextFramesBytesIO) -> A
 
 
 # TupleDecoder
-def decode_tuple(self: "TupleDecoder", stream: ContextFramesBytesIO) -> Tuple[Any, ...]:
+def decode_tuple(
+    self: "TupleDecoder[T]", stream: ContextFramesBytesIO
+) -> Tuple[T, ...]:
     # NOTE: the original implementation would do this but it's
     # kinda wasteful, so we rebuilt the logic within this function
     # validate_pointers_tuple(self, stream)
@@ -129,7 +134,8 @@ def validate_pointers_tuple(
         total_stream_length = len(stream.getbuffer())
         for decoder, is_head_tail in zip(self.decoders, self._is_head_tail):
             if not is_head_tail:
-                # the next 32 bytes are not a pointer, so progress the stream per the decoder
+                # the next 32 bytes are not a pointer,
+                # so progress the stream per the decoder
                 decoder(stream)
             else:
                 # the next 32 bytes are a pointer
@@ -176,8 +182,8 @@ def validate_pointers_array(
 
 # SizedArrayDecoder
 def decode_sized_array(
-    self: "SizedArrayDecoder", stream: ContextFramesBytesIO
-) -> Tuple[Any, ...]:
+    self: "SizedArrayDecoder[T]", stream: ContextFramesBytesIO
+) -> Tuple[T, ...]:
     item_decoder = self.item_decoder
     if item_decoder is None:
         raise AssertionError("`item_decoder` is None")
@@ -189,8 +195,8 @@ def decode_sized_array(
 
 # DynamicArrayDecoder
 def decode_dynamic_array(
-    self: "DynamicArrayDecoder", stream: ContextFramesBytesIO
-) -> Tuple[Any, ...]:
+    self: "DynamicArrayDecoder[T]", stream: ContextFramesBytesIO
+) -> Tuple[T, ...]:
     array_size = decode_uint_256(stream)
     stream.push_frame(32)
     if self.item_decoder is None:
@@ -206,7 +212,7 @@ def decode_dynamic_array(
 
 # FixedByteSizeDecoder
 def read_fixed_byte_size_data_from_stream(
-    self: "FixedByteSizeDecoder",
+    self: "FixedByteSizeDecoder[Any]",
     # NOTE: use BytesIO here so mypyc doesn't type-check
     # `stream` once we compile ContextFramesBytesIO.
     stream: BytesIO,
@@ -220,7 +226,7 @@ def read_fixed_byte_size_data_from_stream(
 
 
 def split_data_and_padding_fixed_byte_size(
-    self: "FixedByteSizeDecoder",
+    self: "FixedByteSizeDecoder[Any]",
     raw_data: bytes,
 ) -> Tuple[bytes, bytes]:
     value_byte_size = get_value_byte_size(self)
@@ -239,8 +245,8 @@ def split_data_and_padding_fixed_byte_size(
 
 
 def validate_padding_bytes_fixed_byte_size(
-    self: "FixedByteSizeDecoder",
-    value: Any,
+    self: "FixedByteSizeDecoder[T]",
+    value: T,
     padding_bytes: bytes,
 ) -> None:
     if padding_bytes != get_expected_padding_bytes(self, b"\x00"):
@@ -248,11 +254,13 @@ def validate_padding_bytes_fixed_byte_size(
 
 
 _expected_padding_bytes_cache: Final[
-    Dict["FixedByteSizeDecoder", Dict[bytes, bytes]]
+    Dict["FixedByteSizeDecoder[Any]", Dict[bytes, bytes]]
 ] = {}
 
 
-def get_expected_padding_bytes(self: "FixedByteSizeDecoder", chunk: bytes) -> bytes:
+def get_expected_padding_bytes(
+    self: "FixedByteSizeDecoder[Any]", chunk: bytes
+) -> bytes:
     instance_cache = _expected_padding_bytes_cache.setdefault(self, {})
     expected_padding_bytes = instance_cache.get(chunk)
     if expected_padding_bytes is None:

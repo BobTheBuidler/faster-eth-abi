@@ -14,6 +14,7 @@ from typing import (
     Type,
     TypeVar,
     Union,
+    final,
 )
 
 from eth_typing import (
@@ -177,15 +178,21 @@ class PredicateMapping(Copyable, Generic[T]):
         return cpy
 
 
-class Predicate:
+class Predicate(Generic[T]):
     """
     Represents a predicate function to be used for type matching in
     ``ABIRegistry``.
     """
 
-    __slots__ = ()
+    __slots__ = ("_string", "__hash")
 
-    def __call__(self, *args, **kwargs):  # pragma: no cover
+    _string: Optional[str]
+
+    def __init__(self) -> None:
+        self._string = None
+        self.__hash = None
+
+    def __call__(self, arg: TypeStr) -> None:
         raise NotImplementedError("Must implement `__call__`")
 
     def __str__(self) -> str:
@@ -194,35 +201,47 @@ class Predicate:
     def __repr__(self) -> str:
         return f"<{type(self).__name__} {self}>"
 
-    def __iter__(self) -> Iterator[Any]:
-        for attr in self.__slots__:
-            yield getattr(self, attr)
+    def __iter__(self) -> Iterator[T]:
+        raise NotImplementedError("must be implemented by subclass")
 
     def __hash__(self) -> int:
-        return hash(tuple(self))
+        hashval = self.__hash
+        if hashval is None:
+            self.__hash = hashval = hash(tuple(self))
+        return hashval
 
-    def __eq__(self, other: Any) -> bool:
+    def __eq__(self, other: "Predicate") -> bool:
         return type(self) is type(other) and tuple(self) == tuple(other)
 
 
-class Equals(Predicate):
+@final
+class Equals(Predicate[str]):
     """
     A predicate that matches any input equal to `value`.
     """
 
     __slots__ = ("value",)
 
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, value: str) -> None:
+        super().__init__()
+        self.value: Final = value
 
-    def __call__(self, other: Any) -> bool:
+    def __call__(self, other: TypeStr) -> bool:
         return self.value == other
 
     def __str__(self) -> str:
-        return f"(== {self.value!r})"
+        # NOTE should this just be done at init time? is it always called?
+        string = self._string
+        if string is None:
+            self._string = string = f"(== {self.value!r})"
+        return string
+
+    def __iter__(self) -> Iterator[str]:
+        yield self.value
 
 
-class BaseEquals(Predicate):
+@final
+class BaseEquals(Predicate[Union[str, bool, None]]):
     """
     A predicate that matches a basic type string with a base component equal to
     `value` and no array component.  If `with_sub` is `True`, the type string
@@ -233,9 +252,10 @@ class BaseEquals(Predicate):
 
     __slots__ = ("base", "with_sub")
 
-    def __init__(self, base, *, with_sub=None):
-        self.base = base
-        self.with_sub = with_sub
+    def __init__(self, base: TypeStr, *, with_sub: Optional[bool] = None):
+        super().__init__()
+        self.base: Final = base
+        self.with_sub: Final = with_sub
 
     def __call__(self, type_str: TypeStr) -> bool:
         try:
@@ -247,10 +267,12 @@ class BaseEquals(Predicate):
             if abi_type.arrlist is not None:
                 return False
 
-            if self.with_sub is not None:
-                if self.with_sub and abi_type.sub is None:
+            with_sub = self.with_sub
+            if with_sub is not None:
+                abi_subtype = abi_type.sub
+                if with_sub and abi_subtype is None:
                     return False
-                if not self.with_sub and abi_type.sub is not None:
+                if not with_sub and abi_subtype is not None:
                     return False
 
             return abi_type.base == self.base
@@ -260,15 +282,21 @@ class BaseEquals(Predicate):
         return False
 
     def __str__(self) -> str:
-        return (
-            f"(base == {self.base!r}"
-            + (
-                ""
-                if self.with_sub is None
-                else (" and sub is not None" if self.with_sub else " and sub is None")
-            )
-            + ")"
-        )
+        # NOTE should this just be done at init time? is it always called?
+        string = self._string
+        if string is None:
+            if self.with_sub is None:
+                string = f"(base == {self.base!r})"
+            elif self.with_sub:
+                string = f"(base == {self.base!r} and sub is not None)"
+            else:
+                string = f"(base == {self.base!r} and sub is None)"
+            self._string = string
+        return string
+
+    def __iter__(self) -> Iterator[Union[str, bool, None]]:
+        yield self.base
+        yield self.with_sub
 
 
 def has_arrlist(type_str: TypeStr) -> bool:
