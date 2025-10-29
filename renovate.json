@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchPaths": ["pyproject.toml"],
+      "matchDepTypes": ["build-system"],
+      "prTitle": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
+    },
+    {
+      "matchManagers": ["circleci"],
+      "enabled": false
+    }
   ]
 }
