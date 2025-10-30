@@ -99,6 +99,9 @@ def extract_all_literals(typ, alias_map, alias_path=None):
         return
     elif origin is Literal:
         if alias_path[-1].startswith("Tuple") and alias_path[-1].endswith("IntTypeStr"):
+            # for now, we will exclude these. We need to implement them 
+            # in the actual overloads, which takes a new script. stay tuned.
+            return
             for value in get_args(typ):
                 if all_integers_in_set(value, {8, 16, 64, 128, 256}):
                     if value not in RETURN_TYPE_MAP:

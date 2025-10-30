@@ -10,344 +10,204 @@ from faster_eth_abi.registry import ABIRegistry
 
 decoder = ABIDecoder(ABIRegistry())
 data = b"\x00" * 32
-assert_type(decoder.decode(("(address,int128)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 0
-assert_type(decoder.decode(("(address,int16)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 1
-assert_type(decoder.decode(("(address,int256)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 2
-assert_type(decoder.decode(("(address,int64)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 3
-assert_type(decoder.decode(("(address,int8)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 4
-assert_type(decoder.decode(("(address,uint128)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 5
-assert_type(decoder.decode(("(address,uint16)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 6
-assert_type(decoder.decode(("(address,uint256)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 7
-assert_type(decoder.decode(("(address,uint64)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 8
-assert_type(decoder.decode(("(address,uint8)",), data), Tuple[Tuple[HexAddress, int]])  # tuple case 9
-assert_type(decoder.decode(("(bool,int128)",), data), Tuple[Tuple[bool, int]])  # tuple case 10
-assert_type(decoder.decode(("(bool,int16)",), data), Tuple[Tuple[bool, int]])  # tuple case 11
-assert_type(decoder.decode(("(bool,int256)",), data), Tuple[Tuple[bool, int]])  # tuple case 12
-assert_type(decoder.decode(("(bool,int64)",), data), Tuple[Tuple[bool, int]])  # tuple case 13
-assert_type(decoder.decode(("(bool,int8)",), data), Tuple[Tuple[bool, int]])  # tuple case 14
-assert_type(decoder.decode(("(bool,uint128)",), data), Tuple[Tuple[bool, int]])  # tuple case 15
-assert_type(decoder.decode(("(bool,uint16)",), data), Tuple[Tuple[bool, int]])  # tuple case 16
-assert_type(decoder.decode(("(bool,uint256)",), data), Tuple[Tuple[bool, int]])  # tuple case 17
-assert_type(decoder.decode(("(bool,uint64)",), data), Tuple[Tuple[bool, int]])  # tuple case 18
-assert_type(decoder.decode(("(bool,uint8)",), data), Tuple[Tuple[bool, int]])  # tuple case 19
-assert_type(decoder.decode(("(bytes,int128)",), data), Tuple[Tuple[bytes, int]])  # tuple case 20
-assert_type(decoder.decode(("(bytes,int16)",), data), Tuple[Tuple[bytes, int]])  # tuple case 21
-assert_type(decoder.decode(("(bytes,int256)",), data), Tuple[Tuple[bytes, int]])  # tuple case 22
-assert_type(decoder.decode(("(bytes,int64)",), data), Tuple[Tuple[bytes, int]])  # tuple case 23
-assert_type(decoder.decode(("(bytes,int8)",), data), Tuple[Tuple[bytes, int]])  # tuple case 24
-assert_type(decoder.decode(("(bytes,uint128)",), data), Tuple[Tuple[bytes, int]])  # tuple case 25
-assert_type(decoder.decode(("(bytes,uint16)",), data), Tuple[Tuple[bytes, int]])  # tuple case 26
-assert_type(decoder.decode(("(bytes,uint256)",), data), Tuple[Tuple[bytes, int]])  # tuple case 27
-assert_type(decoder.decode(("(bytes,uint64)",), data), Tuple[Tuple[bytes, int]])  # tuple case 28
-assert_type(decoder.decode(("(bytes,uint8)",), data), Tuple[Tuple[bytes, int]])  # tuple case 29
-assert_type(decoder.decode(("(int128,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 30
-assert_type(decoder.decode(("(int128,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 31
-assert_type(decoder.decode(("(int128,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 32
-assert_type(decoder.decode(("(int128,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 33
-assert_type(decoder.decode(("(int128,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 34
-assert_type(decoder.decode(("(int128,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 35
-assert_type(decoder.decode(("(int128,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 36
-assert_type(decoder.decode(("(int128,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 37
-assert_type(decoder.decode(("(int128,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 38
-assert_type(decoder.decode(("(int128,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 39
-assert_type(decoder.decode(("(int16,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 40
-assert_type(decoder.decode(("(int16,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 41
-assert_type(decoder.decode(("(int16,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 42
-assert_type(decoder.decode(("(int16,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 43
-assert_type(decoder.decode(("(int16,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 44
-assert_type(decoder.decode(("(int16,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 45
-assert_type(decoder.decode(("(int16,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 46
-assert_type(decoder.decode(("(int16,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 47
-assert_type(decoder.decode(("(int16,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 48
-assert_type(decoder.decode(("(int16,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 49
-assert_type(decoder.decode(("(int256,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 50
-assert_type(decoder.decode(("(int256,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 51
-assert_type(decoder.decode(("(int256,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 52
-assert_type(decoder.decode(("(int256,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 53
-assert_type(decoder.decode(("(int256,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 54
-assert_type(decoder.decode(("(int256,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 55
-assert_type(decoder.decode(("(int256,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 56
-assert_type(decoder.decode(("(int256,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 57
-assert_type(decoder.decode(("(int256,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 58
-assert_type(decoder.decode(("(int256,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 59
-assert_type(decoder.decode(("(int64,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 60
-assert_type(decoder.decode(("(int64,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 61
-assert_type(decoder.decode(("(int64,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 62
-assert_type(decoder.decode(("(int64,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 63
-assert_type(decoder.decode(("(int64,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 64
-assert_type(decoder.decode(("(int64,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 65
-assert_type(decoder.decode(("(int64,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 66
-assert_type(decoder.decode(("(int64,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 67
-assert_type(decoder.decode(("(int64,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 68
-assert_type(decoder.decode(("(int64,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 69
-assert_type(decoder.decode(("(int8,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 70
-assert_type(decoder.decode(("(int8,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 71
-assert_type(decoder.decode(("(int8,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 72
-assert_type(decoder.decode(("(int8,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 73
-assert_type(decoder.decode(("(int8,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 74
-assert_type(decoder.decode(("(int8,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 75
-assert_type(decoder.decode(("(int8,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 76
-assert_type(decoder.decode(("(int8,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 77
-assert_type(decoder.decode(("(int8,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 78
-assert_type(decoder.decode(("(int8,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 79
-assert_type(decoder.decode(("(string,int128)",), data), Tuple[Tuple[str, int]])  # tuple case 80
-assert_type(decoder.decode(("(string,int16)",), data), Tuple[Tuple[str, int]])  # tuple case 81
-assert_type(decoder.decode(("(string,int256)",), data), Tuple[Tuple[str, int]])  # tuple case 82
-assert_type(decoder.decode(("(string,int64)",), data), Tuple[Tuple[str, int]])  # tuple case 83
-assert_type(decoder.decode(("(string,int8)",), data), Tuple[Tuple[str, int]])  # tuple case 84
-assert_type(decoder.decode(("(string,uint128)",), data), Tuple[Tuple[str, int]])  # tuple case 85
-assert_type(decoder.decode(("(string,uint16)",), data), Tuple[Tuple[str, int]])  # tuple case 86
-assert_type(decoder.decode(("(string,uint256)",), data), Tuple[Tuple[str, int]])  # tuple case 87
-assert_type(decoder.decode(("(string,uint64)",), data), Tuple[Tuple[str, int]])  # tuple case 88
-assert_type(decoder.decode(("(string,uint8)",), data), Tuple[Tuple[str, int]])  # tuple case 89
-assert_type(decoder.decode(("(uint128,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 90
-assert_type(decoder.decode(("(uint128,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 91
-assert_type(decoder.decode(("(uint128,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 92
-assert_type(decoder.decode(("(uint128,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 93
-assert_type(decoder.decode(("(uint128,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 94
-assert_type(decoder.decode(("(uint128,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 95
-assert_type(decoder.decode(("(uint128,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 96
-assert_type(decoder.decode(("(uint128,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 97
-assert_type(decoder.decode(("(uint128,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 98
-assert_type(decoder.decode(("(uint128,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 99
-assert_type(decoder.decode(("(uint16,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 100
-assert_type(decoder.decode(("(uint16,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 101
-assert_type(decoder.decode(("(uint16,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 102
-assert_type(decoder.decode(("(uint16,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 103
-assert_type(decoder.decode(("(uint16,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 104
-assert_type(decoder.decode(("(uint16,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 105
-assert_type(decoder.decode(("(uint16,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 106
-assert_type(decoder.decode(("(uint16,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 107
-assert_type(decoder.decode(("(uint16,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 108
-assert_type(decoder.decode(("(uint16,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 109
-assert_type(decoder.decode(("(uint256,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 110
-assert_type(decoder.decode(("(uint256,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 111
-assert_type(decoder.decode(("(uint256,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 112
-assert_type(decoder.decode(("(uint256,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 113
-assert_type(decoder.decode(("(uint256,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 114
-assert_type(decoder.decode(("(uint256,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 115
-assert_type(decoder.decode(("(uint256,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 116
-assert_type(decoder.decode(("(uint256,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 117
-assert_type(decoder.decode(("(uint256,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 118
-assert_type(decoder.decode(("(uint256,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 119
-assert_type(decoder.decode(("(uint64,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 120
-assert_type(decoder.decode(("(uint64,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 121
-assert_type(decoder.decode(("(uint64,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 122
-assert_type(decoder.decode(("(uint64,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 123
-assert_type(decoder.decode(("(uint64,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 124
-assert_type(decoder.decode(("(uint64,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 125
-assert_type(decoder.decode(("(uint64,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 126
-assert_type(decoder.decode(("(uint64,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 127
-assert_type(decoder.decode(("(uint64,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 128
-assert_type(decoder.decode(("(uint64,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 129
-assert_type(decoder.decode(("(uint8,int128)",), data), Tuple[Tuple[int, int]])  # tuple case 130
-assert_type(decoder.decode(("(uint8,int16)",), data), Tuple[Tuple[int, int]])  # tuple case 131
-assert_type(decoder.decode(("(uint8,int256)",), data), Tuple[Tuple[int, int]])  # tuple case 132
-assert_type(decoder.decode(("(uint8,int64)",), data), Tuple[Tuple[int, int]])  # tuple case 133
-assert_type(decoder.decode(("(uint8,int8)",), data), Tuple[Tuple[int, int]])  # tuple case 134
-assert_type(decoder.decode(("(uint8,uint128)",), data), Tuple[Tuple[int, int]])  # tuple case 135
-assert_type(decoder.decode(("(uint8,uint16)",), data), Tuple[Tuple[int, int]])  # tuple case 136
-assert_type(decoder.decode(("(uint8,uint256)",), data), Tuple[Tuple[int, int]])  # tuple case 137
-assert_type(decoder.decode(("(uint8,uint64)",), data), Tuple[Tuple[int, int]])  # tuple case 138
-assert_type(decoder.decode(("(uint8,uint8)",), data), Tuple[Tuple[int, int]])  # tuple case 139
-assert_type(decoder.decode(("address",), data), Tuple[HexAddress])  # tuple case 140
-assert_type(decoder.decode(("address[]",), data), Tuple[Tuple[HexAddress, ...]])  # tuple case 141
-assert_type(decoder.decode(("bool",), data), Tuple[bool])  # tuple case 142
-assert_type(decoder.decode(("bool[]",), data), Tuple[Tuple[bool, ...]])  # tuple case 143
-assert_type(decoder.decode(("bytes",), data), Tuple[bytes])  # tuple case 144
-assert_type(decoder.decode(("bytes1",), data), Tuple[bytes])  # tuple case 145
-assert_type(decoder.decode(("bytes10",), data), Tuple[bytes])  # tuple case 146
-assert_type(decoder.decode(("bytes10[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 147
-assert_type(decoder.decode(("bytes11",), data), Tuple[bytes])  # tuple case 148
-assert_type(decoder.decode(("bytes11[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 149
-assert_type(decoder.decode(("bytes12",), data), Tuple[bytes])  # tuple case 150
-assert_type(decoder.decode(("bytes12[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 151
-assert_type(decoder.decode(("bytes13",), data), Tuple[bytes])  # tuple case 152
-assert_type(decoder.decode(("bytes13[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 153
-assert_type(decoder.decode(("bytes14",), data), Tuple[bytes])  # tuple case 154
-assert_type(decoder.decode(("bytes14[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 155
-assert_type(decoder.decode(("bytes15",), data), Tuple[bytes])  # tuple case 156
-assert_type(decoder.decode(("bytes15[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 157
-assert_type(decoder.decode(("bytes16",), data), Tuple[bytes])  # tuple case 158
-assert_type(decoder.decode(("bytes16[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 159
-assert_type(decoder.decode(("bytes17",), data), Tuple[bytes])  # tuple case 160
-assert_type(decoder.decode(("bytes17[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 161
-assert_type(decoder.decode(("bytes18",), data), Tuple[bytes])  # tuple case 162
-assert_type(decoder.decode(("bytes18[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 163
-assert_type(decoder.decode(("bytes19",), data), Tuple[bytes])  # tuple case 164
-assert_type(decoder.decode(("bytes19[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 165
-assert_type(decoder.decode(("bytes1[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 166
-assert_type(decoder.decode(("bytes2",), data), Tuple[bytes])  # tuple case 167
-assert_type(decoder.decode(("bytes20",), data), Tuple[bytes])  # tuple case 168
-assert_type(decoder.decode(("bytes20[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 169
-assert_type(decoder.decode(("bytes21",), data), Tuple[bytes])  # tuple case 170
-assert_type(decoder.decode(("bytes21[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 171
-assert_type(decoder.decode(("bytes22",), data), Tuple[bytes])  # tuple case 172
-assert_type(decoder.decode(("bytes22[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 173
-assert_type(decoder.decode(("bytes23",), data), Tuple[bytes])  # tuple case 174
-assert_type(decoder.decode(("bytes23[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 175
-assert_type(decoder.decode(("bytes24",), data), Tuple[bytes])  # tuple case 176
-assert_type(decoder.decode(("bytes24[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 177
-assert_type(decoder.decode(("bytes25",), data), Tuple[bytes])  # tuple case 178
-assert_type(decoder.decode(("bytes25[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 179
-assert_type(decoder.decode(("bytes26",), data), Tuple[bytes])  # tuple case 180
-assert_type(decoder.decode(("bytes26[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 181
-assert_type(decoder.decode(("bytes27",), data), Tuple[bytes])  # tuple case 182
-assert_type(decoder.decode(("bytes27[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 183
-assert_type(decoder.decode(("bytes28",), data), Tuple[bytes])  # tuple case 184
-assert_type(decoder.decode(("bytes28[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 185
-assert_type(decoder.decode(("bytes29",), data), Tuple[bytes])  # tuple case 186
-assert_type(decoder.decode(("bytes29[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 187
-assert_type(decoder.decode(("bytes2[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 188
-assert_type(decoder.decode(("bytes3",), data), Tuple[bytes])  # tuple case 189
-assert_type(decoder.decode(("bytes30",), data), Tuple[bytes])  # tuple case 190
-assert_type(decoder.decode(("bytes30[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 191
-assert_type(decoder.decode(("bytes31",), data), Tuple[bytes])  # tuple case 192
-assert_type(decoder.decode(("bytes31[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 193
-assert_type(decoder.decode(("bytes32",), data), Tuple[bytes])  # tuple case 194
-assert_type(decoder.decode(("bytes32[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 195
-assert_type(decoder.decode(("bytes3[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 196
-assert_type(decoder.decode(("bytes4",), data), Tuple[bytes])  # tuple case 197
-assert_type(decoder.decode(("bytes4[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 198
-assert_type(decoder.decode(("bytes5",), data), Tuple[bytes])  # tuple case 199
-assert_type(decoder.decode(("bytes5[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 200
-assert_type(decoder.decode(("bytes6",), data), Tuple[bytes])  # tuple case 201
-assert_type(decoder.decode(("bytes6[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 202
-assert_type(decoder.decode(("bytes7",), data), Tuple[bytes])  # tuple case 203
-assert_type(decoder.decode(("bytes7[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 204
-assert_type(decoder.decode(("bytes8",), data), Tuple[bytes])  # tuple case 205
-assert_type(decoder.decode(("bytes8[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 206
-assert_type(decoder.decode(("bytes9",), data), Tuple[bytes])  # tuple case 207
-assert_type(decoder.decode(("bytes9[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 208
-assert_type(decoder.decode(("bytes[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 209
-assert_type(decoder.decode(("int104",), data), Tuple[int])  # tuple case 210
-assert_type(decoder.decode(("int104[]",), data), Tuple[Tuple[int, ...]])  # tuple case 211
-assert_type(decoder.decode(("int112",), data), Tuple[int])  # tuple case 212
-assert_type(decoder.decode(("int112[]",), data), Tuple[Tuple[int, ...]])  # tuple case 213
-assert_type(decoder.decode(("int120",), data), Tuple[int])  # tuple case 214
-assert_type(decoder.decode(("int120[]",), data), Tuple[Tuple[int, ...]])  # tuple case 215
-assert_type(decoder.decode(("int128",), data), Tuple[int])  # tuple case 216
-assert_type(decoder.decode(("int128[]",), data), Tuple[Tuple[int, ...]])  # tuple case 217
-assert_type(decoder.decode(("int136",), data), Tuple[int])  # tuple case 218
-assert_type(decoder.decode(("int136[]",), data), Tuple[Tuple[int, ...]])  # tuple case 219
-assert_type(decoder.decode(("int144",), data), Tuple[int])  # tuple case 220
-assert_type(decoder.decode(("int144[]",), data), Tuple[Tuple[int, ...]])  # tuple case 221
-assert_type(decoder.decode(("int152",), data), Tuple[int])  # tuple case 222
-assert_type(decoder.decode(("int152[]",), data), Tuple[Tuple[int, ...]])  # tuple case 223
-assert_type(decoder.decode(("int16",), data), Tuple[int])  # tuple case 224
-assert_type(decoder.decode(("int160",), data), Tuple[int])  # tuple case 225
-assert_type(decoder.decode(("int160[]",), data), Tuple[Tuple[int, ...]])  # tuple case 226
-assert_type(decoder.decode(("int168",), data), Tuple[int])  # tuple case 227
-assert_type(decoder.decode(("int168[]",), data), Tuple[Tuple[int, ...]])  # tuple case 228
-assert_type(decoder.decode(("int16[]",), data), Tuple[Tuple[int, ...]])  # tuple case 229
-assert_type(decoder.decode(("int176",), data), Tuple[int])  # tuple case 230
-assert_type(decoder.decode(("int176[]",), data), Tuple[Tuple[int, ...]])  # tuple case 231
-assert_type(decoder.decode(("int184",), data), Tuple[int])  # tuple case 232
-assert_type(decoder.decode(("int184[]",), data), Tuple[Tuple[int, ...]])  # tuple case 233
-assert_type(decoder.decode(("int192",), data), Tuple[int])  # tuple case 234
-assert_type(decoder.decode(("int192[]",), data), Tuple[Tuple[int, ...]])  # tuple case 235
-assert_type(decoder.decode(("int200",), data), Tuple[int])  # tuple case 236
-assert_type(decoder.decode(("int200[]",), data), Tuple[Tuple[int, ...]])  # tuple case 237
-assert_type(decoder.decode(("int208",), data), Tuple[int])  # tuple case 238
-assert_type(decoder.decode(("int208[]",), data), Tuple[Tuple[int, ...]])  # tuple case 239
-assert_type(decoder.decode(("int216",), data), Tuple[int])  # tuple case 240
-assert_type(decoder.decode(("int216[]",), data), Tuple[Tuple[int, ...]])  # tuple case 241
-assert_type(decoder.decode(("int224",), data), Tuple[int])  # tuple case 242
-assert_type(decoder.decode(("int224[]",), data), Tuple[Tuple[int, ...]])  # tuple case 243
-assert_type(decoder.decode(("int232",), data), Tuple[int])  # tuple case 244
-assert_type(decoder.decode(("int232[]",), data), Tuple[Tuple[int, ...]])  # tuple case 245
-assert_type(decoder.decode(("int24",), data), Tuple[int])  # tuple case 246
-assert_type(decoder.decode(("int240",), data), Tuple[int])  # tuple case 247
-assert_type(decoder.decode(("int240[]",), data), Tuple[Tuple[int, ...]])  # tuple case 248
-assert_type(decoder.decode(("int248",), data), Tuple[int])  # tuple case 249
-assert_type(decoder.decode(("int248[]",), data), Tuple[Tuple[int, ...]])  # tuple case 250
-assert_type(decoder.decode(("int24[]",), data), Tuple[Tuple[int, ...]])  # tuple case 251
-assert_type(decoder.decode(("int256",), data), Tuple[int])  # tuple case 252
-assert_type(decoder.decode(("int256[]",), data), Tuple[Tuple[int, ...]])  # tuple case 253
-assert_type(decoder.decode(("int32",), data), Tuple[int])  # tuple case 254
-assert_type(decoder.decode(("int32[]",), data), Tuple[Tuple[int, ...]])  # tuple case 255
-assert_type(decoder.decode(("int40",), data), Tuple[int])  # tuple case 256
-assert_type(decoder.decode(("int40[]",), data), Tuple[Tuple[int, ...]])  # tuple case 257
-assert_type(decoder.decode(("int48",), data), Tuple[int])  # tuple case 258
-assert_type(decoder.decode(("int48[]",), data), Tuple[Tuple[int, ...]])  # tuple case 259
-assert_type(decoder.decode(("int56",), data), Tuple[int])  # tuple case 260
-assert_type(decoder.decode(("int56[]",), data), Tuple[Tuple[int, ...]])  # tuple case 261
-assert_type(decoder.decode(("int64",), data), Tuple[int])  # tuple case 262
-assert_type(decoder.decode(("int64[]",), data), Tuple[Tuple[int, ...]])  # tuple case 263
-assert_type(decoder.decode(("int72",), data), Tuple[int])  # tuple case 264
-assert_type(decoder.decode(("int72[]",), data), Tuple[Tuple[int, ...]])  # tuple case 265
-assert_type(decoder.decode(("int8",), data), Tuple[int])  # tuple case 266
-assert_type(decoder.decode(("int80",), data), Tuple[int])  # tuple case 267
-assert_type(decoder.decode(("int80[]",), data), Tuple[Tuple[int, ...]])  # tuple case 268
-assert_type(decoder.decode(("int88",), data), Tuple[int])  # tuple case 269
-assert_type(decoder.decode(("int88[]",), data), Tuple[Tuple[int, ...]])  # tuple case 270
-assert_type(decoder.decode(("int8[]",), data), Tuple[Tuple[int, ...]])  # tuple case 271
-assert_type(decoder.decode(("int96",), data), Tuple[int])  # tuple case 272
-assert_type(decoder.decode(("int96[]",), data), Tuple[Tuple[int, ...]])  # tuple case 273
-assert_type(decoder.decode(("string",), data), Tuple[str])  # tuple case 274
-assert_type(decoder.decode(("string[]",), data), Tuple[Tuple[str, ...]])  # tuple case 275
-assert_type(decoder.decode(("uint104",), data), Tuple[int])  # tuple case 276
-assert_type(decoder.decode(("uint104[]",), data), Tuple[Tuple[int, ...]])  # tuple case 277
-assert_type(decoder.decode(("uint112",), data), Tuple[int])  # tuple case 278
-assert_type(decoder.decode(("uint112[]",), data), Tuple[Tuple[int, ...]])  # tuple case 279
-assert_type(decoder.decode(("uint120",), data), Tuple[int])  # tuple case 280
-assert_type(decoder.decode(("uint120[]",), data), Tuple[Tuple[int, ...]])  # tuple case 281
-assert_type(decoder.decode(("uint128",), data), Tuple[int])  # tuple case 282
-assert_type(decoder.decode(("uint128[]",), data), Tuple[Tuple[int, ...]])  # tuple case 283
-assert_type(decoder.decode(("uint136",), data), Tuple[int])  # tuple case 284
-assert_type(decoder.decode(("uint136[]",), data), Tuple[Tuple[int, ...]])  # tuple case 285
-assert_type(decoder.decode(("uint144",), data), Tuple[int])  # tuple case 286
-assert_type(decoder.decode(("uint144[]",), data), Tuple[Tuple[int, ...]])  # tuple case 287
-assert_type(decoder.decode(("uint152",), data), Tuple[int])  # tuple case 288
-assert_type(decoder.decode(("uint152[]",), data), Tuple[Tuple[int, ...]])  # tuple case 289
-assert_type(decoder.decode(("uint16",), data), Tuple[int])  # tuple case 290
-assert_type(decoder.decode(("uint160",), data), Tuple[int])  # tuple case 291
-assert_type(decoder.decode(("uint160[]",), data), Tuple[Tuple[int, ...]])  # tuple case 292
-assert_type(decoder.decode(("uint168",), data), Tuple[int])  # tuple case 293
-assert_type(decoder.decode(("uint168[]",), data), Tuple[Tuple[int, ...]])  # tuple case 294
-assert_type(decoder.decode(("uint16[]",), data), Tuple[Tuple[int, ...]])  # tuple case 295
-assert_type(decoder.decode(("uint176",), data), Tuple[int])  # tuple case 296
-assert_type(decoder.decode(("uint176[]",), data), Tuple[Tuple[int, ...]])  # tuple case 297
-assert_type(decoder.decode(("uint184",), data), Tuple[int])  # tuple case 298
-assert_type(decoder.decode(("uint184[]",), data), Tuple[Tuple[int, ...]])  # tuple case 299
-assert_type(decoder.decode(("uint192",), data), Tuple[int])  # tuple case 300
-assert_type(decoder.decode(("uint192[]",), data), Tuple[Tuple[int, ...]])  # tuple case 301
-assert_type(decoder.decode(("uint200",), data), Tuple[int])  # tuple case 302
-assert_type(decoder.decode(("uint200[]",), data), Tuple[Tuple[int, ...]])  # tuple case 303
-assert_type(decoder.decode(("uint208",), data), Tuple[int])  # tuple case 304
-assert_type(decoder.decode(("uint208[]",), data), Tuple[Tuple[int, ...]])  # tuple case 305
-assert_type(decoder.decode(("uint216",), data), Tuple[int])  # tuple case 306
-assert_type(decoder.decode(("uint216[]",), data), Tuple[Tuple[int, ...]])  # tuple case 307
-assert_type(decoder.decode(("uint224",), data), Tuple[int])  # tuple case 308
-assert_type(decoder.decode(("uint224[]",), data), Tuple[Tuple[int, ...]])  # tuple case 309
-assert_type(decoder.decode(("uint232",), data), Tuple[int])  # tuple case 310
-assert_type(decoder.decode(("uint232[]",), data), Tuple[Tuple[int, ...]])  # tuple case 311
-assert_type(decoder.decode(("uint24",), data), Tuple[int])  # tuple case 312
-assert_type(decoder.decode(("uint240",), data), Tuple[int])  # tuple case 313
-assert_type(decoder.decode(("uint240[]",), data), Tuple[Tuple[int, ...]])  # tuple case 314
-assert_type(decoder.decode(("uint248",), data), Tuple[int])  # tuple case 315
-assert_type(decoder.decode(("uint248[]",), data), Tuple[Tuple[int, ...]])  # tuple case 316
-assert_type(decoder.decode(("uint24[]",), data), Tuple[Tuple[int, ...]])  # tuple case 317
-assert_type(decoder.decode(("uint256",), data), Tuple[int])  # tuple case 318
-assert_type(decoder.decode(("uint256[]",), data), Tuple[Tuple[int, ...]])  # tuple case 319
-assert_type(decoder.decode(("uint32",), data), Tuple[int])  # tuple case 320
-assert_type(decoder.decode(("uint32[]",), data), Tuple[Tuple[int, ...]])  # tuple case 321
-assert_type(decoder.decode(("uint40",), data), Tuple[int])  # tuple case 322
-assert_type(decoder.decode(("uint40[]",), data), Tuple[Tuple[int, ...]])  # tuple case 323
-assert_type(decoder.decode(("uint48",), data), Tuple[int])  # tuple case 324
-assert_type(decoder.decode(("uint48[]",), data), Tuple[Tuple[int, ...]])  # tuple case 325
-assert_type(decoder.decode(("uint56",), data), Tuple[int])  # tuple case 326
-assert_type(decoder.decode(("uint56[]",), data), Tuple[Tuple[int, ...]])  # tuple case 327
-assert_type(decoder.decode(("uint64",), data), Tuple[int])  # tuple case 328
-assert_type(decoder.decode(("uint64[]",), data), Tuple[Tuple[int, ...]])  # tuple case 329
-assert_type(decoder.decode(("uint72",), data), Tuple[int])  # tuple case 330
-assert_type(decoder.decode(("uint72[]",), data), Tuple[Tuple[int, ...]])  # tuple case 331
-assert_type(decoder.decode(("uint8",), data), Tuple[int])  # tuple case 332
-assert_type(decoder.decode(("uint80",), data), Tuple[int])  # tuple case 333
-assert_type(decoder.decode(("uint80[]",), data), Tuple[Tuple[int, ...]])  # tuple case 334
-assert_type(decoder.decode(("uint88",), data), Tuple[int])  # tuple case 335
-assert_type(decoder.decode(("uint88[]",), data), Tuple[Tuple[int, ...]])  # tuple case 336
-assert_type(decoder.decode(("uint8[]",), data), Tuple[Tuple[int, ...]])  # tuple case 337
-assert_type(decoder.decode(("uint96",), data), Tuple[int])  # tuple case 338
-assert_type(decoder.decode(("uint96[]",), data), Tuple[Tuple[int, ...]])  # tuple case 339
-assert_type(decoder.decode(("someothertype",), data), Tuple[Any])  # tuple case 340
+assert_type(decoder.decode(("address",), data), Tuple[HexAddress])  # tuple case 0
+assert_type(decoder.decode(("address[]",), data), Tuple[Tuple[HexAddress, ...]])  # tuple case 1
+assert_type(decoder.decode(("bool",), data), Tuple[bool])  # tuple case 2
+assert_type(decoder.decode(("bool[]",), data), Tuple[Tuple[bool, ...]])  # tuple case 3
+assert_type(decoder.decode(("bytes",), data), Tuple[bytes])  # tuple case 4
+assert_type(decoder.decode(("bytes1",), data), Tuple[bytes])  # tuple case 5
+assert_type(decoder.decode(("bytes10",), data), Tuple[bytes])  # tuple case 6
+assert_type(decoder.decode(("bytes10[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 7
+assert_type(decoder.decode(("bytes11",), data), Tuple[bytes])  # tuple case 8
+assert_type(decoder.decode(("bytes11[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 9
+assert_type(decoder.decode(("bytes12",), data), Tuple[bytes])  # tuple case 10
+assert_type(decoder.decode(("bytes12[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 11
+assert_type(decoder.decode(("bytes13",), data), Tuple[bytes])  # tuple case 12
+assert_type(decoder.decode(("bytes13[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 13
+assert_type(decoder.decode(("bytes14",), data), Tuple[bytes])  # tuple case 14
+assert_type(decoder.decode(("bytes14[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 15
+assert_type(decoder.decode(("bytes15",), data), Tuple[bytes])  # tuple case 16
+assert_type(decoder.decode(("bytes15[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 17
+assert_type(decoder.decode(("bytes16",), data), Tuple[bytes])  # tuple case 18
+assert_type(decoder.decode(("bytes16[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 19
+assert_type(decoder.decode(("bytes17",), data), Tuple[bytes])  # tuple case 20
+assert_type(decoder.decode(("bytes17[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 21
+assert_type(decoder.decode(("bytes18",), data), Tuple[bytes])  # tuple case 22
+assert_type(decoder.decode(("bytes18[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 23
+assert_type(decoder.decode(("bytes19",), data), Tuple[bytes])  # tuple case 24
+assert_type(decoder.decode(("bytes19[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 25
+assert_type(decoder.decode(("bytes1[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 26
+assert_type(decoder.decode(("bytes2",), data), Tuple[bytes])  # tuple case 27
+assert_type(decoder.decode(("bytes20",), data), Tuple[bytes])  # tuple case 28
+assert_type(decoder.decode(("bytes20[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 29
+assert_type(decoder.decode(("bytes21",), data), Tuple[bytes])  # tuple case 30
+assert_type(decoder.decode(("bytes21[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 31
+assert_type(decoder.decode(("bytes22",), data), Tuple[bytes])  # tuple case 32
+assert_type(decoder.decode(("bytes22[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 33
+assert_type(decoder.decode(("bytes23",), data), Tuple[bytes])  # tuple case 34
+assert_type(decoder.decode(("bytes23[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 35
+assert_type(decoder.decode(("bytes24",), data), Tuple[bytes])  # tuple case 36
+assert_type(decoder.decode(("bytes24[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 37
+assert_type(decoder.decode(("bytes25",), data), Tuple[bytes])  # tuple case 38
+assert_type(decoder.decode(("bytes25[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 39
+assert_type(decoder.decode(("bytes26",), data), Tuple[bytes])  # tuple case 40
+assert_type(decoder.decode(("bytes26[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 41
+assert_type(decoder.decode(("bytes27",), data), Tuple[bytes])  # tuple case 42
+assert_type(decoder.decode(("bytes27[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 43
+assert_type(decoder.decode(("bytes28",), data), Tuple[bytes])  # tuple case 44
+assert_type(decoder.decode(("bytes28[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 45
+assert_type(decoder.decode(("bytes29",), data), Tuple[bytes])  # tuple case 46
+assert_type(decoder.decode(("bytes29[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 47
+assert_type(decoder.decode(("bytes2[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 48
+assert_type(decoder.decode(("bytes3",), data), Tuple[bytes])  # tuple case 49
+assert_type(decoder.decode(("bytes30",), data), Tuple[bytes])  # tuple case 50
+assert_type(decoder.decode(("bytes30[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 51
+assert_type(decoder.decode(("bytes31",), data), Tuple[bytes])  # tuple case 52
+assert_type(decoder.decode(("bytes31[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 53
+assert_type(decoder.decode(("bytes32",), data), Tuple[bytes])  # tuple case 54
+assert_type(decoder.decode(("bytes32[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 55
+assert_type(decoder.decode(("bytes3[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 56
+assert_type(decoder.decode(("bytes4",), data), Tuple[bytes])  # tuple case 57
+assert_type(decoder.decode(("bytes4[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 58
+assert_type(decoder.decode(("bytes5",), data), Tuple[bytes])  # tuple case 59
+assert_type(decoder.decode(("bytes5[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 60
+assert_type(decoder.decode(("bytes6",), data), Tuple[bytes])  # tuple case 61
+assert_type(decoder.decode(("bytes6[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 62
+assert_type(decoder.decode(("bytes7",), data), Tuple[bytes])  # tuple case 63
+assert_type(decoder.decode(("bytes7[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 64
+assert_type(decoder.decode(("bytes8",), data), Tuple[bytes])  # tuple case 65
+assert_type(decoder.decode(("bytes8[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 66
+assert_type(decoder.decode(("bytes9",), data), Tuple[bytes])  # tuple case 67
+assert_type(decoder.decode(("bytes9[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 68
+assert_type(decoder.decode(("bytes[]",), data), Tuple[Tuple[bytes, ...]])  # tuple case 69
+assert_type(decoder.decode(("int104",), data), Tuple[int])  # tuple case 70
+assert_type(decoder.decode(("int104[]",), data), Tuple[Tuple[int, ...]])  # tuple case 71
+assert_type(decoder.decode(("int112",), data), Tuple[int])  # tuple case 72
+assert_type(decoder.decode(("int112[]",), data), Tuple[Tuple[int, ...]])  # tuple case 73
+assert_type(decoder.decode(("int120",), data), Tuple[int])  # tuple case 74
+assert_type(decoder.decode(("int120[]",), data), Tuple[Tuple[int, ...]])  # tuple case 75
+assert_type(decoder.decode(("int128",), data), Tuple[int])  # tuple case 76
+assert_type(decoder.decode(("int128[]",), data), Tuple[Tuple[int, ...]])  # tuple case 77
+assert_type(decoder.decode(("int136",), data), Tuple[int])  # tuple case 78
+assert_type(decoder.decode(("int136[]",), data), Tuple[Tuple[int, ...]])  # tuple case 79
+assert_type(decoder.decode(("int144",), data), Tuple[int])  # tuple case 80
+assert_type(decoder.decode(("int144[]",), data), Tuple[Tuple[int, ...]])  # tuple case 81
+assert_type(decoder.decode(("int152",), data), Tuple[int])  # tuple case 82
+assert_type(decoder.decode(("int152[]",), data), Tuple[Tuple[int, ...]])  # tuple case 83
+assert_type(decoder.decode(("int16",), data), Tuple[int])  # tuple case 84
+assert_type(decoder.decode(("int160",), data), Tuple[int])  # tuple case 85
+assert_type(decoder.decode(("int160[]",), data), Tuple[Tuple[int, ...]])  # tuple case 86
+assert_type(decoder.decode(("int168",), data), Tuple[int])  # tuple case 87
+assert_type(decoder.decode(("int168[]",), data), Tuple[Tuple[int, ...]])  # tuple case 88
+assert_type(decoder.decode(("int16[]",), data), Tuple[Tuple[int, ...]])  # tuple case 89
+assert_type(decoder.decode(("int176",), data), Tuple[int])  # tuple case 90
+assert_type(decoder.decode(("int176[]",), data), Tuple[Tuple[int, ...]])  # tuple case 91
+assert_type(decoder.decode(("int184",), data), Tuple[int])  # tuple case 92
+assert_type(decoder.decode(("int184[]",), data), Tuple[Tuple[int, ...]])  # tuple case 93
+assert_type(decoder.decode(("int192",), data), Tuple[int])  # tuple case 94
+assert_type(decoder.decode(("int192[]",), data), Tuple[Tuple[int, ...]])  # tuple case 95
+assert_type(decoder.decode(("int200",), data), Tuple[int])  # tuple case 96
+assert_type(decoder.decode(("int200[]",), data), Tuple[Tuple[int, ...]])  # tuple case 97
+assert_type(decoder.decode(("int208",), data), Tuple[int])  # tuple case 98
+assert_type(decoder.decode(("int208[]",), data), Tuple[Tuple[int, ...]])  # tuple case 99
+assert_type(decoder.decode(("int216",), data), Tuple[int])  # tuple case 100
+assert_type(decoder.decode(("int216[]",), data), Tuple[Tuple[int, ...]])  # tuple case 101
+assert_type(decoder.decode(("int224",), data), Tuple[int])  # tuple case 102
+assert_type(decoder.decode(("int224[]",), data), Tuple[Tuple[int, ...]])  # tuple case 103
+assert_type(decoder.decode(("int232",), data), Tuple[int])  # tuple case 104
+assert_type(decoder.decode(("int232[]",), data), Tuple[Tuple[int, ...]])  # tuple case 105
+assert_type(decoder.decode(("int24",), data), Tuple[int])  # tuple case 106
+assert_type(decoder.decode(("int240",), data), Tuple[int])  # tuple case 107
+assert_type(decoder.decode(("int240[]",), data), Tuple[Tuple[int, ...]])  # tuple case 108
+assert_type(decoder.decode(("int248",), data), Tuple[int])  # tuple case 109
+assert_type(decoder.decode(("int248[]",), data), Tuple[Tuple[int, ...]])  # tuple case 110
+assert_type(decoder.decode(("int24[]",), data), Tuple[Tuple[int, ...]])  # tuple case 111
+assert_type(decoder.decode(("int256",), data), Tuple[int])  # tuple case 112
+assert_type(decoder.decode(("int256[]",), data), Tuple[Tuple[int, ...]])  # tuple case 113
+assert_type(decoder.decode(("int32",), data), Tuple[int])  # tuple case 114
+assert_type(decoder.decode(("int32[]",), data), Tuple[Tuple[int, ...]])  # tuple case 115
+assert_type(decoder.decode(("int40",), data), Tuple[int])  # tuple case 116
+assert_type(decoder.decode(("int40[]",), data), Tuple[Tuple[int, ...]])  # tuple case 117
+assert_type(decoder.decode(("int48",), data), Tuple[int])  # tuple case 118
+assert_type(decoder.decode(("int48[]",), data), Tuple[Tuple[int, ...]])  # tuple case 119
+assert_type(decoder.decode(("int56",), data), Tuple[int])  # tuple case 120
+assert_type(decoder.decode(("int56[]",), data), Tuple[Tuple[int, ...]])  # tuple case 121
+assert_type(decoder.decode(("int64",), data), Tuple[int])  # tuple case 122
+assert_type(decoder.decode(("int64[]",), data), Tuple[Tuple[int, ...]])  # tuple case 123
+assert_type(decoder.decode(("int72",), data), Tuple[int])  # tuple case 124
+assert_type(decoder.decode(("int72[]",), data), Tuple[Tuple[int, ...]])  # tuple case 125
+assert_type(decoder.decode(("int8",), data), Tuple[int])  # tuple case 126
+assert_type(decoder.decode(("int80",), data), Tuple[int])  # tuple case 127
+assert_type(decoder.decode(("int80[]",), data), Tuple[Tuple[int, ...]])  # tuple case 128
+assert_type(decoder.decode(("int88",), data), Tuple[int])  # tuple case 129
+assert_type(decoder.decode(("int88[]",), data), Tuple[Tuple[int, ...]])  # tuple case 130
+assert_type(decoder.decode(("int8[]",), data), Tuple[Tuple[int, ...]])  # tuple case 131
+assert_type(decoder.decode(("int96",), data), Tuple[int])  # tuple case 132
+assert_type(decoder.decode(("int96[]",), data), Tuple[Tuple[int, ...]])  # tuple case 133
+assert_type(decoder.decode(("string",), data), Tuple[str])  # tuple case 134
+assert_type(decoder.decode(("string[]",), data), Tuple[Tuple[str, ...]])  # tuple case 135
+assert_type(decoder.decode(("uint104",), data), Tuple[int])  # tuple case 136
+assert_type(decoder.decode(("uint104[]",), data), Tuple[Tuple[int, ...]])  # tuple case 137
+assert_type(decoder.decode(("uint112",), data), Tuple[int])  # tuple case 138
+assert_type(decoder.decode(("uint112[]",), data), Tuple[Tuple[int, ...]])  # tuple case 139
+assert_type(decoder.decode(("uint120",), data), Tuple[int])  # tuple case 140
+assert_type(decoder.decode(("uint120[]",), data), Tuple[Tuple[int, ...]])  # tuple case 141
+assert_type(decoder.decode(("uint128",), data), Tuple[int])  # tuple case 142
+assert_type(decoder.decode(("uint128[]",), data), Tuple[Tuple[int, ...]])  # tuple case 143
+assert_type(decoder.decode(("uint136",), data), Tuple[int])  # tuple case 144
+assert_type(decoder.decode(("uint136[]",), data), Tuple[Tuple[int, ...]])  # tuple case 145
+assert_type(decoder.decode(("uint144",), data), Tuple[int])  # tuple case 146
+assert_type(decoder.decode(("uint144[]",), data), Tuple[Tuple[int, ...]])  # tuple case 147
+assert_type(decoder.decode(("uint152",), data), Tuple[int])  # tuple case 148
+assert_type(decoder.decode(("uint152[]",), data), Tuple[Tuple[int, ...]])  # tuple case 149
+assert_type(decoder.decode(("uint16",), data), Tuple[int])  # tuple case 150
+assert_type(decoder.decode(("uint160",), data), Tuple[int])  # tuple case 151
+assert_type(decoder.decode(("uint160[]",), data), Tuple[Tuple[int, ...]])  # tuple case 152
+assert_type(decoder.decode(("uint168",), data), Tuple[int])  # tuple case 153
+assert_type(decoder.decode(("uint168[]",), data), Tuple[Tuple[int, ...]])  # tuple case 154
+assert_type(decoder.decode(("uint16[]",), data), Tuple[Tuple[int, ...]])  # tuple case 155
+assert_type(decoder.decode(("uint176",), data), Tuple[int])  # tuple case 156
+assert_type(decoder.decode(("uint176[]",), data), Tuple[Tuple[int, ...]])  # tuple case 157
+assert_type(decoder.decode(("uint184",), data), Tuple[int])  # tuple case 158
+assert_type(decoder.decode(("uint184[]",), data), Tuple[Tuple[int, ...]])  # tuple case 159
+assert_type(decoder.decode(("uint192",), data), Tuple[int])  # tuple case 160
+assert_type(decoder.decode(("uint192[]",), data), Tuple[Tuple[int, ...]])  # tuple case 161
+assert_type(decoder.decode(("uint200",), data), Tuple[int])  # tuple case 162
+assert_type(decoder.decode(("uint200[]",), data), Tuple[Tuple[int, ...]])  # tuple case 163
+assert_type(decoder.decode(("uint208",), data), Tuple[int])  # tuple case 164
+assert_type(decoder.decode(("uint208[]",), data), Tuple[Tuple[int, ...]])  # tuple case 165
+assert_type(decoder.decode(("uint216",), data), Tuple[int])  # tuple case 166
+assert_type(decoder.decode(("uint216[]",), data), Tuple[Tuple[int, ...]])  # tuple case 167
+assert_type(decoder.decode(("uint224",), data), Tuple[int])  # tuple case 168
+assert_type(decoder.decode(("uint224[]",), data), Tuple[Tuple[int, ...]])  # tuple case 169
+assert_type(decoder.decode(("uint232",), data), Tuple[int])  # tuple case 170
+assert_type(decoder.decode(("uint232[]",), data), Tuple[Tuple[int, ...]])  # tuple case 171
+assert_type(decoder.decode(("uint24",), data), Tuple[int])  # tuple case 172
+assert_type(decoder.decode(("uint240",), data), Tuple[int])  # tuple case 173
+assert_type(decoder.decode(("uint240[]",), data), Tuple[Tuple[int, ...]])  # tuple case 174
+assert_type(decoder.decode(("uint248",), data), Tuple[int])  # tuple case 175
+assert_type(decoder.decode(("uint248[]",), data), Tuple[Tuple[int, ...]])  # tuple case 176
+assert_type(decoder.decode(("uint24[]",), data), Tuple[Tuple[int, ...]])  # tuple case 177
+assert_type(decoder.decode(("uint256",), data), Tuple[int])  # tuple case 178
+assert_type(decoder.decode(("uint256[]",), data), Tuple[Tuple[int, ...]])  # tuple case 179
+assert_type(decoder.decode(("uint32",), data), Tuple[int])  # tuple case 180
+assert_type(decoder.decode(("uint32[]",), data), Tuple[Tuple[int, ...]])  # tuple case 181
+assert_type(decoder.decode(("uint40",), data), Tuple[int])  # tuple case 182
+assert_type(decoder.decode(("uint40[]",), data), Tuple[Tuple[int, ...]])  # tuple case 183
+assert_type(decoder.decode(("uint48",), data), Tuple[int])  # tuple case 184
+assert_type(decoder.decode(("uint48[]",), data), Tuple[Tuple[int, ...]])  # tuple case 185
+assert_type(decoder.decode(("uint56",), data), Tuple[int])  # tuple case 186
+assert_type(decoder.decode(("uint56[]",), data), Tuple[Tuple[int, ...]])  # tuple case 187
+assert_type(decoder.decode(("uint64",), data), Tuple[int])  # tuple case 188
+assert_type(decoder.decode(("uint64[]",), data), Tuple[Tuple[int, ...]])  # tuple case 189
+assert_type(decoder.decode(("uint72",), data), Tuple[int])  # tuple case 190
+assert_type(decoder.decode(("uint72[]",), data), Tuple[Tuple[int, ...]])  # tuple case 191
+assert_type(decoder.decode(("uint8",), data), Tuple[int])  # tuple case 192
+assert_type(decoder.decode(("uint80",), data), Tuple[int])  # tuple case 193
+assert_type(decoder.decode(("uint80[]",), data), Tuple[Tuple[int, ...]])  # tuple case 194
+assert_type(decoder.decode(("uint88",), data), Tuple[int])  # tuple case 195
+assert_type(decoder.decode(("uint88[]",), data), Tuple[Tuple[int, ...]])  # tuple case 196
+assert_type(decoder.decode(("uint8[]",), data), Tuple[Tuple[int, ...]])  # tuple case 197
+assert_type(decoder.decode(("uint96",), data), Tuple[int])  # tuple case 198
+assert_type(decoder.decode(("uint96[]",), data), Tuple[Tuple[int, ...]])  # tuple case 199
+assert_type(decoder.decode(("someothertype",), data), Tuple[Any])  # tuple case 200
