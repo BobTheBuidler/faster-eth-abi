@@ -1,0 +1,65 @@
+name: mypy-typecheck
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "tests/typecheck/**.py"
+      - "scripts/generate_overload_tests.py"
+      - "faster_eth_abi/**"
+      - "setup.py"
+      - "pyproject.toml"
+      - "tox.ini"
+  pull_request:
+    branches: [master, main]
+    paths:
+      - "tests/typecheck/**.py"
+      - "scripts/generate_overload_tests.py"
+      - "faster_eth_abi/**"
+      - "setup.py"
+      - "pyproject.toml"
+      - "tox.ini"
+  workflow_dispatch:
+
+jobs:
+  mypy-typecheck:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
+        suite: ["fixed", "variable"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install . mypy
+
+      - name: Restore .mypy_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+          restore-keys: mypy-cache-${{ runner.os }}-x64-
+
+      - name: Run mypy on a random 1/10th sample of typecheck chunked files (parallel)
+        run: |
+          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/ -name '*.py')
+          count=$(echo "$files" | wc -l)
+          n=$(( (count + 9) / 10 ))
+          if [ "$n" -lt 1 ]; then n=1; fi
+          echo "$files" | shuf | head -n $n | xargs -n 1 -P 2 sh -c 'mypy --config-file=/dev/null --follow-imports=silent "$0" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
+
+      - name: Save .mypy_cache (always, even on failure)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
