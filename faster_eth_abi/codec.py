@@ -1531,7 +1531,147 @@ class ABIDecoder(BaseABICoder):
     ) -> Tuple[Any, Any, Any]:
         ...
 
-    # non-tuple types input NOTE temporarily disabled, this is a placeholder TODO debug and reenable
+    '''
+    # non-tuple types input NOTE temporarily disabled TODO debug and reenable
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[BytesTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bytes, ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[StringTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[DecodesToIntTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[int, ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[BoolTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, ...]:
+        ...
+
+    # fallback to union types, still better than Any
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, StringTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, str], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, DecodesToIntTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, int], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[StringTypeStr, DecodesToIntTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[str, int], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[StringTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[str, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[DecodesToIntTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, StringTypeStr, DecodesToIntTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, str, int], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, StringTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, str, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[BytesTypeStr, DecodesToIntTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[Union[StringTypeStr, DecodesToIntTypeStr, BoolTypeStr]],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[str, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[BytesTypeStr, StringTypeStr, DecodesToIntTypeStr, BoolTypeStr]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[bytes, str, int, bool], ...]:
+        ...
+    '''
 
     @overload
     def decode(
