@@ -1,0 +1,126 @@
+name: Generate Type Stubs
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+     - 'faster_eth_abi/**/*.py'
+     - 'pyproject.toml'
+     - 'setup.py'
+  pull_request:
+    paths:
+     - 'faster_eth_abi/**/*.py'
+     - 'pyproject.toml'
+     - 'setup.py'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  stubgen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install mypy
+        run: pip install mypy
+
+      - name: Generate stubs with stubgen
+        run: |
+          rm -rf stubs
+          mkdir stubs
+          python -m mypy.stubgen faster_eth_abi -o stubs
+
+      - name: Duplicate stubs for eth_abi
+        run: |
+          cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
+
+      - name: Copy LICENSE
+        run: cp LICENSE types-eth-abi/LICENSE
+
+      - name: Update LICENSE copyright
+        run: |
+          sed -i 's/Copyright (c) 2016-2020, 2022-2025 The Ethereum Foundation/Copyright (c) 2025 BobTheBuidler/' types-eth-abi/LICENSE
+
+      - name: Create py.typed
+        run: touch types-eth-abi/py.typed
+
+      - name: Create README.md for stubs
+        run: |
+          echo "# types-faster-eth-utils" > types-eth-abi/README.md
+          echo "" >> types-eth-abi/README.md
+          echo "Type stubs for the faster_eth_abi library, generated automatically via stubgen." >> types-eth-abi/README.md
+          echo "" >> types-eth-abi/README.md
+          echo "## eth_abi compatibility" >> types-eth-abi/README.md
+          echo "" >> types-eth-abi/README.md
+          echo "For compatibility, the stubs for \`faster_eth_abi\` are also duplicated as \`eth_abi\` in this package. This allows these type stubs to be used with both the \`eth-abi\` and \`faster-eth-abi\` libraries." >> types-eth-abi/README.md
+
+      - name: Extract version from faster_eth_abi/__init__.py
+        id: get_version
+        run: |
+          VERSION=$(python -c "import re; f=open('faster_eth_abi/__init__.py'); m=re.search(r'__version__\s*=\s*[\"\\\']([^\"\\\']+)[\"\\\']', f.read()); print(m.group(1) if m else '0.0.0')")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create setup.py for types-faster-eth-utils
+        run: |
+          VERSION="$VERSION"
+          echo "from setuptools import setup" > types-eth-abi/setup.py
+          echo "" >> types-eth-abi/setup.py
+          echo "setup(" >> types-eth-abi/setup.py
+          echo "    name=\"types-eth-utils\"," >> types-eth-abi/setup.py
+          echo "    version=\"$VERSION\"," >> types-eth-abi/setup.py
+          echo "    description=\"Type stubs for eth-abi and faster-eth-abi\"," >> types-eth-abi/setup.py
+          echo "    author=\"eth-abi contributors\"," >> types-eth-abi/setup.py
+          echo "    license=\"MIT\"," >> types-eth-abi/setup.py
+          echo "    packages=[\"faster_eth_abi\", \"eth_abi\"]," >> types-eth-abi/setup.py
+          echo "    package_data={" >> types-eth-abi/setup.py
+          echo "        \"faster_eth_abi\": [\"*.pyi\", \"py.typed\"]," >> types-eth-abi/setup.py
+          echo "        \"eth_abi\": [\"*.pyi\", \"py.typed\"]" >> types-eth-abi/setup.py
+          echo "    }," >> types-eth-abi/setup.py
+          echo "    install_requires=[]," >> types-eth-abi/setup.py
+          echo "    python_requires=\">=3.7\"," >> types-eth-abi/setup.py
+          echo "    zip_safe=False," >> types-eth-abi/setup.py
+          echo "    include_package_data=True," >> types-eth-abi/setup.py
+          echo "    long_description=open(\"README.md\").read()," >> types-eth-abi/setup.py
+          echo "    long_description_content_type=\"text/markdown\"," >> types-eth-abi/setup.py
+          echo "    classifiers=[" >> types-eth-abi/setup.py
+          echo "        \"Typing :: Stubs Only\"," >> types-eth-abi/setup.py
+          echo "        \"Programming Language :: Python :: 3\"," >> types-eth-abi/setup.py
+          echo "    ]," >> types-eth-abi/setup.py
+          echo ")" >> types-eth-abi/setup.py
+
+      - name: Create MANIFEST.in
+        run: |
+          echo "include LICENSE" > types-eth-abi/MANIFEST.in
+          echo "include README.md" >> types-eth-abi/MANIFEST.in
+          echo "include py.typed" >> types-eth-abi/MANIFEST.in
+          echo "recursive-include faster_eth_abi *.pyi" >> types-eth-abi/MANIFEST.in
+          echo "recursive-include eth_abi *.pyi" >> types-eth-abi/MANIFEST.in
+
+      - name: Check for stubs changes
+        id: stubs_diff
+        run: |
+          git fetch origin
+          git add types-eth-abi/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.stubs_diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: auto/update-stubs
+          base: ${{ github.ref_name }}
+          title: "chore(mypy): update type stubs [automated]"
+          body: "This PR updates the type stubs in /stubs. Generated by GitHub Actions."
+          commit-message: "chore(mypy): update type stubs [automated]"
