@@ -5,13 +5,13 @@ on:
     branches: [main, master]
     paths:
      - '.github/workflows/stubgen.yaml'
-     - 'faster_eth_abi/**/*.py'
+     - 'faster_eth_abi/**.py'
      - 'pyproject.toml'
      - 'setup.py'
   pull_request:
     paths:
      - '.github/workflows/stubgen.yaml'
-     - 'faster_eth_abi/**/*.py'
+     - 'faster_eth_abi/**.py'
      - 'pyproject.toml'
      - 'setup.py'
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
         run: |
           rm -rf stubs
           mkdir stubs
-          stubgen faster_eth_abi -o stubs
+          stubgen faster_eth_abi -o types-eth-abi
 
       - name: Duplicate stubs for eth_abi
         run: |
