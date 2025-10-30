@@ -164,6 +164,15 @@ class ABIDecoder(BaseABICoder):
     ) -> Tuple[bool]:
         ...
 
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any]:
+        ...
+
     # len == 2
 
     @overload
@@ -1523,6 +1532,15 @@ class ABIDecoder(BaseABICoder):
         ...
 
     # non-tuple types input NOTE temporarily disabled, this is a placeholder TODO debug and reenable
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, ...]:
+        ...
 
     def decode(
         self,

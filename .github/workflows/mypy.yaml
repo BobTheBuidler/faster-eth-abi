@@ -59,7 +59,8 @@ jobs:
           # Fully check all len_1 and len_2 files
           for len_dir in 1 2; do
             find tests/typecheck/codec/decode/${{ matrix.suite }}/len_${len_dir}/ -name '*.py' | \
-              xargs -n 1 -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"' || exit 1
+              xargs -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
+            if [ $? -ne 0 ]; then exit 1; fi
           done
           # Randomly sample 1/10th of len_3 files
           files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_3/ -name '*.py')
@@ -67,7 +68,8 @@ jobs:
           n=$(( (count + 9) / 10 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
-            xargs -n 1 -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"' || exit 1
+            xargs -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
+          if [ $? -ne 0 ]; then exit 1; fi
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
