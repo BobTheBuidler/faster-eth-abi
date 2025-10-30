@@ -91,7 +91,7 @@ class ABIEncoder(BaseABICoder):
             encoder = self._registry.get_encoder(typ)
         except MultipleEntriesFound:
             raise
-        except:
+        except Exception:
             return False
 
         validate = getattr(encoder, "validate_value", encoder)
@@ -162,6 +162,15 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bool]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any]:
         ...
 
     # len == 2
@@ -1660,6 +1669,15 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Union[bytes, str, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, ...]:
         ...
 
     def decode(
