@@ -91,7 +91,7 @@ class ABIEncoder(BaseABICoder):
             encoder = self._registry.get_encoder(typ)
         except MultipleEntriesFound:
             raise
-        except:
+        except Exception:
             return False
 
         validate = getattr(encoder, "validate_value", encoder)
@@ -1531,8 +1531,7 @@ class ABIDecoder(BaseABICoder):
     ) -> Tuple[Any, Any, Any]:
         ...
 
-    '''
-    # non-tuple types input NOTE temporarily disabled TODO debug and reenable
+    # non-tuple types input
 
     @overload
     def decode(
@@ -1671,7 +1670,6 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[bytes, str, int, bool], ...]:
         ...
-    '''
 
     @overload
     def decode(
