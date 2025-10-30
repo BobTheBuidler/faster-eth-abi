@@ -11,6 +11,14 @@ from setuptools import (
 
 HYPOTHESIS_REQUIREMENT = "hypothesis>=6.22.0,<6.108.7"
 
+
+def parse_requirements(filename):
+    with open(filename) as f:
+        return [line.strip() for line in f if line.strip() and not line.startswith("#")]
+
+
+install_requires = parse_requirements("requirements.txt")
+
 extras_require = {
     "dev": [
         "build>=0.9.0",
@@ -114,14 +122,7 @@ setup(
         "Original": "https://github.com/ethereum/eth-abi",
     },
     include_package_data=True,
-    install_requires=[
-        "cchecksum>=0.2.6,<0.4",
-        "faster-eth-utils==5.3.16",
-        "eth-abi==5.2.0",
-        "eth-typing==5.2.1",
-        "mypy_extensions",
-        "parsimonious>=0.10.0,<0.11.0",
-    ],
+    install_requires=install_requires,
     python_requires=">=3.8, <4",
     extras_require=extras_require,
     py_modules=["faster_eth_abi"],

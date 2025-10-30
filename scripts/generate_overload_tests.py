@@ -50,8 +50,8 @@ data = b"\\x00" * 32
 """
 
 RETURN_TYPE_MAP = {
-    "address": "HexAddress",
-    "address[]": "Tuple[HexAddress, ...]",
+    "address": "Any",  # "HexAddress", TODO implement me
+    "address[]": "Any",  # "Tuple[HexAddress, ...]",
     "bytes": "bytes",
     "bytes[]": "Tuple[bytes, ...]",
     "string": "str",
@@ -71,11 +71,11 @@ for i in range(1, 33):
 
 def build_alias_map():
     sys.path.insert(0, str(Path(__file__).parent.parent))
-    import faster_eth_abi.typing as fabi_typing
+    import faster_eth_abi.typing
     alias_map = {}
-    for name in dir(fabi_typing):
+    for name in dir(faster_eth_abi.typing):
         if not name.startswith("_"):
-            obj = getattr(fabi_typing, name)
+            obj = getattr(faster_eth_abi.typing, name)
             alias_map[name] = obj
     return alias_map
 
@@ -98,6 +98,9 @@ def extract_all_literals(typ, alias_map, alias_path=None):
             yield from extract_all_literals(arg, alias_map, alias_path)
         return
     elif origin is Literal:
+        if alias_path[-1].endswith("ArrayTypeStr"):
+            # TODO: we need to implement overloads for these, for now we only have the literals defined
+            return
         if alias_path[-1].startswith("Tuple") and alias_path[-1].endswith("IntTypeStr"):
             # for now, we will exclude these. We need to implement them 
             # in the actual overloads, which takes a new script. stay tuned.
@@ -171,12 +174,12 @@ def compute_total_chunks(all_literals):
 
 def stream_cases_and_write_files(all_literals, mode):
     case_counter = 0
-    chunk_idx = 1
     total_chunks = compute_total_chunks(all_literals)
     progress = tqdm(total=total_chunks, desc=f"Streaming {mode} chunks") if tqdm else None
 
     f = None
     for L in range(1, MAX_LEN + 1):
+        chunk_idx = 1
         chunk_lines = []
         length_case_counter = 0
         if mode == "tuple":
