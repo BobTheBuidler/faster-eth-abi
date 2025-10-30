@@ -9,6 +9,7 @@ on:
      - 'pyproject.toml'
      - 'setup.py'
   pull_request:
+    branches: [main, master]
     paths:
      - '.github/workflows/stubgen.yaml'
      - 'faster_eth_abi/**.py'
@@ -47,6 +48,9 @@ jobs:
       - name: Duplicate stubs for eth_abi
         run: cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
 
+      - name: Install distutils for Python 3.x
+        run: sudo apt-get update && sudo apt-get install -y python3-distutils
+
       - name: Generate egg-info
         run: python setup.py egg_info
 
@@ -84,14 +88,6 @@ jobs:
           sed -i "s|{{URL}}|$URL|g" types-eth-abi/setup.py
           sed -i "s|{{LICENSE}}|$LICENSE|g" types-eth-abi/setup.py
           sed -i "s|{{KEYWORDS}}|$KEYWORDS|g" types-eth-abi/setup.py
-
-      - name: Create MANIFEST.in
-        run: |
-          echo "include LICENSE" > types-eth-abi/MANIFEST.in
-          echo "include README.md" >> types-eth-abi/MANIFEST.in
-          echo "include py.typed" >> types-eth-abi/MANIFEST.in
-          echo "recursive-include faster_eth_abi *.pyi" >> types-eth-abi/MANIFEST.in
-          echo "recursive-include eth_abi *.pyi" >> types-eth-abi/MANIFEST.in
 
       - name: Check for stubs changes
         id: stubs_diff
