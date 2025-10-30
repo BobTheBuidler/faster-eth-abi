@@ -1,8 +1,10 @@
-from _typeshed import ReadableBuffer as ReadableBuffer
+from _typeshed import Incomplete, ReadableBuffer as ReadableBuffer
 from io import BytesIO
 from typing import Any
 
 class ContextFramesBytesIO(BytesIO):
+    _frames: Incomplete
+    _total_offset: int
     def __init__(self, initial_bytes: ReadableBuffer) -> None: ...
     def seek_in_frame(self, pos: int, *args: Any, **kwargs: Any) -> None: ...
     def push_frame(self, offset: int) -> None: ...
