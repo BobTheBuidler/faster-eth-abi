@@ -1,9 +1,8 @@
-import re
 from _typeshed import Incomplete
 from eth_typing.abi import TypeStr as TypeStr
 from faster_eth_abi.exceptions import ABITypeError as ABITypeError
 from parsimonious.nodes import Node as Node
-from typing import Any, Final, Generic, Literal, NoReturn, Sequence, TypeVar
+from typing import Any, Final, Generic, Literal, NoReturn, Sequence, TypeVar, final
 from typing_extensions import Self
 
 TYPE_ALIASES: Final[Incomplete]
@@ -14,28 +13,25 @@ Subtype = IntSubtype | FixedSubtype
 TSub = TypeVar('TSub', IntSubtype, FixedSubtype, Literal[None])
 
 class ABIType:
-    __slots__: Incomplete
-    arrlist: Incomplete
-    node: Incomplete
+    arrlist: Final[Incomplete]
+    node: Final[Incomplete]
     def __init__(self, arrlist: Sequence[str] | None = None, node: Node | None = None) -> None: ...
-    def __repr__(self) -> str: ...
     def __eq__(self, other: Any) -> bool: ...
     def to_type_str(self) -> TypeStr: ...
     @property
     def item_type(self) -> Self: ...
     def validate(self) -> None: ...
+    @final
     def invalidate(self, error_msg: str) -> NoReturn: ...
+    @final
     @property
     def is_array(self) -> bool: ...
     @property
     def is_dynamic(self) -> bool: ...
-    @property
-    def _has_dynamic_arrlist(self) -> bool: ...
 TComp = TypeVar('TComp', bound=ABIType)
 
 class TupleType(ABIType):
-    __slots__: Incomplete
-    components: Incomplete
+    components: Final[Incomplete]
     def __init__(self, components: tuple[TComp, ...], arrlist: Sequence[str] | None = None, *, node: Node | None = None) -> None: ...
     def to_type_str(self) -> TypeStr: ...
     @property
@@ -45,9 +41,8 @@ class TupleType(ABIType):
     def is_dynamic(self) -> bool: ...
 
 class BasicType(ABIType, Generic[TSub]):
-    __slots__: Incomplete
-    base: Incomplete
-    sub: Incomplete
+    base: Final[Incomplete]
+    sub: Final[Incomplete]
     def __init__(self, base: str, sub: TSub | None = None, arrlist: Sequence | None = None, *, node: Node | None = None) -> None: ...
     def to_type_str(self) -> TypeStr: ...
     @property
@@ -59,4 +54,3 @@ BytesType = BasicType[IntSubtype]
 FixedType = BasicType[FixedSubtype]
 
 def normalize(type_str: TypeStr) -> TypeStr: ...
-def __normalize(match: re.Match[str]) -> str: ...
