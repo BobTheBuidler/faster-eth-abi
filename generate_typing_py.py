@@ -113,6 +113,20 @@ TupleStrIntTypeStr = Literal[
     {string_int_types},
 ]
 
+AnyTypeStr = Union[
+    AddressTypeStr,
+    BoolTypeStr,
+    StringTypeStr,
+    AddressArrayTypeStr,
+    StringArrayTypeStr,
+    BoolArrayTypeStr,
+    ArrayTypeStr,
+    TupleTypeStr,
+    BytesTypeStr,
+    IntTypeStr,
+    UintTypeStr,
+    str,
+]
 """
 
     Path("faster_eth_abi/typing.py").write_text(content.strip() + "\n")
