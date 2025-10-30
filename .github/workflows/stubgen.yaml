@@ -48,7 +48,7 @@ jobs:
       - name: Duplicate stubs for eth_abi
         run: |
           cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
-          cp types-eth-abi/faster_eth_abi/typing.py types-eth-abi/eth_abi/typing.pyi
+          cp faster_eth_abi/typing.py types-eth-abi/eth_abi/typing.pyi
           rm types-eth-abi/eth_abi/_codec.pyi
           rm types-eth-abi/eth_abi/_decoding.pyi
           rm types-eth-abi/eth_abi/_encoding.pyi
