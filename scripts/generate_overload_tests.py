@@ -5,8 +5,12 @@ Usage:
     python scripts/generate_overload_tests.py
 
 This will overwrite test files in:
-- tests/typecheck/codec/decode/fixed/overload_test_data_*.py (tuple-based)
-- tests/typecheck/codec/decode/variable/overload_test_data_*.py (iterable-based)
+- tests/typecheck/codec/decode/fixed/len_1/overload_test_data_*.py (tuple-based)
+- tests/typecheck/codec/decode/fixed/len_2/overload_test_data_*.py
+- tests/typecheck/codec/decode/fixed/len_3/overload_test_data_*.py
+- tests/typecheck/codec/decode/variable/len_1/overload_test_data_*.py (iterable-based)
+- tests/typecheck/codec/decode/variable/len_2/overload_test_data_*.py
+- tests/typecheck/codec/decode/variable/len_3/overload_test_data_*.py
 
 Test files are chunked in 10,000-case intervals.
 
@@ -20,7 +24,7 @@ Key features:
 """
 
 MAX_LEN = 3
-CHUNK_SIZE = 50_000
+CHUNK_SIZE = 10_000
 
 import re
 import itertools
@@ -59,11 +63,11 @@ RETURN_TYPE_MAP = {
 for i in range(8, 257, 8):
     RETURN_TYPE_MAP[f"int{i}"] = "int"
     RETURN_TYPE_MAP[f"uint{i}"] = "int"
-    RETURN_TYPE_MAP[f"int{i}[]"] = "int"
-    RETURN_TYPE_MAP[f"uint{i}[]"] = "int"
+    RETURN_TYPE_MAP[f"int{i}[]"] = "Tuple[int, ...]"
+    RETURN_TYPE_MAP[f"uint{i}[]"] = "Tuple[int, ...]"
 for i in range(1, 33):
     RETURN_TYPE_MAP[f"bytes{i}"] = "bytes"
-    RETURN_TYPE_MAP[f"bytes{i}[]"] = "bytes"
+    RETURN_TYPE_MAP[f"bytes{i}[]"] = "Tuple[bytes, ...]"
 
 def build_alias_map():
     sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -95,6 +99,9 @@ def extract_all_literals(typ, alias_map, alias_path=None):
         return
     elif origin is Literal:
         if alias_path[-1].startswith("Tuple") and alias_path[-1].endswith("IntTypeStr"):
+            # for now, we will exclude these. We need to implement them 
+            # in the actual overloads, which takes a new script. stay tuned.
+            return
             for value in get_args(typ):
                 if all_integers_in_set(value, {8, 16, 64, 128, 256}):
                     if value not in RETURN_TYPE_MAP:
@@ -168,29 +175,30 @@ def stream_cases_and_write_files(all_literals, mode):
     total_chunks = compute_total_chunks(all_literals)
     progress = tqdm(total=total_chunks, desc=f"Streaming {mode} chunks") if tqdm else None
 
-    if mode == "tuple":
-        out_path = lambda idx: Path(f"tests/typecheck/codec/decode/fixed/overload_test_data_{idx:04d}.py")
-        def render(case, idx):
-            quoted = [f'"{t}"' for t in case]
-            if len(case) == 1:
-                typestr = f"({quoted[0]},)"
-            else:
-                typestr = f"({', '.join(quoted)})"
-            expected = get_expected_type_tuple(case)
-            return "assert_type(decoder.decode({}, data), {})  # tuple case {}\n".format(typestr, expected, idx)
-    else:
-        out_path = lambda idx: Path(f"tests/typecheck/codec/decode/variable/overload_test_data_{idx:04d}.py")
-        def render(case, idx):
-            quoted = [f'"{t}"' for t in case]
-            typestr = "[" + ", ".join(quoted) + "]"
-            expected = get_expected_type_iterable(case)
-            return "assert_type(decoder.decode({}, data), {})  # iterable case {}\n".format(typestr, expected, idx)
-
     f = None
-    chunk_lines = []
     for L in range(1, MAX_LEN + 1):
+        chunk_lines = []
+        length_case_counter = 0
+        if mode == "tuple":
+            out_path = lambda idx: Path(f"tests/typecheck/codec/decode/fixed/len_{L}/overload_test_data_{idx:04d}.py")
+            def render(case, idx):
+                quoted = [f'"{t}"' for t in case]
+                if len(case) == 1:
+                    typestr = f"({quoted[0]},)"
+                else:
+                    typestr = f"({', '.join(quoted)})"
+                expected = get_expected_type_tuple(case)
+                return "assert_type(decoder.decode({}, data), {})  # tuple case {}\n".format(typestr, expected, idx)
+        else:
+            out_path = lambda idx: Path(f"tests/typecheck/codec/decode/variable/len_{L}/overload_test_data_{idx:04d}.py")
+            def render(case, idx):
+                quoted = [f'"{t}"' for t in case]
+                typestr = "[" + ", ".join(quoted) + "]"
+                expected = get_expected_type_iterable(case)
+                return "assert_type(decoder.decode({}, data), {})  # iterable case {}\n".format(typestr, expected, idx)
+
         for combo in itertools.product(all_literals, repeat=L):
-            if case_counter % CHUNK_SIZE == 0:
+            if length_case_counter % CHUNK_SIZE == 0:
                 if f:
                     f.writelines(chunk_lines)
                     f.close()
@@ -204,11 +212,13 @@ def stream_cases_and_write_files(all_literals, mode):
                     progress.update(1)
             chunk_lines.append(render(combo, case_counter))
             case_counter += 1
+            length_case_counter += 1
         print(f"finished generating cases for length {L}")
-    if f:
-        if chunk_lines:
-            f.writelines(chunk_lines)
-        f.close()
+        if f:
+            if chunk_lines:
+                f.writelines(chunk_lines)
+            f.close()
+            f = None
     if progress:
         progress.close()
     return case_counter
