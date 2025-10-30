@@ -40,7 +40,7 @@ jobs:
         run: rm -rf types-eth-abi/eth_abi types-eth-abi/faster_eth_abi
       
       - name: Generate stubs with stubgen
-        run: stubgen faster_eth_abi -o types-eth-abi
+        run: stubgen faster_eth_abi -o types-eth-abi --include-private
 
       - name: Create py.typed
         run: touch types-eth-abi/faster_eth_abi/py.typed
