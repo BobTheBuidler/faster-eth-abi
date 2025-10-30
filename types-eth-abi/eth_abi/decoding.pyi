@@ -10,7 +10,7 @@ from faster_eth_abi.io import ContextFramesBytesIO as ContextFramesBytesIO
 from faster_eth_abi.typing import T as T
 from faster_eth_abi.utils.numeric import TEN as TEN, abi_decimal_context as abi_decimal_context, ceil32 as ceil32
 from functools import cached_property as cached_property
-from typing import Any, Callable, Generic, TypeVar
+from typing import Any, Callable, Final, Generic, TypeVar, final
 
 TByteStr = TypeVar('TByteStr', bytes, str)
 
@@ -22,7 +22,7 @@ class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
 
 class HeadTailDecoder(BaseDecoder[T]):
     is_dynamic: bool
-    tail_decoder: Incomplete
+    tail_decoder: Final[Incomplete]
     def __init__(self, tail_decoder: HeadTailDecoder[T] | SizedArrayDecoder[T] | DynamicArrayDecoder[T] | ByteStringDecoder[T], **kwargs: Any) -> None: ...
     def decode(self, stream: ContextFramesBytesIO) -> T: ...
     __call__ = decode
@@ -31,13 +31,13 @@ class TupleDecoder(BaseDecoder[tuple[T, ...]]):
     decoders: tuple[BaseDecoder[T], ...]
     is_dynamic: Incomplete
     len_of_head: Incomplete
-    _is_head_tail: Incomplete
-    _no_head_tail: Incomplete
     def __init__(self, decoders: tuple[BaseDecoder[T], ...], **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
+    @final
     def validate_pointers(self, stream: ContextFramesBytesIO) -> None: ...
     def decode(self, stream: ContextFramesBytesIO) -> tuple[T, ...]: ...
     __call__ = decode
+    @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry): ...
 
 class SingleDecoder(BaseDecoder[T]):
@@ -79,7 +79,6 @@ class FixedByteSizeDecoder(SingleDecoder[T]):
     def validate(self) -> None: ...
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes: ...
     def split_data_and_padding(self, raw_data: bytes) -> tuple[bytes, bytes]: ...
-    def _get_value_byte_size(self) -> int: ...
 
 class Fixed32ByteSizeDecoder(FixedByteSizeDecoder[T]):
     data_byte_size: int
@@ -153,7 +152,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
     def from_type_str(cls, abi_type, registry): ...
 
 class StringDecoder(ByteStringDecoder[str]):
-    bytes_errors: Incomplete
+    bytes_errors: Final[Incomplete]
     def __init__(self, handle_string_errors: str = 'strict') -> None: ...
     def from_type_str(cls, abi_type, registry): ...
     def decode(self, stream: ContextFramesBytesIO) -> str: ...

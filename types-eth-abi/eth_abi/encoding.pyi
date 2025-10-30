@@ -9,7 +9,7 @@ from faster_eth_abi.utils.numeric import TEN as TEN, abi_decimal_context as abi_
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
-from typing import Any, Callable, ClassVar, NoReturn, Sequence
+from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
 from typing_extensions import Self
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
@@ -23,14 +23,15 @@ class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
 
 class TupleEncoder(BaseEncoder):
     encoders: tuple[BaseEncoder, ...]
-    _is_dynamic: Incomplete
     is_dynamic: Incomplete
-    validators: Incomplete
+    validators: Final[Callable[[Any], None]]
     def __init__(self, encoders: tuple[BaseEncoder, ...], **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
+    @final
     def validate_value(self, value: Sequence[Any]) -> None: ...
     def encode(self, values: Sequence[Any]) -> bytes: ...
     def __call__(self, values: Sequence[Any]) -> bytes: ...
+    @parse_tuple_type_str
     def from_type_str(cls, abi_type, registry): ...
 
 class FixedSizeEncoder(BaseEncoder):
