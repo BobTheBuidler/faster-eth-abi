@@ -23,6 +23,7 @@ class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
 
 class TupleEncoder(BaseEncoder):
     encoders: tuple[BaseEncoder, ...]
+    _is_dynamic: Incomplete
     is_dynamic: Incomplete
     validators: Incomplete
     def __init__(self, encoders: tuple[BaseEncoder, ...], **kwargs: Any) -> None: ...
