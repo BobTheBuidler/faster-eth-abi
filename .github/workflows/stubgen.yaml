@@ -65,39 +65,43 @@ jobs:
           echo "" >> types-eth-abi/README.md
           echo "For compatibility, the stubs for \`faster_eth_abi\` are also duplicated as \`eth_abi\` in this package. This allows these type stubs to be used with both the \`eth-abi\` and \`faster-eth-abi\` libraries." >> types-eth-abi/README.md
 
-      - name: Extract version from faster_eth_abi/__init__.py
-        id: get_version
-        run: |
-          VERSION=$(python -c "import re; f=open('faster_eth_abi/__init__.py'); m=re.search(r'__version__\s*=\s*[\"\\\']([^\"\\\']+)[\"\\\']', f.read()); print(m.group(1) if m else '0.0.0')")
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Generate egg-info
+        run: python setup.py egg_info
 
-      - name: Create setup.py for types-faster-eth-utils
+      - name: Extract metadata from egg-info
+        id: get_metadata
         run: |
-          VERSION="$VERSION"
-          echo "from setuptools import setup" > types-eth-abi/setup.py
-          echo "" >> types-eth-abi/setup.py
-          echo "setup(" >> types-eth-abi/setup.py
-          echo "    name=\"types-eth-utils\"," >> types-eth-abi/setup.py
-          echo "    version=\"$VERSION\"," >> types-eth-abi/setup.py
-          echo "    description=\"Type stubs for eth-abi and faster-eth-abi\"," >> types-eth-abi/setup.py
-          echo "    author=\"eth-abi contributors\"," >> types-eth-abi/setup.py
-          echo "    license=\"MIT\"," >> types-eth-abi/setup.py
-          echo "    packages=[\"faster_eth_abi\", \"eth_abi\"]," >> types-eth-abi/setup.py
-          echo "    package_data={" >> types-eth-abi/setup.py
-          echo "        \"faster_eth_abi\": [\"*.pyi\", \"py.typed\"]," >> types-eth-abi/setup.py
-          echo "        \"eth_abi\": [\"*.pyi\", \"py.typed\"]" >> types-eth-abi/setup.py
-          echo "    }," >> types-eth-abi/setup.py
-          echo "    install_requires=[]," >> types-eth-abi/setup.py
-          echo "    python_requires=\">=3.7\"," >> types-eth-abi/setup.py
-          echo "    zip_safe=False," >> types-eth-abi/setup.py
-          echo "    include_package_data=True," >> types-eth-abi/setup.py
-          echo "    long_description=open(\"README.md\").read()," >> types-eth-abi/setup.py
-          echo "    long_description_content_type=\"text/markdown\"," >> types-eth-abi/setup.py
-          echo "    classifiers=[" >> types-eth-abi/setup.py
-          echo "        \"Typing :: Stubs Only\"," >> types-eth-abi/setup.py
-          echo "        \"Programming Language :: Python :: 3\"," >> types-eth-abi/setup.py
-          echo "    ]," >> types-eth-abi/setup.py
-          echo ")" >> types-eth-abi/setup.py
+          VERSION=$(grep '^Version:' *.egg-info/PKG-INFO | head -n1 | awk '{print $2}')
+          PYTHON_REQUIRES=$(grep '^Requires-Python:' *.egg-info/PKG-INFO | head -n1 | awk '{print $2}')
+          URL=$(grep '^Home-page:' *.egg-info/PKG-INFO | head -n1 | cut -d' ' -f2-)
+          LICENSE=$(grep '^License:' *.egg-info/PKG-INFO | head -n1 | cut -d' ' -f2-)
+          KEYWORDS=$(grep '^Keywords:' *.egg-info/PKG-INFO | head -n1 | cut -d' ' -f2-)
+          if [ -z "$PYTHON_REQUIRES" ]; then
+            PYTHON_REQUIRES=">=3.7"
+          fi
+          if [ -z "$URL" ]; then
+            URL="https://github.com/BobTheBuidler/faster-eth-abi"
+          fi
+          if [ -z "$LICENSE" ]; then
+            LICENSE="MIT"
+          fi
+          if [ -z "$KEYWORDS" ]; then
+            KEYWORDS="ethereum"
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "PYTHON_REQUIRES=$PYTHON_REQUIRES" >> $GITHUB_ENV
+          echo "URL=$URL" >> $GITHUB_ENV
+          echo "LICENSE=$LICENSE" >> $GITHUB_ENV
+          echo "KEYWORDS=$KEYWORDS" >> $GITHUB_ENV
+
+      - name: Create setup.py for types-faster-eth-utils from template
+        run: |
+          cp types-eth-abi/setup.template.py types-eth-abi/setup.py
+          sed -i "s/{{VERSION}}/$VERSION/g" types-eth-abi/setup.py
+          sed -i "s/{{PYTHON_REQUIRES}}/$PYTHON_REQUIRES/g" types-eth-abi/setup.py
+          sed -i "s|{{URL}}|$URL|g" types-eth-abi/setup.py
+          sed -i "s|{{LICENSE}}|$LICENSE|g" types-eth-abi/setup.py
+          sed -i "s|{{KEYWORDS}}|$KEYWORDS|g" types-eth-abi/setup.py
 
       - name: Create MANIFEST.in
         run: |
