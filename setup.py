@@ -31,6 +31,7 @@ extras_require = {
     ],
     "test": [
         "pytest>=7.0.0",
+        "pytest-mypy-pugins",
         "pytest-timeout>=2.0.0",
         "pytest-xdist>=2.4.0",
         "pytest-pythonpath>=0.7.1",
