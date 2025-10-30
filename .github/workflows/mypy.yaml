@@ -21,6 +21,10 @@ on:
       - "tox.ini"
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   mypy-typecheck:
     runs-on: ubuntu-latest
