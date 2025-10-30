@@ -48,9 +48,6 @@ jobs:
       - name: Duplicate stubs for eth_abi
         run: cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
 
-      - name: Install distutils for Python 3.x
-        run: sudo apt-get update && sudo apt-get install -y python3-distutils
-
       - name: Generate egg-info
         run: python setup.py egg_info
 
