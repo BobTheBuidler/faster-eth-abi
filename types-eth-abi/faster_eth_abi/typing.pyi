@@ -4610,3 +4610,18 @@ TupleStrIntTypeStr = Literal[
     "(string,uint248)",
     "(string,uint256)",
 ]
+
+AnyTypeStr = Union[
+    AddressTypeStr,
+    BoolTypeStr,
+    StringTypeStr,
+    AddressArrayTypeStr,
+    StringArrayTypeStr,
+    BoolArrayTypeStr,
+    ArrayTypeStr,
+    TupleTypeStr,
+    BytesTypeStr,
+    IntTypeStr,
+    UintTypeStr,
+    str,
+]
