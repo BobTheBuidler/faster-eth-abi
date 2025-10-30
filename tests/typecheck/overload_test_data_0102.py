@@ -8,105 +8,105 @@ from faster_eth_abi.registry import ABIRegistry
 
 decoder = ABIDecoder(ABIRegistry())
 data = b"\x00" * 32
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes1"), data), Tuple[object, object, bytes])  # case 1010000
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes2"), data), Tuple[object, object, bytes])  # case 1010001
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes3"), data), Tuple[object, object, bytes])  # case 1010002
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes4"), data), Tuple[object, object, bytes])  # case 1010003
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes5"), data), Tuple[object, object, bytes])  # case 1010004
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes6"), data), Tuple[object, object, bytes])  # case 1010005
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes7"), data), Tuple[object, object, bytes])  # case 1010006
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes8"), data), Tuple[object, object, bytes])  # case 1010007
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes9"), data), Tuple[object, object, bytes])  # case 1010008
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes10"), data), Tuple[object, object, bytes])  # case 1010009
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes11"), data), Tuple[object, object, bytes])  # case 1010010
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes12"), data), Tuple[object, object, bytes])  # case 1010011
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes13"), data), Tuple[object, object, bytes])  # case 1010012
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes14"), data), Tuple[object, object, bytes])  # case 1010013
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes15"), data), Tuple[object, object, bytes])  # case 1010014
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes16"), data), Tuple[object, object, bytes])  # case 1010015
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes17"), data), Tuple[object, object, bytes])  # case 1010016
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes18"), data), Tuple[object, object, bytes])  # case 1010017
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes19"), data), Tuple[object, object, bytes])  # case 1010018
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes20"), data), Tuple[object, object, bytes])  # case 1010019
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes21"), data), Tuple[object, object, bytes])  # case 1010020
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes22"), data), Tuple[object, object, bytes])  # case 1010021
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes23"), data), Tuple[object, object, bytes])  # case 1010022
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes24"), data), Tuple[object, object, bytes])  # case 1010023
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes25"), data), Tuple[object, object, bytes])  # case 1010024
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes26"), data), Tuple[object, object, bytes])  # case 1010025
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes27"), data), Tuple[object, object, bytes])  # case 1010026
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes28"), data), Tuple[object, object, bytes])  # case 1010027
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes29"), data), Tuple[object, object, bytes])  # case 1010028
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes30"), data), Tuple[object, object, bytes])  # case 1010029
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes31"), data), Tuple[object, object, bytes])  # case 1010030
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes32"), data), Tuple[object, object, bytes])  # case 1010031
-assert_type(decoder.decode(("__fallback__", "__fallback__", "string"), data), Tuple[object, object, str])  # case 1010032
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint8"), data), Tuple[object, object, int])  # case 1010033
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint16"), data), Tuple[object, object, int])  # case 1010034
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint24"), data), Tuple[object, object, int])  # case 1010035
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint32"), data), Tuple[object, object, int])  # case 1010036
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint40"), data), Tuple[object, object, int])  # case 1010037
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint48"), data), Tuple[object, object, int])  # case 1010038
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint56"), data), Tuple[object, object, int])  # case 1010039
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint64"), data), Tuple[object, object, int])  # case 1010040
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint72"), data), Tuple[object, object, int])  # case 1010041
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint80"), data), Tuple[object, object, int])  # case 1010042
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint88"), data), Tuple[object, object, int])  # case 1010043
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint96"), data), Tuple[object, object, int])  # case 1010044
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint104"), data), Tuple[object, object, int])  # case 1010045
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint112"), data), Tuple[object, object, int])  # case 1010046
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint120"), data), Tuple[object, object, int])  # case 1010047
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint128"), data), Tuple[object, object, int])  # case 1010048
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint136"), data), Tuple[object, object, int])  # case 1010049
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint144"), data), Tuple[object, object, int])  # case 1010050
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint152"), data), Tuple[object, object, int])  # case 1010051
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint160"), data), Tuple[object, object, int])  # case 1010052
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint168"), data), Tuple[object, object, int])  # case 1010053
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint176"), data), Tuple[object, object, int])  # case 1010054
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint184"), data), Tuple[object, object, int])  # case 1010055
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint192"), data), Tuple[object, object, int])  # case 1010056
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint200"), data), Tuple[object, object, int])  # case 1010057
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint208"), data), Tuple[object, object, int])  # case 1010058
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint216"), data), Tuple[object, object, int])  # case 1010059
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint224"), data), Tuple[object, object, int])  # case 1010060
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint232"), data), Tuple[object, object, int])  # case 1010061
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint240"), data), Tuple[object, object, int])  # case 1010062
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint248"), data), Tuple[object, object, int])  # case 1010063
-assert_type(decoder.decode(("__fallback__", "__fallback__", "uint256"), data), Tuple[object, object, int])  # case 1010064
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int8"), data), Tuple[object, object, int])  # case 1010065
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int16"), data), Tuple[object, object, int])  # case 1010066
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int24"), data), Tuple[object, object, int])  # case 1010067
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int32"), data), Tuple[object, object, int])  # case 1010068
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int40"), data), Tuple[object, object, int])  # case 1010069
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int48"), data), Tuple[object, object, int])  # case 1010070
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int56"), data), Tuple[object, object, int])  # case 1010071
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int64"), data), Tuple[object, object, int])  # case 1010072
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int72"), data), Tuple[object, object, int])  # case 1010073
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int80"), data), Tuple[object, object, int])  # case 1010074
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int88"), data), Tuple[object, object, int])  # case 1010075
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int96"), data), Tuple[object, object, int])  # case 1010076
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int104"), data), Tuple[object, object, int])  # case 1010077
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int112"), data), Tuple[object, object, int])  # case 1010078
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int120"), data), Tuple[object, object, int])  # case 1010079
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int128"), data), Tuple[object, object, int])  # case 1010080
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int136"), data), Tuple[object, object, int])  # case 1010081
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int144"), data), Tuple[object, object, int])  # case 1010082
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int152"), data), Tuple[object, object, int])  # case 1010083
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int160"), data), Tuple[object, object, int])  # case 1010084
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int168"), data), Tuple[object, object, int])  # case 1010085
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int176"), data), Tuple[object, object, int])  # case 1010086
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int184"), data), Tuple[object, object, int])  # case 1010087
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int192"), data), Tuple[object, object, int])  # case 1010088
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int200"), data), Tuple[object, object, int])  # case 1010089
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int208"), data), Tuple[object, object, int])  # case 1010090
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int216"), data), Tuple[object, object, int])  # case 1010091
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int224"), data), Tuple[object, object, int])  # case 1010092
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int232"), data), Tuple[object, object, int])  # case 1010093
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int240"), data), Tuple[object, object, int])  # case 1010094
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int248"), data), Tuple[object, object, int])  # case 1010095
-assert_type(decoder.decode(("__fallback__", "__fallback__", "int256"), data), Tuple[object, object, int])  # case 1010096
-assert_type(decoder.decode(("__fallback__", "__fallback__", "bool"), data), Tuple[object, object, bool])  # case 1010097
-assert_type(decoder.decode(("__fallback__", "__fallback__", "__fallback__"), data), Tuple[object, object, object])  # case 1010098
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes1"), data), Tuple[Any, Any, bytes])  # case 1010000
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes2"), data), Tuple[Any, Any, bytes])  # case 1010001
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes3"), data), Tuple[Any, Any, bytes])  # case 1010002
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes4"), data), Tuple[Any, Any, bytes])  # case 1010003
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes5"), data), Tuple[Any, Any, bytes])  # case 1010004
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes6"), data), Tuple[Any, Any, bytes])  # case 1010005
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes7"), data), Tuple[Any, Any, bytes])  # case 1010006
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes8"), data), Tuple[Any, Any, bytes])  # case 1010007
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes9"), data), Tuple[Any, Any, bytes])  # case 1010008
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes10"), data), Tuple[Any, Any, bytes])  # case 1010009
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes11"), data), Tuple[Any, Any, bytes])  # case 1010010
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes12"), data), Tuple[Any, Any, bytes])  # case 1010011
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes13"), data), Tuple[Any, Any, bytes])  # case 1010012
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes14"), data), Tuple[Any, Any, bytes])  # case 1010013
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes15"), data), Tuple[Any, Any, bytes])  # case 1010014
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes16"), data), Tuple[Any, Any, bytes])  # case 1010015
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes17"), data), Tuple[Any, Any, bytes])  # case 1010016
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes18"), data), Tuple[Any, Any, bytes])  # case 1010017
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes19"), data), Tuple[Any, Any, bytes])  # case 1010018
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes20"), data), Tuple[Any, Any, bytes])  # case 1010019
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes21"), data), Tuple[Any, Any, bytes])  # case 1010020
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes22"), data), Tuple[Any, Any, bytes])  # case 1010021
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes23"), data), Tuple[Any, Any, bytes])  # case 1010022
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes24"), data), Tuple[Any, Any, bytes])  # case 1010023
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes25"), data), Tuple[Any, Any, bytes])  # case 1010024
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes26"), data), Tuple[Any, Any, bytes])  # case 1010025
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes27"), data), Tuple[Any, Any, bytes])  # case 1010026
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes28"), data), Tuple[Any, Any, bytes])  # case 1010027
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes29"), data), Tuple[Any, Any, bytes])  # case 1010028
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes30"), data), Tuple[Any, Any, bytes])  # case 1010029
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes31"), data), Tuple[Any, Any, bytes])  # case 1010030
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bytes32"), data), Tuple[Any, Any, bytes])  # case 1010031
+assert_type(decoder.decode(("__fallback__", "__fallback__", "string"), data), Tuple[Any, Any, str])  # case 1010032
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint8"), data), Tuple[Any, Any, int])  # case 1010033
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint16"), data), Tuple[Any, Any, int])  # case 1010034
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint24"), data), Tuple[Any, Any, int])  # case 1010035
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint32"), data), Tuple[Any, Any, int])  # case 1010036
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint40"), data), Tuple[Any, Any, int])  # case 1010037
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint48"), data), Tuple[Any, Any, int])  # case 1010038
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint56"), data), Tuple[Any, Any, int])  # case 1010039
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint64"), data), Tuple[Any, Any, int])  # case 1010040
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint72"), data), Tuple[Any, Any, int])  # case 1010041
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint80"), data), Tuple[Any, Any, int])  # case 1010042
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint88"), data), Tuple[Any, Any, int])  # case 1010043
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint96"), data), Tuple[Any, Any, int])  # case 1010044
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint104"), data), Tuple[Any, Any, int])  # case 1010045
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint112"), data), Tuple[Any, Any, int])  # case 1010046
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint120"), data), Tuple[Any, Any, int])  # case 1010047
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint128"), data), Tuple[Any, Any, int])  # case 1010048
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint136"), data), Tuple[Any, Any, int])  # case 1010049
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint144"), data), Tuple[Any, Any, int])  # case 1010050
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint152"), data), Tuple[Any, Any, int])  # case 1010051
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint160"), data), Tuple[Any, Any, int])  # case 1010052
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint168"), data), Tuple[Any, Any, int])  # case 1010053
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint176"), data), Tuple[Any, Any, int])  # case 1010054
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint184"), data), Tuple[Any, Any, int])  # case 1010055
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint192"), data), Tuple[Any, Any, int])  # case 1010056
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint200"), data), Tuple[Any, Any, int])  # case 1010057
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint208"), data), Tuple[Any, Any, int])  # case 1010058
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint216"), data), Tuple[Any, Any, int])  # case 1010059
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint224"), data), Tuple[Any, Any, int])  # case 1010060
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint232"), data), Tuple[Any, Any, int])  # case 1010061
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint240"), data), Tuple[Any, Any, int])  # case 1010062
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint248"), data), Tuple[Any, Any, int])  # case 1010063
+assert_type(decoder.decode(("__fallback__", "__fallback__", "uint256"), data), Tuple[Any, Any, int])  # case 1010064
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int8"), data), Tuple[Any, Any, int])  # case 1010065
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int16"), data), Tuple[Any, Any, int])  # case 1010066
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int24"), data), Tuple[Any, Any, int])  # case 1010067
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int32"), data), Tuple[Any, Any, int])  # case 1010068
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int40"), data), Tuple[Any, Any, int])  # case 1010069
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int48"), data), Tuple[Any, Any, int])  # case 1010070
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int56"), data), Tuple[Any, Any, int])  # case 1010071
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int64"), data), Tuple[Any, Any, int])  # case 1010072
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int72"), data), Tuple[Any, Any, int])  # case 1010073
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int80"), data), Tuple[Any, Any, int])  # case 1010074
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int88"), data), Tuple[Any, Any, int])  # case 1010075
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int96"), data), Tuple[Any, Any, int])  # case 1010076
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int104"), data), Tuple[Any, Any, int])  # case 1010077
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int112"), data), Tuple[Any, Any, int])  # case 1010078
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int120"), data), Tuple[Any, Any, int])  # case 1010079
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int128"), data), Tuple[Any, Any, int])  # case 1010080
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int136"), data), Tuple[Any, Any, int])  # case 1010081
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int144"), data), Tuple[Any, Any, int])  # case 1010082
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int152"), data), Tuple[Any, Any, int])  # case 1010083
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int160"), data), Tuple[Any, Any, int])  # case 1010084
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int168"), data), Tuple[Any, Any, int])  # case 1010085
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int176"), data), Tuple[Any, Any, int])  # case 1010086
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int184"), data), Tuple[Any, Any, int])  # case 1010087
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int192"), data), Tuple[Any, Any, int])  # case 1010088
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int200"), data), Tuple[Any, Any, int])  # case 1010089
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int208"), data), Tuple[Any, Any, int])  # case 1010090
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int216"), data), Tuple[Any, Any, int])  # case 1010091
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int224"), data), Tuple[Any, Any, int])  # case 1010092
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int232"), data), Tuple[Any, Any, int])  # case 1010093
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int240"), data), Tuple[Any, Any, int])  # case 1010094
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int248"), data), Tuple[Any, Any, int])  # case 1010095
+assert_type(decoder.decode(("__fallback__", "__fallback__", "int256"), data), Tuple[Any, Any, int])  # case 1010096
+assert_type(decoder.decode(("__fallback__", "__fallback__", "bool"), data), Tuple[Any, Any, bool])  # case 1010097
+assert_type(decoder.decode(("__fallback__", "__fallback__", "__fallback__"), data), Tuple[Any, Any, Any])  # case 1010098
 assert_type(decoder.decode(("bytes",), data), Tuple[bytes, ...])  # case 1010099
 assert_type(decoder.decode(("bytes1",), data), Tuple[bytes, ...])  # case 1010100
 assert_type(decoder.decode(("bytes2",), data), Tuple[bytes, ...])  # case 1010101
@@ -206,14 +206,14 @@ assert_type(decoder.decode(("int240",), data), Tuple[int, ...])  # case 1010194
 assert_type(decoder.decode(("int248",), data), Tuple[int, ...])  # case 1010195
 assert_type(decoder.decode(("int256",), data), Tuple[int, ...])  # case 1010196
 assert_type(decoder.decode(("bool",), data), Tuple[bool, ...])  # case 1010197
-assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr",), data), Tuple[object, str])  # case 1010198
-assert_type(decoder.decode(("Union[BytesTypeStr, DecodesToIntTypeStr",), data), Tuple[object, int])  # case 1010199
-assert_type(decoder.decode(("Union[BytesTypeStr, BoolTypeStr",), data), Tuple[object, bool])  # case 1010200
-assert_type(decoder.decode(("Union[StringTypeStr, DecodesToIntTypeStr",), data), Tuple[object, int])  # case 1010201
-assert_type(decoder.decode(("Union[StringTypeStr, BoolTypeStr",), data), Tuple[object, bool])  # case 1010202
-assert_type(decoder.decode(("Union[DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[object, bool])  # case 1010203
-assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr, DecodesToIntTypeStr",), data), Tuple[object, str, int])  # case 1010204
-assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr, BoolTypeStr",), data), Tuple[object, str, bool])  # case 1010205
-assert_type(decoder.decode(("Union[BytesTypeStr, DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[object, int, bool])  # case 1010206
-assert_type(decoder.decode(("Union[StringTypeStr, DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[object, int, bool])  # case 1010207
-assert_type(decoder.decode(("__fallback__",), data), Tuple[object, str, int, bool])  # case 1010208
+assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr",), data), Tuple[Any, str])  # case 1010198
+assert_type(decoder.decode(("Union[BytesTypeStr, DecodesToIntTypeStr",), data), Tuple[Any, int])  # case 1010199
+assert_type(decoder.decode(("Union[BytesTypeStr, BoolTypeStr",), data), Tuple[Any, bool])  # case 1010200
+assert_type(decoder.decode(("Union[StringTypeStr, DecodesToIntTypeStr",), data), Tuple[Any, int])  # case 1010201
+assert_type(decoder.decode(("Union[StringTypeStr, BoolTypeStr",), data), Tuple[Any, bool])  # case 1010202
+assert_type(decoder.decode(("Union[DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[Any, bool])  # case 1010203
+assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr, DecodesToIntTypeStr",), data), Tuple[Any, str, int])  # case 1010204
+assert_type(decoder.decode(("Union[BytesTypeStr, StringTypeStr, BoolTypeStr",), data), Tuple[Any, str, bool])  # case 1010205
+assert_type(decoder.decode(("Union[BytesTypeStr, DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[Any, int, bool])  # case 1010206
+assert_type(decoder.decode(("Union[StringTypeStr, DecodesToIntTypeStr, BoolTypeStr",), data), Tuple[Any, int, bool])  # case 1010207
+assert_type(decoder.decode(("__fallback__",), data), Tuple[Any, str, int, bool])  # case 1010208

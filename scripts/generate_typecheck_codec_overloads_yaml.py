@@ -36,7 +36,6 @@ RETURN_TYPE_MAP = {
     "str": "str",
     "int": "int",
     "bool": "bool",
-    "Any": "object",
 }
 
 
@@ -175,10 +174,10 @@ def main():
                 # Build expected return type
                 if "..." in ret_types:
                     expected = (
-                        f"Tuple[{RETURN_TYPE_MAP.get(ret_types[0], 'object')}, ...]"
+                        f"Tuple[{RETURN_TYPE_MAP.get(ret_types[0], 'Any')}, ...]"
                     )
                 else:
-                    expected = f"Tuple[{', '.join(RETURN_TYPE_MAP.get(t, 'object') for t in ret_types)}]"
+                    expected = f"Tuple[{', '.join(RETURN_TYPE_MAP.get(t, 'Any') for t in ret_types)}]"
                 f.write(
                     f"assert_type(decoder.decode({typestr}, data), {expected})  # case {idx}\n"
                 )
