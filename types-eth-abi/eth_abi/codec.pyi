@@ -1,3 +1,4 @@
+from _typeshed import Incomplete
 from eth_typing.abi import Decodable as Decodable, TypeStr as TypeStr
 from faster_eth_abi._codec import decode_c as decode_c, encode_c as encode_c
 from faster_eth_abi.decoding import ContextFramesBytesIO as ContextFramesBytesIO
@@ -9,6 +10,7 @@ from typing import Any, Iterable, overload
 DecodesToIntTypeStr = UintTypeStr | IntTypeStr
 
 class BaseABICoder:
+    _registry: Incomplete
     def __init__(self, registry: ABIRegistry) -> None: ...
 
 class ABIEncoder(BaseABICoder):
