@@ -35,35 +35,17 @@ jobs:
       - name: Install mypy
         run: pip install mypy
 
+      - name: Delete existing stubs
+        run: rm -rf types-eth-abi/eth_abi types-eth-abi/faster_eth_abi
+      
       - name: Generate stubs with stubgen
-        run: |
-          rm -rf stubs
-          mkdir stubs
-          stubgen faster_eth_abi -o types-eth-abi
-
-      - name: Duplicate stubs for eth_abi
-        run: |
-          cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
-
-      - name: Copy LICENSE
-        run: cp LICENSE types-eth-abi/LICENSE
-
-      - name: Update LICENSE copyright
-        run: |
-          sed -i 's/Copyright (c) 2016-2020, 2022-2025 The Ethereum Foundation/Copyright (c) 2025 BobTheBuidler/' types-eth-abi/LICENSE
+        run: stubgen faster_eth_abi -o types-eth-abi
 
       - name: Create py.typed
-        run: touch types-eth-abi/py.typed
+        run: touch types-eth-abi/faster_eth_abi/py.typed
 
-      - name: Create README.md for stubs
-        run: |
-          echo "# types-faster-eth-utils" > types-eth-abi/README.md
-          echo "" >> types-eth-abi/README.md
-          echo "Type stubs for the faster_eth_abi library, generated automatically via stubgen." >> types-eth-abi/README.md
-          echo "" >> types-eth-abi/README.md
-          echo "## eth_abi compatibility" >> types-eth-abi/README.md
-          echo "" >> types-eth-abi/README.md
-          echo "For compatibility, the stubs for \`faster_eth_abi\` are also duplicated as \`eth_abi\` in this package. This allows these type stubs to be used with both the \`eth-abi\` and \`faster-eth-abi\` libraries." >> types-eth-abi/README.md
+      - name: Duplicate stubs for eth_abi
+        run: cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
 
       - name: Generate egg-info
         run: python setup.py egg_info
@@ -94,7 +76,7 @@ jobs:
           echo "LICENSE=$LICENSE" >> $GITHUB_ENV
           echo "KEYWORDS=$KEYWORDS" >> $GITHUB_ENV
 
-      - name: Create setup.py for types-faster-eth-utils from template
+      - name: Create setup.py for types-eth-abi from template
         run: |
           cp types-eth-abi/setup.template.py types-eth-abi/setup.py
           sed -i "s/{{VERSION}}/$VERSION/g" types-eth-abi/setup.py
