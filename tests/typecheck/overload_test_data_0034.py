@@ -2,7 +2,7 @@
 # Requires mypy and Python 3.10+ (for typing.assert_type)
 # To run: pip install mypy && mypy tests/typecheck/test_codec_overloads_typecheck.py
 
-from typing import Tuple, assert_type
+from typing import Any, Tuple, assert_type
 from faster_eth_abi.codec import ABIDecoder
 from faster_eth_abi.registry import ABIRegistry
 
