@@ -39,7 +39,7 @@ jobs:
         run: |
           rm -rf stubs
           mkdir stubs
-          python -m mypy.stubgen faster_eth_abi -o stubs
+          stubgen faster_eth_abi -o stubs
 
       - name: Duplicate stubs for eth_abi
         run: |
