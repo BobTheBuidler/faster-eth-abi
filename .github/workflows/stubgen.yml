@@ -14,6 +14,7 @@ on:
      - 'faster_eth_abi/**/*.py'
      - 'pyproject.toml'
      - 'setup.py'
+  workflow_dispatch:
 
 permissions:
   contents: write
