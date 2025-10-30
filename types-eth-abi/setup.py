@@ -20,6 +20,8 @@ setup(
     python_requires=">=3.8,",
     zip_safe=False,
     include_package_data=True,
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Typing :: Stubs Only",
         "Programming Language :: Python :: 3",
