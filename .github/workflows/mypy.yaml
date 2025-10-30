@@ -21,6 +21,10 @@ on:
       - "tox.ini"
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   mypy-typecheck:
     runs-on: ubuntu-latest
@@ -49,13 +53,21 @@ jobs:
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
           restore-keys: mypy-cache-${{ runner.os }}-x64-
 
-      - name: Run mypy on a random 1/10th sample of typecheck chunked files (parallel)
+      - name: Run mypy on all len_1 and len_2, and a random 1/10th of len_3 typecheck files (parallel)
         run: |
-          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/ -name '*.py')
+          set -e
+          # Fully check all len_1 and len_2 files
+          for len_dir in 1 2; do
+            find tests/typecheck/codec/decode/${{ matrix.suite }}/len_${len_dir}/ -name '*.py' | \
+              xargs -n 1 -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"' || exit 1
+          done
+          # Randomly sample 1/10th of len_3 files
+          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_3/ -name '*.py')
           count=$(echo "$files" | wc -l)
           n=$(( (count + 9) / 10 ))
           if [ "$n" -lt 1 ]; then n=1; fi
-          echo "$files" | shuf | head -n $n | xargs -n 1 -P 2 sh -c 'mypy --config-file=/dev/null --follow-imports=silent "$0" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
+          echo "$files" | shuf 2>/dev/null | head -n $n | \
+            xargs -n 1 -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"' || exit 1
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
