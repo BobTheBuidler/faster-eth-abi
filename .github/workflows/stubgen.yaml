@@ -45,10 +45,12 @@ jobs:
       - name: Create py.typed
         run: touch types-eth-abi/faster_eth_abi/py.typed
 
+      - name: Copy typing.py to typing.pyi
+        run: cp faster_eth_abi/typing.py types-eth-abi/faster_eth_abi/typing.pyi
+        
       - name: Duplicate stubs for eth_abi
         run: |
           cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
-          cp faster_eth_abi/typing.py types-eth-abi/eth_abi/typing.pyi
           rm types-eth-abi/eth_abi/_codec.pyi
           rm types-eth-abi/eth_abi/_decoding.pyi
           rm types-eth-abi/eth_abi/_encoding.pyi
