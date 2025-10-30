@@ -1522,7 +1522,8 @@ class ABIDecoder(BaseABICoder):
     ) -> Tuple[Any, Any, Any]:
         ...
 
-    # non-tuple types input
+    '''
+    # non-tuple types input NOTE temporarily disabled TODO debug and reenable
 
     @overload
     def decode(
@@ -1661,6 +1662,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[bytes, str, int, bool], ...]:
         ...
+    '''
 
     def decode(
         self,
