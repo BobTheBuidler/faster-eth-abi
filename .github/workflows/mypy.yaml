@@ -43,7 +43,7 @@ jobs:
 
       - name: Run mypy on all typecheck part files
         run: |
-          for f in tests/typecheck/test_codec_overloads_typecheck_part_*.py; do
+          for f in tests/typecheck/overload_test_data_*.py; do
             echo "Checking $f"
             mypy --config-file=/dev/null "$f"
           done
