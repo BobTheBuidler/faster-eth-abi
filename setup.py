@@ -128,7 +128,16 @@ setup(
     license="MIT",
     zip_safe=False,
     keywords="ethereum",
-    packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
+    packages=find_packages(
+        exclude=[
+            "scripts",
+            "scripts.*",
+            "tests",
+            "tests.*",
+            "types-eth-abi",
+            "types-eth-abi.*",
+        ]
+    ),
     ext_modules=ext_modules,
     package_data={"faster_eth_abi": ["py.typed"]},
     classifiers=[
