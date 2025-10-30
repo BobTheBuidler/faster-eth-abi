@@ -1,0 +1,5 @@
+include LICENSE
+include README.md
+include py.typed
+recursive-include faster_eth_abi *.pyi
+recursive-include eth_abi *.pyi
