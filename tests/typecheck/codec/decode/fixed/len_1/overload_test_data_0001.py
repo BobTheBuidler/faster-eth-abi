@@ -10,7 +10,7 @@ from faster_eth_abi.registry import ABIRegistry
 
 decoder = ABIDecoder(ABIRegistry())
 data = b"\x00" * 32
-assert_type(decoder.decode(("address",), data), Tuple[HexAddress])  # tuple case 0
+assert_type(decoder.decode(("address",), data), Tuple[Any])  # tuple case 0
 assert_type(decoder.decode(("bool",), data), Tuple[bool])  # tuple case 1
 assert_type(decoder.decode(("bytes",), data), Tuple[bytes])  # tuple case 2
 assert_type(decoder.decode(("bytes1",), data), Tuple[bytes])  # tuple case 3

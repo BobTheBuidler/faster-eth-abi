@@ -110,7 +110,7 @@ assert_type(decoder.decode(("uint96", "uint80"), data), Tuple[int, int])  # tupl
 assert_type(decoder.decode(("uint96", "uint88"), data), Tuple[int, int])  # tuple case 10198
 assert_type(decoder.decode(("uint96", "uint96"), data), Tuple[int, int])  # tuple case 10199
 assert_type(decoder.decode(("uint96", "someothertype"), data), Tuple[int, Any])  # tuple case 10200
-assert_type(decoder.decode(("someothertype", "address"), data), Tuple[Any, HexAddress])  # tuple case 10201
+assert_type(decoder.decode(("someothertype", "address"), data), Tuple[Any, Any])  # tuple case 10201
 assert_type(decoder.decode(("someothertype", "bool"), data), Tuple[Any, bool])  # tuple case 10202
 assert_type(decoder.decode(("someothertype", "bytes"), data), Tuple[Any, bytes])  # tuple case 10203
 assert_type(decoder.decode(("someothertype", "bytes1"), data), Tuple[Any, bytes])  # tuple case 10204

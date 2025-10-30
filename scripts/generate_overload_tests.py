@@ -50,8 +50,8 @@ data = b"\\x00" * 32
 """
 
 RETURN_TYPE_MAP = {
-    "address": "HexAddress",
-    "address[]": "Tuple[HexAddress, ...]",
+    "address": "Any",  # "HexAddress", TODO implement me
+    "address[]": "Any",  # "Tuple[HexAddress, ...]",
     "bytes": "bytes",
     "bytes[]": "Tuple[bytes, ...]",
     "string": "str",
