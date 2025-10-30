@@ -4,8 +4,8 @@ on:
   push:
     branches: [master, main]
     paths:
-      - "tests/typecheck/test_codec_overloads_typecheck_part_*.py"
-      - "scripts/generate_typecheck_codec_overloads_yaml.py"
+      - "tests/typecheck/**.py"
+      - "scripts/generate_overload_tests.py"
       - "faster_eth_abi/**"
       - "setup.py"
       - "pyproject.toml"
@@ -13,8 +13,8 @@ on:
   pull_request:
     branches: [master, main]
     paths:
-      - "tests/typecheck/test_codec_overloads_typecheck_part_*.py"
-      - "scripts/generate_typecheck_codec_overloads_yaml.py"
+      - "tests/typecheck/**.py"
+      - "scripts/generate_overload_tests.py"
       - "faster_eth_abi/**"
       - "setup.py"
       - "pyproject.toml"
