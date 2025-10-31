@@ -11,7 +11,9 @@
       "matchDepTypes": [
         "build-system"
       ],
-      "commitMessage": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
+      "commitMessageTopic": "build dependency {{depName}}",
+      "commitMessageAction": "update",
+      "commitMessageExtra": "{{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
     },
     {
       "matchManagers": [
