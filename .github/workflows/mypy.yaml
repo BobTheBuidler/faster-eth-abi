@@ -81,6 +81,9 @@ jobs:
             echo "[MYPY-TIME] $file took ${duration}s"
             if [ $status -ne 0 ]; then exit $status; fi
           done
+      - name: Cleanup len_1 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/
 
       - name: Checkout len_2 test data
         uses: actions/checkout@v5
@@ -102,6 +105,9 @@ jobs:
             echo "[MYPY-TIME] $file took ${duration}s"
             if [ $status -ne 0 ]; then exit $status; fi
           done
+      - name: Cleanup len_2 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/
 
       - name: Checkout len_3 test data
         uses: actions/checkout@v5
@@ -120,7 +126,7 @@ jobs:
           n=$(( (count + 9) / 10 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --bar '
+            parallel -j 2 --eta '
               start=$(date +%s.%N)
               mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
               status=$?
@@ -130,6 +136,9 @@ jobs:
               exit $status
             '
           if [ $? -ne 0 ]; then exit 1; fi
+      - name: Cleanup len_3 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/
 
       - name: Checkout len_4 test data
         uses: actions/checkout@v5
@@ -148,7 +157,7 @@ jobs:
           n=$(( (count + 49) / 50 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --bar '
+            parallel -j 2 --eta '
               start=$(date +%s.%N)
               mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
               status=$?
@@ -158,6 +167,9 @@ jobs:
               exit $status
             '
           if [ $? -ne 0 ]; then exit 1; fi
+      - name: Cleanup len_4 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
