@@ -40,6 +40,7 @@ jobs:
             README.md
             requirements.txt
             requirements-mypy.txt
+            requirements-dev.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
