@@ -10,10 +10,10 @@ from faster_eth_abi.registry import ABIRegistry
 
 decoder = ABIDecoder(ABIRegistry())
 DATA = b"\x00" * 32
-assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'address'], DATA), Tuple[Any, ...])  # iterable case 75365784
-assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 75365785
+assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'address'], DATA), Tuple[Union[HexAddress, int], ...])  # iterable case 75365784
+assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], int], ...])  # iterable case 75365785
 assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bool'], DATA), Tuple[Union[bool, int], ...])  # iterable case 75365786
-assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], int], ...])  # iterable case 75365787
+assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 75365787
 assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 75365788
 assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 75365789
 assert_type(decoder.decode(['int8', 'uint96', 'uint96', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 75365790
