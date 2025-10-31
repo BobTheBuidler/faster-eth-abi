@@ -1,9 +1,27 @@
 import parsimonious
 from _typeshed import Incomplete
-from faster_eth_abi._grammar import ABIType as ABIType, BasicType as BasicType, TYPE_ALIASES as TYPE_ALIASES, TYPE_ALIAS_RE as TYPE_ALIAS_RE, TupleType as TupleType, normalize as normalize
+from faster_eth_abi._grammar import (
+    ABIType as ABIType,
+    BasicType as BasicType,
+    TYPE_ALIASES as TYPE_ALIASES,
+    TYPE_ALIAS_RE as TYPE_ALIAS_RE,
+    TupleType as TupleType,
+    normalize as normalize,
+)
 from typing import Final
 
-__all__ = ['NodeVisitor', 'ABIType', 'TupleType', 'BasicType', 'grammar', 'parse', 'normalize', 'visitor', 'TYPE_ALIASES', 'TYPE_ALIAS_RE']
+__all__ = [
+    "NodeVisitor",
+    "ABIType",
+    "TupleType",
+    "BasicType",
+    "grammar",
+    "parse",
+    "normalize",
+    "visitor",
+    "TYPE_ALIASES",
+    "TYPE_ALIAS_RE",
+]
 
 grammar: Final[Incomplete]
 
@@ -12,6 +30,7 @@ class NodeVisitor(parsimonious.NodeVisitor):
     Parsimonious node visitor which performs both parsing of type strings and
     post-processing of parse trees.  Parsing operations are cached.
     """
+
     parse: Incomplete
     def __init__(self) -> None: ...
     grammar = grammar

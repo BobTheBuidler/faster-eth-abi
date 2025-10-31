@@ -33,7 +33,6 @@ TupleTypeStr = Union[
     "TupleStrIntTypeStr",
 ]
 
-
 IntTypeStr = Literal[
     "int8",
     "int16",
