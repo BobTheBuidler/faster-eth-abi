@@ -19,5 +19,42 @@
       ],
       "enabled": false
     }
-  ]
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "pyproject.toml",
+        "requirements*.txt"
+      ],
+      "matchStrings": [
+        "mypy\\[mypyc\\]==1\\.14\\.1; python_version ?== ?['\\\"]3\\.8['\\\"]"
+      ],
+      "enabled": false,
+      "description": "Do not update mypy for Python 3.8 pins"
+    },
+    {
+      "fileMatch": ["requirements-mypy.txt"],
+      "matchStrings": [
+        "mypy>=1\\.14\\.1,<([0-9a-zA-Z\\.]+)"
+      ],
+      "depNameTemplate": "mypy",
+      "currentValueTemplate": ">=1.14.1,<{{{currentValue}}}",
+      "replaceStringTemplate": "mypy>=1.14.1,<{{{newValue}}}",
+      "datasourceTemplate": "pypi",
+      "versioningTemplate": "python",
+      "extractVersionTemplate": "$1",
+      "description": "Allow Renovate to update only the upper bound of mypy, keep lower bound at 1.14.1"
+    },
+    {
+      "fileMatch": [".github/workflows/stubgen.yaml"],
+      "matchStrings": [
+        "python-version: '([0-9.]+)'"
+      ],
+      "depNameTemplate": "python",
+      "datasourceTemplate": "python",
+      "versioningTemplate": "python",
+      "extractVersionTemplate": "\\1",
+      "replaceStringTemplate": "python-version: '{{{newValue}}}'"
+      "description": "Ensure stubs are produced on the lowest supported Python version.
+    }
 }
