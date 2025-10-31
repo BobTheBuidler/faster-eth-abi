@@ -30,13 +30,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
       # limit parallelism for cronjob, otherwise blast it
       max-parallel: 10
     steps:
       - name: Checkout code and benchmarks
         uses: actions/checkout@v5
-        if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         with:
           sparse-checkout: |
             faster_eth_abi/
@@ -81,5 +80,5 @@ jobs:
               --codspeed \
               -k "test_faster_" \
               --test-group=${{ matrix.shard }} \
-              --test-group-count=30 \
+              --test-group-count=20 \
               benchmarks/
