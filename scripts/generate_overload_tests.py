@@ -58,7 +58,6 @@ MAX_LEN_FIXED: Final = 3
 MAX_LEN_VARIABLE: Final = 4
 CHUNK_SIZE: Final = 10_000
 FILENAME_PREFIX: Final = "overload_test_data_"
-VARIATIONS_PER_TYPE_COMBO: Final = 2
 
 ANY_ALIAS: Final = "A"
 ASSERT_TYPE_ALIAS: Final = "ck"
@@ -273,7 +272,7 @@ def compute_total_cases_sampled( max_len: int
 
 def compute_total_chunks(max_len: int) -> int:
     total_cases = compute_total_cases_sampled(max_len)
-    return math.ceil(total_cases / CHUNK_SIZE) * VARIATIONS_PER_TYPE_COMBO
+    return math.ceil(total_cases / CHUNK_SIZE)
 
 
 def stream_cases_and_write_files(
@@ -284,10 +283,8 @@ def stream_cases_and_write_files(
     MAX_LEN = MAX_LEN_FIXED if mode == "tuple" else MAX_LEN_VARIABLE
 
     case_counter = 0
-    total_chunks = compute_total_chunks(MAX_LEN)
-    total_chunks //= 2  # TODO: fix this
     with tqdm(
-        total=total_chunks, desc=f"Streaming {mode} chunks for {impl}"
+        total=compute_total_chunks(MAX_LEN), desc=f"Streaming {mode} chunks for {impl}"
     ) as progress:
         for L in range(1, MAX_LEN + 1):
             PATH_WITHOUT_NUMBER = (
