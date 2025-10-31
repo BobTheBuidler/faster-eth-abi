@@ -2,6 +2,7 @@ import abc
 import decimal
 from functools import (
     cached_property,
+    lru_cache,
 )
 from types import (
     MethodType,
@@ -11,6 +12,7 @@ from typing import (
     Callable,
     Final,
     Generic,
+    Optional,
     Tuple,
     TypeVar,
     Union,
@@ -360,6 +362,13 @@ class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
 decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 
 
+class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize = maxsize
+        self.decode = lru_cache(maxsize=maxsize)(self.decode)
+
+
 #
 # Signed Integer Decoders
 #
@@ -398,6 +407,13 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     @parse_type_str("int")
     def from_type_str(cls, abi_type, registry):
         return cls(value_bit_size=abi_type.sub)
+
+
+class SignedIntegerDecoderCached(SignedIntegerDecoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize = maxsize
+        self.decode = lru_cache(maxsize=maxsize)(self.decode)
 
 
 #

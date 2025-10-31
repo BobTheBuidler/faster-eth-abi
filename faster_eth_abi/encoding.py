@@ -3,6 +3,7 @@ import codecs
 import decimal
 from functools import (
     cached_property,
+    lru_cache,
 )
 from types import (
     MethodType,
@@ -123,7 +124,9 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(
+            getattr(e, "is_dynamic", False) for e in self.encoders
+        )
         self.is_dynamic = any(self._is_dynamic)
 
         validators = []
@@ -134,7 +137,7 @@ class TupleEncoder(BaseEncoder):
                 validators.append(encoder)
             else:
                 validators.append(validator)
-        
+
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
         if type(self).encode is TupleEncoder.encode:
@@ -148,7 +151,7 @@ class TupleEncoder(BaseEncoder):
                 if not self.is_dynamic
                 else encode_tuple
             )
-                
+
             self.encode = MethodType(encode_func, self)
 
     def validate(self) -> None:
@@ -295,6 +298,13 @@ class UnsignedIntegerEncoder(NumberEncoder):
         return cls(value_bit_size=abi_type.sub)
 
 
+class UnsignedIntegerEncoderCached(UnsignedIntegerEncoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize: Final = maxsize
+        self.encode = lru_cache(maxsize=maxsize)(self.encode)
+
+
 encode_uint_256 = UnsignedIntegerEncoder(value_bit_size=256, data_byte_size=32)
 
 
@@ -305,6 +315,13 @@ class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
             value_bit_size=abi_type.sub,
             data_byte_size=abi_type.sub // 8,
         )
+
+
+class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize: Final = maxsize
+        self.encode = lru_cache(maxsize=maxsize)(self.encode)
 
 
 class SignedIntegerEncoder(NumberEncoder):
@@ -325,6 +342,13 @@ class SignedIntegerEncoder(NumberEncoder):
         return cls(value_bit_size=abi_type.sub)
 
 
+class SignedIntegerEncoderCached(SignedIntegerEncoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize: Final = maxsize
+        self.encode = lru_cache(maxsize=maxsize)(self.encode)
+
+
 class PackedSignedIntegerEncoder(SignedIntegerEncoder):
     @parse_type_str("int")
     def from_type_str(cls, abi_type, registry):
@@ -332,6 +356,13 @@ class PackedSignedIntegerEncoder(SignedIntegerEncoder):
             value_bit_size=abi_type.sub,
             data_byte_size=abi_type.sub // 8,
         )
+
+
+class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize: Final = maxsize
+        self.encode = lru_cache(maxsize=maxsize)(self.encode)
 
 
 class BaseFixedEncoder(NumberEncoder):
