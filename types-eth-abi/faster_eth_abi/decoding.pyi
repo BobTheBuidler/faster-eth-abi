@@ -156,8 +156,8 @@ class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
 decode_uint_256: Incomplete
 
 class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
-    maxsize: Incomplete
-    decode: Incomplete
+    decoder_fn: Final[Callable[[bytes], int]]
+    maxsize: Final[int | None]
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
@@ -172,8 +172,8 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     def from_type_str(cls, abi_type, registry): ...
 
 class SignedIntegerDecoderCached(SignedIntegerDecoder):
-    maxsize: Incomplete
-    decode: Incomplete
+    decoder_fn: Final[Callable[[bytes], int]]
+    maxsize: Final[int | None]
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class BytesDecoder(Fixed32ByteSizeDecoder[bytes]):
