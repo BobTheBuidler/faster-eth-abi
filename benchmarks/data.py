@@ -17,20 +17,32 @@ addresses = [
     b"\x01" * 19 + b"\x00",
 ]
 
-uint256s = [
-    0,
-    1,
-    2**256 - 1,
-    2**128,
-    2**64,
-    12345678901234567890,
-    2**255,
-    2**255 - 1,
-    2**32,
-    2**16,
-    42,
-    999999999999999999999999999999,
-]
+int_sizes = tuple(range(8, 257, 8))
+
+uints = {}
+
+for i in range(8, 257, 8):
+    max_value = 2**i - 1
+    test_data = {
+        *(2**x - 1 for x in range(1, i + 1)),  # a range of values to start
+        0,  # zero
+        1,  # one
+        42,
+        max_value // 4,  # lower fourth
+        max_value // 2,  # midpoint
+        (max_value // 2 + max_value) // 2,  # upper fourth
+        max_value,
+    }
+    if 12345678901234567890 <= max_value:
+        test_data.add(12345678901234567890)
+    if 999999999999999999999999999999 <= max_value:
+        test_data.add(999999999999999999999999999999)
+    for vals in uints.values():
+        test_data.update(vals)
+    uints[i] = sorted(test_data)
+
+
+uint256s = uints[256][:]
 
 bytes32s = [
     b"\x00" * 32,
@@ -137,26 +149,18 @@ for bits in (8, 16, 32, 64, 128, 256):
 
 primitive_cases = (
     [
-        ("uint8", 0),
-        ("uint8", 255),
-        ("uint16", 65535),
-        ("uint32", 2**32 - 1),
-        ("uint64", 2**64 - 1),
-        ("uint128", 2**128 - 1),
-        ("uint256", 0),
-        ("uint256", 2**256 - 1),
-        ("int8", -128),
-        ("int8", 127),
-        ("int16", -32768),
-        ("int16", 32767),
-        ("int32", -(2**31)),
-        ("int32", 2**31 - 1),
-        ("int64", -(2**63)),
-        ("int64", 2**63 - 1),
-        ("int128", -(2**127)),
-        ("int128", 2**127 - 1),
-        ("int256", -(2**255)),
-        ("int256", 2**255 - 1),
+        *((f"uint{i}", case) for i, cases in uints.items() for case in cases),
+        *((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
+        *(
+            (f"int{i}", -(2 ** (i - 1)) // 2)
+            for i in range(8, 257, 8)  # negative midpoint
+        ),
+        *((f"int{i}", 0) for i in range(8, 257, 8)),  # zero
+        *(
+            (f"int{i}", (2 ** (i - 1) - 1) // 2)
+            for i in range(8, 257, 8)  # positive midpoint
+        ),
+        *((f"int{i}", 2 ** (i - 1) - 1) for i in range(8, 257, 8)),  # max value
         ("bool", True),
         ("bool", False),
         ("address", b"\x00" * 19 + b"\x01"),
