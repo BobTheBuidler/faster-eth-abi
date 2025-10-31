@@ -15,12 +15,28 @@ from typing import Any, Callable, Final, Generic, TypeVar, final
 TByteStr = TypeVar('TByteStr', bytes, str)
 
 class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
+    """
+    Base class for all decoder classes.  Subclass this if you want to define a
+    custom decoder class.  Subclasses must also implement
+    :any:`BaseCoder.from_type_str`.
+    """
     strict: bool
     @abc.abstractmethod
-    def decode(self, stream: ContextFramesBytesIO) -> T: ...
+    def decode(self, stream: ContextFramesBytesIO) -> T:
+        """
+        Decodes the given stream of bytes into a python value.  Should raise
+        :any:`exceptions.DecodingError` if a python value cannot be decoded
+        from the given byte stream.
+        """
     def __call__(self, stream: ContextFramesBytesIO) -> T: ...
 
 class HeadTailDecoder(BaseDecoder[T]):
+    """
+    Decoder for a dynamic element of a dynamic container (a dynamic array, or a sized
+    array or tuple that contains dynamic elements). A dynamic element consists of a
+    pointer, aka offset, which is located in the head section of the encoded container,
+    and the actual value, which is located in the tail section of the encoding.
+    """
     is_dynamic: bool
     tail_decoder: Final[Incomplete]
     def __init__(self, tail_decoder: HeadTailDecoder[T] | SizedArrayDecoder[T] | DynamicArrayDecoder[T] | ByteStringDecoder[T], **kwargs: Any) -> None: ...
@@ -55,7 +71,10 @@ class BaseArrayDecoder(BaseDecoder[tuple[T, ...]]):
     def decode(self, stream: ContextFramesBytesIO) -> tuple[T, ...]: ...
     def validate(self) -> None: ...
     def from_type_str(cls, abi_type, registry): ...
-    def validate_pointers(self, stream: ContextFramesBytesIO, array_size: int) -> None: ...
+    def validate_pointers(self, stream: ContextFramesBytesIO, array_size: int) -> None:
+        """
+        Verify that all pointers point to a valid location in the stream.
+        """
 
 class SizedArrayDecoder(BaseArrayDecoder[T]):
     array_size: int
