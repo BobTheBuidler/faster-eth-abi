@@ -133,7 +133,6 @@ setup(
     install_requires=REQUIREMENTS,
     python_requires=">=3.8, <4",
     extras_require=extras_require,
-    py_modules=["faster_eth_abi"],
     license="MIT",
     zip_safe=False,
     keywords="ethereum",
