@@ -23,6 +23,14 @@ jobs:
         with:
           # Check out the PR branch
           ref: ${{ github.head_ref }}
+          sparse-checkout: |
+            faster_eth_abi/
+            setup.py
+            pyproject.toml
+            README.md
+            requirements.txt
+            requirements-mypy.txt
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -41,12 +49,12 @@ jobs:
 
       - name: Delete existing build files
         run: rm -rf build
-        
+
       - name: Run Mypyc
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1
         run: pip install .
-          
+
       - name: Normalize C files for diffchecking
         # This makes it much easier to diffcheck changes in the C files
         run: |

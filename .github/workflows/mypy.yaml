@@ -34,7 +34,19 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
         suite: ["fixed", "variable"]
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code and test data
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            faster_eth_abi/
+            setup.py
+            pyproject.toml
+            tox.ini
+            tests/typecheck/${{ matrix.suite }}/
+            README.md
+            requirements.txt
+            requirements-mypy.txt
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
