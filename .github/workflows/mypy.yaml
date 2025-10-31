@@ -134,7 +134,7 @@ jobs:
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            '
+            ' 2>&1 | grep -v "cannot open /dev/tty"
           if [ $? -ne 0 ]; then exit 1; fi
       - name: Cleanup len_3 test data
         run: |
@@ -165,7 +165,7 @@ jobs:
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            '
+            ' 2>&1 | grep -v "cannot open /dev/tty"
           if [ $? -ne 0 ]; then exit 1; fi
       - name: Cleanup len_4 test data
         run: |
