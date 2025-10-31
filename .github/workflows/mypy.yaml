@@ -42,7 +42,7 @@ jobs:
             setup.py
             pyproject.toml
             tox.ini
-            tests/typecheck/${{ matrix.suite }}/
+            tests/typecheck/codec/decode/${{ matrix.suite }}/
             README.md
             requirements.txt
             requirements-mypy.txt
