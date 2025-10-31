@@ -8,6 +8,7 @@ from types import (
     MethodType,
 )
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     ClassVar,
@@ -20,6 +21,9 @@ from typing import (
     final,
 )
 
+from eth_typing.abi import (
+    TypeStr,
+)
 from faster_eth_utils import (
     is_address,
     is_boolean,
@@ -74,6 +78,11 @@ from faster_eth_abi.utils.string import (
     abbr,
 )
 
+if TYPE_CHECKING:
+    from faster_eth_abi.registry import (
+        ABIRegistry,
+    )
+
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
     """
@@ -123,7 +132,9 @@ class TupleEncoder(BaseEncoder):
     def __init__(self, encoders: Tuple[BaseEncoder, ...], **kwargs: Any) -> None:
         super().__init__(encoders=encoders, **kwargs)
 
-        self._is_dynamic: Final = tuple(getattr(e, "is_dynamic", False) for e in self.encoders)
+        self._is_dynamic: Final = tuple(
+            getattr(e, "is_dynamic", False) for e in self.encoders
+        )
         self.is_dynamic = any(self._is_dynamic)
 
         validators = []
@@ -134,7 +145,7 @@ class TupleEncoder(BaseEncoder):
                 validators.append(encoder)
             else:
                 validators.append(validator)
-        
+
         self.validators: Final[Callable[[Any], None]] = tuple(validators)
 
         if type(self).encode is TupleEncoder.encode:
@@ -148,7 +159,7 @@ class TupleEncoder(BaseEncoder):
                 if not self.is_dynamic
                 else encode_tuple
             )
-                
+
             self.encode = MethodType(encode_func, self)
 
     def validate(self) -> None:
@@ -168,7 +179,7 @@ class TupleEncoder(BaseEncoder):
         return self.encode(values)
 
     @parse_tuple_type_str
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         encoders = tuple(
             registry.get_encoder(c.to_type_str()) for c in abi_type.components
         )
@@ -205,7 +216,7 @@ class FixedSizeEncoder(BaseEncoder):
         if value_bit_size > data_byte_size * 8:
             raise ValueError("Value byte size exceeds data size")
 
-    def validate_value(self, value):
+    def validate_value(self, value: Any) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
     def encode(self, value: Any) -> bytes:
@@ -241,7 +252,7 @@ class BooleanEncoder(Fixed32ByteSizeEncoder):
             raise ValueError("Invariant")
 
     @parse_type_str("bool")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
 
@@ -263,7 +274,7 @@ class NumberEncoder(Fixed32ByteSizeEncoder):
         if self.type_check_fn is None:
             raise ValueError("`type_check_fn` cannot be null")
 
-    def validate_value(self, value):
+    def validate_value(self, value: Any) -> None:
         type_check_fn = self.type_check_fn
         if type_check_fn is None:
             raise AssertionError("`type_check_fn` is None")
@@ -291,7 +302,7 @@ class UnsignedIntegerEncoder(NumberEncoder):
     type_check_fn = staticmethod(is_integer)
 
     @parse_type_str("uint")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub)
 
 
@@ -300,7 +311,7 @@ encode_uint_256 = UnsignedIntegerEncoder(value_bit_size=256, data_byte_size=32)
 
 class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
     @parse_type_str("uint")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(
             value_bit_size=abi_type.sub,
             data_byte_size=abi_type.sub // 8,
@@ -321,13 +332,13 @@ class SignedIntegerEncoder(NumberEncoder):
     __call__ = encode
 
     @parse_type_str("int")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub)
 
 
 class PackedSignedIntegerEncoder(SignedIntegerEncoder):
     @parse_type_str("int")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(
             value_bit_size=abi_type.sub,
             data_byte_size=abi_type.sub // 8,
@@ -356,7 +367,7 @@ class BaseFixedEncoder(NumberEncoder):
     def precision(self) -> int:
         return TEN**-self.frac_places
 
-    def validate_value(self, value):
+    def validate_value(self, value: Any) -> None:
         super().validate_value(value)
 
         with decimal.localcontext(abi_decimal_context):
@@ -393,7 +404,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
         return int_to_big_endian(integer_value)
 
     @parse_type_str("ufixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(
@@ -404,7 +415,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
 
 class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
     @parse_type_str("ufixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(
@@ -434,7 +445,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
     __call__ = encode
 
     @parse_type_str("fixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(
@@ -445,7 +456,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
 
 class PackedSignedFixedEncoder(SignedFixedEncoder):
     @parse_type_str("fixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(
@@ -472,7 +483,7 @@ class AddressEncoder(Fixed32ByteSizeEncoder):
             raise ValueError("Addresses must be 160 bits in length")
 
     @parse_type_str("address")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
 
@@ -500,13 +511,13 @@ class BytesEncoder(Fixed32ByteSizeEncoder):
         return value
 
     @parse_type_str("bytes")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub * 8)
 
 
 class PackedBytesEncoder(BytesEncoder):
     @parse_type_str("bytes")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(
             value_bit_size=abi_type.sub * 8,
             data_byte_size=abi_type.sub,
@@ -534,7 +545,7 @@ class ByteStringEncoder(BaseEncoder):
     __call__: ClassVar[Callable[[Type[Self], bytes], bytes]] = encode
 
     @parse_type_str("bytes")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()  # type: ignore [misc]
 
 
@@ -572,7 +583,7 @@ class TextStringEncoder(BaseEncoder):
     __call__: ClassVar[Callable[[Type[Self], str], bytes]] = encode
 
     @parse_type_str("string")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()  # type: ignore [misc]
 
 
@@ -612,7 +623,7 @@ class BaseArrayEncoder(BaseEncoder):
         return encode_elements(self.item_encoder, value)
 
     @parse_type_str(with_arrlist=True)
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         item_encoder = registry.get_encoder(abi_type.item_type.to_type_str())
 
         array_spec = abi_type.arrlist[-1]
@@ -647,7 +658,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
     __call__ = encode
 
     @parse_type_str(with_arrlist=True)
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         item_encoder = registry.get_encoder(abi_type.item_type.to_type_str())
 
         array_spec = abi_type.arrlist[-1]

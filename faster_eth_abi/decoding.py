@@ -7,6 +7,7 @@ from types import (
     MethodType,
 )
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Final,
@@ -20,9 +21,15 @@ from typing import (
 from eth_typing import (
     HexAddress,
 )
+from eth_typing.abi import (
+    TypeStr,
+)
 from faster_eth_utils import (
     big_endian_to_int,
     to_normalized_address,
+)
+from typing_extensions import (
+    Self,
 )
 
 from faster_eth_abi._decoding import (
@@ -60,6 +67,11 @@ from faster_eth_abi.utils.numeric import (
     abi_decimal_context,
     ceil32,
 )
+
+if TYPE_CHECKING:
+    from faster_eth_abi.registry import (
+        ABIRegistry,
+    )
 
 TByteStr = TypeVar("TByteStr", bytes, str)
 
@@ -154,7 +166,7 @@ class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
     __call__ = decode
 
     @parse_tuple_type_str
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         decoders = tuple(
             registry.get_decoder(c.to_type_str()) for c in abi_type.components
         )
@@ -219,7 +231,7 @@ class BaseArrayDecoder(BaseDecoder[Tuple[T, ...]]):
             raise ValueError("No `item_decoder` set")
 
     @parse_type_str(with_arrlist=True)
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         item_decoder = registry.get_decoder(abi_type.item_type.to_type_str())
 
         array_spec = abi_type.arrlist[-1]
@@ -331,7 +343,7 @@ class BooleanDecoder(Fixed32ByteSizeDecoder[bool]):
     decoder_fn = staticmethod(decoder_fn_boolean)
 
     @parse_type_str("bool")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
 
@@ -341,7 +353,7 @@ class AddressDecoder(Fixed32ByteSizeDecoder[HexAddress]):
     decoder_fn = staticmethod(to_normalized_address)
 
     @parse_type_str("address")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
 
@@ -353,7 +365,7 @@ class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     is_big_endian = True
 
     @parse_type_str("uint")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub)
 
 
@@ -396,7 +408,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
         return validate_padding_bytes_signed_integer(self, value, padding_bytes)
 
     @parse_type_str("int")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub)
 
 
@@ -411,7 +423,7 @@ class BytesDecoder(Fixed32ByteSizeDecoder[bytes]):
         return data
 
     @parse_type_str("bytes")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(value_bit_size=abi_type.sub * 8)
 
 
@@ -444,7 +456,7 @@ class UnsignedFixedDecoder(BaseFixedDecoder):
         return decimal_value
 
     @parse_type_str("ufixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(value_bit_size=value_bit_size, frac_places=frac_places)
@@ -493,7 +505,7 @@ class SignedFixedDecoder(BaseFixedDecoder):
             )
 
     @parse_type_str("fixed")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         value_bit_size, frac_places = abi_type.sub
 
         return cls(value_bit_size=value_bit_size, frac_places=frac_places)
@@ -533,7 +545,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
         pass
 
     @parse_type_str("bytes")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
 
@@ -543,7 +555,7 @@ class StringDecoder(ByteStringDecoder[str]):
         super().__init__()
 
     @parse_type_str("string")
-    def from_type_str(cls, abi_type, registry):
+    def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls()
 
     def decode(self, stream: ContextFramesBytesIO) -> str:
