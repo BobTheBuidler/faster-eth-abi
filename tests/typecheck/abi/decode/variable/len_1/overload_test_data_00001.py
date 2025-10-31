@@ -22,9 +22,9 @@ f = abi.decode
 # input data
 D = b"\x00" * 32
 ck(f(['address'], D), T[HA, ...])  # iterable case 0
-ck(f(['address[]'], D), T[A, ...])  # iterable case 1
+ck(f(['address[]'], D), TA)  # iterable case 1
 ck(f(['bool'], D), T[bo, ...])  # iterable case 2
-ck(f(['bool[]'], D), T[A, ...])  # iterable case 3
+ck(f(['bool[]'], D), TA)  # iterable case 3
 ck(f(['bytes'], D), T[by, ...])  # iterable case 4
 ck(f(['bytes1'], D), T[by, ...])  # iterable case 5
 ck(f(['bytes10'], D), T[by, ...])  # iterable case 6
@@ -91,7 +91,7 @@ ck(f(['int80'], D), T[i, ...])  # iterable case 66
 ck(f(['int88'], D), T[i, ...])  # iterable case 67
 ck(f(['int96'], D), T[i, ...])  # iterable case 68
 ck(f(['string'], D), T[s, ...])  # iterable case 69
-ck(f(['string[]'], D), T[A, ...])  # iterable case 70
+ck(f(['string[]'], D), TA)  # iterable case 70
 ck(f(['uint104'], D), T[i, ...])  # iterable case 71
 ck(f(['uint112'], D), T[i, ...])  # iterable case 72
 ck(f(['uint120'], D), T[i, ...])  # iterable case 73
@@ -124,4 +124,4 @@ ck(f(['uint8'], D), T[i, ...])  # iterable case 99
 ck(f(['uint80'], D), T[i, ...])  # iterable case 100
 ck(f(['uint88'], D), T[i, ...])  # iterable case 101
 ck(f(['uint96'], D), T[i, ...])  # iterable case 102
-ck(f(['?'], D), T[A, ...])  # iterable case 103
+ck(f(['?'], D), TA)  # iterable case 103

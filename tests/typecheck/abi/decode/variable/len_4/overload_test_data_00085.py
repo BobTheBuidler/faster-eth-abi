@@ -28,11 +28,11 @@ ck(f(['address', 'uint152', 'int96', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint152', 'int96', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1975788
 ck(f(['address', 'uint152', 'int96', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1975789
 ck(f(['address', 'uint152', 'int96', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1975790
-ck(f(['address', 'uint152', 'int96', '?'], D), T[A, ...])  # iterable case 1975791
+ck(f(['address', 'uint152', 'int96', '?'], D), TA)  # iterable case 1975791
 ck(f(['address', 'uint152', 'string', 'address'], D), T[U[HA, i, s], ...])  # iterable case 1975792
-ck(f(['address', 'uint152', 'string', 'address[]'], D), T[A, ...])  # iterable case 1975793
+ck(f(['address', 'uint152', 'string', 'address[]'], D), TA)  # iterable case 1975793
 ck(f(['address', 'uint152', 'string', 'bool'], D), T[U[HA, bo, i, s], ...])  # iterable case 1975794
-ck(f(['address', 'uint152', 'string', 'bool[]'], D), T[A, ...])  # iterable case 1975795
+ck(f(['address', 'uint152', 'string', 'bool[]'], D), TA)  # iterable case 1975795
 ck(f(['address', 'uint152', 'string', 'bytes'], D), T[U[HA, by, i, s], ...])  # iterable case 1975796
 ck(f(['address', 'uint152', 'string', 'bytes1'], D), T[U[HA, by, i, s], ...])  # iterable case 1975797
 ck(f(['address', 'uint152', 'string', 'bytes10'], D), T[U[HA, by, i, s], ...])  # iterable case 1975798
@@ -99,7 +99,7 @@ ck(f(['address', 'uint152', 'string', 'int80'], D), T[U[HA, i, s], ...])  # iter
 ck(f(['address', 'uint152', 'string', 'int88'], D), T[U[HA, i, s], ...])  # iterable case 1975859
 ck(f(['address', 'uint152', 'string', 'int96'], D), T[U[HA, i, s], ...])  # iterable case 1975860
 ck(f(['address', 'uint152', 'string', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1975861
-ck(f(['address', 'uint152', 'string', 'string[]'], D), T[A, ...])  # iterable case 1975862
+ck(f(['address', 'uint152', 'string', 'string[]'], D), TA)  # iterable case 1975862
 ck(f(['address', 'uint152', 'string', 'uint104'], D), T[U[HA, i, s], ...])  # iterable case 1975863
 ck(f(['address', 'uint152', 'string', 'uint112'], D), T[U[HA, i, s], ...])  # iterable case 1975864
 ck(f(['address', 'uint152', 'string', 'uint120'], D), T[U[HA, i, s], ...])  # iterable case 1975865
@@ -132,115 +132,115 @@ ck(f(['address', 'uint152', 'string', 'uint8'], D), T[U[HA, i, s], ...])  # iter
 ck(f(['address', 'uint152', 'string', 'uint80'], D), T[U[HA, i, s], ...])  # iterable case 1975892
 ck(f(['address', 'uint152', 'string', 'uint88'], D), T[U[HA, i, s], ...])  # iterable case 1975893
 ck(f(['address', 'uint152', 'string', 'uint96'], D), T[U[HA, i, s], ...])  # iterable case 1975894
-ck(f(['address', 'uint152', 'string', '?'], D), T[A, ...])  # iterable case 1975895
-ck(f(['address', 'uint152', 'string[]', 'address'], D), T[A, ...])  # iterable case 1975896
-ck(f(['address', 'uint152', 'string[]', 'address[]'], D), T[A, ...])  # iterable case 1975897
-ck(f(['address', 'uint152', 'string[]', 'bool'], D), T[A, ...])  # iterable case 1975898
-ck(f(['address', 'uint152', 'string[]', 'bool[]'], D), T[A, ...])  # iterable case 1975899
-ck(f(['address', 'uint152', 'string[]', 'bytes'], D), T[A, ...])  # iterable case 1975900
-ck(f(['address', 'uint152', 'string[]', 'bytes1'], D), T[A, ...])  # iterable case 1975901
-ck(f(['address', 'uint152', 'string[]', 'bytes10'], D), T[A, ...])  # iterable case 1975902
-ck(f(['address', 'uint152', 'string[]', 'bytes11'], D), T[A, ...])  # iterable case 1975903
-ck(f(['address', 'uint152', 'string[]', 'bytes12'], D), T[A, ...])  # iterable case 1975904
-ck(f(['address', 'uint152', 'string[]', 'bytes13'], D), T[A, ...])  # iterable case 1975905
-ck(f(['address', 'uint152', 'string[]', 'bytes14'], D), T[A, ...])  # iterable case 1975906
-ck(f(['address', 'uint152', 'string[]', 'bytes15'], D), T[A, ...])  # iterable case 1975907
-ck(f(['address', 'uint152', 'string[]', 'bytes16'], D), T[A, ...])  # iterable case 1975908
-ck(f(['address', 'uint152', 'string[]', 'bytes17'], D), T[A, ...])  # iterable case 1975909
-ck(f(['address', 'uint152', 'string[]', 'bytes18'], D), T[A, ...])  # iterable case 1975910
-ck(f(['address', 'uint152', 'string[]', 'bytes19'], D), T[A, ...])  # iterable case 1975911
-ck(f(['address', 'uint152', 'string[]', 'bytes2'], D), T[A, ...])  # iterable case 1975912
-ck(f(['address', 'uint152', 'string[]', 'bytes20'], D), T[A, ...])  # iterable case 1975913
-ck(f(['address', 'uint152', 'string[]', 'bytes21'], D), T[A, ...])  # iterable case 1975914
-ck(f(['address', 'uint152', 'string[]', 'bytes22'], D), T[A, ...])  # iterable case 1975915
-ck(f(['address', 'uint152', 'string[]', 'bytes23'], D), T[A, ...])  # iterable case 1975916
-ck(f(['address', 'uint152', 'string[]', 'bytes24'], D), T[A, ...])  # iterable case 1975917
-ck(f(['address', 'uint152', 'string[]', 'bytes25'], D), T[A, ...])  # iterable case 1975918
-ck(f(['address', 'uint152', 'string[]', 'bytes26'], D), T[A, ...])  # iterable case 1975919
-ck(f(['address', 'uint152', 'string[]', 'bytes27'], D), T[A, ...])  # iterable case 1975920
-ck(f(['address', 'uint152', 'string[]', 'bytes28'], D), T[A, ...])  # iterable case 1975921
-ck(f(['address', 'uint152', 'string[]', 'bytes29'], D), T[A, ...])  # iterable case 1975922
-ck(f(['address', 'uint152', 'string[]', 'bytes3'], D), T[A, ...])  # iterable case 1975923
-ck(f(['address', 'uint152', 'string[]', 'bytes30'], D), T[A, ...])  # iterable case 1975924
-ck(f(['address', 'uint152', 'string[]', 'bytes31'], D), T[A, ...])  # iterable case 1975925
-ck(f(['address', 'uint152', 'string[]', 'bytes32'], D), T[A, ...])  # iterable case 1975926
-ck(f(['address', 'uint152', 'string[]', 'bytes4'], D), T[A, ...])  # iterable case 1975927
-ck(f(['address', 'uint152', 'string[]', 'bytes5'], D), T[A, ...])  # iterable case 1975928
-ck(f(['address', 'uint152', 'string[]', 'bytes6'], D), T[A, ...])  # iterable case 1975929
-ck(f(['address', 'uint152', 'string[]', 'bytes7'], D), T[A, ...])  # iterable case 1975930
-ck(f(['address', 'uint152', 'string[]', 'bytes8'], D), T[A, ...])  # iterable case 1975931
-ck(f(['address', 'uint152', 'string[]', 'bytes9'], D), T[A, ...])  # iterable case 1975932
-ck(f(['address', 'uint152', 'string[]', 'int104'], D), T[A, ...])  # iterable case 1975933
-ck(f(['address', 'uint152', 'string[]', 'int112'], D), T[A, ...])  # iterable case 1975934
-ck(f(['address', 'uint152', 'string[]', 'int120'], D), T[A, ...])  # iterable case 1975935
-ck(f(['address', 'uint152', 'string[]', 'int128'], D), T[A, ...])  # iterable case 1975936
-ck(f(['address', 'uint152', 'string[]', 'int136'], D), T[A, ...])  # iterable case 1975937
-ck(f(['address', 'uint152', 'string[]', 'int144'], D), T[A, ...])  # iterable case 1975938
-ck(f(['address', 'uint152', 'string[]', 'int152'], D), T[A, ...])  # iterable case 1975939
-ck(f(['address', 'uint152', 'string[]', 'int16'], D), T[A, ...])  # iterable case 1975940
-ck(f(['address', 'uint152', 'string[]', 'int160'], D), T[A, ...])  # iterable case 1975941
-ck(f(['address', 'uint152', 'string[]', 'int168'], D), T[A, ...])  # iterable case 1975942
-ck(f(['address', 'uint152', 'string[]', 'int176'], D), T[A, ...])  # iterable case 1975943
-ck(f(['address', 'uint152', 'string[]', 'int184'], D), T[A, ...])  # iterable case 1975944
-ck(f(['address', 'uint152', 'string[]', 'int192'], D), T[A, ...])  # iterable case 1975945
-ck(f(['address', 'uint152', 'string[]', 'int200'], D), T[A, ...])  # iterable case 1975946
-ck(f(['address', 'uint152', 'string[]', 'int208'], D), T[A, ...])  # iterable case 1975947
-ck(f(['address', 'uint152', 'string[]', 'int216'], D), T[A, ...])  # iterable case 1975948
-ck(f(['address', 'uint152', 'string[]', 'int224'], D), T[A, ...])  # iterable case 1975949
-ck(f(['address', 'uint152', 'string[]', 'int232'], D), T[A, ...])  # iterable case 1975950
-ck(f(['address', 'uint152', 'string[]', 'int24'], D), T[A, ...])  # iterable case 1975951
-ck(f(['address', 'uint152', 'string[]', 'int240'], D), T[A, ...])  # iterable case 1975952
-ck(f(['address', 'uint152', 'string[]', 'int248'], D), T[A, ...])  # iterable case 1975953
-ck(f(['address', 'uint152', 'string[]', 'int256'], D), T[A, ...])  # iterable case 1975954
-ck(f(['address', 'uint152', 'string[]', 'int32'], D), T[A, ...])  # iterable case 1975955
-ck(f(['address', 'uint152', 'string[]', 'int40'], D), T[A, ...])  # iterable case 1975956
-ck(f(['address', 'uint152', 'string[]', 'int48'], D), T[A, ...])  # iterable case 1975957
-ck(f(['address', 'uint152', 'string[]', 'int56'], D), T[A, ...])  # iterable case 1975958
-ck(f(['address', 'uint152', 'string[]', 'int64'], D), T[A, ...])  # iterable case 1975959
-ck(f(['address', 'uint152', 'string[]', 'int72'], D), T[A, ...])  # iterable case 1975960
-ck(f(['address', 'uint152', 'string[]', 'int8'], D), T[A, ...])  # iterable case 1975961
-ck(f(['address', 'uint152', 'string[]', 'int80'], D), T[A, ...])  # iterable case 1975962
-ck(f(['address', 'uint152', 'string[]', 'int88'], D), T[A, ...])  # iterable case 1975963
-ck(f(['address', 'uint152', 'string[]', 'int96'], D), T[A, ...])  # iterable case 1975964
-ck(f(['address', 'uint152', 'string[]', 'string'], D), T[A, ...])  # iterable case 1975965
-ck(f(['address', 'uint152', 'string[]', 'string[]'], D), T[A, ...])  # iterable case 1975966
-ck(f(['address', 'uint152', 'string[]', 'uint104'], D), T[A, ...])  # iterable case 1975967
-ck(f(['address', 'uint152', 'string[]', 'uint112'], D), T[A, ...])  # iterable case 1975968
-ck(f(['address', 'uint152', 'string[]', 'uint120'], D), T[A, ...])  # iterable case 1975969
-ck(f(['address', 'uint152', 'string[]', 'uint128'], D), T[A, ...])  # iterable case 1975970
-ck(f(['address', 'uint152', 'string[]', 'uint136'], D), T[A, ...])  # iterable case 1975971
-ck(f(['address', 'uint152', 'string[]', 'uint144'], D), T[A, ...])  # iterable case 1975972
-ck(f(['address', 'uint152', 'string[]', 'uint152'], D), T[A, ...])  # iterable case 1975973
-ck(f(['address', 'uint152', 'string[]', 'uint16'], D), T[A, ...])  # iterable case 1975974
-ck(f(['address', 'uint152', 'string[]', 'uint160'], D), T[A, ...])  # iterable case 1975975
-ck(f(['address', 'uint152', 'string[]', 'uint168'], D), T[A, ...])  # iterable case 1975976
-ck(f(['address', 'uint152', 'string[]', 'uint176'], D), T[A, ...])  # iterable case 1975977
-ck(f(['address', 'uint152', 'string[]', 'uint184'], D), T[A, ...])  # iterable case 1975978
-ck(f(['address', 'uint152', 'string[]', 'uint192'], D), T[A, ...])  # iterable case 1975979
-ck(f(['address', 'uint152', 'string[]', 'uint200'], D), T[A, ...])  # iterable case 1975980
-ck(f(['address', 'uint152', 'string[]', 'uint208'], D), T[A, ...])  # iterable case 1975981
-ck(f(['address', 'uint152', 'string[]', 'uint216'], D), T[A, ...])  # iterable case 1975982
-ck(f(['address', 'uint152', 'string[]', 'uint224'], D), T[A, ...])  # iterable case 1975983
-ck(f(['address', 'uint152', 'string[]', 'uint232'], D), T[A, ...])  # iterable case 1975984
-ck(f(['address', 'uint152', 'string[]', 'uint24'], D), T[A, ...])  # iterable case 1975985
-ck(f(['address', 'uint152', 'string[]', 'uint240'], D), T[A, ...])  # iterable case 1975986
-ck(f(['address', 'uint152', 'string[]', 'uint248'], D), T[A, ...])  # iterable case 1975987
-ck(f(['address', 'uint152', 'string[]', 'uint256'], D), T[A, ...])  # iterable case 1975988
-ck(f(['address', 'uint152', 'string[]', 'uint32'], D), T[A, ...])  # iterable case 1975989
-ck(f(['address', 'uint152', 'string[]', 'uint40'], D), T[A, ...])  # iterable case 1975990
-ck(f(['address', 'uint152', 'string[]', 'uint48'], D), T[A, ...])  # iterable case 1975991
-ck(f(['address', 'uint152', 'string[]', 'uint56'], D), T[A, ...])  # iterable case 1975992
-ck(f(['address', 'uint152', 'string[]', 'uint64'], D), T[A, ...])  # iterable case 1975993
-ck(f(['address', 'uint152', 'string[]', 'uint72'], D), T[A, ...])  # iterable case 1975994
-ck(f(['address', 'uint152', 'string[]', 'uint8'], D), T[A, ...])  # iterable case 1975995
-ck(f(['address', 'uint152', 'string[]', 'uint80'], D), T[A, ...])  # iterable case 1975996
-ck(f(['address', 'uint152', 'string[]', 'uint88'], D), T[A, ...])  # iterable case 1975997
-ck(f(['address', 'uint152', 'string[]', 'uint96'], D), T[A, ...])  # iterable case 1975998
-ck(f(['address', 'uint152', 'string[]', '?'], D), T[A, ...])  # iterable case 1975999
+ck(f(['address', 'uint152', 'string', '?'], D), TA)  # iterable case 1975895
+ck(f(['address', 'uint152', 'string[]', 'address'], D), TA)  # iterable case 1975896
+ck(f(['address', 'uint152', 'string[]', 'address[]'], D), TA)  # iterable case 1975897
+ck(f(['address', 'uint152', 'string[]', 'bool'], D), TA)  # iterable case 1975898
+ck(f(['address', 'uint152', 'string[]', 'bool[]'], D), TA)  # iterable case 1975899
+ck(f(['address', 'uint152', 'string[]', 'bytes'], D), TA)  # iterable case 1975900
+ck(f(['address', 'uint152', 'string[]', 'bytes1'], D), TA)  # iterable case 1975901
+ck(f(['address', 'uint152', 'string[]', 'bytes10'], D), TA)  # iterable case 1975902
+ck(f(['address', 'uint152', 'string[]', 'bytes11'], D), TA)  # iterable case 1975903
+ck(f(['address', 'uint152', 'string[]', 'bytes12'], D), TA)  # iterable case 1975904
+ck(f(['address', 'uint152', 'string[]', 'bytes13'], D), TA)  # iterable case 1975905
+ck(f(['address', 'uint152', 'string[]', 'bytes14'], D), TA)  # iterable case 1975906
+ck(f(['address', 'uint152', 'string[]', 'bytes15'], D), TA)  # iterable case 1975907
+ck(f(['address', 'uint152', 'string[]', 'bytes16'], D), TA)  # iterable case 1975908
+ck(f(['address', 'uint152', 'string[]', 'bytes17'], D), TA)  # iterable case 1975909
+ck(f(['address', 'uint152', 'string[]', 'bytes18'], D), TA)  # iterable case 1975910
+ck(f(['address', 'uint152', 'string[]', 'bytes19'], D), TA)  # iterable case 1975911
+ck(f(['address', 'uint152', 'string[]', 'bytes2'], D), TA)  # iterable case 1975912
+ck(f(['address', 'uint152', 'string[]', 'bytes20'], D), TA)  # iterable case 1975913
+ck(f(['address', 'uint152', 'string[]', 'bytes21'], D), TA)  # iterable case 1975914
+ck(f(['address', 'uint152', 'string[]', 'bytes22'], D), TA)  # iterable case 1975915
+ck(f(['address', 'uint152', 'string[]', 'bytes23'], D), TA)  # iterable case 1975916
+ck(f(['address', 'uint152', 'string[]', 'bytes24'], D), TA)  # iterable case 1975917
+ck(f(['address', 'uint152', 'string[]', 'bytes25'], D), TA)  # iterable case 1975918
+ck(f(['address', 'uint152', 'string[]', 'bytes26'], D), TA)  # iterable case 1975919
+ck(f(['address', 'uint152', 'string[]', 'bytes27'], D), TA)  # iterable case 1975920
+ck(f(['address', 'uint152', 'string[]', 'bytes28'], D), TA)  # iterable case 1975921
+ck(f(['address', 'uint152', 'string[]', 'bytes29'], D), TA)  # iterable case 1975922
+ck(f(['address', 'uint152', 'string[]', 'bytes3'], D), TA)  # iterable case 1975923
+ck(f(['address', 'uint152', 'string[]', 'bytes30'], D), TA)  # iterable case 1975924
+ck(f(['address', 'uint152', 'string[]', 'bytes31'], D), TA)  # iterable case 1975925
+ck(f(['address', 'uint152', 'string[]', 'bytes32'], D), TA)  # iterable case 1975926
+ck(f(['address', 'uint152', 'string[]', 'bytes4'], D), TA)  # iterable case 1975927
+ck(f(['address', 'uint152', 'string[]', 'bytes5'], D), TA)  # iterable case 1975928
+ck(f(['address', 'uint152', 'string[]', 'bytes6'], D), TA)  # iterable case 1975929
+ck(f(['address', 'uint152', 'string[]', 'bytes7'], D), TA)  # iterable case 1975930
+ck(f(['address', 'uint152', 'string[]', 'bytes8'], D), TA)  # iterable case 1975931
+ck(f(['address', 'uint152', 'string[]', 'bytes9'], D), TA)  # iterable case 1975932
+ck(f(['address', 'uint152', 'string[]', 'int104'], D), TA)  # iterable case 1975933
+ck(f(['address', 'uint152', 'string[]', 'int112'], D), TA)  # iterable case 1975934
+ck(f(['address', 'uint152', 'string[]', 'int120'], D), TA)  # iterable case 1975935
+ck(f(['address', 'uint152', 'string[]', 'int128'], D), TA)  # iterable case 1975936
+ck(f(['address', 'uint152', 'string[]', 'int136'], D), TA)  # iterable case 1975937
+ck(f(['address', 'uint152', 'string[]', 'int144'], D), TA)  # iterable case 1975938
+ck(f(['address', 'uint152', 'string[]', 'int152'], D), TA)  # iterable case 1975939
+ck(f(['address', 'uint152', 'string[]', 'int16'], D), TA)  # iterable case 1975940
+ck(f(['address', 'uint152', 'string[]', 'int160'], D), TA)  # iterable case 1975941
+ck(f(['address', 'uint152', 'string[]', 'int168'], D), TA)  # iterable case 1975942
+ck(f(['address', 'uint152', 'string[]', 'int176'], D), TA)  # iterable case 1975943
+ck(f(['address', 'uint152', 'string[]', 'int184'], D), TA)  # iterable case 1975944
+ck(f(['address', 'uint152', 'string[]', 'int192'], D), TA)  # iterable case 1975945
+ck(f(['address', 'uint152', 'string[]', 'int200'], D), TA)  # iterable case 1975946
+ck(f(['address', 'uint152', 'string[]', 'int208'], D), TA)  # iterable case 1975947
+ck(f(['address', 'uint152', 'string[]', 'int216'], D), TA)  # iterable case 1975948
+ck(f(['address', 'uint152', 'string[]', 'int224'], D), TA)  # iterable case 1975949
+ck(f(['address', 'uint152', 'string[]', 'int232'], D), TA)  # iterable case 1975950
+ck(f(['address', 'uint152', 'string[]', 'int24'], D), TA)  # iterable case 1975951
+ck(f(['address', 'uint152', 'string[]', 'int240'], D), TA)  # iterable case 1975952
+ck(f(['address', 'uint152', 'string[]', 'int248'], D), TA)  # iterable case 1975953
+ck(f(['address', 'uint152', 'string[]', 'int256'], D), TA)  # iterable case 1975954
+ck(f(['address', 'uint152', 'string[]', 'int32'], D), TA)  # iterable case 1975955
+ck(f(['address', 'uint152', 'string[]', 'int40'], D), TA)  # iterable case 1975956
+ck(f(['address', 'uint152', 'string[]', 'int48'], D), TA)  # iterable case 1975957
+ck(f(['address', 'uint152', 'string[]', 'int56'], D), TA)  # iterable case 1975958
+ck(f(['address', 'uint152', 'string[]', 'int64'], D), TA)  # iterable case 1975959
+ck(f(['address', 'uint152', 'string[]', 'int72'], D), TA)  # iterable case 1975960
+ck(f(['address', 'uint152', 'string[]', 'int8'], D), TA)  # iterable case 1975961
+ck(f(['address', 'uint152', 'string[]', 'int80'], D), TA)  # iterable case 1975962
+ck(f(['address', 'uint152', 'string[]', 'int88'], D), TA)  # iterable case 1975963
+ck(f(['address', 'uint152', 'string[]', 'int96'], D), TA)  # iterable case 1975964
+ck(f(['address', 'uint152', 'string[]', 'string'], D), TA)  # iterable case 1975965
+ck(f(['address', 'uint152', 'string[]', 'string[]'], D), TA)  # iterable case 1975966
+ck(f(['address', 'uint152', 'string[]', 'uint104'], D), TA)  # iterable case 1975967
+ck(f(['address', 'uint152', 'string[]', 'uint112'], D), TA)  # iterable case 1975968
+ck(f(['address', 'uint152', 'string[]', 'uint120'], D), TA)  # iterable case 1975969
+ck(f(['address', 'uint152', 'string[]', 'uint128'], D), TA)  # iterable case 1975970
+ck(f(['address', 'uint152', 'string[]', 'uint136'], D), TA)  # iterable case 1975971
+ck(f(['address', 'uint152', 'string[]', 'uint144'], D), TA)  # iterable case 1975972
+ck(f(['address', 'uint152', 'string[]', 'uint152'], D), TA)  # iterable case 1975973
+ck(f(['address', 'uint152', 'string[]', 'uint16'], D), TA)  # iterable case 1975974
+ck(f(['address', 'uint152', 'string[]', 'uint160'], D), TA)  # iterable case 1975975
+ck(f(['address', 'uint152', 'string[]', 'uint168'], D), TA)  # iterable case 1975976
+ck(f(['address', 'uint152', 'string[]', 'uint176'], D), TA)  # iterable case 1975977
+ck(f(['address', 'uint152', 'string[]', 'uint184'], D), TA)  # iterable case 1975978
+ck(f(['address', 'uint152', 'string[]', 'uint192'], D), TA)  # iterable case 1975979
+ck(f(['address', 'uint152', 'string[]', 'uint200'], D), TA)  # iterable case 1975980
+ck(f(['address', 'uint152', 'string[]', 'uint208'], D), TA)  # iterable case 1975981
+ck(f(['address', 'uint152', 'string[]', 'uint216'], D), TA)  # iterable case 1975982
+ck(f(['address', 'uint152', 'string[]', 'uint224'], D), TA)  # iterable case 1975983
+ck(f(['address', 'uint152', 'string[]', 'uint232'], D), TA)  # iterable case 1975984
+ck(f(['address', 'uint152', 'string[]', 'uint24'], D), TA)  # iterable case 1975985
+ck(f(['address', 'uint152', 'string[]', 'uint240'], D), TA)  # iterable case 1975986
+ck(f(['address', 'uint152', 'string[]', 'uint248'], D), TA)  # iterable case 1975987
+ck(f(['address', 'uint152', 'string[]', 'uint256'], D), TA)  # iterable case 1975988
+ck(f(['address', 'uint152', 'string[]', 'uint32'], D), TA)  # iterable case 1975989
+ck(f(['address', 'uint152', 'string[]', 'uint40'], D), TA)  # iterable case 1975990
+ck(f(['address', 'uint152', 'string[]', 'uint48'], D), TA)  # iterable case 1975991
+ck(f(['address', 'uint152', 'string[]', 'uint56'], D), TA)  # iterable case 1975992
+ck(f(['address', 'uint152', 'string[]', 'uint64'], D), TA)  # iterable case 1975993
+ck(f(['address', 'uint152', 'string[]', 'uint72'], D), TA)  # iterable case 1975994
+ck(f(['address', 'uint152', 'string[]', 'uint8'], D), TA)  # iterable case 1975995
+ck(f(['address', 'uint152', 'string[]', 'uint80'], D), TA)  # iterable case 1975996
+ck(f(['address', 'uint152', 'string[]', 'uint88'], D), TA)  # iterable case 1975997
+ck(f(['address', 'uint152', 'string[]', 'uint96'], D), TA)  # iterable case 1975998
+ck(f(['address', 'uint152', 'string[]', '?'], D), TA)  # iterable case 1975999
 ck(f(['address', 'uint152', 'uint104', 'address'], D), T[U[HA, i], ...])  # iterable case 1976000
-ck(f(['address', 'uint152', 'uint104', 'address[]'], D), T[A, ...])  # iterable case 1976001
+ck(f(['address', 'uint152', 'uint104', 'address[]'], D), TA)  # iterable case 1976001
 ck(f(['address', 'uint152', 'uint104', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976002
-ck(f(['address', 'uint152', 'uint104', 'bool[]'], D), T[A, ...])  # iterable case 1976003
+ck(f(['address', 'uint152', 'uint104', 'bool[]'], D), TA)  # iterable case 1976003
 ck(f(['address', 'uint152', 'uint104', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976004
 ck(f(['address', 'uint152', 'uint104', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976005
 ck(f(['address', 'uint152', 'uint104', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976006
@@ -307,7 +307,7 @@ ck(f(['address', 'uint152', 'uint104', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint104', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976067
 ck(f(['address', 'uint152', 'uint104', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976068
 ck(f(['address', 'uint152', 'uint104', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976069
-ck(f(['address', 'uint152', 'uint104', 'string[]'], D), T[A, ...])  # iterable case 1976070
+ck(f(['address', 'uint152', 'uint104', 'string[]'], D), TA)  # iterable case 1976070
 ck(f(['address', 'uint152', 'uint104', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976071
 ck(f(['address', 'uint152', 'uint104', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976072
 ck(f(['address', 'uint152', 'uint104', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976073
@@ -340,11 +340,11 @@ ck(f(['address', 'uint152', 'uint104', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint104', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976100
 ck(f(['address', 'uint152', 'uint104', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976101
 ck(f(['address', 'uint152', 'uint104', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976102
-ck(f(['address', 'uint152', 'uint104', '?'], D), T[A, ...])  # iterable case 1976103
+ck(f(['address', 'uint152', 'uint104', '?'], D), TA)  # iterable case 1976103
 ck(f(['address', 'uint152', 'uint112', 'address'], D), T[U[HA, i], ...])  # iterable case 1976104
-ck(f(['address', 'uint152', 'uint112', 'address[]'], D), T[A, ...])  # iterable case 1976105
+ck(f(['address', 'uint152', 'uint112', 'address[]'], D), TA)  # iterable case 1976105
 ck(f(['address', 'uint152', 'uint112', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976106
-ck(f(['address', 'uint152', 'uint112', 'bool[]'], D), T[A, ...])  # iterable case 1976107
+ck(f(['address', 'uint152', 'uint112', 'bool[]'], D), TA)  # iterable case 1976107
 ck(f(['address', 'uint152', 'uint112', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976108
 ck(f(['address', 'uint152', 'uint112', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976109
 ck(f(['address', 'uint152', 'uint112', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976110
@@ -411,7 +411,7 @@ ck(f(['address', 'uint152', 'uint112', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint112', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976171
 ck(f(['address', 'uint152', 'uint112', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976172
 ck(f(['address', 'uint152', 'uint112', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976173
-ck(f(['address', 'uint152', 'uint112', 'string[]'], D), T[A, ...])  # iterable case 1976174
+ck(f(['address', 'uint152', 'uint112', 'string[]'], D), TA)  # iterable case 1976174
 ck(f(['address', 'uint152', 'uint112', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976175
 ck(f(['address', 'uint152', 'uint112', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976176
 ck(f(['address', 'uint152', 'uint112', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976177
@@ -444,11 +444,11 @@ ck(f(['address', 'uint152', 'uint112', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint112', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976204
 ck(f(['address', 'uint152', 'uint112', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976205
 ck(f(['address', 'uint152', 'uint112', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976206
-ck(f(['address', 'uint152', 'uint112', '?'], D), T[A, ...])  # iterable case 1976207
+ck(f(['address', 'uint152', 'uint112', '?'], D), TA)  # iterable case 1976207
 ck(f(['address', 'uint152', 'uint120', 'address'], D), T[U[HA, i], ...])  # iterable case 1976208
-ck(f(['address', 'uint152', 'uint120', 'address[]'], D), T[A, ...])  # iterable case 1976209
+ck(f(['address', 'uint152', 'uint120', 'address[]'], D), TA)  # iterable case 1976209
 ck(f(['address', 'uint152', 'uint120', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976210
-ck(f(['address', 'uint152', 'uint120', 'bool[]'], D), T[A, ...])  # iterable case 1976211
+ck(f(['address', 'uint152', 'uint120', 'bool[]'], D), TA)  # iterable case 1976211
 ck(f(['address', 'uint152', 'uint120', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976212
 ck(f(['address', 'uint152', 'uint120', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976213
 ck(f(['address', 'uint152', 'uint120', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976214
@@ -515,7 +515,7 @@ ck(f(['address', 'uint152', 'uint120', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint120', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976275
 ck(f(['address', 'uint152', 'uint120', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976276
 ck(f(['address', 'uint152', 'uint120', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976277
-ck(f(['address', 'uint152', 'uint120', 'string[]'], D), T[A, ...])  # iterable case 1976278
+ck(f(['address', 'uint152', 'uint120', 'string[]'], D), TA)  # iterable case 1976278
 ck(f(['address', 'uint152', 'uint120', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976279
 ck(f(['address', 'uint152', 'uint120', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976280
 ck(f(['address', 'uint152', 'uint120', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976281
@@ -548,11 +548,11 @@ ck(f(['address', 'uint152', 'uint120', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint120', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976308
 ck(f(['address', 'uint152', 'uint120', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976309
 ck(f(['address', 'uint152', 'uint120', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976310
-ck(f(['address', 'uint152', 'uint120', '?'], D), T[A, ...])  # iterable case 1976311
+ck(f(['address', 'uint152', 'uint120', '?'], D), TA)  # iterable case 1976311
 ck(f(['address', 'uint152', 'uint128', 'address'], D), T[U[HA, i], ...])  # iterable case 1976312
-ck(f(['address', 'uint152', 'uint128', 'address[]'], D), T[A, ...])  # iterable case 1976313
+ck(f(['address', 'uint152', 'uint128', 'address[]'], D), TA)  # iterable case 1976313
 ck(f(['address', 'uint152', 'uint128', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976314
-ck(f(['address', 'uint152', 'uint128', 'bool[]'], D), T[A, ...])  # iterable case 1976315
+ck(f(['address', 'uint152', 'uint128', 'bool[]'], D), TA)  # iterable case 1976315
 ck(f(['address', 'uint152', 'uint128', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976316
 ck(f(['address', 'uint152', 'uint128', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976317
 ck(f(['address', 'uint152', 'uint128', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976318
@@ -619,7 +619,7 @@ ck(f(['address', 'uint152', 'uint128', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint128', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976379
 ck(f(['address', 'uint152', 'uint128', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976380
 ck(f(['address', 'uint152', 'uint128', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976381
-ck(f(['address', 'uint152', 'uint128', 'string[]'], D), T[A, ...])  # iterable case 1976382
+ck(f(['address', 'uint152', 'uint128', 'string[]'], D), TA)  # iterable case 1976382
 ck(f(['address', 'uint152', 'uint128', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976383
 ck(f(['address', 'uint152', 'uint128', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976384
 ck(f(['address', 'uint152', 'uint128', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976385
@@ -652,11 +652,11 @@ ck(f(['address', 'uint152', 'uint128', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint128', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976412
 ck(f(['address', 'uint152', 'uint128', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976413
 ck(f(['address', 'uint152', 'uint128', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976414
-ck(f(['address', 'uint152', 'uint128', '?'], D), T[A, ...])  # iterable case 1976415
+ck(f(['address', 'uint152', 'uint128', '?'], D), TA)  # iterable case 1976415
 ck(f(['address', 'uint152', 'uint136', 'address'], D), T[U[HA, i], ...])  # iterable case 1976416
-ck(f(['address', 'uint152', 'uint136', 'address[]'], D), T[A, ...])  # iterable case 1976417
+ck(f(['address', 'uint152', 'uint136', 'address[]'], D), TA)  # iterable case 1976417
 ck(f(['address', 'uint152', 'uint136', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976418
-ck(f(['address', 'uint152', 'uint136', 'bool[]'], D), T[A, ...])  # iterable case 1976419
+ck(f(['address', 'uint152', 'uint136', 'bool[]'], D), TA)  # iterable case 1976419
 ck(f(['address', 'uint152', 'uint136', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976420
 ck(f(['address', 'uint152', 'uint136', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976421
 ck(f(['address', 'uint152', 'uint136', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976422
@@ -723,7 +723,7 @@ ck(f(['address', 'uint152', 'uint136', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint136', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976483
 ck(f(['address', 'uint152', 'uint136', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976484
 ck(f(['address', 'uint152', 'uint136', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976485
-ck(f(['address', 'uint152', 'uint136', 'string[]'], D), T[A, ...])  # iterable case 1976486
+ck(f(['address', 'uint152', 'uint136', 'string[]'], D), TA)  # iterable case 1976486
 ck(f(['address', 'uint152', 'uint136', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976487
 ck(f(['address', 'uint152', 'uint136', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976488
 ck(f(['address', 'uint152', 'uint136', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976489
@@ -756,11 +756,11 @@ ck(f(['address', 'uint152', 'uint136', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint136', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976516
 ck(f(['address', 'uint152', 'uint136', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976517
 ck(f(['address', 'uint152', 'uint136', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976518
-ck(f(['address', 'uint152', 'uint136', '?'], D), T[A, ...])  # iterable case 1976519
+ck(f(['address', 'uint152', 'uint136', '?'], D), TA)  # iterable case 1976519
 ck(f(['address', 'uint152', 'uint144', 'address'], D), T[U[HA, i], ...])  # iterable case 1976520
-ck(f(['address', 'uint152', 'uint144', 'address[]'], D), T[A, ...])  # iterable case 1976521
+ck(f(['address', 'uint152', 'uint144', 'address[]'], D), TA)  # iterable case 1976521
 ck(f(['address', 'uint152', 'uint144', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976522
-ck(f(['address', 'uint152', 'uint144', 'bool[]'], D), T[A, ...])  # iterable case 1976523
+ck(f(['address', 'uint152', 'uint144', 'bool[]'], D), TA)  # iterable case 1976523
 ck(f(['address', 'uint152', 'uint144', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976524
 ck(f(['address', 'uint152', 'uint144', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976525
 ck(f(['address', 'uint152', 'uint144', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976526
@@ -827,7 +827,7 @@ ck(f(['address', 'uint152', 'uint144', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint144', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976587
 ck(f(['address', 'uint152', 'uint144', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976588
 ck(f(['address', 'uint152', 'uint144', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976589
-ck(f(['address', 'uint152', 'uint144', 'string[]'], D), T[A, ...])  # iterable case 1976590
+ck(f(['address', 'uint152', 'uint144', 'string[]'], D), TA)  # iterable case 1976590
 ck(f(['address', 'uint152', 'uint144', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976591
 ck(f(['address', 'uint152', 'uint144', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976592
 ck(f(['address', 'uint152', 'uint144', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976593
@@ -860,11 +860,11 @@ ck(f(['address', 'uint152', 'uint144', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint144', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976620
 ck(f(['address', 'uint152', 'uint144', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976621
 ck(f(['address', 'uint152', 'uint144', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976622
-ck(f(['address', 'uint152', 'uint144', '?'], D), T[A, ...])  # iterable case 1976623
+ck(f(['address', 'uint152', 'uint144', '?'], D), TA)  # iterable case 1976623
 ck(f(['address', 'uint152', 'uint152', 'address'], D), T[U[HA, i], ...])  # iterable case 1976624
-ck(f(['address', 'uint152', 'uint152', 'address[]'], D), T[A, ...])  # iterable case 1976625
+ck(f(['address', 'uint152', 'uint152', 'address[]'], D), TA)  # iterable case 1976625
 ck(f(['address', 'uint152', 'uint152', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976626
-ck(f(['address', 'uint152', 'uint152', 'bool[]'], D), T[A, ...])  # iterable case 1976627
+ck(f(['address', 'uint152', 'uint152', 'bool[]'], D), TA)  # iterable case 1976627
 ck(f(['address', 'uint152', 'uint152', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976628
 ck(f(['address', 'uint152', 'uint152', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976629
 ck(f(['address', 'uint152', 'uint152', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976630
@@ -931,7 +931,7 @@ ck(f(['address', 'uint152', 'uint152', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint152', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976691
 ck(f(['address', 'uint152', 'uint152', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976692
 ck(f(['address', 'uint152', 'uint152', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976693
-ck(f(['address', 'uint152', 'uint152', 'string[]'], D), T[A, ...])  # iterable case 1976694
+ck(f(['address', 'uint152', 'uint152', 'string[]'], D), TA)  # iterable case 1976694
 ck(f(['address', 'uint152', 'uint152', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976695
 ck(f(['address', 'uint152', 'uint152', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976696
 ck(f(['address', 'uint152', 'uint152', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976697
@@ -964,11 +964,11 @@ ck(f(['address', 'uint152', 'uint152', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint152', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976724
 ck(f(['address', 'uint152', 'uint152', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976725
 ck(f(['address', 'uint152', 'uint152', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976726
-ck(f(['address', 'uint152', 'uint152', '?'], D), T[A, ...])  # iterable case 1976727
+ck(f(['address', 'uint152', 'uint152', '?'], D), TA)  # iterable case 1976727
 ck(f(['address', 'uint152', 'uint16', 'address'], D), T[U[HA, i], ...])  # iterable case 1976728
-ck(f(['address', 'uint152', 'uint16', 'address[]'], D), T[A, ...])  # iterable case 1976729
+ck(f(['address', 'uint152', 'uint16', 'address[]'], D), TA)  # iterable case 1976729
 ck(f(['address', 'uint152', 'uint16', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976730
-ck(f(['address', 'uint152', 'uint16', 'bool[]'], D), T[A, ...])  # iterable case 1976731
+ck(f(['address', 'uint152', 'uint16', 'bool[]'], D), TA)  # iterable case 1976731
 ck(f(['address', 'uint152', 'uint16', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976732
 ck(f(['address', 'uint152', 'uint16', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976733
 ck(f(['address', 'uint152', 'uint16', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976734
@@ -1035,7 +1035,7 @@ ck(f(['address', 'uint152', 'uint16', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint16', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976795
 ck(f(['address', 'uint152', 'uint16', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976796
 ck(f(['address', 'uint152', 'uint16', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976797
-ck(f(['address', 'uint152', 'uint16', 'string[]'], D), T[A, ...])  # iterable case 1976798
+ck(f(['address', 'uint152', 'uint16', 'string[]'], D), TA)  # iterable case 1976798
 ck(f(['address', 'uint152', 'uint16', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976799
 ck(f(['address', 'uint152', 'uint16', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976800
 ck(f(['address', 'uint152', 'uint16', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976801
@@ -1068,11 +1068,11 @@ ck(f(['address', 'uint152', 'uint16', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint16', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976828
 ck(f(['address', 'uint152', 'uint16', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976829
 ck(f(['address', 'uint152', 'uint16', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976830
-ck(f(['address', 'uint152', 'uint16', '?'], D), T[A, ...])  # iterable case 1976831
+ck(f(['address', 'uint152', 'uint16', '?'], D), TA)  # iterable case 1976831
 ck(f(['address', 'uint152', 'uint160', 'address'], D), T[U[HA, i], ...])  # iterable case 1976832
-ck(f(['address', 'uint152', 'uint160', 'address[]'], D), T[A, ...])  # iterable case 1976833
+ck(f(['address', 'uint152', 'uint160', 'address[]'], D), TA)  # iterable case 1976833
 ck(f(['address', 'uint152', 'uint160', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976834
-ck(f(['address', 'uint152', 'uint160', 'bool[]'], D), T[A, ...])  # iterable case 1976835
+ck(f(['address', 'uint152', 'uint160', 'bool[]'], D), TA)  # iterable case 1976835
 ck(f(['address', 'uint152', 'uint160', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976836
 ck(f(['address', 'uint152', 'uint160', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976837
 ck(f(['address', 'uint152', 'uint160', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976838
@@ -1139,7 +1139,7 @@ ck(f(['address', 'uint152', 'uint160', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint160', 'int88'], D), T[U[HA, i], ...])  # iterable case 1976899
 ck(f(['address', 'uint152', 'uint160', 'int96'], D), T[U[HA, i], ...])  # iterable case 1976900
 ck(f(['address', 'uint152', 'uint160', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1976901
-ck(f(['address', 'uint152', 'uint160', 'string[]'], D), T[A, ...])  # iterable case 1976902
+ck(f(['address', 'uint152', 'uint160', 'string[]'], D), TA)  # iterable case 1976902
 ck(f(['address', 'uint152', 'uint160', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1976903
 ck(f(['address', 'uint152', 'uint160', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1976904
 ck(f(['address', 'uint152', 'uint160', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1976905
@@ -1172,11 +1172,11 @@ ck(f(['address', 'uint152', 'uint160', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint160', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1976932
 ck(f(['address', 'uint152', 'uint160', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1976933
 ck(f(['address', 'uint152', 'uint160', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1976934
-ck(f(['address', 'uint152', 'uint160', '?'], D), T[A, ...])  # iterable case 1976935
+ck(f(['address', 'uint152', 'uint160', '?'], D), TA)  # iterable case 1976935
 ck(f(['address', 'uint152', 'uint168', 'address'], D), T[U[HA, i], ...])  # iterable case 1976936
-ck(f(['address', 'uint152', 'uint168', 'address[]'], D), T[A, ...])  # iterable case 1976937
+ck(f(['address', 'uint152', 'uint168', 'address[]'], D), TA)  # iterable case 1976937
 ck(f(['address', 'uint152', 'uint168', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1976938
-ck(f(['address', 'uint152', 'uint168', 'bool[]'], D), T[A, ...])  # iterable case 1976939
+ck(f(['address', 'uint152', 'uint168', 'bool[]'], D), TA)  # iterable case 1976939
 ck(f(['address', 'uint152', 'uint168', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1976940
 ck(f(['address', 'uint152', 'uint168', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1976941
 ck(f(['address', 'uint152', 'uint168', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1976942
@@ -1243,7 +1243,7 @@ ck(f(['address', 'uint152', 'uint168', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint168', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977003
 ck(f(['address', 'uint152', 'uint168', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977004
 ck(f(['address', 'uint152', 'uint168', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977005
-ck(f(['address', 'uint152', 'uint168', 'string[]'], D), T[A, ...])  # iterable case 1977006
+ck(f(['address', 'uint152', 'uint168', 'string[]'], D), TA)  # iterable case 1977006
 ck(f(['address', 'uint152', 'uint168', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977007
 ck(f(['address', 'uint152', 'uint168', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977008
 ck(f(['address', 'uint152', 'uint168', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977009
@@ -1276,11 +1276,11 @@ ck(f(['address', 'uint152', 'uint168', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint168', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977036
 ck(f(['address', 'uint152', 'uint168', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977037
 ck(f(['address', 'uint152', 'uint168', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977038
-ck(f(['address', 'uint152', 'uint168', '?'], D), T[A, ...])  # iterable case 1977039
+ck(f(['address', 'uint152', 'uint168', '?'], D), TA)  # iterable case 1977039
 ck(f(['address', 'uint152', 'uint176', 'address'], D), T[U[HA, i], ...])  # iterable case 1977040
-ck(f(['address', 'uint152', 'uint176', 'address[]'], D), T[A, ...])  # iterable case 1977041
+ck(f(['address', 'uint152', 'uint176', 'address[]'], D), TA)  # iterable case 1977041
 ck(f(['address', 'uint152', 'uint176', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977042
-ck(f(['address', 'uint152', 'uint176', 'bool[]'], D), T[A, ...])  # iterable case 1977043
+ck(f(['address', 'uint152', 'uint176', 'bool[]'], D), TA)  # iterable case 1977043
 ck(f(['address', 'uint152', 'uint176', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977044
 ck(f(['address', 'uint152', 'uint176', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977045
 ck(f(['address', 'uint152', 'uint176', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977046
@@ -1347,7 +1347,7 @@ ck(f(['address', 'uint152', 'uint176', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint176', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977107
 ck(f(['address', 'uint152', 'uint176', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977108
 ck(f(['address', 'uint152', 'uint176', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977109
-ck(f(['address', 'uint152', 'uint176', 'string[]'], D), T[A, ...])  # iterable case 1977110
+ck(f(['address', 'uint152', 'uint176', 'string[]'], D), TA)  # iterable case 1977110
 ck(f(['address', 'uint152', 'uint176', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977111
 ck(f(['address', 'uint152', 'uint176', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977112
 ck(f(['address', 'uint152', 'uint176', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977113
@@ -1380,11 +1380,11 @@ ck(f(['address', 'uint152', 'uint176', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint176', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977140
 ck(f(['address', 'uint152', 'uint176', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977141
 ck(f(['address', 'uint152', 'uint176', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977142
-ck(f(['address', 'uint152', 'uint176', '?'], D), T[A, ...])  # iterable case 1977143
+ck(f(['address', 'uint152', 'uint176', '?'], D), TA)  # iterable case 1977143
 ck(f(['address', 'uint152', 'uint184', 'address'], D), T[U[HA, i], ...])  # iterable case 1977144
-ck(f(['address', 'uint152', 'uint184', 'address[]'], D), T[A, ...])  # iterable case 1977145
+ck(f(['address', 'uint152', 'uint184', 'address[]'], D), TA)  # iterable case 1977145
 ck(f(['address', 'uint152', 'uint184', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977146
-ck(f(['address', 'uint152', 'uint184', 'bool[]'], D), T[A, ...])  # iterable case 1977147
+ck(f(['address', 'uint152', 'uint184', 'bool[]'], D), TA)  # iterable case 1977147
 ck(f(['address', 'uint152', 'uint184', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977148
 ck(f(['address', 'uint152', 'uint184', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977149
 ck(f(['address', 'uint152', 'uint184', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977150
@@ -1451,7 +1451,7 @@ ck(f(['address', 'uint152', 'uint184', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint184', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977211
 ck(f(['address', 'uint152', 'uint184', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977212
 ck(f(['address', 'uint152', 'uint184', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977213
-ck(f(['address', 'uint152', 'uint184', 'string[]'], D), T[A, ...])  # iterable case 1977214
+ck(f(['address', 'uint152', 'uint184', 'string[]'], D), TA)  # iterable case 1977214
 ck(f(['address', 'uint152', 'uint184', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977215
 ck(f(['address', 'uint152', 'uint184', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977216
 ck(f(['address', 'uint152', 'uint184', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977217
@@ -1484,11 +1484,11 @@ ck(f(['address', 'uint152', 'uint184', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint184', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977244
 ck(f(['address', 'uint152', 'uint184', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977245
 ck(f(['address', 'uint152', 'uint184', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977246
-ck(f(['address', 'uint152', 'uint184', '?'], D), T[A, ...])  # iterable case 1977247
+ck(f(['address', 'uint152', 'uint184', '?'], D), TA)  # iterable case 1977247
 ck(f(['address', 'uint152', 'uint192', 'address'], D), T[U[HA, i], ...])  # iterable case 1977248
-ck(f(['address', 'uint152', 'uint192', 'address[]'], D), T[A, ...])  # iterable case 1977249
+ck(f(['address', 'uint152', 'uint192', 'address[]'], D), TA)  # iterable case 1977249
 ck(f(['address', 'uint152', 'uint192', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977250
-ck(f(['address', 'uint152', 'uint192', 'bool[]'], D), T[A, ...])  # iterable case 1977251
+ck(f(['address', 'uint152', 'uint192', 'bool[]'], D), TA)  # iterable case 1977251
 ck(f(['address', 'uint152', 'uint192', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977252
 ck(f(['address', 'uint152', 'uint192', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977253
 ck(f(['address', 'uint152', 'uint192', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977254
@@ -1555,7 +1555,7 @@ ck(f(['address', 'uint152', 'uint192', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint192', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977315
 ck(f(['address', 'uint152', 'uint192', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977316
 ck(f(['address', 'uint152', 'uint192', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977317
-ck(f(['address', 'uint152', 'uint192', 'string[]'], D), T[A, ...])  # iterable case 1977318
+ck(f(['address', 'uint152', 'uint192', 'string[]'], D), TA)  # iterable case 1977318
 ck(f(['address', 'uint152', 'uint192', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977319
 ck(f(['address', 'uint152', 'uint192', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977320
 ck(f(['address', 'uint152', 'uint192', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977321
@@ -1588,11 +1588,11 @@ ck(f(['address', 'uint152', 'uint192', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint192', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977348
 ck(f(['address', 'uint152', 'uint192', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977349
 ck(f(['address', 'uint152', 'uint192', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977350
-ck(f(['address', 'uint152', 'uint192', '?'], D), T[A, ...])  # iterable case 1977351
+ck(f(['address', 'uint152', 'uint192', '?'], D), TA)  # iterable case 1977351
 ck(f(['address', 'uint152', 'uint200', 'address'], D), T[U[HA, i], ...])  # iterable case 1977352
-ck(f(['address', 'uint152', 'uint200', 'address[]'], D), T[A, ...])  # iterable case 1977353
+ck(f(['address', 'uint152', 'uint200', 'address[]'], D), TA)  # iterable case 1977353
 ck(f(['address', 'uint152', 'uint200', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977354
-ck(f(['address', 'uint152', 'uint200', 'bool[]'], D), T[A, ...])  # iterable case 1977355
+ck(f(['address', 'uint152', 'uint200', 'bool[]'], D), TA)  # iterable case 1977355
 ck(f(['address', 'uint152', 'uint200', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977356
 ck(f(['address', 'uint152', 'uint200', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977357
 ck(f(['address', 'uint152', 'uint200', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977358
@@ -1659,7 +1659,7 @@ ck(f(['address', 'uint152', 'uint200', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint200', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977419
 ck(f(['address', 'uint152', 'uint200', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977420
 ck(f(['address', 'uint152', 'uint200', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977421
-ck(f(['address', 'uint152', 'uint200', 'string[]'], D), T[A, ...])  # iterable case 1977422
+ck(f(['address', 'uint152', 'uint200', 'string[]'], D), TA)  # iterable case 1977422
 ck(f(['address', 'uint152', 'uint200', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977423
 ck(f(['address', 'uint152', 'uint200', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977424
 ck(f(['address', 'uint152', 'uint200', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977425
@@ -1692,11 +1692,11 @@ ck(f(['address', 'uint152', 'uint200', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint200', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977452
 ck(f(['address', 'uint152', 'uint200', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977453
 ck(f(['address', 'uint152', 'uint200', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977454
-ck(f(['address', 'uint152', 'uint200', '?'], D), T[A, ...])  # iterable case 1977455
+ck(f(['address', 'uint152', 'uint200', '?'], D), TA)  # iterable case 1977455
 ck(f(['address', 'uint152', 'uint208', 'address'], D), T[U[HA, i], ...])  # iterable case 1977456
-ck(f(['address', 'uint152', 'uint208', 'address[]'], D), T[A, ...])  # iterable case 1977457
+ck(f(['address', 'uint152', 'uint208', 'address[]'], D), TA)  # iterable case 1977457
 ck(f(['address', 'uint152', 'uint208', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977458
-ck(f(['address', 'uint152', 'uint208', 'bool[]'], D), T[A, ...])  # iterable case 1977459
+ck(f(['address', 'uint152', 'uint208', 'bool[]'], D), TA)  # iterable case 1977459
 ck(f(['address', 'uint152', 'uint208', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977460
 ck(f(['address', 'uint152', 'uint208', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977461
 ck(f(['address', 'uint152', 'uint208', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977462
@@ -1763,7 +1763,7 @@ ck(f(['address', 'uint152', 'uint208', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint208', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977523
 ck(f(['address', 'uint152', 'uint208', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977524
 ck(f(['address', 'uint152', 'uint208', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977525
-ck(f(['address', 'uint152', 'uint208', 'string[]'], D), T[A, ...])  # iterable case 1977526
+ck(f(['address', 'uint152', 'uint208', 'string[]'], D), TA)  # iterable case 1977526
 ck(f(['address', 'uint152', 'uint208', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977527
 ck(f(['address', 'uint152', 'uint208', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977528
 ck(f(['address', 'uint152', 'uint208', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977529
@@ -1796,11 +1796,11 @@ ck(f(['address', 'uint152', 'uint208', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint208', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977556
 ck(f(['address', 'uint152', 'uint208', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977557
 ck(f(['address', 'uint152', 'uint208', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977558
-ck(f(['address', 'uint152', 'uint208', '?'], D), T[A, ...])  # iterable case 1977559
+ck(f(['address', 'uint152', 'uint208', '?'], D), TA)  # iterable case 1977559
 ck(f(['address', 'uint152', 'uint216', 'address'], D), T[U[HA, i], ...])  # iterable case 1977560
-ck(f(['address', 'uint152', 'uint216', 'address[]'], D), T[A, ...])  # iterable case 1977561
+ck(f(['address', 'uint152', 'uint216', 'address[]'], D), TA)  # iterable case 1977561
 ck(f(['address', 'uint152', 'uint216', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977562
-ck(f(['address', 'uint152', 'uint216', 'bool[]'], D), T[A, ...])  # iterable case 1977563
+ck(f(['address', 'uint152', 'uint216', 'bool[]'], D), TA)  # iterable case 1977563
 ck(f(['address', 'uint152', 'uint216', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977564
 ck(f(['address', 'uint152', 'uint216', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977565
 ck(f(['address', 'uint152', 'uint216', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977566
@@ -1867,7 +1867,7 @@ ck(f(['address', 'uint152', 'uint216', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint216', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977627
 ck(f(['address', 'uint152', 'uint216', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977628
 ck(f(['address', 'uint152', 'uint216', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977629
-ck(f(['address', 'uint152', 'uint216', 'string[]'], D), T[A, ...])  # iterable case 1977630
+ck(f(['address', 'uint152', 'uint216', 'string[]'], D), TA)  # iterable case 1977630
 ck(f(['address', 'uint152', 'uint216', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977631
 ck(f(['address', 'uint152', 'uint216', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977632
 ck(f(['address', 'uint152', 'uint216', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977633
@@ -1900,11 +1900,11 @@ ck(f(['address', 'uint152', 'uint216', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint216', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977660
 ck(f(['address', 'uint152', 'uint216', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977661
 ck(f(['address', 'uint152', 'uint216', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977662
-ck(f(['address', 'uint152', 'uint216', '?'], D), T[A, ...])  # iterable case 1977663
+ck(f(['address', 'uint152', 'uint216', '?'], D), TA)  # iterable case 1977663
 ck(f(['address', 'uint152', 'uint224', 'address'], D), T[U[HA, i], ...])  # iterable case 1977664
-ck(f(['address', 'uint152', 'uint224', 'address[]'], D), T[A, ...])  # iterable case 1977665
+ck(f(['address', 'uint152', 'uint224', 'address[]'], D), TA)  # iterable case 1977665
 ck(f(['address', 'uint152', 'uint224', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977666
-ck(f(['address', 'uint152', 'uint224', 'bool[]'], D), T[A, ...])  # iterable case 1977667
+ck(f(['address', 'uint152', 'uint224', 'bool[]'], D), TA)  # iterable case 1977667
 ck(f(['address', 'uint152', 'uint224', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977668
 ck(f(['address', 'uint152', 'uint224', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977669
 ck(f(['address', 'uint152', 'uint224', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977670
@@ -1971,7 +1971,7 @@ ck(f(['address', 'uint152', 'uint224', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint224', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977731
 ck(f(['address', 'uint152', 'uint224', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977732
 ck(f(['address', 'uint152', 'uint224', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977733
-ck(f(['address', 'uint152', 'uint224', 'string[]'], D), T[A, ...])  # iterable case 1977734
+ck(f(['address', 'uint152', 'uint224', 'string[]'], D), TA)  # iterable case 1977734
 ck(f(['address', 'uint152', 'uint224', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977735
 ck(f(['address', 'uint152', 'uint224', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977736
 ck(f(['address', 'uint152', 'uint224', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977737
@@ -2004,11 +2004,11 @@ ck(f(['address', 'uint152', 'uint224', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint224', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977764
 ck(f(['address', 'uint152', 'uint224', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977765
 ck(f(['address', 'uint152', 'uint224', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977766
-ck(f(['address', 'uint152', 'uint224', '?'], D), T[A, ...])  # iterable case 1977767
+ck(f(['address', 'uint152', 'uint224', '?'], D), TA)  # iterable case 1977767
 ck(f(['address', 'uint152', 'uint232', 'address'], D), T[U[HA, i], ...])  # iterable case 1977768
-ck(f(['address', 'uint152', 'uint232', 'address[]'], D), T[A, ...])  # iterable case 1977769
+ck(f(['address', 'uint152', 'uint232', 'address[]'], D), TA)  # iterable case 1977769
 ck(f(['address', 'uint152', 'uint232', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977770
-ck(f(['address', 'uint152', 'uint232', 'bool[]'], D), T[A, ...])  # iterable case 1977771
+ck(f(['address', 'uint152', 'uint232', 'bool[]'], D), TA)  # iterable case 1977771
 ck(f(['address', 'uint152', 'uint232', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977772
 ck(f(['address', 'uint152', 'uint232', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977773
 ck(f(['address', 'uint152', 'uint232', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977774
@@ -2075,7 +2075,7 @@ ck(f(['address', 'uint152', 'uint232', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint232', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977835
 ck(f(['address', 'uint152', 'uint232', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977836
 ck(f(['address', 'uint152', 'uint232', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977837
-ck(f(['address', 'uint152', 'uint232', 'string[]'], D), T[A, ...])  # iterable case 1977838
+ck(f(['address', 'uint152', 'uint232', 'string[]'], D), TA)  # iterable case 1977838
 ck(f(['address', 'uint152', 'uint232', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977839
 ck(f(['address', 'uint152', 'uint232', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977840
 ck(f(['address', 'uint152', 'uint232', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977841
@@ -2108,11 +2108,11 @@ ck(f(['address', 'uint152', 'uint232', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint232', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977868
 ck(f(['address', 'uint152', 'uint232', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977869
 ck(f(['address', 'uint152', 'uint232', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977870
-ck(f(['address', 'uint152', 'uint232', '?'], D), T[A, ...])  # iterable case 1977871
+ck(f(['address', 'uint152', 'uint232', '?'], D), TA)  # iterable case 1977871
 ck(f(['address', 'uint152', 'uint24', 'address'], D), T[U[HA, i], ...])  # iterable case 1977872
-ck(f(['address', 'uint152', 'uint24', 'address[]'], D), T[A, ...])  # iterable case 1977873
+ck(f(['address', 'uint152', 'uint24', 'address[]'], D), TA)  # iterable case 1977873
 ck(f(['address', 'uint152', 'uint24', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977874
-ck(f(['address', 'uint152', 'uint24', 'bool[]'], D), T[A, ...])  # iterable case 1977875
+ck(f(['address', 'uint152', 'uint24', 'bool[]'], D), TA)  # iterable case 1977875
 ck(f(['address', 'uint152', 'uint24', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977876
 ck(f(['address', 'uint152', 'uint24', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977877
 ck(f(['address', 'uint152', 'uint24', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977878
@@ -2179,7 +2179,7 @@ ck(f(['address', 'uint152', 'uint24', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint24', 'int88'], D), T[U[HA, i], ...])  # iterable case 1977939
 ck(f(['address', 'uint152', 'uint24', 'int96'], D), T[U[HA, i], ...])  # iterable case 1977940
 ck(f(['address', 'uint152', 'uint24', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1977941
-ck(f(['address', 'uint152', 'uint24', 'string[]'], D), T[A, ...])  # iterable case 1977942
+ck(f(['address', 'uint152', 'uint24', 'string[]'], D), TA)  # iterable case 1977942
 ck(f(['address', 'uint152', 'uint24', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1977943
 ck(f(['address', 'uint152', 'uint24', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1977944
 ck(f(['address', 'uint152', 'uint24', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1977945
@@ -2212,11 +2212,11 @@ ck(f(['address', 'uint152', 'uint24', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint24', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1977972
 ck(f(['address', 'uint152', 'uint24', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1977973
 ck(f(['address', 'uint152', 'uint24', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1977974
-ck(f(['address', 'uint152', 'uint24', '?'], D), T[A, ...])  # iterable case 1977975
+ck(f(['address', 'uint152', 'uint24', '?'], D), TA)  # iterable case 1977975
 ck(f(['address', 'uint152', 'uint240', 'address'], D), T[U[HA, i], ...])  # iterable case 1977976
-ck(f(['address', 'uint152', 'uint240', 'address[]'], D), T[A, ...])  # iterable case 1977977
+ck(f(['address', 'uint152', 'uint240', 'address[]'], D), TA)  # iterable case 1977977
 ck(f(['address', 'uint152', 'uint240', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1977978
-ck(f(['address', 'uint152', 'uint240', 'bool[]'], D), T[A, ...])  # iterable case 1977979
+ck(f(['address', 'uint152', 'uint240', 'bool[]'], D), TA)  # iterable case 1977979
 ck(f(['address', 'uint152', 'uint240', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1977980
 ck(f(['address', 'uint152', 'uint240', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1977981
 ck(f(['address', 'uint152', 'uint240', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1977982
@@ -2283,7 +2283,7 @@ ck(f(['address', 'uint152', 'uint240', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint240', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978043
 ck(f(['address', 'uint152', 'uint240', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978044
 ck(f(['address', 'uint152', 'uint240', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978045
-ck(f(['address', 'uint152', 'uint240', 'string[]'], D), T[A, ...])  # iterable case 1978046
+ck(f(['address', 'uint152', 'uint240', 'string[]'], D), TA)  # iterable case 1978046
 ck(f(['address', 'uint152', 'uint240', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978047
 ck(f(['address', 'uint152', 'uint240', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978048
 ck(f(['address', 'uint152', 'uint240', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978049
@@ -2316,11 +2316,11 @@ ck(f(['address', 'uint152', 'uint240', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint240', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978076
 ck(f(['address', 'uint152', 'uint240', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978077
 ck(f(['address', 'uint152', 'uint240', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978078
-ck(f(['address', 'uint152', 'uint240', '?'], D), T[A, ...])  # iterable case 1978079
+ck(f(['address', 'uint152', 'uint240', '?'], D), TA)  # iterable case 1978079
 ck(f(['address', 'uint152', 'uint248', 'address'], D), T[U[HA, i], ...])  # iterable case 1978080
-ck(f(['address', 'uint152', 'uint248', 'address[]'], D), T[A, ...])  # iterable case 1978081
+ck(f(['address', 'uint152', 'uint248', 'address[]'], D), TA)  # iterable case 1978081
 ck(f(['address', 'uint152', 'uint248', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978082
-ck(f(['address', 'uint152', 'uint248', 'bool[]'], D), T[A, ...])  # iterable case 1978083
+ck(f(['address', 'uint152', 'uint248', 'bool[]'], D), TA)  # iterable case 1978083
 ck(f(['address', 'uint152', 'uint248', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978084
 ck(f(['address', 'uint152', 'uint248', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978085
 ck(f(['address', 'uint152', 'uint248', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978086
@@ -2387,7 +2387,7 @@ ck(f(['address', 'uint152', 'uint248', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint248', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978147
 ck(f(['address', 'uint152', 'uint248', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978148
 ck(f(['address', 'uint152', 'uint248', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978149
-ck(f(['address', 'uint152', 'uint248', 'string[]'], D), T[A, ...])  # iterable case 1978150
+ck(f(['address', 'uint152', 'uint248', 'string[]'], D), TA)  # iterable case 1978150
 ck(f(['address', 'uint152', 'uint248', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978151
 ck(f(['address', 'uint152', 'uint248', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978152
 ck(f(['address', 'uint152', 'uint248', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978153
@@ -2420,11 +2420,11 @@ ck(f(['address', 'uint152', 'uint248', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint248', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978180
 ck(f(['address', 'uint152', 'uint248', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978181
 ck(f(['address', 'uint152', 'uint248', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978182
-ck(f(['address', 'uint152', 'uint248', '?'], D), T[A, ...])  # iterable case 1978183
+ck(f(['address', 'uint152', 'uint248', '?'], D), TA)  # iterable case 1978183
 ck(f(['address', 'uint152', 'uint256', 'address'], D), T[U[HA, i], ...])  # iterable case 1978184
-ck(f(['address', 'uint152', 'uint256', 'address[]'], D), T[A, ...])  # iterable case 1978185
+ck(f(['address', 'uint152', 'uint256', 'address[]'], D), TA)  # iterable case 1978185
 ck(f(['address', 'uint152', 'uint256', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978186
-ck(f(['address', 'uint152', 'uint256', 'bool[]'], D), T[A, ...])  # iterable case 1978187
+ck(f(['address', 'uint152', 'uint256', 'bool[]'], D), TA)  # iterable case 1978187
 ck(f(['address', 'uint152', 'uint256', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978188
 ck(f(['address', 'uint152', 'uint256', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978189
 ck(f(['address', 'uint152', 'uint256', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978190
@@ -2491,7 +2491,7 @@ ck(f(['address', 'uint152', 'uint256', 'int80'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint256', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978251
 ck(f(['address', 'uint152', 'uint256', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978252
 ck(f(['address', 'uint152', 'uint256', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978253
-ck(f(['address', 'uint152', 'uint256', 'string[]'], D), T[A, ...])  # iterable case 1978254
+ck(f(['address', 'uint152', 'uint256', 'string[]'], D), TA)  # iterable case 1978254
 ck(f(['address', 'uint152', 'uint256', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978255
 ck(f(['address', 'uint152', 'uint256', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978256
 ck(f(['address', 'uint152', 'uint256', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978257
@@ -2524,11 +2524,11 @@ ck(f(['address', 'uint152', 'uint256', 'uint8'], D), T[U[HA, i], ...])  # iterab
 ck(f(['address', 'uint152', 'uint256', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978284
 ck(f(['address', 'uint152', 'uint256', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978285
 ck(f(['address', 'uint152', 'uint256', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978286
-ck(f(['address', 'uint152', 'uint256', '?'], D), T[A, ...])  # iterable case 1978287
+ck(f(['address', 'uint152', 'uint256', '?'], D), TA)  # iterable case 1978287
 ck(f(['address', 'uint152', 'uint32', 'address'], D), T[U[HA, i], ...])  # iterable case 1978288
-ck(f(['address', 'uint152', 'uint32', 'address[]'], D), T[A, ...])  # iterable case 1978289
+ck(f(['address', 'uint152', 'uint32', 'address[]'], D), TA)  # iterable case 1978289
 ck(f(['address', 'uint152', 'uint32', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978290
-ck(f(['address', 'uint152', 'uint32', 'bool[]'], D), T[A, ...])  # iterable case 1978291
+ck(f(['address', 'uint152', 'uint32', 'bool[]'], D), TA)  # iterable case 1978291
 ck(f(['address', 'uint152', 'uint32', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978292
 ck(f(['address', 'uint152', 'uint32', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978293
 ck(f(['address', 'uint152', 'uint32', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978294
@@ -2595,7 +2595,7 @@ ck(f(['address', 'uint152', 'uint32', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint32', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978355
 ck(f(['address', 'uint152', 'uint32', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978356
 ck(f(['address', 'uint152', 'uint32', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978357
-ck(f(['address', 'uint152', 'uint32', 'string[]'], D), T[A, ...])  # iterable case 1978358
+ck(f(['address', 'uint152', 'uint32', 'string[]'], D), TA)  # iterable case 1978358
 ck(f(['address', 'uint152', 'uint32', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978359
 ck(f(['address', 'uint152', 'uint32', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978360
 ck(f(['address', 'uint152', 'uint32', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978361
@@ -2628,11 +2628,11 @@ ck(f(['address', 'uint152', 'uint32', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint32', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978388
 ck(f(['address', 'uint152', 'uint32', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978389
 ck(f(['address', 'uint152', 'uint32', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978390
-ck(f(['address', 'uint152', 'uint32', '?'], D), T[A, ...])  # iterable case 1978391
+ck(f(['address', 'uint152', 'uint32', '?'], D), TA)  # iterable case 1978391
 ck(f(['address', 'uint152', 'uint40', 'address'], D), T[U[HA, i], ...])  # iterable case 1978392
-ck(f(['address', 'uint152', 'uint40', 'address[]'], D), T[A, ...])  # iterable case 1978393
+ck(f(['address', 'uint152', 'uint40', 'address[]'], D), TA)  # iterable case 1978393
 ck(f(['address', 'uint152', 'uint40', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978394
-ck(f(['address', 'uint152', 'uint40', 'bool[]'], D), T[A, ...])  # iterable case 1978395
+ck(f(['address', 'uint152', 'uint40', 'bool[]'], D), TA)  # iterable case 1978395
 ck(f(['address', 'uint152', 'uint40', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978396
 ck(f(['address', 'uint152', 'uint40', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978397
 ck(f(['address', 'uint152', 'uint40', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978398
@@ -2699,7 +2699,7 @@ ck(f(['address', 'uint152', 'uint40', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint40', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978459
 ck(f(['address', 'uint152', 'uint40', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978460
 ck(f(['address', 'uint152', 'uint40', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978461
-ck(f(['address', 'uint152', 'uint40', 'string[]'], D), T[A, ...])  # iterable case 1978462
+ck(f(['address', 'uint152', 'uint40', 'string[]'], D), TA)  # iterable case 1978462
 ck(f(['address', 'uint152', 'uint40', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978463
 ck(f(['address', 'uint152', 'uint40', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978464
 ck(f(['address', 'uint152', 'uint40', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978465
@@ -2732,11 +2732,11 @@ ck(f(['address', 'uint152', 'uint40', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint40', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978492
 ck(f(['address', 'uint152', 'uint40', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978493
 ck(f(['address', 'uint152', 'uint40', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978494
-ck(f(['address', 'uint152', 'uint40', '?'], D), T[A, ...])  # iterable case 1978495
+ck(f(['address', 'uint152', 'uint40', '?'], D), TA)  # iterable case 1978495
 ck(f(['address', 'uint152', 'uint48', 'address'], D), T[U[HA, i], ...])  # iterable case 1978496
-ck(f(['address', 'uint152', 'uint48', 'address[]'], D), T[A, ...])  # iterable case 1978497
+ck(f(['address', 'uint152', 'uint48', 'address[]'], D), TA)  # iterable case 1978497
 ck(f(['address', 'uint152', 'uint48', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978498
-ck(f(['address', 'uint152', 'uint48', 'bool[]'], D), T[A, ...])  # iterable case 1978499
+ck(f(['address', 'uint152', 'uint48', 'bool[]'], D), TA)  # iterable case 1978499
 ck(f(['address', 'uint152', 'uint48', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978500
 ck(f(['address', 'uint152', 'uint48', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978501
 ck(f(['address', 'uint152', 'uint48', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978502
@@ -2803,7 +2803,7 @@ ck(f(['address', 'uint152', 'uint48', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint48', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978563
 ck(f(['address', 'uint152', 'uint48', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978564
 ck(f(['address', 'uint152', 'uint48', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978565
-ck(f(['address', 'uint152', 'uint48', 'string[]'], D), T[A, ...])  # iterable case 1978566
+ck(f(['address', 'uint152', 'uint48', 'string[]'], D), TA)  # iterable case 1978566
 ck(f(['address', 'uint152', 'uint48', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978567
 ck(f(['address', 'uint152', 'uint48', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978568
 ck(f(['address', 'uint152', 'uint48', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978569
@@ -2836,11 +2836,11 @@ ck(f(['address', 'uint152', 'uint48', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint48', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978596
 ck(f(['address', 'uint152', 'uint48', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978597
 ck(f(['address', 'uint152', 'uint48', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978598
-ck(f(['address', 'uint152', 'uint48', '?'], D), T[A, ...])  # iterable case 1978599
+ck(f(['address', 'uint152', 'uint48', '?'], D), TA)  # iterable case 1978599
 ck(f(['address', 'uint152', 'uint56', 'address'], D), T[U[HA, i], ...])  # iterable case 1978600
-ck(f(['address', 'uint152', 'uint56', 'address[]'], D), T[A, ...])  # iterable case 1978601
+ck(f(['address', 'uint152', 'uint56', 'address[]'], D), TA)  # iterable case 1978601
 ck(f(['address', 'uint152', 'uint56', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978602
-ck(f(['address', 'uint152', 'uint56', 'bool[]'], D), T[A, ...])  # iterable case 1978603
+ck(f(['address', 'uint152', 'uint56', 'bool[]'], D), TA)  # iterable case 1978603
 ck(f(['address', 'uint152', 'uint56', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978604
 ck(f(['address', 'uint152', 'uint56', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978605
 ck(f(['address', 'uint152', 'uint56', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978606
@@ -2907,7 +2907,7 @@ ck(f(['address', 'uint152', 'uint56', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint56', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978667
 ck(f(['address', 'uint152', 'uint56', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978668
 ck(f(['address', 'uint152', 'uint56', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978669
-ck(f(['address', 'uint152', 'uint56', 'string[]'], D), T[A, ...])  # iterable case 1978670
+ck(f(['address', 'uint152', 'uint56', 'string[]'], D), TA)  # iterable case 1978670
 ck(f(['address', 'uint152', 'uint56', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978671
 ck(f(['address', 'uint152', 'uint56', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978672
 ck(f(['address', 'uint152', 'uint56', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978673
@@ -2940,11 +2940,11 @@ ck(f(['address', 'uint152', 'uint56', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint56', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978700
 ck(f(['address', 'uint152', 'uint56', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978701
 ck(f(['address', 'uint152', 'uint56', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978702
-ck(f(['address', 'uint152', 'uint56', '?'], D), T[A, ...])  # iterable case 1978703
+ck(f(['address', 'uint152', 'uint56', '?'], D), TA)  # iterable case 1978703
 ck(f(['address', 'uint152', 'uint64', 'address'], D), T[U[HA, i], ...])  # iterable case 1978704
-ck(f(['address', 'uint152', 'uint64', 'address[]'], D), T[A, ...])  # iterable case 1978705
+ck(f(['address', 'uint152', 'uint64', 'address[]'], D), TA)  # iterable case 1978705
 ck(f(['address', 'uint152', 'uint64', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978706
-ck(f(['address', 'uint152', 'uint64', 'bool[]'], D), T[A, ...])  # iterable case 1978707
+ck(f(['address', 'uint152', 'uint64', 'bool[]'], D), TA)  # iterable case 1978707
 ck(f(['address', 'uint152', 'uint64', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978708
 ck(f(['address', 'uint152', 'uint64', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978709
 ck(f(['address', 'uint152', 'uint64', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978710
@@ -3011,7 +3011,7 @@ ck(f(['address', 'uint152', 'uint64', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint64', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978771
 ck(f(['address', 'uint152', 'uint64', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978772
 ck(f(['address', 'uint152', 'uint64', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978773
-ck(f(['address', 'uint152', 'uint64', 'string[]'], D), T[A, ...])  # iterable case 1978774
+ck(f(['address', 'uint152', 'uint64', 'string[]'], D), TA)  # iterable case 1978774
 ck(f(['address', 'uint152', 'uint64', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978775
 ck(f(['address', 'uint152', 'uint64', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978776
 ck(f(['address', 'uint152', 'uint64', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978777
@@ -3044,11 +3044,11 @@ ck(f(['address', 'uint152', 'uint64', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint64', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978804
 ck(f(['address', 'uint152', 'uint64', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978805
 ck(f(['address', 'uint152', 'uint64', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978806
-ck(f(['address', 'uint152', 'uint64', '?'], D), T[A, ...])  # iterable case 1978807
+ck(f(['address', 'uint152', 'uint64', '?'], D), TA)  # iterable case 1978807
 ck(f(['address', 'uint152', 'uint72', 'address'], D), T[U[HA, i], ...])  # iterable case 1978808
-ck(f(['address', 'uint152', 'uint72', 'address[]'], D), T[A, ...])  # iterable case 1978809
+ck(f(['address', 'uint152', 'uint72', 'address[]'], D), TA)  # iterable case 1978809
 ck(f(['address', 'uint152', 'uint72', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978810
-ck(f(['address', 'uint152', 'uint72', 'bool[]'], D), T[A, ...])  # iterable case 1978811
+ck(f(['address', 'uint152', 'uint72', 'bool[]'], D), TA)  # iterable case 1978811
 ck(f(['address', 'uint152', 'uint72', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978812
 ck(f(['address', 'uint152', 'uint72', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978813
 ck(f(['address', 'uint152', 'uint72', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978814
@@ -3115,7 +3115,7 @@ ck(f(['address', 'uint152', 'uint72', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint72', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978875
 ck(f(['address', 'uint152', 'uint72', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978876
 ck(f(['address', 'uint152', 'uint72', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978877
-ck(f(['address', 'uint152', 'uint72', 'string[]'], D), T[A, ...])  # iterable case 1978878
+ck(f(['address', 'uint152', 'uint72', 'string[]'], D), TA)  # iterable case 1978878
 ck(f(['address', 'uint152', 'uint72', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978879
 ck(f(['address', 'uint152', 'uint72', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978880
 ck(f(['address', 'uint152', 'uint72', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978881
@@ -3148,11 +3148,11 @@ ck(f(['address', 'uint152', 'uint72', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint72', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1978908
 ck(f(['address', 'uint152', 'uint72', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1978909
 ck(f(['address', 'uint152', 'uint72', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1978910
-ck(f(['address', 'uint152', 'uint72', '?'], D), T[A, ...])  # iterable case 1978911
+ck(f(['address', 'uint152', 'uint72', '?'], D), TA)  # iterable case 1978911
 ck(f(['address', 'uint152', 'uint8', 'address'], D), T[U[HA, i], ...])  # iterable case 1978912
-ck(f(['address', 'uint152', 'uint8', 'address[]'], D), T[A, ...])  # iterable case 1978913
+ck(f(['address', 'uint152', 'uint8', 'address[]'], D), TA)  # iterable case 1978913
 ck(f(['address', 'uint152', 'uint8', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1978914
-ck(f(['address', 'uint152', 'uint8', 'bool[]'], D), T[A, ...])  # iterable case 1978915
+ck(f(['address', 'uint152', 'uint8', 'bool[]'], D), TA)  # iterable case 1978915
 ck(f(['address', 'uint152', 'uint8', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1978916
 ck(f(['address', 'uint152', 'uint8', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1978917
 ck(f(['address', 'uint152', 'uint8', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1978918
@@ -3219,7 +3219,7 @@ ck(f(['address', 'uint152', 'uint8', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint152', 'uint8', 'int88'], D), T[U[HA, i], ...])  # iterable case 1978979
 ck(f(['address', 'uint152', 'uint8', 'int96'], D), T[U[HA, i], ...])  # iterable case 1978980
 ck(f(['address', 'uint152', 'uint8', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1978981
-ck(f(['address', 'uint152', 'uint8', 'string[]'], D), T[A, ...])  # iterable case 1978982
+ck(f(['address', 'uint152', 'uint8', 'string[]'], D), TA)  # iterable case 1978982
 ck(f(['address', 'uint152', 'uint8', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1978983
 ck(f(['address', 'uint152', 'uint8', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1978984
 ck(f(['address', 'uint152', 'uint8', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1978985
@@ -3252,11 +3252,11 @@ ck(f(['address', 'uint152', 'uint8', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint152', 'uint8', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1979012
 ck(f(['address', 'uint152', 'uint8', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1979013
 ck(f(['address', 'uint152', 'uint8', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1979014
-ck(f(['address', 'uint152', 'uint8', '?'], D), T[A, ...])  # iterable case 1979015
+ck(f(['address', 'uint152', 'uint8', '?'], D), TA)  # iterable case 1979015
 ck(f(['address', 'uint152', 'uint80', 'address'], D), T[U[HA, i], ...])  # iterable case 1979016
-ck(f(['address', 'uint152', 'uint80', 'address[]'], D), T[A, ...])  # iterable case 1979017
+ck(f(['address', 'uint152', 'uint80', 'address[]'], D), TA)  # iterable case 1979017
 ck(f(['address', 'uint152', 'uint80', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1979018
-ck(f(['address', 'uint152', 'uint80', 'bool[]'], D), T[A, ...])  # iterable case 1979019
+ck(f(['address', 'uint152', 'uint80', 'bool[]'], D), TA)  # iterable case 1979019
 ck(f(['address', 'uint152', 'uint80', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979020
 ck(f(['address', 'uint152', 'uint80', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979021
 ck(f(['address', 'uint152', 'uint80', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979022
@@ -3323,7 +3323,7 @@ ck(f(['address', 'uint152', 'uint80', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint80', 'int88'], D), T[U[HA, i], ...])  # iterable case 1979083
 ck(f(['address', 'uint152', 'uint80', 'int96'], D), T[U[HA, i], ...])  # iterable case 1979084
 ck(f(['address', 'uint152', 'uint80', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1979085
-ck(f(['address', 'uint152', 'uint80', 'string[]'], D), T[A, ...])  # iterable case 1979086
+ck(f(['address', 'uint152', 'uint80', 'string[]'], D), TA)  # iterable case 1979086
 ck(f(['address', 'uint152', 'uint80', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1979087
 ck(f(['address', 'uint152', 'uint80', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1979088
 ck(f(['address', 'uint152', 'uint80', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1979089
@@ -3356,11 +3356,11 @@ ck(f(['address', 'uint152', 'uint80', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint80', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1979116
 ck(f(['address', 'uint152', 'uint80', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1979117
 ck(f(['address', 'uint152', 'uint80', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1979118
-ck(f(['address', 'uint152', 'uint80', '?'], D), T[A, ...])  # iterable case 1979119
+ck(f(['address', 'uint152', 'uint80', '?'], D), TA)  # iterable case 1979119
 ck(f(['address', 'uint152', 'uint88', 'address'], D), T[U[HA, i], ...])  # iterable case 1979120
-ck(f(['address', 'uint152', 'uint88', 'address[]'], D), T[A, ...])  # iterable case 1979121
+ck(f(['address', 'uint152', 'uint88', 'address[]'], D), TA)  # iterable case 1979121
 ck(f(['address', 'uint152', 'uint88', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1979122
-ck(f(['address', 'uint152', 'uint88', 'bool[]'], D), T[A, ...])  # iterable case 1979123
+ck(f(['address', 'uint152', 'uint88', 'bool[]'], D), TA)  # iterable case 1979123
 ck(f(['address', 'uint152', 'uint88', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979124
 ck(f(['address', 'uint152', 'uint88', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979125
 ck(f(['address', 'uint152', 'uint88', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979126
@@ -3427,7 +3427,7 @@ ck(f(['address', 'uint152', 'uint88', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint88', 'int88'], D), T[U[HA, i], ...])  # iterable case 1979187
 ck(f(['address', 'uint152', 'uint88', 'int96'], D), T[U[HA, i], ...])  # iterable case 1979188
 ck(f(['address', 'uint152', 'uint88', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1979189
-ck(f(['address', 'uint152', 'uint88', 'string[]'], D), T[A, ...])  # iterable case 1979190
+ck(f(['address', 'uint152', 'uint88', 'string[]'], D), TA)  # iterable case 1979190
 ck(f(['address', 'uint152', 'uint88', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1979191
 ck(f(['address', 'uint152', 'uint88', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1979192
 ck(f(['address', 'uint152', 'uint88', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1979193
@@ -3460,11 +3460,11 @@ ck(f(['address', 'uint152', 'uint88', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint88', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1979220
 ck(f(['address', 'uint152', 'uint88', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1979221
 ck(f(['address', 'uint152', 'uint88', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1979222
-ck(f(['address', 'uint152', 'uint88', '?'], D), T[A, ...])  # iterable case 1979223
+ck(f(['address', 'uint152', 'uint88', '?'], D), TA)  # iterable case 1979223
 ck(f(['address', 'uint152', 'uint96', 'address'], D), T[U[HA, i], ...])  # iterable case 1979224
-ck(f(['address', 'uint152', 'uint96', 'address[]'], D), T[A, ...])  # iterable case 1979225
+ck(f(['address', 'uint152', 'uint96', 'address[]'], D), TA)  # iterable case 1979225
 ck(f(['address', 'uint152', 'uint96', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1979226
-ck(f(['address', 'uint152', 'uint96', 'bool[]'], D), T[A, ...])  # iterable case 1979227
+ck(f(['address', 'uint152', 'uint96', 'bool[]'], D), TA)  # iterable case 1979227
 ck(f(['address', 'uint152', 'uint96', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979228
 ck(f(['address', 'uint152', 'uint96', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979229
 ck(f(['address', 'uint152', 'uint96', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979230
@@ -3531,7 +3531,7 @@ ck(f(['address', 'uint152', 'uint96', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint96', 'int88'], D), T[U[HA, i], ...])  # iterable case 1979291
 ck(f(['address', 'uint152', 'uint96', 'int96'], D), T[U[HA, i], ...])  # iterable case 1979292
 ck(f(['address', 'uint152', 'uint96', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1979293
-ck(f(['address', 'uint152', 'uint96', 'string[]'], D), T[A, ...])  # iterable case 1979294
+ck(f(['address', 'uint152', 'uint96', 'string[]'], D), TA)  # iterable case 1979294
 ck(f(['address', 'uint152', 'uint96', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1979295
 ck(f(['address', 'uint152', 'uint96', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1979296
 ck(f(['address', 'uint152', 'uint96', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1979297
@@ -3564,115 +3564,115 @@ ck(f(['address', 'uint152', 'uint96', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint152', 'uint96', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1979324
 ck(f(['address', 'uint152', 'uint96', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1979325
 ck(f(['address', 'uint152', 'uint96', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1979326
-ck(f(['address', 'uint152', 'uint96', '?'], D), T[A, ...])  # iterable case 1979327
-ck(f(['address', 'uint152', '?', 'address'], D), T[A, ...])  # iterable case 1979328
-ck(f(['address', 'uint152', '?', 'address[]'], D), T[A, ...])  # iterable case 1979329
-ck(f(['address', 'uint152', '?', 'bool'], D), T[A, ...])  # iterable case 1979330
-ck(f(['address', 'uint152', '?', 'bool[]'], D), T[A, ...])  # iterable case 1979331
-ck(f(['address', 'uint152', '?', 'bytes'], D), T[A, ...])  # iterable case 1979332
-ck(f(['address', 'uint152', '?', 'bytes1'], D), T[A, ...])  # iterable case 1979333
-ck(f(['address', 'uint152', '?', 'bytes10'], D), T[A, ...])  # iterable case 1979334
-ck(f(['address', 'uint152', '?', 'bytes11'], D), T[A, ...])  # iterable case 1979335
-ck(f(['address', 'uint152', '?', 'bytes12'], D), T[A, ...])  # iterable case 1979336
-ck(f(['address', 'uint152', '?', 'bytes13'], D), T[A, ...])  # iterable case 1979337
-ck(f(['address', 'uint152', '?', 'bytes14'], D), T[A, ...])  # iterable case 1979338
-ck(f(['address', 'uint152', '?', 'bytes15'], D), T[A, ...])  # iterable case 1979339
-ck(f(['address', 'uint152', '?', 'bytes16'], D), T[A, ...])  # iterable case 1979340
-ck(f(['address', 'uint152', '?', 'bytes17'], D), T[A, ...])  # iterable case 1979341
-ck(f(['address', 'uint152', '?', 'bytes18'], D), T[A, ...])  # iterable case 1979342
-ck(f(['address', 'uint152', '?', 'bytes19'], D), T[A, ...])  # iterable case 1979343
-ck(f(['address', 'uint152', '?', 'bytes2'], D), T[A, ...])  # iterable case 1979344
-ck(f(['address', 'uint152', '?', 'bytes20'], D), T[A, ...])  # iterable case 1979345
-ck(f(['address', 'uint152', '?', 'bytes21'], D), T[A, ...])  # iterable case 1979346
-ck(f(['address', 'uint152', '?', 'bytes22'], D), T[A, ...])  # iterable case 1979347
-ck(f(['address', 'uint152', '?', 'bytes23'], D), T[A, ...])  # iterable case 1979348
-ck(f(['address', 'uint152', '?', 'bytes24'], D), T[A, ...])  # iterable case 1979349
-ck(f(['address', 'uint152', '?', 'bytes25'], D), T[A, ...])  # iterable case 1979350
-ck(f(['address', 'uint152', '?', 'bytes26'], D), T[A, ...])  # iterable case 1979351
-ck(f(['address', 'uint152', '?', 'bytes27'], D), T[A, ...])  # iterable case 1979352
-ck(f(['address', 'uint152', '?', 'bytes28'], D), T[A, ...])  # iterable case 1979353
-ck(f(['address', 'uint152', '?', 'bytes29'], D), T[A, ...])  # iterable case 1979354
-ck(f(['address', 'uint152', '?', 'bytes3'], D), T[A, ...])  # iterable case 1979355
-ck(f(['address', 'uint152', '?', 'bytes30'], D), T[A, ...])  # iterable case 1979356
-ck(f(['address', 'uint152', '?', 'bytes31'], D), T[A, ...])  # iterable case 1979357
-ck(f(['address', 'uint152', '?', 'bytes32'], D), T[A, ...])  # iterable case 1979358
-ck(f(['address', 'uint152', '?', 'bytes4'], D), T[A, ...])  # iterable case 1979359
-ck(f(['address', 'uint152', '?', 'bytes5'], D), T[A, ...])  # iterable case 1979360
-ck(f(['address', 'uint152', '?', 'bytes6'], D), T[A, ...])  # iterable case 1979361
-ck(f(['address', 'uint152', '?', 'bytes7'], D), T[A, ...])  # iterable case 1979362
-ck(f(['address', 'uint152', '?', 'bytes8'], D), T[A, ...])  # iterable case 1979363
-ck(f(['address', 'uint152', '?', 'bytes9'], D), T[A, ...])  # iterable case 1979364
-ck(f(['address', 'uint152', '?', 'int104'], D), T[A, ...])  # iterable case 1979365
-ck(f(['address', 'uint152', '?', 'int112'], D), T[A, ...])  # iterable case 1979366
-ck(f(['address', 'uint152', '?', 'int120'], D), T[A, ...])  # iterable case 1979367
-ck(f(['address', 'uint152', '?', 'int128'], D), T[A, ...])  # iterable case 1979368
-ck(f(['address', 'uint152', '?', 'int136'], D), T[A, ...])  # iterable case 1979369
-ck(f(['address', 'uint152', '?', 'int144'], D), T[A, ...])  # iterable case 1979370
-ck(f(['address', 'uint152', '?', 'int152'], D), T[A, ...])  # iterable case 1979371
-ck(f(['address', 'uint152', '?', 'int16'], D), T[A, ...])  # iterable case 1979372
-ck(f(['address', 'uint152', '?', 'int160'], D), T[A, ...])  # iterable case 1979373
-ck(f(['address', 'uint152', '?', 'int168'], D), T[A, ...])  # iterable case 1979374
-ck(f(['address', 'uint152', '?', 'int176'], D), T[A, ...])  # iterable case 1979375
-ck(f(['address', 'uint152', '?', 'int184'], D), T[A, ...])  # iterable case 1979376
-ck(f(['address', 'uint152', '?', 'int192'], D), T[A, ...])  # iterable case 1979377
-ck(f(['address', 'uint152', '?', 'int200'], D), T[A, ...])  # iterable case 1979378
-ck(f(['address', 'uint152', '?', 'int208'], D), T[A, ...])  # iterable case 1979379
-ck(f(['address', 'uint152', '?', 'int216'], D), T[A, ...])  # iterable case 1979380
-ck(f(['address', 'uint152', '?', 'int224'], D), T[A, ...])  # iterable case 1979381
-ck(f(['address', 'uint152', '?', 'int232'], D), T[A, ...])  # iterable case 1979382
-ck(f(['address', 'uint152', '?', 'int24'], D), T[A, ...])  # iterable case 1979383
-ck(f(['address', 'uint152', '?', 'int240'], D), T[A, ...])  # iterable case 1979384
-ck(f(['address', 'uint152', '?', 'int248'], D), T[A, ...])  # iterable case 1979385
-ck(f(['address', 'uint152', '?', 'int256'], D), T[A, ...])  # iterable case 1979386
-ck(f(['address', 'uint152', '?', 'int32'], D), T[A, ...])  # iterable case 1979387
-ck(f(['address', 'uint152', '?', 'int40'], D), T[A, ...])  # iterable case 1979388
-ck(f(['address', 'uint152', '?', 'int48'], D), T[A, ...])  # iterable case 1979389
-ck(f(['address', 'uint152', '?', 'int56'], D), T[A, ...])  # iterable case 1979390
-ck(f(['address', 'uint152', '?', 'int64'], D), T[A, ...])  # iterable case 1979391
-ck(f(['address', 'uint152', '?', 'int72'], D), T[A, ...])  # iterable case 1979392
-ck(f(['address', 'uint152', '?', 'int8'], D), T[A, ...])  # iterable case 1979393
-ck(f(['address', 'uint152', '?', 'int80'], D), T[A, ...])  # iterable case 1979394
-ck(f(['address', 'uint152', '?', 'int88'], D), T[A, ...])  # iterable case 1979395
-ck(f(['address', 'uint152', '?', 'int96'], D), T[A, ...])  # iterable case 1979396
-ck(f(['address', 'uint152', '?', 'string'], D), T[A, ...])  # iterable case 1979397
-ck(f(['address', 'uint152', '?', 'string[]'], D), T[A, ...])  # iterable case 1979398
-ck(f(['address', 'uint152', '?', 'uint104'], D), T[A, ...])  # iterable case 1979399
-ck(f(['address', 'uint152', '?', 'uint112'], D), T[A, ...])  # iterable case 1979400
-ck(f(['address', 'uint152', '?', 'uint120'], D), T[A, ...])  # iterable case 1979401
-ck(f(['address', 'uint152', '?', 'uint128'], D), T[A, ...])  # iterable case 1979402
-ck(f(['address', 'uint152', '?', 'uint136'], D), T[A, ...])  # iterable case 1979403
-ck(f(['address', 'uint152', '?', 'uint144'], D), T[A, ...])  # iterable case 1979404
-ck(f(['address', 'uint152', '?', 'uint152'], D), T[A, ...])  # iterable case 1979405
-ck(f(['address', 'uint152', '?', 'uint16'], D), T[A, ...])  # iterable case 1979406
-ck(f(['address', 'uint152', '?', 'uint160'], D), T[A, ...])  # iterable case 1979407
-ck(f(['address', 'uint152', '?', 'uint168'], D), T[A, ...])  # iterable case 1979408
-ck(f(['address', 'uint152', '?', 'uint176'], D), T[A, ...])  # iterable case 1979409
-ck(f(['address', 'uint152', '?', 'uint184'], D), T[A, ...])  # iterable case 1979410
-ck(f(['address', 'uint152', '?', 'uint192'], D), T[A, ...])  # iterable case 1979411
-ck(f(['address', 'uint152', '?', 'uint200'], D), T[A, ...])  # iterable case 1979412
-ck(f(['address', 'uint152', '?', 'uint208'], D), T[A, ...])  # iterable case 1979413
-ck(f(['address', 'uint152', '?', 'uint216'], D), T[A, ...])  # iterable case 1979414
-ck(f(['address', 'uint152', '?', 'uint224'], D), T[A, ...])  # iterable case 1979415
-ck(f(['address', 'uint152', '?', 'uint232'], D), T[A, ...])  # iterable case 1979416
-ck(f(['address', 'uint152', '?', 'uint24'], D), T[A, ...])  # iterable case 1979417
-ck(f(['address', 'uint152', '?', 'uint240'], D), T[A, ...])  # iterable case 1979418
-ck(f(['address', 'uint152', '?', 'uint248'], D), T[A, ...])  # iterable case 1979419
-ck(f(['address', 'uint152', '?', 'uint256'], D), T[A, ...])  # iterable case 1979420
-ck(f(['address', 'uint152', '?', 'uint32'], D), T[A, ...])  # iterable case 1979421
-ck(f(['address', 'uint152', '?', 'uint40'], D), T[A, ...])  # iterable case 1979422
-ck(f(['address', 'uint152', '?', 'uint48'], D), T[A, ...])  # iterable case 1979423
-ck(f(['address', 'uint152', '?', 'uint56'], D), T[A, ...])  # iterable case 1979424
-ck(f(['address', 'uint152', '?', 'uint64'], D), T[A, ...])  # iterable case 1979425
-ck(f(['address', 'uint152', '?', 'uint72'], D), T[A, ...])  # iterable case 1979426
-ck(f(['address', 'uint152', '?', 'uint8'], D), T[A, ...])  # iterable case 1979427
-ck(f(['address', 'uint152', '?', 'uint80'], D), T[A, ...])  # iterable case 1979428
-ck(f(['address', 'uint152', '?', 'uint88'], D), T[A, ...])  # iterable case 1979429
-ck(f(['address', 'uint152', '?', 'uint96'], D), T[A, ...])  # iterable case 1979430
-ck(f(['address', 'uint152', '?', '?'], D), T[A, ...])  # iterable case 1979431
+ck(f(['address', 'uint152', 'uint96', '?'], D), TA)  # iterable case 1979327
+ck(f(['address', 'uint152', '?', 'address'], D), TA)  # iterable case 1979328
+ck(f(['address', 'uint152', '?', 'address[]'], D), TA)  # iterable case 1979329
+ck(f(['address', 'uint152', '?', 'bool'], D), TA)  # iterable case 1979330
+ck(f(['address', 'uint152', '?', 'bool[]'], D), TA)  # iterable case 1979331
+ck(f(['address', 'uint152', '?', 'bytes'], D), TA)  # iterable case 1979332
+ck(f(['address', 'uint152', '?', 'bytes1'], D), TA)  # iterable case 1979333
+ck(f(['address', 'uint152', '?', 'bytes10'], D), TA)  # iterable case 1979334
+ck(f(['address', 'uint152', '?', 'bytes11'], D), TA)  # iterable case 1979335
+ck(f(['address', 'uint152', '?', 'bytes12'], D), TA)  # iterable case 1979336
+ck(f(['address', 'uint152', '?', 'bytes13'], D), TA)  # iterable case 1979337
+ck(f(['address', 'uint152', '?', 'bytes14'], D), TA)  # iterable case 1979338
+ck(f(['address', 'uint152', '?', 'bytes15'], D), TA)  # iterable case 1979339
+ck(f(['address', 'uint152', '?', 'bytes16'], D), TA)  # iterable case 1979340
+ck(f(['address', 'uint152', '?', 'bytes17'], D), TA)  # iterable case 1979341
+ck(f(['address', 'uint152', '?', 'bytes18'], D), TA)  # iterable case 1979342
+ck(f(['address', 'uint152', '?', 'bytes19'], D), TA)  # iterable case 1979343
+ck(f(['address', 'uint152', '?', 'bytes2'], D), TA)  # iterable case 1979344
+ck(f(['address', 'uint152', '?', 'bytes20'], D), TA)  # iterable case 1979345
+ck(f(['address', 'uint152', '?', 'bytes21'], D), TA)  # iterable case 1979346
+ck(f(['address', 'uint152', '?', 'bytes22'], D), TA)  # iterable case 1979347
+ck(f(['address', 'uint152', '?', 'bytes23'], D), TA)  # iterable case 1979348
+ck(f(['address', 'uint152', '?', 'bytes24'], D), TA)  # iterable case 1979349
+ck(f(['address', 'uint152', '?', 'bytes25'], D), TA)  # iterable case 1979350
+ck(f(['address', 'uint152', '?', 'bytes26'], D), TA)  # iterable case 1979351
+ck(f(['address', 'uint152', '?', 'bytes27'], D), TA)  # iterable case 1979352
+ck(f(['address', 'uint152', '?', 'bytes28'], D), TA)  # iterable case 1979353
+ck(f(['address', 'uint152', '?', 'bytes29'], D), TA)  # iterable case 1979354
+ck(f(['address', 'uint152', '?', 'bytes3'], D), TA)  # iterable case 1979355
+ck(f(['address', 'uint152', '?', 'bytes30'], D), TA)  # iterable case 1979356
+ck(f(['address', 'uint152', '?', 'bytes31'], D), TA)  # iterable case 1979357
+ck(f(['address', 'uint152', '?', 'bytes32'], D), TA)  # iterable case 1979358
+ck(f(['address', 'uint152', '?', 'bytes4'], D), TA)  # iterable case 1979359
+ck(f(['address', 'uint152', '?', 'bytes5'], D), TA)  # iterable case 1979360
+ck(f(['address', 'uint152', '?', 'bytes6'], D), TA)  # iterable case 1979361
+ck(f(['address', 'uint152', '?', 'bytes7'], D), TA)  # iterable case 1979362
+ck(f(['address', 'uint152', '?', 'bytes8'], D), TA)  # iterable case 1979363
+ck(f(['address', 'uint152', '?', 'bytes9'], D), TA)  # iterable case 1979364
+ck(f(['address', 'uint152', '?', 'int104'], D), TA)  # iterable case 1979365
+ck(f(['address', 'uint152', '?', 'int112'], D), TA)  # iterable case 1979366
+ck(f(['address', 'uint152', '?', 'int120'], D), TA)  # iterable case 1979367
+ck(f(['address', 'uint152', '?', 'int128'], D), TA)  # iterable case 1979368
+ck(f(['address', 'uint152', '?', 'int136'], D), TA)  # iterable case 1979369
+ck(f(['address', 'uint152', '?', 'int144'], D), TA)  # iterable case 1979370
+ck(f(['address', 'uint152', '?', 'int152'], D), TA)  # iterable case 1979371
+ck(f(['address', 'uint152', '?', 'int16'], D), TA)  # iterable case 1979372
+ck(f(['address', 'uint152', '?', 'int160'], D), TA)  # iterable case 1979373
+ck(f(['address', 'uint152', '?', 'int168'], D), TA)  # iterable case 1979374
+ck(f(['address', 'uint152', '?', 'int176'], D), TA)  # iterable case 1979375
+ck(f(['address', 'uint152', '?', 'int184'], D), TA)  # iterable case 1979376
+ck(f(['address', 'uint152', '?', 'int192'], D), TA)  # iterable case 1979377
+ck(f(['address', 'uint152', '?', 'int200'], D), TA)  # iterable case 1979378
+ck(f(['address', 'uint152', '?', 'int208'], D), TA)  # iterable case 1979379
+ck(f(['address', 'uint152', '?', 'int216'], D), TA)  # iterable case 1979380
+ck(f(['address', 'uint152', '?', 'int224'], D), TA)  # iterable case 1979381
+ck(f(['address', 'uint152', '?', 'int232'], D), TA)  # iterable case 1979382
+ck(f(['address', 'uint152', '?', 'int24'], D), TA)  # iterable case 1979383
+ck(f(['address', 'uint152', '?', 'int240'], D), TA)  # iterable case 1979384
+ck(f(['address', 'uint152', '?', 'int248'], D), TA)  # iterable case 1979385
+ck(f(['address', 'uint152', '?', 'int256'], D), TA)  # iterable case 1979386
+ck(f(['address', 'uint152', '?', 'int32'], D), TA)  # iterable case 1979387
+ck(f(['address', 'uint152', '?', 'int40'], D), TA)  # iterable case 1979388
+ck(f(['address', 'uint152', '?', 'int48'], D), TA)  # iterable case 1979389
+ck(f(['address', 'uint152', '?', 'int56'], D), TA)  # iterable case 1979390
+ck(f(['address', 'uint152', '?', 'int64'], D), TA)  # iterable case 1979391
+ck(f(['address', 'uint152', '?', 'int72'], D), TA)  # iterable case 1979392
+ck(f(['address', 'uint152', '?', 'int8'], D), TA)  # iterable case 1979393
+ck(f(['address', 'uint152', '?', 'int80'], D), TA)  # iterable case 1979394
+ck(f(['address', 'uint152', '?', 'int88'], D), TA)  # iterable case 1979395
+ck(f(['address', 'uint152', '?', 'int96'], D), TA)  # iterable case 1979396
+ck(f(['address', 'uint152', '?', 'string'], D), TA)  # iterable case 1979397
+ck(f(['address', 'uint152', '?', 'string[]'], D), TA)  # iterable case 1979398
+ck(f(['address', 'uint152', '?', 'uint104'], D), TA)  # iterable case 1979399
+ck(f(['address', 'uint152', '?', 'uint112'], D), TA)  # iterable case 1979400
+ck(f(['address', 'uint152', '?', 'uint120'], D), TA)  # iterable case 1979401
+ck(f(['address', 'uint152', '?', 'uint128'], D), TA)  # iterable case 1979402
+ck(f(['address', 'uint152', '?', 'uint136'], D), TA)  # iterable case 1979403
+ck(f(['address', 'uint152', '?', 'uint144'], D), TA)  # iterable case 1979404
+ck(f(['address', 'uint152', '?', 'uint152'], D), TA)  # iterable case 1979405
+ck(f(['address', 'uint152', '?', 'uint16'], D), TA)  # iterable case 1979406
+ck(f(['address', 'uint152', '?', 'uint160'], D), TA)  # iterable case 1979407
+ck(f(['address', 'uint152', '?', 'uint168'], D), TA)  # iterable case 1979408
+ck(f(['address', 'uint152', '?', 'uint176'], D), TA)  # iterable case 1979409
+ck(f(['address', 'uint152', '?', 'uint184'], D), TA)  # iterable case 1979410
+ck(f(['address', 'uint152', '?', 'uint192'], D), TA)  # iterable case 1979411
+ck(f(['address', 'uint152', '?', 'uint200'], D), TA)  # iterable case 1979412
+ck(f(['address', 'uint152', '?', 'uint208'], D), TA)  # iterable case 1979413
+ck(f(['address', 'uint152', '?', 'uint216'], D), TA)  # iterable case 1979414
+ck(f(['address', 'uint152', '?', 'uint224'], D), TA)  # iterable case 1979415
+ck(f(['address', 'uint152', '?', 'uint232'], D), TA)  # iterable case 1979416
+ck(f(['address', 'uint152', '?', 'uint24'], D), TA)  # iterable case 1979417
+ck(f(['address', 'uint152', '?', 'uint240'], D), TA)  # iterable case 1979418
+ck(f(['address', 'uint152', '?', 'uint248'], D), TA)  # iterable case 1979419
+ck(f(['address', 'uint152', '?', 'uint256'], D), TA)  # iterable case 1979420
+ck(f(['address', 'uint152', '?', 'uint32'], D), TA)  # iterable case 1979421
+ck(f(['address', 'uint152', '?', 'uint40'], D), TA)  # iterable case 1979422
+ck(f(['address', 'uint152', '?', 'uint48'], D), TA)  # iterable case 1979423
+ck(f(['address', 'uint152', '?', 'uint56'], D), TA)  # iterable case 1979424
+ck(f(['address', 'uint152', '?', 'uint64'], D), TA)  # iterable case 1979425
+ck(f(['address', 'uint152', '?', 'uint72'], D), TA)  # iterable case 1979426
+ck(f(['address', 'uint152', '?', 'uint8'], D), TA)  # iterable case 1979427
+ck(f(['address', 'uint152', '?', 'uint80'], D), TA)  # iterable case 1979428
+ck(f(['address', 'uint152', '?', 'uint88'], D), TA)  # iterable case 1979429
+ck(f(['address', 'uint152', '?', 'uint96'], D), TA)  # iterable case 1979430
+ck(f(['address', 'uint152', '?', '?'], D), TA)  # iterable case 1979431
 ck(f(['address', 'uint16', 'address', 'address'], D), T[U[HA, i], ...])  # iterable case 1979432
-ck(f(['address', 'uint16', 'address', 'address[]'], D), T[A, ...])  # iterable case 1979433
+ck(f(['address', 'uint16', 'address', 'address[]'], D), TA)  # iterable case 1979433
 ck(f(['address', 'uint16', 'address', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1979434
-ck(f(['address', 'uint16', 'address', 'bool[]'], D), T[A, ...])  # iterable case 1979435
+ck(f(['address', 'uint16', 'address', 'bool[]'], D), TA)  # iterable case 1979435
 ck(f(['address', 'uint16', 'address', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979436
 ck(f(['address', 'uint16', 'address', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979437
 ck(f(['address', 'uint16', 'address', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979438
@@ -3739,7 +3739,7 @@ ck(f(['address', 'uint16', 'address', 'int80'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint16', 'address', 'int88'], D), T[U[HA, i], ...])  # iterable case 1979499
 ck(f(['address', 'uint16', 'address', 'int96'], D), T[U[HA, i], ...])  # iterable case 1979500
 ck(f(['address', 'uint16', 'address', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1979501
-ck(f(['address', 'uint16', 'address', 'string[]'], D), T[A, ...])  # iterable case 1979502
+ck(f(['address', 'uint16', 'address', 'string[]'], D), TA)  # iterable case 1979502
 ck(f(['address', 'uint16', 'address', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1979503
 ck(f(['address', 'uint16', 'address', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1979504
 ck(f(['address', 'uint16', 'address', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1979505
@@ -3772,115 +3772,115 @@ ck(f(['address', 'uint16', 'address', 'uint8'], D), T[U[HA, i], ...])  # iterabl
 ck(f(['address', 'uint16', 'address', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1979532
 ck(f(['address', 'uint16', 'address', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1979533
 ck(f(['address', 'uint16', 'address', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1979534
-ck(f(['address', 'uint16', 'address', '?'], D), T[A, ...])  # iterable case 1979535
-ck(f(['address', 'uint16', 'address[]', 'address'], D), T[A, ...])  # iterable case 1979536
-ck(f(['address', 'uint16', 'address[]', 'address[]'], D), T[A, ...])  # iterable case 1979537
-ck(f(['address', 'uint16', 'address[]', 'bool'], D), T[A, ...])  # iterable case 1979538
-ck(f(['address', 'uint16', 'address[]', 'bool[]'], D), T[A, ...])  # iterable case 1979539
-ck(f(['address', 'uint16', 'address[]', 'bytes'], D), T[A, ...])  # iterable case 1979540
-ck(f(['address', 'uint16', 'address[]', 'bytes1'], D), T[A, ...])  # iterable case 1979541
-ck(f(['address', 'uint16', 'address[]', 'bytes10'], D), T[A, ...])  # iterable case 1979542
-ck(f(['address', 'uint16', 'address[]', 'bytes11'], D), T[A, ...])  # iterable case 1979543
-ck(f(['address', 'uint16', 'address[]', 'bytes12'], D), T[A, ...])  # iterable case 1979544
-ck(f(['address', 'uint16', 'address[]', 'bytes13'], D), T[A, ...])  # iterable case 1979545
-ck(f(['address', 'uint16', 'address[]', 'bytes14'], D), T[A, ...])  # iterable case 1979546
-ck(f(['address', 'uint16', 'address[]', 'bytes15'], D), T[A, ...])  # iterable case 1979547
-ck(f(['address', 'uint16', 'address[]', 'bytes16'], D), T[A, ...])  # iterable case 1979548
-ck(f(['address', 'uint16', 'address[]', 'bytes17'], D), T[A, ...])  # iterable case 1979549
-ck(f(['address', 'uint16', 'address[]', 'bytes18'], D), T[A, ...])  # iterable case 1979550
-ck(f(['address', 'uint16', 'address[]', 'bytes19'], D), T[A, ...])  # iterable case 1979551
-ck(f(['address', 'uint16', 'address[]', 'bytes2'], D), T[A, ...])  # iterable case 1979552
-ck(f(['address', 'uint16', 'address[]', 'bytes20'], D), T[A, ...])  # iterable case 1979553
-ck(f(['address', 'uint16', 'address[]', 'bytes21'], D), T[A, ...])  # iterable case 1979554
-ck(f(['address', 'uint16', 'address[]', 'bytes22'], D), T[A, ...])  # iterable case 1979555
-ck(f(['address', 'uint16', 'address[]', 'bytes23'], D), T[A, ...])  # iterable case 1979556
-ck(f(['address', 'uint16', 'address[]', 'bytes24'], D), T[A, ...])  # iterable case 1979557
-ck(f(['address', 'uint16', 'address[]', 'bytes25'], D), T[A, ...])  # iterable case 1979558
-ck(f(['address', 'uint16', 'address[]', 'bytes26'], D), T[A, ...])  # iterable case 1979559
-ck(f(['address', 'uint16', 'address[]', 'bytes27'], D), T[A, ...])  # iterable case 1979560
-ck(f(['address', 'uint16', 'address[]', 'bytes28'], D), T[A, ...])  # iterable case 1979561
-ck(f(['address', 'uint16', 'address[]', 'bytes29'], D), T[A, ...])  # iterable case 1979562
-ck(f(['address', 'uint16', 'address[]', 'bytes3'], D), T[A, ...])  # iterable case 1979563
-ck(f(['address', 'uint16', 'address[]', 'bytes30'], D), T[A, ...])  # iterable case 1979564
-ck(f(['address', 'uint16', 'address[]', 'bytes31'], D), T[A, ...])  # iterable case 1979565
-ck(f(['address', 'uint16', 'address[]', 'bytes32'], D), T[A, ...])  # iterable case 1979566
-ck(f(['address', 'uint16', 'address[]', 'bytes4'], D), T[A, ...])  # iterable case 1979567
-ck(f(['address', 'uint16', 'address[]', 'bytes5'], D), T[A, ...])  # iterable case 1979568
-ck(f(['address', 'uint16', 'address[]', 'bytes6'], D), T[A, ...])  # iterable case 1979569
-ck(f(['address', 'uint16', 'address[]', 'bytes7'], D), T[A, ...])  # iterable case 1979570
-ck(f(['address', 'uint16', 'address[]', 'bytes8'], D), T[A, ...])  # iterable case 1979571
-ck(f(['address', 'uint16', 'address[]', 'bytes9'], D), T[A, ...])  # iterable case 1979572
-ck(f(['address', 'uint16', 'address[]', 'int104'], D), T[A, ...])  # iterable case 1979573
-ck(f(['address', 'uint16', 'address[]', 'int112'], D), T[A, ...])  # iterable case 1979574
-ck(f(['address', 'uint16', 'address[]', 'int120'], D), T[A, ...])  # iterable case 1979575
-ck(f(['address', 'uint16', 'address[]', 'int128'], D), T[A, ...])  # iterable case 1979576
-ck(f(['address', 'uint16', 'address[]', 'int136'], D), T[A, ...])  # iterable case 1979577
-ck(f(['address', 'uint16', 'address[]', 'int144'], D), T[A, ...])  # iterable case 1979578
-ck(f(['address', 'uint16', 'address[]', 'int152'], D), T[A, ...])  # iterable case 1979579
-ck(f(['address', 'uint16', 'address[]', 'int16'], D), T[A, ...])  # iterable case 1979580
-ck(f(['address', 'uint16', 'address[]', 'int160'], D), T[A, ...])  # iterable case 1979581
-ck(f(['address', 'uint16', 'address[]', 'int168'], D), T[A, ...])  # iterable case 1979582
-ck(f(['address', 'uint16', 'address[]', 'int176'], D), T[A, ...])  # iterable case 1979583
-ck(f(['address', 'uint16', 'address[]', 'int184'], D), T[A, ...])  # iterable case 1979584
-ck(f(['address', 'uint16', 'address[]', 'int192'], D), T[A, ...])  # iterable case 1979585
-ck(f(['address', 'uint16', 'address[]', 'int200'], D), T[A, ...])  # iterable case 1979586
-ck(f(['address', 'uint16', 'address[]', 'int208'], D), T[A, ...])  # iterable case 1979587
-ck(f(['address', 'uint16', 'address[]', 'int216'], D), T[A, ...])  # iterable case 1979588
-ck(f(['address', 'uint16', 'address[]', 'int224'], D), T[A, ...])  # iterable case 1979589
-ck(f(['address', 'uint16', 'address[]', 'int232'], D), T[A, ...])  # iterable case 1979590
-ck(f(['address', 'uint16', 'address[]', 'int24'], D), T[A, ...])  # iterable case 1979591
-ck(f(['address', 'uint16', 'address[]', 'int240'], D), T[A, ...])  # iterable case 1979592
-ck(f(['address', 'uint16', 'address[]', 'int248'], D), T[A, ...])  # iterable case 1979593
-ck(f(['address', 'uint16', 'address[]', 'int256'], D), T[A, ...])  # iterable case 1979594
-ck(f(['address', 'uint16', 'address[]', 'int32'], D), T[A, ...])  # iterable case 1979595
-ck(f(['address', 'uint16', 'address[]', 'int40'], D), T[A, ...])  # iterable case 1979596
-ck(f(['address', 'uint16', 'address[]', 'int48'], D), T[A, ...])  # iterable case 1979597
-ck(f(['address', 'uint16', 'address[]', 'int56'], D), T[A, ...])  # iterable case 1979598
-ck(f(['address', 'uint16', 'address[]', 'int64'], D), T[A, ...])  # iterable case 1979599
-ck(f(['address', 'uint16', 'address[]', 'int72'], D), T[A, ...])  # iterable case 1979600
-ck(f(['address', 'uint16', 'address[]', 'int8'], D), T[A, ...])  # iterable case 1979601
-ck(f(['address', 'uint16', 'address[]', 'int80'], D), T[A, ...])  # iterable case 1979602
-ck(f(['address', 'uint16', 'address[]', 'int88'], D), T[A, ...])  # iterable case 1979603
-ck(f(['address', 'uint16', 'address[]', 'int96'], D), T[A, ...])  # iterable case 1979604
-ck(f(['address', 'uint16', 'address[]', 'string'], D), T[A, ...])  # iterable case 1979605
-ck(f(['address', 'uint16', 'address[]', 'string[]'], D), T[A, ...])  # iterable case 1979606
-ck(f(['address', 'uint16', 'address[]', 'uint104'], D), T[A, ...])  # iterable case 1979607
-ck(f(['address', 'uint16', 'address[]', 'uint112'], D), T[A, ...])  # iterable case 1979608
-ck(f(['address', 'uint16', 'address[]', 'uint120'], D), T[A, ...])  # iterable case 1979609
-ck(f(['address', 'uint16', 'address[]', 'uint128'], D), T[A, ...])  # iterable case 1979610
-ck(f(['address', 'uint16', 'address[]', 'uint136'], D), T[A, ...])  # iterable case 1979611
-ck(f(['address', 'uint16', 'address[]', 'uint144'], D), T[A, ...])  # iterable case 1979612
-ck(f(['address', 'uint16', 'address[]', 'uint152'], D), T[A, ...])  # iterable case 1979613
-ck(f(['address', 'uint16', 'address[]', 'uint16'], D), T[A, ...])  # iterable case 1979614
-ck(f(['address', 'uint16', 'address[]', 'uint160'], D), T[A, ...])  # iterable case 1979615
-ck(f(['address', 'uint16', 'address[]', 'uint168'], D), T[A, ...])  # iterable case 1979616
-ck(f(['address', 'uint16', 'address[]', 'uint176'], D), T[A, ...])  # iterable case 1979617
-ck(f(['address', 'uint16', 'address[]', 'uint184'], D), T[A, ...])  # iterable case 1979618
-ck(f(['address', 'uint16', 'address[]', 'uint192'], D), T[A, ...])  # iterable case 1979619
-ck(f(['address', 'uint16', 'address[]', 'uint200'], D), T[A, ...])  # iterable case 1979620
-ck(f(['address', 'uint16', 'address[]', 'uint208'], D), T[A, ...])  # iterable case 1979621
-ck(f(['address', 'uint16', 'address[]', 'uint216'], D), T[A, ...])  # iterable case 1979622
-ck(f(['address', 'uint16', 'address[]', 'uint224'], D), T[A, ...])  # iterable case 1979623
-ck(f(['address', 'uint16', 'address[]', 'uint232'], D), T[A, ...])  # iterable case 1979624
-ck(f(['address', 'uint16', 'address[]', 'uint24'], D), T[A, ...])  # iterable case 1979625
-ck(f(['address', 'uint16', 'address[]', 'uint240'], D), T[A, ...])  # iterable case 1979626
-ck(f(['address', 'uint16', 'address[]', 'uint248'], D), T[A, ...])  # iterable case 1979627
-ck(f(['address', 'uint16', 'address[]', 'uint256'], D), T[A, ...])  # iterable case 1979628
-ck(f(['address', 'uint16', 'address[]', 'uint32'], D), T[A, ...])  # iterable case 1979629
-ck(f(['address', 'uint16', 'address[]', 'uint40'], D), T[A, ...])  # iterable case 1979630
-ck(f(['address', 'uint16', 'address[]', 'uint48'], D), T[A, ...])  # iterable case 1979631
-ck(f(['address', 'uint16', 'address[]', 'uint56'], D), T[A, ...])  # iterable case 1979632
-ck(f(['address', 'uint16', 'address[]', 'uint64'], D), T[A, ...])  # iterable case 1979633
-ck(f(['address', 'uint16', 'address[]', 'uint72'], D), T[A, ...])  # iterable case 1979634
-ck(f(['address', 'uint16', 'address[]', 'uint8'], D), T[A, ...])  # iterable case 1979635
-ck(f(['address', 'uint16', 'address[]', 'uint80'], D), T[A, ...])  # iterable case 1979636
-ck(f(['address', 'uint16', 'address[]', 'uint88'], D), T[A, ...])  # iterable case 1979637
-ck(f(['address', 'uint16', 'address[]', 'uint96'], D), T[A, ...])  # iterable case 1979638
-ck(f(['address', 'uint16', 'address[]', '?'], D), T[A, ...])  # iterable case 1979639
+ck(f(['address', 'uint16', 'address', '?'], D), TA)  # iterable case 1979535
+ck(f(['address', 'uint16', 'address[]', 'address'], D), TA)  # iterable case 1979536
+ck(f(['address', 'uint16', 'address[]', 'address[]'], D), TA)  # iterable case 1979537
+ck(f(['address', 'uint16', 'address[]', 'bool'], D), TA)  # iterable case 1979538
+ck(f(['address', 'uint16', 'address[]', 'bool[]'], D), TA)  # iterable case 1979539
+ck(f(['address', 'uint16', 'address[]', 'bytes'], D), TA)  # iterable case 1979540
+ck(f(['address', 'uint16', 'address[]', 'bytes1'], D), TA)  # iterable case 1979541
+ck(f(['address', 'uint16', 'address[]', 'bytes10'], D), TA)  # iterable case 1979542
+ck(f(['address', 'uint16', 'address[]', 'bytes11'], D), TA)  # iterable case 1979543
+ck(f(['address', 'uint16', 'address[]', 'bytes12'], D), TA)  # iterable case 1979544
+ck(f(['address', 'uint16', 'address[]', 'bytes13'], D), TA)  # iterable case 1979545
+ck(f(['address', 'uint16', 'address[]', 'bytes14'], D), TA)  # iterable case 1979546
+ck(f(['address', 'uint16', 'address[]', 'bytes15'], D), TA)  # iterable case 1979547
+ck(f(['address', 'uint16', 'address[]', 'bytes16'], D), TA)  # iterable case 1979548
+ck(f(['address', 'uint16', 'address[]', 'bytes17'], D), TA)  # iterable case 1979549
+ck(f(['address', 'uint16', 'address[]', 'bytes18'], D), TA)  # iterable case 1979550
+ck(f(['address', 'uint16', 'address[]', 'bytes19'], D), TA)  # iterable case 1979551
+ck(f(['address', 'uint16', 'address[]', 'bytes2'], D), TA)  # iterable case 1979552
+ck(f(['address', 'uint16', 'address[]', 'bytes20'], D), TA)  # iterable case 1979553
+ck(f(['address', 'uint16', 'address[]', 'bytes21'], D), TA)  # iterable case 1979554
+ck(f(['address', 'uint16', 'address[]', 'bytes22'], D), TA)  # iterable case 1979555
+ck(f(['address', 'uint16', 'address[]', 'bytes23'], D), TA)  # iterable case 1979556
+ck(f(['address', 'uint16', 'address[]', 'bytes24'], D), TA)  # iterable case 1979557
+ck(f(['address', 'uint16', 'address[]', 'bytes25'], D), TA)  # iterable case 1979558
+ck(f(['address', 'uint16', 'address[]', 'bytes26'], D), TA)  # iterable case 1979559
+ck(f(['address', 'uint16', 'address[]', 'bytes27'], D), TA)  # iterable case 1979560
+ck(f(['address', 'uint16', 'address[]', 'bytes28'], D), TA)  # iterable case 1979561
+ck(f(['address', 'uint16', 'address[]', 'bytes29'], D), TA)  # iterable case 1979562
+ck(f(['address', 'uint16', 'address[]', 'bytes3'], D), TA)  # iterable case 1979563
+ck(f(['address', 'uint16', 'address[]', 'bytes30'], D), TA)  # iterable case 1979564
+ck(f(['address', 'uint16', 'address[]', 'bytes31'], D), TA)  # iterable case 1979565
+ck(f(['address', 'uint16', 'address[]', 'bytes32'], D), TA)  # iterable case 1979566
+ck(f(['address', 'uint16', 'address[]', 'bytes4'], D), TA)  # iterable case 1979567
+ck(f(['address', 'uint16', 'address[]', 'bytes5'], D), TA)  # iterable case 1979568
+ck(f(['address', 'uint16', 'address[]', 'bytes6'], D), TA)  # iterable case 1979569
+ck(f(['address', 'uint16', 'address[]', 'bytes7'], D), TA)  # iterable case 1979570
+ck(f(['address', 'uint16', 'address[]', 'bytes8'], D), TA)  # iterable case 1979571
+ck(f(['address', 'uint16', 'address[]', 'bytes9'], D), TA)  # iterable case 1979572
+ck(f(['address', 'uint16', 'address[]', 'int104'], D), TA)  # iterable case 1979573
+ck(f(['address', 'uint16', 'address[]', 'int112'], D), TA)  # iterable case 1979574
+ck(f(['address', 'uint16', 'address[]', 'int120'], D), TA)  # iterable case 1979575
+ck(f(['address', 'uint16', 'address[]', 'int128'], D), TA)  # iterable case 1979576
+ck(f(['address', 'uint16', 'address[]', 'int136'], D), TA)  # iterable case 1979577
+ck(f(['address', 'uint16', 'address[]', 'int144'], D), TA)  # iterable case 1979578
+ck(f(['address', 'uint16', 'address[]', 'int152'], D), TA)  # iterable case 1979579
+ck(f(['address', 'uint16', 'address[]', 'int16'], D), TA)  # iterable case 1979580
+ck(f(['address', 'uint16', 'address[]', 'int160'], D), TA)  # iterable case 1979581
+ck(f(['address', 'uint16', 'address[]', 'int168'], D), TA)  # iterable case 1979582
+ck(f(['address', 'uint16', 'address[]', 'int176'], D), TA)  # iterable case 1979583
+ck(f(['address', 'uint16', 'address[]', 'int184'], D), TA)  # iterable case 1979584
+ck(f(['address', 'uint16', 'address[]', 'int192'], D), TA)  # iterable case 1979585
+ck(f(['address', 'uint16', 'address[]', 'int200'], D), TA)  # iterable case 1979586
+ck(f(['address', 'uint16', 'address[]', 'int208'], D), TA)  # iterable case 1979587
+ck(f(['address', 'uint16', 'address[]', 'int216'], D), TA)  # iterable case 1979588
+ck(f(['address', 'uint16', 'address[]', 'int224'], D), TA)  # iterable case 1979589
+ck(f(['address', 'uint16', 'address[]', 'int232'], D), TA)  # iterable case 1979590
+ck(f(['address', 'uint16', 'address[]', 'int24'], D), TA)  # iterable case 1979591
+ck(f(['address', 'uint16', 'address[]', 'int240'], D), TA)  # iterable case 1979592
+ck(f(['address', 'uint16', 'address[]', 'int248'], D), TA)  # iterable case 1979593
+ck(f(['address', 'uint16', 'address[]', 'int256'], D), TA)  # iterable case 1979594
+ck(f(['address', 'uint16', 'address[]', 'int32'], D), TA)  # iterable case 1979595
+ck(f(['address', 'uint16', 'address[]', 'int40'], D), TA)  # iterable case 1979596
+ck(f(['address', 'uint16', 'address[]', 'int48'], D), TA)  # iterable case 1979597
+ck(f(['address', 'uint16', 'address[]', 'int56'], D), TA)  # iterable case 1979598
+ck(f(['address', 'uint16', 'address[]', 'int64'], D), TA)  # iterable case 1979599
+ck(f(['address', 'uint16', 'address[]', 'int72'], D), TA)  # iterable case 1979600
+ck(f(['address', 'uint16', 'address[]', 'int8'], D), TA)  # iterable case 1979601
+ck(f(['address', 'uint16', 'address[]', 'int80'], D), TA)  # iterable case 1979602
+ck(f(['address', 'uint16', 'address[]', 'int88'], D), TA)  # iterable case 1979603
+ck(f(['address', 'uint16', 'address[]', 'int96'], D), TA)  # iterable case 1979604
+ck(f(['address', 'uint16', 'address[]', 'string'], D), TA)  # iterable case 1979605
+ck(f(['address', 'uint16', 'address[]', 'string[]'], D), TA)  # iterable case 1979606
+ck(f(['address', 'uint16', 'address[]', 'uint104'], D), TA)  # iterable case 1979607
+ck(f(['address', 'uint16', 'address[]', 'uint112'], D), TA)  # iterable case 1979608
+ck(f(['address', 'uint16', 'address[]', 'uint120'], D), TA)  # iterable case 1979609
+ck(f(['address', 'uint16', 'address[]', 'uint128'], D), TA)  # iterable case 1979610
+ck(f(['address', 'uint16', 'address[]', 'uint136'], D), TA)  # iterable case 1979611
+ck(f(['address', 'uint16', 'address[]', 'uint144'], D), TA)  # iterable case 1979612
+ck(f(['address', 'uint16', 'address[]', 'uint152'], D), TA)  # iterable case 1979613
+ck(f(['address', 'uint16', 'address[]', 'uint16'], D), TA)  # iterable case 1979614
+ck(f(['address', 'uint16', 'address[]', 'uint160'], D), TA)  # iterable case 1979615
+ck(f(['address', 'uint16', 'address[]', 'uint168'], D), TA)  # iterable case 1979616
+ck(f(['address', 'uint16', 'address[]', 'uint176'], D), TA)  # iterable case 1979617
+ck(f(['address', 'uint16', 'address[]', 'uint184'], D), TA)  # iterable case 1979618
+ck(f(['address', 'uint16', 'address[]', 'uint192'], D), TA)  # iterable case 1979619
+ck(f(['address', 'uint16', 'address[]', 'uint200'], D), TA)  # iterable case 1979620
+ck(f(['address', 'uint16', 'address[]', 'uint208'], D), TA)  # iterable case 1979621
+ck(f(['address', 'uint16', 'address[]', 'uint216'], D), TA)  # iterable case 1979622
+ck(f(['address', 'uint16', 'address[]', 'uint224'], D), TA)  # iterable case 1979623
+ck(f(['address', 'uint16', 'address[]', 'uint232'], D), TA)  # iterable case 1979624
+ck(f(['address', 'uint16', 'address[]', 'uint24'], D), TA)  # iterable case 1979625
+ck(f(['address', 'uint16', 'address[]', 'uint240'], D), TA)  # iterable case 1979626
+ck(f(['address', 'uint16', 'address[]', 'uint248'], D), TA)  # iterable case 1979627
+ck(f(['address', 'uint16', 'address[]', 'uint256'], D), TA)  # iterable case 1979628
+ck(f(['address', 'uint16', 'address[]', 'uint32'], D), TA)  # iterable case 1979629
+ck(f(['address', 'uint16', 'address[]', 'uint40'], D), TA)  # iterable case 1979630
+ck(f(['address', 'uint16', 'address[]', 'uint48'], D), TA)  # iterable case 1979631
+ck(f(['address', 'uint16', 'address[]', 'uint56'], D), TA)  # iterable case 1979632
+ck(f(['address', 'uint16', 'address[]', 'uint64'], D), TA)  # iterable case 1979633
+ck(f(['address', 'uint16', 'address[]', 'uint72'], D), TA)  # iterable case 1979634
+ck(f(['address', 'uint16', 'address[]', 'uint8'], D), TA)  # iterable case 1979635
+ck(f(['address', 'uint16', 'address[]', 'uint80'], D), TA)  # iterable case 1979636
+ck(f(['address', 'uint16', 'address[]', 'uint88'], D), TA)  # iterable case 1979637
+ck(f(['address', 'uint16', 'address[]', 'uint96'], D), TA)  # iterable case 1979638
+ck(f(['address', 'uint16', 'address[]', '?'], D), TA)  # iterable case 1979639
 ck(f(['address', 'uint16', 'bool', 'address'], D), T[U[HA, bo, i], ...])  # iterable case 1979640
-ck(f(['address', 'uint16', 'bool', 'address[]'], D), T[A, ...])  # iterable case 1979641
+ck(f(['address', 'uint16', 'bool', 'address[]'], D), TA)  # iterable case 1979641
 ck(f(['address', 'uint16', 'bool', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1979642
-ck(f(['address', 'uint16', 'bool', 'bool[]'], D), T[A, ...])  # iterable case 1979643
+ck(f(['address', 'uint16', 'bool', 'bool[]'], D), TA)  # iterable case 1979643
 ck(f(['address', 'uint16', 'bool', 'bytes'], D), T[U[HA, bo, by, i], ...])  # iterable case 1979644
 ck(f(['address', 'uint16', 'bool', 'bytes1'], D), T[U[HA, bo, by, i], ...])  # iterable case 1979645
 ck(f(['address', 'uint16', 'bool', 'bytes10'], D), T[U[HA, bo, by, i], ...])  # iterable case 1979646
@@ -3947,7 +3947,7 @@ ck(f(['address', 'uint16', 'bool', 'int80'], D), T[U[HA, bo, i], ...])  # iterab
 ck(f(['address', 'uint16', 'bool', 'int88'], D), T[U[HA, bo, i], ...])  # iterable case 1979707
 ck(f(['address', 'uint16', 'bool', 'int96'], D), T[U[HA, bo, i], ...])  # iterable case 1979708
 ck(f(['address', 'uint16', 'bool', 'string'], D), T[U[HA, bo, i, s], ...])  # iterable case 1979709
-ck(f(['address', 'uint16', 'bool', 'string[]'], D), T[A, ...])  # iterable case 1979710
+ck(f(['address', 'uint16', 'bool', 'string[]'], D), TA)  # iterable case 1979710
 ck(f(['address', 'uint16', 'bool', 'uint104'], D), T[U[HA, bo, i], ...])  # iterable case 1979711
 ck(f(['address', 'uint16', 'bool', 'uint112'], D), T[U[HA, bo, i], ...])  # iterable case 1979712
 ck(f(['address', 'uint16', 'bool', 'uint120'], D), T[U[HA, bo, i], ...])  # iterable case 1979713
@@ -3980,115 +3980,115 @@ ck(f(['address', 'uint16', 'bool', 'uint8'], D), T[U[HA, bo, i], ...])  # iterab
 ck(f(['address', 'uint16', 'bool', 'uint80'], D), T[U[HA, bo, i], ...])  # iterable case 1979740
 ck(f(['address', 'uint16', 'bool', 'uint88'], D), T[U[HA, bo, i], ...])  # iterable case 1979741
 ck(f(['address', 'uint16', 'bool', 'uint96'], D), T[U[HA, bo, i], ...])  # iterable case 1979742
-ck(f(['address', 'uint16', 'bool', '?'], D), T[A, ...])  # iterable case 1979743
-ck(f(['address', 'uint16', 'bool[]', 'address'], D), T[A, ...])  # iterable case 1979744
-ck(f(['address', 'uint16', 'bool[]', 'address[]'], D), T[A, ...])  # iterable case 1979745
-ck(f(['address', 'uint16', 'bool[]', 'bool'], D), T[A, ...])  # iterable case 1979746
-ck(f(['address', 'uint16', 'bool[]', 'bool[]'], D), T[A, ...])  # iterable case 1979747
-ck(f(['address', 'uint16', 'bool[]', 'bytes'], D), T[A, ...])  # iterable case 1979748
-ck(f(['address', 'uint16', 'bool[]', 'bytes1'], D), T[A, ...])  # iterable case 1979749
-ck(f(['address', 'uint16', 'bool[]', 'bytes10'], D), T[A, ...])  # iterable case 1979750
-ck(f(['address', 'uint16', 'bool[]', 'bytes11'], D), T[A, ...])  # iterable case 1979751
-ck(f(['address', 'uint16', 'bool[]', 'bytes12'], D), T[A, ...])  # iterable case 1979752
-ck(f(['address', 'uint16', 'bool[]', 'bytes13'], D), T[A, ...])  # iterable case 1979753
-ck(f(['address', 'uint16', 'bool[]', 'bytes14'], D), T[A, ...])  # iterable case 1979754
-ck(f(['address', 'uint16', 'bool[]', 'bytes15'], D), T[A, ...])  # iterable case 1979755
-ck(f(['address', 'uint16', 'bool[]', 'bytes16'], D), T[A, ...])  # iterable case 1979756
-ck(f(['address', 'uint16', 'bool[]', 'bytes17'], D), T[A, ...])  # iterable case 1979757
-ck(f(['address', 'uint16', 'bool[]', 'bytes18'], D), T[A, ...])  # iterable case 1979758
-ck(f(['address', 'uint16', 'bool[]', 'bytes19'], D), T[A, ...])  # iterable case 1979759
-ck(f(['address', 'uint16', 'bool[]', 'bytes2'], D), T[A, ...])  # iterable case 1979760
-ck(f(['address', 'uint16', 'bool[]', 'bytes20'], D), T[A, ...])  # iterable case 1979761
-ck(f(['address', 'uint16', 'bool[]', 'bytes21'], D), T[A, ...])  # iterable case 1979762
-ck(f(['address', 'uint16', 'bool[]', 'bytes22'], D), T[A, ...])  # iterable case 1979763
-ck(f(['address', 'uint16', 'bool[]', 'bytes23'], D), T[A, ...])  # iterable case 1979764
-ck(f(['address', 'uint16', 'bool[]', 'bytes24'], D), T[A, ...])  # iterable case 1979765
-ck(f(['address', 'uint16', 'bool[]', 'bytes25'], D), T[A, ...])  # iterable case 1979766
-ck(f(['address', 'uint16', 'bool[]', 'bytes26'], D), T[A, ...])  # iterable case 1979767
-ck(f(['address', 'uint16', 'bool[]', 'bytes27'], D), T[A, ...])  # iterable case 1979768
-ck(f(['address', 'uint16', 'bool[]', 'bytes28'], D), T[A, ...])  # iterable case 1979769
-ck(f(['address', 'uint16', 'bool[]', 'bytes29'], D), T[A, ...])  # iterable case 1979770
-ck(f(['address', 'uint16', 'bool[]', 'bytes3'], D), T[A, ...])  # iterable case 1979771
-ck(f(['address', 'uint16', 'bool[]', 'bytes30'], D), T[A, ...])  # iterable case 1979772
-ck(f(['address', 'uint16', 'bool[]', 'bytes31'], D), T[A, ...])  # iterable case 1979773
-ck(f(['address', 'uint16', 'bool[]', 'bytes32'], D), T[A, ...])  # iterable case 1979774
-ck(f(['address', 'uint16', 'bool[]', 'bytes4'], D), T[A, ...])  # iterable case 1979775
-ck(f(['address', 'uint16', 'bool[]', 'bytes5'], D), T[A, ...])  # iterable case 1979776
-ck(f(['address', 'uint16', 'bool[]', 'bytes6'], D), T[A, ...])  # iterable case 1979777
-ck(f(['address', 'uint16', 'bool[]', 'bytes7'], D), T[A, ...])  # iterable case 1979778
-ck(f(['address', 'uint16', 'bool[]', 'bytes8'], D), T[A, ...])  # iterable case 1979779
-ck(f(['address', 'uint16', 'bool[]', 'bytes9'], D), T[A, ...])  # iterable case 1979780
-ck(f(['address', 'uint16', 'bool[]', 'int104'], D), T[A, ...])  # iterable case 1979781
-ck(f(['address', 'uint16', 'bool[]', 'int112'], D), T[A, ...])  # iterable case 1979782
-ck(f(['address', 'uint16', 'bool[]', 'int120'], D), T[A, ...])  # iterable case 1979783
-ck(f(['address', 'uint16', 'bool[]', 'int128'], D), T[A, ...])  # iterable case 1979784
-ck(f(['address', 'uint16', 'bool[]', 'int136'], D), T[A, ...])  # iterable case 1979785
-ck(f(['address', 'uint16', 'bool[]', 'int144'], D), T[A, ...])  # iterable case 1979786
-ck(f(['address', 'uint16', 'bool[]', 'int152'], D), T[A, ...])  # iterable case 1979787
-ck(f(['address', 'uint16', 'bool[]', 'int16'], D), T[A, ...])  # iterable case 1979788
-ck(f(['address', 'uint16', 'bool[]', 'int160'], D), T[A, ...])  # iterable case 1979789
-ck(f(['address', 'uint16', 'bool[]', 'int168'], D), T[A, ...])  # iterable case 1979790
-ck(f(['address', 'uint16', 'bool[]', 'int176'], D), T[A, ...])  # iterable case 1979791
-ck(f(['address', 'uint16', 'bool[]', 'int184'], D), T[A, ...])  # iterable case 1979792
-ck(f(['address', 'uint16', 'bool[]', 'int192'], D), T[A, ...])  # iterable case 1979793
-ck(f(['address', 'uint16', 'bool[]', 'int200'], D), T[A, ...])  # iterable case 1979794
-ck(f(['address', 'uint16', 'bool[]', 'int208'], D), T[A, ...])  # iterable case 1979795
-ck(f(['address', 'uint16', 'bool[]', 'int216'], D), T[A, ...])  # iterable case 1979796
-ck(f(['address', 'uint16', 'bool[]', 'int224'], D), T[A, ...])  # iterable case 1979797
-ck(f(['address', 'uint16', 'bool[]', 'int232'], D), T[A, ...])  # iterable case 1979798
-ck(f(['address', 'uint16', 'bool[]', 'int24'], D), T[A, ...])  # iterable case 1979799
-ck(f(['address', 'uint16', 'bool[]', 'int240'], D), T[A, ...])  # iterable case 1979800
-ck(f(['address', 'uint16', 'bool[]', 'int248'], D), T[A, ...])  # iterable case 1979801
-ck(f(['address', 'uint16', 'bool[]', 'int256'], D), T[A, ...])  # iterable case 1979802
-ck(f(['address', 'uint16', 'bool[]', 'int32'], D), T[A, ...])  # iterable case 1979803
-ck(f(['address', 'uint16', 'bool[]', 'int40'], D), T[A, ...])  # iterable case 1979804
-ck(f(['address', 'uint16', 'bool[]', 'int48'], D), T[A, ...])  # iterable case 1979805
-ck(f(['address', 'uint16', 'bool[]', 'int56'], D), T[A, ...])  # iterable case 1979806
-ck(f(['address', 'uint16', 'bool[]', 'int64'], D), T[A, ...])  # iterable case 1979807
-ck(f(['address', 'uint16', 'bool[]', 'int72'], D), T[A, ...])  # iterable case 1979808
-ck(f(['address', 'uint16', 'bool[]', 'int8'], D), T[A, ...])  # iterable case 1979809
-ck(f(['address', 'uint16', 'bool[]', 'int80'], D), T[A, ...])  # iterable case 1979810
-ck(f(['address', 'uint16', 'bool[]', 'int88'], D), T[A, ...])  # iterable case 1979811
-ck(f(['address', 'uint16', 'bool[]', 'int96'], D), T[A, ...])  # iterable case 1979812
-ck(f(['address', 'uint16', 'bool[]', 'string'], D), T[A, ...])  # iterable case 1979813
-ck(f(['address', 'uint16', 'bool[]', 'string[]'], D), T[A, ...])  # iterable case 1979814
-ck(f(['address', 'uint16', 'bool[]', 'uint104'], D), T[A, ...])  # iterable case 1979815
-ck(f(['address', 'uint16', 'bool[]', 'uint112'], D), T[A, ...])  # iterable case 1979816
-ck(f(['address', 'uint16', 'bool[]', 'uint120'], D), T[A, ...])  # iterable case 1979817
-ck(f(['address', 'uint16', 'bool[]', 'uint128'], D), T[A, ...])  # iterable case 1979818
-ck(f(['address', 'uint16', 'bool[]', 'uint136'], D), T[A, ...])  # iterable case 1979819
-ck(f(['address', 'uint16', 'bool[]', 'uint144'], D), T[A, ...])  # iterable case 1979820
-ck(f(['address', 'uint16', 'bool[]', 'uint152'], D), T[A, ...])  # iterable case 1979821
-ck(f(['address', 'uint16', 'bool[]', 'uint16'], D), T[A, ...])  # iterable case 1979822
-ck(f(['address', 'uint16', 'bool[]', 'uint160'], D), T[A, ...])  # iterable case 1979823
-ck(f(['address', 'uint16', 'bool[]', 'uint168'], D), T[A, ...])  # iterable case 1979824
-ck(f(['address', 'uint16', 'bool[]', 'uint176'], D), T[A, ...])  # iterable case 1979825
-ck(f(['address', 'uint16', 'bool[]', 'uint184'], D), T[A, ...])  # iterable case 1979826
-ck(f(['address', 'uint16', 'bool[]', 'uint192'], D), T[A, ...])  # iterable case 1979827
-ck(f(['address', 'uint16', 'bool[]', 'uint200'], D), T[A, ...])  # iterable case 1979828
-ck(f(['address', 'uint16', 'bool[]', 'uint208'], D), T[A, ...])  # iterable case 1979829
-ck(f(['address', 'uint16', 'bool[]', 'uint216'], D), T[A, ...])  # iterable case 1979830
-ck(f(['address', 'uint16', 'bool[]', 'uint224'], D), T[A, ...])  # iterable case 1979831
-ck(f(['address', 'uint16', 'bool[]', 'uint232'], D), T[A, ...])  # iterable case 1979832
-ck(f(['address', 'uint16', 'bool[]', 'uint24'], D), T[A, ...])  # iterable case 1979833
-ck(f(['address', 'uint16', 'bool[]', 'uint240'], D), T[A, ...])  # iterable case 1979834
-ck(f(['address', 'uint16', 'bool[]', 'uint248'], D), T[A, ...])  # iterable case 1979835
-ck(f(['address', 'uint16', 'bool[]', 'uint256'], D), T[A, ...])  # iterable case 1979836
-ck(f(['address', 'uint16', 'bool[]', 'uint32'], D), T[A, ...])  # iterable case 1979837
-ck(f(['address', 'uint16', 'bool[]', 'uint40'], D), T[A, ...])  # iterable case 1979838
-ck(f(['address', 'uint16', 'bool[]', 'uint48'], D), T[A, ...])  # iterable case 1979839
-ck(f(['address', 'uint16', 'bool[]', 'uint56'], D), T[A, ...])  # iterable case 1979840
-ck(f(['address', 'uint16', 'bool[]', 'uint64'], D), T[A, ...])  # iterable case 1979841
-ck(f(['address', 'uint16', 'bool[]', 'uint72'], D), T[A, ...])  # iterable case 1979842
-ck(f(['address', 'uint16', 'bool[]', 'uint8'], D), T[A, ...])  # iterable case 1979843
-ck(f(['address', 'uint16', 'bool[]', 'uint80'], D), T[A, ...])  # iterable case 1979844
-ck(f(['address', 'uint16', 'bool[]', 'uint88'], D), T[A, ...])  # iterable case 1979845
-ck(f(['address', 'uint16', 'bool[]', 'uint96'], D), T[A, ...])  # iterable case 1979846
-ck(f(['address', 'uint16', 'bool[]', '?'], D), T[A, ...])  # iterable case 1979847
+ck(f(['address', 'uint16', 'bool', '?'], D), TA)  # iterable case 1979743
+ck(f(['address', 'uint16', 'bool[]', 'address'], D), TA)  # iterable case 1979744
+ck(f(['address', 'uint16', 'bool[]', 'address[]'], D), TA)  # iterable case 1979745
+ck(f(['address', 'uint16', 'bool[]', 'bool'], D), TA)  # iterable case 1979746
+ck(f(['address', 'uint16', 'bool[]', 'bool[]'], D), TA)  # iterable case 1979747
+ck(f(['address', 'uint16', 'bool[]', 'bytes'], D), TA)  # iterable case 1979748
+ck(f(['address', 'uint16', 'bool[]', 'bytes1'], D), TA)  # iterable case 1979749
+ck(f(['address', 'uint16', 'bool[]', 'bytes10'], D), TA)  # iterable case 1979750
+ck(f(['address', 'uint16', 'bool[]', 'bytes11'], D), TA)  # iterable case 1979751
+ck(f(['address', 'uint16', 'bool[]', 'bytes12'], D), TA)  # iterable case 1979752
+ck(f(['address', 'uint16', 'bool[]', 'bytes13'], D), TA)  # iterable case 1979753
+ck(f(['address', 'uint16', 'bool[]', 'bytes14'], D), TA)  # iterable case 1979754
+ck(f(['address', 'uint16', 'bool[]', 'bytes15'], D), TA)  # iterable case 1979755
+ck(f(['address', 'uint16', 'bool[]', 'bytes16'], D), TA)  # iterable case 1979756
+ck(f(['address', 'uint16', 'bool[]', 'bytes17'], D), TA)  # iterable case 1979757
+ck(f(['address', 'uint16', 'bool[]', 'bytes18'], D), TA)  # iterable case 1979758
+ck(f(['address', 'uint16', 'bool[]', 'bytes19'], D), TA)  # iterable case 1979759
+ck(f(['address', 'uint16', 'bool[]', 'bytes2'], D), TA)  # iterable case 1979760
+ck(f(['address', 'uint16', 'bool[]', 'bytes20'], D), TA)  # iterable case 1979761
+ck(f(['address', 'uint16', 'bool[]', 'bytes21'], D), TA)  # iterable case 1979762
+ck(f(['address', 'uint16', 'bool[]', 'bytes22'], D), TA)  # iterable case 1979763
+ck(f(['address', 'uint16', 'bool[]', 'bytes23'], D), TA)  # iterable case 1979764
+ck(f(['address', 'uint16', 'bool[]', 'bytes24'], D), TA)  # iterable case 1979765
+ck(f(['address', 'uint16', 'bool[]', 'bytes25'], D), TA)  # iterable case 1979766
+ck(f(['address', 'uint16', 'bool[]', 'bytes26'], D), TA)  # iterable case 1979767
+ck(f(['address', 'uint16', 'bool[]', 'bytes27'], D), TA)  # iterable case 1979768
+ck(f(['address', 'uint16', 'bool[]', 'bytes28'], D), TA)  # iterable case 1979769
+ck(f(['address', 'uint16', 'bool[]', 'bytes29'], D), TA)  # iterable case 1979770
+ck(f(['address', 'uint16', 'bool[]', 'bytes3'], D), TA)  # iterable case 1979771
+ck(f(['address', 'uint16', 'bool[]', 'bytes30'], D), TA)  # iterable case 1979772
+ck(f(['address', 'uint16', 'bool[]', 'bytes31'], D), TA)  # iterable case 1979773
+ck(f(['address', 'uint16', 'bool[]', 'bytes32'], D), TA)  # iterable case 1979774
+ck(f(['address', 'uint16', 'bool[]', 'bytes4'], D), TA)  # iterable case 1979775
+ck(f(['address', 'uint16', 'bool[]', 'bytes5'], D), TA)  # iterable case 1979776
+ck(f(['address', 'uint16', 'bool[]', 'bytes6'], D), TA)  # iterable case 1979777
+ck(f(['address', 'uint16', 'bool[]', 'bytes7'], D), TA)  # iterable case 1979778
+ck(f(['address', 'uint16', 'bool[]', 'bytes8'], D), TA)  # iterable case 1979779
+ck(f(['address', 'uint16', 'bool[]', 'bytes9'], D), TA)  # iterable case 1979780
+ck(f(['address', 'uint16', 'bool[]', 'int104'], D), TA)  # iterable case 1979781
+ck(f(['address', 'uint16', 'bool[]', 'int112'], D), TA)  # iterable case 1979782
+ck(f(['address', 'uint16', 'bool[]', 'int120'], D), TA)  # iterable case 1979783
+ck(f(['address', 'uint16', 'bool[]', 'int128'], D), TA)  # iterable case 1979784
+ck(f(['address', 'uint16', 'bool[]', 'int136'], D), TA)  # iterable case 1979785
+ck(f(['address', 'uint16', 'bool[]', 'int144'], D), TA)  # iterable case 1979786
+ck(f(['address', 'uint16', 'bool[]', 'int152'], D), TA)  # iterable case 1979787
+ck(f(['address', 'uint16', 'bool[]', 'int16'], D), TA)  # iterable case 1979788
+ck(f(['address', 'uint16', 'bool[]', 'int160'], D), TA)  # iterable case 1979789
+ck(f(['address', 'uint16', 'bool[]', 'int168'], D), TA)  # iterable case 1979790
+ck(f(['address', 'uint16', 'bool[]', 'int176'], D), TA)  # iterable case 1979791
+ck(f(['address', 'uint16', 'bool[]', 'int184'], D), TA)  # iterable case 1979792
+ck(f(['address', 'uint16', 'bool[]', 'int192'], D), TA)  # iterable case 1979793
+ck(f(['address', 'uint16', 'bool[]', 'int200'], D), TA)  # iterable case 1979794
+ck(f(['address', 'uint16', 'bool[]', 'int208'], D), TA)  # iterable case 1979795
+ck(f(['address', 'uint16', 'bool[]', 'int216'], D), TA)  # iterable case 1979796
+ck(f(['address', 'uint16', 'bool[]', 'int224'], D), TA)  # iterable case 1979797
+ck(f(['address', 'uint16', 'bool[]', 'int232'], D), TA)  # iterable case 1979798
+ck(f(['address', 'uint16', 'bool[]', 'int24'], D), TA)  # iterable case 1979799
+ck(f(['address', 'uint16', 'bool[]', 'int240'], D), TA)  # iterable case 1979800
+ck(f(['address', 'uint16', 'bool[]', 'int248'], D), TA)  # iterable case 1979801
+ck(f(['address', 'uint16', 'bool[]', 'int256'], D), TA)  # iterable case 1979802
+ck(f(['address', 'uint16', 'bool[]', 'int32'], D), TA)  # iterable case 1979803
+ck(f(['address', 'uint16', 'bool[]', 'int40'], D), TA)  # iterable case 1979804
+ck(f(['address', 'uint16', 'bool[]', 'int48'], D), TA)  # iterable case 1979805
+ck(f(['address', 'uint16', 'bool[]', 'int56'], D), TA)  # iterable case 1979806
+ck(f(['address', 'uint16', 'bool[]', 'int64'], D), TA)  # iterable case 1979807
+ck(f(['address', 'uint16', 'bool[]', 'int72'], D), TA)  # iterable case 1979808
+ck(f(['address', 'uint16', 'bool[]', 'int8'], D), TA)  # iterable case 1979809
+ck(f(['address', 'uint16', 'bool[]', 'int80'], D), TA)  # iterable case 1979810
+ck(f(['address', 'uint16', 'bool[]', 'int88'], D), TA)  # iterable case 1979811
+ck(f(['address', 'uint16', 'bool[]', 'int96'], D), TA)  # iterable case 1979812
+ck(f(['address', 'uint16', 'bool[]', 'string'], D), TA)  # iterable case 1979813
+ck(f(['address', 'uint16', 'bool[]', 'string[]'], D), TA)  # iterable case 1979814
+ck(f(['address', 'uint16', 'bool[]', 'uint104'], D), TA)  # iterable case 1979815
+ck(f(['address', 'uint16', 'bool[]', 'uint112'], D), TA)  # iterable case 1979816
+ck(f(['address', 'uint16', 'bool[]', 'uint120'], D), TA)  # iterable case 1979817
+ck(f(['address', 'uint16', 'bool[]', 'uint128'], D), TA)  # iterable case 1979818
+ck(f(['address', 'uint16', 'bool[]', 'uint136'], D), TA)  # iterable case 1979819
+ck(f(['address', 'uint16', 'bool[]', 'uint144'], D), TA)  # iterable case 1979820
+ck(f(['address', 'uint16', 'bool[]', 'uint152'], D), TA)  # iterable case 1979821
+ck(f(['address', 'uint16', 'bool[]', 'uint16'], D), TA)  # iterable case 1979822
+ck(f(['address', 'uint16', 'bool[]', 'uint160'], D), TA)  # iterable case 1979823
+ck(f(['address', 'uint16', 'bool[]', 'uint168'], D), TA)  # iterable case 1979824
+ck(f(['address', 'uint16', 'bool[]', 'uint176'], D), TA)  # iterable case 1979825
+ck(f(['address', 'uint16', 'bool[]', 'uint184'], D), TA)  # iterable case 1979826
+ck(f(['address', 'uint16', 'bool[]', 'uint192'], D), TA)  # iterable case 1979827
+ck(f(['address', 'uint16', 'bool[]', 'uint200'], D), TA)  # iterable case 1979828
+ck(f(['address', 'uint16', 'bool[]', 'uint208'], D), TA)  # iterable case 1979829
+ck(f(['address', 'uint16', 'bool[]', 'uint216'], D), TA)  # iterable case 1979830
+ck(f(['address', 'uint16', 'bool[]', 'uint224'], D), TA)  # iterable case 1979831
+ck(f(['address', 'uint16', 'bool[]', 'uint232'], D), TA)  # iterable case 1979832
+ck(f(['address', 'uint16', 'bool[]', 'uint24'], D), TA)  # iterable case 1979833
+ck(f(['address', 'uint16', 'bool[]', 'uint240'], D), TA)  # iterable case 1979834
+ck(f(['address', 'uint16', 'bool[]', 'uint248'], D), TA)  # iterable case 1979835
+ck(f(['address', 'uint16', 'bool[]', 'uint256'], D), TA)  # iterable case 1979836
+ck(f(['address', 'uint16', 'bool[]', 'uint32'], D), TA)  # iterable case 1979837
+ck(f(['address', 'uint16', 'bool[]', 'uint40'], D), TA)  # iterable case 1979838
+ck(f(['address', 'uint16', 'bool[]', 'uint48'], D), TA)  # iterable case 1979839
+ck(f(['address', 'uint16', 'bool[]', 'uint56'], D), TA)  # iterable case 1979840
+ck(f(['address', 'uint16', 'bool[]', 'uint64'], D), TA)  # iterable case 1979841
+ck(f(['address', 'uint16', 'bool[]', 'uint72'], D), TA)  # iterable case 1979842
+ck(f(['address', 'uint16', 'bool[]', 'uint8'], D), TA)  # iterable case 1979843
+ck(f(['address', 'uint16', 'bool[]', 'uint80'], D), TA)  # iterable case 1979844
+ck(f(['address', 'uint16', 'bool[]', 'uint88'], D), TA)  # iterable case 1979845
+ck(f(['address', 'uint16', 'bool[]', 'uint96'], D), TA)  # iterable case 1979846
+ck(f(['address', 'uint16', 'bool[]', '?'], D), TA)  # iterable case 1979847
 ck(f(['address', 'uint16', 'bytes', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1979848
-ck(f(['address', 'uint16', 'bytes', 'address[]'], D), T[A, ...])  # iterable case 1979849
+ck(f(['address', 'uint16', 'bytes', 'address[]'], D), TA)  # iterable case 1979849
 ck(f(['address', 'uint16', 'bytes', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1979850
-ck(f(['address', 'uint16', 'bytes', 'bool[]'], D), T[A, ...])  # iterable case 1979851
+ck(f(['address', 'uint16', 'bytes', 'bool[]'], D), TA)  # iterable case 1979851
 ck(f(['address', 'uint16', 'bytes', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979852
 ck(f(['address', 'uint16', 'bytes', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979853
 ck(f(['address', 'uint16', 'bytes', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979854
@@ -4155,7 +4155,7 @@ ck(f(['address', 'uint16', 'bytes', 'int80'], D), T[U[HA, by, i], ...])  # itera
 ck(f(['address', 'uint16', 'bytes', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1979915
 ck(f(['address', 'uint16', 'bytes', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1979916
 ck(f(['address', 'uint16', 'bytes', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1979917
-ck(f(['address', 'uint16', 'bytes', 'string[]'], D), T[A, ...])  # iterable case 1979918
+ck(f(['address', 'uint16', 'bytes', 'string[]'], D), TA)  # iterable case 1979918
 ck(f(['address', 'uint16', 'bytes', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1979919
 ck(f(['address', 'uint16', 'bytes', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1979920
 ck(f(['address', 'uint16', 'bytes', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1979921
@@ -4188,11 +4188,11 @@ ck(f(['address', 'uint16', 'bytes', 'uint8'], D), T[U[HA, by, i], ...])  # itera
 ck(f(['address', 'uint16', 'bytes', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1979948
 ck(f(['address', 'uint16', 'bytes', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1979949
 ck(f(['address', 'uint16', 'bytes', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1979950
-ck(f(['address', 'uint16', 'bytes', '?'], D), T[A, ...])  # iterable case 1979951
+ck(f(['address', 'uint16', 'bytes', '?'], D), TA)  # iterable case 1979951
 ck(f(['address', 'uint16', 'bytes1', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1979952
-ck(f(['address', 'uint16', 'bytes1', 'address[]'], D), T[A, ...])  # iterable case 1979953
+ck(f(['address', 'uint16', 'bytes1', 'address[]'], D), TA)  # iterable case 1979953
 ck(f(['address', 'uint16', 'bytes1', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1979954
-ck(f(['address', 'uint16', 'bytes1', 'bool[]'], D), T[A, ...])  # iterable case 1979955
+ck(f(['address', 'uint16', 'bytes1', 'bool[]'], D), TA)  # iterable case 1979955
 ck(f(['address', 'uint16', 'bytes1', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1979956
 ck(f(['address', 'uint16', 'bytes1', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1979957
 ck(f(['address', 'uint16', 'bytes1', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1979958
@@ -4259,7 +4259,7 @@ ck(f(['address', 'uint16', 'bytes1', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes1', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980019
 ck(f(['address', 'uint16', 'bytes1', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980020
 ck(f(['address', 'uint16', 'bytes1', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980021
-ck(f(['address', 'uint16', 'bytes1', 'string[]'], D), T[A, ...])  # iterable case 1980022
+ck(f(['address', 'uint16', 'bytes1', 'string[]'], D), TA)  # iterable case 1980022
 ck(f(['address', 'uint16', 'bytes1', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980023
 ck(f(['address', 'uint16', 'bytes1', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980024
 ck(f(['address', 'uint16', 'bytes1', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980025
@@ -4292,11 +4292,11 @@ ck(f(['address', 'uint16', 'bytes1', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes1', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980052
 ck(f(['address', 'uint16', 'bytes1', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980053
 ck(f(['address', 'uint16', 'bytes1', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980054
-ck(f(['address', 'uint16', 'bytes1', '?'], D), T[A, ...])  # iterable case 1980055
+ck(f(['address', 'uint16', 'bytes1', '?'], D), TA)  # iterable case 1980055
 ck(f(['address', 'uint16', 'bytes10', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980056
-ck(f(['address', 'uint16', 'bytes10', 'address[]'], D), T[A, ...])  # iterable case 1980057
+ck(f(['address', 'uint16', 'bytes10', 'address[]'], D), TA)  # iterable case 1980057
 ck(f(['address', 'uint16', 'bytes10', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980058
-ck(f(['address', 'uint16', 'bytes10', 'bool[]'], D), T[A, ...])  # iterable case 1980059
+ck(f(['address', 'uint16', 'bytes10', 'bool[]'], D), TA)  # iterable case 1980059
 ck(f(['address', 'uint16', 'bytes10', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980060
 ck(f(['address', 'uint16', 'bytes10', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980061
 ck(f(['address', 'uint16', 'bytes10', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980062
@@ -4363,7 +4363,7 @@ ck(f(['address', 'uint16', 'bytes10', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes10', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980123
 ck(f(['address', 'uint16', 'bytes10', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980124
 ck(f(['address', 'uint16', 'bytes10', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980125
-ck(f(['address', 'uint16', 'bytes10', 'string[]'], D), T[A, ...])  # iterable case 1980126
+ck(f(['address', 'uint16', 'bytes10', 'string[]'], D), TA)  # iterable case 1980126
 ck(f(['address', 'uint16', 'bytes10', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980127
 ck(f(['address', 'uint16', 'bytes10', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980128
 ck(f(['address', 'uint16', 'bytes10', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980129
@@ -4396,11 +4396,11 @@ ck(f(['address', 'uint16', 'bytes10', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes10', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980156
 ck(f(['address', 'uint16', 'bytes10', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980157
 ck(f(['address', 'uint16', 'bytes10', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980158
-ck(f(['address', 'uint16', 'bytes10', '?'], D), T[A, ...])  # iterable case 1980159
+ck(f(['address', 'uint16', 'bytes10', '?'], D), TA)  # iterable case 1980159
 ck(f(['address', 'uint16', 'bytes11', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980160
-ck(f(['address', 'uint16', 'bytes11', 'address[]'], D), T[A, ...])  # iterable case 1980161
+ck(f(['address', 'uint16', 'bytes11', 'address[]'], D), TA)  # iterable case 1980161
 ck(f(['address', 'uint16', 'bytes11', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980162
-ck(f(['address', 'uint16', 'bytes11', 'bool[]'], D), T[A, ...])  # iterable case 1980163
+ck(f(['address', 'uint16', 'bytes11', 'bool[]'], D), TA)  # iterable case 1980163
 ck(f(['address', 'uint16', 'bytes11', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980164
 ck(f(['address', 'uint16', 'bytes11', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980165
 ck(f(['address', 'uint16', 'bytes11', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980166
@@ -4467,7 +4467,7 @@ ck(f(['address', 'uint16', 'bytes11', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes11', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980227
 ck(f(['address', 'uint16', 'bytes11', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980228
 ck(f(['address', 'uint16', 'bytes11', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980229
-ck(f(['address', 'uint16', 'bytes11', 'string[]'], D), T[A, ...])  # iterable case 1980230
+ck(f(['address', 'uint16', 'bytes11', 'string[]'], D), TA)  # iterable case 1980230
 ck(f(['address', 'uint16', 'bytes11', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980231
 ck(f(['address', 'uint16', 'bytes11', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980232
 ck(f(['address', 'uint16', 'bytes11', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980233
@@ -4500,11 +4500,11 @@ ck(f(['address', 'uint16', 'bytes11', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes11', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980260
 ck(f(['address', 'uint16', 'bytes11', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980261
 ck(f(['address', 'uint16', 'bytes11', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980262
-ck(f(['address', 'uint16', 'bytes11', '?'], D), T[A, ...])  # iterable case 1980263
+ck(f(['address', 'uint16', 'bytes11', '?'], D), TA)  # iterable case 1980263
 ck(f(['address', 'uint16', 'bytes12', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980264
-ck(f(['address', 'uint16', 'bytes12', 'address[]'], D), T[A, ...])  # iterable case 1980265
+ck(f(['address', 'uint16', 'bytes12', 'address[]'], D), TA)  # iterable case 1980265
 ck(f(['address', 'uint16', 'bytes12', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980266
-ck(f(['address', 'uint16', 'bytes12', 'bool[]'], D), T[A, ...])  # iterable case 1980267
+ck(f(['address', 'uint16', 'bytes12', 'bool[]'], D), TA)  # iterable case 1980267
 ck(f(['address', 'uint16', 'bytes12', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980268
 ck(f(['address', 'uint16', 'bytes12', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980269
 ck(f(['address', 'uint16', 'bytes12', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980270
@@ -4571,7 +4571,7 @@ ck(f(['address', 'uint16', 'bytes12', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes12', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980331
 ck(f(['address', 'uint16', 'bytes12', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980332
 ck(f(['address', 'uint16', 'bytes12', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980333
-ck(f(['address', 'uint16', 'bytes12', 'string[]'], D), T[A, ...])  # iterable case 1980334
+ck(f(['address', 'uint16', 'bytes12', 'string[]'], D), TA)  # iterable case 1980334
 ck(f(['address', 'uint16', 'bytes12', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980335
 ck(f(['address', 'uint16', 'bytes12', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980336
 ck(f(['address', 'uint16', 'bytes12', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980337
@@ -4604,11 +4604,11 @@ ck(f(['address', 'uint16', 'bytes12', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes12', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980364
 ck(f(['address', 'uint16', 'bytes12', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980365
 ck(f(['address', 'uint16', 'bytes12', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980366
-ck(f(['address', 'uint16', 'bytes12', '?'], D), T[A, ...])  # iterable case 1980367
+ck(f(['address', 'uint16', 'bytes12', '?'], D), TA)  # iterable case 1980367
 ck(f(['address', 'uint16', 'bytes13', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980368
-ck(f(['address', 'uint16', 'bytes13', 'address[]'], D), T[A, ...])  # iterable case 1980369
+ck(f(['address', 'uint16', 'bytes13', 'address[]'], D), TA)  # iterable case 1980369
 ck(f(['address', 'uint16', 'bytes13', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980370
-ck(f(['address', 'uint16', 'bytes13', 'bool[]'], D), T[A, ...])  # iterable case 1980371
+ck(f(['address', 'uint16', 'bytes13', 'bool[]'], D), TA)  # iterable case 1980371
 ck(f(['address', 'uint16', 'bytes13', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980372
 ck(f(['address', 'uint16', 'bytes13', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980373
 ck(f(['address', 'uint16', 'bytes13', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980374
@@ -4675,7 +4675,7 @@ ck(f(['address', 'uint16', 'bytes13', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes13', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980435
 ck(f(['address', 'uint16', 'bytes13', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980436
 ck(f(['address', 'uint16', 'bytes13', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980437
-ck(f(['address', 'uint16', 'bytes13', 'string[]'], D), T[A, ...])  # iterable case 1980438
+ck(f(['address', 'uint16', 'bytes13', 'string[]'], D), TA)  # iterable case 1980438
 ck(f(['address', 'uint16', 'bytes13', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980439
 ck(f(['address', 'uint16', 'bytes13', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980440
 ck(f(['address', 'uint16', 'bytes13', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980441
@@ -4708,11 +4708,11 @@ ck(f(['address', 'uint16', 'bytes13', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes13', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980468
 ck(f(['address', 'uint16', 'bytes13', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980469
 ck(f(['address', 'uint16', 'bytes13', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980470
-ck(f(['address', 'uint16', 'bytes13', '?'], D), T[A, ...])  # iterable case 1980471
+ck(f(['address', 'uint16', 'bytes13', '?'], D), TA)  # iterable case 1980471
 ck(f(['address', 'uint16', 'bytes14', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980472
-ck(f(['address', 'uint16', 'bytes14', 'address[]'], D), T[A, ...])  # iterable case 1980473
+ck(f(['address', 'uint16', 'bytes14', 'address[]'], D), TA)  # iterable case 1980473
 ck(f(['address', 'uint16', 'bytes14', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980474
-ck(f(['address', 'uint16', 'bytes14', 'bool[]'], D), T[A, ...])  # iterable case 1980475
+ck(f(['address', 'uint16', 'bytes14', 'bool[]'], D), TA)  # iterable case 1980475
 ck(f(['address', 'uint16', 'bytes14', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980476
 ck(f(['address', 'uint16', 'bytes14', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980477
 ck(f(['address', 'uint16', 'bytes14', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980478
@@ -4779,7 +4779,7 @@ ck(f(['address', 'uint16', 'bytes14', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes14', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980539
 ck(f(['address', 'uint16', 'bytes14', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980540
 ck(f(['address', 'uint16', 'bytes14', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980541
-ck(f(['address', 'uint16', 'bytes14', 'string[]'], D), T[A, ...])  # iterable case 1980542
+ck(f(['address', 'uint16', 'bytes14', 'string[]'], D), TA)  # iterable case 1980542
 ck(f(['address', 'uint16', 'bytes14', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980543
 ck(f(['address', 'uint16', 'bytes14', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980544
 ck(f(['address', 'uint16', 'bytes14', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980545
@@ -4812,11 +4812,11 @@ ck(f(['address', 'uint16', 'bytes14', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes14', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980572
 ck(f(['address', 'uint16', 'bytes14', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980573
 ck(f(['address', 'uint16', 'bytes14', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980574
-ck(f(['address', 'uint16', 'bytes14', '?'], D), T[A, ...])  # iterable case 1980575
+ck(f(['address', 'uint16', 'bytes14', '?'], D), TA)  # iterable case 1980575
 ck(f(['address', 'uint16', 'bytes15', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980576
-ck(f(['address', 'uint16', 'bytes15', 'address[]'], D), T[A, ...])  # iterable case 1980577
+ck(f(['address', 'uint16', 'bytes15', 'address[]'], D), TA)  # iterable case 1980577
 ck(f(['address', 'uint16', 'bytes15', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980578
-ck(f(['address', 'uint16', 'bytes15', 'bool[]'], D), T[A, ...])  # iterable case 1980579
+ck(f(['address', 'uint16', 'bytes15', 'bool[]'], D), TA)  # iterable case 1980579
 ck(f(['address', 'uint16', 'bytes15', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980580
 ck(f(['address', 'uint16', 'bytes15', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980581
 ck(f(['address', 'uint16', 'bytes15', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980582
@@ -4883,7 +4883,7 @@ ck(f(['address', 'uint16', 'bytes15', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes15', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980643
 ck(f(['address', 'uint16', 'bytes15', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980644
 ck(f(['address', 'uint16', 'bytes15', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980645
-ck(f(['address', 'uint16', 'bytes15', 'string[]'], D), T[A, ...])  # iterable case 1980646
+ck(f(['address', 'uint16', 'bytes15', 'string[]'], D), TA)  # iterable case 1980646
 ck(f(['address', 'uint16', 'bytes15', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980647
 ck(f(['address', 'uint16', 'bytes15', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980648
 ck(f(['address', 'uint16', 'bytes15', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980649
@@ -4916,11 +4916,11 @@ ck(f(['address', 'uint16', 'bytes15', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes15', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980676
 ck(f(['address', 'uint16', 'bytes15', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980677
 ck(f(['address', 'uint16', 'bytes15', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980678
-ck(f(['address', 'uint16', 'bytes15', '?'], D), T[A, ...])  # iterable case 1980679
+ck(f(['address', 'uint16', 'bytes15', '?'], D), TA)  # iterable case 1980679
 ck(f(['address', 'uint16', 'bytes16', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980680
-ck(f(['address', 'uint16', 'bytes16', 'address[]'], D), T[A, ...])  # iterable case 1980681
+ck(f(['address', 'uint16', 'bytes16', 'address[]'], D), TA)  # iterable case 1980681
 ck(f(['address', 'uint16', 'bytes16', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980682
-ck(f(['address', 'uint16', 'bytes16', 'bool[]'], D), T[A, ...])  # iterable case 1980683
+ck(f(['address', 'uint16', 'bytes16', 'bool[]'], D), TA)  # iterable case 1980683
 ck(f(['address', 'uint16', 'bytes16', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980684
 ck(f(['address', 'uint16', 'bytes16', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980685
 ck(f(['address', 'uint16', 'bytes16', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980686
@@ -4987,7 +4987,7 @@ ck(f(['address', 'uint16', 'bytes16', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes16', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980747
 ck(f(['address', 'uint16', 'bytes16', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980748
 ck(f(['address', 'uint16', 'bytes16', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980749
-ck(f(['address', 'uint16', 'bytes16', 'string[]'], D), T[A, ...])  # iterable case 1980750
+ck(f(['address', 'uint16', 'bytes16', 'string[]'], D), TA)  # iterable case 1980750
 ck(f(['address', 'uint16', 'bytes16', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980751
 ck(f(['address', 'uint16', 'bytes16', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980752
 ck(f(['address', 'uint16', 'bytes16', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980753
@@ -5020,11 +5020,11 @@ ck(f(['address', 'uint16', 'bytes16', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes16', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980780
 ck(f(['address', 'uint16', 'bytes16', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980781
 ck(f(['address', 'uint16', 'bytes16', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980782
-ck(f(['address', 'uint16', 'bytes16', '?'], D), T[A, ...])  # iterable case 1980783
+ck(f(['address', 'uint16', 'bytes16', '?'], D), TA)  # iterable case 1980783
 ck(f(['address', 'uint16', 'bytes17', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980784
-ck(f(['address', 'uint16', 'bytes17', 'address[]'], D), T[A, ...])  # iterable case 1980785
+ck(f(['address', 'uint16', 'bytes17', 'address[]'], D), TA)  # iterable case 1980785
 ck(f(['address', 'uint16', 'bytes17', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980786
-ck(f(['address', 'uint16', 'bytes17', 'bool[]'], D), T[A, ...])  # iterable case 1980787
+ck(f(['address', 'uint16', 'bytes17', 'bool[]'], D), TA)  # iterable case 1980787
 ck(f(['address', 'uint16', 'bytes17', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980788
 ck(f(['address', 'uint16', 'bytes17', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980789
 ck(f(['address', 'uint16', 'bytes17', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980790
@@ -5091,7 +5091,7 @@ ck(f(['address', 'uint16', 'bytes17', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes17', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980851
 ck(f(['address', 'uint16', 'bytes17', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980852
 ck(f(['address', 'uint16', 'bytes17', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980853
-ck(f(['address', 'uint16', 'bytes17', 'string[]'], D), T[A, ...])  # iterable case 1980854
+ck(f(['address', 'uint16', 'bytes17', 'string[]'], D), TA)  # iterable case 1980854
 ck(f(['address', 'uint16', 'bytes17', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980855
 ck(f(['address', 'uint16', 'bytes17', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980856
 ck(f(['address', 'uint16', 'bytes17', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980857
@@ -5124,11 +5124,11 @@ ck(f(['address', 'uint16', 'bytes17', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes17', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980884
 ck(f(['address', 'uint16', 'bytes17', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980885
 ck(f(['address', 'uint16', 'bytes17', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980886
-ck(f(['address', 'uint16', 'bytes17', '?'], D), T[A, ...])  # iterable case 1980887
+ck(f(['address', 'uint16', 'bytes17', '?'], D), TA)  # iterable case 1980887
 ck(f(['address', 'uint16', 'bytes18', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980888
-ck(f(['address', 'uint16', 'bytes18', 'address[]'], D), T[A, ...])  # iterable case 1980889
+ck(f(['address', 'uint16', 'bytes18', 'address[]'], D), TA)  # iterable case 1980889
 ck(f(['address', 'uint16', 'bytes18', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980890
-ck(f(['address', 'uint16', 'bytes18', 'bool[]'], D), T[A, ...])  # iterable case 1980891
+ck(f(['address', 'uint16', 'bytes18', 'bool[]'], D), TA)  # iterable case 1980891
 ck(f(['address', 'uint16', 'bytes18', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980892
 ck(f(['address', 'uint16', 'bytes18', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980893
 ck(f(['address', 'uint16', 'bytes18', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980894
@@ -5195,7 +5195,7 @@ ck(f(['address', 'uint16', 'bytes18', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes18', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1980955
 ck(f(['address', 'uint16', 'bytes18', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1980956
 ck(f(['address', 'uint16', 'bytes18', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1980957
-ck(f(['address', 'uint16', 'bytes18', 'string[]'], D), T[A, ...])  # iterable case 1980958
+ck(f(['address', 'uint16', 'bytes18', 'string[]'], D), TA)  # iterable case 1980958
 ck(f(['address', 'uint16', 'bytes18', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1980959
 ck(f(['address', 'uint16', 'bytes18', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1980960
 ck(f(['address', 'uint16', 'bytes18', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1980961
@@ -5228,11 +5228,11 @@ ck(f(['address', 'uint16', 'bytes18', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes18', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1980988
 ck(f(['address', 'uint16', 'bytes18', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1980989
 ck(f(['address', 'uint16', 'bytes18', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1980990
-ck(f(['address', 'uint16', 'bytes18', '?'], D), T[A, ...])  # iterable case 1980991
+ck(f(['address', 'uint16', 'bytes18', '?'], D), TA)  # iterable case 1980991
 ck(f(['address', 'uint16', 'bytes19', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1980992
-ck(f(['address', 'uint16', 'bytes19', 'address[]'], D), T[A, ...])  # iterable case 1980993
+ck(f(['address', 'uint16', 'bytes19', 'address[]'], D), TA)  # iterable case 1980993
 ck(f(['address', 'uint16', 'bytes19', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1980994
-ck(f(['address', 'uint16', 'bytes19', 'bool[]'], D), T[A, ...])  # iterable case 1980995
+ck(f(['address', 'uint16', 'bytes19', 'bool[]'], D), TA)  # iterable case 1980995
 ck(f(['address', 'uint16', 'bytes19', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1980996
 ck(f(['address', 'uint16', 'bytes19', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1980997
 ck(f(['address', 'uint16', 'bytes19', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1980998
@@ -5299,7 +5299,7 @@ ck(f(['address', 'uint16', 'bytes19', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes19', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981059
 ck(f(['address', 'uint16', 'bytes19', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981060
 ck(f(['address', 'uint16', 'bytes19', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981061
-ck(f(['address', 'uint16', 'bytes19', 'string[]'], D), T[A, ...])  # iterable case 1981062
+ck(f(['address', 'uint16', 'bytes19', 'string[]'], D), TA)  # iterable case 1981062
 ck(f(['address', 'uint16', 'bytes19', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981063
 ck(f(['address', 'uint16', 'bytes19', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981064
 ck(f(['address', 'uint16', 'bytes19', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981065
@@ -5332,11 +5332,11 @@ ck(f(['address', 'uint16', 'bytes19', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes19', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981092
 ck(f(['address', 'uint16', 'bytes19', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981093
 ck(f(['address', 'uint16', 'bytes19', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981094
-ck(f(['address', 'uint16', 'bytes19', '?'], D), T[A, ...])  # iterable case 1981095
+ck(f(['address', 'uint16', 'bytes19', '?'], D), TA)  # iterable case 1981095
 ck(f(['address', 'uint16', 'bytes2', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981096
-ck(f(['address', 'uint16', 'bytes2', 'address[]'], D), T[A, ...])  # iterable case 1981097
+ck(f(['address', 'uint16', 'bytes2', 'address[]'], D), TA)  # iterable case 1981097
 ck(f(['address', 'uint16', 'bytes2', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981098
-ck(f(['address', 'uint16', 'bytes2', 'bool[]'], D), T[A, ...])  # iterable case 1981099
+ck(f(['address', 'uint16', 'bytes2', 'bool[]'], D), TA)  # iterable case 1981099
 ck(f(['address', 'uint16', 'bytes2', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981100
 ck(f(['address', 'uint16', 'bytes2', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981101
 ck(f(['address', 'uint16', 'bytes2', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981102
@@ -5403,7 +5403,7 @@ ck(f(['address', 'uint16', 'bytes2', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes2', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981163
 ck(f(['address', 'uint16', 'bytes2', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981164
 ck(f(['address', 'uint16', 'bytes2', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981165
-ck(f(['address', 'uint16', 'bytes2', 'string[]'], D), T[A, ...])  # iterable case 1981166
+ck(f(['address', 'uint16', 'bytes2', 'string[]'], D), TA)  # iterable case 1981166
 ck(f(['address', 'uint16', 'bytes2', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981167
 ck(f(['address', 'uint16', 'bytes2', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981168
 ck(f(['address', 'uint16', 'bytes2', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981169
@@ -5436,11 +5436,11 @@ ck(f(['address', 'uint16', 'bytes2', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes2', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981196
 ck(f(['address', 'uint16', 'bytes2', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981197
 ck(f(['address', 'uint16', 'bytes2', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981198
-ck(f(['address', 'uint16', 'bytes2', '?'], D), T[A, ...])  # iterable case 1981199
+ck(f(['address', 'uint16', 'bytes2', '?'], D), TA)  # iterable case 1981199
 ck(f(['address', 'uint16', 'bytes20', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981200
-ck(f(['address', 'uint16', 'bytes20', 'address[]'], D), T[A, ...])  # iterable case 1981201
+ck(f(['address', 'uint16', 'bytes20', 'address[]'], D), TA)  # iterable case 1981201
 ck(f(['address', 'uint16', 'bytes20', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981202
-ck(f(['address', 'uint16', 'bytes20', 'bool[]'], D), T[A, ...])  # iterable case 1981203
+ck(f(['address', 'uint16', 'bytes20', 'bool[]'], D), TA)  # iterable case 1981203
 ck(f(['address', 'uint16', 'bytes20', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981204
 ck(f(['address', 'uint16', 'bytes20', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981205
 ck(f(['address', 'uint16', 'bytes20', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981206
@@ -5507,7 +5507,7 @@ ck(f(['address', 'uint16', 'bytes20', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes20', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981267
 ck(f(['address', 'uint16', 'bytes20', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981268
 ck(f(['address', 'uint16', 'bytes20', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981269
-ck(f(['address', 'uint16', 'bytes20', 'string[]'], D), T[A, ...])  # iterable case 1981270
+ck(f(['address', 'uint16', 'bytes20', 'string[]'], D), TA)  # iterable case 1981270
 ck(f(['address', 'uint16', 'bytes20', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981271
 ck(f(['address', 'uint16', 'bytes20', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981272
 ck(f(['address', 'uint16', 'bytes20', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981273
@@ -5540,11 +5540,11 @@ ck(f(['address', 'uint16', 'bytes20', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes20', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981300
 ck(f(['address', 'uint16', 'bytes20', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981301
 ck(f(['address', 'uint16', 'bytes20', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981302
-ck(f(['address', 'uint16', 'bytes20', '?'], D), T[A, ...])  # iterable case 1981303
+ck(f(['address', 'uint16', 'bytes20', '?'], D), TA)  # iterable case 1981303
 ck(f(['address', 'uint16', 'bytes21', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981304
-ck(f(['address', 'uint16', 'bytes21', 'address[]'], D), T[A, ...])  # iterable case 1981305
+ck(f(['address', 'uint16', 'bytes21', 'address[]'], D), TA)  # iterable case 1981305
 ck(f(['address', 'uint16', 'bytes21', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981306
-ck(f(['address', 'uint16', 'bytes21', 'bool[]'], D), T[A, ...])  # iterable case 1981307
+ck(f(['address', 'uint16', 'bytes21', 'bool[]'], D), TA)  # iterable case 1981307
 ck(f(['address', 'uint16', 'bytes21', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981308
 ck(f(['address', 'uint16', 'bytes21', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981309
 ck(f(['address', 'uint16', 'bytes21', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981310
@@ -5611,7 +5611,7 @@ ck(f(['address', 'uint16', 'bytes21', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes21', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981371
 ck(f(['address', 'uint16', 'bytes21', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981372
 ck(f(['address', 'uint16', 'bytes21', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981373
-ck(f(['address', 'uint16', 'bytes21', 'string[]'], D), T[A, ...])  # iterable case 1981374
+ck(f(['address', 'uint16', 'bytes21', 'string[]'], D), TA)  # iterable case 1981374
 ck(f(['address', 'uint16', 'bytes21', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981375
 ck(f(['address', 'uint16', 'bytes21', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981376
 ck(f(['address', 'uint16', 'bytes21', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981377
@@ -5644,11 +5644,11 @@ ck(f(['address', 'uint16', 'bytes21', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes21', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981404
 ck(f(['address', 'uint16', 'bytes21', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981405
 ck(f(['address', 'uint16', 'bytes21', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981406
-ck(f(['address', 'uint16', 'bytes21', '?'], D), T[A, ...])  # iterable case 1981407
+ck(f(['address', 'uint16', 'bytes21', '?'], D), TA)  # iterable case 1981407
 ck(f(['address', 'uint16', 'bytes22', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981408
-ck(f(['address', 'uint16', 'bytes22', 'address[]'], D), T[A, ...])  # iterable case 1981409
+ck(f(['address', 'uint16', 'bytes22', 'address[]'], D), TA)  # iterable case 1981409
 ck(f(['address', 'uint16', 'bytes22', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981410
-ck(f(['address', 'uint16', 'bytes22', 'bool[]'], D), T[A, ...])  # iterable case 1981411
+ck(f(['address', 'uint16', 'bytes22', 'bool[]'], D), TA)  # iterable case 1981411
 ck(f(['address', 'uint16', 'bytes22', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981412
 ck(f(['address', 'uint16', 'bytes22', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981413
 ck(f(['address', 'uint16', 'bytes22', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981414
@@ -5715,7 +5715,7 @@ ck(f(['address', 'uint16', 'bytes22', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes22', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981475
 ck(f(['address', 'uint16', 'bytes22', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981476
 ck(f(['address', 'uint16', 'bytes22', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981477
-ck(f(['address', 'uint16', 'bytes22', 'string[]'], D), T[A, ...])  # iterable case 1981478
+ck(f(['address', 'uint16', 'bytes22', 'string[]'], D), TA)  # iterable case 1981478
 ck(f(['address', 'uint16', 'bytes22', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981479
 ck(f(['address', 'uint16', 'bytes22', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981480
 ck(f(['address', 'uint16', 'bytes22', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981481
@@ -5748,11 +5748,11 @@ ck(f(['address', 'uint16', 'bytes22', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes22', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981508
 ck(f(['address', 'uint16', 'bytes22', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981509
 ck(f(['address', 'uint16', 'bytes22', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981510
-ck(f(['address', 'uint16', 'bytes22', '?'], D), T[A, ...])  # iterable case 1981511
+ck(f(['address', 'uint16', 'bytes22', '?'], D), TA)  # iterable case 1981511
 ck(f(['address', 'uint16', 'bytes23', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981512
-ck(f(['address', 'uint16', 'bytes23', 'address[]'], D), T[A, ...])  # iterable case 1981513
+ck(f(['address', 'uint16', 'bytes23', 'address[]'], D), TA)  # iterable case 1981513
 ck(f(['address', 'uint16', 'bytes23', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981514
-ck(f(['address', 'uint16', 'bytes23', 'bool[]'], D), T[A, ...])  # iterable case 1981515
+ck(f(['address', 'uint16', 'bytes23', 'bool[]'], D), TA)  # iterable case 1981515
 ck(f(['address', 'uint16', 'bytes23', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981516
 ck(f(['address', 'uint16', 'bytes23', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981517
 ck(f(['address', 'uint16', 'bytes23', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981518
@@ -5819,7 +5819,7 @@ ck(f(['address', 'uint16', 'bytes23', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes23', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981579
 ck(f(['address', 'uint16', 'bytes23', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981580
 ck(f(['address', 'uint16', 'bytes23', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981581
-ck(f(['address', 'uint16', 'bytes23', 'string[]'], D), T[A, ...])  # iterable case 1981582
+ck(f(['address', 'uint16', 'bytes23', 'string[]'], D), TA)  # iterable case 1981582
 ck(f(['address', 'uint16', 'bytes23', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981583
 ck(f(['address', 'uint16', 'bytes23', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981584
 ck(f(['address', 'uint16', 'bytes23', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981585
@@ -5852,11 +5852,11 @@ ck(f(['address', 'uint16', 'bytes23', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes23', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981612
 ck(f(['address', 'uint16', 'bytes23', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981613
 ck(f(['address', 'uint16', 'bytes23', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981614
-ck(f(['address', 'uint16', 'bytes23', '?'], D), T[A, ...])  # iterable case 1981615
+ck(f(['address', 'uint16', 'bytes23', '?'], D), TA)  # iterable case 1981615
 ck(f(['address', 'uint16', 'bytes24', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981616
-ck(f(['address', 'uint16', 'bytes24', 'address[]'], D), T[A, ...])  # iterable case 1981617
+ck(f(['address', 'uint16', 'bytes24', 'address[]'], D), TA)  # iterable case 1981617
 ck(f(['address', 'uint16', 'bytes24', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981618
-ck(f(['address', 'uint16', 'bytes24', 'bool[]'], D), T[A, ...])  # iterable case 1981619
+ck(f(['address', 'uint16', 'bytes24', 'bool[]'], D), TA)  # iterable case 1981619
 ck(f(['address', 'uint16', 'bytes24', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981620
 ck(f(['address', 'uint16', 'bytes24', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981621
 ck(f(['address', 'uint16', 'bytes24', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981622
@@ -5923,7 +5923,7 @@ ck(f(['address', 'uint16', 'bytes24', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes24', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981683
 ck(f(['address', 'uint16', 'bytes24', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981684
 ck(f(['address', 'uint16', 'bytes24', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981685
-ck(f(['address', 'uint16', 'bytes24', 'string[]'], D), T[A, ...])  # iterable case 1981686
+ck(f(['address', 'uint16', 'bytes24', 'string[]'], D), TA)  # iterable case 1981686
 ck(f(['address', 'uint16', 'bytes24', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981687
 ck(f(['address', 'uint16', 'bytes24', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981688
 ck(f(['address', 'uint16', 'bytes24', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981689
@@ -5956,11 +5956,11 @@ ck(f(['address', 'uint16', 'bytes24', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes24', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981716
 ck(f(['address', 'uint16', 'bytes24', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981717
 ck(f(['address', 'uint16', 'bytes24', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981718
-ck(f(['address', 'uint16', 'bytes24', '?'], D), T[A, ...])  # iterable case 1981719
+ck(f(['address', 'uint16', 'bytes24', '?'], D), TA)  # iterable case 1981719
 ck(f(['address', 'uint16', 'bytes25', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981720
-ck(f(['address', 'uint16', 'bytes25', 'address[]'], D), T[A, ...])  # iterable case 1981721
+ck(f(['address', 'uint16', 'bytes25', 'address[]'], D), TA)  # iterable case 1981721
 ck(f(['address', 'uint16', 'bytes25', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981722
-ck(f(['address', 'uint16', 'bytes25', 'bool[]'], D), T[A, ...])  # iterable case 1981723
+ck(f(['address', 'uint16', 'bytes25', 'bool[]'], D), TA)  # iterable case 1981723
 ck(f(['address', 'uint16', 'bytes25', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981724
 ck(f(['address', 'uint16', 'bytes25', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981725
 ck(f(['address', 'uint16', 'bytes25', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981726
@@ -6027,7 +6027,7 @@ ck(f(['address', 'uint16', 'bytes25', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes25', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981787
 ck(f(['address', 'uint16', 'bytes25', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981788
 ck(f(['address', 'uint16', 'bytes25', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981789
-ck(f(['address', 'uint16', 'bytes25', 'string[]'], D), T[A, ...])  # iterable case 1981790
+ck(f(['address', 'uint16', 'bytes25', 'string[]'], D), TA)  # iterable case 1981790
 ck(f(['address', 'uint16', 'bytes25', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981791
 ck(f(['address', 'uint16', 'bytes25', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981792
 ck(f(['address', 'uint16', 'bytes25', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981793
@@ -6060,11 +6060,11 @@ ck(f(['address', 'uint16', 'bytes25', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes25', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981820
 ck(f(['address', 'uint16', 'bytes25', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981821
 ck(f(['address', 'uint16', 'bytes25', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981822
-ck(f(['address', 'uint16', 'bytes25', '?'], D), T[A, ...])  # iterable case 1981823
+ck(f(['address', 'uint16', 'bytes25', '?'], D), TA)  # iterable case 1981823
 ck(f(['address', 'uint16', 'bytes26', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981824
-ck(f(['address', 'uint16', 'bytes26', 'address[]'], D), T[A, ...])  # iterable case 1981825
+ck(f(['address', 'uint16', 'bytes26', 'address[]'], D), TA)  # iterable case 1981825
 ck(f(['address', 'uint16', 'bytes26', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981826
-ck(f(['address', 'uint16', 'bytes26', 'bool[]'], D), T[A, ...])  # iterable case 1981827
+ck(f(['address', 'uint16', 'bytes26', 'bool[]'], D), TA)  # iterable case 1981827
 ck(f(['address', 'uint16', 'bytes26', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981828
 ck(f(['address', 'uint16', 'bytes26', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981829
 ck(f(['address', 'uint16', 'bytes26', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981830
@@ -6131,7 +6131,7 @@ ck(f(['address', 'uint16', 'bytes26', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes26', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981891
 ck(f(['address', 'uint16', 'bytes26', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981892
 ck(f(['address', 'uint16', 'bytes26', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981893
-ck(f(['address', 'uint16', 'bytes26', 'string[]'], D), T[A, ...])  # iterable case 1981894
+ck(f(['address', 'uint16', 'bytes26', 'string[]'], D), TA)  # iterable case 1981894
 ck(f(['address', 'uint16', 'bytes26', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981895
 ck(f(['address', 'uint16', 'bytes26', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1981896
 ck(f(['address', 'uint16', 'bytes26', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1981897
@@ -6164,11 +6164,11 @@ ck(f(['address', 'uint16', 'bytes26', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes26', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1981924
 ck(f(['address', 'uint16', 'bytes26', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1981925
 ck(f(['address', 'uint16', 'bytes26', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1981926
-ck(f(['address', 'uint16', 'bytes26', '?'], D), T[A, ...])  # iterable case 1981927
+ck(f(['address', 'uint16', 'bytes26', '?'], D), TA)  # iterable case 1981927
 ck(f(['address', 'uint16', 'bytes27', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1981928
-ck(f(['address', 'uint16', 'bytes27', 'address[]'], D), T[A, ...])  # iterable case 1981929
+ck(f(['address', 'uint16', 'bytes27', 'address[]'], D), TA)  # iterable case 1981929
 ck(f(['address', 'uint16', 'bytes27', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1981930
-ck(f(['address', 'uint16', 'bytes27', 'bool[]'], D), T[A, ...])  # iterable case 1981931
+ck(f(['address', 'uint16', 'bytes27', 'bool[]'], D), TA)  # iterable case 1981931
 ck(f(['address', 'uint16', 'bytes27', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1981932
 ck(f(['address', 'uint16', 'bytes27', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1981933
 ck(f(['address', 'uint16', 'bytes27', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1981934
@@ -6235,7 +6235,7 @@ ck(f(['address', 'uint16', 'bytes27', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes27', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1981995
 ck(f(['address', 'uint16', 'bytes27', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1981996
 ck(f(['address', 'uint16', 'bytes27', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1981997
-ck(f(['address', 'uint16', 'bytes27', 'string[]'], D), T[A, ...])  # iterable case 1981998
+ck(f(['address', 'uint16', 'bytes27', 'string[]'], D), TA)  # iterable case 1981998
 ck(f(['address', 'uint16', 'bytes27', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1981999
 ck(f(['address', 'uint16', 'bytes27', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982000
 ck(f(['address', 'uint16', 'bytes27', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982001
@@ -6268,11 +6268,11 @@ ck(f(['address', 'uint16', 'bytes27', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes27', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982028
 ck(f(['address', 'uint16', 'bytes27', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982029
 ck(f(['address', 'uint16', 'bytes27', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982030
-ck(f(['address', 'uint16', 'bytes27', '?'], D), T[A, ...])  # iterable case 1982031
+ck(f(['address', 'uint16', 'bytes27', '?'], D), TA)  # iterable case 1982031
 ck(f(['address', 'uint16', 'bytes28', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982032
-ck(f(['address', 'uint16', 'bytes28', 'address[]'], D), T[A, ...])  # iterable case 1982033
+ck(f(['address', 'uint16', 'bytes28', 'address[]'], D), TA)  # iterable case 1982033
 ck(f(['address', 'uint16', 'bytes28', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982034
-ck(f(['address', 'uint16', 'bytes28', 'bool[]'], D), T[A, ...])  # iterable case 1982035
+ck(f(['address', 'uint16', 'bytes28', 'bool[]'], D), TA)  # iterable case 1982035
 ck(f(['address', 'uint16', 'bytes28', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982036
 ck(f(['address', 'uint16', 'bytes28', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982037
 ck(f(['address', 'uint16', 'bytes28', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982038
@@ -6339,7 +6339,7 @@ ck(f(['address', 'uint16', 'bytes28', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes28', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982099
 ck(f(['address', 'uint16', 'bytes28', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982100
 ck(f(['address', 'uint16', 'bytes28', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982101
-ck(f(['address', 'uint16', 'bytes28', 'string[]'], D), T[A, ...])  # iterable case 1982102
+ck(f(['address', 'uint16', 'bytes28', 'string[]'], D), TA)  # iterable case 1982102
 ck(f(['address', 'uint16', 'bytes28', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982103
 ck(f(['address', 'uint16', 'bytes28', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982104
 ck(f(['address', 'uint16', 'bytes28', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982105
@@ -6372,11 +6372,11 @@ ck(f(['address', 'uint16', 'bytes28', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes28', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982132
 ck(f(['address', 'uint16', 'bytes28', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982133
 ck(f(['address', 'uint16', 'bytes28', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982134
-ck(f(['address', 'uint16', 'bytes28', '?'], D), T[A, ...])  # iterable case 1982135
+ck(f(['address', 'uint16', 'bytes28', '?'], D), TA)  # iterable case 1982135
 ck(f(['address', 'uint16', 'bytes29', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982136
-ck(f(['address', 'uint16', 'bytes29', 'address[]'], D), T[A, ...])  # iterable case 1982137
+ck(f(['address', 'uint16', 'bytes29', 'address[]'], D), TA)  # iterable case 1982137
 ck(f(['address', 'uint16', 'bytes29', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982138
-ck(f(['address', 'uint16', 'bytes29', 'bool[]'], D), T[A, ...])  # iterable case 1982139
+ck(f(['address', 'uint16', 'bytes29', 'bool[]'], D), TA)  # iterable case 1982139
 ck(f(['address', 'uint16', 'bytes29', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982140
 ck(f(['address', 'uint16', 'bytes29', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982141
 ck(f(['address', 'uint16', 'bytes29', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982142
@@ -6443,7 +6443,7 @@ ck(f(['address', 'uint16', 'bytes29', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes29', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982203
 ck(f(['address', 'uint16', 'bytes29', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982204
 ck(f(['address', 'uint16', 'bytes29', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982205
-ck(f(['address', 'uint16', 'bytes29', 'string[]'], D), T[A, ...])  # iterable case 1982206
+ck(f(['address', 'uint16', 'bytes29', 'string[]'], D), TA)  # iterable case 1982206
 ck(f(['address', 'uint16', 'bytes29', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982207
 ck(f(['address', 'uint16', 'bytes29', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982208
 ck(f(['address', 'uint16', 'bytes29', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982209
@@ -6476,11 +6476,11 @@ ck(f(['address', 'uint16', 'bytes29', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes29', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982236
 ck(f(['address', 'uint16', 'bytes29', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982237
 ck(f(['address', 'uint16', 'bytes29', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982238
-ck(f(['address', 'uint16', 'bytes29', '?'], D), T[A, ...])  # iterable case 1982239
+ck(f(['address', 'uint16', 'bytes29', '?'], D), TA)  # iterable case 1982239
 ck(f(['address', 'uint16', 'bytes3', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982240
-ck(f(['address', 'uint16', 'bytes3', 'address[]'], D), T[A, ...])  # iterable case 1982241
+ck(f(['address', 'uint16', 'bytes3', 'address[]'], D), TA)  # iterable case 1982241
 ck(f(['address', 'uint16', 'bytes3', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982242
-ck(f(['address', 'uint16', 'bytes3', 'bool[]'], D), T[A, ...])  # iterable case 1982243
+ck(f(['address', 'uint16', 'bytes3', 'bool[]'], D), TA)  # iterable case 1982243
 ck(f(['address', 'uint16', 'bytes3', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982244
 ck(f(['address', 'uint16', 'bytes3', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982245
 ck(f(['address', 'uint16', 'bytes3', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982246
@@ -6547,7 +6547,7 @@ ck(f(['address', 'uint16', 'bytes3', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes3', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982307
 ck(f(['address', 'uint16', 'bytes3', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982308
 ck(f(['address', 'uint16', 'bytes3', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982309
-ck(f(['address', 'uint16', 'bytes3', 'string[]'], D), T[A, ...])  # iterable case 1982310
+ck(f(['address', 'uint16', 'bytes3', 'string[]'], D), TA)  # iterable case 1982310
 ck(f(['address', 'uint16', 'bytes3', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982311
 ck(f(['address', 'uint16', 'bytes3', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982312
 ck(f(['address', 'uint16', 'bytes3', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982313
@@ -6580,11 +6580,11 @@ ck(f(['address', 'uint16', 'bytes3', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes3', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982340
 ck(f(['address', 'uint16', 'bytes3', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982341
 ck(f(['address', 'uint16', 'bytes3', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982342
-ck(f(['address', 'uint16', 'bytes3', '?'], D), T[A, ...])  # iterable case 1982343
+ck(f(['address', 'uint16', 'bytes3', '?'], D), TA)  # iterable case 1982343
 ck(f(['address', 'uint16', 'bytes30', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982344
-ck(f(['address', 'uint16', 'bytes30', 'address[]'], D), T[A, ...])  # iterable case 1982345
+ck(f(['address', 'uint16', 'bytes30', 'address[]'], D), TA)  # iterable case 1982345
 ck(f(['address', 'uint16', 'bytes30', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982346
-ck(f(['address', 'uint16', 'bytes30', 'bool[]'], D), T[A, ...])  # iterable case 1982347
+ck(f(['address', 'uint16', 'bytes30', 'bool[]'], D), TA)  # iterable case 1982347
 ck(f(['address', 'uint16', 'bytes30', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982348
 ck(f(['address', 'uint16', 'bytes30', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982349
 ck(f(['address', 'uint16', 'bytes30', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982350
@@ -6651,7 +6651,7 @@ ck(f(['address', 'uint16', 'bytes30', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes30', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982411
 ck(f(['address', 'uint16', 'bytes30', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982412
 ck(f(['address', 'uint16', 'bytes30', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982413
-ck(f(['address', 'uint16', 'bytes30', 'string[]'], D), T[A, ...])  # iterable case 1982414
+ck(f(['address', 'uint16', 'bytes30', 'string[]'], D), TA)  # iterable case 1982414
 ck(f(['address', 'uint16', 'bytes30', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982415
 ck(f(['address', 'uint16', 'bytes30', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982416
 ck(f(['address', 'uint16', 'bytes30', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982417
@@ -6684,11 +6684,11 @@ ck(f(['address', 'uint16', 'bytes30', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes30', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982444
 ck(f(['address', 'uint16', 'bytes30', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982445
 ck(f(['address', 'uint16', 'bytes30', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982446
-ck(f(['address', 'uint16', 'bytes30', '?'], D), T[A, ...])  # iterable case 1982447
+ck(f(['address', 'uint16', 'bytes30', '?'], D), TA)  # iterable case 1982447
 ck(f(['address', 'uint16', 'bytes31', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982448
-ck(f(['address', 'uint16', 'bytes31', 'address[]'], D), T[A, ...])  # iterable case 1982449
+ck(f(['address', 'uint16', 'bytes31', 'address[]'], D), TA)  # iterable case 1982449
 ck(f(['address', 'uint16', 'bytes31', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982450
-ck(f(['address', 'uint16', 'bytes31', 'bool[]'], D), T[A, ...])  # iterable case 1982451
+ck(f(['address', 'uint16', 'bytes31', 'bool[]'], D), TA)  # iterable case 1982451
 ck(f(['address', 'uint16', 'bytes31', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982452
 ck(f(['address', 'uint16', 'bytes31', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982453
 ck(f(['address', 'uint16', 'bytes31', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982454
@@ -6755,7 +6755,7 @@ ck(f(['address', 'uint16', 'bytes31', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes31', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982515
 ck(f(['address', 'uint16', 'bytes31', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982516
 ck(f(['address', 'uint16', 'bytes31', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982517
-ck(f(['address', 'uint16', 'bytes31', 'string[]'], D), T[A, ...])  # iterable case 1982518
+ck(f(['address', 'uint16', 'bytes31', 'string[]'], D), TA)  # iterable case 1982518
 ck(f(['address', 'uint16', 'bytes31', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982519
 ck(f(['address', 'uint16', 'bytes31', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982520
 ck(f(['address', 'uint16', 'bytes31', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982521
@@ -6788,11 +6788,11 @@ ck(f(['address', 'uint16', 'bytes31', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes31', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982548
 ck(f(['address', 'uint16', 'bytes31', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982549
 ck(f(['address', 'uint16', 'bytes31', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982550
-ck(f(['address', 'uint16', 'bytes31', '?'], D), T[A, ...])  # iterable case 1982551
+ck(f(['address', 'uint16', 'bytes31', '?'], D), TA)  # iterable case 1982551
 ck(f(['address', 'uint16', 'bytes32', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982552
-ck(f(['address', 'uint16', 'bytes32', 'address[]'], D), T[A, ...])  # iterable case 1982553
+ck(f(['address', 'uint16', 'bytes32', 'address[]'], D), TA)  # iterable case 1982553
 ck(f(['address', 'uint16', 'bytes32', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982554
-ck(f(['address', 'uint16', 'bytes32', 'bool[]'], D), T[A, ...])  # iterable case 1982555
+ck(f(['address', 'uint16', 'bytes32', 'bool[]'], D), TA)  # iterable case 1982555
 ck(f(['address', 'uint16', 'bytes32', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982556
 ck(f(['address', 'uint16', 'bytes32', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982557
 ck(f(['address', 'uint16', 'bytes32', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982558
@@ -6859,7 +6859,7 @@ ck(f(['address', 'uint16', 'bytes32', 'int80'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes32', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982619
 ck(f(['address', 'uint16', 'bytes32', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982620
 ck(f(['address', 'uint16', 'bytes32', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982621
-ck(f(['address', 'uint16', 'bytes32', 'string[]'], D), T[A, ...])  # iterable case 1982622
+ck(f(['address', 'uint16', 'bytes32', 'string[]'], D), TA)  # iterable case 1982622
 ck(f(['address', 'uint16', 'bytes32', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982623
 ck(f(['address', 'uint16', 'bytes32', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982624
 ck(f(['address', 'uint16', 'bytes32', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982625
@@ -6892,11 +6892,11 @@ ck(f(['address', 'uint16', 'bytes32', 'uint8'], D), T[U[HA, by, i], ...])  # ite
 ck(f(['address', 'uint16', 'bytes32', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982652
 ck(f(['address', 'uint16', 'bytes32', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982653
 ck(f(['address', 'uint16', 'bytes32', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982654
-ck(f(['address', 'uint16', 'bytes32', '?'], D), T[A, ...])  # iterable case 1982655
+ck(f(['address', 'uint16', 'bytes32', '?'], D), TA)  # iterable case 1982655
 ck(f(['address', 'uint16', 'bytes4', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982656
-ck(f(['address', 'uint16', 'bytes4', 'address[]'], D), T[A, ...])  # iterable case 1982657
+ck(f(['address', 'uint16', 'bytes4', 'address[]'], D), TA)  # iterable case 1982657
 ck(f(['address', 'uint16', 'bytes4', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982658
-ck(f(['address', 'uint16', 'bytes4', 'bool[]'], D), T[A, ...])  # iterable case 1982659
+ck(f(['address', 'uint16', 'bytes4', 'bool[]'], D), TA)  # iterable case 1982659
 ck(f(['address', 'uint16', 'bytes4', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982660
 ck(f(['address', 'uint16', 'bytes4', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982661
 ck(f(['address', 'uint16', 'bytes4', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982662
@@ -6963,7 +6963,7 @@ ck(f(['address', 'uint16', 'bytes4', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes4', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982723
 ck(f(['address', 'uint16', 'bytes4', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982724
 ck(f(['address', 'uint16', 'bytes4', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982725
-ck(f(['address', 'uint16', 'bytes4', 'string[]'], D), T[A, ...])  # iterable case 1982726
+ck(f(['address', 'uint16', 'bytes4', 'string[]'], D), TA)  # iterable case 1982726
 ck(f(['address', 'uint16', 'bytes4', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982727
 ck(f(['address', 'uint16', 'bytes4', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982728
 ck(f(['address', 'uint16', 'bytes4', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982729
@@ -6996,11 +6996,11 @@ ck(f(['address', 'uint16', 'bytes4', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes4', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982756
 ck(f(['address', 'uint16', 'bytes4', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982757
 ck(f(['address', 'uint16', 'bytes4', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982758
-ck(f(['address', 'uint16', 'bytes4', '?'], D), T[A, ...])  # iterable case 1982759
+ck(f(['address', 'uint16', 'bytes4', '?'], D), TA)  # iterable case 1982759
 ck(f(['address', 'uint16', 'bytes5', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982760
-ck(f(['address', 'uint16', 'bytes5', 'address[]'], D), T[A, ...])  # iterable case 1982761
+ck(f(['address', 'uint16', 'bytes5', 'address[]'], D), TA)  # iterable case 1982761
 ck(f(['address', 'uint16', 'bytes5', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982762
-ck(f(['address', 'uint16', 'bytes5', 'bool[]'], D), T[A, ...])  # iterable case 1982763
+ck(f(['address', 'uint16', 'bytes5', 'bool[]'], D), TA)  # iterable case 1982763
 ck(f(['address', 'uint16', 'bytes5', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982764
 ck(f(['address', 'uint16', 'bytes5', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982765
 ck(f(['address', 'uint16', 'bytes5', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982766
@@ -7067,7 +7067,7 @@ ck(f(['address', 'uint16', 'bytes5', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes5', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982827
 ck(f(['address', 'uint16', 'bytes5', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982828
 ck(f(['address', 'uint16', 'bytes5', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982829
-ck(f(['address', 'uint16', 'bytes5', 'string[]'], D), T[A, ...])  # iterable case 1982830
+ck(f(['address', 'uint16', 'bytes5', 'string[]'], D), TA)  # iterable case 1982830
 ck(f(['address', 'uint16', 'bytes5', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982831
 ck(f(['address', 'uint16', 'bytes5', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982832
 ck(f(['address', 'uint16', 'bytes5', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982833
@@ -7100,11 +7100,11 @@ ck(f(['address', 'uint16', 'bytes5', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes5', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982860
 ck(f(['address', 'uint16', 'bytes5', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982861
 ck(f(['address', 'uint16', 'bytes5', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982862
-ck(f(['address', 'uint16', 'bytes5', '?'], D), T[A, ...])  # iterable case 1982863
+ck(f(['address', 'uint16', 'bytes5', '?'], D), TA)  # iterable case 1982863
 ck(f(['address', 'uint16', 'bytes6', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982864
-ck(f(['address', 'uint16', 'bytes6', 'address[]'], D), T[A, ...])  # iterable case 1982865
+ck(f(['address', 'uint16', 'bytes6', 'address[]'], D), TA)  # iterable case 1982865
 ck(f(['address', 'uint16', 'bytes6', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982866
-ck(f(['address', 'uint16', 'bytes6', 'bool[]'], D), T[A, ...])  # iterable case 1982867
+ck(f(['address', 'uint16', 'bytes6', 'bool[]'], D), TA)  # iterable case 1982867
 ck(f(['address', 'uint16', 'bytes6', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982868
 ck(f(['address', 'uint16', 'bytes6', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982869
 ck(f(['address', 'uint16', 'bytes6', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982870
@@ -7171,7 +7171,7 @@ ck(f(['address', 'uint16', 'bytes6', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes6', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1982931
 ck(f(['address', 'uint16', 'bytes6', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1982932
 ck(f(['address', 'uint16', 'bytes6', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1982933
-ck(f(['address', 'uint16', 'bytes6', 'string[]'], D), T[A, ...])  # iterable case 1982934
+ck(f(['address', 'uint16', 'bytes6', 'string[]'], D), TA)  # iterable case 1982934
 ck(f(['address', 'uint16', 'bytes6', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1982935
 ck(f(['address', 'uint16', 'bytes6', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1982936
 ck(f(['address', 'uint16', 'bytes6', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1982937
@@ -7204,11 +7204,11 @@ ck(f(['address', 'uint16', 'bytes6', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes6', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1982964
 ck(f(['address', 'uint16', 'bytes6', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1982965
 ck(f(['address', 'uint16', 'bytes6', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1982966
-ck(f(['address', 'uint16', 'bytes6', '?'], D), T[A, ...])  # iterable case 1982967
+ck(f(['address', 'uint16', 'bytes6', '?'], D), TA)  # iterable case 1982967
 ck(f(['address', 'uint16', 'bytes7', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1982968
-ck(f(['address', 'uint16', 'bytes7', 'address[]'], D), T[A, ...])  # iterable case 1982969
+ck(f(['address', 'uint16', 'bytes7', 'address[]'], D), TA)  # iterable case 1982969
 ck(f(['address', 'uint16', 'bytes7', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1982970
-ck(f(['address', 'uint16', 'bytes7', 'bool[]'], D), T[A, ...])  # iterable case 1982971
+ck(f(['address', 'uint16', 'bytes7', 'bool[]'], D), TA)  # iterable case 1982971
 ck(f(['address', 'uint16', 'bytes7', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1982972
 ck(f(['address', 'uint16', 'bytes7', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1982973
 ck(f(['address', 'uint16', 'bytes7', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1982974
@@ -7275,7 +7275,7 @@ ck(f(['address', 'uint16', 'bytes7', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes7', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1983035
 ck(f(['address', 'uint16', 'bytes7', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1983036
 ck(f(['address', 'uint16', 'bytes7', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1983037
-ck(f(['address', 'uint16', 'bytes7', 'string[]'], D), T[A, ...])  # iterable case 1983038
+ck(f(['address', 'uint16', 'bytes7', 'string[]'], D), TA)  # iterable case 1983038
 ck(f(['address', 'uint16', 'bytes7', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1983039
 ck(f(['address', 'uint16', 'bytes7', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1983040
 ck(f(['address', 'uint16', 'bytes7', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1983041
@@ -7308,11 +7308,11 @@ ck(f(['address', 'uint16', 'bytes7', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes7', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1983068
 ck(f(['address', 'uint16', 'bytes7', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1983069
 ck(f(['address', 'uint16', 'bytes7', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1983070
-ck(f(['address', 'uint16', 'bytes7', '?'], D), T[A, ...])  # iterable case 1983071
+ck(f(['address', 'uint16', 'bytes7', '?'], D), TA)  # iterable case 1983071
 ck(f(['address', 'uint16', 'bytes8', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1983072
-ck(f(['address', 'uint16', 'bytes8', 'address[]'], D), T[A, ...])  # iterable case 1983073
+ck(f(['address', 'uint16', 'bytes8', 'address[]'], D), TA)  # iterable case 1983073
 ck(f(['address', 'uint16', 'bytes8', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1983074
-ck(f(['address', 'uint16', 'bytes8', 'bool[]'], D), T[A, ...])  # iterable case 1983075
+ck(f(['address', 'uint16', 'bytes8', 'bool[]'], D), TA)  # iterable case 1983075
 ck(f(['address', 'uint16', 'bytes8', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983076
 ck(f(['address', 'uint16', 'bytes8', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983077
 ck(f(['address', 'uint16', 'bytes8', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983078
@@ -7379,7 +7379,7 @@ ck(f(['address', 'uint16', 'bytes8', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes8', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1983139
 ck(f(['address', 'uint16', 'bytes8', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1983140
 ck(f(['address', 'uint16', 'bytes8', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1983141
-ck(f(['address', 'uint16', 'bytes8', 'string[]'], D), T[A, ...])  # iterable case 1983142
+ck(f(['address', 'uint16', 'bytes8', 'string[]'], D), TA)  # iterable case 1983142
 ck(f(['address', 'uint16', 'bytes8', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1983143
 ck(f(['address', 'uint16', 'bytes8', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1983144
 ck(f(['address', 'uint16', 'bytes8', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1983145
@@ -7412,11 +7412,11 @@ ck(f(['address', 'uint16', 'bytes8', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes8', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1983172
 ck(f(['address', 'uint16', 'bytes8', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1983173
 ck(f(['address', 'uint16', 'bytes8', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1983174
-ck(f(['address', 'uint16', 'bytes8', '?'], D), T[A, ...])  # iterable case 1983175
+ck(f(['address', 'uint16', 'bytes8', '?'], D), TA)  # iterable case 1983175
 ck(f(['address', 'uint16', 'bytes9', 'address'], D), T[U[HA, by, i], ...])  # iterable case 1983176
-ck(f(['address', 'uint16', 'bytes9', 'address[]'], D), T[A, ...])  # iterable case 1983177
+ck(f(['address', 'uint16', 'bytes9', 'address[]'], D), TA)  # iterable case 1983177
 ck(f(['address', 'uint16', 'bytes9', 'bool'], D), T[U[HA, bo, by, i], ...])  # iterable case 1983178
-ck(f(['address', 'uint16', 'bytes9', 'bool[]'], D), T[A, ...])  # iterable case 1983179
+ck(f(['address', 'uint16', 'bytes9', 'bool[]'], D), TA)  # iterable case 1983179
 ck(f(['address', 'uint16', 'bytes9', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983180
 ck(f(['address', 'uint16', 'bytes9', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983181
 ck(f(['address', 'uint16', 'bytes9', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983182
@@ -7483,7 +7483,7 @@ ck(f(['address', 'uint16', 'bytes9', 'int80'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes9', 'int88'], D), T[U[HA, by, i], ...])  # iterable case 1983243
 ck(f(['address', 'uint16', 'bytes9', 'int96'], D), T[U[HA, by, i], ...])  # iterable case 1983244
 ck(f(['address', 'uint16', 'bytes9', 'string'], D), T[U[HA, by, i, s], ...])  # iterable case 1983245
-ck(f(['address', 'uint16', 'bytes9', 'string[]'], D), T[A, ...])  # iterable case 1983246
+ck(f(['address', 'uint16', 'bytes9', 'string[]'], D), TA)  # iterable case 1983246
 ck(f(['address', 'uint16', 'bytes9', 'uint104'], D), T[U[HA, by, i], ...])  # iterable case 1983247
 ck(f(['address', 'uint16', 'bytes9', 'uint112'], D), T[U[HA, by, i], ...])  # iterable case 1983248
 ck(f(['address', 'uint16', 'bytes9', 'uint120'], D), T[U[HA, by, i], ...])  # iterable case 1983249
@@ -7516,11 +7516,11 @@ ck(f(['address', 'uint16', 'bytes9', 'uint8'], D), T[U[HA, by, i], ...])  # iter
 ck(f(['address', 'uint16', 'bytes9', 'uint80'], D), T[U[HA, by, i], ...])  # iterable case 1983276
 ck(f(['address', 'uint16', 'bytes9', 'uint88'], D), T[U[HA, by, i], ...])  # iterable case 1983277
 ck(f(['address', 'uint16', 'bytes9', 'uint96'], D), T[U[HA, by, i], ...])  # iterable case 1983278
-ck(f(['address', 'uint16', 'bytes9', '?'], D), T[A, ...])  # iterable case 1983279
+ck(f(['address', 'uint16', 'bytes9', '?'], D), TA)  # iterable case 1983279
 ck(f(['address', 'uint16', 'int104', 'address'], D), T[U[HA, i], ...])  # iterable case 1983280
-ck(f(['address', 'uint16', 'int104', 'address[]'], D), T[A, ...])  # iterable case 1983281
+ck(f(['address', 'uint16', 'int104', 'address[]'], D), TA)  # iterable case 1983281
 ck(f(['address', 'uint16', 'int104', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983282
-ck(f(['address', 'uint16', 'int104', 'bool[]'], D), T[A, ...])  # iterable case 1983283
+ck(f(['address', 'uint16', 'int104', 'bool[]'], D), TA)  # iterable case 1983283
 ck(f(['address', 'uint16', 'int104', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983284
 ck(f(['address', 'uint16', 'int104', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983285
 ck(f(['address', 'uint16', 'int104', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983286
@@ -7587,7 +7587,7 @@ ck(f(['address', 'uint16', 'int104', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int104', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983347
 ck(f(['address', 'uint16', 'int104', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983348
 ck(f(['address', 'uint16', 'int104', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983349
-ck(f(['address', 'uint16', 'int104', 'string[]'], D), T[A, ...])  # iterable case 1983350
+ck(f(['address', 'uint16', 'int104', 'string[]'], D), TA)  # iterable case 1983350
 ck(f(['address', 'uint16', 'int104', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983351
 ck(f(['address', 'uint16', 'int104', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983352
 ck(f(['address', 'uint16', 'int104', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983353
@@ -7620,11 +7620,11 @@ ck(f(['address', 'uint16', 'int104', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int104', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983380
 ck(f(['address', 'uint16', 'int104', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983381
 ck(f(['address', 'uint16', 'int104', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983382
-ck(f(['address', 'uint16', 'int104', '?'], D), T[A, ...])  # iterable case 1983383
+ck(f(['address', 'uint16', 'int104', '?'], D), TA)  # iterable case 1983383
 ck(f(['address', 'uint16', 'int112', 'address'], D), T[U[HA, i], ...])  # iterable case 1983384
-ck(f(['address', 'uint16', 'int112', 'address[]'], D), T[A, ...])  # iterable case 1983385
+ck(f(['address', 'uint16', 'int112', 'address[]'], D), TA)  # iterable case 1983385
 ck(f(['address', 'uint16', 'int112', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983386
-ck(f(['address', 'uint16', 'int112', 'bool[]'], D), T[A, ...])  # iterable case 1983387
+ck(f(['address', 'uint16', 'int112', 'bool[]'], D), TA)  # iterable case 1983387
 ck(f(['address', 'uint16', 'int112', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983388
 ck(f(['address', 'uint16', 'int112', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983389
 ck(f(['address', 'uint16', 'int112', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983390
@@ -7691,7 +7691,7 @@ ck(f(['address', 'uint16', 'int112', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int112', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983451
 ck(f(['address', 'uint16', 'int112', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983452
 ck(f(['address', 'uint16', 'int112', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983453
-ck(f(['address', 'uint16', 'int112', 'string[]'], D), T[A, ...])  # iterable case 1983454
+ck(f(['address', 'uint16', 'int112', 'string[]'], D), TA)  # iterable case 1983454
 ck(f(['address', 'uint16', 'int112', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983455
 ck(f(['address', 'uint16', 'int112', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983456
 ck(f(['address', 'uint16', 'int112', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983457
@@ -7724,11 +7724,11 @@ ck(f(['address', 'uint16', 'int112', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int112', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983484
 ck(f(['address', 'uint16', 'int112', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983485
 ck(f(['address', 'uint16', 'int112', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983486
-ck(f(['address', 'uint16', 'int112', '?'], D), T[A, ...])  # iterable case 1983487
+ck(f(['address', 'uint16', 'int112', '?'], D), TA)  # iterable case 1983487
 ck(f(['address', 'uint16', 'int120', 'address'], D), T[U[HA, i], ...])  # iterable case 1983488
-ck(f(['address', 'uint16', 'int120', 'address[]'], D), T[A, ...])  # iterable case 1983489
+ck(f(['address', 'uint16', 'int120', 'address[]'], D), TA)  # iterable case 1983489
 ck(f(['address', 'uint16', 'int120', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983490
-ck(f(['address', 'uint16', 'int120', 'bool[]'], D), T[A, ...])  # iterable case 1983491
+ck(f(['address', 'uint16', 'int120', 'bool[]'], D), TA)  # iterable case 1983491
 ck(f(['address', 'uint16', 'int120', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983492
 ck(f(['address', 'uint16', 'int120', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983493
 ck(f(['address', 'uint16', 'int120', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983494
@@ -7795,7 +7795,7 @@ ck(f(['address', 'uint16', 'int120', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int120', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983555
 ck(f(['address', 'uint16', 'int120', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983556
 ck(f(['address', 'uint16', 'int120', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983557
-ck(f(['address', 'uint16', 'int120', 'string[]'], D), T[A, ...])  # iterable case 1983558
+ck(f(['address', 'uint16', 'int120', 'string[]'], D), TA)  # iterable case 1983558
 ck(f(['address', 'uint16', 'int120', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983559
 ck(f(['address', 'uint16', 'int120', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983560
 ck(f(['address', 'uint16', 'int120', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983561
@@ -7828,11 +7828,11 @@ ck(f(['address', 'uint16', 'int120', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int120', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983588
 ck(f(['address', 'uint16', 'int120', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983589
 ck(f(['address', 'uint16', 'int120', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983590
-ck(f(['address', 'uint16', 'int120', '?'], D), T[A, ...])  # iterable case 1983591
+ck(f(['address', 'uint16', 'int120', '?'], D), TA)  # iterable case 1983591
 ck(f(['address', 'uint16', 'int128', 'address'], D), T[U[HA, i], ...])  # iterable case 1983592
-ck(f(['address', 'uint16', 'int128', 'address[]'], D), T[A, ...])  # iterable case 1983593
+ck(f(['address', 'uint16', 'int128', 'address[]'], D), TA)  # iterable case 1983593
 ck(f(['address', 'uint16', 'int128', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983594
-ck(f(['address', 'uint16', 'int128', 'bool[]'], D), T[A, ...])  # iterable case 1983595
+ck(f(['address', 'uint16', 'int128', 'bool[]'], D), TA)  # iterable case 1983595
 ck(f(['address', 'uint16', 'int128', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983596
 ck(f(['address', 'uint16', 'int128', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983597
 ck(f(['address', 'uint16', 'int128', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983598
@@ -7899,7 +7899,7 @@ ck(f(['address', 'uint16', 'int128', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int128', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983659
 ck(f(['address', 'uint16', 'int128', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983660
 ck(f(['address', 'uint16', 'int128', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983661
-ck(f(['address', 'uint16', 'int128', 'string[]'], D), T[A, ...])  # iterable case 1983662
+ck(f(['address', 'uint16', 'int128', 'string[]'], D), TA)  # iterable case 1983662
 ck(f(['address', 'uint16', 'int128', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983663
 ck(f(['address', 'uint16', 'int128', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983664
 ck(f(['address', 'uint16', 'int128', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983665
@@ -7932,11 +7932,11 @@ ck(f(['address', 'uint16', 'int128', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int128', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983692
 ck(f(['address', 'uint16', 'int128', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983693
 ck(f(['address', 'uint16', 'int128', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983694
-ck(f(['address', 'uint16', 'int128', '?'], D), T[A, ...])  # iterable case 1983695
+ck(f(['address', 'uint16', 'int128', '?'], D), TA)  # iterable case 1983695
 ck(f(['address', 'uint16', 'int136', 'address'], D), T[U[HA, i], ...])  # iterable case 1983696
-ck(f(['address', 'uint16', 'int136', 'address[]'], D), T[A, ...])  # iterable case 1983697
+ck(f(['address', 'uint16', 'int136', 'address[]'], D), TA)  # iterable case 1983697
 ck(f(['address', 'uint16', 'int136', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983698
-ck(f(['address', 'uint16', 'int136', 'bool[]'], D), T[A, ...])  # iterable case 1983699
+ck(f(['address', 'uint16', 'int136', 'bool[]'], D), TA)  # iterable case 1983699
 ck(f(['address', 'uint16', 'int136', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983700
 ck(f(['address', 'uint16', 'int136', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983701
 ck(f(['address', 'uint16', 'int136', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983702
@@ -8003,7 +8003,7 @@ ck(f(['address', 'uint16', 'int136', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int136', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983763
 ck(f(['address', 'uint16', 'int136', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983764
 ck(f(['address', 'uint16', 'int136', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983765
-ck(f(['address', 'uint16', 'int136', 'string[]'], D), T[A, ...])  # iterable case 1983766
+ck(f(['address', 'uint16', 'int136', 'string[]'], D), TA)  # iterable case 1983766
 ck(f(['address', 'uint16', 'int136', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983767
 ck(f(['address', 'uint16', 'int136', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983768
 ck(f(['address', 'uint16', 'int136', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983769
@@ -8036,11 +8036,11 @@ ck(f(['address', 'uint16', 'int136', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int136', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983796
 ck(f(['address', 'uint16', 'int136', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983797
 ck(f(['address', 'uint16', 'int136', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983798
-ck(f(['address', 'uint16', 'int136', '?'], D), T[A, ...])  # iterable case 1983799
+ck(f(['address', 'uint16', 'int136', '?'], D), TA)  # iterable case 1983799
 ck(f(['address', 'uint16', 'int144', 'address'], D), T[U[HA, i], ...])  # iterable case 1983800
-ck(f(['address', 'uint16', 'int144', 'address[]'], D), T[A, ...])  # iterable case 1983801
+ck(f(['address', 'uint16', 'int144', 'address[]'], D), TA)  # iterable case 1983801
 ck(f(['address', 'uint16', 'int144', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983802
-ck(f(['address', 'uint16', 'int144', 'bool[]'], D), T[A, ...])  # iterable case 1983803
+ck(f(['address', 'uint16', 'int144', 'bool[]'], D), TA)  # iterable case 1983803
 ck(f(['address', 'uint16', 'int144', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983804
 ck(f(['address', 'uint16', 'int144', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983805
 ck(f(['address', 'uint16', 'int144', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983806
@@ -8107,7 +8107,7 @@ ck(f(['address', 'uint16', 'int144', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int144', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983867
 ck(f(['address', 'uint16', 'int144', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983868
 ck(f(['address', 'uint16', 'int144', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983869
-ck(f(['address', 'uint16', 'int144', 'string[]'], D), T[A, ...])  # iterable case 1983870
+ck(f(['address', 'uint16', 'int144', 'string[]'], D), TA)  # iterable case 1983870
 ck(f(['address', 'uint16', 'int144', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983871
 ck(f(['address', 'uint16', 'int144', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983872
 ck(f(['address', 'uint16', 'int144', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983873
@@ -8140,11 +8140,11 @@ ck(f(['address', 'uint16', 'int144', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int144', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1983900
 ck(f(['address', 'uint16', 'int144', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1983901
 ck(f(['address', 'uint16', 'int144', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1983902
-ck(f(['address', 'uint16', 'int144', '?'], D), T[A, ...])  # iterable case 1983903
+ck(f(['address', 'uint16', 'int144', '?'], D), TA)  # iterable case 1983903
 ck(f(['address', 'uint16', 'int152', 'address'], D), T[U[HA, i], ...])  # iterable case 1983904
-ck(f(['address', 'uint16', 'int152', 'address[]'], D), T[A, ...])  # iterable case 1983905
+ck(f(['address', 'uint16', 'int152', 'address[]'], D), TA)  # iterable case 1983905
 ck(f(['address', 'uint16', 'int152', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1983906
-ck(f(['address', 'uint16', 'int152', 'bool[]'], D), T[A, ...])  # iterable case 1983907
+ck(f(['address', 'uint16', 'int152', 'bool[]'], D), TA)  # iterable case 1983907
 ck(f(['address', 'uint16', 'int152', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1983908
 ck(f(['address', 'uint16', 'int152', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1983909
 ck(f(['address', 'uint16', 'int152', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1983910
@@ -8211,7 +8211,7 @@ ck(f(['address', 'uint16', 'int152', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int152', 'int88'], D), T[U[HA, i], ...])  # iterable case 1983971
 ck(f(['address', 'uint16', 'int152', 'int96'], D), T[U[HA, i], ...])  # iterable case 1983972
 ck(f(['address', 'uint16', 'int152', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1983973
-ck(f(['address', 'uint16', 'int152', 'string[]'], D), T[A, ...])  # iterable case 1983974
+ck(f(['address', 'uint16', 'int152', 'string[]'], D), TA)  # iterable case 1983974
 ck(f(['address', 'uint16', 'int152', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1983975
 ck(f(['address', 'uint16', 'int152', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1983976
 ck(f(['address', 'uint16', 'int152', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1983977
@@ -8244,11 +8244,11 @@ ck(f(['address', 'uint16', 'int152', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int152', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984004
 ck(f(['address', 'uint16', 'int152', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984005
 ck(f(['address', 'uint16', 'int152', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984006
-ck(f(['address', 'uint16', 'int152', '?'], D), T[A, ...])  # iterable case 1984007
+ck(f(['address', 'uint16', 'int152', '?'], D), TA)  # iterable case 1984007
 ck(f(['address', 'uint16', 'int16', 'address'], D), T[U[HA, i], ...])  # iterable case 1984008
-ck(f(['address', 'uint16', 'int16', 'address[]'], D), T[A, ...])  # iterable case 1984009
+ck(f(['address', 'uint16', 'int16', 'address[]'], D), TA)  # iterable case 1984009
 ck(f(['address', 'uint16', 'int16', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984010
-ck(f(['address', 'uint16', 'int16', 'bool[]'], D), T[A, ...])  # iterable case 1984011
+ck(f(['address', 'uint16', 'int16', 'bool[]'], D), TA)  # iterable case 1984011
 ck(f(['address', 'uint16', 'int16', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984012
 ck(f(['address', 'uint16', 'int16', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984013
 ck(f(['address', 'uint16', 'int16', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984014
@@ -8315,7 +8315,7 @@ ck(f(['address', 'uint16', 'int16', 'int80'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int16', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984075
 ck(f(['address', 'uint16', 'int16', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984076
 ck(f(['address', 'uint16', 'int16', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984077
-ck(f(['address', 'uint16', 'int16', 'string[]'], D), T[A, ...])  # iterable case 1984078
+ck(f(['address', 'uint16', 'int16', 'string[]'], D), TA)  # iterable case 1984078
 ck(f(['address', 'uint16', 'int16', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984079
 ck(f(['address', 'uint16', 'int16', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984080
 ck(f(['address', 'uint16', 'int16', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984081
@@ -8348,11 +8348,11 @@ ck(f(['address', 'uint16', 'int16', 'uint8'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int16', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984108
 ck(f(['address', 'uint16', 'int16', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984109
 ck(f(['address', 'uint16', 'int16', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984110
-ck(f(['address', 'uint16', 'int16', '?'], D), T[A, ...])  # iterable case 1984111
+ck(f(['address', 'uint16', 'int16', '?'], D), TA)  # iterable case 1984111
 ck(f(['address', 'uint16', 'int160', 'address'], D), T[U[HA, i], ...])  # iterable case 1984112
-ck(f(['address', 'uint16', 'int160', 'address[]'], D), T[A, ...])  # iterable case 1984113
+ck(f(['address', 'uint16', 'int160', 'address[]'], D), TA)  # iterable case 1984113
 ck(f(['address', 'uint16', 'int160', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984114
-ck(f(['address', 'uint16', 'int160', 'bool[]'], D), T[A, ...])  # iterable case 1984115
+ck(f(['address', 'uint16', 'int160', 'bool[]'], D), TA)  # iterable case 1984115
 ck(f(['address', 'uint16', 'int160', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984116
 ck(f(['address', 'uint16', 'int160', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984117
 ck(f(['address', 'uint16', 'int160', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984118
@@ -8419,7 +8419,7 @@ ck(f(['address', 'uint16', 'int160', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int160', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984179
 ck(f(['address', 'uint16', 'int160', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984180
 ck(f(['address', 'uint16', 'int160', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984181
-ck(f(['address', 'uint16', 'int160', 'string[]'], D), T[A, ...])  # iterable case 1984182
+ck(f(['address', 'uint16', 'int160', 'string[]'], D), TA)  # iterable case 1984182
 ck(f(['address', 'uint16', 'int160', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984183
 ck(f(['address', 'uint16', 'int160', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984184
 ck(f(['address', 'uint16', 'int160', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984185
@@ -8452,11 +8452,11 @@ ck(f(['address', 'uint16', 'int160', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int160', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984212
 ck(f(['address', 'uint16', 'int160', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984213
 ck(f(['address', 'uint16', 'int160', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984214
-ck(f(['address', 'uint16', 'int160', '?'], D), T[A, ...])  # iterable case 1984215
+ck(f(['address', 'uint16', 'int160', '?'], D), TA)  # iterable case 1984215
 ck(f(['address', 'uint16', 'int168', 'address'], D), T[U[HA, i], ...])  # iterable case 1984216
-ck(f(['address', 'uint16', 'int168', 'address[]'], D), T[A, ...])  # iterable case 1984217
+ck(f(['address', 'uint16', 'int168', 'address[]'], D), TA)  # iterable case 1984217
 ck(f(['address', 'uint16', 'int168', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984218
-ck(f(['address', 'uint16', 'int168', 'bool[]'], D), T[A, ...])  # iterable case 1984219
+ck(f(['address', 'uint16', 'int168', 'bool[]'], D), TA)  # iterable case 1984219
 ck(f(['address', 'uint16', 'int168', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984220
 ck(f(['address', 'uint16', 'int168', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984221
 ck(f(['address', 'uint16', 'int168', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984222
@@ -8523,7 +8523,7 @@ ck(f(['address', 'uint16', 'int168', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int168', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984283
 ck(f(['address', 'uint16', 'int168', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984284
 ck(f(['address', 'uint16', 'int168', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984285
-ck(f(['address', 'uint16', 'int168', 'string[]'], D), T[A, ...])  # iterable case 1984286
+ck(f(['address', 'uint16', 'int168', 'string[]'], D), TA)  # iterable case 1984286
 ck(f(['address', 'uint16', 'int168', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984287
 ck(f(['address', 'uint16', 'int168', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984288
 ck(f(['address', 'uint16', 'int168', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984289
@@ -8556,11 +8556,11 @@ ck(f(['address', 'uint16', 'int168', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int168', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984316
 ck(f(['address', 'uint16', 'int168', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984317
 ck(f(['address', 'uint16', 'int168', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984318
-ck(f(['address', 'uint16', 'int168', '?'], D), T[A, ...])  # iterable case 1984319
+ck(f(['address', 'uint16', 'int168', '?'], D), TA)  # iterable case 1984319
 ck(f(['address', 'uint16', 'int176', 'address'], D), T[U[HA, i], ...])  # iterable case 1984320
-ck(f(['address', 'uint16', 'int176', 'address[]'], D), T[A, ...])  # iterable case 1984321
+ck(f(['address', 'uint16', 'int176', 'address[]'], D), TA)  # iterable case 1984321
 ck(f(['address', 'uint16', 'int176', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984322
-ck(f(['address', 'uint16', 'int176', 'bool[]'], D), T[A, ...])  # iterable case 1984323
+ck(f(['address', 'uint16', 'int176', 'bool[]'], D), TA)  # iterable case 1984323
 ck(f(['address', 'uint16', 'int176', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984324
 ck(f(['address', 'uint16', 'int176', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984325
 ck(f(['address', 'uint16', 'int176', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984326
@@ -8627,7 +8627,7 @@ ck(f(['address', 'uint16', 'int176', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int176', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984387
 ck(f(['address', 'uint16', 'int176', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984388
 ck(f(['address', 'uint16', 'int176', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984389
-ck(f(['address', 'uint16', 'int176', 'string[]'], D), T[A, ...])  # iterable case 1984390
+ck(f(['address', 'uint16', 'int176', 'string[]'], D), TA)  # iterable case 1984390
 ck(f(['address', 'uint16', 'int176', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984391
 ck(f(['address', 'uint16', 'int176', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984392
 ck(f(['address', 'uint16', 'int176', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984393
@@ -8660,11 +8660,11 @@ ck(f(['address', 'uint16', 'int176', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int176', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984420
 ck(f(['address', 'uint16', 'int176', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984421
 ck(f(['address', 'uint16', 'int176', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984422
-ck(f(['address', 'uint16', 'int176', '?'], D), T[A, ...])  # iterable case 1984423
+ck(f(['address', 'uint16', 'int176', '?'], D), TA)  # iterable case 1984423
 ck(f(['address', 'uint16', 'int184', 'address'], D), T[U[HA, i], ...])  # iterable case 1984424
-ck(f(['address', 'uint16', 'int184', 'address[]'], D), T[A, ...])  # iterable case 1984425
+ck(f(['address', 'uint16', 'int184', 'address[]'], D), TA)  # iterable case 1984425
 ck(f(['address', 'uint16', 'int184', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984426
-ck(f(['address', 'uint16', 'int184', 'bool[]'], D), T[A, ...])  # iterable case 1984427
+ck(f(['address', 'uint16', 'int184', 'bool[]'], D), TA)  # iterable case 1984427
 ck(f(['address', 'uint16', 'int184', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984428
 ck(f(['address', 'uint16', 'int184', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984429
 ck(f(['address', 'uint16', 'int184', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984430
@@ -8731,7 +8731,7 @@ ck(f(['address', 'uint16', 'int184', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int184', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984491
 ck(f(['address', 'uint16', 'int184', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984492
 ck(f(['address', 'uint16', 'int184', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984493
-ck(f(['address', 'uint16', 'int184', 'string[]'], D), T[A, ...])  # iterable case 1984494
+ck(f(['address', 'uint16', 'int184', 'string[]'], D), TA)  # iterable case 1984494
 ck(f(['address', 'uint16', 'int184', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984495
 ck(f(['address', 'uint16', 'int184', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984496
 ck(f(['address', 'uint16', 'int184', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984497
@@ -8764,11 +8764,11 @@ ck(f(['address', 'uint16', 'int184', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int184', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984524
 ck(f(['address', 'uint16', 'int184', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984525
 ck(f(['address', 'uint16', 'int184', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984526
-ck(f(['address', 'uint16', 'int184', '?'], D), T[A, ...])  # iterable case 1984527
+ck(f(['address', 'uint16', 'int184', '?'], D), TA)  # iterable case 1984527
 ck(f(['address', 'uint16', 'int192', 'address'], D), T[U[HA, i], ...])  # iterable case 1984528
-ck(f(['address', 'uint16', 'int192', 'address[]'], D), T[A, ...])  # iterable case 1984529
+ck(f(['address', 'uint16', 'int192', 'address[]'], D), TA)  # iterable case 1984529
 ck(f(['address', 'uint16', 'int192', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984530
-ck(f(['address', 'uint16', 'int192', 'bool[]'], D), T[A, ...])  # iterable case 1984531
+ck(f(['address', 'uint16', 'int192', 'bool[]'], D), TA)  # iterable case 1984531
 ck(f(['address', 'uint16', 'int192', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984532
 ck(f(['address', 'uint16', 'int192', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984533
 ck(f(['address', 'uint16', 'int192', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984534
@@ -8835,7 +8835,7 @@ ck(f(['address', 'uint16', 'int192', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int192', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984595
 ck(f(['address', 'uint16', 'int192', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984596
 ck(f(['address', 'uint16', 'int192', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984597
-ck(f(['address', 'uint16', 'int192', 'string[]'], D), T[A, ...])  # iterable case 1984598
+ck(f(['address', 'uint16', 'int192', 'string[]'], D), TA)  # iterable case 1984598
 ck(f(['address', 'uint16', 'int192', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984599
 ck(f(['address', 'uint16', 'int192', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984600
 ck(f(['address', 'uint16', 'int192', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984601
@@ -8868,11 +8868,11 @@ ck(f(['address', 'uint16', 'int192', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int192', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984628
 ck(f(['address', 'uint16', 'int192', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984629
 ck(f(['address', 'uint16', 'int192', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984630
-ck(f(['address', 'uint16', 'int192', '?'], D), T[A, ...])  # iterable case 1984631
+ck(f(['address', 'uint16', 'int192', '?'], D), TA)  # iterable case 1984631
 ck(f(['address', 'uint16', 'int200', 'address'], D), T[U[HA, i], ...])  # iterable case 1984632
-ck(f(['address', 'uint16', 'int200', 'address[]'], D), T[A, ...])  # iterable case 1984633
+ck(f(['address', 'uint16', 'int200', 'address[]'], D), TA)  # iterable case 1984633
 ck(f(['address', 'uint16', 'int200', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984634
-ck(f(['address', 'uint16', 'int200', 'bool[]'], D), T[A, ...])  # iterable case 1984635
+ck(f(['address', 'uint16', 'int200', 'bool[]'], D), TA)  # iterable case 1984635
 ck(f(['address', 'uint16', 'int200', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984636
 ck(f(['address', 'uint16', 'int200', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984637
 ck(f(['address', 'uint16', 'int200', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984638
@@ -8939,7 +8939,7 @@ ck(f(['address', 'uint16', 'int200', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int200', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984699
 ck(f(['address', 'uint16', 'int200', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984700
 ck(f(['address', 'uint16', 'int200', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984701
-ck(f(['address', 'uint16', 'int200', 'string[]'], D), T[A, ...])  # iterable case 1984702
+ck(f(['address', 'uint16', 'int200', 'string[]'], D), TA)  # iterable case 1984702
 ck(f(['address', 'uint16', 'int200', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984703
 ck(f(['address', 'uint16', 'int200', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984704
 ck(f(['address', 'uint16', 'int200', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984705
@@ -8972,11 +8972,11 @@ ck(f(['address', 'uint16', 'int200', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int200', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984732
 ck(f(['address', 'uint16', 'int200', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984733
 ck(f(['address', 'uint16', 'int200', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984734
-ck(f(['address', 'uint16', 'int200', '?'], D), T[A, ...])  # iterable case 1984735
+ck(f(['address', 'uint16', 'int200', '?'], D), TA)  # iterable case 1984735
 ck(f(['address', 'uint16', 'int208', 'address'], D), T[U[HA, i], ...])  # iterable case 1984736
-ck(f(['address', 'uint16', 'int208', 'address[]'], D), T[A, ...])  # iterable case 1984737
+ck(f(['address', 'uint16', 'int208', 'address[]'], D), TA)  # iterable case 1984737
 ck(f(['address', 'uint16', 'int208', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984738
-ck(f(['address', 'uint16', 'int208', 'bool[]'], D), T[A, ...])  # iterable case 1984739
+ck(f(['address', 'uint16', 'int208', 'bool[]'], D), TA)  # iterable case 1984739
 ck(f(['address', 'uint16', 'int208', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984740
 ck(f(['address', 'uint16', 'int208', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984741
 ck(f(['address', 'uint16', 'int208', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984742
@@ -9043,7 +9043,7 @@ ck(f(['address', 'uint16', 'int208', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int208', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984803
 ck(f(['address', 'uint16', 'int208', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984804
 ck(f(['address', 'uint16', 'int208', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984805
-ck(f(['address', 'uint16', 'int208', 'string[]'], D), T[A, ...])  # iterable case 1984806
+ck(f(['address', 'uint16', 'int208', 'string[]'], D), TA)  # iterable case 1984806
 ck(f(['address', 'uint16', 'int208', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984807
 ck(f(['address', 'uint16', 'int208', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984808
 ck(f(['address', 'uint16', 'int208', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984809
@@ -9076,11 +9076,11 @@ ck(f(['address', 'uint16', 'int208', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int208', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984836
 ck(f(['address', 'uint16', 'int208', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984837
 ck(f(['address', 'uint16', 'int208', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984838
-ck(f(['address', 'uint16', 'int208', '?'], D), T[A, ...])  # iterable case 1984839
+ck(f(['address', 'uint16', 'int208', '?'], D), TA)  # iterable case 1984839
 ck(f(['address', 'uint16', 'int216', 'address'], D), T[U[HA, i], ...])  # iterable case 1984840
-ck(f(['address', 'uint16', 'int216', 'address[]'], D), T[A, ...])  # iterable case 1984841
+ck(f(['address', 'uint16', 'int216', 'address[]'], D), TA)  # iterable case 1984841
 ck(f(['address', 'uint16', 'int216', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984842
-ck(f(['address', 'uint16', 'int216', 'bool[]'], D), T[A, ...])  # iterable case 1984843
+ck(f(['address', 'uint16', 'int216', 'bool[]'], D), TA)  # iterable case 1984843
 ck(f(['address', 'uint16', 'int216', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984844
 ck(f(['address', 'uint16', 'int216', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984845
 ck(f(['address', 'uint16', 'int216', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984846
@@ -9147,7 +9147,7 @@ ck(f(['address', 'uint16', 'int216', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int216', 'int88'], D), T[U[HA, i], ...])  # iterable case 1984907
 ck(f(['address', 'uint16', 'int216', 'int96'], D), T[U[HA, i], ...])  # iterable case 1984908
 ck(f(['address', 'uint16', 'int216', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1984909
-ck(f(['address', 'uint16', 'int216', 'string[]'], D), T[A, ...])  # iterable case 1984910
+ck(f(['address', 'uint16', 'int216', 'string[]'], D), TA)  # iterable case 1984910
 ck(f(['address', 'uint16', 'int216', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1984911
 ck(f(['address', 'uint16', 'int216', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1984912
 ck(f(['address', 'uint16', 'int216', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1984913
@@ -9180,11 +9180,11 @@ ck(f(['address', 'uint16', 'int216', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int216', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1984940
 ck(f(['address', 'uint16', 'int216', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1984941
 ck(f(['address', 'uint16', 'int216', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1984942
-ck(f(['address', 'uint16', 'int216', '?'], D), T[A, ...])  # iterable case 1984943
+ck(f(['address', 'uint16', 'int216', '?'], D), TA)  # iterable case 1984943
 ck(f(['address', 'uint16', 'int224', 'address'], D), T[U[HA, i], ...])  # iterable case 1984944
-ck(f(['address', 'uint16', 'int224', 'address[]'], D), T[A, ...])  # iterable case 1984945
+ck(f(['address', 'uint16', 'int224', 'address[]'], D), TA)  # iterable case 1984945
 ck(f(['address', 'uint16', 'int224', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1984946
-ck(f(['address', 'uint16', 'int224', 'bool[]'], D), T[A, ...])  # iterable case 1984947
+ck(f(['address', 'uint16', 'int224', 'bool[]'], D), TA)  # iterable case 1984947
 ck(f(['address', 'uint16', 'int224', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1984948
 ck(f(['address', 'uint16', 'int224', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1984949
 ck(f(['address', 'uint16', 'int224', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1984950
@@ -9251,7 +9251,7 @@ ck(f(['address', 'uint16', 'int224', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int224', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985011
 ck(f(['address', 'uint16', 'int224', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985012
 ck(f(['address', 'uint16', 'int224', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985013
-ck(f(['address', 'uint16', 'int224', 'string[]'], D), T[A, ...])  # iterable case 1985014
+ck(f(['address', 'uint16', 'int224', 'string[]'], D), TA)  # iterable case 1985014
 ck(f(['address', 'uint16', 'int224', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985015
 ck(f(['address', 'uint16', 'int224', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985016
 ck(f(['address', 'uint16', 'int224', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985017
@@ -9284,11 +9284,11 @@ ck(f(['address', 'uint16', 'int224', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int224', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985044
 ck(f(['address', 'uint16', 'int224', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985045
 ck(f(['address', 'uint16', 'int224', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985046
-ck(f(['address', 'uint16', 'int224', '?'], D), T[A, ...])  # iterable case 1985047
+ck(f(['address', 'uint16', 'int224', '?'], D), TA)  # iterable case 1985047
 ck(f(['address', 'uint16', 'int232', 'address'], D), T[U[HA, i], ...])  # iterable case 1985048
-ck(f(['address', 'uint16', 'int232', 'address[]'], D), T[A, ...])  # iterable case 1985049
+ck(f(['address', 'uint16', 'int232', 'address[]'], D), TA)  # iterable case 1985049
 ck(f(['address', 'uint16', 'int232', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985050
-ck(f(['address', 'uint16', 'int232', 'bool[]'], D), T[A, ...])  # iterable case 1985051
+ck(f(['address', 'uint16', 'int232', 'bool[]'], D), TA)  # iterable case 1985051
 ck(f(['address', 'uint16', 'int232', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985052
 ck(f(['address', 'uint16', 'int232', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985053
 ck(f(['address', 'uint16', 'int232', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985054
@@ -9355,7 +9355,7 @@ ck(f(['address', 'uint16', 'int232', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int232', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985115
 ck(f(['address', 'uint16', 'int232', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985116
 ck(f(['address', 'uint16', 'int232', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985117
-ck(f(['address', 'uint16', 'int232', 'string[]'], D), T[A, ...])  # iterable case 1985118
+ck(f(['address', 'uint16', 'int232', 'string[]'], D), TA)  # iterable case 1985118
 ck(f(['address', 'uint16', 'int232', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985119
 ck(f(['address', 'uint16', 'int232', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985120
 ck(f(['address', 'uint16', 'int232', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985121
@@ -9388,11 +9388,11 @@ ck(f(['address', 'uint16', 'int232', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int232', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985148
 ck(f(['address', 'uint16', 'int232', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985149
 ck(f(['address', 'uint16', 'int232', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985150
-ck(f(['address', 'uint16', 'int232', '?'], D), T[A, ...])  # iterable case 1985151
+ck(f(['address', 'uint16', 'int232', '?'], D), TA)  # iterable case 1985151
 ck(f(['address', 'uint16', 'int24', 'address'], D), T[U[HA, i], ...])  # iterable case 1985152
-ck(f(['address', 'uint16', 'int24', 'address[]'], D), T[A, ...])  # iterable case 1985153
+ck(f(['address', 'uint16', 'int24', 'address[]'], D), TA)  # iterable case 1985153
 ck(f(['address', 'uint16', 'int24', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985154
-ck(f(['address', 'uint16', 'int24', 'bool[]'], D), T[A, ...])  # iterable case 1985155
+ck(f(['address', 'uint16', 'int24', 'bool[]'], D), TA)  # iterable case 1985155
 ck(f(['address', 'uint16', 'int24', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985156
 ck(f(['address', 'uint16', 'int24', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985157
 ck(f(['address', 'uint16', 'int24', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985158
@@ -9459,7 +9459,7 @@ ck(f(['address', 'uint16', 'int24', 'int80'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int24', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985219
 ck(f(['address', 'uint16', 'int24', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985220
 ck(f(['address', 'uint16', 'int24', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985221
-ck(f(['address', 'uint16', 'int24', 'string[]'], D), T[A, ...])  # iterable case 1985222
+ck(f(['address', 'uint16', 'int24', 'string[]'], D), TA)  # iterable case 1985222
 ck(f(['address', 'uint16', 'int24', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985223
 ck(f(['address', 'uint16', 'int24', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985224
 ck(f(['address', 'uint16', 'int24', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985225
@@ -9492,11 +9492,11 @@ ck(f(['address', 'uint16', 'int24', 'uint8'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int24', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985252
 ck(f(['address', 'uint16', 'int24', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985253
 ck(f(['address', 'uint16', 'int24', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985254
-ck(f(['address', 'uint16', 'int24', '?'], D), T[A, ...])  # iterable case 1985255
+ck(f(['address', 'uint16', 'int24', '?'], D), TA)  # iterable case 1985255
 ck(f(['address', 'uint16', 'int240', 'address'], D), T[U[HA, i], ...])  # iterable case 1985256
-ck(f(['address', 'uint16', 'int240', 'address[]'], D), T[A, ...])  # iterable case 1985257
+ck(f(['address', 'uint16', 'int240', 'address[]'], D), TA)  # iterable case 1985257
 ck(f(['address', 'uint16', 'int240', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985258
-ck(f(['address', 'uint16', 'int240', 'bool[]'], D), T[A, ...])  # iterable case 1985259
+ck(f(['address', 'uint16', 'int240', 'bool[]'], D), TA)  # iterable case 1985259
 ck(f(['address', 'uint16', 'int240', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985260
 ck(f(['address', 'uint16', 'int240', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985261
 ck(f(['address', 'uint16', 'int240', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985262
@@ -9563,7 +9563,7 @@ ck(f(['address', 'uint16', 'int240', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int240', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985323
 ck(f(['address', 'uint16', 'int240', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985324
 ck(f(['address', 'uint16', 'int240', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985325
-ck(f(['address', 'uint16', 'int240', 'string[]'], D), T[A, ...])  # iterable case 1985326
+ck(f(['address', 'uint16', 'int240', 'string[]'], D), TA)  # iterable case 1985326
 ck(f(['address', 'uint16', 'int240', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985327
 ck(f(['address', 'uint16', 'int240', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985328
 ck(f(['address', 'uint16', 'int240', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985329
@@ -9596,11 +9596,11 @@ ck(f(['address', 'uint16', 'int240', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int240', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985356
 ck(f(['address', 'uint16', 'int240', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985357
 ck(f(['address', 'uint16', 'int240', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985358
-ck(f(['address', 'uint16', 'int240', '?'], D), T[A, ...])  # iterable case 1985359
+ck(f(['address', 'uint16', 'int240', '?'], D), TA)  # iterable case 1985359
 ck(f(['address', 'uint16', 'int248', 'address'], D), T[U[HA, i], ...])  # iterable case 1985360
-ck(f(['address', 'uint16', 'int248', 'address[]'], D), T[A, ...])  # iterable case 1985361
+ck(f(['address', 'uint16', 'int248', 'address[]'], D), TA)  # iterable case 1985361
 ck(f(['address', 'uint16', 'int248', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985362
-ck(f(['address', 'uint16', 'int248', 'bool[]'], D), T[A, ...])  # iterable case 1985363
+ck(f(['address', 'uint16', 'int248', 'bool[]'], D), TA)  # iterable case 1985363
 ck(f(['address', 'uint16', 'int248', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985364
 ck(f(['address', 'uint16', 'int248', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985365
 ck(f(['address', 'uint16', 'int248', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985366
@@ -9667,7 +9667,7 @@ ck(f(['address', 'uint16', 'int248', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int248', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985427
 ck(f(['address', 'uint16', 'int248', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985428
 ck(f(['address', 'uint16', 'int248', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985429
-ck(f(['address', 'uint16', 'int248', 'string[]'], D), T[A, ...])  # iterable case 1985430
+ck(f(['address', 'uint16', 'int248', 'string[]'], D), TA)  # iterable case 1985430
 ck(f(['address', 'uint16', 'int248', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985431
 ck(f(['address', 'uint16', 'int248', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985432
 ck(f(['address', 'uint16', 'int248', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985433
@@ -9700,11 +9700,11 @@ ck(f(['address', 'uint16', 'int248', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int248', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985460
 ck(f(['address', 'uint16', 'int248', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985461
 ck(f(['address', 'uint16', 'int248', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985462
-ck(f(['address', 'uint16', 'int248', '?'], D), T[A, ...])  # iterable case 1985463
+ck(f(['address', 'uint16', 'int248', '?'], D), TA)  # iterable case 1985463
 ck(f(['address', 'uint16', 'int256', 'address'], D), T[U[HA, i], ...])  # iterable case 1985464
-ck(f(['address', 'uint16', 'int256', 'address[]'], D), T[A, ...])  # iterable case 1985465
+ck(f(['address', 'uint16', 'int256', 'address[]'], D), TA)  # iterable case 1985465
 ck(f(['address', 'uint16', 'int256', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985466
-ck(f(['address', 'uint16', 'int256', 'bool[]'], D), T[A, ...])  # iterable case 1985467
+ck(f(['address', 'uint16', 'int256', 'bool[]'], D), TA)  # iterable case 1985467
 ck(f(['address', 'uint16', 'int256', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985468
 ck(f(['address', 'uint16', 'int256', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985469
 ck(f(['address', 'uint16', 'int256', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985470
@@ -9771,7 +9771,7 @@ ck(f(['address', 'uint16', 'int256', 'int80'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int256', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985531
 ck(f(['address', 'uint16', 'int256', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985532
 ck(f(['address', 'uint16', 'int256', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985533
-ck(f(['address', 'uint16', 'int256', 'string[]'], D), T[A, ...])  # iterable case 1985534
+ck(f(['address', 'uint16', 'int256', 'string[]'], D), TA)  # iterable case 1985534
 ck(f(['address', 'uint16', 'int256', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985535
 ck(f(['address', 'uint16', 'int256', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985536
 ck(f(['address', 'uint16', 'int256', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985537
@@ -9804,11 +9804,11 @@ ck(f(['address', 'uint16', 'int256', 'uint8'], D), T[U[HA, i], ...])  # iterable
 ck(f(['address', 'uint16', 'int256', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985564
 ck(f(['address', 'uint16', 'int256', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985565
 ck(f(['address', 'uint16', 'int256', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985566
-ck(f(['address', 'uint16', 'int256', '?'], D), T[A, ...])  # iterable case 1985567
+ck(f(['address', 'uint16', 'int256', '?'], D), TA)  # iterable case 1985567
 ck(f(['address', 'uint16', 'int32', 'address'], D), T[U[HA, i], ...])  # iterable case 1985568
-ck(f(['address', 'uint16', 'int32', 'address[]'], D), T[A, ...])  # iterable case 1985569
+ck(f(['address', 'uint16', 'int32', 'address[]'], D), TA)  # iterable case 1985569
 ck(f(['address', 'uint16', 'int32', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985570
-ck(f(['address', 'uint16', 'int32', 'bool[]'], D), T[A, ...])  # iterable case 1985571
+ck(f(['address', 'uint16', 'int32', 'bool[]'], D), TA)  # iterable case 1985571
 ck(f(['address', 'uint16', 'int32', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985572
 ck(f(['address', 'uint16', 'int32', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985573
 ck(f(['address', 'uint16', 'int32', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985574
@@ -9875,7 +9875,7 @@ ck(f(['address', 'uint16', 'int32', 'int80'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int32', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985635
 ck(f(['address', 'uint16', 'int32', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985636
 ck(f(['address', 'uint16', 'int32', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985637
-ck(f(['address', 'uint16', 'int32', 'string[]'], D), T[A, ...])  # iterable case 1985638
+ck(f(['address', 'uint16', 'int32', 'string[]'], D), TA)  # iterable case 1985638
 ck(f(['address', 'uint16', 'int32', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985639
 ck(f(['address', 'uint16', 'int32', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985640
 ck(f(['address', 'uint16', 'int32', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985641
@@ -9908,11 +9908,11 @@ ck(f(['address', 'uint16', 'int32', 'uint8'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int32', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985668
 ck(f(['address', 'uint16', 'int32', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985669
 ck(f(['address', 'uint16', 'int32', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985670
-ck(f(['address', 'uint16', 'int32', '?'], D), T[A, ...])  # iterable case 1985671
+ck(f(['address', 'uint16', 'int32', '?'], D), TA)  # iterable case 1985671
 ck(f(['address', 'uint16', 'int40', 'address'], D), T[U[HA, i], ...])  # iterable case 1985672
-ck(f(['address', 'uint16', 'int40', 'address[]'], D), T[A, ...])  # iterable case 1985673
+ck(f(['address', 'uint16', 'int40', 'address[]'], D), TA)  # iterable case 1985673
 ck(f(['address', 'uint16', 'int40', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985674
-ck(f(['address', 'uint16', 'int40', 'bool[]'], D), T[A, ...])  # iterable case 1985675
+ck(f(['address', 'uint16', 'int40', 'bool[]'], D), TA)  # iterable case 1985675
 ck(f(['address', 'uint16', 'int40', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985676
 ck(f(['address', 'uint16', 'int40', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985677
 ck(f(['address', 'uint16', 'int40', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985678
@@ -9979,7 +9979,7 @@ ck(f(['address', 'uint16', 'int40', 'int80'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int40', 'int88'], D), T[U[HA, i], ...])  # iterable case 1985739
 ck(f(['address', 'uint16', 'int40', 'int96'], D), T[U[HA, i], ...])  # iterable case 1985740
 ck(f(['address', 'uint16', 'int40', 'string'], D), T[U[HA, i, s], ...])  # iterable case 1985741
-ck(f(['address', 'uint16', 'int40', 'string[]'], D), T[A, ...])  # iterable case 1985742
+ck(f(['address', 'uint16', 'int40', 'string[]'], D), TA)  # iterable case 1985742
 ck(f(['address', 'uint16', 'int40', 'uint104'], D), T[U[HA, i], ...])  # iterable case 1985743
 ck(f(['address', 'uint16', 'int40', 'uint112'], D), T[U[HA, i], ...])  # iterable case 1985744
 ck(f(['address', 'uint16', 'int40', 'uint120'], D), T[U[HA, i], ...])  # iterable case 1985745
@@ -10012,11 +10012,11 @@ ck(f(['address', 'uint16', 'int40', 'uint8'], D), T[U[HA, i], ...])  # iterable 
 ck(f(['address', 'uint16', 'int40', 'uint80'], D), T[U[HA, i], ...])  # iterable case 1985772
 ck(f(['address', 'uint16', 'int40', 'uint88'], D), T[U[HA, i], ...])  # iterable case 1985773
 ck(f(['address', 'uint16', 'int40', 'uint96'], D), T[U[HA, i], ...])  # iterable case 1985774
-ck(f(['address', 'uint16', 'int40', '?'], D), T[A, ...])  # iterable case 1985775
+ck(f(['address', 'uint16', 'int40', '?'], D), TA)  # iterable case 1985775
 ck(f(['address', 'uint16', 'int48', 'address'], D), T[U[HA, i], ...])  # iterable case 1985776
-ck(f(['address', 'uint16', 'int48', 'address[]'], D), T[A, ...])  # iterable case 1985777
+ck(f(['address', 'uint16', 'int48', 'address[]'], D), TA)  # iterable case 1985777
 ck(f(['address', 'uint16', 'int48', 'bool'], D), T[U[HA, bo, i], ...])  # iterable case 1985778
-ck(f(['address', 'uint16', 'int48', 'bool[]'], D), T[A, ...])  # iterable case 1985779
+ck(f(['address', 'uint16', 'int48', 'bool[]'], D), TA)  # iterable case 1985779
 ck(f(['address', 'uint16', 'int48', 'bytes'], D), T[U[HA, by, i], ...])  # iterable case 1985780
 ck(f(['address', 'uint16', 'int48', 'bytes1'], D), T[U[HA, by, i], ...])  # iterable case 1985781
 ck(f(['address', 'uint16', 'int48', 'bytes10'], D), T[U[HA, by, i], ...])  # iterable case 1985782
