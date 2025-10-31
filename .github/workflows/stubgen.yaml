@@ -33,12 +33,12 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install mypy
-        run: pip install mypy
+      - name: Install mypy & requirements.txt
+        run: pip install mypy -r requirements.txt
 
       - name: Delete existing stubs
         run: rm -rf types-eth-abi/eth_abi types-eth-abi/faster_eth_abi
-      
+
       - name: Generate stubs with stubgen
         run: stubgen faster_eth_abi -o types-eth-abi --include-docstrings -v
 
@@ -47,7 +47,7 @@ jobs:
 
       - name: Copy typing.py to typing.pyi
         run: cp faster_eth_abi/typing.py types-eth-abi/faster_eth_abi/typing.pyi
-        
+
       - name: Duplicate stubs for eth_abi
         run: |
           cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
