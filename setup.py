@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 import sys
+from typing import (
+    List,
+)
 
 from mypyc.build import (
     mypycify,
@@ -9,28 +12,32 @@ from setuptools import (
     setup,
 )
 
+REQUIREMENTS = []
 HYPOTHESIS_REQUIREMENT = "hypothesis>=6.22.0,<6.108.7"
 
 
-def parse_requirements(filename):
+def parse_requirements(filename: str) -> List[str]:
+    lines = []
     with open(filename) as f:
-        return [line.strip() for line in f if line.strip() and not line.startswith("#")]
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if line.startswith("-r"):
+                lines.extend(
+                    line
+                    for line in parse_requirements(line[2:].strip())
+                    if line not in REQUIREMENTS
+                )
+            else:
+                lines.append(line.strip())
+    return lines
 
 
-install_requires = parse_requirements("requirements.txt")
+REQUIREMENTS.extend(parse_requirements("requirements.txt"))
 
 extras_require = {
-    "dev": [
-        "build>=0.9.0",
-        "bump_my_version>=0.19.0",
-        "ipython",
-        f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}",
-        "pre-commit>=3.4.0",
-        "tox>=4.0.0",
-        "twine",
-        "wheel",
-        "pytest-benchmark",
-    ],
+    "dev": parse_requirements("requirements-dev.txt"),
     "docs": [
         "sphinx>=6.0.0",
         "sphinx-autobuild>=2021.3.14",
@@ -53,6 +60,7 @@ extras_require = {
         "pytest-codspeed>=4.2,<4.3",
         "pytest-test-groups",
     ],
+    "mypy": parse_requirements("requirements-mypy.txt"),
 }
 
 extras_require["dev"] = (
@@ -122,7 +130,7 @@ setup(
         "Original": "https://github.com/ethereum/eth-abi",
     },
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=REQUIREMENTS,
     python_requires=">=3.8, <4",
     extras_require=extras_require,
     py_modules=["faster_eth_abi"],
@@ -131,6 +139,8 @@ setup(
     keywords="ethereum",
     packages=find_packages(
         exclude=[
+            "benchmarks",
+            "benchmarks.*",
             "scripts",
             "scripts.*",
             "tests",
