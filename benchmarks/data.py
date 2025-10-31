@@ -149,8 +149,8 @@ for bits in (8, 16, 32, 64, 128, 256):
 
 primitive_cases = (
     [
-        *((f"uint{i}", case) for i, cases in uints.items() for case in cases)
-        * ((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
+        *((f"uint{i}", case) for i, cases in uints.items() for case in cases),
+        *((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
         *(
             (f"int{i}", -(2 ** (i - 1)) // 2)
             for i in range(8, 257, 8)  # negative midpoint
