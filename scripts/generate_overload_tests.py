@@ -70,6 +70,7 @@ HEXADDRESS_ALIAS: Final = "HA"
 INT_ALIAS: Final = "i"
 STR_ALIAS: Final = "s"
 TUPLE_ALIAS: Final = "T"
+TUPLE_ANY_ALIAS: Final = "TA"
 UNION_ALIAS: Final = "U"
 
 
@@ -91,6 +92,8 @@ from faster_eth_abi.registry import ABIRegistry
 {BYTES_ALIAS} = bytes
 {INT_ALIAS} = int
 {STR_ALIAS} = str
+
+{TUPLE_ANY_ALIAS} = T[A, ...]
 
 decoder = ABIDecoder(ABIRegistry())
 
@@ -250,7 +253,11 @@ def get_all_literals() -> List["LiteralString"]:
 
 
 def get_expected_type_tuple(types: Tuple[str, ...]) -> str:
-    py_types = [ANY_ALIAS if t == "?" else RETURN_TYPE_MAP[t] for t in types]
+    py_types = []
+    for t in types:
+        if t == "?":
+            return TUPLE_ANY_ALIAS
+        py_types.append(RETURN_TYPE_MAP[t])
     return f"{TUPLE_ALIAS}[{', '.join(py_types)}]"
 
 
@@ -258,7 +265,7 @@ def get_expected_type_iterable(types: Tuple[str, ...]) -> str:
     py_types = [ANY_ALIAS if t == "?" else RETURN_TYPE_MAP[t] for t in types]
     unique_types = sorted(set(py_types))
     if ANY_ALIAS in unique_types:
-        return f"{TUPLE_ALIAS}[{ANY_ALIAS}, ...]"
+        return TUPLE_ANY_ALIAS
     elif len(unique_types) == 1:
         return f"{TUPLE_ALIAS}[{unique_types[0]}, ...]"
     else:
