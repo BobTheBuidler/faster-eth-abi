@@ -308,30 +308,31 @@ def stream_cases_and_write_files(
 
             if mode == "tuple":
 
-                def render(case: Tuple[str, ...]) -> Iterator[str]:
+                def addline(case: Tuple[str, ...]) -> Iterator[str]:
                     typestr = (
                         f"('{case[0]}',)"
                         if len(case) == 1
                         else f"({', '.join(map(repr, case))})"
                     )
                     expected = get_expected_type_tuple(case)
-                    yield format_case(typestr, expected)
-                    # yield format_case("ABICodec.decode", f"codec, {typestr}", expected)
-                    # yield format_case("ABIDecoder.decode", f"codec, {typestr}", expected)
-                    # yield format_case("ABIDecoder.decode", f"decoder, {typestr}", expected)
+                    chunk_lines.append(format_case(typestr, expected))
+                    # chunk_lines.append(format_case("ABICodec.decode", f"codec, {typestr}", expected)
+                    # chunk_lines.append(format_case("ABIDecoder.decode", f"codec, {typestr}", expected)
+                    # chunk_lines.append(format_case("ABIDecoder.decode", f"decoder, {typestr}", expected)
 
             else:
 
-                def render(case: Tuple[str, ...]) -> Iterator[str]:
+                def addline(case: Tuple[str, ...]) -> Iterator[str]:
                     typestr = f"[{', '.join(map(repr, case))}]"
                     expected = get_expected_type_iterable(case)
-                    yield format_case(typestr, expected)
-                    # yield format_case("ABICodec.decode", f"codec, {typestr}", expected)
-                    # yield format_case("ABIDecoder.decode", f"codec, {typestr}", expected)
-                    # yield format_case("ABIDecoder.decode", f"decoder, {typestr}", expected)
+                    chunk_lines.append(format_case(typestr, expected))
+                    # chunk_lines.append(format_case("ABICodec.decode", f"codec, {typestr}", expected)
+                    # chunk_lines.append(format_case("ABIDecoder.decode", f"codec, {typestr}", expected)
+                    # chunk_lines.append(format_case("ABIDecoder.decode", f"decoder, {typestr}", expected)
 
-            def write_file(path: pathlib.Path) -> None:
+            def write_file() -> None:
                 nonlocal chunk_idx
+                path = pathlib.Path(f"{PATH_WITHOUT_NUMBER}{chunk_idx:05d}.py")
                 path.parent.mkdir(parents=True, exist_ok=True)
                 with open(path, "w") as f:
                     f.write(HEADER_ABI if impl == "abi" else HEADER_CODEC)
@@ -342,11 +343,11 @@ def stream_cases_and_write_files(
 
             for combo in itertools.product(all_literals, repeat=L):
                 if file_counter and file_counter % CHUNK_SIZE == 0:
-                    write_file(pathlib.Path(f"{PATH_WITHOUT_NUMBER}{chunk_idx:05d}.py"))
-                chunk_lines.extend(render(combo, mode=mode))
+                    write_file()
+                addline(combo)
 
             if chunk_lines:
-                write_file(pathlib.Path(f"{PATH_WITHOUT_NUMBER}{chunk_idx:05d}.py"))
+                write_file()
 
             print(f"finished generating cases for length {L}")
 
