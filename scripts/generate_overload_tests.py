@@ -38,7 +38,6 @@ from typing import (
     Final,
     ForwardRef,
     Iterator,
-    List,
     Literal,
     Set,
     Tuple,
@@ -265,8 +264,7 @@ def get_expected_type_iterable(types: Tuple[str, ...]) -> str:
         return f"{TUPLE_ALIAS}[{UNION_ALIAS}[{', '.join(unique_types)}], ...]"
 
 
-def compute_total_cases_sampled( max_len: int
-) -> int:
+def compute_total_cases_sampled(max_len: int) -> int:
     return sum(NUM_LITERALS**L for L in range(1, max_len + 1))
 
 
