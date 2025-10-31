@@ -32,7 +32,18 @@ import math
 import pathlib
 import re
 import sys
-from typing import TYPE_CHECKING, Any, Dict, Final, ForwardRef, List, Literal, Set, Tuple, Union, get_args, get_origin
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    ForwardRef,
+    List,
+    Literal,
+    Tuple,
+    Union,
+    get_args,
+    get_origin,
+)
 
 from tqdm import (
     tqdm,
@@ -218,7 +229,6 @@ def compute_total_cases_sampled(all_literals: List["LiteralString"], max_len: in
 def compute_total_chunks(all_literals: List["LiteralString"], max_len: int) -> int:
     total_cases = compute_total_cases_sampled(all_literals, max_len)
     return math.ceil(total_cases / CHUNK_SIZE) * VARIATIONS_PER_TYPE_COMBO
-
 
 def stream_cases_and_write_files(
     all_literals: List["LiteralString"], mode: Literal["tuple", "iterable"], impl: Literal["abi", "codec"]
