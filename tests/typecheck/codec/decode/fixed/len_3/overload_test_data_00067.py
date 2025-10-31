@@ -98,114 +98,114 @@ assert_type(decoder.decode(('int48', 'bool', 'uint80'), DATA), Tuple[int, bool, 
 assert_type(decoder.decode(('int48', 'bool', 'uint88'), DATA), Tuple[int, bool, int])  # tuple case 671005
 assert_type(decoder.decode(('int48', 'bool', 'uint96'), DATA), Tuple[int, bool, int])  # tuple case 671006
 assert_type(decoder.decode(('int48', 'bool', 'someothertype'), DATA), Tuple[int, bool, Any])  # tuple case 671007
-assert_type(decoder.decode(('int48', 'bool[]', 'address'), DATA), Tuple[int, Tuple[bool, ...], Any])  # tuple case 671008
-assert_type(decoder.decode(('int48', 'bool[]', 'address[]'), DATA), Tuple[int, Tuple[bool, ...], Any])  # tuple case 671009
-assert_type(decoder.decode(('int48', 'bool[]', 'bool'), DATA), Tuple[int, Tuple[bool, ...], bool])  # tuple case 671010
-assert_type(decoder.decode(('int48', 'bool[]', 'bool[]'), DATA), Tuple[int, Tuple[bool, ...], Tuple[bool, ...]])  # tuple case 671011
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671012
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes1'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671013
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes10'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671014
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes11'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671015
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes12'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671016
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes13'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671017
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes14'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671018
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes15'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671019
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes16'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671020
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes17'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671021
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes18'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671022
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes19'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671023
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes2'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671024
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes20'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671025
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes21'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671026
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes22'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671027
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes23'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671028
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes24'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671029
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes25'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671030
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes26'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671031
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes27'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671032
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes28'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671033
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes29'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671034
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes3'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671035
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes30'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671036
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes31'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671037
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes32'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671038
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes4'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671039
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes5'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671040
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes6'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671041
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes7'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671042
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes8'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671043
-assert_type(decoder.decode(('int48', 'bool[]', 'bytes9'), DATA), Tuple[int, Tuple[bool, ...], bytes])  # tuple case 671044
-assert_type(decoder.decode(('int48', 'bool[]', 'int104'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671045
-assert_type(decoder.decode(('int48', 'bool[]', 'int112'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671046
-assert_type(decoder.decode(('int48', 'bool[]', 'int120'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671047
-assert_type(decoder.decode(('int48', 'bool[]', 'int128'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671048
-assert_type(decoder.decode(('int48', 'bool[]', 'int136'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671049
-assert_type(decoder.decode(('int48', 'bool[]', 'int144'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671050
-assert_type(decoder.decode(('int48', 'bool[]', 'int152'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671051
-assert_type(decoder.decode(('int48', 'bool[]', 'int16'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671052
-assert_type(decoder.decode(('int48', 'bool[]', 'int160'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671053
-assert_type(decoder.decode(('int48', 'bool[]', 'int168'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671054
-assert_type(decoder.decode(('int48', 'bool[]', 'int176'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671055
-assert_type(decoder.decode(('int48', 'bool[]', 'int184'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671056
-assert_type(decoder.decode(('int48', 'bool[]', 'int192'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671057
-assert_type(decoder.decode(('int48', 'bool[]', 'int200'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671058
-assert_type(decoder.decode(('int48', 'bool[]', 'int208'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671059
-assert_type(decoder.decode(('int48', 'bool[]', 'int216'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671060
-assert_type(decoder.decode(('int48', 'bool[]', 'int224'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671061
-assert_type(decoder.decode(('int48', 'bool[]', 'int232'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671062
-assert_type(decoder.decode(('int48', 'bool[]', 'int24'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671063
-assert_type(decoder.decode(('int48', 'bool[]', 'int240'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671064
-assert_type(decoder.decode(('int48', 'bool[]', 'int248'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671065
-assert_type(decoder.decode(('int48', 'bool[]', 'int256'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671066
-assert_type(decoder.decode(('int48', 'bool[]', 'int32'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671067
-assert_type(decoder.decode(('int48', 'bool[]', 'int40'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671068
-assert_type(decoder.decode(('int48', 'bool[]', 'int48'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671069
-assert_type(decoder.decode(('int48', 'bool[]', 'int56'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671070
-assert_type(decoder.decode(('int48', 'bool[]', 'int64'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671071
-assert_type(decoder.decode(('int48', 'bool[]', 'int72'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671072
-assert_type(decoder.decode(('int48', 'bool[]', 'int8'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671073
-assert_type(decoder.decode(('int48', 'bool[]', 'int80'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671074
-assert_type(decoder.decode(('int48', 'bool[]', 'int88'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671075
-assert_type(decoder.decode(('int48', 'bool[]', 'int96'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671076
-assert_type(decoder.decode(('int48', 'bool[]', 'string'), DATA), Tuple[int, Tuple[bool, ...], str])  # tuple case 671077
-assert_type(decoder.decode(('int48', 'bool[]', 'string[]'), DATA), Tuple[int, Tuple[bool, ...], Any])  # tuple case 671078
-assert_type(decoder.decode(('int48', 'bool[]', 'uint104'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671079
-assert_type(decoder.decode(('int48', 'bool[]', 'uint112'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671080
-assert_type(decoder.decode(('int48', 'bool[]', 'uint120'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671081
-assert_type(decoder.decode(('int48', 'bool[]', 'uint128'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671082
-assert_type(decoder.decode(('int48', 'bool[]', 'uint136'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671083
-assert_type(decoder.decode(('int48', 'bool[]', 'uint144'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671084
-assert_type(decoder.decode(('int48', 'bool[]', 'uint152'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671085
-assert_type(decoder.decode(('int48', 'bool[]', 'uint16'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671086
-assert_type(decoder.decode(('int48', 'bool[]', 'uint160'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671087
-assert_type(decoder.decode(('int48', 'bool[]', 'uint168'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671088
-assert_type(decoder.decode(('int48', 'bool[]', 'uint176'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671089
-assert_type(decoder.decode(('int48', 'bool[]', 'uint184'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671090
-assert_type(decoder.decode(('int48', 'bool[]', 'uint192'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671091
-assert_type(decoder.decode(('int48', 'bool[]', 'uint200'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671092
-assert_type(decoder.decode(('int48', 'bool[]', 'uint208'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671093
-assert_type(decoder.decode(('int48', 'bool[]', 'uint216'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671094
-assert_type(decoder.decode(('int48', 'bool[]', 'uint224'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671095
-assert_type(decoder.decode(('int48', 'bool[]', 'uint232'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671096
-assert_type(decoder.decode(('int48', 'bool[]', 'uint24'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671097
-assert_type(decoder.decode(('int48', 'bool[]', 'uint240'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671098
-assert_type(decoder.decode(('int48', 'bool[]', 'uint248'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671099
-assert_type(decoder.decode(('int48', 'bool[]', 'uint256'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671100
-assert_type(decoder.decode(('int48', 'bool[]', 'uint32'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671101
-assert_type(decoder.decode(('int48', 'bool[]', 'uint40'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671102
-assert_type(decoder.decode(('int48', 'bool[]', 'uint48'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671103
-assert_type(decoder.decode(('int48', 'bool[]', 'uint56'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671104
-assert_type(decoder.decode(('int48', 'bool[]', 'uint64'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671105
-assert_type(decoder.decode(('int48', 'bool[]', 'uint72'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671106
-assert_type(decoder.decode(('int48', 'bool[]', 'uint8'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671107
-assert_type(decoder.decode(('int48', 'bool[]', 'uint80'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671108
-assert_type(decoder.decode(('int48', 'bool[]', 'uint88'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671109
-assert_type(decoder.decode(('int48', 'bool[]', 'uint96'), DATA), Tuple[int, Tuple[bool, ...], int])  # tuple case 671110
-assert_type(decoder.decode(('int48', 'bool[]', 'someothertype'), DATA), Tuple[int, Tuple[bool, ...], Any])  # tuple case 671111
-assert_type(decoder.decode(('int48', 'bytes', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671112
-assert_type(decoder.decode(('int48', 'bytes', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671113
+assert_type(decoder.decode(('int48', 'bool[]', 'address'), DATA), Tuple[int, Any, HexAddress])  # tuple case 671008
+assert_type(decoder.decode(('int48', 'bool[]', 'address[]'), DATA), Tuple[int, Any, Tuple[HexAddress, ...]])  # tuple case 671009
+assert_type(decoder.decode(('int48', 'bool[]', 'bool'), DATA), Tuple[int, Any, bool])  # tuple case 671010
+assert_type(decoder.decode(('int48', 'bool[]', 'bool[]'), DATA), Tuple[int, Any, Any])  # tuple case 671011
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes'), DATA), Tuple[int, Any, bytes])  # tuple case 671012
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes1'), DATA), Tuple[int, Any, bytes])  # tuple case 671013
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes10'), DATA), Tuple[int, Any, bytes])  # tuple case 671014
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes11'), DATA), Tuple[int, Any, bytes])  # tuple case 671015
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes12'), DATA), Tuple[int, Any, bytes])  # tuple case 671016
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes13'), DATA), Tuple[int, Any, bytes])  # tuple case 671017
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes14'), DATA), Tuple[int, Any, bytes])  # tuple case 671018
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes15'), DATA), Tuple[int, Any, bytes])  # tuple case 671019
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes16'), DATA), Tuple[int, Any, bytes])  # tuple case 671020
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes17'), DATA), Tuple[int, Any, bytes])  # tuple case 671021
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes18'), DATA), Tuple[int, Any, bytes])  # tuple case 671022
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes19'), DATA), Tuple[int, Any, bytes])  # tuple case 671023
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes2'), DATA), Tuple[int, Any, bytes])  # tuple case 671024
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes20'), DATA), Tuple[int, Any, bytes])  # tuple case 671025
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes21'), DATA), Tuple[int, Any, bytes])  # tuple case 671026
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes22'), DATA), Tuple[int, Any, bytes])  # tuple case 671027
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes23'), DATA), Tuple[int, Any, bytes])  # tuple case 671028
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes24'), DATA), Tuple[int, Any, bytes])  # tuple case 671029
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes25'), DATA), Tuple[int, Any, bytes])  # tuple case 671030
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes26'), DATA), Tuple[int, Any, bytes])  # tuple case 671031
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes27'), DATA), Tuple[int, Any, bytes])  # tuple case 671032
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes28'), DATA), Tuple[int, Any, bytes])  # tuple case 671033
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes29'), DATA), Tuple[int, Any, bytes])  # tuple case 671034
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes3'), DATA), Tuple[int, Any, bytes])  # tuple case 671035
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes30'), DATA), Tuple[int, Any, bytes])  # tuple case 671036
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes31'), DATA), Tuple[int, Any, bytes])  # tuple case 671037
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes32'), DATA), Tuple[int, Any, bytes])  # tuple case 671038
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes4'), DATA), Tuple[int, Any, bytes])  # tuple case 671039
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes5'), DATA), Tuple[int, Any, bytes])  # tuple case 671040
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes6'), DATA), Tuple[int, Any, bytes])  # tuple case 671041
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes7'), DATA), Tuple[int, Any, bytes])  # tuple case 671042
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes8'), DATA), Tuple[int, Any, bytes])  # tuple case 671043
+assert_type(decoder.decode(('int48', 'bool[]', 'bytes9'), DATA), Tuple[int, Any, bytes])  # tuple case 671044
+assert_type(decoder.decode(('int48', 'bool[]', 'int104'), DATA), Tuple[int, Any, int])  # tuple case 671045
+assert_type(decoder.decode(('int48', 'bool[]', 'int112'), DATA), Tuple[int, Any, int])  # tuple case 671046
+assert_type(decoder.decode(('int48', 'bool[]', 'int120'), DATA), Tuple[int, Any, int])  # tuple case 671047
+assert_type(decoder.decode(('int48', 'bool[]', 'int128'), DATA), Tuple[int, Any, int])  # tuple case 671048
+assert_type(decoder.decode(('int48', 'bool[]', 'int136'), DATA), Tuple[int, Any, int])  # tuple case 671049
+assert_type(decoder.decode(('int48', 'bool[]', 'int144'), DATA), Tuple[int, Any, int])  # tuple case 671050
+assert_type(decoder.decode(('int48', 'bool[]', 'int152'), DATA), Tuple[int, Any, int])  # tuple case 671051
+assert_type(decoder.decode(('int48', 'bool[]', 'int16'), DATA), Tuple[int, Any, int])  # tuple case 671052
+assert_type(decoder.decode(('int48', 'bool[]', 'int160'), DATA), Tuple[int, Any, int])  # tuple case 671053
+assert_type(decoder.decode(('int48', 'bool[]', 'int168'), DATA), Tuple[int, Any, int])  # tuple case 671054
+assert_type(decoder.decode(('int48', 'bool[]', 'int176'), DATA), Tuple[int, Any, int])  # tuple case 671055
+assert_type(decoder.decode(('int48', 'bool[]', 'int184'), DATA), Tuple[int, Any, int])  # tuple case 671056
+assert_type(decoder.decode(('int48', 'bool[]', 'int192'), DATA), Tuple[int, Any, int])  # tuple case 671057
+assert_type(decoder.decode(('int48', 'bool[]', 'int200'), DATA), Tuple[int, Any, int])  # tuple case 671058
+assert_type(decoder.decode(('int48', 'bool[]', 'int208'), DATA), Tuple[int, Any, int])  # tuple case 671059
+assert_type(decoder.decode(('int48', 'bool[]', 'int216'), DATA), Tuple[int, Any, int])  # tuple case 671060
+assert_type(decoder.decode(('int48', 'bool[]', 'int224'), DATA), Tuple[int, Any, int])  # tuple case 671061
+assert_type(decoder.decode(('int48', 'bool[]', 'int232'), DATA), Tuple[int, Any, int])  # tuple case 671062
+assert_type(decoder.decode(('int48', 'bool[]', 'int24'), DATA), Tuple[int, Any, int])  # tuple case 671063
+assert_type(decoder.decode(('int48', 'bool[]', 'int240'), DATA), Tuple[int, Any, int])  # tuple case 671064
+assert_type(decoder.decode(('int48', 'bool[]', 'int248'), DATA), Tuple[int, Any, int])  # tuple case 671065
+assert_type(decoder.decode(('int48', 'bool[]', 'int256'), DATA), Tuple[int, Any, int])  # tuple case 671066
+assert_type(decoder.decode(('int48', 'bool[]', 'int32'), DATA), Tuple[int, Any, int])  # tuple case 671067
+assert_type(decoder.decode(('int48', 'bool[]', 'int40'), DATA), Tuple[int, Any, int])  # tuple case 671068
+assert_type(decoder.decode(('int48', 'bool[]', 'int48'), DATA), Tuple[int, Any, int])  # tuple case 671069
+assert_type(decoder.decode(('int48', 'bool[]', 'int56'), DATA), Tuple[int, Any, int])  # tuple case 671070
+assert_type(decoder.decode(('int48', 'bool[]', 'int64'), DATA), Tuple[int, Any, int])  # tuple case 671071
+assert_type(decoder.decode(('int48', 'bool[]', 'int72'), DATA), Tuple[int, Any, int])  # tuple case 671072
+assert_type(decoder.decode(('int48', 'bool[]', 'int8'), DATA), Tuple[int, Any, int])  # tuple case 671073
+assert_type(decoder.decode(('int48', 'bool[]', 'int80'), DATA), Tuple[int, Any, int])  # tuple case 671074
+assert_type(decoder.decode(('int48', 'bool[]', 'int88'), DATA), Tuple[int, Any, int])  # tuple case 671075
+assert_type(decoder.decode(('int48', 'bool[]', 'int96'), DATA), Tuple[int, Any, int])  # tuple case 671076
+assert_type(decoder.decode(('int48', 'bool[]', 'string'), DATA), Tuple[int, Any, str])  # tuple case 671077
+assert_type(decoder.decode(('int48', 'bool[]', 'string[]'), DATA), Tuple[int, Any, Any])  # tuple case 671078
+assert_type(decoder.decode(('int48', 'bool[]', 'uint104'), DATA), Tuple[int, Any, int])  # tuple case 671079
+assert_type(decoder.decode(('int48', 'bool[]', 'uint112'), DATA), Tuple[int, Any, int])  # tuple case 671080
+assert_type(decoder.decode(('int48', 'bool[]', 'uint120'), DATA), Tuple[int, Any, int])  # tuple case 671081
+assert_type(decoder.decode(('int48', 'bool[]', 'uint128'), DATA), Tuple[int, Any, int])  # tuple case 671082
+assert_type(decoder.decode(('int48', 'bool[]', 'uint136'), DATA), Tuple[int, Any, int])  # tuple case 671083
+assert_type(decoder.decode(('int48', 'bool[]', 'uint144'), DATA), Tuple[int, Any, int])  # tuple case 671084
+assert_type(decoder.decode(('int48', 'bool[]', 'uint152'), DATA), Tuple[int, Any, int])  # tuple case 671085
+assert_type(decoder.decode(('int48', 'bool[]', 'uint16'), DATA), Tuple[int, Any, int])  # tuple case 671086
+assert_type(decoder.decode(('int48', 'bool[]', 'uint160'), DATA), Tuple[int, Any, int])  # tuple case 671087
+assert_type(decoder.decode(('int48', 'bool[]', 'uint168'), DATA), Tuple[int, Any, int])  # tuple case 671088
+assert_type(decoder.decode(('int48', 'bool[]', 'uint176'), DATA), Tuple[int, Any, int])  # tuple case 671089
+assert_type(decoder.decode(('int48', 'bool[]', 'uint184'), DATA), Tuple[int, Any, int])  # tuple case 671090
+assert_type(decoder.decode(('int48', 'bool[]', 'uint192'), DATA), Tuple[int, Any, int])  # tuple case 671091
+assert_type(decoder.decode(('int48', 'bool[]', 'uint200'), DATA), Tuple[int, Any, int])  # tuple case 671092
+assert_type(decoder.decode(('int48', 'bool[]', 'uint208'), DATA), Tuple[int, Any, int])  # tuple case 671093
+assert_type(decoder.decode(('int48', 'bool[]', 'uint216'), DATA), Tuple[int, Any, int])  # tuple case 671094
+assert_type(decoder.decode(('int48', 'bool[]', 'uint224'), DATA), Tuple[int, Any, int])  # tuple case 671095
+assert_type(decoder.decode(('int48', 'bool[]', 'uint232'), DATA), Tuple[int, Any, int])  # tuple case 671096
+assert_type(decoder.decode(('int48', 'bool[]', 'uint24'), DATA), Tuple[int, Any, int])  # tuple case 671097
+assert_type(decoder.decode(('int48', 'bool[]', 'uint240'), DATA), Tuple[int, Any, int])  # tuple case 671098
+assert_type(decoder.decode(('int48', 'bool[]', 'uint248'), DATA), Tuple[int, Any, int])  # tuple case 671099
+assert_type(decoder.decode(('int48', 'bool[]', 'uint256'), DATA), Tuple[int, Any, int])  # tuple case 671100
+assert_type(decoder.decode(('int48', 'bool[]', 'uint32'), DATA), Tuple[int, Any, int])  # tuple case 671101
+assert_type(decoder.decode(('int48', 'bool[]', 'uint40'), DATA), Tuple[int, Any, int])  # tuple case 671102
+assert_type(decoder.decode(('int48', 'bool[]', 'uint48'), DATA), Tuple[int, Any, int])  # tuple case 671103
+assert_type(decoder.decode(('int48', 'bool[]', 'uint56'), DATA), Tuple[int, Any, int])  # tuple case 671104
+assert_type(decoder.decode(('int48', 'bool[]', 'uint64'), DATA), Tuple[int, Any, int])  # tuple case 671105
+assert_type(decoder.decode(('int48', 'bool[]', 'uint72'), DATA), Tuple[int, Any, int])  # tuple case 671106
+assert_type(decoder.decode(('int48', 'bool[]', 'uint8'), DATA), Tuple[int, Any, int])  # tuple case 671107
+assert_type(decoder.decode(('int48', 'bool[]', 'uint80'), DATA), Tuple[int, Any, int])  # tuple case 671108
+assert_type(decoder.decode(('int48', 'bool[]', 'uint88'), DATA), Tuple[int, Any, int])  # tuple case 671109
+assert_type(decoder.decode(('int48', 'bool[]', 'uint96'), DATA), Tuple[int, Any, int])  # tuple case 671110
+assert_type(decoder.decode(('int48', 'bool[]', 'someothertype'), DATA), Tuple[int, Any, Any])  # tuple case 671111
+assert_type(decoder.decode(('int48', 'bytes', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671112
+assert_type(decoder.decode(('int48', 'bytes', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671113
 assert_type(decoder.decode(('int48', 'bytes', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671114
-assert_type(decoder.decode(('int48', 'bytes', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671115
+assert_type(decoder.decode(('int48', 'bytes', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671115
 assert_type(decoder.decode(('int48', 'bytes', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671116
 assert_type(decoder.decode(('int48', 'bytes', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671117
 assert_type(decoder.decode(('int48', 'bytes', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671118
@@ -306,10 +306,10 @@ assert_type(decoder.decode(('int48', 'bytes', 'uint80'), DATA), Tuple[int, bytes
 assert_type(decoder.decode(('int48', 'bytes', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671213
 assert_type(decoder.decode(('int48', 'bytes', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671214
 assert_type(decoder.decode(('int48', 'bytes', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671215
-assert_type(decoder.decode(('int48', 'bytes1', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671216
-assert_type(decoder.decode(('int48', 'bytes1', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671217
+assert_type(decoder.decode(('int48', 'bytes1', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671216
+assert_type(decoder.decode(('int48', 'bytes1', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671217
 assert_type(decoder.decode(('int48', 'bytes1', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671218
-assert_type(decoder.decode(('int48', 'bytes1', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671219
+assert_type(decoder.decode(('int48', 'bytes1', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671219
 assert_type(decoder.decode(('int48', 'bytes1', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671220
 assert_type(decoder.decode(('int48', 'bytes1', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671221
 assert_type(decoder.decode(('int48', 'bytes1', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671222
@@ -410,10 +410,10 @@ assert_type(decoder.decode(('int48', 'bytes1', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes1', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671317
 assert_type(decoder.decode(('int48', 'bytes1', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671318
 assert_type(decoder.decode(('int48', 'bytes1', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671319
-assert_type(decoder.decode(('int48', 'bytes10', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671320
-assert_type(decoder.decode(('int48', 'bytes10', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671321
+assert_type(decoder.decode(('int48', 'bytes10', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671320
+assert_type(decoder.decode(('int48', 'bytes10', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671321
 assert_type(decoder.decode(('int48', 'bytes10', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671322
-assert_type(decoder.decode(('int48', 'bytes10', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671323
+assert_type(decoder.decode(('int48', 'bytes10', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671323
 assert_type(decoder.decode(('int48', 'bytes10', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671324
 assert_type(decoder.decode(('int48', 'bytes10', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671325
 assert_type(decoder.decode(('int48', 'bytes10', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671326
@@ -514,10 +514,10 @@ assert_type(decoder.decode(('int48', 'bytes10', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes10', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671421
 assert_type(decoder.decode(('int48', 'bytes10', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671422
 assert_type(decoder.decode(('int48', 'bytes10', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671423
-assert_type(decoder.decode(('int48', 'bytes11', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671424
-assert_type(decoder.decode(('int48', 'bytes11', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671425
+assert_type(decoder.decode(('int48', 'bytes11', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671424
+assert_type(decoder.decode(('int48', 'bytes11', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671425
 assert_type(decoder.decode(('int48', 'bytes11', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671426
-assert_type(decoder.decode(('int48', 'bytes11', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671427
+assert_type(decoder.decode(('int48', 'bytes11', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671427
 assert_type(decoder.decode(('int48', 'bytes11', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671428
 assert_type(decoder.decode(('int48', 'bytes11', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671429
 assert_type(decoder.decode(('int48', 'bytes11', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671430
@@ -618,10 +618,10 @@ assert_type(decoder.decode(('int48', 'bytes11', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes11', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671525
 assert_type(decoder.decode(('int48', 'bytes11', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671526
 assert_type(decoder.decode(('int48', 'bytes11', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671527
-assert_type(decoder.decode(('int48', 'bytes12', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671528
-assert_type(decoder.decode(('int48', 'bytes12', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671529
+assert_type(decoder.decode(('int48', 'bytes12', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671528
+assert_type(decoder.decode(('int48', 'bytes12', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671529
 assert_type(decoder.decode(('int48', 'bytes12', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671530
-assert_type(decoder.decode(('int48', 'bytes12', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671531
+assert_type(decoder.decode(('int48', 'bytes12', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671531
 assert_type(decoder.decode(('int48', 'bytes12', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671532
 assert_type(decoder.decode(('int48', 'bytes12', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671533
 assert_type(decoder.decode(('int48', 'bytes12', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671534
@@ -722,10 +722,10 @@ assert_type(decoder.decode(('int48', 'bytes12', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes12', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671629
 assert_type(decoder.decode(('int48', 'bytes12', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671630
 assert_type(decoder.decode(('int48', 'bytes12', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671631
-assert_type(decoder.decode(('int48', 'bytes13', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671632
-assert_type(decoder.decode(('int48', 'bytes13', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671633
+assert_type(decoder.decode(('int48', 'bytes13', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671632
+assert_type(decoder.decode(('int48', 'bytes13', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671633
 assert_type(decoder.decode(('int48', 'bytes13', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671634
-assert_type(decoder.decode(('int48', 'bytes13', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671635
+assert_type(decoder.decode(('int48', 'bytes13', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671635
 assert_type(decoder.decode(('int48', 'bytes13', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671636
 assert_type(decoder.decode(('int48', 'bytes13', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671637
 assert_type(decoder.decode(('int48', 'bytes13', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671638
@@ -826,10 +826,10 @@ assert_type(decoder.decode(('int48', 'bytes13', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes13', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671733
 assert_type(decoder.decode(('int48', 'bytes13', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671734
 assert_type(decoder.decode(('int48', 'bytes13', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671735
-assert_type(decoder.decode(('int48', 'bytes14', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671736
-assert_type(decoder.decode(('int48', 'bytes14', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671737
+assert_type(decoder.decode(('int48', 'bytes14', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671736
+assert_type(decoder.decode(('int48', 'bytes14', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671737
 assert_type(decoder.decode(('int48', 'bytes14', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671738
-assert_type(decoder.decode(('int48', 'bytes14', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671739
+assert_type(decoder.decode(('int48', 'bytes14', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671739
 assert_type(decoder.decode(('int48', 'bytes14', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671740
 assert_type(decoder.decode(('int48', 'bytes14', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671741
 assert_type(decoder.decode(('int48', 'bytes14', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671742
@@ -930,10 +930,10 @@ assert_type(decoder.decode(('int48', 'bytes14', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes14', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671837
 assert_type(decoder.decode(('int48', 'bytes14', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671838
 assert_type(decoder.decode(('int48', 'bytes14', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671839
-assert_type(decoder.decode(('int48', 'bytes15', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671840
-assert_type(decoder.decode(('int48', 'bytes15', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671841
+assert_type(decoder.decode(('int48', 'bytes15', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671840
+assert_type(decoder.decode(('int48', 'bytes15', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671841
 assert_type(decoder.decode(('int48', 'bytes15', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671842
-assert_type(decoder.decode(('int48', 'bytes15', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671843
+assert_type(decoder.decode(('int48', 'bytes15', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671843
 assert_type(decoder.decode(('int48', 'bytes15', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671844
 assert_type(decoder.decode(('int48', 'bytes15', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671845
 assert_type(decoder.decode(('int48', 'bytes15', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671846
@@ -1034,10 +1034,10 @@ assert_type(decoder.decode(('int48', 'bytes15', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes15', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 671941
 assert_type(decoder.decode(('int48', 'bytes15', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 671942
 assert_type(decoder.decode(('int48', 'bytes15', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 671943
-assert_type(decoder.decode(('int48', 'bytes16', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 671944
-assert_type(decoder.decode(('int48', 'bytes16', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671945
+assert_type(decoder.decode(('int48', 'bytes16', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 671944
+assert_type(decoder.decode(('int48', 'bytes16', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 671945
 assert_type(decoder.decode(('int48', 'bytes16', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 671946
-assert_type(decoder.decode(('int48', 'bytes16', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 671947
+assert_type(decoder.decode(('int48', 'bytes16', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 671947
 assert_type(decoder.decode(('int48', 'bytes16', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 671948
 assert_type(decoder.decode(('int48', 'bytes16', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 671949
 assert_type(decoder.decode(('int48', 'bytes16', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 671950
@@ -1138,10 +1138,10 @@ assert_type(decoder.decode(('int48', 'bytes16', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes16', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672045
 assert_type(decoder.decode(('int48', 'bytes16', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672046
 assert_type(decoder.decode(('int48', 'bytes16', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672047
-assert_type(decoder.decode(('int48', 'bytes17', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672048
-assert_type(decoder.decode(('int48', 'bytes17', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672049
+assert_type(decoder.decode(('int48', 'bytes17', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672048
+assert_type(decoder.decode(('int48', 'bytes17', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672049
 assert_type(decoder.decode(('int48', 'bytes17', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672050
-assert_type(decoder.decode(('int48', 'bytes17', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672051
+assert_type(decoder.decode(('int48', 'bytes17', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672051
 assert_type(decoder.decode(('int48', 'bytes17', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672052
 assert_type(decoder.decode(('int48', 'bytes17', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672053
 assert_type(decoder.decode(('int48', 'bytes17', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672054
@@ -1242,10 +1242,10 @@ assert_type(decoder.decode(('int48', 'bytes17', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes17', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672149
 assert_type(decoder.decode(('int48', 'bytes17', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672150
 assert_type(decoder.decode(('int48', 'bytes17', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672151
-assert_type(decoder.decode(('int48', 'bytes18', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672152
-assert_type(decoder.decode(('int48', 'bytes18', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672153
+assert_type(decoder.decode(('int48', 'bytes18', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672152
+assert_type(decoder.decode(('int48', 'bytes18', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672153
 assert_type(decoder.decode(('int48', 'bytes18', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672154
-assert_type(decoder.decode(('int48', 'bytes18', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672155
+assert_type(decoder.decode(('int48', 'bytes18', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672155
 assert_type(decoder.decode(('int48', 'bytes18', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672156
 assert_type(decoder.decode(('int48', 'bytes18', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672157
 assert_type(decoder.decode(('int48', 'bytes18', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672158
@@ -1346,10 +1346,10 @@ assert_type(decoder.decode(('int48', 'bytes18', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes18', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672253
 assert_type(decoder.decode(('int48', 'bytes18', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672254
 assert_type(decoder.decode(('int48', 'bytes18', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672255
-assert_type(decoder.decode(('int48', 'bytes19', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672256
-assert_type(decoder.decode(('int48', 'bytes19', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672257
+assert_type(decoder.decode(('int48', 'bytes19', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672256
+assert_type(decoder.decode(('int48', 'bytes19', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672257
 assert_type(decoder.decode(('int48', 'bytes19', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672258
-assert_type(decoder.decode(('int48', 'bytes19', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672259
+assert_type(decoder.decode(('int48', 'bytes19', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672259
 assert_type(decoder.decode(('int48', 'bytes19', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672260
 assert_type(decoder.decode(('int48', 'bytes19', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672261
 assert_type(decoder.decode(('int48', 'bytes19', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672262
@@ -1450,10 +1450,10 @@ assert_type(decoder.decode(('int48', 'bytes19', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes19', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672357
 assert_type(decoder.decode(('int48', 'bytes19', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672358
 assert_type(decoder.decode(('int48', 'bytes19', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672359
-assert_type(decoder.decode(('int48', 'bytes2', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672360
-assert_type(decoder.decode(('int48', 'bytes2', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672361
+assert_type(decoder.decode(('int48', 'bytes2', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672360
+assert_type(decoder.decode(('int48', 'bytes2', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672361
 assert_type(decoder.decode(('int48', 'bytes2', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672362
-assert_type(decoder.decode(('int48', 'bytes2', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672363
+assert_type(decoder.decode(('int48', 'bytes2', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672363
 assert_type(decoder.decode(('int48', 'bytes2', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672364
 assert_type(decoder.decode(('int48', 'bytes2', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672365
 assert_type(decoder.decode(('int48', 'bytes2', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672366
@@ -1554,10 +1554,10 @@ assert_type(decoder.decode(('int48', 'bytes2', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes2', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672461
 assert_type(decoder.decode(('int48', 'bytes2', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672462
 assert_type(decoder.decode(('int48', 'bytes2', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672463
-assert_type(decoder.decode(('int48', 'bytes20', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672464
-assert_type(decoder.decode(('int48', 'bytes20', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672465
+assert_type(decoder.decode(('int48', 'bytes20', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672464
+assert_type(decoder.decode(('int48', 'bytes20', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672465
 assert_type(decoder.decode(('int48', 'bytes20', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672466
-assert_type(decoder.decode(('int48', 'bytes20', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672467
+assert_type(decoder.decode(('int48', 'bytes20', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672467
 assert_type(decoder.decode(('int48', 'bytes20', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672468
 assert_type(decoder.decode(('int48', 'bytes20', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672469
 assert_type(decoder.decode(('int48', 'bytes20', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672470
@@ -1658,10 +1658,10 @@ assert_type(decoder.decode(('int48', 'bytes20', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes20', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672565
 assert_type(decoder.decode(('int48', 'bytes20', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672566
 assert_type(decoder.decode(('int48', 'bytes20', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672567
-assert_type(decoder.decode(('int48', 'bytes21', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672568
-assert_type(decoder.decode(('int48', 'bytes21', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672569
+assert_type(decoder.decode(('int48', 'bytes21', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672568
+assert_type(decoder.decode(('int48', 'bytes21', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672569
 assert_type(decoder.decode(('int48', 'bytes21', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672570
-assert_type(decoder.decode(('int48', 'bytes21', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672571
+assert_type(decoder.decode(('int48', 'bytes21', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672571
 assert_type(decoder.decode(('int48', 'bytes21', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672572
 assert_type(decoder.decode(('int48', 'bytes21', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672573
 assert_type(decoder.decode(('int48', 'bytes21', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672574
@@ -1762,10 +1762,10 @@ assert_type(decoder.decode(('int48', 'bytes21', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes21', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672669
 assert_type(decoder.decode(('int48', 'bytes21', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672670
 assert_type(decoder.decode(('int48', 'bytes21', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672671
-assert_type(decoder.decode(('int48', 'bytes22', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672672
-assert_type(decoder.decode(('int48', 'bytes22', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672673
+assert_type(decoder.decode(('int48', 'bytes22', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672672
+assert_type(decoder.decode(('int48', 'bytes22', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672673
 assert_type(decoder.decode(('int48', 'bytes22', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672674
-assert_type(decoder.decode(('int48', 'bytes22', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672675
+assert_type(decoder.decode(('int48', 'bytes22', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672675
 assert_type(decoder.decode(('int48', 'bytes22', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672676
 assert_type(decoder.decode(('int48', 'bytes22', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672677
 assert_type(decoder.decode(('int48', 'bytes22', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672678
@@ -1866,10 +1866,10 @@ assert_type(decoder.decode(('int48', 'bytes22', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes22', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672773
 assert_type(decoder.decode(('int48', 'bytes22', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672774
 assert_type(decoder.decode(('int48', 'bytes22', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672775
-assert_type(decoder.decode(('int48', 'bytes23', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672776
-assert_type(decoder.decode(('int48', 'bytes23', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672777
+assert_type(decoder.decode(('int48', 'bytes23', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672776
+assert_type(decoder.decode(('int48', 'bytes23', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672777
 assert_type(decoder.decode(('int48', 'bytes23', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672778
-assert_type(decoder.decode(('int48', 'bytes23', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672779
+assert_type(decoder.decode(('int48', 'bytes23', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672779
 assert_type(decoder.decode(('int48', 'bytes23', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672780
 assert_type(decoder.decode(('int48', 'bytes23', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672781
 assert_type(decoder.decode(('int48', 'bytes23', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672782
@@ -1970,10 +1970,10 @@ assert_type(decoder.decode(('int48', 'bytes23', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes23', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672877
 assert_type(decoder.decode(('int48', 'bytes23', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672878
 assert_type(decoder.decode(('int48', 'bytes23', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672879
-assert_type(decoder.decode(('int48', 'bytes24', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672880
-assert_type(decoder.decode(('int48', 'bytes24', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672881
+assert_type(decoder.decode(('int48', 'bytes24', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672880
+assert_type(decoder.decode(('int48', 'bytes24', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672881
 assert_type(decoder.decode(('int48', 'bytes24', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672882
-assert_type(decoder.decode(('int48', 'bytes24', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672883
+assert_type(decoder.decode(('int48', 'bytes24', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672883
 assert_type(decoder.decode(('int48', 'bytes24', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672884
 assert_type(decoder.decode(('int48', 'bytes24', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672885
 assert_type(decoder.decode(('int48', 'bytes24', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672886
@@ -2074,10 +2074,10 @@ assert_type(decoder.decode(('int48', 'bytes24', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes24', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 672981
 assert_type(decoder.decode(('int48', 'bytes24', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 672982
 assert_type(decoder.decode(('int48', 'bytes24', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 672983
-assert_type(decoder.decode(('int48', 'bytes25', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 672984
-assert_type(decoder.decode(('int48', 'bytes25', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672985
+assert_type(decoder.decode(('int48', 'bytes25', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 672984
+assert_type(decoder.decode(('int48', 'bytes25', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 672985
 assert_type(decoder.decode(('int48', 'bytes25', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 672986
-assert_type(decoder.decode(('int48', 'bytes25', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 672987
+assert_type(decoder.decode(('int48', 'bytes25', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 672987
 assert_type(decoder.decode(('int48', 'bytes25', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 672988
 assert_type(decoder.decode(('int48', 'bytes25', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 672989
 assert_type(decoder.decode(('int48', 'bytes25', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 672990
@@ -2178,10 +2178,10 @@ assert_type(decoder.decode(('int48', 'bytes25', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes25', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673085
 assert_type(decoder.decode(('int48', 'bytes25', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673086
 assert_type(decoder.decode(('int48', 'bytes25', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673087
-assert_type(decoder.decode(('int48', 'bytes26', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673088
-assert_type(decoder.decode(('int48', 'bytes26', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673089
+assert_type(decoder.decode(('int48', 'bytes26', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673088
+assert_type(decoder.decode(('int48', 'bytes26', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673089
 assert_type(decoder.decode(('int48', 'bytes26', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673090
-assert_type(decoder.decode(('int48', 'bytes26', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673091
+assert_type(decoder.decode(('int48', 'bytes26', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673091
 assert_type(decoder.decode(('int48', 'bytes26', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673092
 assert_type(decoder.decode(('int48', 'bytes26', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673093
 assert_type(decoder.decode(('int48', 'bytes26', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673094
@@ -2282,10 +2282,10 @@ assert_type(decoder.decode(('int48', 'bytes26', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes26', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673189
 assert_type(decoder.decode(('int48', 'bytes26', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673190
 assert_type(decoder.decode(('int48', 'bytes26', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673191
-assert_type(decoder.decode(('int48', 'bytes27', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673192
-assert_type(decoder.decode(('int48', 'bytes27', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673193
+assert_type(decoder.decode(('int48', 'bytes27', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673192
+assert_type(decoder.decode(('int48', 'bytes27', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673193
 assert_type(decoder.decode(('int48', 'bytes27', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673194
-assert_type(decoder.decode(('int48', 'bytes27', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673195
+assert_type(decoder.decode(('int48', 'bytes27', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673195
 assert_type(decoder.decode(('int48', 'bytes27', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673196
 assert_type(decoder.decode(('int48', 'bytes27', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673197
 assert_type(decoder.decode(('int48', 'bytes27', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673198
@@ -2386,10 +2386,10 @@ assert_type(decoder.decode(('int48', 'bytes27', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes27', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673293
 assert_type(decoder.decode(('int48', 'bytes27', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673294
 assert_type(decoder.decode(('int48', 'bytes27', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673295
-assert_type(decoder.decode(('int48', 'bytes28', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673296
-assert_type(decoder.decode(('int48', 'bytes28', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673297
+assert_type(decoder.decode(('int48', 'bytes28', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673296
+assert_type(decoder.decode(('int48', 'bytes28', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673297
 assert_type(decoder.decode(('int48', 'bytes28', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673298
-assert_type(decoder.decode(('int48', 'bytes28', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673299
+assert_type(decoder.decode(('int48', 'bytes28', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673299
 assert_type(decoder.decode(('int48', 'bytes28', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673300
 assert_type(decoder.decode(('int48', 'bytes28', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673301
 assert_type(decoder.decode(('int48', 'bytes28', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673302
@@ -2490,10 +2490,10 @@ assert_type(decoder.decode(('int48', 'bytes28', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes28', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673397
 assert_type(decoder.decode(('int48', 'bytes28', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673398
 assert_type(decoder.decode(('int48', 'bytes28', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673399
-assert_type(decoder.decode(('int48', 'bytes29', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673400
-assert_type(decoder.decode(('int48', 'bytes29', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673401
+assert_type(decoder.decode(('int48', 'bytes29', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673400
+assert_type(decoder.decode(('int48', 'bytes29', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673401
 assert_type(decoder.decode(('int48', 'bytes29', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673402
-assert_type(decoder.decode(('int48', 'bytes29', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673403
+assert_type(decoder.decode(('int48', 'bytes29', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673403
 assert_type(decoder.decode(('int48', 'bytes29', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673404
 assert_type(decoder.decode(('int48', 'bytes29', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673405
 assert_type(decoder.decode(('int48', 'bytes29', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673406
@@ -2594,10 +2594,10 @@ assert_type(decoder.decode(('int48', 'bytes29', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes29', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673501
 assert_type(decoder.decode(('int48', 'bytes29', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673502
 assert_type(decoder.decode(('int48', 'bytes29', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673503
-assert_type(decoder.decode(('int48', 'bytes3', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673504
-assert_type(decoder.decode(('int48', 'bytes3', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673505
+assert_type(decoder.decode(('int48', 'bytes3', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673504
+assert_type(decoder.decode(('int48', 'bytes3', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673505
 assert_type(decoder.decode(('int48', 'bytes3', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673506
-assert_type(decoder.decode(('int48', 'bytes3', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673507
+assert_type(decoder.decode(('int48', 'bytes3', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673507
 assert_type(decoder.decode(('int48', 'bytes3', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673508
 assert_type(decoder.decode(('int48', 'bytes3', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673509
 assert_type(decoder.decode(('int48', 'bytes3', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673510
@@ -2698,10 +2698,10 @@ assert_type(decoder.decode(('int48', 'bytes3', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes3', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673605
 assert_type(decoder.decode(('int48', 'bytes3', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673606
 assert_type(decoder.decode(('int48', 'bytes3', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673607
-assert_type(decoder.decode(('int48', 'bytes30', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673608
-assert_type(decoder.decode(('int48', 'bytes30', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673609
+assert_type(decoder.decode(('int48', 'bytes30', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673608
+assert_type(decoder.decode(('int48', 'bytes30', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673609
 assert_type(decoder.decode(('int48', 'bytes30', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673610
-assert_type(decoder.decode(('int48', 'bytes30', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673611
+assert_type(decoder.decode(('int48', 'bytes30', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673611
 assert_type(decoder.decode(('int48', 'bytes30', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673612
 assert_type(decoder.decode(('int48', 'bytes30', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673613
 assert_type(decoder.decode(('int48', 'bytes30', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673614
@@ -2802,10 +2802,10 @@ assert_type(decoder.decode(('int48', 'bytes30', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes30', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673709
 assert_type(decoder.decode(('int48', 'bytes30', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673710
 assert_type(decoder.decode(('int48', 'bytes30', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673711
-assert_type(decoder.decode(('int48', 'bytes31', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673712
-assert_type(decoder.decode(('int48', 'bytes31', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673713
+assert_type(decoder.decode(('int48', 'bytes31', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673712
+assert_type(decoder.decode(('int48', 'bytes31', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673713
 assert_type(decoder.decode(('int48', 'bytes31', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673714
-assert_type(decoder.decode(('int48', 'bytes31', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673715
+assert_type(decoder.decode(('int48', 'bytes31', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673715
 assert_type(decoder.decode(('int48', 'bytes31', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673716
 assert_type(decoder.decode(('int48', 'bytes31', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673717
 assert_type(decoder.decode(('int48', 'bytes31', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673718
@@ -2906,10 +2906,10 @@ assert_type(decoder.decode(('int48', 'bytes31', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes31', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673813
 assert_type(decoder.decode(('int48', 'bytes31', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673814
 assert_type(decoder.decode(('int48', 'bytes31', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673815
-assert_type(decoder.decode(('int48', 'bytes32', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673816
-assert_type(decoder.decode(('int48', 'bytes32', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673817
+assert_type(decoder.decode(('int48', 'bytes32', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673816
+assert_type(decoder.decode(('int48', 'bytes32', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673817
 assert_type(decoder.decode(('int48', 'bytes32', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673818
-assert_type(decoder.decode(('int48', 'bytes32', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673819
+assert_type(decoder.decode(('int48', 'bytes32', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673819
 assert_type(decoder.decode(('int48', 'bytes32', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673820
 assert_type(decoder.decode(('int48', 'bytes32', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673821
 assert_type(decoder.decode(('int48', 'bytes32', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673822
@@ -3010,10 +3010,10 @@ assert_type(decoder.decode(('int48', 'bytes32', 'uint80'), DATA), Tuple[int, byt
 assert_type(decoder.decode(('int48', 'bytes32', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 673917
 assert_type(decoder.decode(('int48', 'bytes32', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 673918
 assert_type(decoder.decode(('int48', 'bytes32', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 673919
-assert_type(decoder.decode(('int48', 'bytes4', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 673920
-assert_type(decoder.decode(('int48', 'bytes4', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673921
+assert_type(decoder.decode(('int48', 'bytes4', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 673920
+assert_type(decoder.decode(('int48', 'bytes4', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 673921
 assert_type(decoder.decode(('int48', 'bytes4', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 673922
-assert_type(decoder.decode(('int48', 'bytes4', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 673923
+assert_type(decoder.decode(('int48', 'bytes4', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 673923
 assert_type(decoder.decode(('int48', 'bytes4', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 673924
 assert_type(decoder.decode(('int48', 'bytes4', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 673925
 assert_type(decoder.decode(('int48', 'bytes4', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 673926
@@ -3114,10 +3114,10 @@ assert_type(decoder.decode(('int48', 'bytes4', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes4', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674021
 assert_type(decoder.decode(('int48', 'bytes4', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674022
 assert_type(decoder.decode(('int48', 'bytes4', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674023
-assert_type(decoder.decode(('int48', 'bytes5', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 674024
-assert_type(decoder.decode(('int48', 'bytes5', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674025
+assert_type(decoder.decode(('int48', 'bytes5', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 674024
+assert_type(decoder.decode(('int48', 'bytes5', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 674025
 assert_type(decoder.decode(('int48', 'bytes5', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 674026
-assert_type(decoder.decode(('int48', 'bytes5', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 674027
+assert_type(decoder.decode(('int48', 'bytes5', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674027
 assert_type(decoder.decode(('int48', 'bytes5', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 674028
 assert_type(decoder.decode(('int48', 'bytes5', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 674029
 assert_type(decoder.decode(('int48', 'bytes5', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 674030
@@ -3218,10 +3218,10 @@ assert_type(decoder.decode(('int48', 'bytes5', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes5', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674125
 assert_type(decoder.decode(('int48', 'bytes5', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674126
 assert_type(decoder.decode(('int48', 'bytes5', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674127
-assert_type(decoder.decode(('int48', 'bytes6', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 674128
-assert_type(decoder.decode(('int48', 'bytes6', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674129
+assert_type(decoder.decode(('int48', 'bytes6', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 674128
+assert_type(decoder.decode(('int48', 'bytes6', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 674129
 assert_type(decoder.decode(('int48', 'bytes6', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 674130
-assert_type(decoder.decode(('int48', 'bytes6', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 674131
+assert_type(decoder.decode(('int48', 'bytes6', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674131
 assert_type(decoder.decode(('int48', 'bytes6', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 674132
 assert_type(decoder.decode(('int48', 'bytes6', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 674133
 assert_type(decoder.decode(('int48', 'bytes6', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 674134
@@ -3322,10 +3322,10 @@ assert_type(decoder.decode(('int48', 'bytes6', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes6', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674229
 assert_type(decoder.decode(('int48', 'bytes6', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674230
 assert_type(decoder.decode(('int48', 'bytes6', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674231
-assert_type(decoder.decode(('int48', 'bytes7', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 674232
-assert_type(decoder.decode(('int48', 'bytes7', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674233
+assert_type(decoder.decode(('int48', 'bytes7', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 674232
+assert_type(decoder.decode(('int48', 'bytes7', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 674233
 assert_type(decoder.decode(('int48', 'bytes7', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 674234
-assert_type(decoder.decode(('int48', 'bytes7', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 674235
+assert_type(decoder.decode(('int48', 'bytes7', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674235
 assert_type(decoder.decode(('int48', 'bytes7', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 674236
 assert_type(decoder.decode(('int48', 'bytes7', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 674237
 assert_type(decoder.decode(('int48', 'bytes7', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 674238
@@ -3426,10 +3426,10 @@ assert_type(decoder.decode(('int48', 'bytes7', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes7', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674333
 assert_type(decoder.decode(('int48', 'bytes7', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674334
 assert_type(decoder.decode(('int48', 'bytes7', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674335
-assert_type(decoder.decode(('int48', 'bytes8', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 674336
-assert_type(decoder.decode(('int48', 'bytes8', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674337
+assert_type(decoder.decode(('int48', 'bytes8', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 674336
+assert_type(decoder.decode(('int48', 'bytes8', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 674337
 assert_type(decoder.decode(('int48', 'bytes8', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 674338
-assert_type(decoder.decode(('int48', 'bytes8', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 674339
+assert_type(decoder.decode(('int48', 'bytes8', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674339
 assert_type(decoder.decode(('int48', 'bytes8', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 674340
 assert_type(decoder.decode(('int48', 'bytes8', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 674341
 assert_type(decoder.decode(('int48', 'bytes8', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 674342
@@ -3530,10 +3530,10 @@ assert_type(decoder.decode(('int48', 'bytes8', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes8', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674437
 assert_type(decoder.decode(('int48', 'bytes8', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674438
 assert_type(decoder.decode(('int48', 'bytes8', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674439
-assert_type(decoder.decode(('int48', 'bytes9', 'address'), DATA), Tuple[int, bytes, Any])  # tuple case 674440
-assert_type(decoder.decode(('int48', 'bytes9', 'address[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674441
+assert_type(decoder.decode(('int48', 'bytes9', 'address'), DATA), Tuple[int, bytes, HexAddress])  # tuple case 674440
+assert_type(decoder.decode(('int48', 'bytes9', 'address[]'), DATA), Tuple[int, bytes, Tuple[HexAddress, ...]])  # tuple case 674441
 assert_type(decoder.decode(('int48', 'bytes9', 'bool'), DATA), Tuple[int, bytes, bool])  # tuple case 674442
-assert_type(decoder.decode(('int48', 'bytes9', 'bool[]'), DATA), Tuple[int, bytes, Tuple[bool, ...]])  # tuple case 674443
+assert_type(decoder.decode(('int48', 'bytes9', 'bool[]'), DATA), Tuple[int, bytes, Any])  # tuple case 674443
 assert_type(decoder.decode(('int48', 'bytes9', 'bytes'), DATA), Tuple[int, bytes, bytes])  # tuple case 674444
 assert_type(decoder.decode(('int48', 'bytes9', 'bytes1'), DATA), Tuple[int, bytes, bytes])  # tuple case 674445
 assert_type(decoder.decode(('int48', 'bytes9', 'bytes10'), DATA), Tuple[int, bytes, bytes])  # tuple case 674446
@@ -3634,10 +3634,10 @@ assert_type(decoder.decode(('int48', 'bytes9', 'uint80'), DATA), Tuple[int, byte
 assert_type(decoder.decode(('int48', 'bytes9', 'uint88'), DATA), Tuple[int, bytes, int])  # tuple case 674541
 assert_type(decoder.decode(('int48', 'bytes9', 'uint96'), DATA), Tuple[int, bytes, int])  # tuple case 674542
 assert_type(decoder.decode(('int48', 'bytes9', 'someothertype'), DATA), Tuple[int, bytes, Any])  # tuple case 674543
-assert_type(decoder.decode(('int48', 'int104', 'address'), DATA), Tuple[int, int, Any])  # tuple case 674544
-assert_type(decoder.decode(('int48', 'int104', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 674545
+assert_type(decoder.decode(('int48', 'int104', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 674544
+assert_type(decoder.decode(('int48', 'int104', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 674545
 assert_type(decoder.decode(('int48', 'int104', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 674546
-assert_type(decoder.decode(('int48', 'int104', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 674547
+assert_type(decoder.decode(('int48', 'int104', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 674547
 assert_type(decoder.decode(('int48', 'int104', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 674548
 assert_type(decoder.decode(('int48', 'int104', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 674549
 assert_type(decoder.decode(('int48', 'int104', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 674550
@@ -3738,10 +3738,10 @@ assert_type(decoder.decode(('int48', 'int104', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int104', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 674645
 assert_type(decoder.decode(('int48', 'int104', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 674646
 assert_type(decoder.decode(('int48', 'int104', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 674647
-assert_type(decoder.decode(('int48', 'int112', 'address'), DATA), Tuple[int, int, Any])  # tuple case 674648
-assert_type(decoder.decode(('int48', 'int112', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 674649
+assert_type(decoder.decode(('int48', 'int112', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 674648
+assert_type(decoder.decode(('int48', 'int112', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 674649
 assert_type(decoder.decode(('int48', 'int112', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 674650
-assert_type(decoder.decode(('int48', 'int112', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 674651
+assert_type(decoder.decode(('int48', 'int112', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 674651
 assert_type(decoder.decode(('int48', 'int112', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 674652
 assert_type(decoder.decode(('int48', 'int112', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 674653
 assert_type(decoder.decode(('int48', 'int112', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 674654
@@ -3842,10 +3842,10 @@ assert_type(decoder.decode(('int48', 'int112', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int112', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 674749
 assert_type(decoder.decode(('int48', 'int112', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 674750
 assert_type(decoder.decode(('int48', 'int112', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 674751
-assert_type(decoder.decode(('int48', 'int120', 'address'), DATA), Tuple[int, int, Any])  # tuple case 674752
-assert_type(decoder.decode(('int48', 'int120', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 674753
+assert_type(decoder.decode(('int48', 'int120', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 674752
+assert_type(decoder.decode(('int48', 'int120', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 674753
 assert_type(decoder.decode(('int48', 'int120', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 674754
-assert_type(decoder.decode(('int48', 'int120', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 674755
+assert_type(decoder.decode(('int48', 'int120', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 674755
 assert_type(decoder.decode(('int48', 'int120', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 674756
 assert_type(decoder.decode(('int48', 'int120', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 674757
 assert_type(decoder.decode(('int48', 'int120', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 674758
@@ -3946,10 +3946,10 @@ assert_type(decoder.decode(('int48', 'int120', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int120', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 674853
 assert_type(decoder.decode(('int48', 'int120', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 674854
 assert_type(decoder.decode(('int48', 'int120', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 674855
-assert_type(decoder.decode(('int48', 'int128', 'address'), DATA), Tuple[int, int, Any])  # tuple case 674856
-assert_type(decoder.decode(('int48', 'int128', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 674857
+assert_type(decoder.decode(('int48', 'int128', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 674856
+assert_type(decoder.decode(('int48', 'int128', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 674857
 assert_type(decoder.decode(('int48', 'int128', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 674858
-assert_type(decoder.decode(('int48', 'int128', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 674859
+assert_type(decoder.decode(('int48', 'int128', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 674859
 assert_type(decoder.decode(('int48', 'int128', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 674860
 assert_type(decoder.decode(('int48', 'int128', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 674861
 assert_type(decoder.decode(('int48', 'int128', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 674862
@@ -4050,10 +4050,10 @@ assert_type(decoder.decode(('int48', 'int128', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int128', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 674957
 assert_type(decoder.decode(('int48', 'int128', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 674958
 assert_type(decoder.decode(('int48', 'int128', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 674959
-assert_type(decoder.decode(('int48', 'int136', 'address'), DATA), Tuple[int, int, Any])  # tuple case 674960
-assert_type(decoder.decode(('int48', 'int136', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 674961
+assert_type(decoder.decode(('int48', 'int136', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 674960
+assert_type(decoder.decode(('int48', 'int136', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 674961
 assert_type(decoder.decode(('int48', 'int136', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 674962
-assert_type(decoder.decode(('int48', 'int136', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 674963
+assert_type(decoder.decode(('int48', 'int136', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 674963
 assert_type(decoder.decode(('int48', 'int136', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 674964
 assert_type(decoder.decode(('int48', 'int136', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 674965
 assert_type(decoder.decode(('int48', 'int136', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 674966
@@ -4154,10 +4154,10 @@ assert_type(decoder.decode(('int48', 'int136', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int136', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675061
 assert_type(decoder.decode(('int48', 'int136', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675062
 assert_type(decoder.decode(('int48', 'int136', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675063
-assert_type(decoder.decode(('int48', 'int144', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675064
-assert_type(decoder.decode(('int48', 'int144', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675065
+assert_type(decoder.decode(('int48', 'int144', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675064
+assert_type(decoder.decode(('int48', 'int144', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675065
 assert_type(decoder.decode(('int48', 'int144', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675066
-assert_type(decoder.decode(('int48', 'int144', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675067
+assert_type(decoder.decode(('int48', 'int144', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675067
 assert_type(decoder.decode(('int48', 'int144', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675068
 assert_type(decoder.decode(('int48', 'int144', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675069
 assert_type(decoder.decode(('int48', 'int144', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675070
@@ -4258,10 +4258,10 @@ assert_type(decoder.decode(('int48', 'int144', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int144', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675165
 assert_type(decoder.decode(('int48', 'int144', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675166
 assert_type(decoder.decode(('int48', 'int144', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675167
-assert_type(decoder.decode(('int48', 'int152', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675168
-assert_type(decoder.decode(('int48', 'int152', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675169
+assert_type(decoder.decode(('int48', 'int152', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675168
+assert_type(decoder.decode(('int48', 'int152', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675169
 assert_type(decoder.decode(('int48', 'int152', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675170
-assert_type(decoder.decode(('int48', 'int152', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675171
+assert_type(decoder.decode(('int48', 'int152', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675171
 assert_type(decoder.decode(('int48', 'int152', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675172
 assert_type(decoder.decode(('int48', 'int152', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675173
 assert_type(decoder.decode(('int48', 'int152', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675174
@@ -4362,10 +4362,10 @@ assert_type(decoder.decode(('int48', 'int152', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int152', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675269
 assert_type(decoder.decode(('int48', 'int152', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675270
 assert_type(decoder.decode(('int48', 'int152', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675271
-assert_type(decoder.decode(('int48', 'int16', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675272
-assert_type(decoder.decode(('int48', 'int16', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675273
+assert_type(decoder.decode(('int48', 'int16', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675272
+assert_type(decoder.decode(('int48', 'int16', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675273
 assert_type(decoder.decode(('int48', 'int16', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675274
-assert_type(decoder.decode(('int48', 'int16', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675275
+assert_type(decoder.decode(('int48', 'int16', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675275
 assert_type(decoder.decode(('int48', 'int16', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675276
 assert_type(decoder.decode(('int48', 'int16', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675277
 assert_type(decoder.decode(('int48', 'int16', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675278
@@ -4466,10 +4466,10 @@ assert_type(decoder.decode(('int48', 'int16', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int16', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675373
 assert_type(decoder.decode(('int48', 'int16', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675374
 assert_type(decoder.decode(('int48', 'int16', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675375
-assert_type(decoder.decode(('int48', 'int160', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675376
-assert_type(decoder.decode(('int48', 'int160', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675377
+assert_type(decoder.decode(('int48', 'int160', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675376
+assert_type(decoder.decode(('int48', 'int160', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675377
 assert_type(decoder.decode(('int48', 'int160', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675378
-assert_type(decoder.decode(('int48', 'int160', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675379
+assert_type(decoder.decode(('int48', 'int160', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675379
 assert_type(decoder.decode(('int48', 'int160', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675380
 assert_type(decoder.decode(('int48', 'int160', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675381
 assert_type(decoder.decode(('int48', 'int160', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675382
@@ -4570,10 +4570,10 @@ assert_type(decoder.decode(('int48', 'int160', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int160', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675477
 assert_type(decoder.decode(('int48', 'int160', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675478
 assert_type(decoder.decode(('int48', 'int160', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675479
-assert_type(decoder.decode(('int48', 'int168', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675480
-assert_type(decoder.decode(('int48', 'int168', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675481
+assert_type(decoder.decode(('int48', 'int168', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675480
+assert_type(decoder.decode(('int48', 'int168', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675481
 assert_type(decoder.decode(('int48', 'int168', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675482
-assert_type(decoder.decode(('int48', 'int168', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675483
+assert_type(decoder.decode(('int48', 'int168', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675483
 assert_type(decoder.decode(('int48', 'int168', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675484
 assert_type(decoder.decode(('int48', 'int168', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675485
 assert_type(decoder.decode(('int48', 'int168', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675486
@@ -4674,10 +4674,10 @@ assert_type(decoder.decode(('int48', 'int168', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int168', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675581
 assert_type(decoder.decode(('int48', 'int168', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675582
 assert_type(decoder.decode(('int48', 'int168', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675583
-assert_type(decoder.decode(('int48', 'int176', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675584
-assert_type(decoder.decode(('int48', 'int176', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675585
+assert_type(decoder.decode(('int48', 'int176', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675584
+assert_type(decoder.decode(('int48', 'int176', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675585
 assert_type(decoder.decode(('int48', 'int176', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675586
-assert_type(decoder.decode(('int48', 'int176', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675587
+assert_type(decoder.decode(('int48', 'int176', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675587
 assert_type(decoder.decode(('int48', 'int176', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675588
 assert_type(decoder.decode(('int48', 'int176', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675589
 assert_type(decoder.decode(('int48', 'int176', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675590
@@ -4778,10 +4778,10 @@ assert_type(decoder.decode(('int48', 'int176', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int176', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675685
 assert_type(decoder.decode(('int48', 'int176', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675686
 assert_type(decoder.decode(('int48', 'int176', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675687
-assert_type(decoder.decode(('int48', 'int184', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675688
-assert_type(decoder.decode(('int48', 'int184', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675689
+assert_type(decoder.decode(('int48', 'int184', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675688
+assert_type(decoder.decode(('int48', 'int184', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675689
 assert_type(decoder.decode(('int48', 'int184', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675690
-assert_type(decoder.decode(('int48', 'int184', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675691
+assert_type(decoder.decode(('int48', 'int184', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675691
 assert_type(decoder.decode(('int48', 'int184', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675692
 assert_type(decoder.decode(('int48', 'int184', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675693
 assert_type(decoder.decode(('int48', 'int184', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675694
@@ -4882,10 +4882,10 @@ assert_type(decoder.decode(('int48', 'int184', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int184', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675789
 assert_type(decoder.decode(('int48', 'int184', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675790
 assert_type(decoder.decode(('int48', 'int184', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675791
-assert_type(decoder.decode(('int48', 'int192', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675792
-assert_type(decoder.decode(('int48', 'int192', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675793
+assert_type(decoder.decode(('int48', 'int192', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675792
+assert_type(decoder.decode(('int48', 'int192', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675793
 assert_type(decoder.decode(('int48', 'int192', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675794
-assert_type(decoder.decode(('int48', 'int192', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675795
+assert_type(decoder.decode(('int48', 'int192', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675795
 assert_type(decoder.decode(('int48', 'int192', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675796
 assert_type(decoder.decode(('int48', 'int192', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675797
 assert_type(decoder.decode(('int48', 'int192', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675798
@@ -4986,10 +4986,10 @@ assert_type(decoder.decode(('int48', 'int192', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int192', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675893
 assert_type(decoder.decode(('int48', 'int192', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675894
 assert_type(decoder.decode(('int48', 'int192', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675895
-assert_type(decoder.decode(('int48', 'int200', 'address'), DATA), Tuple[int, int, Any])  # tuple case 675896
-assert_type(decoder.decode(('int48', 'int200', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 675897
+assert_type(decoder.decode(('int48', 'int200', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 675896
+assert_type(decoder.decode(('int48', 'int200', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 675897
 assert_type(decoder.decode(('int48', 'int200', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 675898
-assert_type(decoder.decode(('int48', 'int200', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 675899
+assert_type(decoder.decode(('int48', 'int200', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 675899
 assert_type(decoder.decode(('int48', 'int200', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 675900
 assert_type(decoder.decode(('int48', 'int200', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 675901
 assert_type(decoder.decode(('int48', 'int200', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 675902
@@ -5090,10 +5090,10 @@ assert_type(decoder.decode(('int48', 'int200', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int200', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 675997
 assert_type(decoder.decode(('int48', 'int200', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 675998
 assert_type(decoder.decode(('int48', 'int200', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 675999
-assert_type(decoder.decode(('int48', 'int208', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676000
-assert_type(decoder.decode(('int48', 'int208', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676001
+assert_type(decoder.decode(('int48', 'int208', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676000
+assert_type(decoder.decode(('int48', 'int208', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676001
 assert_type(decoder.decode(('int48', 'int208', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676002
-assert_type(decoder.decode(('int48', 'int208', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676003
+assert_type(decoder.decode(('int48', 'int208', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676003
 assert_type(decoder.decode(('int48', 'int208', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676004
 assert_type(decoder.decode(('int48', 'int208', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676005
 assert_type(decoder.decode(('int48', 'int208', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676006
@@ -5194,10 +5194,10 @@ assert_type(decoder.decode(('int48', 'int208', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int208', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676101
 assert_type(decoder.decode(('int48', 'int208', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676102
 assert_type(decoder.decode(('int48', 'int208', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676103
-assert_type(decoder.decode(('int48', 'int216', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676104
-assert_type(decoder.decode(('int48', 'int216', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676105
+assert_type(decoder.decode(('int48', 'int216', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676104
+assert_type(decoder.decode(('int48', 'int216', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676105
 assert_type(decoder.decode(('int48', 'int216', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676106
-assert_type(decoder.decode(('int48', 'int216', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676107
+assert_type(decoder.decode(('int48', 'int216', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676107
 assert_type(decoder.decode(('int48', 'int216', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676108
 assert_type(decoder.decode(('int48', 'int216', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676109
 assert_type(decoder.decode(('int48', 'int216', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676110
@@ -5298,10 +5298,10 @@ assert_type(decoder.decode(('int48', 'int216', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int216', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676205
 assert_type(decoder.decode(('int48', 'int216', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676206
 assert_type(decoder.decode(('int48', 'int216', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676207
-assert_type(decoder.decode(('int48', 'int224', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676208
-assert_type(decoder.decode(('int48', 'int224', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676209
+assert_type(decoder.decode(('int48', 'int224', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676208
+assert_type(decoder.decode(('int48', 'int224', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676209
 assert_type(decoder.decode(('int48', 'int224', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676210
-assert_type(decoder.decode(('int48', 'int224', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676211
+assert_type(decoder.decode(('int48', 'int224', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676211
 assert_type(decoder.decode(('int48', 'int224', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676212
 assert_type(decoder.decode(('int48', 'int224', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676213
 assert_type(decoder.decode(('int48', 'int224', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676214
@@ -5402,10 +5402,10 @@ assert_type(decoder.decode(('int48', 'int224', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int224', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676309
 assert_type(decoder.decode(('int48', 'int224', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676310
 assert_type(decoder.decode(('int48', 'int224', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676311
-assert_type(decoder.decode(('int48', 'int232', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676312
-assert_type(decoder.decode(('int48', 'int232', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676313
+assert_type(decoder.decode(('int48', 'int232', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676312
+assert_type(decoder.decode(('int48', 'int232', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676313
 assert_type(decoder.decode(('int48', 'int232', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676314
-assert_type(decoder.decode(('int48', 'int232', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676315
+assert_type(decoder.decode(('int48', 'int232', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676315
 assert_type(decoder.decode(('int48', 'int232', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676316
 assert_type(decoder.decode(('int48', 'int232', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676317
 assert_type(decoder.decode(('int48', 'int232', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676318
@@ -5506,10 +5506,10 @@ assert_type(decoder.decode(('int48', 'int232', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int232', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676413
 assert_type(decoder.decode(('int48', 'int232', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676414
 assert_type(decoder.decode(('int48', 'int232', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676415
-assert_type(decoder.decode(('int48', 'int24', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676416
-assert_type(decoder.decode(('int48', 'int24', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676417
+assert_type(decoder.decode(('int48', 'int24', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676416
+assert_type(decoder.decode(('int48', 'int24', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676417
 assert_type(decoder.decode(('int48', 'int24', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676418
-assert_type(decoder.decode(('int48', 'int24', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676419
+assert_type(decoder.decode(('int48', 'int24', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676419
 assert_type(decoder.decode(('int48', 'int24', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676420
 assert_type(decoder.decode(('int48', 'int24', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676421
 assert_type(decoder.decode(('int48', 'int24', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676422
@@ -5610,10 +5610,10 @@ assert_type(decoder.decode(('int48', 'int24', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int24', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676517
 assert_type(decoder.decode(('int48', 'int24', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676518
 assert_type(decoder.decode(('int48', 'int24', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676519
-assert_type(decoder.decode(('int48', 'int240', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676520
-assert_type(decoder.decode(('int48', 'int240', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676521
+assert_type(decoder.decode(('int48', 'int240', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676520
+assert_type(decoder.decode(('int48', 'int240', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676521
 assert_type(decoder.decode(('int48', 'int240', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676522
-assert_type(decoder.decode(('int48', 'int240', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676523
+assert_type(decoder.decode(('int48', 'int240', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676523
 assert_type(decoder.decode(('int48', 'int240', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676524
 assert_type(decoder.decode(('int48', 'int240', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676525
 assert_type(decoder.decode(('int48', 'int240', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676526
@@ -5714,10 +5714,10 @@ assert_type(decoder.decode(('int48', 'int240', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int240', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676621
 assert_type(decoder.decode(('int48', 'int240', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676622
 assert_type(decoder.decode(('int48', 'int240', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676623
-assert_type(decoder.decode(('int48', 'int248', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676624
-assert_type(decoder.decode(('int48', 'int248', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676625
+assert_type(decoder.decode(('int48', 'int248', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676624
+assert_type(decoder.decode(('int48', 'int248', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676625
 assert_type(decoder.decode(('int48', 'int248', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676626
-assert_type(decoder.decode(('int48', 'int248', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676627
+assert_type(decoder.decode(('int48', 'int248', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676627
 assert_type(decoder.decode(('int48', 'int248', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676628
 assert_type(decoder.decode(('int48', 'int248', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676629
 assert_type(decoder.decode(('int48', 'int248', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676630
@@ -5818,10 +5818,10 @@ assert_type(decoder.decode(('int48', 'int248', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int248', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676725
 assert_type(decoder.decode(('int48', 'int248', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676726
 assert_type(decoder.decode(('int48', 'int248', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676727
-assert_type(decoder.decode(('int48', 'int256', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676728
-assert_type(decoder.decode(('int48', 'int256', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676729
+assert_type(decoder.decode(('int48', 'int256', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676728
+assert_type(decoder.decode(('int48', 'int256', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676729
 assert_type(decoder.decode(('int48', 'int256', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676730
-assert_type(decoder.decode(('int48', 'int256', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676731
+assert_type(decoder.decode(('int48', 'int256', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676731
 assert_type(decoder.decode(('int48', 'int256', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676732
 assert_type(decoder.decode(('int48', 'int256', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676733
 assert_type(decoder.decode(('int48', 'int256', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676734
@@ -5922,10 +5922,10 @@ assert_type(decoder.decode(('int48', 'int256', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'int256', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676829
 assert_type(decoder.decode(('int48', 'int256', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676830
 assert_type(decoder.decode(('int48', 'int256', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676831
-assert_type(decoder.decode(('int48', 'int32', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676832
-assert_type(decoder.decode(('int48', 'int32', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676833
+assert_type(decoder.decode(('int48', 'int32', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676832
+assert_type(decoder.decode(('int48', 'int32', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676833
 assert_type(decoder.decode(('int48', 'int32', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676834
-assert_type(decoder.decode(('int48', 'int32', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676835
+assert_type(decoder.decode(('int48', 'int32', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676835
 assert_type(decoder.decode(('int48', 'int32', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676836
 assert_type(decoder.decode(('int48', 'int32', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676837
 assert_type(decoder.decode(('int48', 'int32', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676838
@@ -6026,10 +6026,10 @@ assert_type(decoder.decode(('int48', 'int32', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int32', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 676933
 assert_type(decoder.decode(('int48', 'int32', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 676934
 assert_type(decoder.decode(('int48', 'int32', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 676935
-assert_type(decoder.decode(('int48', 'int40', 'address'), DATA), Tuple[int, int, Any])  # tuple case 676936
-assert_type(decoder.decode(('int48', 'int40', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 676937
+assert_type(decoder.decode(('int48', 'int40', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 676936
+assert_type(decoder.decode(('int48', 'int40', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 676937
 assert_type(decoder.decode(('int48', 'int40', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 676938
-assert_type(decoder.decode(('int48', 'int40', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 676939
+assert_type(decoder.decode(('int48', 'int40', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 676939
 assert_type(decoder.decode(('int48', 'int40', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 676940
 assert_type(decoder.decode(('int48', 'int40', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 676941
 assert_type(decoder.decode(('int48', 'int40', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 676942
@@ -6130,10 +6130,10 @@ assert_type(decoder.decode(('int48', 'int40', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int40', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677037
 assert_type(decoder.decode(('int48', 'int40', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677038
 assert_type(decoder.decode(('int48', 'int40', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677039
-assert_type(decoder.decode(('int48', 'int48', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677040
-assert_type(decoder.decode(('int48', 'int48', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677041
+assert_type(decoder.decode(('int48', 'int48', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677040
+assert_type(decoder.decode(('int48', 'int48', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677041
 assert_type(decoder.decode(('int48', 'int48', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677042
-assert_type(decoder.decode(('int48', 'int48', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677043
+assert_type(decoder.decode(('int48', 'int48', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677043
 assert_type(decoder.decode(('int48', 'int48', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677044
 assert_type(decoder.decode(('int48', 'int48', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677045
 assert_type(decoder.decode(('int48', 'int48', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677046
@@ -6234,10 +6234,10 @@ assert_type(decoder.decode(('int48', 'int48', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int48', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677141
 assert_type(decoder.decode(('int48', 'int48', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677142
 assert_type(decoder.decode(('int48', 'int48', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677143
-assert_type(decoder.decode(('int48', 'int56', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677144
-assert_type(decoder.decode(('int48', 'int56', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677145
+assert_type(decoder.decode(('int48', 'int56', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677144
+assert_type(decoder.decode(('int48', 'int56', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677145
 assert_type(decoder.decode(('int48', 'int56', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677146
-assert_type(decoder.decode(('int48', 'int56', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677147
+assert_type(decoder.decode(('int48', 'int56', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677147
 assert_type(decoder.decode(('int48', 'int56', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677148
 assert_type(decoder.decode(('int48', 'int56', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677149
 assert_type(decoder.decode(('int48', 'int56', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677150
@@ -6338,10 +6338,10 @@ assert_type(decoder.decode(('int48', 'int56', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int56', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677245
 assert_type(decoder.decode(('int48', 'int56', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677246
 assert_type(decoder.decode(('int48', 'int56', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677247
-assert_type(decoder.decode(('int48', 'int64', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677248
-assert_type(decoder.decode(('int48', 'int64', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677249
+assert_type(decoder.decode(('int48', 'int64', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677248
+assert_type(decoder.decode(('int48', 'int64', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677249
 assert_type(decoder.decode(('int48', 'int64', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677250
-assert_type(decoder.decode(('int48', 'int64', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677251
+assert_type(decoder.decode(('int48', 'int64', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677251
 assert_type(decoder.decode(('int48', 'int64', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677252
 assert_type(decoder.decode(('int48', 'int64', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677253
 assert_type(decoder.decode(('int48', 'int64', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677254
@@ -6442,10 +6442,10 @@ assert_type(decoder.decode(('int48', 'int64', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int64', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677349
 assert_type(decoder.decode(('int48', 'int64', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677350
 assert_type(decoder.decode(('int48', 'int64', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677351
-assert_type(decoder.decode(('int48', 'int72', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677352
-assert_type(decoder.decode(('int48', 'int72', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677353
+assert_type(decoder.decode(('int48', 'int72', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677352
+assert_type(decoder.decode(('int48', 'int72', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677353
 assert_type(decoder.decode(('int48', 'int72', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677354
-assert_type(decoder.decode(('int48', 'int72', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677355
+assert_type(decoder.decode(('int48', 'int72', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677355
 assert_type(decoder.decode(('int48', 'int72', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677356
 assert_type(decoder.decode(('int48', 'int72', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677357
 assert_type(decoder.decode(('int48', 'int72', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677358
@@ -6546,10 +6546,10 @@ assert_type(decoder.decode(('int48', 'int72', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int72', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677453
 assert_type(decoder.decode(('int48', 'int72', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677454
 assert_type(decoder.decode(('int48', 'int72', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677455
-assert_type(decoder.decode(('int48', 'int8', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677456
-assert_type(decoder.decode(('int48', 'int8', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677457
+assert_type(decoder.decode(('int48', 'int8', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677456
+assert_type(decoder.decode(('int48', 'int8', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677457
 assert_type(decoder.decode(('int48', 'int8', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677458
-assert_type(decoder.decode(('int48', 'int8', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677459
+assert_type(decoder.decode(('int48', 'int8', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677459
 assert_type(decoder.decode(('int48', 'int8', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677460
 assert_type(decoder.decode(('int48', 'int8', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677461
 assert_type(decoder.decode(('int48', 'int8', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677462
@@ -6650,10 +6650,10 @@ assert_type(decoder.decode(('int48', 'int8', 'uint80'), DATA), Tuple[int, int, i
 assert_type(decoder.decode(('int48', 'int8', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677557
 assert_type(decoder.decode(('int48', 'int8', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677558
 assert_type(decoder.decode(('int48', 'int8', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677559
-assert_type(decoder.decode(('int48', 'int80', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677560
-assert_type(decoder.decode(('int48', 'int80', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677561
+assert_type(decoder.decode(('int48', 'int80', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677560
+assert_type(decoder.decode(('int48', 'int80', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677561
 assert_type(decoder.decode(('int48', 'int80', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677562
-assert_type(decoder.decode(('int48', 'int80', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677563
+assert_type(decoder.decode(('int48', 'int80', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677563
 assert_type(decoder.decode(('int48', 'int80', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677564
 assert_type(decoder.decode(('int48', 'int80', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677565
 assert_type(decoder.decode(('int48', 'int80', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677566
@@ -6754,10 +6754,10 @@ assert_type(decoder.decode(('int48', 'int80', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int80', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677661
 assert_type(decoder.decode(('int48', 'int80', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677662
 assert_type(decoder.decode(('int48', 'int80', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677663
-assert_type(decoder.decode(('int48', 'int88', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677664
-assert_type(decoder.decode(('int48', 'int88', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677665
+assert_type(decoder.decode(('int48', 'int88', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677664
+assert_type(decoder.decode(('int48', 'int88', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677665
 assert_type(decoder.decode(('int48', 'int88', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677666
-assert_type(decoder.decode(('int48', 'int88', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677667
+assert_type(decoder.decode(('int48', 'int88', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677667
 assert_type(decoder.decode(('int48', 'int88', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677668
 assert_type(decoder.decode(('int48', 'int88', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677669
 assert_type(decoder.decode(('int48', 'int88', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677670
@@ -6858,10 +6858,10 @@ assert_type(decoder.decode(('int48', 'int88', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int88', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677765
 assert_type(decoder.decode(('int48', 'int88', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677766
 assert_type(decoder.decode(('int48', 'int88', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677767
-assert_type(decoder.decode(('int48', 'int96', 'address'), DATA), Tuple[int, int, Any])  # tuple case 677768
-assert_type(decoder.decode(('int48', 'int96', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 677769
+assert_type(decoder.decode(('int48', 'int96', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 677768
+assert_type(decoder.decode(('int48', 'int96', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 677769
 assert_type(decoder.decode(('int48', 'int96', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 677770
-assert_type(decoder.decode(('int48', 'int96', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 677771
+assert_type(decoder.decode(('int48', 'int96', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 677771
 assert_type(decoder.decode(('int48', 'int96', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 677772
 assert_type(decoder.decode(('int48', 'int96', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 677773
 assert_type(decoder.decode(('int48', 'int96', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 677774
@@ -6962,10 +6962,10 @@ assert_type(decoder.decode(('int48', 'int96', 'uint80'), DATA), Tuple[int, int, 
 assert_type(decoder.decode(('int48', 'int96', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 677869
 assert_type(decoder.decode(('int48', 'int96', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 677870
 assert_type(decoder.decode(('int48', 'int96', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 677871
-assert_type(decoder.decode(('int48', 'string', 'address'), DATA), Tuple[int, str, Any])  # tuple case 677872
-assert_type(decoder.decode(('int48', 'string', 'address[]'), DATA), Tuple[int, str, Any])  # tuple case 677873
+assert_type(decoder.decode(('int48', 'string', 'address'), DATA), Tuple[int, str, HexAddress])  # tuple case 677872
+assert_type(decoder.decode(('int48', 'string', 'address[]'), DATA), Tuple[int, str, Tuple[HexAddress, ...]])  # tuple case 677873
 assert_type(decoder.decode(('int48', 'string', 'bool'), DATA), Tuple[int, str, bool])  # tuple case 677874
-assert_type(decoder.decode(('int48', 'string', 'bool[]'), DATA), Tuple[int, str, Tuple[bool, ...]])  # tuple case 677875
+assert_type(decoder.decode(('int48', 'string', 'bool[]'), DATA), Tuple[int, str, Any])  # tuple case 677875
 assert_type(decoder.decode(('int48', 'string', 'bytes'), DATA), Tuple[int, str, bytes])  # tuple case 677876
 assert_type(decoder.decode(('int48', 'string', 'bytes1'), DATA), Tuple[int, str, bytes])  # tuple case 677877
 assert_type(decoder.decode(('int48', 'string', 'bytes10'), DATA), Tuple[int, str, bytes])  # tuple case 677878
@@ -7066,10 +7066,10 @@ assert_type(decoder.decode(('int48', 'string', 'uint80'), DATA), Tuple[int, str,
 assert_type(decoder.decode(('int48', 'string', 'uint88'), DATA), Tuple[int, str, int])  # tuple case 677973
 assert_type(decoder.decode(('int48', 'string', 'uint96'), DATA), Tuple[int, str, int])  # tuple case 677974
 assert_type(decoder.decode(('int48', 'string', 'someothertype'), DATA), Tuple[int, str, Any])  # tuple case 677975
-assert_type(decoder.decode(('int48', 'string[]', 'address'), DATA), Tuple[int, Any, Any])  # tuple case 677976
-assert_type(decoder.decode(('int48', 'string[]', 'address[]'), DATA), Tuple[int, Any, Any])  # tuple case 677977
+assert_type(decoder.decode(('int48', 'string[]', 'address'), DATA), Tuple[int, Any, HexAddress])  # tuple case 677976
+assert_type(decoder.decode(('int48', 'string[]', 'address[]'), DATA), Tuple[int, Any, Tuple[HexAddress, ...]])  # tuple case 677977
 assert_type(decoder.decode(('int48', 'string[]', 'bool'), DATA), Tuple[int, Any, bool])  # tuple case 677978
-assert_type(decoder.decode(('int48', 'string[]', 'bool[]'), DATA), Tuple[int, Any, Tuple[bool, ...]])  # tuple case 677979
+assert_type(decoder.decode(('int48', 'string[]', 'bool[]'), DATA), Tuple[int, Any, Any])  # tuple case 677979
 assert_type(decoder.decode(('int48', 'string[]', 'bytes'), DATA), Tuple[int, Any, bytes])  # tuple case 677980
 assert_type(decoder.decode(('int48', 'string[]', 'bytes1'), DATA), Tuple[int, Any, bytes])  # tuple case 677981
 assert_type(decoder.decode(('int48', 'string[]', 'bytes10'), DATA), Tuple[int, Any, bytes])  # tuple case 677982
@@ -7170,10 +7170,10 @@ assert_type(decoder.decode(('int48', 'string[]', 'uint80'), DATA), Tuple[int, An
 assert_type(decoder.decode(('int48', 'string[]', 'uint88'), DATA), Tuple[int, Any, int])  # tuple case 678077
 assert_type(decoder.decode(('int48', 'string[]', 'uint96'), DATA), Tuple[int, Any, int])  # tuple case 678078
 assert_type(decoder.decode(('int48', 'string[]', 'someothertype'), DATA), Tuple[int, Any, Any])  # tuple case 678079
-assert_type(decoder.decode(('int48', 'uint104', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678080
-assert_type(decoder.decode(('int48', 'uint104', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678081
+assert_type(decoder.decode(('int48', 'uint104', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678080
+assert_type(decoder.decode(('int48', 'uint104', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678081
 assert_type(decoder.decode(('int48', 'uint104', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678082
-assert_type(decoder.decode(('int48', 'uint104', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678083
+assert_type(decoder.decode(('int48', 'uint104', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678083
 assert_type(decoder.decode(('int48', 'uint104', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678084
 assert_type(decoder.decode(('int48', 'uint104', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678085
 assert_type(decoder.decode(('int48', 'uint104', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678086
@@ -7274,10 +7274,10 @@ assert_type(decoder.decode(('int48', 'uint104', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint104', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678181
 assert_type(decoder.decode(('int48', 'uint104', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678182
 assert_type(decoder.decode(('int48', 'uint104', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678183
-assert_type(decoder.decode(('int48', 'uint112', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678184
-assert_type(decoder.decode(('int48', 'uint112', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678185
+assert_type(decoder.decode(('int48', 'uint112', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678184
+assert_type(decoder.decode(('int48', 'uint112', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678185
 assert_type(decoder.decode(('int48', 'uint112', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678186
-assert_type(decoder.decode(('int48', 'uint112', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678187
+assert_type(decoder.decode(('int48', 'uint112', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678187
 assert_type(decoder.decode(('int48', 'uint112', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678188
 assert_type(decoder.decode(('int48', 'uint112', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678189
 assert_type(decoder.decode(('int48', 'uint112', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678190
@@ -7378,10 +7378,10 @@ assert_type(decoder.decode(('int48', 'uint112', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint112', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678285
 assert_type(decoder.decode(('int48', 'uint112', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678286
 assert_type(decoder.decode(('int48', 'uint112', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678287
-assert_type(decoder.decode(('int48', 'uint120', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678288
-assert_type(decoder.decode(('int48', 'uint120', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678289
+assert_type(decoder.decode(('int48', 'uint120', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678288
+assert_type(decoder.decode(('int48', 'uint120', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678289
 assert_type(decoder.decode(('int48', 'uint120', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678290
-assert_type(decoder.decode(('int48', 'uint120', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678291
+assert_type(decoder.decode(('int48', 'uint120', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678291
 assert_type(decoder.decode(('int48', 'uint120', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678292
 assert_type(decoder.decode(('int48', 'uint120', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678293
 assert_type(decoder.decode(('int48', 'uint120', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678294
@@ -7482,10 +7482,10 @@ assert_type(decoder.decode(('int48', 'uint120', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint120', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678389
 assert_type(decoder.decode(('int48', 'uint120', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678390
 assert_type(decoder.decode(('int48', 'uint120', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678391
-assert_type(decoder.decode(('int48', 'uint128', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678392
-assert_type(decoder.decode(('int48', 'uint128', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678393
+assert_type(decoder.decode(('int48', 'uint128', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678392
+assert_type(decoder.decode(('int48', 'uint128', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678393
 assert_type(decoder.decode(('int48', 'uint128', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678394
-assert_type(decoder.decode(('int48', 'uint128', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678395
+assert_type(decoder.decode(('int48', 'uint128', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678395
 assert_type(decoder.decode(('int48', 'uint128', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678396
 assert_type(decoder.decode(('int48', 'uint128', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678397
 assert_type(decoder.decode(('int48', 'uint128', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678398
@@ -7586,10 +7586,10 @@ assert_type(decoder.decode(('int48', 'uint128', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint128', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678493
 assert_type(decoder.decode(('int48', 'uint128', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678494
 assert_type(decoder.decode(('int48', 'uint128', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678495
-assert_type(decoder.decode(('int48', 'uint136', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678496
-assert_type(decoder.decode(('int48', 'uint136', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678497
+assert_type(decoder.decode(('int48', 'uint136', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678496
+assert_type(decoder.decode(('int48', 'uint136', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678497
 assert_type(decoder.decode(('int48', 'uint136', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678498
-assert_type(decoder.decode(('int48', 'uint136', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678499
+assert_type(decoder.decode(('int48', 'uint136', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678499
 assert_type(decoder.decode(('int48', 'uint136', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678500
 assert_type(decoder.decode(('int48', 'uint136', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678501
 assert_type(decoder.decode(('int48', 'uint136', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678502
@@ -7690,10 +7690,10 @@ assert_type(decoder.decode(('int48', 'uint136', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint136', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678597
 assert_type(decoder.decode(('int48', 'uint136', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678598
 assert_type(decoder.decode(('int48', 'uint136', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678599
-assert_type(decoder.decode(('int48', 'uint144', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678600
-assert_type(decoder.decode(('int48', 'uint144', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678601
+assert_type(decoder.decode(('int48', 'uint144', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678600
+assert_type(decoder.decode(('int48', 'uint144', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678601
 assert_type(decoder.decode(('int48', 'uint144', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678602
-assert_type(decoder.decode(('int48', 'uint144', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678603
+assert_type(decoder.decode(('int48', 'uint144', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678603
 assert_type(decoder.decode(('int48', 'uint144', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678604
 assert_type(decoder.decode(('int48', 'uint144', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678605
 assert_type(decoder.decode(('int48', 'uint144', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678606
@@ -7794,10 +7794,10 @@ assert_type(decoder.decode(('int48', 'uint144', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint144', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678701
 assert_type(decoder.decode(('int48', 'uint144', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678702
 assert_type(decoder.decode(('int48', 'uint144', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678703
-assert_type(decoder.decode(('int48', 'uint152', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678704
-assert_type(decoder.decode(('int48', 'uint152', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678705
+assert_type(decoder.decode(('int48', 'uint152', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678704
+assert_type(decoder.decode(('int48', 'uint152', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678705
 assert_type(decoder.decode(('int48', 'uint152', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678706
-assert_type(decoder.decode(('int48', 'uint152', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678707
+assert_type(decoder.decode(('int48', 'uint152', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678707
 assert_type(decoder.decode(('int48', 'uint152', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678708
 assert_type(decoder.decode(('int48', 'uint152', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678709
 assert_type(decoder.decode(('int48', 'uint152', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678710
@@ -7898,10 +7898,10 @@ assert_type(decoder.decode(('int48', 'uint152', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint152', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678805
 assert_type(decoder.decode(('int48', 'uint152', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678806
 assert_type(decoder.decode(('int48', 'uint152', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678807
-assert_type(decoder.decode(('int48', 'uint16', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678808
-assert_type(decoder.decode(('int48', 'uint16', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678809
+assert_type(decoder.decode(('int48', 'uint16', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678808
+assert_type(decoder.decode(('int48', 'uint16', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678809
 assert_type(decoder.decode(('int48', 'uint16', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678810
-assert_type(decoder.decode(('int48', 'uint16', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678811
+assert_type(decoder.decode(('int48', 'uint16', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678811
 assert_type(decoder.decode(('int48', 'uint16', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678812
 assert_type(decoder.decode(('int48', 'uint16', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678813
 assert_type(decoder.decode(('int48', 'uint16', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678814
@@ -8002,10 +8002,10 @@ assert_type(decoder.decode(('int48', 'uint16', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint16', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 678909
 assert_type(decoder.decode(('int48', 'uint16', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 678910
 assert_type(decoder.decode(('int48', 'uint16', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 678911
-assert_type(decoder.decode(('int48', 'uint160', 'address'), DATA), Tuple[int, int, Any])  # tuple case 678912
-assert_type(decoder.decode(('int48', 'uint160', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 678913
+assert_type(decoder.decode(('int48', 'uint160', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 678912
+assert_type(decoder.decode(('int48', 'uint160', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 678913
 assert_type(decoder.decode(('int48', 'uint160', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 678914
-assert_type(decoder.decode(('int48', 'uint160', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 678915
+assert_type(decoder.decode(('int48', 'uint160', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 678915
 assert_type(decoder.decode(('int48', 'uint160', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 678916
 assert_type(decoder.decode(('int48', 'uint160', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 678917
 assert_type(decoder.decode(('int48', 'uint160', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 678918
@@ -8106,10 +8106,10 @@ assert_type(decoder.decode(('int48', 'uint160', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint160', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679013
 assert_type(decoder.decode(('int48', 'uint160', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679014
 assert_type(decoder.decode(('int48', 'uint160', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679015
-assert_type(decoder.decode(('int48', 'uint168', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679016
-assert_type(decoder.decode(('int48', 'uint168', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679017
+assert_type(decoder.decode(('int48', 'uint168', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679016
+assert_type(decoder.decode(('int48', 'uint168', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679017
 assert_type(decoder.decode(('int48', 'uint168', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679018
-assert_type(decoder.decode(('int48', 'uint168', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679019
+assert_type(decoder.decode(('int48', 'uint168', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679019
 assert_type(decoder.decode(('int48', 'uint168', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679020
 assert_type(decoder.decode(('int48', 'uint168', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679021
 assert_type(decoder.decode(('int48', 'uint168', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679022
@@ -8210,10 +8210,10 @@ assert_type(decoder.decode(('int48', 'uint168', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint168', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679117
 assert_type(decoder.decode(('int48', 'uint168', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679118
 assert_type(decoder.decode(('int48', 'uint168', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679119
-assert_type(decoder.decode(('int48', 'uint176', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679120
-assert_type(decoder.decode(('int48', 'uint176', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679121
+assert_type(decoder.decode(('int48', 'uint176', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679120
+assert_type(decoder.decode(('int48', 'uint176', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679121
 assert_type(decoder.decode(('int48', 'uint176', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679122
-assert_type(decoder.decode(('int48', 'uint176', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679123
+assert_type(decoder.decode(('int48', 'uint176', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679123
 assert_type(decoder.decode(('int48', 'uint176', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679124
 assert_type(decoder.decode(('int48', 'uint176', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679125
 assert_type(decoder.decode(('int48', 'uint176', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679126
@@ -8314,10 +8314,10 @@ assert_type(decoder.decode(('int48', 'uint176', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint176', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679221
 assert_type(decoder.decode(('int48', 'uint176', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679222
 assert_type(decoder.decode(('int48', 'uint176', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679223
-assert_type(decoder.decode(('int48', 'uint184', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679224
-assert_type(decoder.decode(('int48', 'uint184', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679225
+assert_type(decoder.decode(('int48', 'uint184', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679224
+assert_type(decoder.decode(('int48', 'uint184', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679225
 assert_type(decoder.decode(('int48', 'uint184', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679226
-assert_type(decoder.decode(('int48', 'uint184', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679227
+assert_type(decoder.decode(('int48', 'uint184', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679227
 assert_type(decoder.decode(('int48', 'uint184', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679228
 assert_type(decoder.decode(('int48', 'uint184', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679229
 assert_type(decoder.decode(('int48', 'uint184', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679230
@@ -8418,10 +8418,10 @@ assert_type(decoder.decode(('int48', 'uint184', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint184', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679325
 assert_type(decoder.decode(('int48', 'uint184', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679326
 assert_type(decoder.decode(('int48', 'uint184', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679327
-assert_type(decoder.decode(('int48', 'uint192', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679328
-assert_type(decoder.decode(('int48', 'uint192', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679329
+assert_type(decoder.decode(('int48', 'uint192', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679328
+assert_type(decoder.decode(('int48', 'uint192', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679329
 assert_type(decoder.decode(('int48', 'uint192', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679330
-assert_type(decoder.decode(('int48', 'uint192', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679331
+assert_type(decoder.decode(('int48', 'uint192', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679331
 assert_type(decoder.decode(('int48', 'uint192', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679332
 assert_type(decoder.decode(('int48', 'uint192', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679333
 assert_type(decoder.decode(('int48', 'uint192', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679334
@@ -8522,10 +8522,10 @@ assert_type(decoder.decode(('int48', 'uint192', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint192', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679429
 assert_type(decoder.decode(('int48', 'uint192', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679430
 assert_type(decoder.decode(('int48', 'uint192', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679431
-assert_type(decoder.decode(('int48', 'uint200', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679432
-assert_type(decoder.decode(('int48', 'uint200', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679433
+assert_type(decoder.decode(('int48', 'uint200', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679432
+assert_type(decoder.decode(('int48', 'uint200', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679433
 assert_type(decoder.decode(('int48', 'uint200', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679434
-assert_type(decoder.decode(('int48', 'uint200', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679435
+assert_type(decoder.decode(('int48', 'uint200', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679435
 assert_type(decoder.decode(('int48', 'uint200', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679436
 assert_type(decoder.decode(('int48', 'uint200', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679437
 assert_type(decoder.decode(('int48', 'uint200', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679438
@@ -8626,10 +8626,10 @@ assert_type(decoder.decode(('int48', 'uint200', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint200', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679533
 assert_type(decoder.decode(('int48', 'uint200', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679534
 assert_type(decoder.decode(('int48', 'uint200', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679535
-assert_type(decoder.decode(('int48', 'uint208', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679536
-assert_type(decoder.decode(('int48', 'uint208', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679537
+assert_type(decoder.decode(('int48', 'uint208', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679536
+assert_type(decoder.decode(('int48', 'uint208', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679537
 assert_type(decoder.decode(('int48', 'uint208', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679538
-assert_type(decoder.decode(('int48', 'uint208', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679539
+assert_type(decoder.decode(('int48', 'uint208', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679539
 assert_type(decoder.decode(('int48', 'uint208', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679540
 assert_type(decoder.decode(('int48', 'uint208', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679541
 assert_type(decoder.decode(('int48', 'uint208', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679542
@@ -8730,10 +8730,10 @@ assert_type(decoder.decode(('int48', 'uint208', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint208', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679637
 assert_type(decoder.decode(('int48', 'uint208', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679638
 assert_type(decoder.decode(('int48', 'uint208', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679639
-assert_type(decoder.decode(('int48', 'uint216', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679640
-assert_type(decoder.decode(('int48', 'uint216', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679641
+assert_type(decoder.decode(('int48', 'uint216', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679640
+assert_type(decoder.decode(('int48', 'uint216', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679641
 assert_type(decoder.decode(('int48', 'uint216', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679642
-assert_type(decoder.decode(('int48', 'uint216', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679643
+assert_type(decoder.decode(('int48', 'uint216', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679643
 assert_type(decoder.decode(('int48', 'uint216', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679644
 assert_type(decoder.decode(('int48', 'uint216', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679645
 assert_type(decoder.decode(('int48', 'uint216', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679646
@@ -8834,10 +8834,10 @@ assert_type(decoder.decode(('int48', 'uint216', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint216', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679741
 assert_type(decoder.decode(('int48', 'uint216', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679742
 assert_type(decoder.decode(('int48', 'uint216', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679743
-assert_type(decoder.decode(('int48', 'uint224', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679744
-assert_type(decoder.decode(('int48', 'uint224', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679745
+assert_type(decoder.decode(('int48', 'uint224', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679744
+assert_type(decoder.decode(('int48', 'uint224', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679745
 assert_type(decoder.decode(('int48', 'uint224', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679746
-assert_type(decoder.decode(('int48', 'uint224', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679747
+assert_type(decoder.decode(('int48', 'uint224', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679747
 assert_type(decoder.decode(('int48', 'uint224', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679748
 assert_type(decoder.decode(('int48', 'uint224', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679749
 assert_type(decoder.decode(('int48', 'uint224', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679750
@@ -8938,10 +8938,10 @@ assert_type(decoder.decode(('int48', 'uint224', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint224', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679845
 assert_type(decoder.decode(('int48', 'uint224', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679846
 assert_type(decoder.decode(('int48', 'uint224', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679847
-assert_type(decoder.decode(('int48', 'uint232', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679848
-assert_type(decoder.decode(('int48', 'uint232', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679849
+assert_type(decoder.decode(('int48', 'uint232', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679848
+assert_type(decoder.decode(('int48', 'uint232', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679849
 assert_type(decoder.decode(('int48', 'uint232', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679850
-assert_type(decoder.decode(('int48', 'uint232', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679851
+assert_type(decoder.decode(('int48', 'uint232', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679851
 assert_type(decoder.decode(('int48', 'uint232', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679852
 assert_type(decoder.decode(('int48', 'uint232', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679853
 assert_type(decoder.decode(('int48', 'uint232', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679854
@@ -9042,10 +9042,10 @@ assert_type(decoder.decode(('int48', 'uint232', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint232', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 679949
 assert_type(decoder.decode(('int48', 'uint232', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 679950
 assert_type(decoder.decode(('int48', 'uint232', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 679951
-assert_type(decoder.decode(('int48', 'uint24', 'address'), DATA), Tuple[int, int, Any])  # tuple case 679952
-assert_type(decoder.decode(('int48', 'uint24', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 679953
+assert_type(decoder.decode(('int48', 'uint24', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 679952
+assert_type(decoder.decode(('int48', 'uint24', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 679953
 assert_type(decoder.decode(('int48', 'uint24', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 679954
-assert_type(decoder.decode(('int48', 'uint24', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 679955
+assert_type(decoder.decode(('int48', 'uint24', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 679955
 assert_type(decoder.decode(('int48', 'uint24', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 679956
 assert_type(decoder.decode(('int48', 'uint24', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 679957
 assert_type(decoder.decode(('int48', 'uint24', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 679958
@@ -9146,10 +9146,10 @@ assert_type(decoder.decode(('int48', 'uint24', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint24', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680053
 assert_type(decoder.decode(('int48', 'uint24', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680054
 assert_type(decoder.decode(('int48', 'uint24', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680055
-assert_type(decoder.decode(('int48', 'uint240', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680056
-assert_type(decoder.decode(('int48', 'uint240', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680057
+assert_type(decoder.decode(('int48', 'uint240', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680056
+assert_type(decoder.decode(('int48', 'uint240', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680057
 assert_type(decoder.decode(('int48', 'uint240', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680058
-assert_type(decoder.decode(('int48', 'uint240', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680059
+assert_type(decoder.decode(('int48', 'uint240', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680059
 assert_type(decoder.decode(('int48', 'uint240', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680060
 assert_type(decoder.decode(('int48', 'uint240', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680061
 assert_type(decoder.decode(('int48', 'uint240', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680062
@@ -9250,10 +9250,10 @@ assert_type(decoder.decode(('int48', 'uint240', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint240', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680157
 assert_type(decoder.decode(('int48', 'uint240', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680158
 assert_type(decoder.decode(('int48', 'uint240', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680159
-assert_type(decoder.decode(('int48', 'uint248', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680160
-assert_type(decoder.decode(('int48', 'uint248', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680161
+assert_type(decoder.decode(('int48', 'uint248', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680160
+assert_type(decoder.decode(('int48', 'uint248', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680161
 assert_type(decoder.decode(('int48', 'uint248', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680162
-assert_type(decoder.decode(('int48', 'uint248', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680163
+assert_type(decoder.decode(('int48', 'uint248', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680163
 assert_type(decoder.decode(('int48', 'uint248', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680164
 assert_type(decoder.decode(('int48', 'uint248', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680165
 assert_type(decoder.decode(('int48', 'uint248', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680166
@@ -9354,10 +9354,10 @@ assert_type(decoder.decode(('int48', 'uint248', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint248', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680261
 assert_type(decoder.decode(('int48', 'uint248', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680262
 assert_type(decoder.decode(('int48', 'uint248', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680263
-assert_type(decoder.decode(('int48', 'uint256', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680264
-assert_type(decoder.decode(('int48', 'uint256', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680265
+assert_type(decoder.decode(('int48', 'uint256', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680264
+assert_type(decoder.decode(('int48', 'uint256', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680265
 assert_type(decoder.decode(('int48', 'uint256', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680266
-assert_type(decoder.decode(('int48', 'uint256', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680267
+assert_type(decoder.decode(('int48', 'uint256', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680267
 assert_type(decoder.decode(('int48', 'uint256', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680268
 assert_type(decoder.decode(('int48', 'uint256', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680269
 assert_type(decoder.decode(('int48', 'uint256', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680270
@@ -9458,10 +9458,10 @@ assert_type(decoder.decode(('int48', 'uint256', 'uint80'), DATA), Tuple[int, int
 assert_type(decoder.decode(('int48', 'uint256', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680365
 assert_type(decoder.decode(('int48', 'uint256', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680366
 assert_type(decoder.decode(('int48', 'uint256', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680367
-assert_type(decoder.decode(('int48', 'uint32', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680368
-assert_type(decoder.decode(('int48', 'uint32', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680369
+assert_type(decoder.decode(('int48', 'uint32', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680368
+assert_type(decoder.decode(('int48', 'uint32', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680369
 assert_type(decoder.decode(('int48', 'uint32', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680370
-assert_type(decoder.decode(('int48', 'uint32', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680371
+assert_type(decoder.decode(('int48', 'uint32', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680371
 assert_type(decoder.decode(('int48', 'uint32', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680372
 assert_type(decoder.decode(('int48', 'uint32', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680373
 assert_type(decoder.decode(('int48', 'uint32', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680374
@@ -9562,10 +9562,10 @@ assert_type(decoder.decode(('int48', 'uint32', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint32', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680469
 assert_type(decoder.decode(('int48', 'uint32', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680470
 assert_type(decoder.decode(('int48', 'uint32', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680471
-assert_type(decoder.decode(('int48', 'uint40', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680472
-assert_type(decoder.decode(('int48', 'uint40', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680473
+assert_type(decoder.decode(('int48', 'uint40', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680472
+assert_type(decoder.decode(('int48', 'uint40', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680473
 assert_type(decoder.decode(('int48', 'uint40', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680474
-assert_type(decoder.decode(('int48', 'uint40', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680475
+assert_type(decoder.decode(('int48', 'uint40', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680475
 assert_type(decoder.decode(('int48', 'uint40', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680476
 assert_type(decoder.decode(('int48', 'uint40', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680477
 assert_type(decoder.decode(('int48', 'uint40', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680478
@@ -9666,10 +9666,10 @@ assert_type(decoder.decode(('int48', 'uint40', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint40', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680573
 assert_type(decoder.decode(('int48', 'uint40', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680574
 assert_type(decoder.decode(('int48', 'uint40', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680575
-assert_type(decoder.decode(('int48', 'uint48', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680576
-assert_type(decoder.decode(('int48', 'uint48', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680577
+assert_type(decoder.decode(('int48', 'uint48', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680576
+assert_type(decoder.decode(('int48', 'uint48', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680577
 assert_type(decoder.decode(('int48', 'uint48', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680578
-assert_type(decoder.decode(('int48', 'uint48', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680579
+assert_type(decoder.decode(('int48', 'uint48', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680579
 assert_type(decoder.decode(('int48', 'uint48', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680580
 assert_type(decoder.decode(('int48', 'uint48', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680581
 assert_type(decoder.decode(('int48', 'uint48', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680582
@@ -9770,10 +9770,10 @@ assert_type(decoder.decode(('int48', 'uint48', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint48', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680677
 assert_type(decoder.decode(('int48', 'uint48', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680678
 assert_type(decoder.decode(('int48', 'uint48', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680679
-assert_type(decoder.decode(('int48', 'uint56', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680680
-assert_type(decoder.decode(('int48', 'uint56', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680681
+assert_type(decoder.decode(('int48', 'uint56', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680680
+assert_type(decoder.decode(('int48', 'uint56', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680681
 assert_type(decoder.decode(('int48', 'uint56', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680682
-assert_type(decoder.decode(('int48', 'uint56', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680683
+assert_type(decoder.decode(('int48', 'uint56', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680683
 assert_type(decoder.decode(('int48', 'uint56', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680684
 assert_type(decoder.decode(('int48', 'uint56', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680685
 assert_type(decoder.decode(('int48', 'uint56', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680686
@@ -9874,10 +9874,10 @@ assert_type(decoder.decode(('int48', 'uint56', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint56', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680781
 assert_type(decoder.decode(('int48', 'uint56', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680782
 assert_type(decoder.decode(('int48', 'uint56', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680783
-assert_type(decoder.decode(('int48', 'uint64', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680784
-assert_type(decoder.decode(('int48', 'uint64', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680785
+assert_type(decoder.decode(('int48', 'uint64', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680784
+assert_type(decoder.decode(('int48', 'uint64', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680785
 assert_type(decoder.decode(('int48', 'uint64', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680786
-assert_type(decoder.decode(('int48', 'uint64', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680787
+assert_type(decoder.decode(('int48', 'uint64', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680787
 assert_type(decoder.decode(('int48', 'uint64', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680788
 assert_type(decoder.decode(('int48', 'uint64', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680789
 assert_type(decoder.decode(('int48', 'uint64', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680790
@@ -9978,10 +9978,10 @@ assert_type(decoder.decode(('int48', 'uint64', 'uint80'), DATA), Tuple[int, int,
 assert_type(decoder.decode(('int48', 'uint64', 'uint88'), DATA), Tuple[int, int, int])  # tuple case 680885
 assert_type(decoder.decode(('int48', 'uint64', 'uint96'), DATA), Tuple[int, int, int])  # tuple case 680886
 assert_type(decoder.decode(('int48', 'uint64', 'someothertype'), DATA), Tuple[int, int, Any])  # tuple case 680887
-assert_type(decoder.decode(('int48', 'uint72', 'address'), DATA), Tuple[int, int, Any])  # tuple case 680888
-assert_type(decoder.decode(('int48', 'uint72', 'address[]'), DATA), Tuple[int, int, Any])  # tuple case 680889
+assert_type(decoder.decode(('int48', 'uint72', 'address'), DATA), Tuple[int, int, HexAddress])  # tuple case 680888
+assert_type(decoder.decode(('int48', 'uint72', 'address[]'), DATA), Tuple[int, int, Tuple[HexAddress, ...]])  # tuple case 680889
 assert_type(decoder.decode(('int48', 'uint72', 'bool'), DATA), Tuple[int, int, bool])  # tuple case 680890
-assert_type(decoder.decode(('int48', 'uint72', 'bool[]'), DATA), Tuple[int, int, Tuple[bool, ...]])  # tuple case 680891
+assert_type(decoder.decode(('int48', 'uint72', 'bool[]'), DATA), Tuple[int, int, Any])  # tuple case 680891
 assert_type(decoder.decode(('int48', 'uint72', 'bytes'), DATA), Tuple[int, int, bytes])  # tuple case 680892
 assert_type(decoder.decode(('int48', 'uint72', 'bytes1'), DATA), Tuple[int, int, bytes])  # tuple case 680893
 assert_type(decoder.decode(('int48', 'uint72', 'bytes10'), DATA), Tuple[int, int, bytes])  # tuple case 680894

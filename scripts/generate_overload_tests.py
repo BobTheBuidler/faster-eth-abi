@@ -35,9 +35,11 @@ import sys
 from typing import (
     Any,
     Dict,
+    Final,
     ForwardRef,
     List,
     Literal,
+    Set,
     Tuple,
     Union,
     get_args,
@@ -93,7 +95,7 @@ RETURN_TYPE_MAP = {
     "string[]": "Any",  # "Tuple[str, ...]",
     "int": "int",
     "bool": "bool",
-    "bool[]": "Tuple[bool, ...]",
+    "bool[]": "Any",  # "Tuple[bool, ...]",
     "someothertype": "Any",
 }
 for i in range(8, 257, 8):
