@@ -11,9 +11,7 @@
       "matchDepTypes": [
         "build-system"
       ],
-      "commitMessage": {
-        "title": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
-      }
+      "commitMessage": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
     },
     {
       "matchManagers": [
@@ -30,6 +28,9 @@
       "matchStrings": [
         "mypy\\[mypyc\\]==1\\.14\\.1; python_version ?== ?['\\\"]3\\.8['\\\"]"
       ],
+      "depNameTemplate": "mypy",
+      "currentValueTemplate": "1.14.1",
+      "datasourceTemplate": "pypi",
       "description": "Do not update mypy for Python 3.8 pins"
     },
     {
@@ -50,6 +51,7 @@
         "python-version: '([0-9.]+)'"
       ],
       "depNameTemplate": "python",
+      "currentValueTemplate": "'{{{currentValue}}}'",
       "datasourceTemplate": "python",
       "versioningTemplate": "python",
       "extractVersionTemplate": "\\1",
