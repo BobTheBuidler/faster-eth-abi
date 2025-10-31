@@ -301,8 +301,8 @@ class UnsignedIntegerEncoder(NumberEncoder):
 class UnsignedIntegerEncoderCached(UnsignedIntegerEncoder):
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
-        self.maxsize: Final = maxsize
-        self.encode = lru_cache(maxsize=maxsize)(self.encode)
+        self.maxsize: Final[Optional[int]] = maxsize
+        self.encode: Final[Callable[[int], bytes]] = lru_cache(maxsize=maxsize)(self.encode)
 
 
 encode_uint_256 = UnsignedIntegerEncoder(value_bit_size=256, data_byte_size=32)
@@ -343,9 +343,12 @@ class SignedIntegerEncoder(NumberEncoder):
 
 
 class SignedIntegerEncoderCached(SignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[Optional[int]]
+    
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
-        self.maxsize: Final = maxsize
+        self.maxsize = maxsize
         self.encode = lru_cache(maxsize=maxsize)(self.encode)
 
 
@@ -359,9 +362,12 @@ class PackedSignedIntegerEncoder(SignedIntegerEncoder):
 
 
 class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[Optional[int]]
+    
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
-        self.maxsize: Final = maxsize
+        self.maxsize = maxsize
         self.encode = lru_cache(maxsize=maxsize)(self.encode)
 
 
