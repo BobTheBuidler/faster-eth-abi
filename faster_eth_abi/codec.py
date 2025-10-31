@@ -524,6 +524,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -532,6 +533,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -540,6 +542,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, str]:
         ...
+
     @overload
     def decode(
         self,
@@ -548,6 +551,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -556,6 +560,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -564,6 +569,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, HexAddress, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -572,6 +578,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -580,6 +587,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -588,6 +596,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, str]:
         ...
+
     @overload
     def decode(
         self,
@@ -596,6 +605,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -604,6 +614,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -612,6 +623,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bytes, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -620,6 +632,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, str, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -628,6 +641,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, str, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -636,6 +650,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, str, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -644,6 +659,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, str, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -652,6 +668,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, str, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -660,6 +677,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, int, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -668,6 +686,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, int, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -676,6 +695,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, int, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -684,6 +704,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, int, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -692,6 +713,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, int, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -700,6 +722,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -708,6 +731,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -716,6 +740,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -724,6 +749,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -732,6 +758,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, bool, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -740,6 +767,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -748,6 +776,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -756,6 +785,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, int]:
         ...
+
     @overload
     def decode(
         self,
@@ -764,6 +794,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -772,6 +803,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[HexAddress, Any, Any]:
         ...
+
     @overload
     def decode(
         self,
@@ -780,6 +812,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, HexAddress]:
         ...
+
     @overload
     def decode(
         self,
@@ -788,6 +821,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, bytes]:
         ...
+
     @overload
     def decode(
         self,
@@ -796,6 +830,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, str]:
         ...
+
     @overload
     def decode(
         self,
@@ -804,6 +839,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, bool]:
         ...
+
     @overload
     def decode(
         self,
@@ -2222,6 +2258,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, bytes], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2230,6 +2267,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, str], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2238,6 +2276,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, int], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2300,6 +2339,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[int, bool], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2308,6 +2348,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, bytes, str], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2316,6 +2357,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, bytes, int], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2324,6 +2366,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, bytes, bool], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2332,6 +2375,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, str, int], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2340,6 +2384,7 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, str, bool], ...]:
         ...
+
     @overload
     def decode(
         self,
@@ -2347,14 +2392,6 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Union[HexAddress, int, bool], ...]:
-        ...
-    @overload
-    def decode(
-        self,
-        types: Iterable[Union[AddressTypeStr, BytesTypeStr, StringTypeStr, DecodesToIntTypeStr, BoolTypeStr]],
-        data: Decodable,
-        strict: bool = True,
-    ) -> Tuple[Union[HexAddress, bytes, str, int, bool], ...]:
         ...
 
     @overload
@@ -2391,6 +2428,23 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Union[str, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[
+                AddressTypeStr,
+                BytesTypeStr,
+                StringTypeStr,
+                DecodesToIntTypeStr,
+                BoolTypeStr,
+            ]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[HexAddress, bytes, str, int, bool], ...]:
         ...
 
     @overload
