@@ -2,17 +2,39 @@ import abc
 import decimal
 from _typeshed import Incomplete
 from eth_typing import HexAddress
-from faster_eth_abi._decoding import decode_dynamic_array as decode_dynamic_array, decode_head_tail as decode_head_tail, decode_sized_array as decode_sized_array, decode_tuple as decode_tuple, decoder_fn_boolean as decoder_fn_boolean, get_value_byte_size as get_value_byte_size, read_fixed_byte_size_data_from_stream as read_fixed_byte_size_data_from_stream, split_data_and_padding_fixed_byte_size as split_data_and_padding_fixed_byte_size, validate_padding_bytes_fixed_byte_size as validate_padding_bytes_fixed_byte_size, validate_padding_bytes_signed_integer as validate_padding_bytes_signed_integer, validate_pointers_array as validate_pointers_array
+from faster_eth_abi._decoding import (
+    decode_dynamic_array as decode_dynamic_array,
+    decode_head_tail as decode_head_tail,
+    decode_sized_array as decode_sized_array,
+    decode_tuple as decode_tuple,
+    decoder_fn_boolean as decoder_fn_boolean,
+    get_value_byte_size as get_value_byte_size,
+    read_fixed_byte_size_data_from_stream as read_fixed_byte_size_data_from_stream,
+    split_data_and_padding_fixed_byte_size as split_data_and_padding_fixed_byte_size,
+    validate_padding_bytes_fixed_byte_size as validate_padding_bytes_fixed_byte_size,
+    validate_padding_bytes_signed_integer as validate_padding_bytes_signed_integer,
+    validate_pointers_array as validate_pointers_array,
+)
 from faster_eth_abi.base import BaseCoder as BaseCoder
-from faster_eth_abi.exceptions import InsufficientDataBytes as InsufficientDataBytes, NonEmptyPaddingBytes as NonEmptyPaddingBytes
-from faster_eth_abi.from_type_str import parse_tuple_type_str as parse_tuple_type_str, parse_type_str as parse_type_str
+from faster_eth_abi.exceptions import (
+    InsufficientDataBytes as InsufficientDataBytes,
+    NonEmptyPaddingBytes as NonEmptyPaddingBytes,
+)
+from faster_eth_abi.from_type_str import (
+    parse_tuple_type_str as parse_tuple_type_str,
+    parse_type_str as parse_type_str,
+)
 from faster_eth_abi.io import ContextFramesBytesIO as ContextFramesBytesIO
 from faster_eth_abi.typing import T as T
-from faster_eth_abi.utils.numeric import TEN as TEN, abi_decimal_context as abi_decimal_context, ceil32 as ceil32
+from faster_eth_abi.utils.numeric import (
+    TEN as TEN,
+    abi_decimal_context as abi_decimal_context,
+    ceil32 as ceil32,
+)
 from functools import cached_property as cached_property
 from typing import Any, Callable, Final, Generic, TypeVar, final
 
-TByteStr = TypeVar('TByteStr', bytes, str)
+TByteStr = TypeVar("TByteStr", bytes, str)
 
 class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
     """
@@ -20,6 +42,7 @@ class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
     custom decoder class.  Subclasses must also implement
     :any:`BaseCoder.from_type_str`.
     """
+
     strict: bool
     @abc.abstractmethod
     def decode(self, stream: ContextFramesBytesIO) -> T:
@@ -28,6 +51,7 @@ class BaseDecoder(BaseCoder, Generic[T], metaclass=abc.ABCMeta):
         :any:`exceptions.DecodingError` if a python value cannot be decoded
         from the given byte stream.
         """
+
     def __call__(self, stream: ContextFramesBytesIO) -> T: ...
 
 class HeadTailDecoder(BaseDecoder[T]):
@@ -37,9 +61,19 @@ class HeadTailDecoder(BaseDecoder[T]):
     pointer, aka offset, which is located in the head section of the encoded container,
     and the actual value, which is located in the tail section of the encoding.
     """
+
     is_dynamic: bool
     tail_decoder: Final[Incomplete]
-    def __init__(self, tail_decoder: HeadTailDecoder[T] | SizedArrayDecoder[T] | DynamicArrayDecoder[T] | ByteStringDecoder[T], **kwargs: Any) -> None: ...
+    def __init__(
+        self,
+        tail_decoder: (
+            HeadTailDecoder[T]
+            | SizedArrayDecoder[T]
+            | DynamicArrayDecoder[T]
+            | ByteStringDecoder[T]
+        ),
+        **kwargs: Any
+    ) -> None: ...
     def decode(self, stream: ContextFramesBytesIO) -> T: ...
     __call__ = decode
 
@@ -172,9 +206,9 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
 
 class StringDecoder(ByteStringDecoder[str]):
     bytes_errors: Final[Incomplete]
-    def __init__(self, handle_string_errors: str = 'strict') -> None: ...
+    def __init__(self, handle_string_errors: str = "strict") -> None: ...
     def from_type_str(cls, abi_type, registry): ...
     def decode(self, stream: ContextFramesBytesIO) -> str: ...
     __call__ = decode
     @staticmethod
-    def decoder_fn(data: bytes, handle_string_errors: str = 'strict') -> str: ...
+    def decoder_fn(data: bytes, handle_string_errors: str = "strict") -> str: ...
