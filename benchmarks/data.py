@@ -24,7 +24,7 @@ uints = {}
 for i in range(8, 257, 8):
     max_value = 2**i - 1
     test_data = {
-        *(2**x-1 for x in range(1, i + 1))  # a range of values to start
+        *(2**x - 1 for x in range(1, i + 1)),  # a range of values to start
         0,  # zero
         1,  # one
         42,
@@ -33,32 +33,16 @@ for i in range(8, 257, 8):
         (max_value // 2 + max_value) // 2,  # upper fourth
         max_value,
     }
-    for x in range(i):
-        test_data.add()
     if 12345678901234567890 <= max_value:
         test_data.add(12345678901234567890)
     if 999999999999999999999999999999 <= max_value:
         test_data.add(999999999999999999999999999999)
-    for i, vals in uints.items():
+    for vals in uints.values():
         test_data.update(vals)
     uints[i] = sorted(test_data)
-        
 
 
 uint256s = uints[256][:]
-    0,
-    1,
-    2**256 - 1,
-    2**128,
-    2**64,
-    12345678901234567890,
-    2**255,
-    2**255 - 1,
-    2**32,
-    2**16,
-    42,
-    999999999999999999999999999999,
-]
 
 bytes32s = [
     b"\x00" * 32,
@@ -166,7 +150,7 @@ for bits in (8, 16, 32, 64, 128, 256):
 primitive_cases = (
     [
         *((f"uint{i}", case) for i, cases in uints.items() for case in cases)
-        *((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
+        * ((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
         *(
             (f"int{i}", -(2 ** (i - 1)) // 2)
             for i in range(8, 257, 8)  # negative midpoint
