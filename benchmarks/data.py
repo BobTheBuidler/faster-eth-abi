@@ -17,7 +17,35 @@ addresses = [
     b"\x01" * 19 + b"\x00",
 ]
 
-uint256s = [
+int_sizes = tuple(range(8, 257, 8))
+
+uints = {}
+
+for i in range(8, 257, 8):
+    max_value = 2**i - 1
+    test_data = {
+        *(2**x-1 for x in range(1, i + 1))  # a range of values to start
+        0,  # zero
+        1,  # one
+        42,
+        max_value // 4,  # lower fourth
+        max_value // 2,  # midpoint
+        (max_value // 2 + max_value) // 2,  # upper fourth
+        max_value,
+    }
+    for x in range(i):
+        test_data.add()
+    if 12345678901234567890 <= max_value:
+        test_data.add(12345678901234567890)
+    if 999999999999999999999999999999 <= max_value:
+        test_data.add(999999999999999999999999999999)
+    for i, vals in uints.items():
+        test_data.update(vals)
+    uints[i] = sorted(test_data)
+        
+
+
+uint256s = uints[256][:]
     0,
     1,
     2**256 - 1,
@@ -137,14 +165,7 @@ for bits in (8, 16, 32, 64, 128, 256):
 
 primitive_cases = (
     [
-        *((f"uint{i}", 0) for i in range(8, 257, 8)),  # min value
-        *((f"uint{i}", (2**i - 1) // 4) for i in range(8, 257, 8)),  # lower fourth
-        *((f"uint{i}", (2**i - 1) // 2) for i in range(8, 257, 8)),  # midpoint
-        *(
-            (f"uint{i}", (2**i - 1 + ((2**i - 1) // 2)) // 2)
-            for i in range(8, 257, 8)  # upper fourth
-        ),
-        *((f"uint{i}", 2**i - 1) for i in range(8, 257, 8)),  # max value
+        *((f"uint{i}", case) for i, cases in uints.items() for case in cases)
         *((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
         *(
             (f"int{i}", -(2 ** (i - 1)) // 2)
