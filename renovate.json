@@ -54,7 +54,8 @@
       "datasourceTemplate": "python",
       "versioningTemplate": "python",
       "extractVersionTemplate": "\\1",
-      "replaceStringTemplate": "python-version: '{{{newValue}}}'"
-      "description": "Ensure stubs are produced on the lowest supported Python version.
+      "replaceStringTemplate": "python-version: '{{{newValue}}}'",
+      "description": "Ensure stubs are produced on the lowest supported Python version."
     }
+  ]
 }
