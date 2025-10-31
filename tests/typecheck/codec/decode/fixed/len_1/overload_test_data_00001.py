@@ -129,4 +129,4 @@ ck(f(('uint8',), D), T[i])  # tuple case 99
 ck(f(('uint80',), D), T[i])  # tuple case 100
 ck(f(('uint88',), D), T[i])  # tuple case 101
 ck(f(('uint96',), D), T[i])  # tuple case 102
-ck(f(('?',), D), TA)  # tuple case 103
+ck(f(('?',), D), T[A])  # tuple case 103

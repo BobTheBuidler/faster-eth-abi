@@ -129,7 +129,7 @@ ck(f(('uint112', 'bytes16', 'uint8'), D), T[i, by, i])  # tuple case 791019
 ck(f(('uint112', 'bytes16', 'uint80'), D), T[i, by, i])  # tuple case 791020
 ck(f(('uint112', 'bytes16', 'uint88'), D), T[i, by, i])  # tuple case 791021
 ck(f(('uint112', 'bytes16', 'uint96'), D), T[i, by, i])  # tuple case 791022
-ck(f(('uint112', 'bytes16', '?'), D), TA)  # tuple case 791023
+ck(f(('uint112', 'bytes16', '?'), D), T[i, by, A])  # tuple case 791023
 ck(f(('uint112', 'bytes17', 'address'), D), T[i, by, HA])  # tuple case 791024
 ck(f(('uint112', 'bytes17', 'address[]'), D), T[i, by, A])  # tuple case 791025
 ck(f(('uint112', 'bytes17', 'bool'), D), T[i, by, bo])  # tuple case 791026
@@ -233,7 +233,7 @@ ck(f(('uint112', 'bytes17', 'uint8'), D), T[i, by, i])  # tuple case 791123
 ck(f(('uint112', 'bytes17', 'uint80'), D), T[i, by, i])  # tuple case 791124
 ck(f(('uint112', 'bytes17', 'uint88'), D), T[i, by, i])  # tuple case 791125
 ck(f(('uint112', 'bytes17', 'uint96'), D), T[i, by, i])  # tuple case 791126
-ck(f(('uint112', 'bytes17', '?'), D), TA)  # tuple case 791127
+ck(f(('uint112', 'bytes17', '?'), D), T[i, by, A])  # tuple case 791127
 ck(f(('uint112', 'bytes18', 'address'), D), T[i, by, HA])  # tuple case 791128
 ck(f(('uint112', 'bytes18', 'address[]'), D), T[i, by, A])  # tuple case 791129
 ck(f(('uint112', 'bytes18', 'bool'), D), T[i, by, bo])  # tuple case 791130
@@ -337,7 +337,7 @@ ck(f(('uint112', 'bytes18', 'uint8'), D), T[i, by, i])  # tuple case 791227
 ck(f(('uint112', 'bytes18', 'uint80'), D), T[i, by, i])  # tuple case 791228
 ck(f(('uint112', 'bytes18', 'uint88'), D), T[i, by, i])  # tuple case 791229
 ck(f(('uint112', 'bytes18', 'uint96'), D), T[i, by, i])  # tuple case 791230
-ck(f(('uint112', 'bytes18', '?'), D), TA)  # tuple case 791231
+ck(f(('uint112', 'bytes18', '?'), D), T[i, by, A])  # tuple case 791231
 ck(f(('uint112', 'bytes19', 'address'), D), T[i, by, HA])  # tuple case 791232
 ck(f(('uint112', 'bytes19', 'address[]'), D), T[i, by, A])  # tuple case 791233
 ck(f(('uint112', 'bytes19', 'bool'), D), T[i, by, bo])  # tuple case 791234
@@ -441,7 +441,7 @@ ck(f(('uint112', 'bytes19', 'uint8'), D), T[i, by, i])  # tuple case 791331
 ck(f(('uint112', 'bytes19', 'uint80'), D), T[i, by, i])  # tuple case 791332
 ck(f(('uint112', 'bytes19', 'uint88'), D), T[i, by, i])  # tuple case 791333
 ck(f(('uint112', 'bytes19', 'uint96'), D), T[i, by, i])  # tuple case 791334
-ck(f(('uint112', 'bytes19', '?'), D), TA)  # tuple case 791335
+ck(f(('uint112', 'bytes19', '?'), D), T[i, by, A])  # tuple case 791335
 ck(f(('uint112', 'bytes2', 'address'), D), T[i, by, HA])  # tuple case 791336
 ck(f(('uint112', 'bytes2', 'address[]'), D), T[i, by, A])  # tuple case 791337
 ck(f(('uint112', 'bytes2', 'bool'), D), T[i, by, bo])  # tuple case 791338
@@ -545,7 +545,7 @@ ck(f(('uint112', 'bytes2', 'uint8'), D), T[i, by, i])  # tuple case 791435
 ck(f(('uint112', 'bytes2', 'uint80'), D), T[i, by, i])  # tuple case 791436
 ck(f(('uint112', 'bytes2', 'uint88'), D), T[i, by, i])  # tuple case 791437
 ck(f(('uint112', 'bytes2', 'uint96'), D), T[i, by, i])  # tuple case 791438
-ck(f(('uint112', 'bytes2', '?'), D), TA)  # tuple case 791439
+ck(f(('uint112', 'bytes2', '?'), D), T[i, by, A])  # tuple case 791439
 ck(f(('uint112', 'bytes20', 'address'), D), T[i, by, HA])  # tuple case 791440
 ck(f(('uint112', 'bytes20', 'address[]'), D), T[i, by, A])  # tuple case 791441
 ck(f(('uint112', 'bytes20', 'bool'), D), T[i, by, bo])  # tuple case 791442
@@ -649,7 +649,7 @@ ck(f(('uint112', 'bytes20', 'uint8'), D), T[i, by, i])  # tuple case 791539
 ck(f(('uint112', 'bytes20', 'uint80'), D), T[i, by, i])  # tuple case 791540
 ck(f(('uint112', 'bytes20', 'uint88'), D), T[i, by, i])  # tuple case 791541
 ck(f(('uint112', 'bytes20', 'uint96'), D), T[i, by, i])  # tuple case 791542
-ck(f(('uint112', 'bytes20', '?'), D), TA)  # tuple case 791543
+ck(f(('uint112', 'bytes20', '?'), D), T[i, by, A])  # tuple case 791543
 ck(f(('uint112', 'bytes21', 'address'), D), T[i, by, HA])  # tuple case 791544
 ck(f(('uint112', 'bytes21', 'address[]'), D), T[i, by, A])  # tuple case 791545
 ck(f(('uint112', 'bytes21', 'bool'), D), T[i, by, bo])  # tuple case 791546
@@ -753,7 +753,7 @@ ck(f(('uint112', 'bytes21', 'uint8'), D), T[i, by, i])  # tuple case 791643
 ck(f(('uint112', 'bytes21', 'uint80'), D), T[i, by, i])  # tuple case 791644
 ck(f(('uint112', 'bytes21', 'uint88'), D), T[i, by, i])  # tuple case 791645
 ck(f(('uint112', 'bytes21', 'uint96'), D), T[i, by, i])  # tuple case 791646
-ck(f(('uint112', 'bytes21', '?'), D), TA)  # tuple case 791647
+ck(f(('uint112', 'bytes21', '?'), D), T[i, by, A])  # tuple case 791647
 ck(f(('uint112', 'bytes22', 'address'), D), T[i, by, HA])  # tuple case 791648
 ck(f(('uint112', 'bytes22', 'address[]'), D), T[i, by, A])  # tuple case 791649
 ck(f(('uint112', 'bytes22', 'bool'), D), T[i, by, bo])  # tuple case 791650
@@ -857,7 +857,7 @@ ck(f(('uint112', 'bytes22', 'uint8'), D), T[i, by, i])  # tuple case 791747
 ck(f(('uint112', 'bytes22', 'uint80'), D), T[i, by, i])  # tuple case 791748
 ck(f(('uint112', 'bytes22', 'uint88'), D), T[i, by, i])  # tuple case 791749
 ck(f(('uint112', 'bytes22', 'uint96'), D), T[i, by, i])  # tuple case 791750
-ck(f(('uint112', 'bytes22', '?'), D), TA)  # tuple case 791751
+ck(f(('uint112', 'bytes22', '?'), D), T[i, by, A])  # tuple case 791751
 ck(f(('uint112', 'bytes23', 'address'), D), T[i, by, HA])  # tuple case 791752
 ck(f(('uint112', 'bytes23', 'address[]'), D), T[i, by, A])  # tuple case 791753
 ck(f(('uint112', 'bytes23', 'bool'), D), T[i, by, bo])  # tuple case 791754
@@ -961,7 +961,7 @@ ck(f(('uint112', 'bytes23', 'uint8'), D), T[i, by, i])  # tuple case 791851
 ck(f(('uint112', 'bytes23', 'uint80'), D), T[i, by, i])  # tuple case 791852
 ck(f(('uint112', 'bytes23', 'uint88'), D), T[i, by, i])  # tuple case 791853
 ck(f(('uint112', 'bytes23', 'uint96'), D), T[i, by, i])  # tuple case 791854
-ck(f(('uint112', 'bytes23', '?'), D), TA)  # tuple case 791855
+ck(f(('uint112', 'bytes23', '?'), D), T[i, by, A])  # tuple case 791855
 ck(f(('uint112', 'bytes24', 'address'), D), T[i, by, HA])  # tuple case 791856
 ck(f(('uint112', 'bytes24', 'address[]'), D), T[i, by, A])  # tuple case 791857
 ck(f(('uint112', 'bytes24', 'bool'), D), T[i, by, bo])  # tuple case 791858
@@ -1065,7 +1065,7 @@ ck(f(('uint112', 'bytes24', 'uint8'), D), T[i, by, i])  # tuple case 791955
 ck(f(('uint112', 'bytes24', 'uint80'), D), T[i, by, i])  # tuple case 791956
 ck(f(('uint112', 'bytes24', 'uint88'), D), T[i, by, i])  # tuple case 791957
 ck(f(('uint112', 'bytes24', 'uint96'), D), T[i, by, i])  # tuple case 791958
-ck(f(('uint112', 'bytes24', '?'), D), TA)  # tuple case 791959
+ck(f(('uint112', 'bytes24', '?'), D), T[i, by, A])  # tuple case 791959
 ck(f(('uint112', 'bytes25', 'address'), D), T[i, by, HA])  # tuple case 791960
 ck(f(('uint112', 'bytes25', 'address[]'), D), T[i, by, A])  # tuple case 791961
 ck(f(('uint112', 'bytes25', 'bool'), D), T[i, by, bo])  # tuple case 791962
@@ -1169,7 +1169,7 @@ ck(f(('uint112', 'bytes25', 'uint8'), D), T[i, by, i])  # tuple case 792059
 ck(f(('uint112', 'bytes25', 'uint80'), D), T[i, by, i])  # tuple case 792060
 ck(f(('uint112', 'bytes25', 'uint88'), D), T[i, by, i])  # tuple case 792061
 ck(f(('uint112', 'bytes25', 'uint96'), D), T[i, by, i])  # tuple case 792062
-ck(f(('uint112', 'bytes25', '?'), D), TA)  # tuple case 792063
+ck(f(('uint112', 'bytes25', '?'), D), T[i, by, A])  # tuple case 792063
 ck(f(('uint112', 'bytes26', 'address'), D), T[i, by, HA])  # tuple case 792064
 ck(f(('uint112', 'bytes26', 'address[]'), D), T[i, by, A])  # tuple case 792065
 ck(f(('uint112', 'bytes26', 'bool'), D), T[i, by, bo])  # tuple case 792066
@@ -1273,7 +1273,7 @@ ck(f(('uint112', 'bytes26', 'uint8'), D), T[i, by, i])  # tuple case 792163
 ck(f(('uint112', 'bytes26', 'uint80'), D), T[i, by, i])  # tuple case 792164
 ck(f(('uint112', 'bytes26', 'uint88'), D), T[i, by, i])  # tuple case 792165
 ck(f(('uint112', 'bytes26', 'uint96'), D), T[i, by, i])  # tuple case 792166
-ck(f(('uint112', 'bytes26', '?'), D), TA)  # tuple case 792167
+ck(f(('uint112', 'bytes26', '?'), D), T[i, by, A])  # tuple case 792167
 ck(f(('uint112', 'bytes27', 'address'), D), T[i, by, HA])  # tuple case 792168
 ck(f(('uint112', 'bytes27', 'address[]'), D), T[i, by, A])  # tuple case 792169
 ck(f(('uint112', 'bytes27', 'bool'), D), T[i, by, bo])  # tuple case 792170
@@ -1377,7 +1377,7 @@ ck(f(('uint112', 'bytes27', 'uint8'), D), T[i, by, i])  # tuple case 792267
 ck(f(('uint112', 'bytes27', 'uint80'), D), T[i, by, i])  # tuple case 792268
 ck(f(('uint112', 'bytes27', 'uint88'), D), T[i, by, i])  # tuple case 792269
 ck(f(('uint112', 'bytes27', 'uint96'), D), T[i, by, i])  # tuple case 792270
-ck(f(('uint112', 'bytes27', '?'), D), TA)  # tuple case 792271
+ck(f(('uint112', 'bytes27', '?'), D), T[i, by, A])  # tuple case 792271
 ck(f(('uint112', 'bytes28', 'address'), D), T[i, by, HA])  # tuple case 792272
 ck(f(('uint112', 'bytes28', 'address[]'), D), T[i, by, A])  # tuple case 792273
 ck(f(('uint112', 'bytes28', 'bool'), D), T[i, by, bo])  # tuple case 792274
@@ -1481,7 +1481,7 @@ ck(f(('uint112', 'bytes28', 'uint8'), D), T[i, by, i])  # tuple case 792371
 ck(f(('uint112', 'bytes28', 'uint80'), D), T[i, by, i])  # tuple case 792372
 ck(f(('uint112', 'bytes28', 'uint88'), D), T[i, by, i])  # tuple case 792373
 ck(f(('uint112', 'bytes28', 'uint96'), D), T[i, by, i])  # tuple case 792374
-ck(f(('uint112', 'bytes28', '?'), D), TA)  # tuple case 792375
+ck(f(('uint112', 'bytes28', '?'), D), T[i, by, A])  # tuple case 792375
 ck(f(('uint112', 'bytes29', 'address'), D), T[i, by, HA])  # tuple case 792376
 ck(f(('uint112', 'bytes29', 'address[]'), D), T[i, by, A])  # tuple case 792377
 ck(f(('uint112', 'bytes29', 'bool'), D), T[i, by, bo])  # tuple case 792378
@@ -1585,7 +1585,7 @@ ck(f(('uint112', 'bytes29', 'uint8'), D), T[i, by, i])  # tuple case 792475
 ck(f(('uint112', 'bytes29', 'uint80'), D), T[i, by, i])  # tuple case 792476
 ck(f(('uint112', 'bytes29', 'uint88'), D), T[i, by, i])  # tuple case 792477
 ck(f(('uint112', 'bytes29', 'uint96'), D), T[i, by, i])  # tuple case 792478
-ck(f(('uint112', 'bytes29', '?'), D), TA)  # tuple case 792479
+ck(f(('uint112', 'bytes29', '?'), D), T[i, by, A])  # tuple case 792479
 ck(f(('uint112', 'bytes3', 'address'), D), T[i, by, HA])  # tuple case 792480
 ck(f(('uint112', 'bytes3', 'address[]'), D), T[i, by, A])  # tuple case 792481
 ck(f(('uint112', 'bytes3', 'bool'), D), T[i, by, bo])  # tuple case 792482
@@ -1689,7 +1689,7 @@ ck(f(('uint112', 'bytes3', 'uint8'), D), T[i, by, i])  # tuple case 792579
 ck(f(('uint112', 'bytes3', 'uint80'), D), T[i, by, i])  # tuple case 792580
 ck(f(('uint112', 'bytes3', 'uint88'), D), T[i, by, i])  # tuple case 792581
 ck(f(('uint112', 'bytes3', 'uint96'), D), T[i, by, i])  # tuple case 792582
-ck(f(('uint112', 'bytes3', '?'), D), TA)  # tuple case 792583
+ck(f(('uint112', 'bytes3', '?'), D), T[i, by, A])  # tuple case 792583
 ck(f(('uint112', 'bytes30', 'address'), D), T[i, by, HA])  # tuple case 792584
 ck(f(('uint112', 'bytes30', 'address[]'), D), T[i, by, A])  # tuple case 792585
 ck(f(('uint112', 'bytes30', 'bool'), D), T[i, by, bo])  # tuple case 792586
@@ -1793,7 +1793,7 @@ ck(f(('uint112', 'bytes30', 'uint8'), D), T[i, by, i])  # tuple case 792683
 ck(f(('uint112', 'bytes30', 'uint80'), D), T[i, by, i])  # tuple case 792684
 ck(f(('uint112', 'bytes30', 'uint88'), D), T[i, by, i])  # tuple case 792685
 ck(f(('uint112', 'bytes30', 'uint96'), D), T[i, by, i])  # tuple case 792686
-ck(f(('uint112', 'bytes30', '?'), D), TA)  # tuple case 792687
+ck(f(('uint112', 'bytes30', '?'), D), T[i, by, A])  # tuple case 792687
 ck(f(('uint112', 'bytes31', 'address'), D), T[i, by, HA])  # tuple case 792688
 ck(f(('uint112', 'bytes31', 'address[]'), D), T[i, by, A])  # tuple case 792689
 ck(f(('uint112', 'bytes31', 'bool'), D), T[i, by, bo])  # tuple case 792690
@@ -1897,7 +1897,7 @@ ck(f(('uint112', 'bytes31', 'uint8'), D), T[i, by, i])  # tuple case 792787
 ck(f(('uint112', 'bytes31', 'uint80'), D), T[i, by, i])  # tuple case 792788
 ck(f(('uint112', 'bytes31', 'uint88'), D), T[i, by, i])  # tuple case 792789
 ck(f(('uint112', 'bytes31', 'uint96'), D), T[i, by, i])  # tuple case 792790
-ck(f(('uint112', 'bytes31', '?'), D), TA)  # tuple case 792791
+ck(f(('uint112', 'bytes31', '?'), D), T[i, by, A])  # tuple case 792791
 ck(f(('uint112', 'bytes32', 'address'), D), T[i, by, HA])  # tuple case 792792
 ck(f(('uint112', 'bytes32', 'address[]'), D), T[i, by, A])  # tuple case 792793
 ck(f(('uint112', 'bytes32', 'bool'), D), T[i, by, bo])  # tuple case 792794
@@ -2001,7 +2001,7 @@ ck(f(('uint112', 'bytes32', 'uint8'), D), T[i, by, i])  # tuple case 792891
 ck(f(('uint112', 'bytes32', 'uint80'), D), T[i, by, i])  # tuple case 792892
 ck(f(('uint112', 'bytes32', 'uint88'), D), T[i, by, i])  # tuple case 792893
 ck(f(('uint112', 'bytes32', 'uint96'), D), T[i, by, i])  # tuple case 792894
-ck(f(('uint112', 'bytes32', '?'), D), TA)  # tuple case 792895
+ck(f(('uint112', 'bytes32', '?'), D), T[i, by, A])  # tuple case 792895
 ck(f(('uint112', 'bytes4', 'address'), D), T[i, by, HA])  # tuple case 792896
 ck(f(('uint112', 'bytes4', 'address[]'), D), T[i, by, A])  # tuple case 792897
 ck(f(('uint112', 'bytes4', 'bool'), D), T[i, by, bo])  # tuple case 792898
@@ -2105,7 +2105,7 @@ ck(f(('uint112', 'bytes4', 'uint8'), D), T[i, by, i])  # tuple case 792995
 ck(f(('uint112', 'bytes4', 'uint80'), D), T[i, by, i])  # tuple case 792996
 ck(f(('uint112', 'bytes4', 'uint88'), D), T[i, by, i])  # tuple case 792997
 ck(f(('uint112', 'bytes4', 'uint96'), D), T[i, by, i])  # tuple case 792998
-ck(f(('uint112', 'bytes4', '?'), D), TA)  # tuple case 792999
+ck(f(('uint112', 'bytes4', '?'), D), T[i, by, A])  # tuple case 792999
 ck(f(('uint112', 'bytes5', 'address'), D), T[i, by, HA])  # tuple case 793000
 ck(f(('uint112', 'bytes5', 'address[]'), D), T[i, by, A])  # tuple case 793001
 ck(f(('uint112', 'bytes5', 'bool'), D), T[i, by, bo])  # tuple case 793002
@@ -2209,7 +2209,7 @@ ck(f(('uint112', 'bytes5', 'uint8'), D), T[i, by, i])  # tuple case 793099
 ck(f(('uint112', 'bytes5', 'uint80'), D), T[i, by, i])  # tuple case 793100
 ck(f(('uint112', 'bytes5', 'uint88'), D), T[i, by, i])  # tuple case 793101
 ck(f(('uint112', 'bytes5', 'uint96'), D), T[i, by, i])  # tuple case 793102
-ck(f(('uint112', 'bytes5', '?'), D), TA)  # tuple case 793103
+ck(f(('uint112', 'bytes5', '?'), D), T[i, by, A])  # tuple case 793103
 ck(f(('uint112', 'bytes6', 'address'), D), T[i, by, HA])  # tuple case 793104
 ck(f(('uint112', 'bytes6', 'address[]'), D), T[i, by, A])  # tuple case 793105
 ck(f(('uint112', 'bytes6', 'bool'), D), T[i, by, bo])  # tuple case 793106
@@ -2313,7 +2313,7 @@ ck(f(('uint112', 'bytes6', 'uint8'), D), T[i, by, i])  # tuple case 793203
 ck(f(('uint112', 'bytes6', 'uint80'), D), T[i, by, i])  # tuple case 793204
 ck(f(('uint112', 'bytes6', 'uint88'), D), T[i, by, i])  # tuple case 793205
 ck(f(('uint112', 'bytes6', 'uint96'), D), T[i, by, i])  # tuple case 793206
-ck(f(('uint112', 'bytes6', '?'), D), TA)  # tuple case 793207
+ck(f(('uint112', 'bytes6', '?'), D), T[i, by, A])  # tuple case 793207
 ck(f(('uint112', 'bytes7', 'address'), D), T[i, by, HA])  # tuple case 793208
 ck(f(('uint112', 'bytes7', 'address[]'), D), T[i, by, A])  # tuple case 793209
 ck(f(('uint112', 'bytes7', 'bool'), D), T[i, by, bo])  # tuple case 793210
@@ -2417,7 +2417,7 @@ ck(f(('uint112', 'bytes7', 'uint8'), D), T[i, by, i])  # tuple case 793307
 ck(f(('uint112', 'bytes7', 'uint80'), D), T[i, by, i])  # tuple case 793308
 ck(f(('uint112', 'bytes7', 'uint88'), D), T[i, by, i])  # tuple case 793309
 ck(f(('uint112', 'bytes7', 'uint96'), D), T[i, by, i])  # tuple case 793310
-ck(f(('uint112', 'bytes7', '?'), D), TA)  # tuple case 793311
+ck(f(('uint112', 'bytes7', '?'), D), T[i, by, A])  # tuple case 793311
 ck(f(('uint112', 'bytes8', 'address'), D), T[i, by, HA])  # tuple case 793312
 ck(f(('uint112', 'bytes8', 'address[]'), D), T[i, by, A])  # tuple case 793313
 ck(f(('uint112', 'bytes8', 'bool'), D), T[i, by, bo])  # tuple case 793314
@@ -2521,7 +2521,7 @@ ck(f(('uint112', 'bytes8', 'uint8'), D), T[i, by, i])  # tuple case 793411
 ck(f(('uint112', 'bytes8', 'uint80'), D), T[i, by, i])  # tuple case 793412
 ck(f(('uint112', 'bytes8', 'uint88'), D), T[i, by, i])  # tuple case 793413
 ck(f(('uint112', 'bytes8', 'uint96'), D), T[i, by, i])  # tuple case 793414
-ck(f(('uint112', 'bytes8', '?'), D), TA)  # tuple case 793415
+ck(f(('uint112', 'bytes8', '?'), D), T[i, by, A])  # tuple case 793415
 ck(f(('uint112', 'bytes9', 'address'), D), T[i, by, HA])  # tuple case 793416
 ck(f(('uint112', 'bytes9', 'address[]'), D), T[i, by, A])  # tuple case 793417
 ck(f(('uint112', 'bytes9', 'bool'), D), T[i, by, bo])  # tuple case 793418
@@ -2625,7 +2625,7 @@ ck(f(('uint112', 'bytes9', 'uint8'), D), T[i, by, i])  # tuple case 793515
 ck(f(('uint112', 'bytes9', 'uint80'), D), T[i, by, i])  # tuple case 793516
 ck(f(('uint112', 'bytes9', 'uint88'), D), T[i, by, i])  # tuple case 793517
 ck(f(('uint112', 'bytes9', 'uint96'), D), T[i, by, i])  # tuple case 793518
-ck(f(('uint112', 'bytes9', '?'), D), TA)  # tuple case 793519
+ck(f(('uint112', 'bytes9', '?'), D), T[i, by, A])  # tuple case 793519
 ck(f(('uint112', 'int104', 'address'), D), T[i, i, HA])  # tuple case 793520
 ck(f(('uint112', 'int104', 'address[]'), D), T[i, i, A])  # tuple case 793521
 ck(f(('uint112', 'int104', 'bool'), D), T[i, i, bo])  # tuple case 793522
@@ -2729,7 +2729,7 @@ ck(f(('uint112', 'int104', 'uint8'), D), T[i, i, i])  # tuple case 793619
 ck(f(('uint112', 'int104', 'uint80'), D), T[i, i, i])  # tuple case 793620
 ck(f(('uint112', 'int104', 'uint88'), D), T[i, i, i])  # tuple case 793621
 ck(f(('uint112', 'int104', 'uint96'), D), T[i, i, i])  # tuple case 793622
-ck(f(('uint112', 'int104', '?'), D), TA)  # tuple case 793623
+ck(f(('uint112', 'int104', '?'), D), T[i, i, A])  # tuple case 793623
 ck(f(('uint112', 'int112', 'address'), D), T[i, i, HA])  # tuple case 793624
 ck(f(('uint112', 'int112', 'address[]'), D), T[i, i, A])  # tuple case 793625
 ck(f(('uint112', 'int112', 'bool'), D), T[i, i, bo])  # tuple case 793626
@@ -2833,7 +2833,7 @@ ck(f(('uint112', 'int112', 'uint8'), D), T[i, i, i])  # tuple case 793723
 ck(f(('uint112', 'int112', 'uint80'), D), T[i, i, i])  # tuple case 793724
 ck(f(('uint112', 'int112', 'uint88'), D), T[i, i, i])  # tuple case 793725
 ck(f(('uint112', 'int112', 'uint96'), D), T[i, i, i])  # tuple case 793726
-ck(f(('uint112', 'int112', '?'), D), TA)  # tuple case 793727
+ck(f(('uint112', 'int112', '?'), D), T[i, i, A])  # tuple case 793727
 ck(f(('uint112', 'int120', 'address'), D), T[i, i, HA])  # tuple case 793728
 ck(f(('uint112', 'int120', 'address[]'), D), T[i, i, A])  # tuple case 793729
 ck(f(('uint112', 'int120', 'bool'), D), T[i, i, bo])  # tuple case 793730
@@ -2937,7 +2937,7 @@ ck(f(('uint112', 'int120', 'uint8'), D), T[i, i, i])  # tuple case 793827
 ck(f(('uint112', 'int120', 'uint80'), D), T[i, i, i])  # tuple case 793828
 ck(f(('uint112', 'int120', 'uint88'), D), T[i, i, i])  # tuple case 793829
 ck(f(('uint112', 'int120', 'uint96'), D), T[i, i, i])  # tuple case 793830
-ck(f(('uint112', 'int120', '?'), D), TA)  # tuple case 793831
+ck(f(('uint112', 'int120', '?'), D), T[i, i, A])  # tuple case 793831
 ck(f(('uint112', 'int128', 'address'), D), T[i, i, HA])  # tuple case 793832
 ck(f(('uint112', 'int128', 'address[]'), D), T[i, i, A])  # tuple case 793833
 ck(f(('uint112', 'int128', 'bool'), D), T[i, i, bo])  # tuple case 793834
@@ -3041,7 +3041,7 @@ ck(f(('uint112', 'int128', 'uint8'), D), T[i, i, i])  # tuple case 793931
 ck(f(('uint112', 'int128', 'uint80'), D), T[i, i, i])  # tuple case 793932
 ck(f(('uint112', 'int128', 'uint88'), D), T[i, i, i])  # tuple case 793933
 ck(f(('uint112', 'int128', 'uint96'), D), T[i, i, i])  # tuple case 793934
-ck(f(('uint112', 'int128', '?'), D), TA)  # tuple case 793935
+ck(f(('uint112', 'int128', '?'), D), T[i, i, A])  # tuple case 793935
 ck(f(('uint112', 'int136', 'address'), D), T[i, i, HA])  # tuple case 793936
 ck(f(('uint112', 'int136', 'address[]'), D), T[i, i, A])  # tuple case 793937
 ck(f(('uint112', 'int136', 'bool'), D), T[i, i, bo])  # tuple case 793938
@@ -3145,7 +3145,7 @@ ck(f(('uint112', 'int136', 'uint8'), D), T[i, i, i])  # tuple case 794035
 ck(f(('uint112', 'int136', 'uint80'), D), T[i, i, i])  # tuple case 794036
 ck(f(('uint112', 'int136', 'uint88'), D), T[i, i, i])  # tuple case 794037
 ck(f(('uint112', 'int136', 'uint96'), D), T[i, i, i])  # tuple case 794038
-ck(f(('uint112', 'int136', '?'), D), TA)  # tuple case 794039
+ck(f(('uint112', 'int136', '?'), D), T[i, i, A])  # tuple case 794039
 ck(f(('uint112', 'int144', 'address'), D), T[i, i, HA])  # tuple case 794040
 ck(f(('uint112', 'int144', 'address[]'), D), T[i, i, A])  # tuple case 794041
 ck(f(('uint112', 'int144', 'bool'), D), T[i, i, bo])  # tuple case 794042
@@ -3249,7 +3249,7 @@ ck(f(('uint112', 'int144', 'uint8'), D), T[i, i, i])  # tuple case 794139
 ck(f(('uint112', 'int144', 'uint80'), D), T[i, i, i])  # tuple case 794140
 ck(f(('uint112', 'int144', 'uint88'), D), T[i, i, i])  # tuple case 794141
 ck(f(('uint112', 'int144', 'uint96'), D), T[i, i, i])  # tuple case 794142
-ck(f(('uint112', 'int144', '?'), D), TA)  # tuple case 794143
+ck(f(('uint112', 'int144', '?'), D), T[i, i, A])  # tuple case 794143
 ck(f(('uint112', 'int152', 'address'), D), T[i, i, HA])  # tuple case 794144
 ck(f(('uint112', 'int152', 'address[]'), D), T[i, i, A])  # tuple case 794145
 ck(f(('uint112', 'int152', 'bool'), D), T[i, i, bo])  # tuple case 794146
@@ -3353,7 +3353,7 @@ ck(f(('uint112', 'int152', 'uint8'), D), T[i, i, i])  # tuple case 794243
 ck(f(('uint112', 'int152', 'uint80'), D), T[i, i, i])  # tuple case 794244
 ck(f(('uint112', 'int152', 'uint88'), D), T[i, i, i])  # tuple case 794245
 ck(f(('uint112', 'int152', 'uint96'), D), T[i, i, i])  # tuple case 794246
-ck(f(('uint112', 'int152', '?'), D), TA)  # tuple case 794247
+ck(f(('uint112', 'int152', '?'), D), T[i, i, A])  # tuple case 794247
 ck(f(('uint112', 'int16', 'address'), D), T[i, i, HA])  # tuple case 794248
 ck(f(('uint112', 'int16', 'address[]'), D), T[i, i, A])  # tuple case 794249
 ck(f(('uint112', 'int16', 'bool'), D), T[i, i, bo])  # tuple case 794250
@@ -3457,7 +3457,7 @@ ck(f(('uint112', 'int16', 'uint8'), D), T[i, i, i])  # tuple case 794347
 ck(f(('uint112', 'int16', 'uint80'), D), T[i, i, i])  # tuple case 794348
 ck(f(('uint112', 'int16', 'uint88'), D), T[i, i, i])  # tuple case 794349
 ck(f(('uint112', 'int16', 'uint96'), D), T[i, i, i])  # tuple case 794350
-ck(f(('uint112', 'int16', '?'), D), TA)  # tuple case 794351
+ck(f(('uint112', 'int16', '?'), D), T[i, i, A])  # tuple case 794351
 ck(f(('uint112', 'int160', 'address'), D), T[i, i, HA])  # tuple case 794352
 ck(f(('uint112', 'int160', 'address[]'), D), T[i, i, A])  # tuple case 794353
 ck(f(('uint112', 'int160', 'bool'), D), T[i, i, bo])  # tuple case 794354
@@ -3561,7 +3561,7 @@ ck(f(('uint112', 'int160', 'uint8'), D), T[i, i, i])  # tuple case 794451
 ck(f(('uint112', 'int160', 'uint80'), D), T[i, i, i])  # tuple case 794452
 ck(f(('uint112', 'int160', 'uint88'), D), T[i, i, i])  # tuple case 794453
 ck(f(('uint112', 'int160', 'uint96'), D), T[i, i, i])  # tuple case 794454
-ck(f(('uint112', 'int160', '?'), D), TA)  # tuple case 794455
+ck(f(('uint112', 'int160', '?'), D), T[i, i, A])  # tuple case 794455
 ck(f(('uint112', 'int168', 'address'), D), T[i, i, HA])  # tuple case 794456
 ck(f(('uint112', 'int168', 'address[]'), D), T[i, i, A])  # tuple case 794457
 ck(f(('uint112', 'int168', 'bool'), D), T[i, i, bo])  # tuple case 794458
@@ -3665,7 +3665,7 @@ ck(f(('uint112', 'int168', 'uint8'), D), T[i, i, i])  # tuple case 794555
 ck(f(('uint112', 'int168', 'uint80'), D), T[i, i, i])  # tuple case 794556
 ck(f(('uint112', 'int168', 'uint88'), D), T[i, i, i])  # tuple case 794557
 ck(f(('uint112', 'int168', 'uint96'), D), T[i, i, i])  # tuple case 794558
-ck(f(('uint112', 'int168', '?'), D), TA)  # tuple case 794559
+ck(f(('uint112', 'int168', '?'), D), T[i, i, A])  # tuple case 794559
 ck(f(('uint112', 'int176', 'address'), D), T[i, i, HA])  # tuple case 794560
 ck(f(('uint112', 'int176', 'address[]'), D), T[i, i, A])  # tuple case 794561
 ck(f(('uint112', 'int176', 'bool'), D), T[i, i, bo])  # tuple case 794562
@@ -3769,7 +3769,7 @@ ck(f(('uint112', 'int176', 'uint8'), D), T[i, i, i])  # tuple case 794659
 ck(f(('uint112', 'int176', 'uint80'), D), T[i, i, i])  # tuple case 794660
 ck(f(('uint112', 'int176', 'uint88'), D), T[i, i, i])  # tuple case 794661
 ck(f(('uint112', 'int176', 'uint96'), D), T[i, i, i])  # tuple case 794662
-ck(f(('uint112', 'int176', '?'), D), TA)  # tuple case 794663
+ck(f(('uint112', 'int176', '?'), D), T[i, i, A])  # tuple case 794663
 ck(f(('uint112', 'int184', 'address'), D), T[i, i, HA])  # tuple case 794664
 ck(f(('uint112', 'int184', 'address[]'), D), T[i, i, A])  # tuple case 794665
 ck(f(('uint112', 'int184', 'bool'), D), T[i, i, bo])  # tuple case 794666
@@ -3873,7 +3873,7 @@ ck(f(('uint112', 'int184', 'uint8'), D), T[i, i, i])  # tuple case 794763
 ck(f(('uint112', 'int184', 'uint80'), D), T[i, i, i])  # tuple case 794764
 ck(f(('uint112', 'int184', 'uint88'), D), T[i, i, i])  # tuple case 794765
 ck(f(('uint112', 'int184', 'uint96'), D), T[i, i, i])  # tuple case 794766
-ck(f(('uint112', 'int184', '?'), D), TA)  # tuple case 794767
+ck(f(('uint112', 'int184', '?'), D), T[i, i, A])  # tuple case 794767
 ck(f(('uint112', 'int192', 'address'), D), T[i, i, HA])  # tuple case 794768
 ck(f(('uint112', 'int192', 'address[]'), D), T[i, i, A])  # tuple case 794769
 ck(f(('uint112', 'int192', 'bool'), D), T[i, i, bo])  # tuple case 794770
@@ -3977,7 +3977,7 @@ ck(f(('uint112', 'int192', 'uint8'), D), T[i, i, i])  # tuple case 794867
 ck(f(('uint112', 'int192', 'uint80'), D), T[i, i, i])  # tuple case 794868
 ck(f(('uint112', 'int192', 'uint88'), D), T[i, i, i])  # tuple case 794869
 ck(f(('uint112', 'int192', 'uint96'), D), T[i, i, i])  # tuple case 794870
-ck(f(('uint112', 'int192', '?'), D), TA)  # tuple case 794871
+ck(f(('uint112', 'int192', '?'), D), T[i, i, A])  # tuple case 794871
 ck(f(('uint112', 'int200', 'address'), D), T[i, i, HA])  # tuple case 794872
 ck(f(('uint112', 'int200', 'address[]'), D), T[i, i, A])  # tuple case 794873
 ck(f(('uint112', 'int200', 'bool'), D), T[i, i, bo])  # tuple case 794874
@@ -4081,7 +4081,7 @@ ck(f(('uint112', 'int200', 'uint8'), D), T[i, i, i])  # tuple case 794971
 ck(f(('uint112', 'int200', 'uint80'), D), T[i, i, i])  # tuple case 794972
 ck(f(('uint112', 'int200', 'uint88'), D), T[i, i, i])  # tuple case 794973
 ck(f(('uint112', 'int200', 'uint96'), D), T[i, i, i])  # tuple case 794974
-ck(f(('uint112', 'int200', '?'), D), TA)  # tuple case 794975
+ck(f(('uint112', 'int200', '?'), D), T[i, i, A])  # tuple case 794975
 ck(f(('uint112', 'int208', 'address'), D), T[i, i, HA])  # tuple case 794976
 ck(f(('uint112', 'int208', 'address[]'), D), T[i, i, A])  # tuple case 794977
 ck(f(('uint112', 'int208', 'bool'), D), T[i, i, bo])  # tuple case 794978
@@ -4185,7 +4185,7 @@ ck(f(('uint112', 'int208', 'uint8'), D), T[i, i, i])  # tuple case 795075
 ck(f(('uint112', 'int208', 'uint80'), D), T[i, i, i])  # tuple case 795076
 ck(f(('uint112', 'int208', 'uint88'), D), T[i, i, i])  # tuple case 795077
 ck(f(('uint112', 'int208', 'uint96'), D), T[i, i, i])  # tuple case 795078
-ck(f(('uint112', 'int208', '?'), D), TA)  # tuple case 795079
+ck(f(('uint112', 'int208', '?'), D), T[i, i, A])  # tuple case 795079
 ck(f(('uint112', 'int216', 'address'), D), T[i, i, HA])  # tuple case 795080
 ck(f(('uint112', 'int216', 'address[]'), D), T[i, i, A])  # tuple case 795081
 ck(f(('uint112', 'int216', 'bool'), D), T[i, i, bo])  # tuple case 795082
@@ -4289,7 +4289,7 @@ ck(f(('uint112', 'int216', 'uint8'), D), T[i, i, i])  # tuple case 795179
 ck(f(('uint112', 'int216', 'uint80'), D), T[i, i, i])  # tuple case 795180
 ck(f(('uint112', 'int216', 'uint88'), D), T[i, i, i])  # tuple case 795181
 ck(f(('uint112', 'int216', 'uint96'), D), T[i, i, i])  # tuple case 795182
-ck(f(('uint112', 'int216', '?'), D), TA)  # tuple case 795183
+ck(f(('uint112', 'int216', '?'), D), T[i, i, A])  # tuple case 795183
 ck(f(('uint112', 'int224', 'address'), D), T[i, i, HA])  # tuple case 795184
 ck(f(('uint112', 'int224', 'address[]'), D), T[i, i, A])  # tuple case 795185
 ck(f(('uint112', 'int224', 'bool'), D), T[i, i, bo])  # tuple case 795186
@@ -4393,7 +4393,7 @@ ck(f(('uint112', 'int224', 'uint8'), D), T[i, i, i])  # tuple case 795283
 ck(f(('uint112', 'int224', 'uint80'), D), T[i, i, i])  # tuple case 795284
 ck(f(('uint112', 'int224', 'uint88'), D), T[i, i, i])  # tuple case 795285
 ck(f(('uint112', 'int224', 'uint96'), D), T[i, i, i])  # tuple case 795286
-ck(f(('uint112', 'int224', '?'), D), TA)  # tuple case 795287
+ck(f(('uint112', 'int224', '?'), D), T[i, i, A])  # tuple case 795287
 ck(f(('uint112', 'int232', 'address'), D), T[i, i, HA])  # tuple case 795288
 ck(f(('uint112', 'int232', 'address[]'), D), T[i, i, A])  # tuple case 795289
 ck(f(('uint112', 'int232', 'bool'), D), T[i, i, bo])  # tuple case 795290
@@ -4497,7 +4497,7 @@ ck(f(('uint112', 'int232', 'uint8'), D), T[i, i, i])  # tuple case 795387
 ck(f(('uint112', 'int232', 'uint80'), D), T[i, i, i])  # tuple case 795388
 ck(f(('uint112', 'int232', 'uint88'), D), T[i, i, i])  # tuple case 795389
 ck(f(('uint112', 'int232', 'uint96'), D), T[i, i, i])  # tuple case 795390
-ck(f(('uint112', 'int232', '?'), D), TA)  # tuple case 795391
+ck(f(('uint112', 'int232', '?'), D), T[i, i, A])  # tuple case 795391
 ck(f(('uint112', 'int24', 'address'), D), T[i, i, HA])  # tuple case 795392
 ck(f(('uint112', 'int24', 'address[]'), D), T[i, i, A])  # tuple case 795393
 ck(f(('uint112', 'int24', 'bool'), D), T[i, i, bo])  # tuple case 795394
@@ -4601,7 +4601,7 @@ ck(f(('uint112', 'int24', 'uint8'), D), T[i, i, i])  # tuple case 795491
 ck(f(('uint112', 'int24', 'uint80'), D), T[i, i, i])  # tuple case 795492
 ck(f(('uint112', 'int24', 'uint88'), D), T[i, i, i])  # tuple case 795493
 ck(f(('uint112', 'int24', 'uint96'), D), T[i, i, i])  # tuple case 795494
-ck(f(('uint112', 'int24', '?'), D), TA)  # tuple case 795495
+ck(f(('uint112', 'int24', '?'), D), T[i, i, A])  # tuple case 795495
 ck(f(('uint112', 'int240', 'address'), D), T[i, i, HA])  # tuple case 795496
 ck(f(('uint112', 'int240', 'address[]'), D), T[i, i, A])  # tuple case 795497
 ck(f(('uint112', 'int240', 'bool'), D), T[i, i, bo])  # tuple case 795498
@@ -4705,7 +4705,7 @@ ck(f(('uint112', 'int240', 'uint8'), D), T[i, i, i])  # tuple case 795595
 ck(f(('uint112', 'int240', 'uint80'), D), T[i, i, i])  # tuple case 795596
 ck(f(('uint112', 'int240', 'uint88'), D), T[i, i, i])  # tuple case 795597
 ck(f(('uint112', 'int240', 'uint96'), D), T[i, i, i])  # tuple case 795598
-ck(f(('uint112', 'int240', '?'), D), TA)  # tuple case 795599
+ck(f(('uint112', 'int240', '?'), D), T[i, i, A])  # tuple case 795599
 ck(f(('uint112', 'int248', 'address'), D), T[i, i, HA])  # tuple case 795600
 ck(f(('uint112', 'int248', 'address[]'), D), T[i, i, A])  # tuple case 795601
 ck(f(('uint112', 'int248', 'bool'), D), T[i, i, bo])  # tuple case 795602
@@ -4809,7 +4809,7 @@ ck(f(('uint112', 'int248', 'uint8'), D), T[i, i, i])  # tuple case 795699
 ck(f(('uint112', 'int248', 'uint80'), D), T[i, i, i])  # tuple case 795700
 ck(f(('uint112', 'int248', 'uint88'), D), T[i, i, i])  # tuple case 795701
 ck(f(('uint112', 'int248', 'uint96'), D), T[i, i, i])  # tuple case 795702
-ck(f(('uint112', 'int248', '?'), D), TA)  # tuple case 795703
+ck(f(('uint112', 'int248', '?'), D), T[i, i, A])  # tuple case 795703
 ck(f(('uint112', 'int256', 'address'), D), T[i, i, HA])  # tuple case 795704
 ck(f(('uint112', 'int256', 'address[]'), D), T[i, i, A])  # tuple case 795705
 ck(f(('uint112', 'int256', 'bool'), D), T[i, i, bo])  # tuple case 795706
@@ -4913,7 +4913,7 @@ ck(f(('uint112', 'int256', 'uint8'), D), T[i, i, i])  # tuple case 795803
 ck(f(('uint112', 'int256', 'uint80'), D), T[i, i, i])  # tuple case 795804
 ck(f(('uint112', 'int256', 'uint88'), D), T[i, i, i])  # tuple case 795805
 ck(f(('uint112', 'int256', 'uint96'), D), T[i, i, i])  # tuple case 795806
-ck(f(('uint112', 'int256', '?'), D), TA)  # tuple case 795807
+ck(f(('uint112', 'int256', '?'), D), T[i, i, A])  # tuple case 795807
 ck(f(('uint112', 'int32', 'address'), D), T[i, i, HA])  # tuple case 795808
 ck(f(('uint112', 'int32', 'address[]'), D), T[i, i, A])  # tuple case 795809
 ck(f(('uint112', 'int32', 'bool'), D), T[i, i, bo])  # tuple case 795810
@@ -5017,7 +5017,7 @@ ck(f(('uint112', 'int32', 'uint8'), D), T[i, i, i])  # tuple case 795907
 ck(f(('uint112', 'int32', 'uint80'), D), T[i, i, i])  # tuple case 795908
 ck(f(('uint112', 'int32', 'uint88'), D), T[i, i, i])  # tuple case 795909
 ck(f(('uint112', 'int32', 'uint96'), D), T[i, i, i])  # tuple case 795910
-ck(f(('uint112', 'int32', '?'), D), TA)  # tuple case 795911
+ck(f(('uint112', 'int32', '?'), D), T[i, i, A])  # tuple case 795911
 ck(f(('uint112', 'int40', 'address'), D), T[i, i, HA])  # tuple case 795912
 ck(f(('uint112', 'int40', 'address[]'), D), T[i, i, A])  # tuple case 795913
 ck(f(('uint112', 'int40', 'bool'), D), T[i, i, bo])  # tuple case 795914
@@ -5121,7 +5121,7 @@ ck(f(('uint112', 'int40', 'uint8'), D), T[i, i, i])  # tuple case 796011
 ck(f(('uint112', 'int40', 'uint80'), D), T[i, i, i])  # tuple case 796012
 ck(f(('uint112', 'int40', 'uint88'), D), T[i, i, i])  # tuple case 796013
 ck(f(('uint112', 'int40', 'uint96'), D), T[i, i, i])  # tuple case 796014
-ck(f(('uint112', 'int40', '?'), D), TA)  # tuple case 796015
+ck(f(('uint112', 'int40', '?'), D), T[i, i, A])  # tuple case 796015
 ck(f(('uint112', 'int48', 'address'), D), T[i, i, HA])  # tuple case 796016
 ck(f(('uint112', 'int48', 'address[]'), D), T[i, i, A])  # tuple case 796017
 ck(f(('uint112', 'int48', 'bool'), D), T[i, i, bo])  # tuple case 796018
@@ -5225,7 +5225,7 @@ ck(f(('uint112', 'int48', 'uint8'), D), T[i, i, i])  # tuple case 796115
 ck(f(('uint112', 'int48', 'uint80'), D), T[i, i, i])  # tuple case 796116
 ck(f(('uint112', 'int48', 'uint88'), D), T[i, i, i])  # tuple case 796117
 ck(f(('uint112', 'int48', 'uint96'), D), T[i, i, i])  # tuple case 796118
-ck(f(('uint112', 'int48', '?'), D), TA)  # tuple case 796119
+ck(f(('uint112', 'int48', '?'), D), T[i, i, A])  # tuple case 796119
 ck(f(('uint112', 'int56', 'address'), D), T[i, i, HA])  # tuple case 796120
 ck(f(('uint112', 'int56', 'address[]'), D), T[i, i, A])  # tuple case 796121
 ck(f(('uint112', 'int56', 'bool'), D), T[i, i, bo])  # tuple case 796122
@@ -5329,7 +5329,7 @@ ck(f(('uint112', 'int56', 'uint8'), D), T[i, i, i])  # tuple case 796219
 ck(f(('uint112', 'int56', 'uint80'), D), T[i, i, i])  # tuple case 796220
 ck(f(('uint112', 'int56', 'uint88'), D), T[i, i, i])  # tuple case 796221
 ck(f(('uint112', 'int56', 'uint96'), D), T[i, i, i])  # tuple case 796222
-ck(f(('uint112', 'int56', '?'), D), TA)  # tuple case 796223
+ck(f(('uint112', 'int56', '?'), D), T[i, i, A])  # tuple case 796223
 ck(f(('uint112', 'int64', 'address'), D), T[i, i, HA])  # tuple case 796224
 ck(f(('uint112', 'int64', 'address[]'), D), T[i, i, A])  # tuple case 796225
 ck(f(('uint112', 'int64', 'bool'), D), T[i, i, bo])  # tuple case 796226
@@ -5433,7 +5433,7 @@ ck(f(('uint112', 'int64', 'uint8'), D), T[i, i, i])  # tuple case 796323
 ck(f(('uint112', 'int64', 'uint80'), D), T[i, i, i])  # tuple case 796324
 ck(f(('uint112', 'int64', 'uint88'), D), T[i, i, i])  # tuple case 796325
 ck(f(('uint112', 'int64', 'uint96'), D), T[i, i, i])  # tuple case 796326
-ck(f(('uint112', 'int64', '?'), D), TA)  # tuple case 796327
+ck(f(('uint112', 'int64', '?'), D), T[i, i, A])  # tuple case 796327
 ck(f(('uint112', 'int72', 'address'), D), T[i, i, HA])  # tuple case 796328
 ck(f(('uint112', 'int72', 'address[]'), D), T[i, i, A])  # tuple case 796329
 ck(f(('uint112', 'int72', 'bool'), D), T[i, i, bo])  # tuple case 796330
@@ -5537,7 +5537,7 @@ ck(f(('uint112', 'int72', 'uint8'), D), T[i, i, i])  # tuple case 796427
 ck(f(('uint112', 'int72', 'uint80'), D), T[i, i, i])  # tuple case 796428
 ck(f(('uint112', 'int72', 'uint88'), D), T[i, i, i])  # tuple case 796429
 ck(f(('uint112', 'int72', 'uint96'), D), T[i, i, i])  # tuple case 796430
-ck(f(('uint112', 'int72', '?'), D), TA)  # tuple case 796431
+ck(f(('uint112', 'int72', '?'), D), T[i, i, A])  # tuple case 796431
 ck(f(('uint112', 'int8', 'address'), D), T[i, i, HA])  # tuple case 796432
 ck(f(('uint112', 'int8', 'address[]'), D), T[i, i, A])  # tuple case 796433
 ck(f(('uint112', 'int8', 'bool'), D), T[i, i, bo])  # tuple case 796434
@@ -5641,7 +5641,7 @@ ck(f(('uint112', 'int8', 'uint8'), D), T[i, i, i])  # tuple case 796531
 ck(f(('uint112', 'int8', 'uint80'), D), T[i, i, i])  # tuple case 796532
 ck(f(('uint112', 'int8', 'uint88'), D), T[i, i, i])  # tuple case 796533
 ck(f(('uint112', 'int8', 'uint96'), D), T[i, i, i])  # tuple case 796534
-ck(f(('uint112', 'int8', '?'), D), TA)  # tuple case 796535
+ck(f(('uint112', 'int8', '?'), D), T[i, i, A])  # tuple case 796535
 ck(f(('uint112', 'int80', 'address'), D), T[i, i, HA])  # tuple case 796536
 ck(f(('uint112', 'int80', 'address[]'), D), T[i, i, A])  # tuple case 796537
 ck(f(('uint112', 'int80', 'bool'), D), T[i, i, bo])  # tuple case 796538
@@ -5745,7 +5745,7 @@ ck(f(('uint112', 'int80', 'uint8'), D), T[i, i, i])  # tuple case 796635
 ck(f(('uint112', 'int80', 'uint80'), D), T[i, i, i])  # tuple case 796636
 ck(f(('uint112', 'int80', 'uint88'), D), T[i, i, i])  # tuple case 796637
 ck(f(('uint112', 'int80', 'uint96'), D), T[i, i, i])  # tuple case 796638
-ck(f(('uint112', 'int80', '?'), D), TA)  # tuple case 796639
+ck(f(('uint112', 'int80', '?'), D), T[i, i, A])  # tuple case 796639
 ck(f(('uint112', 'int88', 'address'), D), T[i, i, HA])  # tuple case 796640
 ck(f(('uint112', 'int88', 'address[]'), D), T[i, i, A])  # tuple case 796641
 ck(f(('uint112', 'int88', 'bool'), D), T[i, i, bo])  # tuple case 796642
@@ -5849,7 +5849,7 @@ ck(f(('uint112', 'int88', 'uint8'), D), T[i, i, i])  # tuple case 796739
 ck(f(('uint112', 'int88', 'uint80'), D), T[i, i, i])  # tuple case 796740
 ck(f(('uint112', 'int88', 'uint88'), D), T[i, i, i])  # tuple case 796741
 ck(f(('uint112', 'int88', 'uint96'), D), T[i, i, i])  # tuple case 796742
-ck(f(('uint112', 'int88', '?'), D), TA)  # tuple case 796743
+ck(f(('uint112', 'int88', '?'), D), T[i, i, A])  # tuple case 796743
 ck(f(('uint112', 'int96', 'address'), D), T[i, i, HA])  # tuple case 796744
 ck(f(('uint112', 'int96', 'address[]'), D), T[i, i, A])  # tuple case 796745
 ck(f(('uint112', 'int96', 'bool'), D), T[i, i, bo])  # tuple case 796746
@@ -5953,7 +5953,7 @@ ck(f(('uint112', 'int96', 'uint8'), D), T[i, i, i])  # tuple case 796843
 ck(f(('uint112', 'int96', 'uint80'), D), T[i, i, i])  # tuple case 796844
 ck(f(('uint112', 'int96', 'uint88'), D), T[i, i, i])  # tuple case 796845
 ck(f(('uint112', 'int96', 'uint96'), D), T[i, i, i])  # tuple case 796846
-ck(f(('uint112', 'int96', '?'), D), TA)  # tuple case 796847
+ck(f(('uint112', 'int96', '?'), D), T[i, i, A])  # tuple case 796847
 ck(f(('uint112', 'string', 'address'), D), T[i, s, HA])  # tuple case 796848
 ck(f(('uint112', 'string', 'address[]'), D), T[i, s, A])  # tuple case 796849
 ck(f(('uint112', 'string', 'bool'), D), T[i, s, bo])  # tuple case 796850
@@ -6057,7 +6057,7 @@ ck(f(('uint112', 'string', 'uint8'), D), T[i, s, i])  # tuple case 796947
 ck(f(('uint112', 'string', 'uint80'), D), T[i, s, i])  # tuple case 796948
 ck(f(('uint112', 'string', 'uint88'), D), T[i, s, i])  # tuple case 796949
 ck(f(('uint112', 'string', 'uint96'), D), T[i, s, i])  # tuple case 796950
-ck(f(('uint112', 'string', '?'), D), TA)  # tuple case 796951
+ck(f(('uint112', 'string', '?'), D), T[i, s, A])  # tuple case 796951
 ck(f(('uint112', 'string[]', 'address'), D), T[i, A, HA])  # tuple case 796952
 ck(f(('uint112', 'string[]', 'address[]'), D), T[i, A, A])  # tuple case 796953
 ck(f(('uint112', 'string[]', 'bool'), D), T[i, A, bo])  # tuple case 796954
@@ -6161,7 +6161,7 @@ ck(f(('uint112', 'string[]', 'uint8'), D), T[i, A, i])  # tuple case 797051
 ck(f(('uint112', 'string[]', 'uint80'), D), T[i, A, i])  # tuple case 797052
 ck(f(('uint112', 'string[]', 'uint88'), D), T[i, A, i])  # tuple case 797053
 ck(f(('uint112', 'string[]', 'uint96'), D), T[i, A, i])  # tuple case 797054
-ck(f(('uint112', 'string[]', '?'), D), TA)  # tuple case 797055
+ck(f(('uint112', 'string[]', '?'), D), T[i, A, A])  # tuple case 797055
 ck(f(('uint112', 'uint104', 'address'), D), T[i, i, HA])  # tuple case 797056
 ck(f(('uint112', 'uint104', 'address[]'), D), T[i, i, A])  # tuple case 797057
 ck(f(('uint112', 'uint104', 'bool'), D), T[i, i, bo])  # tuple case 797058
@@ -6265,7 +6265,7 @@ ck(f(('uint112', 'uint104', 'uint8'), D), T[i, i, i])  # tuple case 797155
 ck(f(('uint112', 'uint104', 'uint80'), D), T[i, i, i])  # tuple case 797156
 ck(f(('uint112', 'uint104', 'uint88'), D), T[i, i, i])  # tuple case 797157
 ck(f(('uint112', 'uint104', 'uint96'), D), T[i, i, i])  # tuple case 797158
-ck(f(('uint112', 'uint104', '?'), D), TA)  # tuple case 797159
+ck(f(('uint112', 'uint104', '?'), D), T[i, i, A])  # tuple case 797159
 ck(f(('uint112', 'uint112', 'address'), D), T[i, i, HA])  # tuple case 797160
 ck(f(('uint112', 'uint112', 'address[]'), D), T[i, i, A])  # tuple case 797161
 ck(f(('uint112', 'uint112', 'bool'), D), T[i, i, bo])  # tuple case 797162
@@ -6369,7 +6369,7 @@ ck(f(('uint112', 'uint112', 'uint8'), D), T[i, i, i])  # tuple case 797259
 ck(f(('uint112', 'uint112', 'uint80'), D), T[i, i, i])  # tuple case 797260
 ck(f(('uint112', 'uint112', 'uint88'), D), T[i, i, i])  # tuple case 797261
 ck(f(('uint112', 'uint112', 'uint96'), D), T[i, i, i])  # tuple case 797262
-ck(f(('uint112', 'uint112', '?'), D), TA)  # tuple case 797263
+ck(f(('uint112', 'uint112', '?'), D), T[i, i, A])  # tuple case 797263
 ck(f(('uint112', 'uint120', 'address'), D), T[i, i, HA])  # tuple case 797264
 ck(f(('uint112', 'uint120', 'address[]'), D), T[i, i, A])  # tuple case 797265
 ck(f(('uint112', 'uint120', 'bool'), D), T[i, i, bo])  # tuple case 797266
@@ -6473,7 +6473,7 @@ ck(f(('uint112', 'uint120', 'uint8'), D), T[i, i, i])  # tuple case 797363
 ck(f(('uint112', 'uint120', 'uint80'), D), T[i, i, i])  # tuple case 797364
 ck(f(('uint112', 'uint120', 'uint88'), D), T[i, i, i])  # tuple case 797365
 ck(f(('uint112', 'uint120', 'uint96'), D), T[i, i, i])  # tuple case 797366
-ck(f(('uint112', 'uint120', '?'), D), TA)  # tuple case 797367
+ck(f(('uint112', 'uint120', '?'), D), T[i, i, A])  # tuple case 797367
 ck(f(('uint112', 'uint128', 'address'), D), T[i, i, HA])  # tuple case 797368
 ck(f(('uint112', 'uint128', 'address[]'), D), T[i, i, A])  # tuple case 797369
 ck(f(('uint112', 'uint128', 'bool'), D), T[i, i, bo])  # tuple case 797370
@@ -6577,7 +6577,7 @@ ck(f(('uint112', 'uint128', 'uint8'), D), T[i, i, i])  # tuple case 797467
 ck(f(('uint112', 'uint128', 'uint80'), D), T[i, i, i])  # tuple case 797468
 ck(f(('uint112', 'uint128', 'uint88'), D), T[i, i, i])  # tuple case 797469
 ck(f(('uint112', 'uint128', 'uint96'), D), T[i, i, i])  # tuple case 797470
-ck(f(('uint112', 'uint128', '?'), D), TA)  # tuple case 797471
+ck(f(('uint112', 'uint128', '?'), D), T[i, i, A])  # tuple case 797471
 ck(f(('uint112', 'uint136', 'address'), D), T[i, i, HA])  # tuple case 797472
 ck(f(('uint112', 'uint136', 'address[]'), D), T[i, i, A])  # tuple case 797473
 ck(f(('uint112', 'uint136', 'bool'), D), T[i, i, bo])  # tuple case 797474
@@ -6681,7 +6681,7 @@ ck(f(('uint112', 'uint136', 'uint8'), D), T[i, i, i])  # tuple case 797571
 ck(f(('uint112', 'uint136', 'uint80'), D), T[i, i, i])  # tuple case 797572
 ck(f(('uint112', 'uint136', 'uint88'), D), T[i, i, i])  # tuple case 797573
 ck(f(('uint112', 'uint136', 'uint96'), D), T[i, i, i])  # tuple case 797574
-ck(f(('uint112', 'uint136', '?'), D), TA)  # tuple case 797575
+ck(f(('uint112', 'uint136', '?'), D), T[i, i, A])  # tuple case 797575
 ck(f(('uint112', 'uint144', 'address'), D), T[i, i, HA])  # tuple case 797576
 ck(f(('uint112', 'uint144', 'address[]'), D), T[i, i, A])  # tuple case 797577
 ck(f(('uint112', 'uint144', 'bool'), D), T[i, i, bo])  # tuple case 797578
@@ -6785,7 +6785,7 @@ ck(f(('uint112', 'uint144', 'uint8'), D), T[i, i, i])  # tuple case 797675
 ck(f(('uint112', 'uint144', 'uint80'), D), T[i, i, i])  # tuple case 797676
 ck(f(('uint112', 'uint144', 'uint88'), D), T[i, i, i])  # tuple case 797677
 ck(f(('uint112', 'uint144', 'uint96'), D), T[i, i, i])  # tuple case 797678
-ck(f(('uint112', 'uint144', '?'), D), TA)  # tuple case 797679
+ck(f(('uint112', 'uint144', '?'), D), T[i, i, A])  # tuple case 797679
 ck(f(('uint112', 'uint152', 'address'), D), T[i, i, HA])  # tuple case 797680
 ck(f(('uint112', 'uint152', 'address[]'), D), T[i, i, A])  # tuple case 797681
 ck(f(('uint112', 'uint152', 'bool'), D), T[i, i, bo])  # tuple case 797682
@@ -6889,7 +6889,7 @@ ck(f(('uint112', 'uint152', 'uint8'), D), T[i, i, i])  # tuple case 797779
 ck(f(('uint112', 'uint152', 'uint80'), D), T[i, i, i])  # tuple case 797780
 ck(f(('uint112', 'uint152', 'uint88'), D), T[i, i, i])  # tuple case 797781
 ck(f(('uint112', 'uint152', 'uint96'), D), T[i, i, i])  # tuple case 797782
-ck(f(('uint112', 'uint152', '?'), D), TA)  # tuple case 797783
+ck(f(('uint112', 'uint152', '?'), D), T[i, i, A])  # tuple case 797783
 ck(f(('uint112', 'uint16', 'address'), D), T[i, i, HA])  # tuple case 797784
 ck(f(('uint112', 'uint16', 'address[]'), D), T[i, i, A])  # tuple case 797785
 ck(f(('uint112', 'uint16', 'bool'), D), T[i, i, bo])  # tuple case 797786
@@ -6993,7 +6993,7 @@ ck(f(('uint112', 'uint16', 'uint8'), D), T[i, i, i])  # tuple case 797883
 ck(f(('uint112', 'uint16', 'uint80'), D), T[i, i, i])  # tuple case 797884
 ck(f(('uint112', 'uint16', 'uint88'), D), T[i, i, i])  # tuple case 797885
 ck(f(('uint112', 'uint16', 'uint96'), D), T[i, i, i])  # tuple case 797886
-ck(f(('uint112', 'uint16', '?'), D), TA)  # tuple case 797887
+ck(f(('uint112', 'uint16', '?'), D), T[i, i, A])  # tuple case 797887
 ck(f(('uint112', 'uint160', 'address'), D), T[i, i, HA])  # tuple case 797888
 ck(f(('uint112', 'uint160', 'address[]'), D), T[i, i, A])  # tuple case 797889
 ck(f(('uint112', 'uint160', 'bool'), D), T[i, i, bo])  # tuple case 797890
@@ -7097,7 +7097,7 @@ ck(f(('uint112', 'uint160', 'uint8'), D), T[i, i, i])  # tuple case 797987
 ck(f(('uint112', 'uint160', 'uint80'), D), T[i, i, i])  # tuple case 797988
 ck(f(('uint112', 'uint160', 'uint88'), D), T[i, i, i])  # tuple case 797989
 ck(f(('uint112', 'uint160', 'uint96'), D), T[i, i, i])  # tuple case 797990
-ck(f(('uint112', 'uint160', '?'), D), TA)  # tuple case 797991
+ck(f(('uint112', 'uint160', '?'), D), T[i, i, A])  # tuple case 797991
 ck(f(('uint112', 'uint168', 'address'), D), T[i, i, HA])  # tuple case 797992
 ck(f(('uint112', 'uint168', 'address[]'), D), T[i, i, A])  # tuple case 797993
 ck(f(('uint112', 'uint168', 'bool'), D), T[i, i, bo])  # tuple case 797994
@@ -7201,7 +7201,7 @@ ck(f(('uint112', 'uint168', 'uint8'), D), T[i, i, i])  # tuple case 798091
 ck(f(('uint112', 'uint168', 'uint80'), D), T[i, i, i])  # tuple case 798092
 ck(f(('uint112', 'uint168', 'uint88'), D), T[i, i, i])  # tuple case 798093
 ck(f(('uint112', 'uint168', 'uint96'), D), T[i, i, i])  # tuple case 798094
-ck(f(('uint112', 'uint168', '?'), D), TA)  # tuple case 798095
+ck(f(('uint112', 'uint168', '?'), D), T[i, i, A])  # tuple case 798095
 ck(f(('uint112', 'uint176', 'address'), D), T[i, i, HA])  # tuple case 798096
 ck(f(('uint112', 'uint176', 'address[]'), D), T[i, i, A])  # tuple case 798097
 ck(f(('uint112', 'uint176', 'bool'), D), T[i, i, bo])  # tuple case 798098
@@ -7305,7 +7305,7 @@ ck(f(('uint112', 'uint176', 'uint8'), D), T[i, i, i])  # tuple case 798195
 ck(f(('uint112', 'uint176', 'uint80'), D), T[i, i, i])  # tuple case 798196
 ck(f(('uint112', 'uint176', 'uint88'), D), T[i, i, i])  # tuple case 798197
 ck(f(('uint112', 'uint176', 'uint96'), D), T[i, i, i])  # tuple case 798198
-ck(f(('uint112', 'uint176', '?'), D), TA)  # tuple case 798199
+ck(f(('uint112', 'uint176', '?'), D), T[i, i, A])  # tuple case 798199
 ck(f(('uint112', 'uint184', 'address'), D), T[i, i, HA])  # tuple case 798200
 ck(f(('uint112', 'uint184', 'address[]'), D), T[i, i, A])  # tuple case 798201
 ck(f(('uint112', 'uint184', 'bool'), D), T[i, i, bo])  # tuple case 798202
@@ -7409,7 +7409,7 @@ ck(f(('uint112', 'uint184', 'uint8'), D), T[i, i, i])  # tuple case 798299
 ck(f(('uint112', 'uint184', 'uint80'), D), T[i, i, i])  # tuple case 798300
 ck(f(('uint112', 'uint184', 'uint88'), D), T[i, i, i])  # tuple case 798301
 ck(f(('uint112', 'uint184', 'uint96'), D), T[i, i, i])  # tuple case 798302
-ck(f(('uint112', 'uint184', '?'), D), TA)  # tuple case 798303
+ck(f(('uint112', 'uint184', '?'), D), T[i, i, A])  # tuple case 798303
 ck(f(('uint112', 'uint192', 'address'), D), T[i, i, HA])  # tuple case 798304
 ck(f(('uint112', 'uint192', 'address[]'), D), T[i, i, A])  # tuple case 798305
 ck(f(('uint112', 'uint192', 'bool'), D), T[i, i, bo])  # tuple case 798306
@@ -7513,7 +7513,7 @@ ck(f(('uint112', 'uint192', 'uint8'), D), T[i, i, i])  # tuple case 798403
 ck(f(('uint112', 'uint192', 'uint80'), D), T[i, i, i])  # tuple case 798404
 ck(f(('uint112', 'uint192', 'uint88'), D), T[i, i, i])  # tuple case 798405
 ck(f(('uint112', 'uint192', 'uint96'), D), T[i, i, i])  # tuple case 798406
-ck(f(('uint112', 'uint192', '?'), D), TA)  # tuple case 798407
+ck(f(('uint112', 'uint192', '?'), D), T[i, i, A])  # tuple case 798407
 ck(f(('uint112', 'uint200', 'address'), D), T[i, i, HA])  # tuple case 798408
 ck(f(('uint112', 'uint200', 'address[]'), D), T[i, i, A])  # tuple case 798409
 ck(f(('uint112', 'uint200', 'bool'), D), T[i, i, bo])  # tuple case 798410
@@ -7617,7 +7617,7 @@ ck(f(('uint112', 'uint200', 'uint8'), D), T[i, i, i])  # tuple case 798507
 ck(f(('uint112', 'uint200', 'uint80'), D), T[i, i, i])  # tuple case 798508
 ck(f(('uint112', 'uint200', 'uint88'), D), T[i, i, i])  # tuple case 798509
 ck(f(('uint112', 'uint200', 'uint96'), D), T[i, i, i])  # tuple case 798510
-ck(f(('uint112', 'uint200', '?'), D), TA)  # tuple case 798511
+ck(f(('uint112', 'uint200', '?'), D), T[i, i, A])  # tuple case 798511
 ck(f(('uint112', 'uint208', 'address'), D), T[i, i, HA])  # tuple case 798512
 ck(f(('uint112', 'uint208', 'address[]'), D), T[i, i, A])  # tuple case 798513
 ck(f(('uint112', 'uint208', 'bool'), D), T[i, i, bo])  # tuple case 798514
@@ -7721,7 +7721,7 @@ ck(f(('uint112', 'uint208', 'uint8'), D), T[i, i, i])  # tuple case 798611
 ck(f(('uint112', 'uint208', 'uint80'), D), T[i, i, i])  # tuple case 798612
 ck(f(('uint112', 'uint208', 'uint88'), D), T[i, i, i])  # tuple case 798613
 ck(f(('uint112', 'uint208', 'uint96'), D), T[i, i, i])  # tuple case 798614
-ck(f(('uint112', 'uint208', '?'), D), TA)  # tuple case 798615
+ck(f(('uint112', 'uint208', '?'), D), T[i, i, A])  # tuple case 798615
 ck(f(('uint112', 'uint216', 'address'), D), T[i, i, HA])  # tuple case 798616
 ck(f(('uint112', 'uint216', 'address[]'), D), T[i, i, A])  # tuple case 798617
 ck(f(('uint112', 'uint216', 'bool'), D), T[i, i, bo])  # tuple case 798618
@@ -7825,7 +7825,7 @@ ck(f(('uint112', 'uint216', 'uint8'), D), T[i, i, i])  # tuple case 798715
 ck(f(('uint112', 'uint216', 'uint80'), D), T[i, i, i])  # tuple case 798716
 ck(f(('uint112', 'uint216', 'uint88'), D), T[i, i, i])  # tuple case 798717
 ck(f(('uint112', 'uint216', 'uint96'), D), T[i, i, i])  # tuple case 798718
-ck(f(('uint112', 'uint216', '?'), D), TA)  # tuple case 798719
+ck(f(('uint112', 'uint216', '?'), D), T[i, i, A])  # tuple case 798719
 ck(f(('uint112', 'uint224', 'address'), D), T[i, i, HA])  # tuple case 798720
 ck(f(('uint112', 'uint224', 'address[]'), D), T[i, i, A])  # tuple case 798721
 ck(f(('uint112', 'uint224', 'bool'), D), T[i, i, bo])  # tuple case 798722
@@ -7929,7 +7929,7 @@ ck(f(('uint112', 'uint224', 'uint8'), D), T[i, i, i])  # tuple case 798819
 ck(f(('uint112', 'uint224', 'uint80'), D), T[i, i, i])  # tuple case 798820
 ck(f(('uint112', 'uint224', 'uint88'), D), T[i, i, i])  # tuple case 798821
 ck(f(('uint112', 'uint224', 'uint96'), D), T[i, i, i])  # tuple case 798822
-ck(f(('uint112', 'uint224', '?'), D), TA)  # tuple case 798823
+ck(f(('uint112', 'uint224', '?'), D), T[i, i, A])  # tuple case 798823
 ck(f(('uint112', 'uint232', 'address'), D), T[i, i, HA])  # tuple case 798824
 ck(f(('uint112', 'uint232', 'address[]'), D), T[i, i, A])  # tuple case 798825
 ck(f(('uint112', 'uint232', 'bool'), D), T[i, i, bo])  # tuple case 798826
@@ -8033,7 +8033,7 @@ ck(f(('uint112', 'uint232', 'uint8'), D), T[i, i, i])  # tuple case 798923
 ck(f(('uint112', 'uint232', 'uint80'), D), T[i, i, i])  # tuple case 798924
 ck(f(('uint112', 'uint232', 'uint88'), D), T[i, i, i])  # tuple case 798925
 ck(f(('uint112', 'uint232', 'uint96'), D), T[i, i, i])  # tuple case 798926
-ck(f(('uint112', 'uint232', '?'), D), TA)  # tuple case 798927
+ck(f(('uint112', 'uint232', '?'), D), T[i, i, A])  # tuple case 798927
 ck(f(('uint112', 'uint24', 'address'), D), T[i, i, HA])  # tuple case 798928
 ck(f(('uint112', 'uint24', 'address[]'), D), T[i, i, A])  # tuple case 798929
 ck(f(('uint112', 'uint24', 'bool'), D), T[i, i, bo])  # tuple case 798930
@@ -8137,7 +8137,7 @@ ck(f(('uint112', 'uint24', 'uint8'), D), T[i, i, i])  # tuple case 799027
 ck(f(('uint112', 'uint24', 'uint80'), D), T[i, i, i])  # tuple case 799028
 ck(f(('uint112', 'uint24', 'uint88'), D), T[i, i, i])  # tuple case 799029
 ck(f(('uint112', 'uint24', 'uint96'), D), T[i, i, i])  # tuple case 799030
-ck(f(('uint112', 'uint24', '?'), D), TA)  # tuple case 799031
+ck(f(('uint112', 'uint24', '?'), D), T[i, i, A])  # tuple case 799031
 ck(f(('uint112', 'uint240', 'address'), D), T[i, i, HA])  # tuple case 799032
 ck(f(('uint112', 'uint240', 'address[]'), D), T[i, i, A])  # tuple case 799033
 ck(f(('uint112', 'uint240', 'bool'), D), T[i, i, bo])  # tuple case 799034
@@ -8241,7 +8241,7 @@ ck(f(('uint112', 'uint240', 'uint8'), D), T[i, i, i])  # tuple case 799131
 ck(f(('uint112', 'uint240', 'uint80'), D), T[i, i, i])  # tuple case 799132
 ck(f(('uint112', 'uint240', 'uint88'), D), T[i, i, i])  # tuple case 799133
 ck(f(('uint112', 'uint240', 'uint96'), D), T[i, i, i])  # tuple case 799134
-ck(f(('uint112', 'uint240', '?'), D), TA)  # tuple case 799135
+ck(f(('uint112', 'uint240', '?'), D), T[i, i, A])  # tuple case 799135
 ck(f(('uint112', 'uint248', 'address'), D), T[i, i, HA])  # tuple case 799136
 ck(f(('uint112', 'uint248', 'address[]'), D), T[i, i, A])  # tuple case 799137
 ck(f(('uint112', 'uint248', 'bool'), D), T[i, i, bo])  # tuple case 799138
@@ -8345,7 +8345,7 @@ ck(f(('uint112', 'uint248', 'uint8'), D), T[i, i, i])  # tuple case 799235
 ck(f(('uint112', 'uint248', 'uint80'), D), T[i, i, i])  # tuple case 799236
 ck(f(('uint112', 'uint248', 'uint88'), D), T[i, i, i])  # tuple case 799237
 ck(f(('uint112', 'uint248', 'uint96'), D), T[i, i, i])  # tuple case 799238
-ck(f(('uint112', 'uint248', '?'), D), TA)  # tuple case 799239
+ck(f(('uint112', 'uint248', '?'), D), T[i, i, A])  # tuple case 799239
 ck(f(('uint112', 'uint256', 'address'), D), T[i, i, HA])  # tuple case 799240
 ck(f(('uint112', 'uint256', 'address[]'), D), T[i, i, A])  # tuple case 799241
 ck(f(('uint112', 'uint256', 'bool'), D), T[i, i, bo])  # tuple case 799242
@@ -8449,7 +8449,7 @@ ck(f(('uint112', 'uint256', 'uint8'), D), T[i, i, i])  # tuple case 799339
 ck(f(('uint112', 'uint256', 'uint80'), D), T[i, i, i])  # tuple case 799340
 ck(f(('uint112', 'uint256', 'uint88'), D), T[i, i, i])  # tuple case 799341
 ck(f(('uint112', 'uint256', 'uint96'), D), T[i, i, i])  # tuple case 799342
-ck(f(('uint112', 'uint256', '?'), D), TA)  # tuple case 799343
+ck(f(('uint112', 'uint256', '?'), D), T[i, i, A])  # tuple case 799343
 ck(f(('uint112', 'uint32', 'address'), D), T[i, i, HA])  # tuple case 799344
 ck(f(('uint112', 'uint32', 'address[]'), D), T[i, i, A])  # tuple case 799345
 ck(f(('uint112', 'uint32', 'bool'), D), T[i, i, bo])  # tuple case 799346
@@ -8553,7 +8553,7 @@ ck(f(('uint112', 'uint32', 'uint8'), D), T[i, i, i])  # tuple case 799443
 ck(f(('uint112', 'uint32', 'uint80'), D), T[i, i, i])  # tuple case 799444
 ck(f(('uint112', 'uint32', 'uint88'), D), T[i, i, i])  # tuple case 799445
 ck(f(('uint112', 'uint32', 'uint96'), D), T[i, i, i])  # tuple case 799446
-ck(f(('uint112', 'uint32', '?'), D), TA)  # tuple case 799447
+ck(f(('uint112', 'uint32', '?'), D), T[i, i, A])  # tuple case 799447
 ck(f(('uint112', 'uint40', 'address'), D), T[i, i, HA])  # tuple case 799448
 ck(f(('uint112', 'uint40', 'address[]'), D), T[i, i, A])  # tuple case 799449
 ck(f(('uint112', 'uint40', 'bool'), D), T[i, i, bo])  # tuple case 799450
@@ -8657,7 +8657,7 @@ ck(f(('uint112', 'uint40', 'uint8'), D), T[i, i, i])  # tuple case 799547
 ck(f(('uint112', 'uint40', 'uint80'), D), T[i, i, i])  # tuple case 799548
 ck(f(('uint112', 'uint40', 'uint88'), D), T[i, i, i])  # tuple case 799549
 ck(f(('uint112', 'uint40', 'uint96'), D), T[i, i, i])  # tuple case 799550
-ck(f(('uint112', 'uint40', '?'), D), TA)  # tuple case 799551
+ck(f(('uint112', 'uint40', '?'), D), T[i, i, A])  # tuple case 799551
 ck(f(('uint112', 'uint48', 'address'), D), T[i, i, HA])  # tuple case 799552
 ck(f(('uint112', 'uint48', 'address[]'), D), T[i, i, A])  # tuple case 799553
 ck(f(('uint112', 'uint48', 'bool'), D), T[i, i, bo])  # tuple case 799554
@@ -8761,7 +8761,7 @@ ck(f(('uint112', 'uint48', 'uint8'), D), T[i, i, i])  # tuple case 799651
 ck(f(('uint112', 'uint48', 'uint80'), D), T[i, i, i])  # tuple case 799652
 ck(f(('uint112', 'uint48', 'uint88'), D), T[i, i, i])  # tuple case 799653
 ck(f(('uint112', 'uint48', 'uint96'), D), T[i, i, i])  # tuple case 799654
-ck(f(('uint112', 'uint48', '?'), D), TA)  # tuple case 799655
+ck(f(('uint112', 'uint48', '?'), D), T[i, i, A])  # tuple case 799655
 ck(f(('uint112', 'uint56', 'address'), D), T[i, i, HA])  # tuple case 799656
 ck(f(('uint112', 'uint56', 'address[]'), D), T[i, i, A])  # tuple case 799657
 ck(f(('uint112', 'uint56', 'bool'), D), T[i, i, bo])  # tuple case 799658
@@ -8865,7 +8865,7 @@ ck(f(('uint112', 'uint56', 'uint8'), D), T[i, i, i])  # tuple case 799755
 ck(f(('uint112', 'uint56', 'uint80'), D), T[i, i, i])  # tuple case 799756
 ck(f(('uint112', 'uint56', 'uint88'), D), T[i, i, i])  # tuple case 799757
 ck(f(('uint112', 'uint56', 'uint96'), D), T[i, i, i])  # tuple case 799758
-ck(f(('uint112', 'uint56', '?'), D), TA)  # tuple case 799759
+ck(f(('uint112', 'uint56', '?'), D), T[i, i, A])  # tuple case 799759
 ck(f(('uint112', 'uint64', 'address'), D), T[i, i, HA])  # tuple case 799760
 ck(f(('uint112', 'uint64', 'address[]'), D), T[i, i, A])  # tuple case 799761
 ck(f(('uint112', 'uint64', 'bool'), D), T[i, i, bo])  # tuple case 799762
@@ -8969,7 +8969,7 @@ ck(f(('uint112', 'uint64', 'uint8'), D), T[i, i, i])  # tuple case 799859
 ck(f(('uint112', 'uint64', 'uint80'), D), T[i, i, i])  # tuple case 799860
 ck(f(('uint112', 'uint64', 'uint88'), D), T[i, i, i])  # tuple case 799861
 ck(f(('uint112', 'uint64', 'uint96'), D), T[i, i, i])  # tuple case 799862
-ck(f(('uint112', 'uint64', '?'), D), TA)  # tuple case 799863
+ck(f(('uint112', 'uint64', '?'), D), T[i, i, A])  # tuple case 799863
 ck(f(('uint112', 'uint72', 'address'), D), T[i, i, HA])  # tuple case 799864
 ck(f(('uint112', 'uint72', 'address[]'), D), T[i, i, A])  # tuple case 799865
 ck(f(('uint112', 'uint72', 'bool'), D), T[i, i, bo])  # tuple case 799866
@@ -9073,7 +9073,7 @@ ck(f(('uint112', 'uint72', 'uint8'), D), T[i, i, i])  # tuple case 799963
 ck(f(('uint112', 'uint72', 'uint80'), D), T[i, i, i])  # tuple case 799964
 ck(f(('uint112', 'uint72', 'uint88'), D), T[i, i, i])  # tuple case 799965
 ck(f(('uint112', 'uint72', 'uint96'), D), T[i, i, i])  # tuple case 799966
-ck(f(('uint112', 'uint72', '?'), D), TA)  # tuple case 799967
+ck(f(('uint112', 'uint72', '?'), D), T[i, i, A])  # tuple case 799967
 ck(f(('uint112', 'uint8', 'address'), D), T[i, i, HA])  # tuple case 799968
 ck(f(('uint112', 'uint8', 'address[]'), D), T[i, i, A])  # tuple case 799969
 ck(f(('uint112', 'uint8', 'bool'), D), T[i, i, bo])  # tuple case 799970
@@ -9177,7 +9177,7 @@ ck(f(('uint112', 'uint8', 'uint8'), D), T[i, i, i])  # tuple case 800067
 ck(f(('uint112', 'uint8', 'uint80'), D), T[i, i, i])  # tuple case 800068
 ck(f(('uint112', 'uint8', 'uint88'), D), T[i, i, i])  # tuple case 800069
 ck(f(('uint112', 'uint8', 'uint96'), D), T[i, i, i])  # tuple case 800070
-ck(f(('uint112', 'uint8', '?'), D), TA)  # tuple case 800071
+ck(f(('uint112', 'uint8', '?'), D), T[i, i, A])  # tuple case 800071
 ck(f(('uint112', 'uint80', 'address'), D), T[i, i, HA])  # tuple case 800072
 ck(f(('uint112', 'uint80', 'address[]'), D), T[i, i, A])  # tuple case 800073
 ck(f(('uint112', 'uint80', 'bool'), D), T[i, i, bo])  # tuple case 800074
@@ -9281,7 +9281,7 @@ ck(f(('uint112', 'uint80', 'uint8'), D), T[i, i, i])  # tuple case 800171
 ck(f(('uint112', 'uint80', 'uint80'), D), T[i, i, i])  # tuple case 800172
 ck(f(('uint112', 'uint80', 'uint88'), D), T[i, i, i])  # tuple case 800173
 ck(f(('uint112', 'uint80', 'uint96'), D), T[i, i, i])  # tuple case 800174
-ck(f(('uint112', 'uint80', '?'), D), TA)  # tuple case 800175
+ck(f(('uint112', 'uint80', '?'), D), T[i, i, A])  # tuple case 800175
 ck(f(('uint112', 'uint88', 'address'), D), T[i, i, HA])  # tuple case 800176
 ck(f(('uint112', 'uint88', 'address[]'), D), T[i, i, A])  # tuple case 800177
 ck(f(('uint112', 'uint88', 'bool'), D), T[i, i, bo])  # tuple case 800178
@@ -9385,7 +9385,7 @@ ck(f(('uint112', 'uint88', 'uint8'), D), T[i, i, i])  # tuple case 800275
 ck(f(('uint112', 'uint88', 'uint80'), D), T[i, i, i])  # tuple case 800276
 ck(f(('uint112', 'uint88', 'uint88'), D), T[i, i, i])  # tuple case 800277
 ck(f(('uint112', 'uint88', 'uint96'), D), T[i, i, i])  # tuple case 800278
-ck(f(('uint112', 'uint88', '?'), D), TA)  # tuple case 800279
+ck(f(('uint112', 'uint88', '?'), D), T[i, i, A])  # tuple case 800279
 ck(f(('uint112', 'uint96', 'address'), D), T[i, i, HA])  # tuple case 800280
 ck(f(('uint112', 'uint96', 'address[]'), D), T[i, i, A])  # tuple case 800281
 ck(f(('uint112', 'uint96', 'bool'), D), T[i, i, bo])  # tuple case 800282
@@ -9489,111 +9489,111 @@ ck(f(('uint112', 'uint96', 'uint8'), D), T[i, i, i])  # tuple case 800379
 ck(f(('uint112', 'uint96', 'uint80'), D), T[i, i, i])  # tuple case 800380
 ck(f(('uint112', 'uint96', 'uint88'), D), T[i, i, i])  # tuple case 800381
 ck(f(('uint112', 'uint96', 'uint96'), D), T[i, i, i])  # tuple case 800382
-ck(f(('uint112', 'uint96', '?'), D), TA)  # tuple case 800383
-ck(f(('uint112', '?', 'address'), D), TA)  # tuple case 800384
-ck(f(('uint112', '?', 'address[]'), D), TA)  # tuple case 800385
-ck(f(('uint112', '?', 'bool'), D), TA)  # tuple case 800386
-ck(f(('uint112', '?', 'bool[]'), D), TA)  # tuple case 800387
-ck(f(('uint112', '?', 'bytes'), D), TA)  # tuple case 800388
-ck(f(('uint112', '?', 'bytes1'), D), TA)  # tuple case 800389
-ck(f(('uint112', '?', 'bytes10'), D), TA)  # tuple case 800390
-ck(f(('uint112', '?', 'bytes11'), D), TA)  # tuple case 800391
-ck(f(('uint112', '?', 'bytes12'), D), TA)  # tuple case 800392
-ck(f(('uint112', '?', 'bytes13'), D), TA)  # tuple case 800393
-ck(f(('uint112', '?', 'bytes14'), D), TA)  # tuple case 800394
-ck(f(('uint112', '?', 'bytes15'), D), TA)  # tuple case 800395
-ck(f(('uint112', '?', 'bytes16'), D), TA)  # tuple case 800396
-ck(f(('uint112', '?', 'bytes17'), D), TA)  # tuple case 800397
-ck(f(('uint112', '?', 'bytes18'), D), TA)  # tuple case 800398
-ck(f(('uint112', '?', 'bytes19'), D), TA)  # tuple case 800399
-ck(f(('uint112', '?', 'bytes2'), D), TA)  # tuple case 800400
-ck(f(('uint112', '?', 'bytes20'), D), TA)  # tuple case 800401
-ck(f(('uint112', '?', 'bytes21'), D), TA)  # tuple case 800402
-ck(f(('uint112', '?', 'bytes22'), D), TA)  # tuple case 800403
-ck(f(('uint112', '?', 'bytes23'), D), TA)  # tuple case 800404
-ck(f(('uint112', '?', 'bytes24'), D), TA)  # tuple case 800405
-ck(f(('uint112', '?', 'bytes25'), D), TA)  # tuple case 800406
-ck(f(('uint112', '?', 'bytes26'), D), TA)  # tuple case 800407
-ck(f(('uint112', '?', 'bytes27'), D), TA)  # tuple case 800408
-ck(f(('uint112', '?', 'bytes28'), D), TA)  # tuple case 800409
-ck(f(('uint112', '?', 'bytes29'), D), TA)  # tuple case 800410
-ck(f(('uint112', '?', 'bytes3'), D), TA)  # tuple case 800411
-ck(f(('uint112', '?', 'bytes30'), D), TA)  # tuple case 800412
-ck(f(('uint112', '?', 'bytes31'), D), TA)  # tuple case 800413
-ck(f(('uint112', '?', 'bytes32'), D), TA)  # tuple case 800414
-ck(f(('uint112', '?', 'bytes4'), D), TA)  # tuple case 800415
-ck(f(('uint112', '?', 'bytes5'), D), TA)  # tuple case 800416
-ck(f(('uint112', '?', 'bytes6'), D), TA)  # tuple case 800417
-ck(f(('uint112', '?', 'bytes7'), D), TA)  # tuple case 800418
-ck(f(('uint112', '?', 'bytes8'), D), TA)  # tuple case 800419
-ck(f(('uint112', '?', 'bytes9'), D), TA)  # tuple case 800420
-ck(f(('uint112', '?', 'int104'), D), TA)  # tuple case 800421
-ck(f(('uint112', '?', 'int112'), D), TA)  # tuple case 800422
-ck(f(('uint112', '?', 'int120'), D), TA)  # tuple case 800423
-ck(f(('uint112', '?', 'int128'), D), TA)  # tuple case 800424
-ck(f(('uint112', '?', 'int136'), D), TA)  # tuple case 800425
-ck(f(('uint112', '?', 'int144'), D), TA)  # tuple case 800426
-ck(f(('uint112', '?', 'int152'), D), TA)  # tuple case 800427
-ck(f(('uint112', '?', 'int16'), D), TA)  # tuple case 800428
-ck(f(('uint112', '?', 'int160'), D), TA)  # tuple case 800429
-ck(f(('uint112', '?', 'int168'), D), TA)  # tuple case 800430
-ck(f(('uint112', '?', 'int176'), D), TA)  # tuple case 800431
-ck(f(('uint112', '?', 'int184'), D), TA)  # tuple case 800432
-ck(f(('uint112', '?', 'int192'), D), TA)  # tuple case 800433
-ck(f(('uint112', '?', 'int200'), D), TA)  # tuple case 800434
-ck(f(('uint112', '?', 'int208'), D), TA)  # tuple case 800435
-ck(f(('uint112', '?', 'int216'), D), TA)  # tuple case 800436
-ck(f(('uint112', '?', 'int224'), D), TA)  # tuple case 800437
-ck(f(('uint112', '?', 'int232'), D), TA)  # tuple case 800438
-ck(f(('uint112', '?', 'int24'), D), TA)  # tuple case 800439
-ck(f(('uint112', '?', 'int240'), D), TA)  # tuple case 800440
-ck(f(('uint112', '?', 'int248'), D), TA)  # tuple case 800441
-ck(f(('uint112', '?', 'int256'), D), TA)  # tuple case 800442
-ck(f(('uint112', '?', 'int32'), D), TA)  # tuple case 800443
-ck(f(('uint112', '?', 'int40'), D), TA)  # tuple case 800444
-ck(f(('uint112', '?', 'int48'), D), TA)  # tuple case 800445
-ck(f(('uint112', '?', 'int56'), D), TA)  # tuple case 800446
-ck(f(('uint112', '?', 'int64'), D), TA)  # tuple case 800447
-ck(f(('uint112', '?', 'int72'), D), TA)  # tuple case 800448
-ck(f(('uint112', '?', 'int8'), D), TA)  # tuple case 800449
-ck(f(('uint112', '?', 'int80'), D), TA)  # tuple case 800450
-ck(f(('uint112', '?', 'int88'), D), TA)  # tuple case 800451
-ck(f(('uint112', '?', 'int96'), D), TA)  # tuple case 800452
-ck(f(('uint112', '?', 'string'), D), TA)  # tuple case 800453
-ck(f(('uint112', '?', 'string[]'), D), TA)  # tuple case 800454
-ck(f(('uint112', '?', 'uint104'), D), TA)  # tuple case 800455
-ck(f(('uint112', '?', 'uint112'), D), TA)  # tuple case 800456
-ck(f(('uint112', '?', 'uint120'), D), TA)  # tuple case 800457
-ck(f(('uint112', '?', 'uint128'), D), TA)  # tuple case 800458
-ck(f(('uint112', '?', 'uint136'), D), TA)  # tuple case 800459
-ck(f(('uint112', '?', 'uint144'), D), TA)  # tuple case 800460
-ck(f(('uint112', '?', 'uint152'), D), TA)  # tuple case 800461
-ck(f(('uint112', '?', 'uint16'), D), TA)  # tuple case 800462
-ck(f(('uint112', '?', 'uint160'), D), TA)  # tuple case 800463
-ck(f(('uint112', '?', 'uint168'), D), TA)  # tuple case 800464
-ck(f(('uint112', '?', 'uint176'), D), TA)  # tuple case 800465
-ck(f(('uint112', '?', 'uint184'), D), TA)  # tuple case 800466
-ck(f(('uint112', '?', 'uint192'), D), TA)  # tuple case 800467
-ck(f(('uint112', '?', 'uint200'), D), TA)  # tuple case 800468
-ck(f(('uint112', '?', 'uint208'), D), TA)  # tuple case 800469
-ck(f(('uint112', '?', 'uint216'), D), TA)  # tuple case 800470
-ck(f(('uint112', '?', 'uint224'), D), TA)  # tuple case 800471
-ck(f(('uint112', '?', 'uint232'), D), TA)  # tuple case 800472
-ck(f(('uint112', '?', 'uint24'), D), TA)  # tuple case 800473
-ck(f(('uint112', '?', 'uint240'), D), TA)  # tuple case 800474
-ck(f(('uint112', '?', 'uint248'), D), TA)  # tuple case 800475
-ck(f(('uint112', '?', 'uint256'), D), TA)  # tuple case 800476
-ck(f(('uint112', '?', 'uint32'), D), TA)  # tuple case 800477
-ck(f(('uint112', '?', 'uint40'), D), TA)  # tuple case 800478
-ck(f(('uint112', '?', 'uint48'), D), TA)  # tuple case 800479
-ck(f(('uint112', '?', 'uint56'), D), TA)  # tuple case 800480
-ck(f(('uint112', '?', 'uint64'), D), TA)  # tuple case 800481
-ck(f(('uint112', '?', 'uint72'), D), TA)  # tuple case 800482
-ck(f(('uint112', '?', 'uint8'), D), TA)  # tuple case 800483
-ck(f(('uint112', '?', 'uint80'), D), TA)  # tuple case 800484
-ck(f(('uint112', '?', 'uint88'), D), TA)  # tuple case 800485
-ck(f(('uint112', '?', 'uint96'), D), TA)  # tuple case 800486
-ck(f(('uint112', '?', '?'), D), TA)  # tuple case 800487
+ck(f(('uint112', 'uint96', '?'), D), T[i, i, A])  # tuple case 800383
+ck(f(('uint112', '?', 'address'), D), T[i, A, HA])  # tuple case 800384
+ck(f(('uint112', '?', 'address[]'), D), T[i, A, A])  # tuple case 800385
+ck(f(('uint112', '?', 'bool'), D), T[i, A, bo])  # tuple case 800386
+ck(f(('uint112', '?', 'bool[]'), D), T[i, A, A])  # tuple case 800387
+ck(f(('uint112', '?', 'bytes'), D), T[i, A, by])  # tuple case 800388
+ck(f(('uint112', '?', 'bytes1'), D), T[i, A, by])  # tuple case 800389
+ck(f(('uint112', '?', 'bytes10'), D), T[i, A, by])  # tuple case 800390
+ck(f(('uint112', '?', 'bytes11'), D), T[i, A, by])  # tuple case 800391
+ck(f(('uint112', '?', 'bytes12'), D), T[i, A, by])  # tuple case 800392
+ck(f(('uint112', '?', 'bytes13'), D), T[i, A, by])  # tuple case 800393
+ck(f(('uint112', '?', 'bytes14'), D), T[i, A, by])  # tuple case 800394
+ck(f(('uint112', '?', 'bytes15'), D), T[i, A, by])  # tuple case 800395
+ck(f(('uint112', '?', 'bytes16'), D), T[i, A, by])  # tuple case 800396
+ck(f(('uint112', '?', 'bytes17'), D), T[i, A, by])  # tuple case 800397
+ck(f(('uint112', '?', 'bytes18'), D), T[i, A, by])  # tuple case 800398
+ck(f(('uint112', '?', 'bytes19'), D), T[i, A, by])  # tuple case 800399
+ck(f(('uint112', '?', 'bytes2'), D), T[i, A, by])  # tuple case 800400
+ck(f(('uint112', '?', 'bytes20'), D), T[i, A, by])  # tuple case 800401
+ck(f(('uint112', '?', 'bytes21'), D), T[i, A, by])  # tuple case 800402
+ck(f(('uint112', '?', 'bytes22'), D), T[i, A, by])  # tuple case 800403
+ck(f(('uint112', '?', 'bytes23'), D), T[i, A, by])  # tuple case 800404
+ck(f(('uint112', '?', 'bytes24'), D), T[i, A, by])  # tuple case 800405
+ck(f(('uint112', '?', 'bytes25'), D), T[i, A, by])  # tuple case 800406
+ck(f(('uint112', '?', 'bytes26'), D), T[i, A, by])  # tuple case 800407
+ck(f(('uint112', '?', 'bytes27'), D), T[i, A, by])  # tuple case 800408
+ck(f(('uint112', '?', 'bytes28'), D), T[i, A, by])  # tuple case 800409
+ck(f(('uint112', '?', 'bytes29'), D), T[i, A, by])  # tuple case 800410
+ck(f(('uint112', '?', 'bytes3'), D), T[i, A, by])  # tuple case 800411
+ck(f(('uint112', '?', 'bytes30'), D), T[i, A, by])  # tuple case 800412
+ck(f(('uint112', '?', 'bytes31'), D), T[i, A, by])  # tuple case 800413
+ck(f(('uint112', '?', 'bytes32'), D), T[i, A, by])  # tuple case 800414
+ck(f(('uint112', '?', 'bytes4'), D), T[i, A, by])  # tuple case 800415
+ck(f(('uint112', '?', 'bytes5'), D), T[i, A, by])  # tuple case 800416
+ck(f(('uint112', '?', 'bytes6'), D), T[i, A, by])  # tuple case 800417
+ck(f(('uint112', '?', 'bytes7'), D), T[i, A, by])  # tuple case 800418
+ck(f(('uint112', '?', 'bytes8'), D), T[i, A, by])  # tuple case 800419
+ck(f(('uint112', '?', 'bytes9'), D), T[i, A, by])  # tuple case 800420
+ck(f(('uint112', '?', 'int104'), D), T[i, A, i])  # tuple case 800421
+ck(f(('uint112', '?', 'int112'), D), T[i, A, i])  # tuple case 800422
+ck(f(('uint112', '?', 'int120'), D), T[i, A, i])  # tuple case 800423
+ck(f(('uint112', '?', 'int128'), D), T[i, A, i])  # tuple case 800424
+ck(f(('uint112', '?', 'int136'), D), T[i, A, i])  # tuple case 800425
+ck(f(('uint112', '?', 'int144'), D), T[i, A, i])  # tuple case 800426
+ck(f(('uint112', '?', 'int152'), D), T[i, A, i])  # tuple case 800427
+ck(f(('uint112', '?', 'int16'), D), T[i, A, i])  # tuple case 800428
+ck(f(('uint112', '?', 'int160'), D), T[i, A, i])  # tuple case 800429
+ck(f(('uint112', '?', 'int168'), D), T[i, A, i])  # tuple case 800430
+ck(f(('uint112', '?', 'int176'), D), T[i, A, i])  # tuple case 800431
+ck(f(('uint112', '?', 'int184'), D), T[i, A, i])  # tuple case 800432
+ck(f(('uint112', '?', 'int192'), D), T[i, A, i])  # tuple case 800433
+ck(f(('uint112', '?', 'int200'), D), T[i, A, i])  # tuple case 800434
+ck(f(('uint112', '?', 'int208'), D), T[i, A, i])  # tuple case 800435
+ck(f(('uint112', '?', 'int216'), D), T[i, A, i])  # tuple case 800436
+ck(f(('uint112', '?', 'int224'), D), T[i, A, i])  # tuple case 800437
+ck(f(('uint112', '?', 'int232'), D), T[i, A, i])  # tuple case 800438
+ck(f(('uint112', '?', 'int24'), D), T[i, A, i])  # tuple case 800439
+ck(f(('uint112', '?', 'int240'), D), T[i, A, i])  # tuple case 800440
+ck(f(('uint112', '?', 'int248'), D), T[i, A, i])  # tuple case 800441
+ck(f(('uint112', '?', 'int256'), D), T[i, A, i])  # tuple case 800442
+ck(f(('uint112', '?', 'int32'), D), T[i, A, i])  # tuple case 800443
+ck(f(('uint112', '?', 'int40'), D), T[i, A, i])  # tuple case 800444
+ck(f(('uint112', '?', 'int48'), D), T[i, A, i])  # tuple case 800445
+ck(f(('uint112', '?', 'int56'), D), T[i, A, i])  # tuple case 800446
+ck(f(('uint112', '?', 'int64'), D), T[i, A, i])  # tuple case 800447
+ck(f(('uint112', '?', 'int72'), D), T[i, A, i])  # tuple case 800448
+ck(f(('uint112', '?', 'int8'), D), T[i, A, i])  # tuple case 800449
+ck(f(('uint112', '?', 'int80'), D), T[i, A, i])  # tuple case 800450
+ck(f(('uint112', '?', 'int88'), D), T[i, A, i])  # tuple case 800451
+ck(f(('uint112', '?', 'int96'), D), T[i, A, i])  # tuple case 800452
+ck(f(('uint112', '?', 'string'), D), T[i, A, s])  # tuple case 800453
+ck(f(('uint112', '?', 'string[]'), D), T[i, A, A])  # tuple case 800454
+ck(f(('uint112', '?', 'uint104'), D), T[i, A, i])  # tuple case 800455
+ck(f(('uint112', '?', 'uint112'), D), T[i, A, i])  # tuple case 800456
+ck(f(('uint112', '?', 'uint120'), D), T[i, A, i])  # tuple case 800457
+ck(f(('uint112', '?', 'uint128'), D), T[i, A, i])  # tuple case 800458
+ck(f(('uint112', '?', 'uint136'), D), T[i, A, i])  # tuple case 800459
+ck(f(('uint112', '?', 'uint144'), D), T[i, A, i])  # tuple case 800460
+ck(f(('uint112', '?', 'uint152'), D), T[i, A, i])  # tuple case 800461
+ck(f(('uint112', '?', 'uint16'), D), T[i, A, i])  # tuple case 800462
+ck(f(('uint112', '?', 'uint160'), D), T[i, A, i])  # tuple case 800463
+ck(f(('uint112', '?', 'uint168'), D), T[i, A, i])  # tuple case 800464
+ck(f(('uint112', '?', 'uint176'), D), T[i, A, i])  # tuple case 800465
+ck(f(('uint112', '?', 'uint184'), D), T[i, A, i])  # tuple case 800466
+ck(f(('uint112', '?', 'uint192'), D), T[i, A, i])  # tuple case 800467
+ck(f(('uint112', '?', 'uint200'), D), T[i, A, i])  # tuple case 800468
+ck(f(('uint112', '?', 'uint208'), D), T[i, A, i])  # tuple case 800469
+ck(f(('uint112', '?', 'uint216'), D), T[i, A, i])  # tuple case 800470
+ck(f(('uint112', '?', 'uint224'), D), T[i, A, i])  # tuple case 800471
+ck(f(('uint112', '?', 'uint232'), D), T[i, A, i])  # tuple case 800472
+ck(f(('uint112', '?', 'uint24'), D), T[i, A, i])  # tuple case 800473
+ck(f(('uint112', '?', 'uint240'), D), T[i, A, i])  # tuple case 800474
+ck(f(('uint112', '?', 'uint248'), D), T[i, A, i])  # tuple case 800475
+ck(f(('uint112', '?', 'uint256'), D), T[i, A, i])  # tuple case 800476
+ck(f(('uint112', '?', 'uint32'), D), T[i, A, i])  # tuple case 800477
+ck(f(('uint112', '?', 'uint40'), D), T[i, A, i])  # tuple case 800478
+ck(f(('uint112', '?', 'uint48'), D), T[i, A, i])  # tuple case 800479
+ck(f(('uint112', '?', 'uint56'), D), T[i, A, i])  # tuple case 800480
+ck(f(('uint112', '?', 'uint64'), D), T[i, A, i])  # tuple case 800481
+ck(f(('uint112', '?', 'uint72'), D), T[i, A, i])  # tuple case 800482
+ck(f(('uint112', '?', 'uint8'), D), T[i, A, i])  # tuple case 800483
+ck(f(('uint112', '?', 'uint80'), D), T[i, A, i])  # tuple case 800484
+ck(f(('uint112', '?', 'uint88'), D), T[i, A, i])  # tuple case 800485
+ck(f(('uint112', '?', 'uint96'), D), T[i, A, i])  # tuple case 800486
+ck(f(('uint112', '?', '?'), D), T[i, A, A])  # tuple case 800487
 ck(f(('uint120', 'address', 'address'), D), T[i, HA, HA])  # tuple case 800488
 ck(f(('uint120', 'address', 'address[]'), D), T[i, HA, A])  # tuple case 800489
 ck(f(('uint120', 'address', 'bool'), D), T[i, HA, bo])  # tuple case 800490
@@ -9697,7 +9697,7 @@ ck(f(('uint120', 'address', 'uint8'), D), T[i, HA, i])  # tuple case 800587
 ck(f(('uint120', 'address', 'uint80'), D), T[i, HA, i])  # tuple case 800588
 ck(f(('uint120', 'address', 'uint88'), D), T[i, HA, i])  # tuple case 800589
 ck(f(('uint120', 'address', 'uint96'), D), T[i, HA, i])  # tuple case 800590
-ck(f(('uint120', 'address', '?'), D), TA)  # tuple case 800591
+ck(f(('uint120', 'address', '?'), D), T[i, HA, A])  # tuple case 800591
 ck(f(('uint120', 'address[]', 'address'), D), T[i, A, HA])  # tuple case 800592
 ck(f(('uint120', 'address[]', 'address[]'), D), T[i, A, A])  # tuple case 800593
 ck(f(('uint120', 'address[]', 'bool'), D), T[i, A, bo])  # tuple case 800594
@@ -9801,7 +9801,7 @@ ck(f(('uint120', 'address[]', 'uint8'), D), T[i, A, i])  # tuple case 800691
 ck(f(('uint120', 'address[]', 'uint80'), D), T[i, A, i])  # tuple case 800692
 ck(f(('uint120', 'address[]', 'uint88'), D), T[i, A, i])  # tuple case 800693
 ck(f(('uint120', 'address[]', 'uint96'), D), T[i, A, i])  # tuple case 800694
-ck(f(('uint120', 'address[]', '?'), D), TA)  # tuple case 800695
+ck(f(('uint120', 'address[]', '?'), D), T[i, A, A])  # tuple case 800695
 ck(f(('uint120', 'bool', 'address'), D), T[i, bo, HA])  # tuple case 800696
 ck(f(('uint120', 'bool', 'address[]'), D), T[i, bo, A])  # tuple case 800697
 ck(f(('uint120', 'bool', 'bool'), D), T[i, bo, bo])  # tuple case 800698
@@ -9905,7 +9905,7 @@ ck(f(('uint120', 'bool', 'uint8'), D), T[i, bo, i])  # tuple case 800795
 ck(f(('uint120', 'bool', 'uint80'), D), T[i, bo, i])  # tuple case 800796
 ck(f(('uint120', 'bool', 'uint88'), D), T[i, bo, i])  # tuple case 800797
 ck(f(('uint120', 'bool', 'uint96'), D), T[i, bo, i])  # tuple case 800798
-ck(f(('uint120', 'bool', '?'), D), TA)  # tuple case 800799
+ck(f(('uint120', 'bool', '?'), D), T[i, bo, A])  # tuple case 800799
 ck(f(('uint120', 'bool[]', 'address'), D), T[i, A, HA])  # tuple case 800800
 ck(f(('uint120', 'bool[]', 'address[]'), D), T[i, A, A])  # tuple case 800801
 ck(f(('uint120', 'bool[]', 'bool'), D), T[i, A, bo])  # tuple case 800802
@@ -10009,7 +10009,7 @@ ck(f(('uint120', 'bool[]', 'uint8'), D), T[i, A, i])  # tuple case 800899
 ck(f(('uint120', 'bool[]', 'uint80'), D), T[i, A, i])  # tuple case 800900
 ck(f(('uint120', 'bool[]', 'uint88'), D), T[i, A, i])  # tuple case 800901
 ck(f(('uint120', 'bool[]', 'uint96'), D), T[i, A, i])  # tuple case 800902
-ck(f(('uint120', 'bool[]', '?'), D), TA)  # tuple case 800903
+ck(f(('uint120', 'bool[]', '?'), D), T[i, A, A])  # tuple case 800903
 ck(f(('uint120', 'bytes', 'address'), D), T[i, by, HA])  # tuple case 800904
 ck(f(('uint120', 'bytes', 'address[]'), D), T[i, by, A])  # tuple case 800905
 ck(f(('uint120', 'bytes', 'bool'), D), T[i, by, bo])  # tuple case 800906

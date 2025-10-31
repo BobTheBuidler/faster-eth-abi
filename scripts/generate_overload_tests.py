@@ -253,11 +253,7 @@ def get_all_literals() -> List["LiteralString"]:
 
 
 def get_expected_type_tuple(types: Tuple[str, ...]) -> str:
-    py_types = []
-    for t in types:
-        if t == "?":
-            return TUPLE_ANY_ALIAS
-        py_types.append(RETURN_TYPE_MAP[t])
+    py_types = [ANY_ALIAS if t == "?" else RETURN_TYPE_MAP[t] for t in types]
     return f"{TUPLE_ALIAS}[{', '.join(py_types)}]"
 
 
