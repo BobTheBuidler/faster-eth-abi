@@ -109,7 +109,7 @@ assert_type(decoder.decode(("someothertype", "uint88", "uint80"), data), Tuple[A
 assert_type(decoder.decode(("someothertype", "uint88", "uint88"), data), Tuple[Any, int, int])  # tuple case 1040398
 assert_type(decoder.decode(("someothertype", "uint88", "uint96"), data), Tuple[Any, int, int])  # tuple case 1040399
 assert_type(decoder.decode(("someothertype", "uint88", "someothertype"), data), Tuple[Any, int, Any])  # tuple case 1040400
-assert_type(decoder.decode(("someothertype", "uint96", "address"), data), Tuple[Any, int, Any])  # tuple case 1040401
+assert_type(decoder.decode(("someothertype", "uint96", "address"), data), Tuple[Any, int, HexAddress])  # tuple case 1040401
 assert_type(decoder.decode(("someothertype", "uint96", "bool"), data), Tuple[Any, int, bool])  # tuple case 1040402
 assert_type(decoder.decode(("someothertype", "uint96", "bytes"), data), Tuple[Any, int, bytes])  # tuple case 1040403
 assert_type(decoder.decode(("someothertype", "uint96", "bytes1"), data), Tuple[Any, int, bytes])  # tuple case 1040404
@@ -210,7 +210,7 @@ assert_type(decoder.decode(("someothertype", "uint96", "uint80"), data), Tuple[A
 assert_type(decoder.decode(("someothertype", "uint96", "uint88"), data), Tuple[Any, int, int])  # tuple case 1040499
 assert_type(decoder.decode(("someothertype", "uint96", "uint96"), data), Tuple[Any, int, int])  # tuple case 1040500
 assert_type(decoder.decode(("someothertype", "uint96", "someothertype"), data), Tuple[Any, int, Any])  # tuple case 1040501
-assert_type(decoder.decode(("someothertype", "someothertype", "address"), data), Tuple[Any, Any, Any])  # tuple case 1040502
+assert_type(decoder.decode(("someothertype", "someothertype", "address"), data), Tuple[Any, Any, HexAddress])  # tuple case 1040502
 assert_type(decoder.decode(("someothertype", "someothertype", "bool"), data), Tuple[Any, Any, bool])  # tuple case 1040503
 assert_type(decoder.decode(("someothertype", "someothertype", "bytes"), data), Tuple[Any, Any, bytes])  # tuple case 1040504
 assert_type(decoder.decode(("someothertype", "someothertype", "bytes1"), data), Tuple[Any, Any, bytes])  # tuple case 1040505
