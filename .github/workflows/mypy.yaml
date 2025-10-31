@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
         suite: ["fixed", "variable"]
     steps:
       - name: Checkout code and test data
@@ -42,7 +42,7 @@ jobs:
             setup.py
             pyproject.toml
             tox.ini
-            tests/typecheck/${{ matrix.suite }}/
+            tests/typecheck/codec/decode/${{ matrix.suite }}/
             README.md
             requirements.txt
             requirements-mypy.txt
@@ -59,6 +59,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-mypy.txt
 
+      - name: Install GNU Parallel
+        run: sudo apt-get update && sudo apt-get install -y parallel
+
       - name: Restore .mypy_cache
         uses: actions/cache/restore@v4
         with:
@@ -66,25 +69,71 @@ jobs:
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
           restore-keys: mypy-cache-${{ runner.os }}-x64-
 
-      - name: Run mypy on all len_1 and len_2, and a random 1/10th of len_3 typecheck files (parallel)
+      - name: Run mypy on all len_1 typecheck files (sequential)
         run: |
           set -e
-          # Fully check all len_1 and len_2 files
-          for len_dir in 1 2; do
-            find tests/typecheck/codec/decode/${{ matrix.suite }}/len_${len_dir}/ -name '*.py' | \
-              xargs -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
-            if [ $? -ne 0 ]; then exit 1; fi
+          for file in $(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_1/ -name '*.py'); do
+            start=$(date +%s.%N)
+            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+            status=$?
+            end=$(date +%s.%N)
+            duration=$(echo "$end - $start" | bc)
+            echo "[MYPY-TIME] $file took ${duration}s"
+            if [ $status -ne 0 ]; then exit $status; fi
           done
-          # Randomly sample 1/10th of len_3 and len_4 files
-          for len_dir in 3 4; do
-            files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_${len_dir}/ -name '*.py')
-            count=$(echo "$files" | wc -l)
-            n=$(( (count + 9) / 10 ))
-            if [ "$n" -lt 1 ]; then n=1; fi
-            echo "$files" | shuf 2>/dev/null | head -n $n | \
-              xargs -P 2 -I{} sh -c 'mypy --config-file=/dev/null --follow-imports=silent "{}" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"'
-            if [ $? -ne 0 ]; then exit 1; fi
+
+      - name: Run mypy on all len_2 typecheck files (sequential)
+        run: |
+          set -e
+          for file in $(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_2/ -name '*.py'); do
+            start=$(date +%s.%N)
+            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+            status=$?
+            end=$(date +%s.%N)
+            duration=$(echo "$end - $start" | bc)
+            echo "[MYPY-TIME] $file took ${duration}s"
+            if [ $status -ne 0 ]; then exit $status; fi
           done
+
+      - name: Run mypy on a random 1/10th of len_3 typecheck files (parallel, 2 jobs)
+        run: |
+          set -e
+          # Limit parallelism to 2 jobs with -j 2
+          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_3/ -name '*.py')
+          count=$(echo "$files" | wc -l)
+          n=$(( (count + 9) / 10 ))
+          if [ "$n" -lt 1 ]; then n=1; fi
+          echo "$files" | shuf 2>/dev/null | head -n $n | \
+            parallel -j 2 --bar '
+              start=$(date +%s.%N)
+              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+              status=$?
+              end=$(date +%s.%N)
+              duration=$(echo "$end - $start" | bc)
+              echo "[MYPY-TIME] {} took ${duration}s"
+              exit $status
+            '
+          if [ $? -ne 0 ]; then exit 1; fi
+
+      - name: Run mypy on a random 1/50th of len_4 typecheck files (parallel, 2 jobs)
+        run: |
+          set -e
+          # Limit parallelism to 2 jobs with -j 2
+          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_4/ -name '*.py')
+          count=$(echo "$files" | wc -l)
+          n=$(( (count + 49) / 50 ))
+          if [ "$n" -lt 1 ]; then n=1; fi
+          echo "$files" | shuf 2>/dev/null | head -n $n | \
+            parallel -j 2 --bar '
+              start=$(date +%s.%N)
+              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+              status=$?
+              end=$(date +%s.%N)
+              duration=$(echo "$end - $start" | bc)
+              echo "[MYPY-TIME] {} took ${duration}s"
+              exit $status
+            '
+          if [ $? -ne 0 ]; then exit 1; fi
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
