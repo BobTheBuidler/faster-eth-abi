@@ -33,7 +33,7 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
         impl: ["codec", "abi"]
-        group: ["fixed", "variable"]
+        suite: ["fixed", "variable"]
     steps:
       - name: Checkout minimal code (no test data)
         uses: actions/checkout@v5
@@ -65,7 +65,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           sparse-checkout: |
-            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.group }}/len_1/
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/
           sparse-checkout-cone-mode: false
           fetch-depth: 0
           clean: false
@@ -86,7 +86,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           sparse-checkout: |
-            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.group }}/len_2/
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/
           sparse-checkout-cone-mode: false
           fetch-depth: 0
           clean: false
@@ -107,7 +107,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           sparse-checkout: |
-            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.group }}/len_3/
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/
           sparse-checkout-cone-mode: false
           fetch-depth: 0
           clean: false
@@ -135,7 +135,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           sparse-checkout: |
-            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.group }}/len_4/
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/
           sparse-checkout-cone-mode: false
           fetch-depth: 0
           clean: false
