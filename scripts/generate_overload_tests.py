@@ -221,7 +221,7 @@ def extract_all_literals(typ, alias_map, alias_path=None):
         )
 
 
-def expand_literal_values() -> Iterator[str]:
+def expand_literal_values() -> Iterator[LiteralString]:
     alias_map = build_alias_map()
     alias_names = [
         "AddressTypeStr",
@@ -246,6 +246,8 @@ def expand_literal_values() -> Iterator[str]:
 
 
 ALL_LITERALS: Final = sorted(set(expand_literal_values())) + ["?"]
+NUM_LITERALS = len(ALL_LITERALS)
+print(f"Found {NUM_LITERALS} ABI type string literals (including fallback).")
 
 
 def get_expected_type_tuple(types: Tuple[str, ...]) -> str:
@@ -264,20 +266,17 @@ def get_expected_type_iterable(types: Tuple[str, ...]) -> str:
         return f"{TUPLE_ALIAS}[{UNION_ALIAS}[{', '.join(unique_types)}], ...]"
 
 
-def compute_total_cases_sampled(
-    all_literals: List["LiteralString"], max_len: int
+def compute_total_cases_sampled( max_len: int
 ) -> int:
-    n = len(all_literals)
-    return sum(n**L for L in range(1, max_len + 1))
+    return sum(NUM_LITERALS**L for L in range(1, max_len + 1))
 
 
-def compute_total_chunks(all_literals: List["LiteralString"], max_len: int) -> int:
-    total_cases = compute_total_cases_sampled(all_literals, max_len)
+def compute_total_chunks(max_len: int) -> int:
+    total_cases = compute_total_cases_sampled(max_len)
     return math.ceil(total_cases / CHUNK_SIZE) * VARIATIONS_PER_TYPE_COMBO
 
 
 def stream_cases_and_write_files(
-    all_literals: List["LiteralString"],
     mode: Literal["tuple", "iterable"],
     impl: Literal["abi", "codec"],
 ) -> int:
@@ -285,7 +284,7 @@ def stream_cases_and_write_files(
     MAX_LEN = MAX_LEN_FIXED if mode == "tuple" else MAX_LEN_VARIABLE
 
     case_counter = 0
-    total_chunks = compute_total_chunks(all_literals, MAX_LEN)
+    total_chunks = compute_total_chunks(MAX_LEN)
     total_chunks //= 2  # TODO: fix this
     with tqdm(
         total=total_chunks, desc=f"Streaming {mode} chunks for {impl}"
@@ -340,7 +339,7 @@ def stream_cases_and_write_files(
                 chunk_lines.clear()
                 progress.update(1)
 
-            for combo in itertools.product(all_literals, repeat=L):
+            for combo in itertools.product(ALL_LITERALS, repeat=L):
                 if file_counter and file_counter % CHUNK_SIZE == 0:
                     write_file()
                 addline(combo)
@@ -358,15 +357,12 @@ def main():
     parser.add_argument("--impl", choices=["codec", "abi", "both"], default="both")
     args = parser.parse_args()
 
-    all_literals = get_all_literals()
-    print(f"Found {len(all_literals)} ABI type string literals (including fallback).")
-
     impls = ["codec", "abi"] if args.impl == "both" else [args.impl]
     for impl in impls:
         print(f"Streaming tuple-based test cases for {impl}...")
-        stream_cases_and_write_files(all_literals, mode="tuple", impl=impl)
+        stream_cases_and_write_files(mode="tuple", impl=impl)
         print(f"Streaming iterable-based test cases for {impl}...")
-        stream_cases_and_write_files(all_literals, mode="iterable", impl=impl)
+        stream_cases_and_write_files(mode="iterable", impl=impl)
 
     print("Test generation complete.")
 
