@@ -33,7 +33,6 @@ import pathlib
 import re
 import sys
 from typing import (
-    TYPE_CHECKING,
     Any,
     Dict,
     ForwardRef,
@@ -48,9 +47,10 @@ from typing import (
 from tqdm import (
     tqdm,
 )
+from typing_extensions import (
+    LiteralString,
+)
 
-if TYPE_CHECKING:
-    from _typeshed import LiteralString
 
 MAX_LEN_FIXED: Final = 3
 MAX_LEN_VARIABLE: Final = 4
