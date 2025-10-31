@@ -1451,7 +1451,6 @@ class ABIDecoder(BaseABICoder):
         strict: bool = True,
     ) -> Tuple[int, HexAddress, Any]:
         ...
-        ...
 
     @overload
     def decode(
@@ -2498,17 +2497,44 @@ class ABIDecoder(BaseABICoder):
     def decode(
         self,
         types: Iterable[
-            Union[
-                AddressTypeStr,
-                BytesTypeStr,
-                StringTypeStr,
-                DecodesToIntTypeStr,
-                BoolTypeStr,
-            ]
+            Union[AddressTypeStr, BytesTypeStr, StringTypeStr, DecodesToIntTypeStr]
         ],
         data: Decodable,
         strict: bool = True,
-    ) -> Tuple[Union[HexAddress, bytes, str, int, bool], ...]:
+    ) -> Tuple[Union[HexAddress, bytes, str, int], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[AddressTypeStr, BytesTypeStr, StringTypeStr, BoolTypeStr]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[HexAddress, bytes, str, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[AddressTypeStr, BytesTypeStr, DecodesToIntTypeStr, BoolTypeStr]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[HexAddress, bytes, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[AddressTypeStr, StringTypeStr, DecodesToIntTypeStr, BoolTypeStr]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[AddressTypeStr, str, int, bool], ...]:
         ...
 
     @overload
@@ -2520,6 +2546,23 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[Union[bytes, str, int, bool], ...]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Iterable[
+            Union[
+                AddressTypeStr,
+                BytesTypeStr,
+                StringTypeStr,
+                DecodesToIntTypeStr,
+                BoolTypeStr,
+            ]
+        ],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Union[HexAddress, bytes, str, int, bool], ...]:
         ...
 
     @overload
