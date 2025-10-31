@@ -13,12 +13,30 @@ from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
 from typing_extensions import Self
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
+    """
+    Base class for all encoder classes.  Subclass this if you want to define a
+    custom encoder class.  Subclasses must also implement
+    :any:`BaseCoder.from_type_str`.
+    """
     @abc.abstractmethod
-    def encode(self, value: Any) -> bytes: ...
+    def encode(self, value: Any) -> bytes:
+        """
+        Encodes the given value as a sequence of bytes.  Should raise
+        :any:`exceptions.EncodingError` if ``value`` cannot be encoded.
+        """
     @abc.abstractmethod
-    def validate_value(self, value: Any) -> None: ...
+    def validate_value(self, value: Any) -> None:
+        """
+        Checks whether or not the given value can be encoded by this encoder.
+        If the given value cannot be encoded, must raise
+        :any:`exceptions.EncodingError`.
+        """
     @classmethod
-    def invalidate_value(cls, value: Any, exc: type[Exception] = ..., msg: str | None = None) -> NoReturn: ...
+    def invalidate_value(cls, value: Any, exc: type[Exception] = ..., msg: str | None = None) -> NoReturn:
+        """
+        Throws a standard exception for when a value is not encodable by an
+        encoder.
+        """
     def __call__(self, value: Any) -> bytes: ...
 
 class TupleEncoder(BaseEncoder):
