@@ -29,12 +29,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: 
+      matrix:
         shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code and benchmarks
+        uses: actions/checkout@v5
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
-      
+        with:
+          sparse-checkout: |
+            faster_eth_abi/
+            benchmarks/
+            setup.py
+            pyproject.toml
+            README.md
+            requirements.txt
+            requirements-mypy.txt
+          sparse-checkout-cone-mode: false
+
       - name: Set up Python
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         uses: actions/setup-python@v6
@@ -44,24 +55,24 @@ jobs:
           cache-dependency-path: |
             setup.py
             pyproject.toml
-            
+
       - name: Cache .mypy_cache
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         uses: actions/cache@v4
         with:
           path: .mypy_cache
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
-          
+
       - name: Install dependencies
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         run: |
           python -m pip install --upgrade pip
           pip install --no-binary :faster_eth_abi: .[codspeed]
-          
+
       - name: Remove source package to force use of installed C extensions
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         run: rm -rf faster_eth_abi
-        
+
       - name: Run CodSpeed
         if: ${{ github.event_name != 'push' || matrix.shard == 1 || matrix.shard == 2 || matrix.shard == 3 }}
         uses: CodSpeedHQ/action@v4
