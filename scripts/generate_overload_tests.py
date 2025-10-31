@@ -57,9 +57,9 @@ RETURN_TYPE_MAP = {
     "address": "Any",  # "HexAddress", TODO implement me
     "address[]": "Any",  # "Tuple[HexAddress, ...]",
     "bytes": "bytes",
-    "bytes[]": "Tuple[bytes, ...]",
+    "bytes[]": "Any",  # "Tuple[bytes, ...]",
     "string": "str",
-    "string[]": "Tuple[str, ...]",
+    "string[]": "Any",  # "Tuple[str, ...]",
     "int": "int",
     "bool": "bool",
     "bool[]": "Tuple[bool, ...]",
@@ -103,8 +103,9 @@ def extract_all_literals(typ, alias_map, alias_path=None):
             yield from extract_all_literals(arg, alias_map, alias_path)
         return
     elif origin is Literal:
-        if alias_path[-1].endswith("ArrayTypeStr"):
+        if alias_path[-1] in ("BytesArrayTypeStr", "IntArrayTypeStr"):
             # TODO: we need to implement overloads for these, for now we only have the literals defined
+            print(f"skipping {alias_path}")
             return
         if alias_path[-1].startswith("Tuple") and alias_path[-1].endswith("IntTypeStr"):
             # for now, we will exclude these. We need to implement them 
