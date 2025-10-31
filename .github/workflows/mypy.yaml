@@ -4,8 +4,8 @@ on:
   push:
     branches: [master, main]
     paths:
+      - '.github/workflows/mypy.yaml'
       - "tests/typecheck/**.py"
-      - "scripts/generate_overload_tests.py"
       - "faster_eth_abi/**"
       - "setup.py"
       - "pyproject.toml"
@@ -13,8 +13,8 @@ on:
   pull_request:
     branches: [master, main]
     paths:
+      - '.github/workflows/mypy.yaml'
       - "tests/typecheck/**.py"
-      - "scripts/generate_overload_tests.py"
       - "faster_eth_abi/**"
       - "setup.py"
       - "pyproject.toml"
@@ -32,9 +32,10 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+        impl: ["codec", "abi"]
         suite: ["fixed", "variable"]
     steps:
-      - name: Checkout code and test data
+      - name: Checkout minimal code (no test data)
         uses: actions/checkout@v5
         with:
           sparse-checkout: |
@@ -42,7 +43,6 @@ jobs:
             setup.py
             pyproject.toml
             tox.ini
-            tests/typecheck/codec/decode/${{ matrix.suite }}/
             README.md
             requirements.txt
             requirements-mypy.txt
@@ -59,20 +59,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-mypy.txt
 
-      - name: Install GNU Parallel
-        run: sudo apt-get update && sudo apt-get install -y parallel
+      # (Optional: restore .mypy_cache here)
 
-      - name: Restore .mypy_cache
-        uses: actions/cache/restore@v4
+      - name: Checkout len_1 test data
+        uses: actions/checkout@v5
         with:
-          path: .mypy_cache
-          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
-          restore-keys: mypy-cache-${{ runner.os }}-x64-
-
+          sparse-checkout: |
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
+          clean: false
       - name: Run mypy on all len_1 typecheck files (sequential)
         run: |
           set -e
-          for file in $(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_1/ -name '*.py'); do
+          for file in $(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/ -name '*.py'); do
             start=$(date +%s.%N)
             mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
             status=$?
@@ -81,11 +81,22 @@ jobs:
             echo "[MYPY-TIME] $file took ${duration}s"
             if [ $status -ne 0 ]; then exit $status; fi
           done
+      - name: Cleanup len_1 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/
 
+      - name: Checkout len_2 test data
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
+          clean: false
       - name: Run mypy on all len_2 typecheck files (sequential)
         run: |
           set -e
-          for file in $(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_2/ -name '*.py'); do
+          for file in $(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/ -name '*.py'); do
             start=$(date +%s.%N)
             mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
             status=$?
@@ -94,17 +105,28 @@ jobs:
             echo "[MYPY-TIME] $file took ${duration}s"
             if [ $status -ne 0 ]; then exit $status; fi
           done
+      - name: Cleanup len_2 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/
 
+      - name: Checkout len_3 test data
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
+          clean: false
       - name: Run mypy on a random 1/10th of len_3 typecheck files (parallel, 2 jobs)
         run: |
           set -e
           # Limit parallelism to 2 jobs with -j 2
-          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_3/ -name '*.py')
+          files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/ -name '*.py')
           count=$(echo "$files" | wc -l)
           n=$(( (count + 9) / 10 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --bar '
+            parallel -j 2 --eta '
               start=$(date +%s.%N)
               mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
               status=$?
@@ -112,19 +134,30 @@ jobs:
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            '
+            ' 2>&1 | grep -v "cannot open /dev/tty"
           if [ $? -ne 0 ]; then exit 1; fi
+      - name: Cleanup len_3 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/
 
+      - name: Checkout len_4 test data
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
+          clean: false
       - name: Run mypy on a random 1/50th of len_4 typecheck files (parallel, 2 jobs)
         run: |
           set -e
           # Limit parallelism to 2 jobs with -j 2
-          files=$(find tests/typecheck/codec/decode/${{ matrix.suite }}/len_4/ -name '*.py')
+          files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/ -name '*.py')
           count=$(echo "$files" | wc -l)
           n=$(( (count + 49) / 50 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --bar '
+            parallel -j 2 --eta '
               start=$(date +%s.%N)
               mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
               status=$?
@@ -132,8 +165,11 @@ jobs:
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            '
+            ' 2>&1 | grep -v "cannot open /dev/tty"
           if [ $? -ne 0 ]; then exit 1; fi
+      - name: Cleanup len_4 test data
+        run: |
+          rm -rf tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
@@ -141,3 +177,8 @@ jobs:
         with:
           path: .mypy_cache
           key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+
+# Notes:
+# - Each len_X is checked out and checked separately, not as part of the matrix.
+# - To further batch len_4, add a batch dimension and list only the relevant files in sparse-checkout for each batch.
+# - This structure allows for highly granular, parallel, and minimal checkouts.
