@@ -149,14 +149,14 @@ class AddressDecoder(Fixed32ByteSizeDecoder[HexAddress]):
     def from_type_str(cls, abi_type, registry): ...
 
 class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
-    decoder_fn: Incomplete
+    decoder_fn: staticmethod[[bytes], int]
     is_big_endian: bool
     def from_type_str(cls, abi_type, registry): ...
 
 decode_uint_256: Incomplete
 
 class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
-    decoder_fn: Final[Callable[[bytes], int]]
+    decoder_fn: Callable[[bytes], int]
     maxsize: Final[int | None]
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
@@ -172,7 +172,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     def from_type_str(cls, abi_type, registry): ...
 
 class SignedIntegerDecoderCached(SignedIntegerDecoder):
-    decoder_fn: Final[Callable[[bytes], int]]
+    decoder_fn: Callable[[bytes], int]
     maxsize: Final[int | None]
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
