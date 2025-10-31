@@ -11,13 +11,14 @@
       "matchDepTypes": [
         "build-system"
       ],
-      "prTitle": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
+      "commitMessage": {
+        "title": "chore: update build dependency {{depName}} to {{#if newValue}}{{newValue}}{{else}}{{newVersion}}{{/if}}"
+      }
     },
     {
       "matchManagers": [
         "circleci"
-      ],
-      "enabled": false
+      ]
     }
   ],
   "regexManagers": [
@@ -29,7 +30,6 @@
       "matchStrings": [
         "mypy\\[mypyc\\]==1\\.14\\.1; python_version ?== ?['\\\"]3\\.8['\\\"]"
       ],
-      "enabled": false,
       "description": "Do not update mypy for Python 3.8 pins"
     },
     {
@@ -39,7 +39,6 @@
       ],
       "depNameTemplate": "mypy",
       "currentValueTemplate": ">=1.14.1,<{{{currentValue}}}",
-      "replaceStringTemplate": "mypy>=1.14.1,<{{{newValue}}}",
       "datasourceTemplate": "pypi",
       "versioningTemplate": "python",
       "extractVersionTemplate": "$1",
@@ -54,7 +53,6 @@
       "datasourceTemplate": "python",
       "versioningTemplate": "python",
       "extractVersionTemplate": "\\1",
-      "replaceStringTemplate": "python-version: '{{{newValue}}}'",
       "description": "Ensure stubs are produced on the lowest supported Python version."
     }
   ]
