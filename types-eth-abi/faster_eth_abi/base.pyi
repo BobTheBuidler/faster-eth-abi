@@ -4,6 +4,7 @@ class BaseCoder:
     """
     Base class for all encoder and decoder classes.
     """
+
     is_dynamic: bool
     def __init__(self, **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
