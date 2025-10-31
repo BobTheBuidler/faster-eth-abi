@@ -48,10 +48,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint56', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int16', 'uint56', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495821
 assert_type(abi.decode(['bytes11', 'int16', 'uint56', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495822
 assert_type(abi.decode(['bytes11', 'int16', 'uint56', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9495823
-assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'address'], DATA), Tuple[Any, ...])  # iterable case 9495824
-assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9495825
+assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9495824
+assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9495825
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9495826
-assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9495827
+assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9495827
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495828
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495829
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495830
@@ -152,10 +152,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495925
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495926
 assert_type(abi.decode(['bytes11', 'int16', 'uint64', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9495927
-assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'address'], DATA), Tuple[Any, ...])  # iterable case 9495928
-assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9495929
+assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9495928
+assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9495929
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9495930
-assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9495931
+assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9495931
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495932
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495933
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9495934
@@ -256,10 +256,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496029
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496030
 assert_type(abi.decode(['bytes11', 'int16', 'uint72', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496031
-assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496032
-assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496033
+assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496032
+assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496033
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496034
-assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496035
+assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496035
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496036
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496037
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496038
@@ -360,10 +360,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'uint80'], DATA), Tuple[Uni
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496133
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496134
 assert_type(abi.decode(['bytes11', 'int16', 'uint8', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496135
-assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496136
-assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496137
+assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496136
+assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496137
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496138
-assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496139
+assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496139
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496140
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496141
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496142
@@ -464,10 +464,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496237
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496238
 assert_type(abi.decode(['bytes11', 'int16', 'uint80', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496239
-assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496240
-assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496241
+assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496240
+assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496241
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496242
-assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496243
+assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496243
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496244
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496245
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496246
@@ -568,10 +568,10 @@ assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496341
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496342
 assert_type(abi.decode(['bytes11', 'int16', 'uint88', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496343
-assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496344
-assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496345
+assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496344
+assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496345
 assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496346
-assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496347
+assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496347
 assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496348
 assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496349
 assert_type(abi.decode(['bytes11', 'int16', 'uint96', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496350
@@ -776,218 +776,218 @@ assert_type(abi.decode(['bytes11', 'int16', 'someothertype', 'uint80'], DATA), T
 assert_type(abi.decode(['bytes11', 'int16', 'someothertype', 'uint88'], DATA), Tuple[Any, ...])  # iterable case 9496549
 assert_type(abi.decode(['bytes11', 'int16', 'someothertype', 'uint96'], DATA), Tuple[Any, ...])  # iterable case 9496550
 assert_type(abi.decode(['bytes11', 'int16', 'someothertype', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496551
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496552
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496553
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bool'], DATA), Tuple[Any, ...])  # iterable case 9496554
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496552
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'address[]'], DATA), Tuple[Union[HexAddress, Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496553
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bool'], DATA), Tuple[Union[HexAddress, bool, bytes, int], ...])  # iterable case 9496554
 assert_type(abi.decode(['bytes11', 'int160', 'address', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496555
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes'], DATA), Tuple[Any, ...])  # iterable case 9496556
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes1'], DATA), Tuple[Any, ...])  # iterable case 9496557
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes10'], DATA), Tuple[Any, ...])  # iterable case 9496558
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes11'], DATA), Tuple[Any, ...])  # iterable case 9496559
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes12'], DATA), Tuple[Any, ...])  # iterable case 9496560
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes13'], DATA), Tuple[Any, ...])  # iterable case 9496561
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes14'], DATA), Tuple[Any, ...])  # iterable case 9496562
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes15'], DATA), Tuple[Any, ...])  # iterable case 9496563
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes16'], DATA), Tuple[Any, ...])  # iterable case 9496564
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes17'], DATA), Tuple[Any, ...])  # iterable case 9496565
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes18'], DATA), Tuple[Any, ...])  # iterable case 9496566
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes19'], DATA), Tuple[Any, ...])  # iterable case 9496567
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes2'], DATA), Tuple[Any, ...])  # iterable case 9496568
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes20'], DATA), Tuple[Any, ...])  # iterable case 9496569
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes21'], DATA), Tuple[Any, ...])  # iterable case 9496570
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes22'], DATA), Tuple[Any, ...])  # iterable case 9496571
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes23'], DATA), Tuple[Any, ...])  # iterable case 9496572
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes24'], DATA), Tuple[Any, ...])  # iterable case 9496573
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes25'], DATA), Tuple[Any, ...])  # iterable case 9496574
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes26'], DATA), Tuple[Any, ...])  # iterable case 9496575
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes27'], DATA), Tuple[Any, ...])  # iterable case 9496576
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes28'], DATA), Tuple[Any, ...])  # iterable case 9496577
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes29'], DATA), Tuple[Any, ...])  # iterable case 9496578
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes3'], DATA), Tuple[Any, ...])  # iterable case 9496579
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes30'], DATA), Tuple[Any, ...])  # iterable case 9496580
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes31'], DATA), Tuple[Any, ...])  # iterable case 9496581
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes32'], DATA), Tuple[Any, ...])  # iterable case 9496582
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes4'], DATA), Tuple[Any, ...])  # iterable case 9496583
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes5'], DATA), Tuple[Any, ...])  # iterable case 9496584
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes6'], DATA), Tuple[Any, ...])  # iterable case 9496585
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes7'], DATA), Tuple[Any, ...])  # iterable case 9496586
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes8'], DATA), Tuple[Any, ...])  # iterable case 9496587
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes9'], DATA), Tuple[Any, ...])  # iterable case 9496588
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int104'], DATA), Tuple[Any, ...])  # iterable case 9496589
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int112'], DATA), Tuple[Any, ...])  # iterable case 9496590
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int120'], DATA), Tuple[Any, ...])  # iterable case 9496591
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int128'], DATA), Tuple[Any, ...])  # iterable case 9496592
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int136'], DATA), Tuple[Any, ...])  # iterable case 9496593
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int144'], DATA), Tuple[Any, ...])  # iterable case 9496594
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int152'], DATA), Tuple[Any, ...])  # iterable case 9496595
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int16'], DATA), Tuple[Any, ...])  # iterable case 9496596
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int160'], DATA), Tuple[Any, ...])  # iterable case 9496597
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int168'], DATA), Tuple[Any, ...])  # iterable case 9496598
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int176'], DATA), Tuple[Any, ...])  # iterable case 9496599
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int184'], DATA), Tuple[Any, ...])  # iterable case 9496600
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int192'], DATA), Tuple[Any, ...])  # iterable case 9496601
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int200'], DATA), Tuple[Any, ...])  # iterable case 9496602
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int208'], DATA), Tuple[Any, ...])  # iterable case 9496603
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int216'], DATA), Tuple[Any, ...])  # iterable case 9496604
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int224'], DATA), Tuple[Any, ...])  # iterable case 9496605
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int232'], DATA), Tuple[Any, ...])  # iterable case 9496606
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int24'], DATA), Tuple[Any, ...])  # iterable case 9496607
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int240'], DATA), Tuple[Any, ...])  # iterable case 9496608
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int248'], DATA), Tuple[Any, ...])  # iterable case 9496609
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int256'], DATA), Tuple[Any, ...])  # iterable case 9496610
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int32'], DATA), Tuple[Any, ...])  # iterable case 9496611
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int40'], DATA), Tuple[Any, ...])  # iterable case 9496612
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int48'], DATA), Tuple[Any, ...])  # iterable case 9496613
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int56'], DATA), Tuple[Any, ...])  # iterable case 9496614
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int64'], DATA), Tuple[Any, ...])  # iterable case 9496615
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int72'], DATA), Tuple[Any, ...])  # iterable case 9496616
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int8'], DATA), Tuple[Any, ...])  # iterable case 9496617
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int80'], DATA), Tuple[Any, ...])  # iterable case 9496618
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int88'], DATA), Tuple[Any, ...])  # iterable case 9496619
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'int96'], DATA), Tuple[Any, ...])  # iterable case 9496620
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'string'], DATA), Tuple[Any, ...])  # iterable case 9496621
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496556
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes1'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496557
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes10'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496558
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes11'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496559
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes12'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496560
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes13'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496561
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes14'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496562
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes15'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496563
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes16'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496564
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes17'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496565
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes18'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496566
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes19'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496567
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes2'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496568
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes20'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496569
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes21'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496570
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes22'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496571
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes23'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496572
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes24'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496573
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes25'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496574
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes26'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496575
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes27'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496576
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes28'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496577
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes29'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496578
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes3'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496579
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes30'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496580
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes31'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496581
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes32'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496582
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes4'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496583
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes5'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496584
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes6'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496585
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes7'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496586
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes8'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496587
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'bytes9'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496588
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int104'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496589
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int112'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496590
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int120'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496591
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int128'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496592
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int136'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496593
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int144'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496594
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int152'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496595
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int16'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496596
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int160'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496597
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int168'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496598
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int176'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496599
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int184'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496600
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int192'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496601
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int200'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496602
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int208'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496603
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int216'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496604
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int224'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496605
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int232'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496606
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int24'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496607
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int240'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496608
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int248'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496609
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int256'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496610
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int32'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496611
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int40'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496612
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int48'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496613
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int56'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496614
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int64'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496615
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int72'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496616
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int8'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496617
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int80'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496618
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int88'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496619
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'int96'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496620
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'string'], DATA), Tuple[Union[HexAddress, bytes, int, str], ...])  # iterable case 9496621
 assert_type(abi.decode(['bytes11', 'int160', 'address', 'string[]'], DATA), Tuple[Any, ...])  # iterable case 9496622
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint104'], DATA), Tuple[Any, ...])  # iterable case 9496623
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint112'], DATA), Tuple[Any, ...])  # iterable case 9496624
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint120'], DATA), Tuple[Any, ...])  # iterable case 9496625
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint128'], DATA), Tuple[Any, ...])  # iterable case 9496626
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint136'], DATA), Tuple[Any, ...])  # iterable case 9496627
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint144'], DATA), Tuple[Any, ...])  # iterable case 9496628
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint152'], DATA), Tuple[Any, ...])  # iterable case 9496629
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint16'], DATA), Tuple[Any, ...])  # iterable case 9496630
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint160'], DATA), Tuple[Any, ...])  # iterable case 9496631
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint168'], DATA), Tuple[Any, ...])  # iterable case 9496632
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint176'], DATA), Tuple[Any, ...])  # iterable case 9496633
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint184'], DATA), Tuple[Any, ...])  # iterable case 9496634
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint192'], DATA), Tuple[Any, ...])  # iterable case 9496635
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint200'], DATA), Tuple[Any, ...])  # iterable case 9496636
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint208'], DATA), Tuple[Any, ...])  # iterable case 9496637
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint216'], DATA), Tuple[Any, ...])  # iterable case 9496638
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint224'], DATA), Tuple[Any, ...])  # iterable case 9496639
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint232'], DATA), Tuple[Any, ...])  # iterable case 9496640
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint24'], DATA), Tuple[Any, ...])  # iterable case 9496641
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint240'], DATA), Tuple[Any, ...])  # iterable case 9496642
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint248'], DATA), Tuple[Any, ...])  # iterable case 9496643
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint256'], DATA), Tuple[Any, ...])  # iterable case 9496644
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint32'], DATA), Tuple[Any, ...])  # iterable case 9496645
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint40'], DATA), Tuple[Any, ...])  # iterable case 9496646
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint48'], DATA), Tuple[Any, ...])  # iterable case 9496647
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint56'], DATA), Tuple[Any, ...])  # iterable case 9496648
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint64'], DATA), Tuple[Any, ...])  # iterable case 9496649
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint72'], DATA), Tuple[Any, ...])  # iterable case 9496650
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint8'], DATA), Tuple[Any, ...])  # iterable case 9496651
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint80'], DATA), Tuple[Any, ...])  # iterable case 9496652
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint88'], DATA), Tuple[Any, ...])  # iterable case 9496653
-assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint96'], DATA), Tuple[Any, ...])  # iterable case 9496654
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint104'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496623
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint112'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496624
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint120'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496625
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint128'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496626
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint136'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496627
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint144'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496628
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint152'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496629
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint16'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496630
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint160'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496631
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint168'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496632
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint176'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496633
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint184'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496634
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint192'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496635
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint200'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496636
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint208'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496637
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint216'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496638
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint224'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496639
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint232'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496640
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint24'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496641
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint240'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496642
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint248'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496643
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint256'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496644
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint32'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496645
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint40'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496646
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint48'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496647
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint56'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496648
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint64'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496649
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint72'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496650
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint8'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496651
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint80'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496652
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint88'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496653
+assert_type(abi.decode(['bytes11', 'int160', 'address', 'uint96'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496654
 assert_type(abi.decode(['bytes11', 'int160', 'address', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496655
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496656
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496657
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bool'], DATA), Tuple[Any, ...])  # iterable case 9496658
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'address'], DATA), Tuple[Union[HexAddress, Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496656
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496657
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bool'], DATA), Tuple[Union[Tuple[HexAddress, ...], bool, bytes, int], ...])  # iterable case 9496658
 assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496659
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes'], DATA), Tuple[Any, ...])  # iterable case 9496660
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes1'], DATA), Tuple[Any, ...])  # iterable case 9496661
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes10'], DATA), Tuple[Any, ...])  # iterable case 9496662
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes11'], DATA), Tuple[Any, ...])  # iterable case 9496663
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes12'], DATA), Tuple[Any, ...])  # iterable case 9496664
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes13'], DATA), Tuple[Any, ...])  # iterable case 9496665
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes14'], DATA), Tuple[Any, ...])  # iterable case 9496666
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes15'], DATA), Tuple[Any, ...])  # iterable case 9496667
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes16'], DATA), Tuple[Any, ...])  # iterable case 9496668
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes17'], DATA), Tuple[Any, ...])  # iterable case 9496669
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes18'], DATA), Tuple[Any, ...])  # iterable case 9496670
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes19'], DATA), Tuple[Any, ...])  # iterable case 9496671
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes2'], DATA), Tuple[Any, ...])  # iterable case 9496672
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes20'], DATA), Tuple[Any, ...])  # iterable case 9496673
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes21'], DATA), Tuple[Any, ...])  # iterable case 9496674
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes22'], DATA), Tuple[Any, ...])  # iterable case 9496675
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes23'], DATA), Tuple[Any, ...])  # iterable case 9496676
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes24'], DATA), Tuple[Any, ...])  # iterable case 9496677
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes25'], DATA), Tuple[Any, ...])  # iterable case 9496678
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes26'], DATA), Tuple[Any, ...])  # iterable case 9496679
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes27'], DATA), Tuple[Any, ...])  # iterable case 9496680
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes28'], DATA), Tuple[Any, ...])  # iterable case 9496681
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes29'], DATA), Tuple[Any, ...])  # iterable case 9496682
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes3'], DATA), Tuple[Any, ...])  # iterable case 9496683
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes30'], DATA), Tuple[Any, ...])  # iterable case 9496684
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes31'], DATA), Tuple[Any, ...])  # iterable case 9496685
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes32'], DATA), Tuple[Any, ...])  # iterable case 9496686
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes4'], DATA), Tuple[Any, ...])  # iterable case 9496687
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes5'], DATA), Tuple[Any, ...])  # iterable case 9496688
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes6'], DATA), Tuple[Any, ...])  # iterable case 9496689
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes7'], DATA), Tuple[Any, ...])  # iterable case 9496690
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes8'], DATA), Tuple[Any, ...])  # iterable case 9496691
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes9'], DATA), Tuple[Any, ...])  # iterable case 9496692
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int104'], DATA), Tuple[Any, ...])  # iterable case 9496693
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int112'], DATA), Tuple[Any, ...])  # iterable case 9496694
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int120'], DATA), Tuple[Any, ...])  # iterable case 9496695
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int128'], DATA), Tuple[Any, ...])  # iterable case 9496696
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int136'], DATA), Tuple[Any, ...])  # iterable case 9496697
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int144'], DATA), Tuple[Any, ...])  # iterable case 9496698
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int152'], DATA), Tuple[Any, ...])  # iterable case 9496699
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int16'], DATA), Tuple[Any, ...])  # iterable case 9496700
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int160'], DATA), Tuple[Any, ...])  # iterable case 9496701
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int168'], DATA), Tuple[Any, ...])  # iterable case 9496702
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int176'], DATA), Tuple[Any, ...])  # iterable case 9496703
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int184'], DATA), Tuple[Any, ...])  # iterable case 9496704
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int192'], DATA), Tuple[Any, ...])  # iterable case 9496705
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int200'], DATA), Tuple[Any, ...])  # iterable case 9496706
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int208'], DATA), Tuple[Any, ...])  # iterable case 9496707
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int216'], DATA), Tuple[Any, ...])  # iterable case 9496708
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int224'], DATA), Tuple[Any, ...])  # iterable case 9496709
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int232'], DATA), Tuple[Any, ...])  # iterable case 9496710
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int24'], DATA), Tuple[Any, ...])  # iterable case 9496711
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int240'], DATA), Tuple[Any, ...])  # iterable case 9496712
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int248'], DATA), Tuple[Any, ...])  # iterable case 9496713
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int256'], DATA), Tuple[Any, ...])  # iterable case 9496714
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int32'], DATA), Tuple[Any, ...])  # iterable case 9496715
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int40'], DATA), Tuple[Any, ...])  # iterable case 9496716
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int48'], DATA), Tuple[Any, ...])  # iterable case 9496717
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int56'], DATA), Tuple[Any, ...])  # iterable case 9496718
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int64'], DATA), Tuple[Any, ...])  # iterable case 9496719
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int72'], DATA), Tuple[Any, ...])  # iterable case 9496720
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int8'], DATA), Tuple[Any, ...])  # iterable case 9496721
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int80'], DATA), Tuple[Any, ...])  # iterable case 9496722
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int88'], DATA), Tuple[Any, ...])  # iterable case 9496723
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int96'], DATA), Tuple[Any, ...])  # iterable case 9496724
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'string'], DATA), Tuple[Any, ...])  # iterable case 9496725
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496660
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes1'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496661
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes10'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496662
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes11'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496663
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes12'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496664
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes13'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496665
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes14'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496666
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes15'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496667
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes16'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496668
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes17'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496669
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes18'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496670
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes19'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496671
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes2'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496672
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes20'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496673
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes21'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496674
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes22'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496675
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes23'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496676
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes24'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496677
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes25'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496678
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes26'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496679
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes27'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496680
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes28'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496681
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes29'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496682
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes3'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496683
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes30'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496684
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes31'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496685
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes32'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496686
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes4'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496687
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes5'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496688
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes6'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496689
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes7'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496690
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes8'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496691
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'bytes9'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496692
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int104'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496693
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int112'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496694
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int120'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496695
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int128'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496696
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int136'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496697
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int144'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496698
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int152'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496699
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int16'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496700
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int160'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496701
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int168'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496702
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int176'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496703
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int184'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496704
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int192'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496705
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int200'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496706
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int208'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496707
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int216'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496708
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int224'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496709
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int232'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496710
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int24'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496711
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int240'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496712
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int248'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496713
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int256'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496714
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int32'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496715
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int40'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496716
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int48'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496717
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int56'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496718
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int64'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496719
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int72'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496720
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int8'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496721
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int80'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496722
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int88'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496723
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'int96'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496724
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'string'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int, str], ...])  # iterable case 9496725
 assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'string[]'], DATA), Tuple[Any, ...])  # iterable case 9496726
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint104'], DATA), Tuple[Any, ...])  # iterable case 9496727
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint112'], DATA), Tuple[Any, ...])  # iterable case 9496728
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint120'], DATA), Tuple[Any, ...])  # iterable case 9496729
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint128'], DATA), Tuple[Any, ...])  # iterable case 9496730
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint136'], DATA), Tuple[Any, ...])  # iterable case 9496731
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint144'], DATA), Tuple[Any, ...])  # iterable case 9496732
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint152'], DATA), Tuple[Any, ...])  # iterable case 9496733
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint16'], DATA), Tuple[Any, ...])  # iterable case 9496734
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint160'], DATA), Tuple[Any, ...])  # iterable case 9496735
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint168'], DATA), Tuple[Any, ...])  # iterable case 9496736
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint176'], DATA), Tuple[Any, ...])  # iterable case 9496737
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint184'], DATA), Tuple[Any, ...])  # iterable case 9496738
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint192'], DATA), Tuple[Any, ...])  # iterable case 9496739
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint200'], DATA), Tuple[Any, ...])  # iterable case 9496740
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint208'], DATA), Tuple[Any, ...])  # iterable case 9496741
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint216'], DATA), Tuple[Any, ...])  # iterable case 9496742
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint224'], DATA), Tuple[Any, ...])  # iterable case 9496743
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint232'], DATA), Tuple[Any, ...])  # iterable case 9496744
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint24'], DATA), Tuple[Any, ...])  # iterable case 9496745
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint240'], DATA), Tuple[Any, ...])  # iterable case 9496746
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint248'], DATA), Tuple[Any, ...])  # iterable case 9496747
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint256'], DATA), Tuple[Any, ...])  # iterable case 9496748
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint32'], DATA), Tuple[Any, ...])  # iterable case 9496749
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint40'], DATA), Tuple[Any, ...])  # iterable case 9496750
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint48'], DATA), Tuple[Any, ...])  # iterable case 9496751
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint56'], DATA), Tuple[Any, ...])  # iterable case 9496752
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint64'], DATA), Tuple[Any, ...])  # iterable case 9496753
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint72'], DATA), Tuple[Any, ...])  # iterable case 9496754
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint8'], DATA), Tuple[Any, ...])  # iterable case 9496755
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint80'], DATA), Tuple[Any, ...])  # iterable case 9496756
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint88'], DATA), Tuple[Any, ...])  # iterable case 9496757
-assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint96'], DATA), Tuple[Any, ...])  # iterable case 9496758
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint104'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496727
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint112'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496728
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint120'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496729
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint128'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496730
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint136'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496731
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint144'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496732
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint152'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496733
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint16'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496734
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint160'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496735
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint168'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496736
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint176'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496737
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint184'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496738
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint192'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496739
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint200'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496740
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint208'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496741
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint216'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496742
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint224'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496743
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint232'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496744
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint24'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496745
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint240'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496746
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint248'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496747
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint256'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496748
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint32'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496749
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint40'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496750
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint48'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496751
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint56'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496752
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint64'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496753
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint72'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496754
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint8'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496755
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint80'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496756
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint88'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496757
+assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'uint96'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496758
 assert_type(abi.decode(['bytes11', 'int160', 'address[]', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496759
-assert_type(abi.decode(['bytes11', 'int160', 'bool', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496760
-assert_type(abi.decode(['bytes11', 'int160', 'bool', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496761
+assert_type(abi.decode(['bytes11', 'int160', 'bool', 'address'], DATA), Tuple[Union[HexAddress, bool, bytes, int], ...])  # iterable case 9496760
+assert_type(abi.decode(['bytes11', 'int160', 'bool', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bool, bytes, int], ...])  # iterable case 9496761
 assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496762
-assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bool, bytes, int], ...])  # iterable case 9496763
+assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496763
 assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bytes'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496764
 assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bytes1'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496765
 assert_type(abi.decode(['bytes11', 'int160', 'bool', 'bytes10'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496766
@@ -1090,112 +1090,112 @@ assert_type(abi.decode(['bytes11', 'int160', 'bool', 'uint96'], DATA), Tuple[Uni
 assert_type(abi.decode(['bytes11', 'int160', 'bool', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496863
 assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496864
 assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496865
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bool'], DATA), Tuple[Union[Tuple[bool, ...], bool, bytes, int], ...])  # iterable case 9496866
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496867
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496868
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes1'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496869
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes10'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496870
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes11'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496871
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes12'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496872
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes13'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496873
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes14'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496874
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes15'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496875
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes16'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496876
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes17'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496877
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes18'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496878
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes19'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496879
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes2'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496880
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes20'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496881
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes21'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496882
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes22'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496883
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes23'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496884
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes24'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496885
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes25'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496886
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes26'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496887
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes27'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496888
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes28'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496889
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes29'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496890
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes3'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496891
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes30'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496892
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes31'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496893
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes32'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496894
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes4'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496895
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes5'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496896
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes6'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496897
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes7'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496898
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes8'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496899
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes9'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496900
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int104'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496901
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int112'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496902
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int120'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496903
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int128'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496904
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int136'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496905
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int144'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496906
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int152'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496907
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int16'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496908
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int160'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496909
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int168'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496910
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int176'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496911
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int184'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496912
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int192'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496913
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int200'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496914
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int208'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496915
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int216'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496916
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int224'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496917
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int232'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496918
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int24'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496919
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int240'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496920
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int248'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496921
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int256'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496922
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int32'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496923
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int40'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496924
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int48'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496925
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int56'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496926
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int64'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496927
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int72'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496928
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int8'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496929
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int80'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496930
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int88'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496931
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int96'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496932
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'string'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int, str], ...])  # iterable case 9496933
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bool'], DATA), Tuple[Any, ...])  # iterable case 9496866
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496867
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes'], DATA), Tuple[Any, ...])  # iterable case 9496868
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes1'], DATA), Tuple[Any, ...])  # iterable case 9496869
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes10'], DATA), Tuple[Any, ...])  # iterable case 9496870
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes11'], DATA), Tuple[Any, ...])  # iterable case 9496871
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes12'], DATA), Tuple[Any, ...])  # iterable case 9496872
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes13'], DATA), Tuple[Any, ...])  # iterable case 9496873
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes14'], DATA), Tuple[Any, ...])  # iterable case 9496874
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes15'], DATA), Tuple[Any, ...])  # iterable case 9496875
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes16'], DATA), Tuple[Any, ...])  # iterable case 9496876
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes17'], DATA), Tuple[Any, ...])  # iterable case 9496877
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes18'], DATA), Tuple[Any, ...])  # iterable case 9496878
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes19'], DATA), Tuple[Any, ...])  # iterable case 9496879
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes2'], DATA), Tuple[Any, ...])  # iterable case 9496880
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes20'], DATA), Tuple[Any, ...])  # iterable case 9496881
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes21'], DATA), Tuple[Any, ...])  # iterable case 9496882
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes22'], DATA), Tuple[Any, ...])  # iterable case 9496883
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes23'], DATA), Tuple[Any, ...])  # iterable case 9496884
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes24'], DATA), Tuple[Any, ...])  # iterable case 9496885
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes25'], DATA), Tuple[Any, ...])  # iterable case 9496886
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes26'], DATA), Tuple[Any, ...])  # iterable case 9496887
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes27'], DATA), Tuple[Any, ...])  # iterable case 9496888
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes28'], DATA), Tuple[Any, ...])  # iterable case 9496889
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes29'], DATA), Tuple[Any, ...])  # iterable case 9496890
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes3'], DATA), Tuple[Any, ...])  # iterable case 9496891
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes30'], DATA), Tuple[Any, ...])  # iterable case 9496892
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes31'], DATA), Tuple[Any, ...])  # iterable case 9496893
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes32'], DATA), Tuple[Any, ...])  # iterable case 9496894
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes4'], DATA), Tuple[Any, ...])  # iterable case 9496895
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes5'], DATA), Tuple[Any, ...])  # iterable case 9496896
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes6'], DATA), Tuple[Any, ...])  # iterable case 9496897
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes7'], DATA), Tuple[Any, ...])  # iterable case 9496898
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes8'], DATA), Tuple[Any, ...])  # iterable case 9496899
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'bytes9'], DATA), Tuple[Any, ...])  # iterable case 9496900
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int104'], DATA), Tuple[Any, ...])  # iterable case 9496901
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int112'], DATA), Tuple[Any, ...])  # iterable case 9496902
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int120'], DATA), Tuple[Any, ...])  # iterable case 9496903
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int128'], DATA), Tuple[Any, ...])  # iterable case 9496904
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int136'], DATA), Tuple[Any, ...])  # iterable case 9496905
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int144'], DATA), Tuple[Any, ...])  # iterable case 9496906
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int152'], DATA), Tuple[Any, ...])  # iterable case 9496907
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int16'], DATA), Tuple[Any, ...])  # iterable case 9496908
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int160'], DATA), Tuple[Any, ...])  # iterable case 9496909
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int168'], DATA), Tuple[Any, ...])  # iterable case 9496910
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int176'], DATA), Tuple[Any, ...])  # iterable case 9496911
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int184'], DATA), Tuple[Any, ...])  # iterable case 9496912
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int192'], DATA), Tuple[Any, ...])  # iterable case 9496913
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int200'], DATA), Tuple[Any, ...])  # iterable case 9496914
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int208'], DATA), Tuple[Any, ...])  # iterable case 9496915
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int216'], DATA), Tuple[Any, ...])  # iterable case 9496916
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int224'], DATA), Tuple[Any, ...])  # iterable case 9496917
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int232'], DATA), Tuple[Any, ...])  # iterable case 9496918
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int24'], DATA), Tuple[Any, ...])  # iterable case 9496919
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int240'], DATA), Tuple[Any, ...])  # iterable case 9496920
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int248'], DATA), Tuple[Any, ...])  # iterable case 9496921
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int256'], DATA), Tuple[Any, ...])  # iterable case 9496922
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int32'], DATA), Tuple[Any, ...])  # iterable case 9496923
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int40'], DATA), Tuple[Any, ...])  # iterable case 9496924
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int48'], DATA), Tuple[Any, ...])  # iterable case 9496925
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int56'], DATA), Tuple[Any, ...])  # iterable case 9496926
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int64'], DATA), Tuple[Any, ...])  # iterable case 9496927
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int72'], DATA), Tuple[Any, ...])  # iterable case 9496928
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int8'], DATA), Tuple[Any, ...])  # iterable case 9496929
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int80'], DATA), Tuple[Any, ...])  # iterable case 9496930
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int88'], DATA), Tuple[Any, ...])  # iterable case 9496931
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'int96'], DATA), Tuple[Any, ...])  # iterable case 9496932
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'string'], DATA), Tuple[Any, ...])  # iterable case 9496933
 assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'string[]'], DATA), Tuple[Any, ...])  # iterable case 9496934
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint104'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496935
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint112'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496936
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint120'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496937
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint128'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496938
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint136'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496939
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint144'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496940
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint152'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496941
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint16'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496942
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint160'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496943
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint168'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496944
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint176'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496945
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint184'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496946
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint192'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496947
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint200'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496948
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint208'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496949
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint216'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496950
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint224'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496951
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint232'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496952
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint24'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496953
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint240'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496954
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint248'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496955
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint256'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496956
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint32'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496957
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint40'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496958
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint48'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496959
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint56'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496960
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint64'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496961
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint72'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496962
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint8'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496963
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint80'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496964
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint88'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496965
-assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint96'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496966
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint104'], DATA), Tuple[Any, ...])  # iterable case 9496935
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint112'], DATA), Tuple[Any, ...])  # iterable case 9496936
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint120'], DATA), Tuple[Any, ...])  # iterable case 9496937
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint128'], DATA), Tuple[Any, ...])  # iterable case 9496938
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint136'], DATA), Tuple[Any, ...])  # iterable case 9496939
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint144'], DATA), Tuple[Any, ...])  # iterable case 9496940
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint152'], DATA), Tuple[Any, ...])  # iterable case 9496941
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint16'], DATA), Tuple[Any, ...])  # iterable case 9496942
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint160'], DATA), Tuple[Any, ...])  # iterable case 9496943
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint168'], DATA), Tuple[Any, ...])  # iterable case 9496944
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint176'], DATA), Tuple[Any, ...])  # iterable case 9496945
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint184'], DATA), Tuple[Any, ...])  # iterable case 9496946
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint192'], DATA), Tuple[Any, ...])  # iterable case 9496947
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint200'], DATA), Tuple[Any, ...])  # iterable case 9496948
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint208'], DATA), Tuple[Any, ...])  # iterable case 9496949
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint216'], DATA), Tuple[Any, ...])  # iterable case 9496950
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint224'], DATA), Tuple[Any, ...])  # iterable case 9496951
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint232'], DATA), Tuple[Any, ...])  # iterable case 9496952
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint24'], DATA), Tuple[Any, ...])  # iterable case 9496953
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint240'], DATA), Tuple[Any, ...])  # iterable case 9496954
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint248'], DATA), Tuple[Any, ...])  # iterable case 9496955
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint256'], DATA), Tuple[Any, ...])  # iterable case 9496956
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint32'], DATA), Tuple[Any, ...])  # iterable case 9496957
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint40'], DATA), Tuple[Any, ...])  # iterable case 9496958
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint48'], DATA), Tuple[Any, ...])  # iterable case 9496959
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint56'], DATA), Tuple[Any, ...])  # iterable case 9496960
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint64'], DATA), Tuple[Any, ...])  # iterable case 9496961
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint72'], DATA), Tuple[Any, ...])  # iterable case 9496962
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint8'], DATA), Tuple[Any, ...])  # iterable case 9496963
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint80'], DATA), Tuple[Any, ...])  # iterable case 9496964
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint88'], DATA), Tuple[Any, ...])  # iterable case 9496965
+assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'uint96'], DATA), Tuple[Any, ...])  # iterable case 9496966
 assert_type(abi.decode(['bytes11', 'int160', 'bool[]', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9496967
-assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'address'], DATA), Tuple[Any, ...])  # iterable case 9496968
-assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9496969
+assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9496968
+assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9496969
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9496970
-assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9496971
+assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9496971
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496972
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496973
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9496974
@@ -1296,10 +1296,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497069
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497070
 assert_type(abi.decode(['bytes11', 'int160', 'bytes', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497071
-assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497072
-assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497073
+assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497072
+assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497073
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497074
-assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497075
+assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497075
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497076
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497077
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497078
@@ -1400,10 +1400,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497173
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497174
 assert_type(abi.decode(['bytes11', 'int160', 'bytes1', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497175
-assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497176
-assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497177
+assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497176
+assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497177
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497178
-assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497179
+assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497179
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497180
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497181
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497182
@@ -1504,10 +1504,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497277
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497278
 assert_type(abi.decode(['bytes11', 'int160', 'bytes10', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497279
-assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497280
-assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497281
+assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497280
+assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497281
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497282
-assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497283
+assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497283
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497284
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497285
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497286
@@ -1608,10 +1608,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497381
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497382
 assert_type(abi.decode(['bytes11', 'int160', 'bytes11', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497383
-assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497384
-assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497385
+assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497384
+assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497385
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497386
-assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497387
+assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497387
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497388
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497389
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497390
@@ -1712,10 +1712,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497485
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497486
 assert_type(abi.decode(['bytes11', 'int160', 'bytes12', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497487
-assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497488
-assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497489
+assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497488
+assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497489
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497490
-assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497491
+assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497491
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497492
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497493
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497494
@@ -1816,10 +1816,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497589
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497590
 assert_type(abi.decode(['bytes11', 'int160', 'bytes13', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497591
-assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497592
-assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497593
+assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497592
+assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497593
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497594
-assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497595
+assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497595
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497596
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497597
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497598
@@ -1920,10 +1920,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497693
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497694
 assert_type(abi.decode(['bytes11', 'int160', 'bytes14', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497695
-assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497696
-assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497697
+assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497696
+assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497697
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497698
-assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497699
+assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497699
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497700
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497701
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497702
@@ -2024,10 +2024,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497797
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497798
 assert_type(abi.decode(['bytes11', 'int160', 'bytes15', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497799
-assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497800
-assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497801
+assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497800
+assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497801
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497802
-assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497803
+assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497803
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497804
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497805
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497806
@@ -2128,10 +2128,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497901
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497902
 assert_type(abi.decode(['bytes11', 'int160', 'bytes16', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9497903
-assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'address'], DATA), Tuple[Any, ...])  # iterable case 9497904
-assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9497905
+assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9497904
+assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9497905
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9497906
-assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9497907
+assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9497907
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497908
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497909
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9497910
@@ -2232,10 +2232,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498005
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498006
 assert_type(abi.decode(['bytes11', 'int160', 'bytes17', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498007
-assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498008
-assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498009
+assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498008
+assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498009
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498010
-assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498011
+assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498011
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498012
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498013
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498014
@@ -2336,10 +2336,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498109
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498110
 assert_type(abi.decode(['bytes11', 'int160', 'bytes18', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498111
-assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498112
-assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498113
+assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498112
+assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498113
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498114
-assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498115
+assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498115
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498116
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498117
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498118
@@ -2440,10 +2440,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498213
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498214
 assert_type(abi.decode(['bytes11', 'int160', 'bytes19', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498215
-assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498216
-assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498217
+assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498216
+assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498217
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498218
-assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498219
+assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498219
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498220
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498221
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498222
@@ -2544,10 +2544,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498317
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498318
 assert_type(abi.decode(['bytes11', 'int160', 'bytes2', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498319
-assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498320
-assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498321
+assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498320
+assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498321
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498322
-assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498323
+assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498323
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498324
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498325
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498326
@@ -2648,10 +2648,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498421
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498422
 assert_type(abi.decode(['bytes11', 'int160', 'bytes20', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498423
-assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498424
-assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498425
+assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498424
+assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498425
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498426
-assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498427
+assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498427
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498428
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498429
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498430
@@ -2752,10 +2752,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498525
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498526
 assert_type(abi.decode(['bytes11', 'int160', 'bytes21', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498527
-assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498528
-assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498529
+assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498528
+assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498529
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498530
-assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498531
+assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498531
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498532
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498533
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498534
@@ -2856,10 +2856,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498629
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498630
 assert_type(abi.decode(['bytes11', 'int160', 'bytes22', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498631
-assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498632
-assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498633
+assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498632
+assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498633
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498634
-assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498635
+assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498635
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498636
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498637
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498638
@@ -2960,10 +2960,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498733
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498734
 assert_type(abi.decode(['bytes11', 'int160', 'bytes23', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498735
-assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498736
-assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498737
+assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498736
+assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498737
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498738
-assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498739
+assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498739
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498740
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498741
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498742
@@ -3064,10 +3064,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498837
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498838
 assert_type(abi.decode(['bytes11', 'int160', 'bytes24', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498839
-assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498840
-assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498841
+assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498840
+assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498841
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498842
-assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498843
+assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498843
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498844
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498845
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498846
@@ -3168,10 +3168,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498941
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498942
 assert_type(abi.decode(['bytes11', 'int160', 'bytes25', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9498943
-assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'address'], DATA), Tuple[Any, ...])  # iterable case 9498944
-assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9498945
+assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9498944
+assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9498945
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9498946
-assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9498947
+assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9498947
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498948
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498949
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9498950
@@ -3272,10 +3272,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499045
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499046
 assert_type(abi.decode(['bytes11', 'int160', 'bytes26', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499047
-assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499048
-assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499049
+assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499048
+assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499049
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499050
-assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499051
+assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499051
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499052
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499053
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499054
@@ -3376,10 +3376,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499149
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499150
 assert_type(abi.decode(['bytes11', 'int160', 'bytes27', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499151
-assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499152
-assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499153
+assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499152
+assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499153
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499154
-assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499155
+assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499155
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499156
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499157
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499158
@@ -3480,10 +3480,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499253
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499254
 assert_type(abi.decode(['bytes11', 'int160', 'bytes28', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499255
-assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499256
-assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499257
+assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499256
+assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499257
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499258
-assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499259
+assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499259
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499260
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499261
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499262
@@ -3584,10 +3584,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499357
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499358
 assert_type(abi.decode(['bytes11', 'int160', 'bytes29', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499359
-assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499360
-assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499361
+assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499360
+assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499361
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499362
-assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499363
+assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499363
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499364
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499365
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499366
@@ -3688,10 +3688,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499461
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499462
 assert_type(abi.decode(['bytes11', 'int160', 'bytes3', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499463
-assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499464
-assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499465
+assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499464
+assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499465
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499466
-assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499467
+assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499467
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499468
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499469
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499470
@@ -3792,10 +3792,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499565
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499566
 assert_type(abi.decode(['bytes11', 'int160', 'bytes30', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499567
-assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499568
-assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499569
+assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499568
+assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499569
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499570
-assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499571
+assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499571
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499572
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499573
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499574
@@ -3896,10 +3896,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499669
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499670
 assert_type(abi.decode(['bytes11', 'int160', 'bytes31', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499671
-assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499672
-assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499673
+assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499672
+assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499673
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499674
-assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499675
+assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499675
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499676
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499677
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499678
@@ -4000,10 +4000,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499773
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499774
 assert_type(abi.decode(['bytes11', 'int160', 'bytes32', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499775
-assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499776
-assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499777
+assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499776
+assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499777
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499778
-assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499779
+assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499779
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499780
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499781
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499782
@@ -4104,10 +4104,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499877
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499878
 assert_type(abi.decode(['bytes11', 'int160', 'bytes4', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499879
-assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499880
-assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499881
+assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499880
+assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499881
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499882
-assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499883
+assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499883
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499884
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499885
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499886
@@ -4208,10 +4208,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499981
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499982
 assert_type(abi.decode(['bytes11', 'int160', 'bytes5', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9499983
-assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'address'], DATA), Tuple[Any, ...])  # iterable case 9499984
-assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9499985
+assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9499984
+assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9499985
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9499986
-assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9499987
+assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9499987
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499988
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499989
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9499990
@@ -4312,10 +4312,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500085
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500086
 assert_type(abi.decode(['bytes11', 'int160', 'bytes6', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500087
-assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500088
-assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500089
+assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500088
+assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500089
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500090
-assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500091
+assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500091
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500092
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500093
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500094
@@ -4416,10 +4416,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500189
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500190
 assert_type(abi.decode(['bytes11', 'int160', 'bytes7', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500191
-assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500192
-assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500193
+assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500192
+assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500193
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500194
-assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500195
+assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500195
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500196
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500197
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500198
@@ -4520,10 +4520,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500293
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500294
 assert_type(abi.decode(['bytes11', 'int160', 'bytes8', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500295
-assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500296
-assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500297
+assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500296
+assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500297
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500298
-assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500299
+assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500299
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500300
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500301
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500302
@@ -4624,10 +4624,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500397
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500398
 assert_type(abi.decode(['bytes11', 'int160', 'bytes9', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500399
-assert_type(abi.decode(['bytes11', 'int160', 'int104', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500400
-assert_type(abi.decode(['bytes11', 'int160', 'int104', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500401
+assert_type(abi.decode(['bytes11', 'int160', 'int104', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500400
+assert_type(abi.decode(['bytes11', 'int160', 'int104', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500401
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500402
-assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500403
+assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500403
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500404
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500405
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500406
@@ -4728,10 +4728,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int104', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500501
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500502
 assert_type(abi.decode(['bytes11', 'int160', 'int104', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500503
-assert_type(abi.decode(['bytes11', 'int160', 'int112', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500504
-assert_type(abi.decode(['bytes11', 'int160', 'int112', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500505
+assert_type(abi.decode(['bytes11', 'int160', 'int112', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500504
+assert_type(abi.decode(['bytes11', 'int160', 'int112', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500505
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500506
-assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500507
+assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500507
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500508
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500509
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500510
@@ -4832,10 +4832,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int112', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500605
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500606
 assert_type(abi.decode(['bytes11', 'int160', 'int112', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500607
-assert_type(abi.decode(['bytes11', 'int160', 'int120', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500608
-assert_type(abi.decode(['bytes11', 'int160', 'int120', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500609
+assert_type(abi.decode(['bytes11', 'int160', 'int120', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500608
+assert_type(abi.decode(['bytes11', 'int160', 'int120', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500609
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500610
-assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500611
+assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500611
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500612
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500613
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500614
@@ -4936,10 +4936,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int120', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500709
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500710
 assert_type(abi.decode(['bytes11', 'int160', 'int120', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500711
-assert_type(abi.decode(['bytes11', 'int160', 'int128', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500712
-assert_type(abi.decode(['bytes11', 'int160', 'int128', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500713
+assert_type(abi.decode(['bytes11', 'int160', 'int128', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500712
+assert_type(abi.decode(['bytes11', 'int160', 'int128', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500713
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500714
-assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500715
+assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500715
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500716
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500717
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500718
@@ -5040,10 +5040,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int128', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500813
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500814
 assert_type(abi.decode(['bytes11', 'int160', 'int128', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500815
-assert_type(abi.decode(['bytes11', 'int160', 'int136', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500816
-assert_type(abi.decode(['bytes11', 'int160', 'int136', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500817
+assert_type(abi.decode(['bytes11', 'int160', 'int136', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500816
+assert_type(abi.decode(['bytes11', 'int160', 'int136', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500817
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500818
-assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500819
+assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500819
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500820
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500821
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500822
@@ -5144,10 +5144,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int136', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500917
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500918
 assert_type(abi.decode(['bytes11', 'int160', 'int136', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9500919
-assert_type(abi.decode(['bytes11', 'int160', 'int144', 'address'], DATA), Tuple[Any, ...])  # iterable case 9500920
-assert_type(abi.decode(['bytes11', 'int160', 'int144', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9500921
+assert_type(abi.decode(['bytes11', 'int160', 'int144', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9500920
+assert_type(abi.decode(['bytes11', 'int160', 'int144', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9500921
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9500922
-assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9500923
+assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9500923
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500924
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500925
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9500926
@@ -5248,10 +5248,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int144', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501021
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501022
 assert_type(abi.decode(['bytes11', 'int160', 'int144', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501023
-assert_type(abi.decode(['bytes11', 'int160', 'int152', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501024
-assert_type(abi.decode(['bytes11', 'int160', 'int152', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501025
+assert_type(abi.decode(['bytes11', 'int160', 'int152', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501024
+assert_type(abi.decode(['bytes11', 'int160', 'int152', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501025
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501026
-assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501027
+assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501027
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501028
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501029
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501030
@@ -5352,10 +5352,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int152', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501125
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501126
 assert_type(abi.decode(['bytes11', 'int160', 'int152', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501127
-assert_type(abi.decode(['bytes11', 'int160', 'int16', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501128
-assert_type(abi.decode(['bytes11', 'int160', 'int16', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501129
+assert_type(abi.decode(['bytes11', 'int160', 'int16', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501128
+assert_type(abi.decode(['bytes11', 'int160', 'int16', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501129
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501130
-assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501131
+assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501131
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501132
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501133
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501134
@@ -5456,10 +5456,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int16', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501229
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501230
 assert_type(abi.decode(['bytes11', 'int160', 'int16', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501231
-assert_type(abi.decode(['bytes11', 'int160', 'int160', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501232
-assert_type(abi.decode(['bytes11', 'int160', 'int160', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501233
+assert_type(abi.decode(['bytes11', 'int160', 'int160', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501232
+assert_type(abi.decode(['bytes11', 'int160', 'int160', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501233
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501234
-assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501235
+assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501235
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501236
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501237
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501238
@@ -5560,10 +5560,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int160', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501333
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501334
 assert_type(abi.decode(['bytes11', 'int160', 'int160', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501335
-assert_type(abi.decode(['bytes11', 'int160', 'int168', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501336
-assert_type(abi.decode(['bytes11', 'int160', 'int168', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501337
+assert_type(abi.decode(['bytes11', 'int160', 'int168', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501336
+assert_type(abi.decode(['bytes11', 'int160', 'int168', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501337
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501338
-assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501339
+assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501339
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501340
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501341
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501342
@@ -5664,10 +5664,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int168', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501437
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501438
 assert_type(abi.decode(['bytes11', 'int160', 'int168', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501439
-assert_type(abi.decode(['bytes11', 'int160', 'int176', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501440
-assert_type(abi.decode(['bytes11', 'int160', 'int176', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501441
+assert_type(abi.decode(['bytes11', 'int160', 'int176', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501440
+assert_type(abi.decode(['bytes11', 'int160', 'int176', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501441
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501442
-assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501443
+assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501443
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501444
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501445
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501446
@@ -5768,10 +5768,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int176', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501541
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501542
 assert_type(abi.decode(['bytes11', 'int160', 'int176', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501543
-assert_type(abi.decode(['bytes11', 'int160', 'int184', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501544
-assert_type(abi.decode(['bytes11', 'int160', 'int184', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501545
+assert_type(abi.decode(['bytes11', 'int160', 'int184', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501544
+assert_type(abi.decode(['bytes11', 'int160', 'int184', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501545
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501546
-assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501547
+assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501547
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501548
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501549
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501550
@@ -5872,10 +5872,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int184', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501645
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501646
 assert_type(abi.decode(['bytes11', 'int160', 'int184', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501647
-assert_type(abi.decode(['bytes11', 'int160', 'int192', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501648
-assert_type(abi.decode(['bytes11', 'int160', 'int192', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501649
+assert_type(abi.decode(['bytes11', 'int160', 'int192', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501648
+assert_type(abi.decode(['bytes11', 'int160', 'int192', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501649
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501650
-assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501651
+assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501651
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501652
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501653
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501654
@@ -5976,10 +5976,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int192', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501749
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501750
 assert_type(abi.decode(['bytes11', 'int160', 'int192', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501751
-assert_type(abi.decode(['bytes11', 'int160', 'int200', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501752
-assert_type(abi.decode(['bytes11', 'int160', 'int200', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501753
+assert_type(abi.decode(['bytes11', 'int160', 'int200', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501752
+assert_type(abi.decode(['bytes11', 'int160', 'int200', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501753
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501754
-assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501755
+assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501755
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501756
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501757
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501758
@@ -6080,10 +6080,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int200', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501853
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501854
 assert_type(abi.decode(['bytes11', 'int160', 'int200', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501855
-assert_type(abi.decode(['bytes11', 'int160', 'int208', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501856
-assert_type(abi.decode(['bytes11', 'int160', 'int208', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501857
+assert_type(abi.decode(['bytes11', 'int160', 'int208', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501856
+assert_type(abi.decode(['bytes11', 'int160', 'int208', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501857
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501858
-assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501859
+assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501859
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501860
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501861
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501862
@@ -6184,10 +6184,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int208', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501957
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501958
 assert_type(abi.decode(['bytes11', 'int160', 'int208', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9501959
-assert_type(abi.decode(['bytes11', 'int160', 'int216', 'address'], DATA), Tuple[Any, ...])  # iterable case 9501960
-assert_type(abi.decode(['bytes11', 'int160', 'int216', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9501961
+assert_type(abi.decode(['bytes11', 'int160', 'int216', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9501960
+assert_type(abi.decode(['bytes11', 'int160', 'int216', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9501961
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9501962
-assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9501963
+assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9501963
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501964
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501965
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9501966
@@ -6288,10 +6288,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int216', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502061
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502062
 assert_type(abi.decode(['bytes11', 'int160', 'int216', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502063
-assert_type(abi.decode(['bytes11', 'int160', 'int224', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502064
-assert_type(abi.decode(['bytes11', 'int160', 'int224', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502065
+assert_type(abi.decode(['bytes11', 'int160', 'int224', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502064
+assert_type(abi.decode(['bytes11', 'int160', 'int224', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502065
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502066
-assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502067
+assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502067
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502068
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502069
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502070
@@ -6392,10 +6392,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int224', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502165
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502166
 assert_type(abi.decode(['bytes11', 'int160', 'int224', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502167
-assert_type(abi.decode(['bytes11', 'int160', 'int232', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502168
-assert_type(abi.decode(['bytes11', 'int160', 'int232', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502169
+assert_type(abi.decode(['bytes11', 'int160', 'int232', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502168
+assert_type(abi.decode(['bytes11', 'int160', 'int232', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502169
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502170
-assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502171
+assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502171
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502172
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502173
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502174
@@ -6496,10 +6496,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int232', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502269
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502270
 assert_type(abi.decode(['bytes11', 'int160', 'int232', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502271
-assert_type(abi.decode(['bytes11', 'int160', 'int24', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502272
-assert_type(abi.decode(['bytes11', 'int160', 'int24', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502273
+assert_type(abi.decode(['bytes11', 'int160', 'int24', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502272
+assert_type(abi.decode(['bytes11', 'int160', 'int24', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502273
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502274
-assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502275
+assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502275
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502276
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502277
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502278
@@ -6600,10 +6600,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int24', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502373
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502374
 assert_type(abi.decode(['bytes11', 'int160', 'int24', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502375
-assert_type(abi.decode(['bytes11', 'int160', 'int240', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502376
-assert_type(abi.decode(['bytes11', 'int160', 'int240', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502377
+assert_type(abi.decode(['bytes11', 'int160', 'int240', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502376
+assert_type(abi.decode(['bytes11', 'int160', 'int240', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502377
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502378
-assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502379
+assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502379
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502380
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502381
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502382
@@ -6704,10 +6704,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int240', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502477
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502478
 assert_type(abi.decode(['bytes11', 'int160', 'int240', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502479
-assert_type(abi.decode(['bytes11', 'int160', 'int248', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502480
-assert_type(abi.decode(['bytes11', 'int160', 'int248', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502481
+assert_type(abi.decode(['bytes11', 'int160', 'int248', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502480
+assert_type(abi.decode(['bytes11', 'int160', 'int248', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502481
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502482
-assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502483
+assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502483
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502484
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502485
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502486
@@ -6808,10 +6808,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int248', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502581
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502582
 assert_type(abi.decode(['bytes11', 'int160', 'int248', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502583
-assert_type(abi.decode(['bytes11', 'int160', 'int256', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502584
-assert_type(abi.decode(['bytes11', 'int160', 'int256', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502585
+assert_type(abi.decode(['bytes11', 'int160', 'int256', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502584
+assert_type(abi.decode(['bytes11', 'int160', 'int256', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502585
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502586
-assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502587
+assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502587
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502588
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502589
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502590
@@ -6912,10 +6912,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int256', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502685
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502686
 assert_type(abi.decode(['bytes11', 'int160', 'int256', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502687
-assert_type(abi.decode(['bytes11', 'int160', 'int32', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502688
-assert_type(abi.decode(['bytes11', 'int160', 'int32', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502689
+assert_type(abi.decode(['bytes11', 'int160', 'int32', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502688
+assert_type(abi.decode(['bytes11', 'int160', 'int32', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502689
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502690
-assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502691
+assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502691
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502692
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502693
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502694
@@ -7016,10 +7016,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int32', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502789
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502790
 assert_type(abi.decode(['bytes11', 'int160', 'int32', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502791
-assert_type(abi.decode(['bytes11', 'int160', 'int40', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502792
-assert_type(abi.decode(['bytes11', 'int160', 'int40', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502793
+assert_type(abi.decode(['bytes11', 'int160', 'int40', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502792
+assert_type(abi.decode(['bytes11', 'int160', 'int40', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502793
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502794
-assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502795
+assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502795
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502796
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502797
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502798
@@ -7120,10 +7120,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int40', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502893
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502894
 assert_type(abi.decode(['bytes11', 'int160', 'int40', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502895
-assert_type(abi.decode(['bytes11', 'int160', 'int48', 'address'], DATA), Tuple[Any, ...])  # iterable case 9502896
-assert_type(abi.decode(['bytes11', 'int160', 'int48', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9502897
+assert_type(abi.decode(['bytes11', 'int160', 'int48', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9502896
+assert_type(abi.decode(['bytes11', 'int160', 'int48', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9502897
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9502898
-assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9502899
+assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9502899
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502900
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502901
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502902
@@ -7224,10 +7224,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int48', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502997
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9502998
 assert_type(abi.decode(['bytes11', 'int160', 'int48', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9502999
-assert_type(abi.decode(['bytes11', 'int160', 'int56', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503000
-assert_type(abi.decode(['bytes11', 'int160', 'int56', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503001
+assert_type(abi.decode(['bytes11', 'int160', 'int56', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503000
+assert_type(abi.decode(['bytes11', 'int160', 'int56', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503001
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503002
-assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503003
+assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503003
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503004
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503005
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503006
@@ -7328,10 +7328,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int56', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503101
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503102
 assert_type(abi.decode(['bytes11', 'int160', 'int56', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503103
-assert_type(abi.decode(['bytes11', 'int160', 'int64', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503104
-assert_type(abi.decode(['bytes11', 'int160', 'int64', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503105
+assert_type(abi.decode(['bytes11', 'int160', 'int64', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503104
+assert_type(abi.decode(['bytes11', 'int160', 'int64', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503105
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503106
-assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503107
+assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503107
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503108
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503109
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503110
@@ -7432,10 +7432,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int64', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503205
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503206
 assert_type(abi.decode(['bytes11', 'int160', 'int64', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503207
-assert_type(abi.decode(['bytes11', 'int160', 'int72', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503208
-assert_type(abi.decode(['bytes11', 'int160', 'int72', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503209
+assert_type(abi.decode(['bytes11', 'int160', 'int72', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503208
+assert_type(abi.decode(['bytes11', 'int160', 'int72', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503209
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503210
-assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503211
+assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503211
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503212
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503213
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503214
@@ -7536,10 +7536,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int72', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503309
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503310
 assert_type(abi.decode(['bytes11', 'int160', 'int72', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503311
-assert_type(abi.decode(['bytes11', 'int160', 'int8', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503312
-assert_type(abi.decode(['bytes11', 'int160', 'int8', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503313
+assert_type(abi.decode(['bytes11', 'int160', 'int8', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503312
+assert_type(abi.decode(['bytes11', 'int160', 'int8', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503313
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503314
-assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503315
+assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503315
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503316
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503317
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503318
@@ -7640,10 +7640,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int8', 'uint80'], DATA), Tuple[Uni
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503413
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503414
 assert_type(abi.decode(['bytes11', 'int160', 'int8', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503415
-assert_type(abi.decode(['bytes11', 'int160', 'int80', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503416
-assert_type(abi.decode(['bytes11', 'int160', 'int80', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503417
+assert_type(abi.decode(['bytes11', 'int160', 'int80', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503416
+assert_type(abi.decode(['bytes11', 'int160', 'int80', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503417
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503418
-assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503419
+assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503419
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503420
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503421
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503422
@@ -7744,10 +7744,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int80', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503517
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503518
 assert_type(abi.decode(['bytes11', 'int160', 'int80', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503519
-assert_type(abi.decode(['bytes11', 'int160', 'int88', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503520
-assert_type(abi.decode(['bytes11', 'int160', 'int88', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503521
+assert_type(abi.decode(['bytes11', 'int160', 'int88', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503520
+assert_type(abi.decode(['bytes11', 'int160', 'int88', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503521
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503522
-assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503523
+assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503523
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503524
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503525
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503526
@@ -7848,10 +7848,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int88', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503621
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503622
 assert_type(abi.decode(['bytes11', 'int160', 'int88', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503623
-assert_type(abi.decode(['bytes11', 'int160', 'int96', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503624
-assert_type(abi.decode(['bytes11', 'int160', 'int96', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503625
+assert_type(abi.decode(['bytes11', 'int160', 'int96', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503624
+assert_type(abi.decode(['bytes11', 'int160', 'int96', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503625
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503626
-assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503627
+assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503627
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503628
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503629
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503630
@@ -7952,10 +7952,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'int96', 'uint80'], DATA), Tuple[Un
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503725
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503726
 assert_type(abi.decode(['bytes11', 'int160', 'int96', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503727
-assert_type(abi.decode(['bytes11', 'int160', 'string', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503728
-assert_type(abi.decode(['bytes11', 'int160', 'string', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503729
+assert_type(abi.decode(['bytes11', 'int160', 'string', 'address'], DATA), Tuple[Union[HexAddress, bytes, int, str], ...])  # iterable case 9503728
+assert_type(abi.decode(['bytes11', 'int160', 'string', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int, str], ...])  # iterable case 9503729
 assert_type(abi.decode(['bytes11', 'int160', 'string', 'bool'], DATA), Tuple[Union[bool, bytes, int, str], ...])  # iterable case 9503730
-assert_type(abi.decode(['bytes11', 'int160', 'string', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int, str], ...])  # iterable case 9503731
+assert_type(abi.decode(['bytes11', 'int160', 'string', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503731
 assert_type(abi.decode(['bytes11', 'int160', 'string', 'bytes'], DATA), Tuple[Union[bytes, int, str], ...])  # iterable case 9503732
 assert_type(abi.decode(['bytes11', 'int160', 'string', 'bytes1'], DATA), Tuple[Union[bytes, int, str], ...])  # iterable case 9503733
 assert_type(abi.decode(['bytes11', 'int160', 'string', 'bytes10'], DATA), Tuple[Union[bytes, int, str], ...])  # iterable case 9503734
@@ -8160,10 +8160,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'string[]', 'uint80'], DATA), Tuple
 assert_type(abi.decode(['bytes11', 'int160', 'string[]', 'uint88'], DATA), Tuple[Any, ...])  # iterable case 9503933
 assert_type(abi.decode(['bytes11', 'int160', 'string[]', 'uint96'], DATA), Tuple[Any, ...])  # iterable case 9503934
 assert_type(abi.decode(['bytes11', 'int160', 'string[]', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9503935
-assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'address'], DATA), Tuple[Any, ...])  # iterable case 9503936
-assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9503937
+assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9503936
+assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9503937
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9503938
-assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9503939
+assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9503939
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503940
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503941
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9503942
@@ -8264,10 +8264,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504037
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504038
 assert_type(abi.decode(['bytes11', 'int160', 'uint104', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504039
-assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504040
-assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504041
+assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504040
+assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504041
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504042
-assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504043
+assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504043
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504044
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504045
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504046
@@ -8368,10 +8368,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504141
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504142
 assert_type(abi.decode(['bytes11', 'int160', 'uint112', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504143
-assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504144
-assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504145
+assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504144
+assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504145
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504146
-assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504147
+assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504147
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504148
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504149
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504150
@@ -8472,10 +8472,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504245
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504246
 assert_type(abi.decode(['bytes11', 'int160', 'uint120', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504247
-assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504248
-assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504249
+assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504248
+assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504249
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504250
-assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504251
+assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504251
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504252
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504253
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504254
@@ -8576,10 +8576,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504349
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504350
 assert_type(abi.decode(['bytes11', 'int160', 'uint128', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504351
-assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504352
-assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504353
+assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504352
+assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504353
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504354
-assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504355
+assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504355
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504356
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504357
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504358
@@ -8680,10 +8680,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504453
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504454
 assert_type(abi.decode(['bytes11', 'int160', 'uint136', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504455
-assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504456
-assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504457
+assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504456
+assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504457
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504458
-assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504459
+assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504459
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504460
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504461
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504462
@@ -8784,10 +8784,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504557
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504558
 assert_type(abi.decode(['bytes11', 'int160', 'uint144', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504559
-assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504560
-assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504561
+assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504560
+assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504561
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504562
-assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504563
+assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504563
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504564
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504565
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504566
@@ -8888,10 +8888,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504661
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504662
 assert_type(abi.decode(['bytes11', 'int160', 'uint152', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504663
-assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504664
-assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504665
+assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504664
+assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504665
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504666
-assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504667
+assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504667
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504668
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504669
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504670
@@ -8992,10 +8992,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'uint80'], DATA), Tuple[U
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504765
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504766
 assert_type(abi.decode(['bytes11', 'int160', 'uint16', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504767
-assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504768
-assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504769
+assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504768
+assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504769
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504770
-assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504771
+assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504771
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504772
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504773
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504774
@@ -9096,10 +9096,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504869
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504870
 assert_type(abi.decode(['bytes11', 'int160', 'uint160', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504871
-assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504872
-assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504873
+assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504872
+assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504873
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504874
-assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504875
+assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504875
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504876
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504877
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504878
@@ -9200,10 +9200,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504973
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504974
 assert_type(abi.decode(['bytes11', 'int160', 'uint168', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9504975
-assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'address'], DATA), Tuple[Any, ...])  # iterable case 9504976
-assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9504977
+assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9504976
+assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9504977
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9504978
-assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9504979
+assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9504979
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504980
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504981
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9504982
@@ -9304,10 +9304,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505077
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505078
 assert_type(abi.decode(['bytes11', 'int160', 'uint176', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505079
-assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505080
-assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505081
+assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505080
+assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505081
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505082
-assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505083
+assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505083
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505084
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505085
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505086
@@ -9408,10 +9408,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505181
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505182
 assert_type(abi.decode(['bytes11', 'int160', 'uint184', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505183
-assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505184
-assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505185
+assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505184
+assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505185
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505186
-assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505187
+assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505187
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505188
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505189
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505190
@@ -9512,10 +9512,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505285
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505286
 assert_type(abi.decode(['bytes11', 'int160', 'uint192', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505287
-assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505288
-assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505289
+assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505288
+assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505289
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505290
-assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505291
+assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505291
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505292
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505293
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505294
@@ -9616,10 +9616,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505389
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505390
 assert_type(abi.decode(['bytes11', 'int160', 'uint200', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505391
-assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505392
-assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505393
+assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505392
+assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505393
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505394
-assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505395
+assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505395
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505396
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505397
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505398
@@ -9720,10 +9720,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505493
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505494
 assert_type(abi.decode(['bytes11', 'int160', 'uint208', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505495
-assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505496
-assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505497
+assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505496
+assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505497
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505498
-assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505499
+assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505499
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505500
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505501
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505502
@@ -9824,10 +9824,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505597
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505598
 assert_type(abi.decode(['bytes11', 'int160', 'uint216', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505599
-assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505600
-assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505601
+assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505600
+assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505601
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505602
-assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505603
+assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505603
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505604
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505605
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505606
@@ -9928,10 +9928,10 @@ assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'uint80'], DATA), Tuple[
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'uint88'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505701
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'uint96'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505702
 assert_type(abi.decode(['bytes11', 'int160', 'uint224', 'someothertype'], DATA), Tuple[Any, ...])  # iterable case 9505703
-assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'address'], DATA), Tuple[Any, ...])  # iterable case 9505704
-assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'address[]'], DATA), Tuple[Any, ...])  # iterable case 9505705
+assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'address'], DATA), Tuple[Union[HexAddress, bytes, int], ...])  # iterable case 9505704
+assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'address[]'], DATA), Tuple[Union[Tuple[HexAddress, ...], bytes, int], ...])  # iterable case 9505705
 assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bool'], DATA), Tuple[Union[bool, bytes, int], ...])  # iterable case 9505706
-assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bool[]'], DATA), Tuple[Union[Tuple[bool, ...], bytes, int], ...])  # iterable case 9505707
+assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bool[]'], DATA), Tuple[Any, ...])  # iterable case 9505707
 assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bytes'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505708
 assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bytes1'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505709
 assert_type(abi.decode(['bytes11', 'int160', 'uint232', 'bytes10'], DATA), Tuple[Union[bytes, int], ...])  # iterable case 9505710

@@ -8,10 +8,10 @@ from eth_typing import HexAddress
 from faster_eth_abi import abi
 
 DATA = b"\x00" * 32
-assert_type(abi.decode(['address'], DATA), Tuple[Any, ...])  # iterable case 0
-assert_type(abi.decode(['address[]'], DATA), Tuple[Any, ...])  # iterable case 1
+assert_type(abi.decode(['address'], DATA), Tuple[HexAddress, ...])  # iterable case 0
+assert_type(abi.decode(['address[]'], DATA), Tuple[Tuple[HexAddress, ...], ...])  # iterable case 1
 assert_type(abi.decode(['bool'], DATA), Tuple[bool, ...])  # iterable case 2
-assert_type(abi.decode(['bool[]'], DATA), Tuple[Tuple[bool, ...], ...])  # iterable case 3
+assert_type(abi.decode(['bool[]'], DATA), Tuple[Any, ...])  # iterable case 3
 assert_type(abi.decode(['bytes'], DATA), Tuple[bytes, ...])  # iterable case 4
 assert_type(abi.decode(['bytes1'], DATA), Tuple[bytes, ...])  # iterable case 5
 assert_type(abi.decode(['bytes10'], DATA), Tuple[bytes, ...])  # iterable case 6
