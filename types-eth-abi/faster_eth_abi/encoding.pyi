@@ -1,11 +1,37 @@
 import abc
 import decimal
 from _typeshed import Incomplete
-from faster_eth_abi._encoding import encode_elements as encode_elements, encode_elements_dynamic as encode_elements_dynamic, encode_fixed as encode_fixed, encode_signed as encode_signed, encode_tuple as encode_tuple, encode_tuple_all_dynamic as encode_tuple_all_dynamic, encode_tuple_no_dynamic as encode_tuple_no_dynamic, encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs, int_to_big_endian as int_to_big_endian, validate_tuple as validate_tuple
+from faster_eth_abi._encoding import (
+    encode_elements as encode_elements,
+    encode_elements_dynamic as encode_elements_dynamic,
+    encode_fixed as encode_fixed,
+    encode_signed as encode_signed,
+    encode_tuple as encode_tuple,
+    encode_tuple_all_dynamic as encode_tuple_all_dynamic,
+    encode_tuple_no_dynamic as encode_tuple_no_dynamic,
+    encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
+    int_to_big_endian as int_to_big_endian,
+    validate_tuple as validate_tuple,
+)
 from faster_eth_abi.base import BaseCoder as BaseCoder
-from faster_eth_abi.exceptions import EncodingTypeError as EncodingTypeError, IllegalValue as IllegalValue, ValueOutOfBounds as ValueOutOfBounds
-from faster_eth_abi.from_type_str import parse_tuple_type_str as parse_tuple_type_str, parse_type_str as parse_type_str
-from faster_eth_abi.utils.numeric import TEN as TEN, abi_decimal_context as abi_decimal_context, ceil32 as ceil32, compute_signed_fixed_bounds as compute_signed_fixed_bounds, compute_signed_integer_bounds as compute_signed_integer_bounds, compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds, compute_unsigned_integer_bounds as compute_unsigned_integer_bounds
+from faster_eth_abi.exceptions import (
+    EncodingTypeError as EncodingTypeError,
+    IllegalValue as IllegalValue,
+    ValueOutOfBounds as ValueOutOfBounds,
+)
+from faster_eth_abi.from_type_str import (
+    parse_tuple_type_str as parse_tuple_type_str,
+    parse_type_str as parse_type_str,
+)
+from faster_eth_abi.utils.numeric import (
+    TEN as TEN,
+    abi_decimal_context as abi_decimal_context,
+    ceil32 as ceil32,
+    compute_signed_fixed_bounds as compute_signed_fixed_bounds,
+    compute_signed_integer_bounds as compute_signed_integer_bounds,
+    compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds,
+    compute_unsigned_integer_bounds as compute_unsigned_integer_bounds,
+)
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
@@ -18,12 +44,14 @@ class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
     custom encoder class.  Subclasses must also implement
     :any:`BaseCoder.from_type_str`.
     """
+
     @abc.abstractmethod
     def encode(self, value: Any) -> bytes:
         """
         Encodes the given value as a sequence of bytes.  Should raise
         :any:`exceptions.EncodingError` if ``value`` cannot be encoded.
         """
+
     @abc.abstractmethod
     def validate_value(self, value: Any) -> None:
         """
@@ -31,12 +59,16 @@ class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
         If the given value cannot be encoded, must raise
         :any:`exceptions.EncodingError`.
         """
+
     @classmethod
-    def invalidate_value(cls, value: Any, exc: type[Exception] = ..., msg: str | None = None) -> NoReturn:
+    def invalidate_value(
+        cls, value: Any, exc: type[Exception] = ..., msg: str | None = None
+    ) -> NoReturn:
         """
         Throws a standard exception for when a value is not encodable by an
         encoder.
         """
+
     def __call__(self, value: Any) -> bytes: ...
 
 class TupleEncoder(BaseEncoder):

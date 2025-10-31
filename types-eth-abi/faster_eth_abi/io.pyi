@@ -45,17 +45,20 @@ class ContextFramesBytesIO(BytesIO):
     sense out of object B's offset, it needs to be positioned in the context of
     its enclosing object's frame (object A).
     """
+
     def __init__(self, initial_bytes: ReadableBuffer) -> None: ...
     def seek_in_frame(self, pos: int, *args: Any, **kwargs: Any) -> None:
         """
         Seeks relative to the total offset of the current contextual frames.
         """
+
     def push_frame(self, offset: int) -> None:
         """
         Pushes a new contextual frame onto the stack with the given offset and a
         return position at the current cursor position then seeks to the new
         total offset.
         """
+
     def pop_frame(self) -> None:
         """
         Pops the current contextual frame off of the stack and returns the

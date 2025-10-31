@@ -1,15 +1,23 @@
 import abc
-from . import decoding as decoding, encoding as encoding, exceptions as exceptions, grammar as grammar
+from . import (
+    decoding as decoding,
+    encoding as encoding,
+    exceptions as exceptions,
+    grammar as grammar,
+)
 from .base import BaseCoder as BaseCoder
-from .exceptions import MultipleEntriesFound as MultipleEntriesFound, NoEntriesFound as NoEntriesFound
+from .exceptions import (
+    MultipleEntriesFound as MultipleEntriesFound,
+    NoEntriesFound as NoEntriesFound,
+)
 from .io import ContextFramesBytesIO as ContextFramesBytesIO
 from _typeshed import Incomplete
 from eth_typing import TypeStr
 from typing import Any, Callable, Final, Generic, Iterator, TypeVar
 from typing_extensions import ParamSpec, Self
 
-T = TypeVar('T')
-P = ParamSpec('P')
+T = TypeVar("T")
+P = ParamSpec("P")
 Lookup = TypeStr | Callable[[TypeStr], bool]
 EncoderCallable = Callable[[Any], bytes]
 DecoderCallable = Callable[[ContextFramesBytesIO], Any]
@@ -28,6 +36,7 @@ class PredicateMapping(Copyable, Generic[T]):
     when their corresponding predicate matches a given input.  Predicates can
     also be labeled to facilitate removal from the mapping.
     """
+
     def __init__(self, name: str) -> None: ...
     def add(self, predicate: Lookup, value: T, label: str | None = None) -> None: ...
     def find(self, type_str: TypeStr) -> T: ...
@@ -41,6 +50,7 @@ class Predicate(Generic[T]):
     Represents a predicate function to be used for type matching in
     ``ABIRegistry``.
     """
+
     def __init__(self) -> None: ...
     def __call__(self, arg: TypeStr) -> None: ...
     def __iter__(self) -> Iterator[T]: ...
@@ -51,6 +61,7 @@ class Equals(Predicate[str]):
     """
     A predicate that matches any input equal to `value`.
     """
+
     value: Final[Incomplete]
     def __init__(self, value: str) -> None: ...
     def __call__(self, other: TypeStr) -> bool: ...
@@ -64,6 +75,7 @@ class BaseEquals(Predicate[str | bool | None]):
     string must *not* have a sub component to match.  If `with_sub` is None,
     the type string's sub component is ignored.
     """
+
     base: Final[Incomplete]
     with_sub: Final[Incomplete]
     def __init__(self, base: TypeStr, *, with_sub: bool | None = None) -> None: ...
@@ -74,6 +86,7 @@ def has_arrlist(type_str: TypeStr) -> bool:
     """
     A predicate that matches a type string with an array dimension list.
     """
+
 def is_base_tuple(type_str: TypeStr) -> bool:
     """
     A predicate that matches a tuple type with no array dimension list.
@@ -88,13 +101,16 @@ class ABIRegistry(Copyable, BaseRegistry):
     get_tuple_decoder: Incomplete
     def __init__(self) -> None: ...
     @_clear_encoder_cache
-    def register_encoder(self, lookup: Lookup, encoder: Encoder, label: str | None = None) -> None:
+    def register_encoder(
+        self, lookup: Lookup, encoder: Encoder, label: str | None = None
+    ) -> None:
         """
         Registers the given ``encoder`` under the given ``lookup``.  A unique
         string label may be optionally provided that can be used to refer to
         the registration by name.  For more information about arguments, refer
         to :any:`register`.
         """
+
     @_clear_encoder_cache
     def unregister_encoder(self, lookup_or_label: Lookup) -> None:
         """
@@ -104,14 +120,18 @@ class ABIRegistry(Copyable, BaseRegistry):
         encoder with the lookup function ``lookup_or_label`` will be
         unregistered.
         """
+
     @_clear_decoder_cache
-    def register_decoder(self, lookup: Lookup, decoder: Decoder, label: str | None = None) -> None:
+    def register_decoder(
+        self, lookup: Lookup, decoder: Decoder, label: str | None = None
+    ) -> None:
         """
         Registers the given ``decoder`` under the given ``lookup``.  A unique
         string label may be optionally provided that can be used to refer to
         the registration by name.  For more information about arguments, refer
         to :any:`register`.
         """
+
     @_clear_decoder_cache
     def unregister_decoder(self, lookup_or_label: Lookup) -> None:
         """
@@ -121,7 +141,14 @@ class ABIRegistry(Copyable, BaseRegistry):
         decoder with the lookup function ``lookup_or_label`` will be
         unregistered.
         """
-    def register(self, lookup: Lookup, encoder: Encoder, decoder: Decoder, label: str | None = None) -> None:
+
+    def register(
+        self,
+        lookup: Lookup,
+        encoder: Encoder,
+        decoder: Decoder,
+        label: str | None = None,
+    ) -> None:
         """
         Registers the given ``encoder`` and ``decoder`` under the given
         ``lookup``.  A unique string label may be optionally provided that can
@@ -156,11 +183,13 @@ class ABIRegistry(Copyable, BaseRegistry):
             entry in the registry via the :any:`unregister` method and its
             variants.
         """
+
     def unregister(self, label: str | None) -> None:
         """
         Unregisters the entries in the encoder and decoder registries which
         have the label ``label``.
         """
+
     def has_encoder(self, type_str: TypeStr) -> bool:
         """
         Returns ``True`` if an encoder is found for the given type string
@@ -168,6 +197,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         :class:`~faster_eth_abi.exceptions.MultipleEntriesFound` if multiple encoders
         are found.
         """
+
     def copy(self) -> Self:
         """
         Copies a registry such that new registrations can be made or existing
