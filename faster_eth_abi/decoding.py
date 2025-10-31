@@ -363,7 +363,7 @@ decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
 
 
 class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
-    decoder_fn: Final[Callable[[bytes], int]
+    decoder_fn: Final[Callable[[bytes], int]]
     maxsize: Final[Optional[int]]
 
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
@@ -413,7 +413,7 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
 
 
 class SignedIntegerDecoderCached(SignedIntegerDecoder):
-    decoder_fn: Final[Callable[[bytes], int]
+    decoder_fn: Final[Callable[[bytes], int]]
     maxsize: Final[Optional[int]]
 
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
