@@ -8,6 +8,10 @@ __all__ = ['NodeVisitor', 'ABIType', 'TupleType', 'BasicType', 'grammar', 'parse
 grammar: Final[Incomplete]
 
 class NodeVisitor(parsimonious.NodeVisitor):
+    """
+    Parsimonious node visitor which performs both parsing of type strings and
+    post-processing of parse trees.  Parsing operations are cached.
+    """
     parse: Incomplete
     def __init__(self) -> None: ...
     grammar = grammar
