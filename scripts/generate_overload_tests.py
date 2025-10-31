@@ -23,7 +23,8 @@ Key features:
 - If you add new ABI type strings, rerun this script to update the test files.
 """
 
-MAX_LEN = 3
+MAX_LEN_FIXED = 3
+MAX_LEN_VARIABLE = 4
 CHUNK_SIZE = 10_000
 
 import re
@@ -164,21 +165,22 @@ def get_expected_type_iterable(types):
     else:
         return f"Tuple[Union[{', '.join(unique_types)}], ...]"
 
-def compute_total_cases_sampled(all_literals):
+def compute_total_cases_sampled(all_literals, max_len: int) -> int:
     n = len(all_literals)
-    return sum(n ** L for L in range(1, MAX_LEN + 1))
+    return sum(n ** L for L in range(1, max_len + 1))
 
-def compute_total_chunks(all_literals):
-    total_cases = compute_total_cases_sampled(all_literals)
+def compute_total_chunks(all_literals, max_len: int) -> int:
+    total_cases = compute_total_cases_sampled(all_literals, max_len)
     return ceil(total_cases / CHUNK_SIZE)
 
-def stream_cases_and_write_files(all_literals, mode):
+def stream_cases_and_write_files(all_literals, mode: Literal["tuple", "iterable"]) -> int:
     case_counter = 0
-    total_chunks = compute_total_chunks(all_literals)
+    max_len = MAX_LEN_FIXED if mode == "tuple" else MAX_LEN_VARIABLE
+    total_chunks = compute_total_chunks(all_literals, max_len)
     progress = tqdm(total=total_chunks, desc=f"Streaming {mode} chunks") if tqdm else None
 
     f = None
-    for L in range(1, MAX_LEN + 1):
+    for L in range(1, max_len + 1):
         chunk_idx = 1
         chunk_lines = []
         length_case_counter = 0
