@@ -137,26 +137,25 @@ for bits in (8, 16, 32, 64, 128, 256):
 
 primitive_cases = (
     [
-        ("uint8", 0),
-        ("uint8", 255),
-        ("uint16", 65535),
-        ("uint32", 2**32 - 1),
-        ("uint64", 2**64 - 1),
-        ("uint128", 2**128 - 1),
-        ("uint256", 0),
-        ("uint256", 2**256 - 1),
-        ("int8", -128),
-        ("int8", 127),
-        ("int16", -32768),
-        ("int16", 32767),
-        ("int32", -(2**31)),
-        ("int32", 2**31 - 1),
-        ("int64", -(2**63)),
-        ("int64", 2**63 - 1),
-        ("int128", -(2**127)),
-        ("int128", 2**127 - 1),
-        ("int256", -(2**255)),
-        ("int256", 2**255 - 1),
+        *((f"uint{i}", 0) for i in range(8, 257, 8)),  # min value
+        *((f"uint{i}", (2**i - 1) // 4) for i in range(8, 257, 8)),  # lower fourth
+        *((f"uint{i}", (2**i - 1) // 2) for i in range(8, 257, 8)),  # midpoint
+        *(
+            (f"uint{i}", (2**i - 1 + ((2**i - 1) // 2)) // 2)
+            for i in range(8, 257, 8)  # upper fourth
+        ),
+        *((f"uint{i}", 2**i - 1) for i in range(8, 257, 8)),  # max value
+        *((f"int{i}", -(2 ** (i - 1))) for i in range(8, 257, 8)),  # min value
+        *(
+            (f"int{i}", -(2 ** (i - 1)) // 2)
+            for i in range(8, 257, 8)  # negative midpoint
+        ),
+        *((f"int{i}", 0) for i in range(8, 257, 8)),  # zero
+        *(
+            (f"int{i}", (2 ** (i - 1) - 1) // 2)
+            for i in range(8, 257, 8)  # positive midpoint
+        ),
+        *((f"int{i}", 2 ** (i - 1) - 1) for i in range(8, 257, 8)),  # max value
         ("bool", True),
         ("bool", False),
         ("address", b"\x00" * 19 + b"\x01"),
