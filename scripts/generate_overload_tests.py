@@ -221,7 +221,7 @@ def extract_all_literals(typ, alias_map, alias_path=None):
         )
 
 
-def expand_literal_values():
+def expand_literal_values() -> Iterator[str]:
     alias_map = build_alias_map()
     alias_names = [
         "AddressTypeStr",
@@ -242,14 +242,10 @@ def expand_literal_values():
             typ = DecodesToIntTypeStr
         else:
             typ = alias_map[name]
-        yield name, map(str, extract_all_literals(typ, alias_map, [name]))
+        yield from map(str, extract_all_literals(typ, alias_map, [name]))
 
 
-def get_all_literals() -> List["LiteralString"]:
-    all_literals = set()
-    for _name, literal_values in expand_literal_values():
-        all_literals.update(literal_values)
-    return sorted(all_literals) + ["?"]
+ALL_LITERALS: Final = sorted(set(expand_literal_values())) + ["?"]
 
 
 def get_expected_type_tuple(types: Tuple[str, ...]) -> str:
