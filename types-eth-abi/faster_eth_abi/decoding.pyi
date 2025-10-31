@@ -155,6 +155,11 @@ class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
 
 decode_uint_256: Incomplete
 
+class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
+    maxsize: Incomplete
+    decode: Incomplete
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
+
 class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     is_big_endian: bool
     def __init__(self, **kwargs: Any) -> None: ...
@@ -165,6 +170,11 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     def decoder_fn(self, data: bytes) -> int: ...
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None: ...
     def from_type_str(cls, abi_type, registry): ...
+
+class SignedIntegerDecoderCached(SignedIntegerDecoder):
+    maxsize: Incomplete
+    decode: Incomplete
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class BytesDecoder(Fixed32ByteSizeDecoder[bytes]):
     is_big_endian: bool
