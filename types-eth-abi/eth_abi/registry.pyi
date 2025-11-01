@@ -209,4 +209,10 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
 
 registry: Incomplete
+is_int: Incomplete
+is_int8: Incomplete
+is_int16: Incomplete
+is_uint: Incomplete
+is_uint8: Incomplete
+is_uint16: Incomplete
 registry_packed: Incomplete

@@ -9,6 +9,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "!types-eth-abi/**"
   push:
     branches: [main, master]
     paths:
@@ -17,6 +18,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "!types-eth-abi/**"
   workflow_dispatch:
 
 concurrency:
@@ -31,8 +33,6 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-      # limit parallelism for cronjob, otherwise blast it
-      max-parallel: 10
     steps:
       - name: Checkout code and benchmarks
         uses: actions/checkout@v5

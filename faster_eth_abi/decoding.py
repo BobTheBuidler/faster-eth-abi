@@ -2,6 +2,7 @@ import abc
 import decimal
 from functools import (
     cached_property,
+    lru_cache,
 )
 from types import (
     MethodType,
@@ -11,6 +12,7 @@ from typing import (
     Callable,
     Final,
     Generic,
+    Optional,
     Tuple,
     TypeVar,
     Union,
@@ -349,7 +351,7 @@ class AddressDecoder(Fixed32ByteSizeDecoder[HexAddress]):
 # Unsigned Integer Decoders
 #
 class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
-    decoder_fn = staticmethod(big_endian_to_int)
+    decoder_fn: "staticmethod[[bytes], int]" = staticmethod(big_endian_to_int)
     is_big_endian = True
 
     @parse_type_str("uint")
@@ -358,6 +360,16 @@ class UnsignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
 
 
 decode_uint_256 = UnsignedIntegerDecoder(value_bit_size=256)
+
+
+class UnsignedIntegerDecoderCached(UnsignedIntegerDecoder):
+    decoder_fn: Callable[[bytes], int]
+    maxsize: Final[Optional[int]]
+
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize = maxsize
+        self.decoder_fn = lru_cache(maxsize=maxsize)(self.decoder_fn)
 
 
 #
@@ -398,6 +410,16 @@ class SignedIntegerDecoder(Fixed32ByteSizeDecoder[int]):
     @parse_type_str("int")
     def from_type_str(cls, abi_type, registry):
         return cls(value_bit_size=abi_type.sub)
+
+
+class SignedIntegerDecoderCached(SignedIntegerDecoder):
+    decoder_fn: Callable[[bytes], int]
+    maxsize: Final[Optional[int]]
+
+    def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        self.maxsize = maxsize
+        self.decoder_fn = lru_cache(maxsize=maxsize)(self.decoder_fn)
 
 
 #
