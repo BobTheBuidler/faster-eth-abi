@@ -70,6 +70,9 @@ jobs:
             - mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
             - mypy-cache-${{ runner.os }}-x64-
 
+      - name: Generate test data
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }}
+
       - name: Checkout len_1 test data
         uses: actions/checkout@v5
         with:
