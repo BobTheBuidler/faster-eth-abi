@@ -2,31 +2,30 @@
 
 This folder contains **automatically generated files** that help guarantee the type safety of this library's ABI decoding functions.
 
+- There are over **79 million test cases** generated to cover the vast number of possible combinations of ABI types and usage patterns. Only a small example subset is included in this repository; see below for how to generate the full suite.
+
+> **Note:**  
+> Only a small example subset of testdata files is included in this repository.  
+> To run the full typecheck suite, you must generate the complete set of testdata files using the provided script.  
+> See below for instructions.
+
 ## What does this mean for you?
 
-- These files are here to make sure that every possible way you can use the ABI decoding API is checked for type correctness.
+- Every possible way you can use the ABI decoding API is checked for type correctness—covering even rare or complex cases.
 - This means you get better autocomplete, more accurate type hints, and fewer surprises when using this library in your own code.
+- If you use an editor or IDE with type checking (like VSCode, PyCharm, or mypy), you'll get accurate feedback and fewer bugs.
 - You don't need to run or edit these files. They are not normal tests and are ignored by test runners like pytest.
 
-## Why so many files?
+## How to Run the Full Typecheck Suite
 
-- There are thousands of possible ways to use the ABI decoder, and we check every single one for type safety.
-- To keep things fast and reliable, the checks are split into many files.
-
-## How does this help you?
-
-- You can trust that the library's type hints are correct, even for rare or complex cases.
-- If you use an editor or IDE with type checking (like VSCode, PyCharm, or mypy), you'll get accurate feedback and fewer bugs.
-
-## Advanced: Regenerating the files
-
-If you are a developer working on the internals of this library, you can regenerate these files with:
+To generate the full set of testdata files and run the complete suite:
 ```bash
-python scripts/generate_typecheck_codec_overloads_yaml.py
+python scripts/generate_overload_tests.py --impl both
 ```
-This will update all the typecheck data files.
+This will regenerate all testdata files in the `abi/` and `codec/` subdirectories.
 
 ## More info
 
-- For technical details, see the generator script: [`scripts/generate_typecheck_codec_overloads_yaml.py`](../../scripts/generate_typecheck_codec_overloads_yaml.py)
+- For technical details, see the generator script: [`scripts/generate_overload_tests.py`](../../scripts/generate_overload_tests.py)
 - For CI details, see: [`.github/workflows/mypy.yaml`](../../.github/workflows/mypy.yaml)
+- For testdata management policy, see: [`tests/typecheck/.llm.md`](./.llm.md)
