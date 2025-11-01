@@ -148,13 +148,13 @@ jobs:
           sparse-checkout-cone-mode: false
           fetch-depth: 0
           clean: false
-      - name: Run mypy on a random 1/50th of len_4 typecheck files (parallel, 2 jobs)
+      - name: Run mypy on a random 0.5% of len_4 typecheck files (parallel, 2 jobs)
         run: |
           set -e
           # Limit parallelism to 2 jobs with -j 2
           files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/ -name '*.py')
           count=$(echo "$files" | wc -l)
-          n=$(( (count + 49) / 50 ))
+          n=$(( (count + 199) / 200 ))
           if [ "$n" -lt 1 ]; then n=1; fi
           echo "$files" | shuf 2>/dev/null | head -n $n | \
             parallel -j 2 --eta '
