@@ -73,7 +73,7 @@ jobs:
             print block "\n"
             block=""
           }
-          ' eth-abi-stubs/faster_eth_abi/codec.pyi >> eth-abi-stubs/eth_abi/abi.pyi
+          ' eth-abi-stubs/faster_eth_abi/codec.pyi >> eth-abi-stubs/faster_eth_abi/abi.pyi
 
       - name: Create py.typed
         run: touch eth-abi-stubs/faster_eth_abi/py.typed
