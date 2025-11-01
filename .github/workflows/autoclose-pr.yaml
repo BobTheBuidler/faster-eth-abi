@@ -1,0 +1,39 @@
+name: Autoclose Bot PRs
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  autoclose-stubgen:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event.pull_request.state == 'closed'
+    steps:
+      - name: Find open stubgen PR
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const triggerPR = context.payload.pull_request;
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: 'auto/update-stubs'
+            });
+            for (const pr of prs) {
+              if (pr.body && pr.body.includes(`Triggered by PR: #${triggerPR.number}`)) {
+                // Close the stubgen PR
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number,
+                  state: 'closed'
+                });
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: `Autoclosing this stubgen PR because the trigger PR #${triggerPR.number} was closed or merged.`
+                });
+              }
+            }
