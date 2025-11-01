@@ -111,7 +111,6 @@ jobs:
               exit $status
             ' 2>&1 | grep -v "cannot open /dev/tty" || true
           if [ $? -ne 0 ]; then exit 1; fi
-      - name: Cleanup len_3 test data
 
       - name: Run mypy on a random 0.5% of len_4 typecheck files (parallel, 2 jobs)
         run: |
