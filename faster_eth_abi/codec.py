@@ -1131,6 +1131,60 @@ class ABIDecoder(BaseABICoder):
     @overload
     def decode(
         self,
+        types: Tuple[StringTypeStr, AddressTypeStr, AddressTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, HexAddress]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, BytesTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, bytes]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, StringTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, str]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, DecodesToIntTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, int]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, BoolTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, bool]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, Any]:
+        ...
+
+    @overload
+    def decode(
+        self,
         types: Tuple[StringTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
@@ -1725,6 +1779,60 @@ class ABIDecoder(BaseABICoder):
     @overload
     def decode(
         self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, AddressTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, HexAddress]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, BytesTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, bytes]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, StringTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, str]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, DecodesToIntTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, int]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, BoolTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, bool]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[BoolTypeStr, AddressTypeStr, TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[bool, HexAddress, Any]:
+        ...
+
+    @overload
+    def decode(
+        self,
         types: Tuple[BoolTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
@@ -1993,6 +2101,60 @@ class ABIDecoder(BaseABICoder):
         ...
 
     # --- Fallbacks for len == 3 ---
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, AddressTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, HexAddress]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, BytesTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, bytes]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, StringTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, str]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, DecodesToIntTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, int]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, BoolTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, bool]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[TypeStr, AddressTypeStr, TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[Any, HexAddress, Any]:
+        ...
 
     @overload
     def decode(
