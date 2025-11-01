@@ -48,16 +48,28 @@
       "description": "Allow Renovate to update only the upper bound of mypy, keep lower bound at 1.14.1"
     },
     {
+      "fileMatch": ["setup.py"],
+      "matchStrings": [
+        "python_requires\\s*=\\s*\"[>=]*([0-9.]+)"
+      ],
+      "depNameTemplate": "python-minimum",
+      "currentValueTemplate": "{{{currentValue}}}",
+      "datasourceTemplate": "python",
+      "versioningTemplate": "python",
+      "extractVersionTemplate": "$1",
+      "description": "Extract minimum supported Python version from setup.py"
+    },
+    {
       "fileMatch": [".github/workflows/stubgen.yaml"],
       "matchStrings": [
         "python-version: '([0-9.]+)'"
       ],
-      "depNameTemplate": "python",
+      "depNameTemplate": "python-minimum",
       "currentValueTemplate": "'{{{currentValue}}}'",
       "datasourceTemplate": "python",
       "versioningTemplate": "python",
       "extractVersionTemplate": "\\1",
-      "description": "Ensure stubs are produced on the lowest supported Python version."
+      "description": "Ensure stubs are produced on the lowest supported Python version (synced from setup.py)."
     }
   ]
 }
