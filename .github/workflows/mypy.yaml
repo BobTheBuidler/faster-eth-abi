@@ -69,8 +69,8 @@ jobs:
           key: test-data-mypy-cache-${{ runner.os }}-x64-${{ matrix.impl }}-${{ matrix.suite }}
           # if not found, restore from the base .mypy_cache cache
           restore-keys: |
-            - mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
-            - mypy-cache-${{ runner.os }}-x64-
+            mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+            mypy-cache-${{ runner.os }}-x64-
 
       - name: Generate test data
         run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }}
@@ -89,7 +89,7 @@ jobs:
           set -o pipefail
           for file in $(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_1/ -name '*.py'); do
             start=$(date +%s.%N)
-            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
             status=$?
             end=$(date +%s.%N)
             duration=$(echo "$end - $start" | bc)
@@ -114,7 +114,7 @@ jobs:
           set -o pipefail
           for file in $(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_2/ -name '*.py'); do
             start=$(date +%s.%N)
-            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+            mypy --config-file=/dev/null --follow-imports=silent "$file" 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
             status=$?
             end=$(date +%s.%N)
             duration=$(echo "$end - $start" | bc)
@@ -137,7 +137,6 @@ jobs:
         run: |
           set -e
           set -o pipefail
-          # Limit parallelism to 2 jobs with -j 2
           files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/ -name '*.py')
           count=$(echo "$files" | wc -l)
           n=$(( (count + 9) / 10 ))
@@ -145,13 +144,13 @@ jobs:
           echo "$files" | shuf 2>/dev/null | head -n $n | \
             parallel -j 2 --eta '
               start=$(date +%s.%N)
-              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
               status=$?
               end=$(date +%s.%N)
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            ' 2>&1 | grep -v "cannot open /dev/tty"
+            ' 2>&1 | grep -v "cannot open /dev/tty" || true
           if [ $? -ne 0 ]; then exit 1; fi
       - name: Cleanup len_3 test data
         run: |
@@ -169,7 +168,6 @@ jobs:
         run: |
           set -e
           set -o pipefail
-          # Limit parallelism to 2 jobs with -j 2
           files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/ -name '*.py')
           count=$(echo "$files" | wc -l)
           n=$(( (count + 199) / 200 ))
@@ -177,13 +175,13 @@ jobs:
           echo "$files" | shuf 2>/dev/null | head -n $n | \
             parallel -j 2 --eta '
               start=$(date +%s.%N)
-              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file"
+              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
               status=$?
               end=$(date +%s.%N)
               duration=$(echo "$end - $start" | bc)
               echo "[MYPY-TIME] {} took ${duration}s"
               exit $status
-            ' 2>&1 | grep -v "cannot open /dev/tty"
+            ' 2>&1 | grep -v "cannot open /dev/tty" || true
           if [ $? -ne 0 ]; then exit 1; fi
       - name: Cleanup len_4 test data
         run: |
@@ -195,8 +193,3 @@ jobs:
         with:
           path: .mypy_cache
           key: test-data-mypy-cache-${{ runner.os }}-x64-${{ matrix.impl }}-${{ matrix.suite }}
-
-# Notes:
-# - Each len_X is checked out and checked separately, not as part of the matrix.
-# - To further batch len_4, add a batch dimension and list only the relevant files in sparse-checkout for each batch.
-# - This structure allows for highly granular, parallel, and minimal checkouts.
