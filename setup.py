@@ -144,8 +144,8 @@ setup(
             "scripts.*",
             "tests",
             "tests.*",
-            "types-eth-abi",
-            "types-eth-abi.*",
+            "eth-abi-stubs",
+            "eth-abi-stubs.*",
         ]
     ),
     ext_modules=ext_modules,

@@ -36,7 +36,7 @@ jobs:
             faster_eth_abi/
             requirements.txt
             setup.py
-            types-eth-abi/
+            eth-abi-stubs/
             scripts/stubgen/
             README.md
             requirements.txt
@@ -53,27 +53,60 @@ jobs:
         run: pip install black -r requirements-mypy.txt
 
       - name: Delete existing stubs
-        run: rm -rf types-eth-abi/eth_abi types-eth-abi/faster_eth_abi
+        run: rm -rf eth-abi-stubs/eth_abi eth-abi-stubs/faster_eth_abi
 
       - name: Generate stubs with stubgen
-        run: stubgen faster_eth_abi -o types-eth-abi --include-docstrings -v
+        run: stubgen faster_eth_abi -o eth-abi-stubs --include-docstrings -v
+
+      - name: Migrate encode/decode stubs from codec.pyi to abi.pyi
+        run: |
+          awk '
+          /^@overload/ {in_overload=1; block=""; block=block $0 "\n"; next}
+          /^def (encode|decode)\(/ {
+            in_func=1; block=block $0 "\n"; next
+          }
+          in_func && /^[ ]{4}/ {block=block $0 "\n"; next}
+          (in_func || in_overload) && !/^[ ]{4}/ {
+            in_func=0; in_overload=0;
+            gsub(/^ {4}/, "", block)
+            gsub(/\(self,? ?/, "(", block)
+            print block "\n"
+            block=""
+          }
+          ' eth-abi-stubs/faster_eth_abi/codec.pyi >> eth-abi-stubs/faster_eth_abi/abi.pyi
 
       - name: Create py.typed
-        run: touch types-eth-abi/faster_eth_abi/py.typed
+        run: touch eth-abi-stubs/faster_eth_abi/py.typed
 
       - name: Copy typing.py to typing.pyi
-        run: cp faster_eth_abi/typing.py types-eth-abi/faster_eth_abi/typing.pyi
+        run: cp faster_eth_abi/typing.py eth-abi-stubs/faster_eth_abi/typing.pyi
 
       - name: Run Black formatter
-        run: black types-eth-abi
+        run: black eth-abi-stubs
         
       - name: Duplicate stubs for eth_abi
         run: |
-          cp -r types-eth-abi/faster_eth_abi types-eth-abi/eth_abi
-          rm types-eth-abi/eth_abi/_codec.pyi
-          rm types-eth-abi/eth_abi/_decoding.pyi
-          rm types-eth-abi/eth_abi/_encoding.pyi
-          rm types-eth-abi/eth_abi/_grammar.pyi
+          cp -r eth-abi-stubs/faster_eth_abi eth-abi-stubs/eth_abi
+          rm eth-abi-stubs/eth_abi/_codec.pyi
+          rm eth-abi-stubs/eth_abi/_decoding.pyi
+          rm eth-abi-stubs/eth_abi/_encoding.pyi
+          rm eth-abi-stubs/eth_abi/_grammar.pyi
+
+      - name: Prepend stub-only docstring to eth_abi/typing.pyi
+        run: |
+          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
+          tmpfile=$(mktemp)
+          echo "$docstring" > $tmpfile
+          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
+          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
+
+      - name: Extract eth-abi version from requirements.txt and set stubs version
+        id: get_eth_abi_version
+        run: |
+          ETH_ABI_VERSION=$(grep '^eth-abi==' requirements.txt | head -n1 | cut -d'=' -f3)
+          DATE=$(date +%Y%m%d)
+          STUBS_VERSION="$ETH_ABI_VERSION.$DATE"
+          echo "STUBS_VERSION=$STUBS_VERSION" >> $GITHUB_ENV
 
       - name: Generate egg-info
         run: python setup.py egg_info
@@ -81,7 +114,6 @@ jobs:
       - name: Extract metadata from egg-info
         id: get_metadata
         run: |
-          VERSION=$(grep '^Version:' *.egg-info/PKG-INFO | head -n1 | awk '{print $2}')
           PYTHON_REQUIRES=$(grep '^Requires-Python:' *.egg-info/PKG-INFO | head -n1 | awk '{print $2}')
           URL=$(grep '^Home-page:' *.egg-info/PKG-INFO | head -n1 | cut -d' ' -f2-)
           LICENSE=$(grep '^License:' *.egg-info/PKG-INFO | head -n1 | cut -d' ' -f2-)
@@ -98,26 +130,25 @@ jobs:
           if [ -z "$KEYWORDS" ]; then
             KEYWORDS="ethereum"
           fi
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "PYTHON_REQUIRES=$PYTHON_REQUIRES" >> $GITHUB_ENV
           echo "URL=$URL" >> $GITHUB_ENV
           echo "LICENSE=$LICENSE" >> $GITHUB_ENV
           echo "KEYWORDS=$KEYWORDS" >> $GITHUB_ENV
 
-      - name: Create setup.py for types-eth-abi from template
+      - name: Create setup.py for eth-abi-stubs from template
         run: |
-          cp types-eth-abi/setup.template.py types-eth-abi/setup.py
-          sed -i "s/{{VERSION}}/$VERSION/g" types-eth-abi/setup.py
-          sed -i "s/{{PYTHON_REQUIRES}}/$PYTHON_REQUIRES/g" types-eth-abi/setup.py
-          sed -i "s|{{URL}}|$URL|g" types-eth-abi/setup.py
-          sed -i "s|{{LICENSE}}|$LICENSE|g" types-eth-abi/setup.py
-          sed -i "s|{{KEYWORDS}}|$KEYWORDS|g" types-eth-abi/setup.py
+          cp eth-abi-stubs/setup.template.py eth-abi-stubs/setup.py
+          sed -i "s/{{VERSION}}/$STUBS_VERSION/g" eth-abi-stubs/setup.py
+          sed -i "s/{{PYTHON_REQUIRES}}/$PYTHON_REQUIRES/g" eth-abi-stubs/setup.py
+          sed -i "s|{{URL}}|$URL|g" eth-abi-stubs/setup.py
+          sed -i "s|{{LICENSE}}|$LICENSE|g" eth-abi-stubs/setup.py
+          sed -i "s|{{KEYWORDS}}|$KEYWORDS|g" eth-abi-stubs/setup.py
 
       - name: Check for stubs changes
         id: stubs_diff
         run: |
           git fetch origin
-          git add types-eth-abi/
+          git add eth-abi-stubs/
           if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
@@ -131,5 +162,5 @@ jobs:
           branch: auto/update-stubs
           base: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           title: "chore(mypy): update type stubs [automated]"
-          body: "This PR updates `types-eth-abi` based on the latest implementation. Generated by GitHub Actions."
+          body: "This PR updates `eth-abi-stubs` based on the latest implementation. Generated by GitHub Actions."
           commit-message: "chore(mypy): update type stubs [automated]"
