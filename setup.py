@@ -13,7 +13,7 @@ from setuptools import (
 )
 
 REQUIREMENTS = []
-HYPOTHESIS_REQUIREMENT = "hypothesis>=6.22.0,<6.108.7"
+HYPOTHESIS_REQUIREMENT = "hypothesis>=6.142.5,<6.143.0"
 
 
 def parse_requirements(filename: str) -> List[str]:
