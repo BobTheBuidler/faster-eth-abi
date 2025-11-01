@@ -1131,6 +1131,60 @@ class ABIDecoder(BaseABICoder):
     @overload
     def decode(
         self,
+        types: Tuple[StringTypeStr, AddressTypeStr, AddressTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, HexAddress]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, BytesTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, bytes]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, StringTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, str]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, DecodesToIntTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, int]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, BoolTypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, bool]:
+        ...
+
+    @overload
+    def decode(
+        self,
+        types: Tuple[StringTypeStr, AddressTypeStr, TypeStr],
+        data: Decodable,
+        strict: bool = True,
+    ) -> Tuple[str, HexAddress, Any]:
+        ...
+
+    @overload
+    def decode(
+        self,
         types: Tuple[StringTypeStr, BytesTypeStr, AddressTypeStr],
         data: Decodable,
         strict: bool = True,
