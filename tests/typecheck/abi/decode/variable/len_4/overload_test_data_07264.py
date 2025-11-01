@@ -33,12 +33,12 @@ TUbo_s = T[U[bo, s], ...]
 TUby_i = T[U[by, i], ...]
 TUby_s = T[U[by, s], ...]
 TUi_s = T[U[i, s], ...]
-TUa_bo_by = "T[U[bo, by, HA], ...]"
-TUbo_by_i = "T[U[bo, by, i], ...]"
-TUbo_by_s = "T[U[bo, by, s], ...]"
-TUa_bo_i = "T[U[bo, i, HA], ...]"
-TUa_by_i = "T[U[by, i, HA], ...]"
-TUby_i_s = "T[U[by, i, s], ...]"
+TUa_bo_by = T[U[bo, by, HA], ...]
+TUbo_by_i = T[U[bo, by, i], ...]
+TUbo_by_s = T[U[bo, by, s], ...]
+TUa_bo_i = T[U[bo, i, HA], ...]
+TUa_by_i = T[U[by, i, HA], ...]
+TUby_i_s = T[U[by, i, s], ...]
 
 # the callable we are checking
 f = abi.decode
