@@ -995,13 +995,6 @@ class ABIDecoder(BaseABICoder):
     @overload
     def decode(
         self,
-        types: tuple[StringTypeStr, BoolTypeStr, AddressTypeStr],
-        data: Decodable,
-        strict: bool = True,
-    ) -> tuple[str, bool, HexAddress]: ...
-    @overload
-    def decode(
-        self,
         types: tuple[StringTypeStr, BoolTypeStr, BytesTypeStr],
         data: Decodable,
         strict: bool = True,
