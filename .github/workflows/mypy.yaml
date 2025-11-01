@@ -59,7 +59,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-mypy.txt
 
-      # (Optional: restore .mypy_cache here)
+      - name: Restore .mypy_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+          restore-keys: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
       - name: Checkout len_1 test data
         uses: actions/checkout@v5
