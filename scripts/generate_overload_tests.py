@@ -93,6 +93,28 @@ from faster_eth_abi.registry import ABIRegistry
 
 {TUPLE_ANY_ALIAS} = T[A, ...]
 
+THA = T[HA, ...]
+Tbo = T[bo, ...]
+Tby = T[by, ...]
+Ti = T[i, ...]
+Ts = T[s, ...]
+TUa_bo = T[U[HA, bo], ...]
+TUa_by = T[U[HA, by], ...]
+TUa_i = T[U[HA, i], ...]
+TUa_s = T[U[HA, s], ...]
+TUbo_by = T[U[bo, by], ...]
+TUbo_i = T[U[bo, i], ...]
+TUbo_s = T[U[bo, s], ...]
+TUby_i = T[U[by, i], ...]
+TUby_s = T[U[by, s], ...]
+TUi_s = T[U[i, s], ...]
+TUa_bo_by = "T[U[bo, by, HA], ...]"
+TUbo_by_i = "T[U[bo, by, i], ...]"
+TUbo_by_s = "T[U[bo, by, s], ...]"
+TUa_bo_i = "T[U[bo, i, HA], ...]"
+TUa_by_i = "T[U[by, i, HA], ...]"
+TUby_i_s = "T[U[by, i, s], ...]"
+
 decoder = ABIDecoder(ABIRegistry())
 
 # the callable we are checking
@@ -119,6 +141,30 @@ from faster_eth_abi import abi
 {BYTES_ALIAS} = bytes
 {INT_ALIAS} = int
 {STR_ALIAS} = str
+
+{TUPLE_ANY_ALIAS} = T[A, ...]
+
+THA = T[HA, ...]
+Tbo = T[bo, ...]
+Tby = T[by, ...]
+Ti = T[i, ...]
+Ts = T[s, ...]
+TUa_bo = T[U[HA, bo], ...]
+TUa_by = T[U[HA, by], ...]
+TUa_i = T[U[HA, i], ...]
+TUa_s = T[U[HA, s], ...]
+TUbo_by = T[U[bo, by], ...]
+TUbo_i = T[U[bo, i], ...]
+TUbo_s = T[U[bo, s], ...]
+TUby_i = T[U[by, i], ...]
+TUby_s = T[U[by, s], ...]
+TUi_s = T[U[i, s], ...]
+TUa_bo_by = "T[U[bo, by, HA], ...]"
+TUbo_by_i = "T[U[bo, by, i], ...]"
+TUbo_by_s = "T[U[bo, by, s], ...]"
+TUa_bo_i = "T[U[bo, i, HA], ...]"
+TUa_by_i = "T[U[by, i, HA], ...]"
+TUby_i_s = "T[U[by, i, s], ...]"
 
 # the callable we are checking
 {FUNC_ALIAS} = abi.decode
@@ -148,6 +194,33 @@ for i in range(1, 33):
     RETURN_TYPE_MAP[f"bytes{i}"] = BYTES_ALIAS
     RETURN_TYPE_MAP[f"bytes{i}[]"] = f"{TUPLE_ALIAS}[{BYTES_ALIAS}, ...]"
 
+VAR_TUPLE_ALIASES = {
+    # this shouldnt be needed but just in case
+    "T[A, ...]": TUPLE_ANY_ALIAS,
+    # single type
+    "T[HA, ...]": "THA",
+    "T[bo, ...]": "Tbo",
+    "T[by, ...]": "Tby",
+    "T[i, ...]": "Ti",
+    "T[s, ...]": "Ts",
+    # TODO: add some more later, this is good for now
+    "T[U[HA, bo], ...]": "TUa_bo",
+    "T[U[HA, by], ...]": "TUa_by",
+    "T[U[HA, i], ...]": "TUa_i",
+    "T[U[HA, s], ...]": "TUa_s",
+    "T[U[bo, by], ...]": "TUbo_by",
+    "T[U[bo, i], ...]": "TUbo_i",
+    "T[U[bo, s], ...]": "TUbo_s",
+    "T[U[by, i], ...]": "TUby_i",
+    "T[U[by, s], ...]": "TUby_s",
+    "T[U[i, str], ...]": "TUi_s",
+    "T[U[bo, by, HA], ...]": "TUa_bo_by",
+    "T[U[bo, by, i], ...]": "TUbo_by_i",
+    "T[U[bo, by, s], ...]": "TUbo_by_s",
+    "T[U[bo, i, HA], ...]": "TUa_bo_i",
+    "T[U[by, i, HA], ...]": "TUa_by_i",
+    "T[U[by, i, s], ...]": "TUby_i_s",
+}
 
 def build_alias_map() -> Dict[str, Any]:
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
@@ -257,11 +330,12 @@ def get_expected_type_iterable(types: Tuple[str, ...]) -> str:
     py_types = [ANY_ALIAS if t == "?" else RETURN_TYPE_MAP[t] for t in types]
     unique_types = sorted(set(py_types))
     if ANY_ALIAS in unique_types:
-        return TUPLE_ANY_ALIAS
+        expected = TUPLE_ANY_ALIAS
     elif len(unique_types) == 1:
-        return f"{TUPLE_ALIAS}[{unique_types[0]}, ...]"
+        expected = f"{TUPLE_ALIAS}[{unique_types[0]}, ...]"
     else:
-        return f"{TUPLE_ALIAS}[{UNION_ALIAS}[{', '.join(unique_types)}], ...]"
+        expected = f"{TUPLE_ALIAS}[{UNION_ALIAS}[{', '.join(unique_types)}], ...]"
+    return VAR_TUPLE_ALIASES.get(expected) or expected
 
 
 def compute_total_cases_sampled(max_len: int) -> int:
@@ -274,11 +348,11 @@ def compute_total_chunks(max_len: int) -> int:
 
 
 def stream_cases_and_write_files(
-    mode: Literal["tuple", "iterable"],
+    mode: Literal["var", "fixed"],
     impl: Literal["abi", "codec"],
 ) -> int:
-    FOLDER = "fixed" if mode == "tuple" else "variable"
-    MAX_LEN = MAX_LEN_FIXED if mode == "tuple" else MAX_LEN_VARIABLE
+    FOLDER = "fixed" if mode == "fixed" else "variable"
+    MAX_LEN = MAX_LEN_FIXED if mode == "fixed" else MAX_LEN_VARIABLE
 
     case_counter = 0
     with tqdm(
@@ -299,7 +373,7 @@ def stream_cases_and_write_files(
                 file_counter += 1
                 return case
 
-            if mode == "tuple":
+            if mode == "fixed":
 
                 def addline(case: Tuple[str, ...]) -> Iterator[str]:
                     typestr = (
@@ -355,9 +429,9 @@ def main():
     impls = ["codec", "abi"] if args.impl == "both" else [args.impl]
     for impl in impls:
         print(f"Streaming tuple-based test cases for {impl}...")
-        stream_cases_and_write_files(mode="tuple", impl=impl)
+        stream_cases_and_write_files(mode="fixed", impl=impl)
         print(f"Streaming iterable-based test cases for {impl}...")
-        stream_cases_and_write_files(mode="iterable", impl=impl)
+        stream_cases_and_write_files(mode="var", impl=impl)
 
     print("Test generation complete.")
 
