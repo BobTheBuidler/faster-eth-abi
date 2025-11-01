@@ -124,10 +124,20 @@ class UnsignedIntegerEncoder(NumberEncoder):
     type_check_fn: Incomplete
     def from_type_str(cls, abi_type, registry): ...
 
+class UnsignedIntegerEncoderCached(UnsignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[int | None]
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
+
 encode_uint_256: Incomplete
 
 class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
     def from_type_str(cls, abi_type, registry): ...
+
+class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[int | None]
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class SignedIntegerEncoder(NumberEncoder):
     bounds_fn: Incomplete
@@ -137,8 +147,18 @@ class SignedIntegerEncoder(NumberEncoder):
     __call__ = encode
     def from_type_str(cls, abi_type, registry): ...
 
+class SignedIntegerEncoderCached(SignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[int | None]
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
+
 class PackedSignedIntegerEncoder(SignedIntegerEncoder):
     def from_type_str(cls, abi_type, registry): ...
+
+class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
+    encode: Final[Callable[[int], bytes]]
+    maxsize: Final[int | None]
+    def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class BaseFixedEncoder(NumberEncoder):
     frac_places: Incomplete

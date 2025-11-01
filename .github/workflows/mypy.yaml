@@ -10,6 +10,7 @@ on:
       - "setup.py"
       - "pyproject.toml"
       - "tox.ini"
+      - "!types-eth-abi/**"
   pull_request:
     branches: [master, main]
     paths:
@@ -19,6 +20,7 @@ on:
       - "setup.py"
       - "pyproject.toml"
       - "tox.ini"
+      - "!types-eth-abi/**"
   workflow_dispatch:
 
 concurrency:

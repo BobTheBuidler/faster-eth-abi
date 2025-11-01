@@ -583,14 +583,35 @@ class ABIRegistry(Copyable, BaseRegistry):
 
 registry = ABIRegistry()
 
+is_int = BaseEquals("int")
+is_int8 = Equals("int8")
+is_int16 = Equals("int16")
+is_uint = BaseEquals("uint")
+is_uint8 = Equals("uint8")
+is_uint16 = Equals("uint16")
+
+for size in (8, 16):
+    registry.register(
+        Equals(f"uint{size}"),
+        encoding.UnsignedIntegerEncoder,
+        decoding.UnsignedIntegerDecoder,
+        label=f"uint{size}",
+    )
+    registry.register(
+        Equals(f"int{size}"),
+        encoding.SignedIntegerEncoder,
+        decoding.SignedIntegerDecoder,
+        label=f"int{size}",
+    )
+
 registry.register(
-    BaseEquals("uint"),
+    lambda s: is_uint(s) and not is_uint8(s) and not is_uint16(s),
     encoding.UnsignedIntegerEncoder,
     decoding.UnsignedIntegerDecoder,
     label="uint",
 )
 registry.register(
-    BaseEquals("int"),
+    lambda s: is_int(s) and not is_int8(s) and not is_int16(s),
     encoding.SignedIntegerEncoder,
     decoding.SignedIntegerDecoder,
     label="int",
@@ -658,13 +679,25 @@ registry.register(
 
 registry_packed = ABIRegistry()
 
+for size in (8, 16):
+    registry_packed.register_encoder(
+        Equals(f"uint{size}"),
+        encoding.PackedUnsignedIntegerEncoderCached,
+        label=f"uint{size}",
+    )
+    registry_packed.register_encoder(
+        Equals(f"int{size}"),
+        encoding.PackedSignedIntegerEncoderCached,
+        label=f"int{size}",
+    )
+
 registry_packed.register_encoder(
-    BaseEquals("uint"),
+    lambda s: is_uint(s) and not is_uint8(s) and not is_uint16(s),
     encoding.PackedUnsignedIntegerEncoder,
     label="uint",
 )
 registry_packed.register_encoder(
-    BaseEquals("int"),
+    lambda s: is_int(s) and not is_int8(s) and not is_int16(s),
     encoding.PackedSignedIntegerEncoder,
     label="int",
 )
