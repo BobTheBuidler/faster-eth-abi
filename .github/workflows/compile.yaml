@@ -25,6 +25,7 @@ jobs:
           # Check out the PR branch
           ref: ${{ github.head_ref }}
           sparse-checkout: |
+            build/
             faster_eth_abi/
             setup.py
             pyproject.toml
