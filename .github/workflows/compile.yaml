@@ -35,6 +35,7 @@ jobs:
             requirements-dev.txt
             requirements-mypy.txt
             requirements-test.txt
+            requirements-tools.txt
             requirements-pytest.txt
           sparse-checkout-cone-mode: false
 
