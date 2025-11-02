@@ -96,7 +96,7 @@ class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def validate_value(self, value: Any) -> None:  # pragma: no cover
+    def validate_value(self, value: Any) -> None:
         """
         Checks whether or not the given value can be encoded by this encoder.
         If the given value cannot be encoded, must raise
@@ -213,7 +213,7 @@ class FixedSizeEncoder(BaseEncoder):
         if value_bit_size > data_byte_size * 8:
             raise ValueError("Value byte size exceeds data size")
 
-    def validate_value(self, value):
+    def validate_value(self, value: Any) -> None:
         raise NotImplementedError("Must be implemented by subclasses")
 
     def encode(self, value: Any) -> bytes:
@@ -271,7 +271,7 @@ class NumberEncoder(Fixed32ByteSizeEncoder):
         if self.type_check_fn is None:
             raise ValueError("`type_check_fn` cannot be null")
 
-    def validate_value(self, value):
+    def validate_value(self, value: Any) -> None:
         type_check_fn = self.type_check_fn
         if type_check_fn is None:
             raise AssertionError("`type_check_fn` is None")
