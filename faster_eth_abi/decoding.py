@@ -122,9 +122,8 @@ class HeadTailDecoder(BaseDecoder[T]):
             "DynamicArrayDecoder[T]",
             "ByteStringDecoder[T]",
         ],
-        **kwargs: Any,
     ) -> None:
-        super().__init__(**kwargs)
+        super().__init__()
 
         if tail_decoder is None:
             raise ValueError("No `tail_decoder` set")
@@ -140,8 +139,8 @@ class HeadTailDecoder(BaseDecoder[T]):
 class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
     decoders: Tuple[BaseDecoder[T], ...] = ()
 
-    def __init__(self, decoders: Tuple[BaseDecoder[T], ...], **kwargs: Any) -> None:
-        super().__init__(**kwargs)
+    def __init__(self, decoders: Tuple[BaseDecoder[T], ...]) -> None:
+        super().__init__()
 
         self.decoders = decoders = tuple(
             HeadTailDecoder(tail_decoder=d) if getattr(d, "is_dynamic", False) else d
@@ -262,7 +261,7 @@ class BaseArrayDecoder(BaseDecoder[Tuple[T, ...]]):
 class SizedArrayDecoder(BaseArrayDecoder[T]):
     array_size: int = None
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_decoder.is_dynamic
@@ -289,7 +288,7 @@ class FixedByteSizeDecoder(SingleDecoder[T]):
     data_byte_size: int = None
     is_big_endian: bool = None
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         self.read_data_from_stream = MethodType(

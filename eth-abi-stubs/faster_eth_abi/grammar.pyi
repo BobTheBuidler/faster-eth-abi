@@ -31,7 +31,7 @@ class NodeVisitor(parsimonious.NodeVisitor):
     post-processing of parse trees.  Parsing operations are cached.
     """
 
-    parse: Incomplete
+    parse: Final[Incomplete]
     def __init__(self) -> None: ...
     grammar = grammar
     def visit_non_zero_tuple(self, node, visited_children): ...

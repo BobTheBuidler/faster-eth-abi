@@ -83,14 +83,29 @@ jobs:
         run: black eth-abi-stubs
 
       - name: Duplicate stubs for eth_abi
+        run: cp -r eth-abi-stubs/faster_eth_abi eth-abi-stubs/eth_abi
+
+      - name: Remove modules specific to faster-eth-abi
         run: |
-          cp -r eth-abi-stubs/faster_eth_abi eth-abi-stubs/eth_abi
           rm eth-abi-stubs/eth_abi/_codec.pyi
           rm eth-abi-stubs/eth_abi/_decoding.pyi
           rm eth-abi-stubs/eth_abi/_encoding.pyi
           rm eth-abi-stubs/eth_abi/_grammar.pyi
+          rm eth-abi-stubs/eth_abi/io.pyi
+
+      - name: Remove modules where definitions differ from eth-abi
+        run: |
+          rm eth-abi-stubs/eth_abi/exceptions.pyi
 
       - name: Prepend stub-only docstring to eth_abi/typing.pyi
+        run: |
+          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
+          tmpfile=$(mktemp)
+          echo "$docstring" > $tmpfile
+          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
+          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
+
+      - name: Prepend stub-only docstring to eth_abi/from_type_str.pyi
         run: |
           docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
           tmpfile=$(mktemp)

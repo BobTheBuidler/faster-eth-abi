@@ -18,6 +18,7 @@ from typing import (
     Type,
     TypeVar,
     Union,
+    cast,
     final,
 )
 
@@ -61,13 +62,13 @@ Decoder = Union[DecoderCallable, Type[decoding.BaseDecoder]]
 
 class Copyable(abc.ABC):
     @abc.abstractmethod
-    def copy(self):
+    def copy(self) -> Self:
         pass
 
-    def __copy__(self):
+    def __copy__(self) -> Self:
         return self.copy()
 
-    def __deepcopy__(self, *args):
+    def __deepcopy__(self, *args: Any) -> Self:
         return self.copy()
 
 
@@ -402,7 +403,7 @@ class BaseRegistry:
 
 
 class ABIRegistry(Copyable, BaseRegistry):
-    def __init__(self):
+    def __init__(self) -> None:
         self._encoders: PredicateMapping[Encoder] = PredicateMapping("encoder registry")
         self._decoders: PredicateMapping[Decoder] = PredicateMapping("decoder registry")
         self.get_encoder = functools.lru_cache(maxsize=None)(self._get_encoder_uncached)
@@ -414,13 +415,13 @@ class ABIRegistry(Copyable, BaseRegistry):
             self._get_tuple_decoder_uncached
         )
 
-    def _get_registration(self, mapping, type_str):
+    def _get_registration(self, mapping: PredicateMapping[T], type_str: TypeStr) -> T:
         coder = super()._get_registration(mapping, type_str)
 
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
             return coder.from_type_str(type_str, self)
 
-        return coder
+        return cast(T, coder)
 
     @_clear_encoder_cache
     def register_encoder(

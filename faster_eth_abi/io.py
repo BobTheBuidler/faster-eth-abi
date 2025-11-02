@@ -93,7 +93,7 @@ class ContextFramesBytesIO(BytesIO):
 
         self.seek_in_frame(0)
 
-    def pop_frame(self):
+    def pop_frame(self) -> None:
         """
         Pops the current contextual frame off of the stack and returns the
         cursor to the frame's return position.
