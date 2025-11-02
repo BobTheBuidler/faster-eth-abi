@@ -11,7 +11,7 @@ on:
       - 'pyproject.toml'
       - 'setup.py'
       - 'tox.ini'
-      - "!types-eth-abi/**"
+      - "!eth-abi-stubs/**"
   schedule:
     - cron: '0 11 * * *'
   workflow_dispatch:
