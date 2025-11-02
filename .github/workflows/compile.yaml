@@ -37,6 +37,8 @@ jobs:
             requirements-test.txt
             requirements-tools.txt
             requirements-pytest.txt
+            requirements-codspeed.txt
+            requirements-benchmark.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
