@@ -85,6 +85,7 @@ else:
             "faster_eth_abi/packed.py",
             "faster_eth_abi/tools",
             "faster_eth_abi/utils",
+            "--strict",
             "--pretty",
             "--install-types",
             # all of these are safe to disable long term
