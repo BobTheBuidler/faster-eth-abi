@@ -24,7 +24,7 @@ uints = {}
 for i in range(8, 257, 8):
     max_value = 2**i - 1
     test_data = {
-        *(2**x - 1 for x in range(1, i + 1)),  # a range of values to start
+        *(2**x - 1 for x in range(1, i + 1, 2)),  # a range of values to start
         0,  # zero
         1,  # one
         42,
