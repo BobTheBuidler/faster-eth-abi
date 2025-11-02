@@ -52,7 +52,7 @@ TYPE_ALIAS_RE: Final = re.compile(
 
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
-Subtype = Union[IntSubtype, FixedSubtype, Literal[None]]
+Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 
 
