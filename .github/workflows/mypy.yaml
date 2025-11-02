@@ -61,9 +61,9 @@ jobs:
             mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
             mypy-cache-${{ runner.os }}-x64-
 
-      - name: Generate test data
-        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }}
-
+      # Generate and check len_1
+      - name: Generate test data for len_1
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 1
       - name: Run mypy on all len_1 typecheck files (sequential)
         run: |
           set -e
@@ -78,6 +78,9 @@ jobs:
             if [ $status -ne 0 ]; then exit $status; fi
           done
 
+      # Generate and check len_2
+      - name: Generate test data for len_2
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 2
       - name: Run mypy on all len_2 typecheck files (sequential)
         run: |
           set -e
@@ -92,44 +95,42 @@ jobs:
             if [ $status -ne 0 ]; then exit $status; fi
           done
 
-      - name: Run mypy on a random 1/10th of len_3 typecheck files (parallel, 2 jobs)
+      # Generate and check len_3 (sample 1/10)
+      - name: Generate test data for len_3 (sample 1/10)
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 10
+      - name: Run mypy on all len_3 typecheck files (parallel, 2 jobs)
         run: |
           set -e
           set -o pipefail
           files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_3/ -name '*.py')
-          count=$(echo "$files" | wc -l)
-          n=$(( (count + 9) / 10 ))
-          if [ "$n" -lt 1 ]; then n=1; fi
-          echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --eta '
-              start=$(date +%s.%N)
-              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
-              status=$?
-              end=$(date +%s.%N)
-              duration=$(echo "$end - $start" | bc)
-              echo "[MYPY-TIME] {} took ${duration}s"
-              exit $status
-            ' 2>&1 | grep -v "cannot open /dev/tty" || true
+          echo "$files" | parallel -j 2 --eta '
+            start=$(date +%s.%N)
+            mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
+            status=$?
+            end=$(date +%s.%N)
+            duration=$(echo "$end - $start" | bc)
+            echo "[MYPY-TIME] {} took ${duration}s"
+            exit $status
+          ' 2>&1 | grep -v "cannot open /dev/tty" || true
           if [ $? -ne 0 ]; then exit 1; fi
 
-      - name: Run mypy on a random 0.5% of len_4 typecheck files (parallel, 2 jobs)
+      # Generate and check len_4 (sample 1/200)
+      - name: Generate test data for len_4 (sample 1/200)
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 200
+      - name: Run mypy on all len_4 typecheck files (parallel, 2 jobs)
         run: |
           set -e
           set -o pipefail
           files=$(find tests/typecheck/${{ matrix.impl }}/decode/${{ matrix.suite }}/len_4/ -name '*.py')
-          count=$(echo "$files" | wc -l)
-          n=$(( (count + 199) / 200 ))
-          if [ "$n" -lt 1 ]; then n=1; fi
-          echo "$files" | shuf 2>/dev/null | head -n $n | \
-            parallel -j 2 --eta '
-              start=$(date +%s.%N)
-              mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
-              status=$?
-              end=$(date +%s.%N)
-              duration=$(echo "$end - $start" | bc)
-              echo "[MYPY-TIME] {} took ${duration}s"
-              exit $status
-            ' 2>&1 | grep -v "cannot open /dev/tty" || true
+          echo "$files" | parallel -j 2 --eta '
+            start=$(date +%s.%N)
+            mypy --config-file=/dev/null --follow-imports=silent {} 2>&1 | grep -v "/dev/null: No \[mypy\] section in config file" || true
+            status=$?
+            end=$(date +%s.%N)
+            duration=$(echo "$end - $start" | bc)
+            echo "[MYPY-TIME] {} took ${duration}s"
+            exit $status
+          ' 2>&1 | grep -v "cannot open /dev/tty" || true
           if [ $? -ne 0 ]; then exit 1; fi
 
       - name: Save .mypy_cache (always, even on failure)

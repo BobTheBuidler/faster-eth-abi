@@ -2,7 +2,7 @@
 Script to generate Python typecheck test files for all possible ABI type string argument combinations.
 
 Usage:
-    python scripts/generate_overload_tests.py [--impl codec|abi|both]
+    python scripts/generate_overload_tests.py [--impl codec|abi|both] [--suite fixed|var|both] [--sample-1-of-x N] [--seed S] [--lengths L1,L2,...]
 
 This will overwrite test files in:
 - tests/typecheck/codec/decode/fixed/len_1/overload_test_data_*.py (tuple-based)
@@ -24,12 +24,19 @@ Key features:
 - Each chunk's lines are collected and written in a single operation for efficiency.
 - Covers: all int, uint, bytes, bool, string, arrays, and all possible combinations up to length 3, including fallback/unknown types in all permutations.
 - If you add new ABI type strings, rerun this script to update the test files.
+
+New options:
+- --suite: Restrict to 'fixed', 'var', or 'both' (default: both)
+- --sample-1-of-x N: Only generate a random 1/N of the chunk files for each length (default: 1, i.e., all files)
+- --seed S: Seed for random sampling (default: 42). Controls which chunk files are selected when sampling, for reproducibility.
+- --lengths L1,L2,...: Only generate test data for the specified lengths (e.g., --lengths 1,2,3)
 """
 
 import argparse
 import itertools
 import math
 import pathlib
+import random
 import re
 import sys
 from typing import (
@@ -38,6 +45,7 @@ from typing import (
     Final,
     ForwardRef,
     Iterator,
+    List,
     Literal,
     Set,
     Tuple,
@@ -222,6 +230,7 @@ VAR_TUPLE_ALIASES = {
     "T[U[by, i, s], ...]": "TUby_i_s",
 }
 
+
 def build_alias_map() -> Dict[str, Any]:
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
     import faster_eth_abi.typing
@@ -338,27 +347,37 @@ def get_expected_type_iterable(types: Tuple[str, ...]) -> str:
     return VAR_TUPLE_ALIASES.get(expected) or expected
 
 
-def compute_total_cases_sampled(max_len: int) -> int:
-    return sum(NUM_LITERALS**L for L in range(1, max_len + 1))
-
-
-def compute_total_chunks(max_len: int) -> int:
-    total_cases = compute_total_cases_sampled(max_len)
+def compute_total_chunks(L: int) -> int:
+    total_cases = NUM_LITERALS**L
     return math.ceil(total_cases / CHUNK_SIZE)
 
 
 def stream_cases_and_write_files(
     mode: Literal["var", "fixed"],
     impl: Literal["abi", "codec"],
+    sample_1_of_x: int = 1,
+    seed: int = 42,
+    lengths: List[int] = None,
 ) -> int:
     FOLDER = "fixed" if mode == "fixed" else "variable"
-    MAX_LEN = MAX_LEN_FIXED if mode == "fixed" else MAX_LEN_VARIABLE
+    if lengths is None:
+        MAX_LEN = MAX_LEN_FIXED if mode == "fixed" else MAX_LEN_VARIABLE
+        lengths = list(range(1, MAX_LEN + 1))
 
     case_counter = 0
-    with tqdm(
-        total=compute_total_chunks(MAX_LEN), desc=f"Streaming {mode} chunks for {impl}"
-    ) as progress:
-        for L in range(1, MAX_LEN + 1):
+
+    for L in lengths:
+        total_chunks = compute_total_chunks(L)
+        chunk_indices = list(range(1, total_chunks + 1))
+        if sample_1_of_x > 1:
+            random.seed(seed)
+            num_to_pick = max(1, total_chunks // sample_1_of_x)
+            chunk_indices = sorted(random.sample(chunk_indices, num_to_pick))
+
+        with tqdm(
+            total=len(chunk_indices),
+            desc=f"Streaming {mode} chunks for {impl} (len_{L})",
+        ) as progress:
             PATH_WITHOUT_NUMBER = (
                 f"tests/typecheck/{impl}/decode/{FOLDER}/len_{L}/{FILENAME_PREFIX}"
             )
@@ -399,14 +418,15 @@ def stream_cases_and_write_files(
 
             def write_file() -> None:
                 nonlocal chunk_idx
-                path = pathlib.Path(f"{PATH_WITHOUT_NUMBER}{chunk_idx:05d}.py")
-                path.parent.mkdir(parents=True, exist_ok=True)
-                with open(path, "w") as f:
-                    f.write(HEADER_ABI if impl == "abi" else HEADER_CODEC)
-                    f.writelines(chunk_lines)
+                if sample_1_of_x == 1 or chunk_idx in chunk_indices:
+                    path = pathlib.Path(f"{PATH_WITHOUT_NUMBER}{chunk_idx:05d}.py")
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    with open(path, "w") as f:
+                        f.write(HEADER_ABI if impl == "abi" else HEADER_CODEC)
+                        f.writelines(chunk_lines)
+                    progress.update(1)
                 chunk_idx += 1
                 chunk_lines.clear()
-                progress.update(1)
 
             for combo in itertools.product(ALL_LITERALS, repeat=L):
                 if file_counter and file_counter % CHUNK_SIZE == 0:
@@ -424,14 +444,48 @@ def stream_cases_and_write_files(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--impl", choices=["codec", "abi", "both"], default="both")
+    parser.add_argument(
+        "--suite",
+        choices=["fixed", "var", "both"],
+        default="both",
+        help="Restrict to 'fixed', 'var', or 'both' test suites",
+    )
+    parser.add_argument(
+        "--sample-1-of-x",
+        type=int,
+        default=1,
+        help="Only generate a random 1/N of the chunk files for each length (default: 1, i.e., all files)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Seed for random sampling (default: 42). Controls which chunk files are selected when sampling, for reproducibility.",
+    )
+    parser.add_argument(
+        "--lengths",
+        type=str,
+        help="Comma-separated list of lengths to generate (e.g., 1,2,3,4)",
+    )
     args = parser.parse_args()
 
     impls = ["codec", "abi"] if args.impl == "both" else [args.impl]
+    modes = ["fixed", "var"] if args.suite == "both" else [args.suite]
+    lengths = None
+    if args.lengths:
+        lengths = [int(x) for x in args.lengths.split(",") if x.strip()]
     for impl in impls:
-        print(f"Streaming tuple-based test cases for {impl}...")
-        stream_cases_and_write_files(mode="fixed", impl=impl)
-        print(f"Streaming iterable-based test cases for {impl}...")
-        stream_cases_and_write_files(mode="var", impl=impl)
+        for mode in modes:
+            print(
+                f"Streaming {'tuple' if mode == 'fixed' else 'iterable'}-based test cases for {impl}..."
+            )
+            stream_cases_and_write_files(
+                mode=mode,
+                impl=impl,
+                sample_1_of_x=args.sample_1_of_x,
+                seed=args.seed,
+                lengths=lengths,
+            )
 
     print("Test generation complete.")
 
