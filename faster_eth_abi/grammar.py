@@ -53,14 +53,14 @@ grammar: Final = parsimonious.Grammar(
 
 
 @final
-class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
+class NodeVisitor(parsimonious.NodeVisitor):
     """
     Parsimonious node visitor which performs both parsing of type strings and
     post-processing of parse trees.  Parsing operations are cached.
     """
 
-    def __init__(self):
-        self.parse = functools.lru_cache(maxsize=None)(self._parse_uncached)
+    def __init__(self) -> None:
+        self.parse: Final = functools.lru_cache(maxsize=None)(self._parse_uncached)
 
     grammar = grammar
 
@@ -122,7 +122,7 @@ class NodeVisitor(parsimonious.NodeVisitor):  # type: ignore [misc]
 
         return tuple(visited_children)
 
-    def _parse_uncached(self, type_str, **kwargs):
+    def _parse_uncached(self, type_str: TypeStr, **kwargs: Any) -> ABIType:
         """
         Parses a type string into an appropriate instance of
         :class:`~faster_eth_abi.grammar.ABIType`.  If a type string cannot be parsed,
