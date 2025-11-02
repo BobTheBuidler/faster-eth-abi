@@ -1,5 +1,6 @@
 # mypy: disable-error-code="overload-overlap"
-"""API for ABI encoding and decoding.
+"""
+API for ABI encoding and decoding.
 
 Defines the main encoder and decoder classes, providing methods for binary serialization
 and deserialization of values according to ABI type specifications.
@@ -880,15 +881,6 @@ class ABIDecoder(BaseABICoder):
         data: Decodable,
         strict: bool = True,
     ) -> Tuple[bytes, HexAddress, int]:
-        ...
-
-    @overload
-    def decode(
-        self,
-        types: Tuple[BytesTypeStr, AddressTypeStr, StringTypeStr],
-        data: Decodable,
-        strict: bool = True,
-    ) -> Tuple[bytes, HexAddress, str]:
         ...
 
     @overload
