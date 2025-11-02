@@ -1,3 +1,7 @@
+"""Generates Markdown summaries from pytest-benchmark diff JSON results.
+
+Reads a diff JSON file and writes Markdown tables summarizing benchmark results for each submodule and group.
+"""
 import json
 import os
 

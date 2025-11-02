@@ -1,3 +1,8 @@
+"""Private helpers for ABI type string grammar and parsing, intended for C compilation.
+
+This file exists because the original grammar.py is not ready to be fully compiled to C.
+This module contains functions and logic that we do wish to compile.
+"""
 import re
 from typing import (
     Any,
@@ -47,7 +52,7 @@ TYPE_ALIAS_RE: Final = re.compile(
 
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
-Subtype = Union[IntSubtype, FixedSubtype]
+Subtype = Union[IntSubtype, FixedSubtype, Literal[None]]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 
 

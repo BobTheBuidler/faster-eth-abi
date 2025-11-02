@@ -1,40 +1,27 @@
+"""Parsing and normalization logic for ABI type strings.
+
+Implements grammar, parsing, and type validation for ABI type strings.
+"""
 import functools
-import re
 from typing import (
-    Any,
     Final,
-    NoReturn,
-    Optional,
-    Sequence,
-    Tuple,
-    TypeVar,
     final,
 )
 
-from eth_typing import (
-    TypeStr,
-)
 import parsimonious
 from parsimonious import (
     expressions,
 )
-from parsimonious.nodes import (
-    Node,
-)
-from typing_extensions import (
-    Self,
-)
 
 from faster_eth_abi._grammar import (
-    TYPE_ALIASES,
     TYPE_ALIAS_RE,
+    TYPE_ALIASES,
     ABIType,
     BasicType,
     TupleType,
     normalize,
 )
 from faster_eth_abi.exceptions import (
-    ABITypeError,
     ParseError,
 )
 
@@ -167,4 +154,15 @@ visitor: Final = NodeVisitor()
 parse: Final = visitor.parse
 
 
-__all__ = ["NodeVisitor", "ABIType", "TupleType", "BasicType", "grammar", "parse", "normalize", "visitor", "TYPE_ALIASES", "TYPE_ALIAS_RE"]
+__all__ = [
+    "NodeVisitor",
+    "ABIType",
+    "TupleType",
+    "BasicType",
+    "grammar",
+    "parse",
+    "normalize",
+    "visitor",
+    "TYPE_ALIASES",
+    "TYPE_ALIAS_RE",
+]

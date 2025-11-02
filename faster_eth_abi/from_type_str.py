@@ -1,3 +1,7 @@
+"""Helpers for parsing and normalizing ABI type strings.
+
+Provides decorators and utilities for implementing from_type_str methods on coder classes.
+"""
 import functools
 from typing import (
     TYPE_CHECKING,

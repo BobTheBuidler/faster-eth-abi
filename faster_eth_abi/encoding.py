@@ -1,3 +1,8 @@
+"""Classes for ABI encoding logic.
+
+Implements classes and functions for serializing Python values into binary data
+according to ABI type specifications.
+"""
 import abc
 import codecs
 import decimal
@@ -301,7 +306,7 @@ class UnsignedIntegerEncoder(NumberEncoder):
 class UnsignedIntegerEncoderCached(UnsignedIntegerEncoder):
     encode: Final[Callable[[int], bytes]]
     maxsize: Final[Optional[int]]
-    
+
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.maxsize = maxsize
@@ -323,7 +328,7 @@ class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
 class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
     encode: Final[Callable[[int], bytes]]
     maxsize: Final[Optional[int]]
-    
+
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.maxsize = maxsize
@@ -351,7 +356,7 @@ class SignedIntegerEncoder(NumberEncoder):
 class SignedIntegerEncoderCached(SignedIntegerEncoder):
     encode: Final[Callable[[int], bytes]]
     maxsize: Final[Optional[int]]
-    
+
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.maxsize = maxsize
@@ -370,7 +375,7 @@ class PackedSignedIntegerEncoder(SignedIntegerEncoder):
 class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
     encode: Final[Callable[[int], bytes]]
     maxsize: Final[Optional[int]]
-    
+
     def __init__(self, maxsize: Optional[int] = None, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.maxsize = maxsize

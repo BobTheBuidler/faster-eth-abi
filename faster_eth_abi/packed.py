@@ -1,3 +1,7 @@
+"""Helpers for packed ABI encoding.
+
+Defines functions and registry for packed encoding and encodability checks.
+"""
 from typing import (
     Final,
 )

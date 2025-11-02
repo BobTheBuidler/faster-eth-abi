@@ -1,3 +1,7 @@
+"""Context-aware byte stream for ABI decoding.
+
+Implements a BytesIO subclass that supports contextual frame management for nested ABI decoding.
+"""
 from io import (
     BytesIO,
 )

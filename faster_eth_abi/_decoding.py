@@ -1,3 +1,8 @@
+"""Private helpers for decoding logic, intended for C compilation.
+
+This file exists because the original decoding.py is not ready to be fully compiled to C.
+This module contains functions and logic that we wish to compile.
+"""
 from typing import (
     TYPE_CHECKING,
     Any,

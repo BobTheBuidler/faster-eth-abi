@@ -1,4 +1,10 @@
 # mypy: disable-error-code="overload-overlap"
+"""API for ABI encoding and decoding.
+
+Defines the main encoder and decoder classes, providing methods for binary serialization
+and deserialization of values according to ABI type specifications.
+"""
+
 from typing import (
     Any,
     Iterable,
