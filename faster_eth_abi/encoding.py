@@ -711,7 +711,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
 class SizedArrayEncoder(BaseArrayEncoder):
     array_size = None
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_encoder.is_dynamic
