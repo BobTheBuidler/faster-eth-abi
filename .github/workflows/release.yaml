@@ -75,6 +75,16 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          sparse-checkout: |
+            build/
+            faster_eth_abi/
+            setup.py
+            pyproject.toml
+            README.md
+            requirements.txt
+            requirements-mypy.txt
+            requirements-dev.txt
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -123,6 +133,16 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          sparse-checkout: |
+            build/
+            faster_eth_abi/
+            setup.py
+            pyproject.toml
+            README.md
+            requirements.txt
+            requirements-mypy.txt
+            requirements-dev.txt
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
