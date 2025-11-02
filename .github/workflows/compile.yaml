@@ -24,6 +24,7 @@ jobs:
         with:
           # Check out the PR branch
           ref: ${{ github.head_ref }}
+          fetch-depth: 1
           sparse-checkout: |
             build/
             faster_eth_abi/
