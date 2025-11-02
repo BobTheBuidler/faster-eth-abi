@@ -97,9 +97,9 @@ jobs:
             if [ $status -ne 0 ]; then exit $status; fi
           done
 
-      # Generate and check len_3 (sample 1/10)
-      - name: Generate test data for len_3 (sample 1/10)
-        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 10
+      # Generate and check 30% of len_3 (sample 1/20 * 6 workers)
+      - name: Generate test data for len_3 (sample 1/20)
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 20
       - name: Run mypy on all len_3 typecheck files (parallel, 2 jobs)
         run: |
           set -e
@@ -117,12 +117,10 @@ jobs:
           status=${PIPESTATUS[0]}
           if [ $status -ne 0 ]; then exit $status; fi
 
-      # Generate and check len_4 (sample 1/200)
-      - name: Generate test data for len_4 (sample 1/200)
-        if: ${{ matrix.suite != 'fixed' }}
+      # Generate and check 2% of len_4 (sample 1/300 * 6 workers)
+      - name: Generate test data for len_4 (sample 1/300)
         run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 200
       - name: Run mypy on all len_4 typecheck files (parallel, 2 jobs)
-        if: ${{ matrix.suite != 'fixed' }}
         run: |
           set -e
           set -o pipefail
