@@ -76,6 +76,7 @@ jobs:
             benchmarks/
             setup.py
             requirements-codspeed.txt
+            requirements-pytest.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
@@ -123,6 +124,7 @@ jobs:
             setup.py
             requirements-benchmark.txt
             requirements-codspeed.txt
+            requirements-pytest.txt
 
       - name: Set up Python
         uses: actions/setup-python@v6
