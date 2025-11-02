@@ -9,7 +9,7 @@ on:
       - '!.github/workflows/compile.yaml'
       - 'benchmarks/**'
       - 'tests/**'
-      - "!types-eth-abi/**"
+      - "!eth-abi-stubs/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
