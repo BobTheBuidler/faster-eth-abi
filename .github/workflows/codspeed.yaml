@@ -34,19 +34,7 @@ jobs:
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     steps:
-      - name: Checkout code and benchmarks
-        uses: actions/checkout@v5
-        with:
-          sparse-checkout: |
-            faster_eth_abi/
-            benchmarks/
-            setup.py
-            pyproject.toml
-            README.md
-            requirements.txt
-            requirements-mypy.txt
-            requirements-dev.txt
-          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v5
 
       - name: Set up Python
         uses: actions/setup-python@v6
