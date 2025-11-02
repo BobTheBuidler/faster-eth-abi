@@ -1,0 +1,4 @@
+-r requirements-codspeed.txt
+
+pytest-benchmark
+eth-abi==5.2.0
