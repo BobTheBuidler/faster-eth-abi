@@ -71,6 +71,19 @@ else:
     if sys.version_info >= (3, 9):
         mypycify_kwargs["group_name"] = "faster_eth_abi"
 
+    flags = [
+        "--pretty",
+        "--install-types",
+        # all of these are safe to disable long term
+        "--disable-error-code=override",
+        "--disable-error-code=no-any-return",
+    ]
+
+    if sys.version_info[:1] != (3, 8):
+        # We only enable these on the lowest supported Python version
+        flags.append("--disable-error-code=redundant-cast")
+        flags.append("--disable-error-code=unused-ignore")
+        
     ext_modules = mypycify(
         [
             "faster_eth_abi/_codec.py",
@@ -85,12 +98,7 @@ else:
             "faster_eth_abi/packed.py",
             "faster_eth_abi/tools",
             "faster_eth_abi/utils",
-            "--pretty",
-            "--install-types",
-            # all of these are safe to disable long term
-            "--disable-error-code=override",
-            "--disable-error-code=unused-ignore",
-            "--disable-error-code=no-any-return",
+            *flags,
         ],
         **mypycify_kwargs,
     )

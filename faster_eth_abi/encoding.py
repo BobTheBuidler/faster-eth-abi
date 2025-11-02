@@ -433,7 +433,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value):
+    def encode_fn(self, value: decimal.Decimal) -> bytes:
         with decimal.localcontext(abi_decimal_context):
             scaled_value = value * self.denominator
             integer_value = int(scaled_value)
@@ -466,7 +466,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value):
+    def encode_fn(self, value: decimal.Decimal) -> bytes:
         with decimal.localcontext(abi_decimal_context):
             scaled_value = value * self.denominator
             integer_value = int(scaled_value)
@@ -475,7 +475,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
 
         return int_to_big_endian(unsigned_integer_value)
 
-    def encode(self, value):
+    def encode(self, value: decimal.Decimal) -> bytes:
         self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
@@ -544,7 +544,7 @@ class BytesEncoder(Fixed32ByteSizeEncoder):
             )
 
     @staticmethod
-    def encode_fn(value):
+    def encode_fn(value: bytes) -> bytes:
         return value
 
     @parse_type_str("bytes")
@@ -590,7 +590,7 @@ class PackedByteStringEncoder(ByteStringEncoder):
     is_dynamic = False
 
     @classmethod
-    def encode(cls, value):
+    def encode(cls, value: bytes) -> bytes:
         cls.validate_value(value)
         return value
 
@@ -711,7 +711,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
 class SizedArrayEncoder(BaseArrayEncoder):
     array_size = None
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
         self.is_dynamic = self.item_encoder.is_dynamic
