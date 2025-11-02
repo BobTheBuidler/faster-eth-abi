@@ -18,6 +18,7 @@ from typing import (
     Type,
     TypeVar,
     Union,
+    cast,
     final,
 )
 
@@ -420,7 +421,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         if isinstance(coder, type) and issubclass(coder, BaseCoder):
             return coder.from_type_str(type_str, self)
 
-        return coder
+        return cast(T, coder)
 
     @_clear_encoder_cache
     def register_encoder(
