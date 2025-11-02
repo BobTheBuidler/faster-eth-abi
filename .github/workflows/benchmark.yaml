@@ -57,7 +57,6 @@ jobs:
             pyproject.toml
             setup.py
             tox.ini
-          ccache: true
 
   codspeed-benchmark:
     needs: build-wheel
@@ -67,7 +66,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     steps:
       - name: Checkout code and benchmarks
         uses: actions/checkout@v5
@@ -103,7 +102,7 @@ jobs:
         with:
           mode: instrumentation
           run: |
-            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=20 benchmarks/
+            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=16 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
