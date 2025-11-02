@@ -2,12 +2,13 @@
 # cannot subclass `Any`
 
 """
+Exception classes for error handling during ABI encoding and decoding operations.
+
 faster-eth-abi exceptions always inherit from eth-abi exceptions, so porting to faster-eth-abi
 does not require any change to your existing exception handlers. They will continue to work.
 """
 
 import eth_abi.exceptions
-import parsimonious
 
 
 class EncodingError(eth_abi.exceptions.EncodingError):
@@ -110,7 +111,9 @@ class NoEntriesFound(PredicateMappingError, eth_abi.exceptions.NoEntriesFound):
     """
 
 
-class MultipleEntriesFound(PredicateMappingError, eth_abi.exceptions.MultipleEntriesFound):
+class MultipleEntriesFound(
+    PredicateMappingError, eth_abi.exceptions.MultipleEntriesFound
+):
     """
     Raised when multiple registrations are found for a type string in a
     registry's internal mapping.  This error is non-recoverable and indicates

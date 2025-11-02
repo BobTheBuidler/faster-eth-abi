@@ -1,3 +1,8 @@
+"""Private helpers for encoding logic, intended for C compilation.
+
+This file exists because the original encoding.py is not ready to be fully compiled to C.
+This module contains functions and logic that we do wish to compile.
+"""
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -80,7 +85,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
     validate_tuple(self, values)
     encoders = self.encoders
     tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
-    
+
     total_offset = 0
     head_length = 32 * len(encoders)
     head_chunks = [encode_uint_256(head_length)]
@@ -164,6 +169,7 @@ def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> by
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     return b"".join(encoders[i](values[i]) for i in range(10))
+
 
 encode_tuple_no_dynamic_funcs: Dict[
     int, Callable[["TupleEncoder", Sequence[Any]], bytes]

@@ -1,3 +1,8 @@
+"""Private helpers for ABI type string grammar and parsing, intended for C compilation.
+
+This file exists because the original grammar.py is not ready to be fully compiled to C.
+This module contains functions and logic that we do wish to compile.
+"""
 import re
 from typing import (
     Any,

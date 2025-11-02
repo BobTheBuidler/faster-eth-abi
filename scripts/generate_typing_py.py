@@ -1,4 +1,7 @@
-"""Autogenerates faster_eth_abi/typing.py with all int/uint Literal types and custom tuple types."""
+"""Script to autogenerate typing.py with all int/uint Literal types and custom tuple types.
+
+This script creates the typing definitions for ABI type strings, including all integer, bytes, and tuple variants.
+"""
 import itertools
 from pathlib import (
     Path,

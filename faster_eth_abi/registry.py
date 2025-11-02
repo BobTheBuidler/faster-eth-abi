@@ -1,3 +1,7 @@
+"""Registry and predicate logic for ABI encoders and decoders.
+
+Implements registration, lookup, and matching of encoders and decoders for ABI type strings.
+"""
 import abc
 from copy import (
     copy,
