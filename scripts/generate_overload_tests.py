@@ -353,7 +353,7 @@ def compute_total_chunks(L: int) -> int:
 
 
 def stream_cases_and_write_files(
-    mode: Literal["var", "fixed"],
+    mode: Literal["fixed", "variable"],
     impl: Literal["abi", "codec"],
     sample_1_of_x: int = 1,
     seed: int = 42,
@@ -446,7 +446,7 @@ def main():
     parser.add_argument("--impl", choices=["codec", "abi", "both"], default="both")
     parser.add_argument(
         "--suite",
-        choices=["fixed", "var", "both"],
+        choices=["fixed", "variable", "both"],
         default="both",
         help="Restrict to 'fixed', 'var', or 'both' test suites",
     )
@@ -470,7 +470,7 @@ def main():
     args = parser.parse_args()
 
     impls = ["codec", "abi"] if args.impl == "both" else [args.impl]
-    modes = ["fixed", "var"] if args.suite == "both" else [args.suite]
+    modes = ["fixed", "variable"] if args.suite == "both" else [args.suite]
     lengths = None
     if args.lengths:
         lengths = [int(x) for x in args.lengths.split(",") if x.strip()]
