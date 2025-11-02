@@ -79,22 +79,6 @@ jobs:
       - name: Copy typing.py to typing.pyi
         run: cp faster_eth_abi/typing.py eth-abi-stubs/faster_eth_abi/typing.pyi
 
-      - name: Prepend stub-only docstring to eth_abi/typing.pyi
-        run: |
-          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
-          tmpfile=$(mktemp)
-          echo "$docstring" > $tmpfile
-          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
-          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
-
-      - name: Prepend stub-only docstring to eth_abi/from_type_str.pyi
-        run: |
-          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
-          tmpfile=$(mktemp)
-          echo "$docstring" > $tmpfile
-          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
-          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
-
       - name: Run Black formatter
         run: black eth-abi-stubs
 
@@ -112,6 +96,22 @@ jobs:
       - name: Remove modules where definitions differ from eth-abi
         run: |
           rm eth-abi-stubs/eth_abi/exceptions.pyi
+
+      - name: Prepend stub-only docstring to eth_abi/typing.pyi
+        run: |
+          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
+          tmpfile=$(mktemp)
+          echo "$docstring" > $tmpfile
+          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
+          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
+
+      - name: Prepend stub-only docstring to eth_abi/from_type_str.pyi
+        run: |
+          docstring='"""This file exists in faster_eth_abi but not in eth_abi. It is present here only for type checking and is crucial for the stubs package to function. Do not expect eth_abi.typing to exist at runtime."""'
+          tmpfile=$(mktemp)
+          echo "$docstring" > $tmpfile
+          cat eth-abi-stubs/eth_abi/typing.pyi >> $tmpfile
+          mv $tmpfile eth-abi-stubs/eth_abi/typing.pyi
 
       - name: Extract eth-abi version from requirements.txt and set stubs version
         id: get_eth_abi_version
