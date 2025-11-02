@@ -659,7 +659,6 @@ class BaseArrayEncoder(BaseEncoder):
         self.validate_value(value)
         return encode_elements(self.item_encoder, value)
 
-    @final
     @parse_type_str(with_arrlist=True)
     def from_type_str(cls, abi_type, registry):
         item_encoder = registry.get_encoder(abi_type.item_type.to_type_str())
