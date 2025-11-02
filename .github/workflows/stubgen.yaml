@@ -145,7 +145,6 @@ jobs:
       - name: Check for stubs changes
         id: stubs_diff
         run: |
-          git fetch origin
           git add eth-abi-stubs/
           if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT

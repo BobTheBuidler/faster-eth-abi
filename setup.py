@@ -12,8 +12,7 @@ from setuptools import (
     setup,
 )
 
-REQUIREMENTS = []
-HYPOTHESIS_REQUIREMENT = "hypothesis>=6.22.0,<6.108.7"
+install_requires = []
 
 
 def parse_requirements(filename: str) -> List[str]:
@@ -27,14 +26,14 @@ def parse_requirements(filename: str) -> List[str]:
                 lines.extend(
                     line
                     for line in parse_requirements(line[2:].strip())
-                    if line not in REQUIREMENTS
+                    if line not in install_requires
                 )
             else:
                 lines.append(line.strip())
     return lines
 
 
-REQUIREMENTS.extend(parse_requirements("requirements.txt"))
+install_requires.extend(parse_requirements("requirements.txt"))
 
 extras_require = {
     "dev": parse_requirements("requirements-dev.txt"),
@@ -44,22 +43,10 @@ extras_require = {
         "sphinx_rtd_theme>=1.0.0",
         "towncrier>=24,<26",
     ],
-    "test": [
-        "pytest>=7.0.0",
-        "pytest-timeout>=2.0.0",
-        "pytest-xdist>=2.4.0",
-        "pytest-pythonpath>=0.7.1",
-        "eth-hash[pycryptodome]",
-        HYPOTHESIS_REQUIREMENT,
-    ],
-    "tools": [
-        HYPOTHESIS_REQUIREMENT,
-    ],
-    "codspeed": [
-        "pytest>=7.0.0",
-        "pytest-codspeed>=4.2,<4.3",
-        "pytest-test-groups",
-    ],
+    "test": parse_requirements("requirements-test.txt"),
+    "tools": parse_requirements("requirements-tools.txt"),
+    "codspeed": parse_requirements("requirements-codspeed.txt"),
+    "benchmark": parse_requirements("requirements-codspeed.txt"),
     "mypy": parse_requirements("requirements-mypy.txt"),
 }
 
@@ -130,7 +117,7 @@ setup(
         "Original": "https://github.com/ethereum/eth-abi",
     },
     include_package_data=True,
-    install_requires=REQUIREMENTS,
+    install_requires=install_requires,
     python_requires=">=3.8, <4",
     extras_require=extras_require,
     license="MIT",

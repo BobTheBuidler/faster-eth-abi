@@ -1,0 +1,7 @@
+-r requirements-pytest.txt
+-r requirements-tools.txt
+
+pytest-timeout>=2.0.0
+pytest-xdist>=2.4.0
+pytest-pythonpath>=0.7.1
+eth-hash[pycryptodome]
