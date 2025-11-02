@@ -32,8 +32,9 @@ jobs:
             pyproject.toml
             README.md
             requirements.txt
-            requirements-mypy.txt
             requirements-dev.txt
+            requirements-mypy.txt
+            requirements-test.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
