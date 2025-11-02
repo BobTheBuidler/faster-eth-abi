@@ -45,18 +45,6 @@ jobs:
     steps:
       - name: Checkout code and tests
         uses: actions/checkout@v5
-        with:
-          sparse-checkout: |
-            faster_eth_abi/
-            tests/core/
-            setup.py
-            pyproject.toml
-            tox.ini
-            README.md
-            requirements.txt
-            requirements-mypy.txt
-            requirements-dev.txt
-          sparse-checkout-cone-mode: false
 
       # Use i386/python Docker for all 32-bit Ubuntu jobs (TODO cache some of this)
       - name: Run job in 32-bit Ubuntu Docker container

@@ -31,18 +31,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-        with:
-          sparse-checkout: |
-            faster_eth_abi/
-            requirements.txt
-            setup.py
-            eth-abi-stubs/
-            scripts/stubgen/
-            README.md
-            requirements.txt
-            requirements-mypy.txt
-            requirements-dev.txt
-          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
