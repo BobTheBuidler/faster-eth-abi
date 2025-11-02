@@ -4,11 +4,15 @@ Implements grammar, parsing, and type validation for ABI type strings.
 """
 import functools
 from typing import (
+    Any,
     Final,
     final,
 )
 
 import parsimonious
+from eth_typing import (
+    TypeStr,
+)
 from parsimonious import (
     expressions,
 )
