@@ -9,7 +9,7 @@ on:
       - "benchmarks/**"
       - "pyproject.toml"
       - "setup.py"
-      - "!types-eth-abi/**"
+      - "!eth-abi-stubs/**"
   push:
     branches: [main, master]
     paths:
@@ -18,7 +18,7 @@ on:
       - "benchmarks/**"
       - "pyproject.toml"
       - "setup.py"
-      - "!types-eth-abi/**"
+      - "!eth-abi-stubs/**"
   workflow_dispatch:
 
 concurrency:
