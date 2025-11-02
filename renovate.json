@@ -5,6 +5,11 @@
   ],
   "packageRules": [
     {
+      "matchDepNames": ["hypothesis"],
+      "enabled": false,
+      "description": "Do not update hypothesis"
+    },
+    {
       "matchFileNames": [
         "pyproject.toml"
       ],
