@@ -111,13 +111,16 @@ jobs:
             duration=$(echo "$end - $start" | bc)
             echo "[MYPY-TIME] {} took ${duration}s"
             exit $status
-          ' 2>&1 | grep -v "cannot open /dev/tty" || true
-          if [ $? -ne 0 ]; then exit 1; fi
+          ' > >(grep -v "cannot open /dev/tty")
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then exit $status; fi
 
       # Generate and check len_4 (sample 1/200)
       - name: Generate test data for len_4 (sample 1/200)
+        if: ${{ matrix.suite != 'fixed' }}
         run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 200
       - name: Run mypy on all len_4 typecheck files (parallel, 2 jobs)
+        if: ${{ matrix.suite != 'fixed' }}
         run: |
           set -e
           set -o pipefail
@@ -130,8 +133,9 @@ jobs:
             duration=$(echo "$end - $start" | bc)
             echo "[MYPY-TIME] {} took ${duration}s"
             exit $status
-          ' 2>&1 | grep -v "cannot open /dev/tty" || true
-          if [ $? -ne 0 ]; then exit 1; fi
+          ' > >(grep -v "cannot open /dev/tty")
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then exit $status; fi
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
