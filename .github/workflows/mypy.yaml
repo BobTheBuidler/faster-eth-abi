@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-mypy.txt
+          pip install .[mypy]
 
       - name: Restore .mypy_cache
         uses: actions/cache/restore@v4
