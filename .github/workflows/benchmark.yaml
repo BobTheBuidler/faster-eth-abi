@@ -66,7 +66,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     steps:
       - name: Checkout benchmarks
         uses: actions/checkout@v5
@@ -108,7 +108,7 @@ jobs:
         with:
           mode: instrumentation
           run: |
-            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=16 benchmarks/
+            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=12 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
