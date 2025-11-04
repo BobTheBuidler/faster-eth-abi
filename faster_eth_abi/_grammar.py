@@ -55,7 +55,7 @@ IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
-
+ArrlistItem = Union[str, Tuple[str, ...]]
 
 @mypyc_attr(allow_interpreted_subclasses=True)
 class ABIType:
@@ -66,9 +66,19 @@ class ABIType:
     __slots__ = ("arrlist", "node")
 
     def __init__(
-        self, arrlist: Optional[Sequence[str]] = None, node: Optional[Node] = None
+        self,
+        arrlist: Optional[Sequence[ArrlistItem]] = None,
+        node: Optional[Node] = None
     ) -> None:
-        assert all(isinstance(x, (tuple, str)) for x in arrlist), arrlist
+
+        def check_item(item: Any) -> bool:
+            if isinstance(item, str):
+                return True
+            elif isinstance(item, tuple):
+                return all(map(check_item, item))
+            return False
+        
+        assert all(map(check_item, arrlist)), arrlist
         self.arrlist: Final = tuple(arrlist)
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
