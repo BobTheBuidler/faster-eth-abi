@@ -1,4 +1,5 @@
-"""Private helpers for ABI type string grammar and parsing, intended for C compilation.
+"""
+Private helpers for ABI type string grammar and parsing, intended for C compilation.
 
 This file exists because the original grammar.py is not ready to be fully compiled to C.
 This module contains functions and logic that we do wish to compile.
@@ -47,20 +48,22 @@ TYPE_ALIAS_RE: Final = re.compile(
 )
 
 
+Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
-Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 
 
 class ABIType:
     """
     Base class for results of type string parsing operations.
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     arrlist: Final[Optional[Arrlist]]
@@ -71,15 +74,7 @@ class ABIType:
     def __init__(
         self, arrlist: Optional[Arrlist] = None, node: Optional[Node] = None
     ) -> None:
-        def check_item(item: Any) -> bool:
-            if isinstance(item, int):
-                return True
-            elif isinstance(item, tuple):
-                return all(isinstance(x, int) for x in item)
-            return False
-
-        assert arrlist is None or all(map(check_item, arrlist)), arrlist
-        self.arrlist = None if arrlist is None else tuple(arrlist)
+        self.arrlist = arrlist
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
         type string has no array dimensions.
@@ -165,9 +160,11 @@ class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     __slots__ = ("components",)
@@ -226,9 +223,11 @@ class BasicType(ABIType, Generic[TSub]):
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     __slots__ = ("base", "sub")
