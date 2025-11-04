@@ -82,8 +82,13 @@ jobs:
             pyproject.toml
             README.md
             requirements.txt
-            requirements-mypy.txt
+            requirements-benchmark.txt
+            requirements-codspeed.txt
             requirements-dev.txt
+            requirements-mypy.txt
+            requirements-pytest.txt
+            requirements-test.txt
+            requirements-tools.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
@@ -140,8 +145,13 @@ jobs:
             pyproject.toml
             README.md
             requirements.txt
-            requirements-mypy.txt
+            requirements-benchmark.txt
+            requirements-codspeed.txt
             requirements-dev.txt
+            requirements-mypy.txt
+            requirements-pytest.txt
+            requirements-test.txt
+            requirements-tools.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
