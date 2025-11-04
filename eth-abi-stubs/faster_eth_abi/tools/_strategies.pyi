@@ -2,6 +2,7 @@ from _typeshed import Incomplete
 from eth_typing.abi import TypeStr as TypeStr
 from faster_eth_abi._grammar import (
     ABIType as ABIType,
+    Arrlist as Arrlist,
     BasicType as BasicType,
     TupleType as TupleType,
     normalize as normalize,
