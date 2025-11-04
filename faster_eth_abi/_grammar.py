@@ -170,8 +170,6 @@ class TupleType(ABIType):
         you will need to stick to the original `eth-abi`.
     """
 
-    components: Final[Tuple[TComp, ...]]
-
     __slots__ = ("components",)
 
     def __init__(
@@ -183,7 +181,7 @@ class TupleType(ABIType):
     ) -> None:
         super().__init__(arrlist, node)
 
-        self.components = components
+        self.components: Final = components
         """
         A tuple of :class:`~faster_eth_abi.grammar.ABIType` instances for each of the
         tuple type's components.
@@ -234,9 +232,6 @@ class BasicType(ABIType, Generic[TSub]):
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
     """
-
-    base: Final[str]
-    sub: Final[Optional[TSub]]
     
     __slots__ = ("base", "sub")
 
@@ -250,10 +245,10 @@ class BasicType(ABIType, Generic[TSub]):
     ) -> None:
         super().__init__(arrlist, node)
 
-        self.base = base
+        self.base: Final = base
         """The base of a basic type e.g. "uint" for "uint256" etc."""
 
-        self.sub = sub
+        self.sub: Final = sub
         """
         The sub type of a basic type e.g. ``256`` for "uint256" or ``(128, 18)``
         for "ufixed128x18" etc.  Equal to ``None`` if type string has no sub
