@@ -56,6 +56,10 @@ TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 class ABIType:
     """
     Base class for results of type string parsing operations.
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     __slots__ = ("arrlist", "node")
@@ -148,6 +152,10 @@ TComp = TypeVar("TComp", bound=ABIType)
 class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     __slots__ = ("components",)
@@ -207,6 +215,10 @@ class BasicType(ABIType, Generic[TSub]):
     """
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     __slots__ = ("base", "sub")
