@@ -1,4 +1,4 @@
-name: Generate Type Stubs
+name: Generate Stubs Package
 
 on:
   push:
@@ -172,7 +172,7 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: auto/update-stubs
+          branch: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}/stubgen
           base: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           title: "chore(mypy): update type stubs [automated]"
           body: |
@@ -181,14 +181,17 @@ jobs:
 
       - name: Comment on trigger PR with automation PR link
         if: github.event_name == 'pull_request' && steps.stubs_diff.outputs.changed == 'true'
+        env:
+          BRANCH_NAME: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}/stubgen
         uses: actions/github-script@v8
         with:
           script: |
             const triggerPR = context.payload.pull_request;
+            const branchName = process.env.BRANCH_NAME;
             const stubgenPR = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              head: 'auto/update-stubs',
+              head: branchName,
               state: 'open'
             });
             if (triggerPR && stubgenPR.data.length > 0) {
