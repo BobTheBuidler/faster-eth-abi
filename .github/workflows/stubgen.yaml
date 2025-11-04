@@ -193,10 +193,20 @@ jobs:
             });
             if (triggerPR && stubgenPR.data.length > 0) {
               const stubgenPRUrl = stubgenPR.data[0].html_url;
-              await github.rest.issues.createComment({
+              const commentBody = `Hi! I'm a helpful automation 🤖. I generated a PR to update stubs for your changes: ${stubgenPRUrl}\n\nPlease merge it to ensure your PR meets repo standards.`;
+              const comments = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: triggerPR.number,
-                body: `Hi! I'm a helpful automation 🤖. I generated a PR to update stubs for your changes: ${stubgenPRUrl}\n\nPlease merge it to ensure your PR meets repo standards.`
+                per_page: 100
               });
+              const alreadyExists = comments.data.some(c => c.body === commentBody);
+              if (!alreadyExists) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: triggerPR.number,
+                  body: commentBody
+                });
+              }
             }
