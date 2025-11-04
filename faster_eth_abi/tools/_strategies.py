@@ -19,6 +19,7 @@ from hypothesis import (
 
 from faster_eth_abi._grammar import (
     ABIType,
+    Arrlist,
     BasicType,
     TupleType,
     normalize,
@@ -154,7 +155,8 @@ def get_array_strategy(
     item_type_str = item_type.to_type_str()
     item_strategy = registry.get_strategy(item_type_str)
 
-    last_dim = abi_type.arrlist[-1]  # type: ignore [index]
+    arrlist = cast(Arrlist, abi_type.arrlist)
+    last_dim = cast(Tuple[int, ...], arrlist[-1])
     if len(last_dim) == 0:
         # Is dynamic list.  Don't restrict length.
         return st.lists(item_strategy)
