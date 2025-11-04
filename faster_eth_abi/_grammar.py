@@ -68,6 +68,7 @@ class ABIType:
     def __init__(
         self, arrlist: Optional[Sequence[str]] = None, node: Optional[Node] = None
     ) -> None:
+        assert all(isinstance(x, str) for x in arrlist), arrlist
         self.arrlist: Final = arrlist
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
