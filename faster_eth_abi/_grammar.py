@@ -53,6 +53,7 @@ Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 
+
 class ABIType:
     """
     Base class for results of type string parsing operations.
@@ -70,14 +71,13 @@ class ABIType:
     def __init__(
         self, arrlist: Optional[Arrlist] = None, node: Optional[Node] = None
     ) -> None:
-
         def check_item(item: Any) -> bool:
             if isinstance(item, int):
                 return True
             elif isinstance(item, tuple):
                 return all(isinstance(x, int) for x in item)
             return False
-        
+
         assert arrlist is None or all(map(check_item, arrlist)), arrlist
         self.arrlist = None if arrlist is None else tuple(arrlist)
         """
@@ -188,14 +188,12 @@ class TupleType(ABIType):
         """
 
     def to_type_str(self) -> TypeStr:
-        arrlist = self.arrlist
+        components = f"({','.join(c.to_type_str() for c in self.components)})"
 
-        if isinstance(arrlist, tuple):
-            arrlist = "".join(map(repr, map(list, arrlist)))
+        if isinstance(arrlist := self.arrlist, tuple):
+            return components + "".join(map(repr, map(list, arrlist)))
         else:
-            arrlist = ""
-
-        return f"({','.join(c.to_type_str() for c in self.components)}){arrlist}"
+            return components
 
     @property
     def item_type(self) -> Self:
@@ -232,7 +230,7 @@ class BasicType(ABIType, Generic[TSub]):
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
     """
-    
+
     __slots__ = ("base", "sub")
 
     def __init__(
