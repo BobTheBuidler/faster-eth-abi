@@ -62,6 +62,9 @@ class ABIType:
     Base class for results of type string parsing operations.
     """
 
+    arrlist: Final[Optional[Arrlist]]
+    node: Final[Optional[Node]]
+
     __slots__ = ("arrlist", "node")
 
     def __init__(
@@ -76,13 +79,13 @@ class ABIType:
             return False
         
         assert all(map(check_item, arrlist)), arrlist
-        self.arrlist: Final = tuple(arrlist)
+        self.arrlist = tuple(arrlist)
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
         type string has no array dimensions.
         """
 
-        self.node: Final = node
+        self.node = node
         """
         The parsimonious ``Node`` instance associated with this parsed type.
         Used to generate error messages for invalid types.
@@ -164,6 +167,8 @@ class TupleType(ABIType):
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
     """
 
+    components: Final[Tuple[TComp, ...]]
+
     __slots__ = ("components",)
 
     def __init__(
@@ -175,7 +180,7 @@ class TupleType(ABIType):
     ) -> None:
         super().__init__(arrlist, node)
 
-        self.components: Final = components
+        self.components = components
         """
         A tuple of :class:`~faster_eth_abi.grammar.ABIType` instances for each of the
         tuple type's components.
@@ -224,6 +229,9 @@ class BasicType(ABIType, Generic[TSub]):
     "ufixed128x19[][2]".
     """
 
+    base: Final[str]
+    sub: Final[Optional[TSub]]
+    
     __slots__ = ("base", "sub")
 
     def __init__(
@@ -236,10 +244,10 @@ class BasicType(ABIType, Generic[TSub]):
     ) -> None:
         super().__init__(arrlist, node)
 
-        self.base: Final = base
+        self.base = base
         """The base of a basic type e.g. "uint" for "uint256" etc."""
 
-        self.sub: Final = sub
+        self.sub = sub
         """
         The sub type of a basic type e.g. ``256`` for "uint256" or ``(128, 18)``
         for "ufixed128x18" etc.  Equal to ``None`` if type string has no sub
