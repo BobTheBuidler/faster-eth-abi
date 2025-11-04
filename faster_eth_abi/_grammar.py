@@ -12,7 +12,6 @@ from typing import (
     NewType,
     NoReturn,
     Optional,
-    Sequence,
     Tuple,
     TypeVar,
     Union,
@@ -52,7 +51,7 @@ IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
-ArrlistItem = Union[str, Tuple[str, ...]]
+Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 
 class ABIType:
     """
@@ -66,16 +65,14 @@ class ABIType:
     __slots__ = ("arrlist", "node")
 
     def __init__(
-        self,
-        arrlist: Optional[Sequence[ArrlistItem]] = None,
-        node: Optional[Node] = None
+        self, arrlist: Optional[Arrlist] = None, node: Optional[Node] = None
     ) -> None:
 
         def check_item(item: Any) -> bool:
-            if isinstance(item, str):
+            if isinstance(item, int):
                 return True
             elif isinstance(item, tuple):
-                return all(map(check_item, item))
+                return all(isinstance(x, int) for x in item)
             return False
         
         assert all(map(check_item, arrlist)), arrlist
@@ -175,7 +172,7 @@ class TupleType(ABIType):
     def __init__(
         self,
         components: Tuple[TComp, ...],
-        arrlist: Optional[Sequence[str]] = None,
+        arrlist: Optional[Arrlist] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
@@ -204,7 +201,7 @@ class TupleType(ABIType):
                 f"Cannot determine item type for non-array type '{self.to_type_str()}'"
             )
 
-        arrlist = cast(Sequence[str], self.arrlist)[:-1] or None
+        arrlist = cast(Arrlist, self.arrlist)[:-1] or None
         cls = type(self)
         if cls is TupleType:
             return cast(Self, TupleType(self.components, arrlist, node=self.node))
@@ -239,7 +236,7 @@ class BasicType(ABIType, Generic[TSub]):
         self,
         base: str,
         sub: Optional[TSub] = None,
-        arrlist: Optional[Sequence] = None,
+        arrlist: Optional[Arrlist] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
@@ -278,7 +275,7 @@ class BasicType(ABIType, Generic[TSub]):
             )
 
         cls = type(self)
-        arrlist = cast(Sequence[str], self.arrlist)[:-1] or None
+        arrlist = cast(Arrlist, self.arrlist)[:-1] or None
         if cls is BasicType:
             return cast(Self, BasicType(self.base, self.sub, arrlist, node=self.node))
         else:
