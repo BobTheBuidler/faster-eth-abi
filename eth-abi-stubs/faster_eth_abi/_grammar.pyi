@@ -7,19 +7,21 @@ from typing_extensions import Self
 
 TYPE_ALIASES: Final[Incomplete]
 TYPE_ALIAS_RE: Final[Incomplete]
+Arrlist = tuple[int | tuple[int, ...], ...]
 IntSubtype: Incomplete
 FixedSubtype: Incomplete
 Subtype = IntSubtype | FixedSubtype
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
-Arrlist = tuple[int | tuple[int, ...], ...]
 
 class ABIType:
     """
     Base class for results of type string parsing operations.
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     arrlist: Final[Arrlist | None]
@@ -73,9 +75,11 @@ class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     components: Final[Incomplete]
@@ -98,9 +102,11 @@ class BasicType(ABIType, Generic[TSub]):
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     base: Final[Incomplete]
