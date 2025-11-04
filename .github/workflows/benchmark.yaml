@@ -31,10 +31,6 @@ on:
           - codspeed
           - comparison
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build-wheel:
     name: Build wheel for Python3.14
@@ -147,6 +143,22 @@ jobs:
 
       - name: Remove source package to force use of installed C extensions
         run: rm -rf faster_eth_abi
+
+      - name: Exit early if newer workflow run exists (keyed by concurrency group)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          # Use the same key as the concurrency group: ${{ github.workflow }}-${{ github.ref }}
+          # List all in-progress runs for this workflow and ref
+          runs=$(gh api repos/${{ github.repository }}/actions/workflows/${{ github.workflow_ref##*/ }}/runs \
+            -F status=in_progress \
+            --jq '.workflow_runs | map(select(.id != '${{ github.run_id }}' and .head_branch == "'${GITHUB_REF#refs/heads/}'" and .head_sha != "'${GITHUB_SHA}'" and .status == "in_progress" and .conclusion == null and .head_repository.full_name == "'${GITHUB_REPOSITORY}'"))')
+          # If any run has a higher id (newer), exit early
+          if [ "$(echo "$runs" | jq '[.[] | select(.id > '${{ github.run_id }}')] | length')" -gt 0 ]; then
+            echo "A newer workflow run is in progress for the same concurrency group. Exiting early."
+            exit 0
+          fi
 
       - name: Run Pytest Benchmark & Save Output
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
