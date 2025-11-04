@@ -16,6 +16,7 @@ from typing import (
     Tuple,
     TypeVar,
     Union,
+    cast,
     final,
 )
 
@@ -189,10 +190,10 @@ class TupleType(ABIType):
                 f"Cannot determine item type for non-array type '{self.to_type_str()}'"
             )
 
-        arrlist = self.arrlist[:-1] or None  # type: ignore [index]
+        arrlist = cast(Sequence[str], self.arrlist)[:-1] or None
         cls = type(self)
         if cls is TupleType:
-            return TupleType(self.components, arrlist, node=self.node)  # type: ignore [return-value]
+            return cast(Self, TupleType(self.components, arrlist, node=self.node))
         else:
             return cls(self.components, arrlist, node=self.node)
 
@@ -260,9 +261,9 @@ class BasicType(ABIType, Generic[TSub]):
             )
 
         cls = type(self)
-        arrlist = self.arrlist[:-1] or None  # type: ignore [index]
+        arrlist = cast(Sequence[str], self.arrlist)[:-1] or None
         if cls is BasicType:
-            return BasicType(self.base, self.sub, arrlist, node=self.node)  # type: ignore [return-value]
+            return cast(Self, BasicType(self.base, self.sub, arrlist, node=self.node))
         else:
             return cls(self.base, self.sub, arrlist, node=self.node)
 
