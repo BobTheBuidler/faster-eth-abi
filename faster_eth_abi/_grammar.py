@@ -22,9 +22,6 @@ from typing import (
 from eth_typing.abi import (
     TypeStr,
 )
-from mypy_extensions import (
-    mypyc_attr,
-)
 from parsimonious.nodes import (
     Node,
 )
@@ -56,10 +53,13 @@ Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class ABIType:
     """
     Base class for results of type string parsing operations.
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     arrlist: Final[Optional[Arrlist]]
@@ -161,10 +161,13 @@ class ABIType:
 TComp = TypeVar("TComp", bound=ABIType)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     components: Final[Tuple[TComp, ...]]
@@ -222,11 +225,14 @@ class TupleType(ABIType):
         return any(c.is_dynamic for c in self.components)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class BasicType(ABIType, Generic[TSub]):
     """
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
+
+    Notes:
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
     """
 
     base: Final[str]
