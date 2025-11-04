@@ -172,7 +172,7 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}-stubgen
+          branch: auto/stubgen/${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           base: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           title: "chore(mypy): update type stubs [automated]"
           body: |
@@ -182,7 +182,7 @@ jobs:
       - name: Comment on trigger PR with automation PR link
         if: github.event_name == 'pull_request' && steps.stubs_diff.outputs.changed == 'true'
         env:
-          BRANCH_NAME: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}-stubgen
+          BRANCH_NAME: auto/stubgen/${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
         uses: actions/github-script@v8
         with:
           script: |
