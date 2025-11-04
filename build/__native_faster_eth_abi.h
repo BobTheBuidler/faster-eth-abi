@@ -70,6 +70,23 @@ typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
+    PyObject *_check_item;
+    PyObject *_self;
+    PyObject *_arrlist;
+    PyObject *_node;
+} faster_eth_abi____grammar_____init___3_ABIType_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} faster_eth_abi____grammar___check_item___3_init___3_ABIType_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
     PyObject *_expected_base;
     char _with_arrlist;
     char _None;

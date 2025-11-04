@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[407];
+extern PyObject *CPyStatics[409];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -162,6 +162,16 @@ extern PyTypeObject *CPyType__grammar___TupleType;
 extern PyObject *CPyDef__grammar___TupleType(PyObject *cpy_r_components, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
 extern PyTypeObject *CPyType__grammar___BasicType;
 extern PyObject *CPyDef__grammar___BasicType(PyObject *cpy_r_base, PyObject *cpy_r_sub, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
+extern PyTypeObject *CPyType__grammar_____init___3_ABIType_env;
+extern PyObject *CPyDef__grammar_____init___3_ABIType_env(void);
+extern CPyThreadLocal faster_eth_abi____grammar_____init___3_ABIType_envObject *_grammar_____init___3_ABIType_env_free_instance;
+extern PyTypeObject *CPyType__grammar___check_item___3_init___3_ABIType_obj;
+extern PyObject *CPyDef__grammar___check_item___3_init___3_ABIType_obj(void);
+extern CPyThreadLocal faster_eth_abi____grammar___check_item___3_init___3_ABIType_objObject *_grammar___check_item___3_init___3_ABIType_obj_free_instance;
+extern PyObject *CPyDef__grammar___check_item___3_init___3_ABIType_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy__grammar___check_item___3_init___3_ABIType_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__grammar___check_item___3_init___3_ABIType_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_item);
+extern PyObject *CPyPy__grammar___check_item___3_init___3_ABIType_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__grammar___ABIType_____init__(PyObject *cpy_r_self, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
 extern PyObject *CPyPy__grammar___ABIType_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern char CPyDef__grammar___ABIType_____init___3__ABIType_glue(PyObject *cpy_r_self, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
