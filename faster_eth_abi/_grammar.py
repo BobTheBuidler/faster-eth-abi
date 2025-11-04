@@ -79,7 +79,7 @@ class ABIType:
             return False
         
         assert arrlist is None or all(map(check_item, arrlist)), arrlist
-        self.arrlist = tuple(arrlist)
+        self.arrlist = None if arrlist is None else tuple(arrlist)
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
         type string has no array dimensions.
