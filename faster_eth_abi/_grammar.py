@@ -56,7 +56,6 @@ Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class ABIType:
     """
     Base class for results of type string parsing operations.
@@ -149,7 +148,6 @@ class ABIType:
 TComp = TypeVar("TComp", bound=ABIType)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
@@ -208,7 +206,6 @@ class TupleType(ABIType):
         return any(c.is_dynamic for c in self.components)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class BasicType(ABIType, Generic[TSub]):
     """
     Represents the result of parsing a basic type string e.g. "uint", "address",
