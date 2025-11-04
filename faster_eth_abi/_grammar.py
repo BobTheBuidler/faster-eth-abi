@@ -78,7 +78,7 @@ class ABIType:
                 return all(isinstance(x, int) for x in item)
             return False
         
-        assert all(map(check_item, arrlist)), arrlist
+        assert arrlist is None or all(map(check_item, arrlist)), arrlist
         self.arrlist = tuple(arrlist)
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
