@@ -144,13 +144,25 @@ jobs:
       - name: Remove source package to force use of installed C extensions
         run: rm -rf faster_eth_abi
 
+      - name: Debug GitHub CLI and API access
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          echo "Testing gh CLI version:"
+          gh --version || echo "gh CLI not found"
+          echo "Testing gh API access to repo:"
+          gh api repos/${GITHUB_REPOSITORY} || echo "gh api repo failed"
+          echo "Testing gh API access to workflow runs:"
+          gh api repos/${GITHUB_REPOSITORY}/actions/runs || echo "gh api actions/runs failed"
+
       - name: Exit early if newer workflow run exists (same branch only)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          # List all in-progress runs for this branch
-          runs=$(gh api repos/${{ github.repository }}/actions/runs \
+          # List all in-progress runs for this branch (algorithmic repo)
+          runs=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs \
             -F branch=${GITHUB_REF#refs/heads/} \
             -F status=in_progress \
             --jq '.workflow_runs | map(select(.id != '${{ github.run_id }}' && .status == "in_progress" && .conclusion == null))')
