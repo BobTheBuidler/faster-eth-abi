@@ -22,9 +22,6 @@ from typing import (
 from eth_typing.abi import (
     TypeStr,
 )
-from mypy_extensions import (
-    mypyc_attr,
-)
 from parsimonious.nodes import (
     Node,
 )
