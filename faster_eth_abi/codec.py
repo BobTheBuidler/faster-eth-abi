@@ -103,7 +103,6 @@ class ABIEncoder(BaseABICoder):
         except MultipleEntriesFound:
             raise
         except Exception:
-            raise
             return False
 
         validate = getattr(encoder, "validate_value", encoder)
