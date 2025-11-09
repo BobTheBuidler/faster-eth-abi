@@ -36,6 +36,7 @@ jobs:
                   body: `Autoclosing this stubgen PR because the trigger PR #${triggerPR.number} was closed or merged.`
                 });
               }
+            }
 
       - name: Hide stubgen comment on trigger PR as outdated
         uses: actions/github-script@v8
