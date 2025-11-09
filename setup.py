@@ -79,7 +79,7 @@ else:
         "--disable-error-code=no-any-return",
     ]
 
-    if sys.version_info < (3, 9):
+    if sys.version_info >= (3, 9):
         # We only enable these on the lowest supported Python version
         flags.append("--disable-error-code=redundant-cast")
         flags.append("--disable-error-code=unused-ignore")
