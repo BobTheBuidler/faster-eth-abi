@@ -564,7 +564,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         strict: bool = True,
     ) -> decoding.TupleDecoder:
         decoders = tuple(
-            self.get_decoder(type_str, strict)  # type: ignore [misc]
+            self.get_decoder(type_str, strict)
             for type_str in type_strs
         )
         return decoding.TupleDecoder(decoders=decoders)
