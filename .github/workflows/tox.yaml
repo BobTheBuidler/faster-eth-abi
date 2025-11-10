@@ -36,6 +36,10 @@ jobs:
           # Exclude x86 (32-bit) builds for macos, which doesn't support 32-bit at all
           - os: macos-latest
             architecture: x86
+        exclude:
+          # If these tests work for x64 builds, x86 builds will work fine
+          - installmode: sdist
+          - architecture: x86
       # limit parallelism for cronjob, otherwise blast it
       max-parallel: ${{ github.event_name == 'schedule' && 4 || 1000 }}
     env:
