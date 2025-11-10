@@ -81,6 +81,7 @@ jobs:
             setup.py
             pyproject.toml
             README.md
+            MANIFEST.in
             requirements.txt
             requirements-benchmark.txt
             requirements-codspeed.txt
@@ -144,6 +145,7 @@ jobs:
             setup.py
             pyproject.toml
             README.md
+            MANIFEST.in
             requirements.txt
             requirements-benchmark.txt
             requirements-codspeed.txt
