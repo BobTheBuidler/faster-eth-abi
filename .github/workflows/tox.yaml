@@ -139,6 +139,10 @@ jobs:
           key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.architecture }}-${{ matrix.jobtype }}
           save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
+      - name: Remove Python files so wheel will be used
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
+        run: rm -r faster_eth_abi
+        
       - name: Run tox
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }} --installpkg=$(find dist -name '*.whl' -print -quit)
