@@ -146,6 +146,7 @@ jobs:
       - name: Run tox
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }} --installpkg=$(find dist -name '*.whl' -print -quit)
+        shell: bash
 
   lint:
     name: Lint (${{ matrix.python-version }}, ${{ matrix.os }})
