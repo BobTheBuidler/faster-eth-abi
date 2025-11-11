@@ -113,7 +113,7 @@ jobs:
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.mypycify.outputs.artifact-name }}
+          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}-${{ matrix.installmode }}
           path: dist
 
       - name: Upgrade pip and install tox
