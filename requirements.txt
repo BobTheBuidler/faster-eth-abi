@@ -1,5 +1,5 @@
 cchecksum>=0.2.6,<0.4
-faster-eth-utils==5.3.18
+faster-eth-utils==5.3.19
 eth-abi==5.2.0
 eth-typing==5.2.1
 mypy_extensions
