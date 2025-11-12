@@ -96,7 +96,7 @@ jobs:
       - name: Build wheel with mypycify
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         id: mypycify
-        uses: BobTheBuidler/mypycify@v0.2.0
+        uses: BobTheBuidler/mypycify@v0.2.2
         with:
           python-version: ${{ matrix.python-version }}
           hash-key: |
