@@ -58,13 +58,32 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
-    for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
-        if is_dynamic:
-            raw_head_chunks.append(None)
-            tail_chunks.append(encoder(value))
-        else:
-            raw_head_chunks.append(encoder(value))
-            tail_chunks.append(b"")
+    
+    # we can make more optimized C code if we split this block by `values` type
+    if isinstance(values, tuple):
+        for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
+            if is_dynamic:
+                raw_head_chunks.append(None)
+                tail_chunks.append(encoder(value))
+            else:
+                raw_head_chunks.append(encoder(value))
+                tail_chunks.append(b"")
+    elif isinstance(values, list):
+        for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
+            if is_dynamic:
+                raw_head_chunks.append(None)
+                tail_chunks.append(encoder(value))
+            else:
+                raw_head_chunks.append(encoder(value))
+                tail_chunks.append(b"")
+    else:
+        for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
+            if is_dynamic:
+                raw_head_chunks.append(None)
+                tail_chunks.append(encoder(value))
+            else:
+                raw_head_chunks.append(encoder(value))
+                tail_chunks.append(b"")
 
     head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = [0]
@@ -84,7 +103,14 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
 def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
-    tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+    elif isinstance(values, list):
+        tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+    else:
+        tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
 
     total_offset = 0
     head_length = 32 * len(encoders)
@@ -99,76 +125,153 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
 def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
 
 
 def encode_tuple_no_dynamic1(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders: Tuple["BaseEncoder"] = self.encoders
-    return encoders[0](values[0])
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return encoders[0](values[0])
+    elif isinstance(values, list):
+        return encoders[0](values[0])
+    else:
+        return encoders[0](values[0])
 
 
 def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder"] = self.encoders
-    return encoders[0](values[0]) + encoders[1](values[1])
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return encoders[0](values[0]) + encoders[1](values[1])
+    elif isinstance(values, list):
+        return encoders[0](values[0]) + encoders[1](values[1])
+    else:
+        return encoders[0](values[0]) + encoders[1](values[1])
 
 
 def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(3))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(3))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(3))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(3))
 
 
 def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(4))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(4))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(4))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(4))
 
 
 def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(5))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(5))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(5))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(5))
 
 
 def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(6))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(6))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(6))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(6))
 
 
 def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(7))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(7))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(7))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(7))
 
 
 def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(8))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(8))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(8))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(8))
 
 
 def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(9))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(9))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(9))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(9))
 
 
 def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
-    return b"".join(encoders[i](values[i]) for i in range(10))
+    
+    # we can make more optimized C code if we split this line by `values` type
+    if isinstance(values, tuple):
+        return b"".join(encoders[i](values[i]) for i in range(10))
+    elif isinstance(values, list):
+        return b"".join(encoders[i](values[i]) for i in range(10))
+    else:
+        return b"".join(encoders[i](values[i]) for i in range(10))
 
 
 encode_tuple_no_dynamic_funcs: Dict[
