@@ -2,11 +2,12 @@ from _typeshed import Incomplete
 from eth_typing.abi import TypeStr as TypeStr
 from faster_eth_abi.exceptions import ABITypeError as ABITypeError
 from parsimonious.nodes import Node as Node
-from typing import Any, Final, Generic, Literal, NoReturn, Sequence, TypeVar, final
+from typing import Any, Final, Generic, Literal, NoReturn, TypeVar, final
 from typing_extensions import Self
 
 TYPE_ALIASES: Final[Incomplete]
 TYPE_ALIAS_RE: Final[Incomplete]
+Arrlist = tuple[int | tuple[int, ...], ...]
 IntSubtype: Incomplete
 FixedSubtype: Incomplete
 Subtype = IntSubtype | FixedSubtype
@@ -16,15 +17,17 @@ class ABIType:
     """
     Base class for results of type string parsing operations.
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
-    arrlist: Final[Incomplete]
-    node: Final[Incomplete]
+    arrlist: Final[Arrlist | None]
+    node: Final[Node | None]
     def __init__(
-        self, arrlist: Sequence[str] | None = None, node: Node | None = None
+        self, arrlist: Arrlist | None = None, node: Node | None = None
     ) -> None: ...
     def __eq__(self, other: Any) -> bool: ...
     def to_type_str(self) -> TypeStr:
@@ -72,16 +75,18 @@ class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     components: Final[Incomplete]
     def __init__(
         self,
         components: tuple[TComp, ...],
-        arrlist: Sequence[str] | None = None,
+        arrlist: Arrlist | None = None,
         *,
         node: Node | None = None
     ) -> None: ...
@@ -97,9 +102,11 @@ class BasicType(ABIType, Generic[TSub]):
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
 
-    Notes:
+    Notes
+    -----
         Users are unable to subclass this class. If your use case requires subclassing,
         you will need to stick to the original `eth-abi`.
+
     """
 
     base: Final[Incomplete]
@@ -108,7 +115,7 @@ class BasicType(ABIType, Generic[TSub]):
         self,
         base: str,
         sub: TSub | None = None,
-        arrlist: Sequence | None = None,
+        arrlist: Arrlist | None = None,
         *,
         node: Node | None = None
     ) -> None: ...

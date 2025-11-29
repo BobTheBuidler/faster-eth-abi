@@ -38,7 +38,7 @@ jobs:
     outputs:
       artifact-name: ${{ steps.mypycify.outputs.artifact-name }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Build wheel with mypycify
         id: mypycify
         uses: BobTheBuidler/mypycify@master
@@ -62,10 +62,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
           sparse-checkout: |
@@ -104,7 +104,7 @@ jobs:
         with:
           mode: instrumentation
           run: |
-            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=16 benchmarks/
+            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=10 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
@@ -113,7 +113,7 @@ jobs:
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'comparison' }}
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           sparse-checkout: |
             benchmarks/
