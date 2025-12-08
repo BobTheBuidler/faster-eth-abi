@@ -73,7 +73,7 @@ else:
 
     flags = ["--pretty", "--install-types"]
 
-    if sys.version_info[:1] != (3, 8):
+    if sys.version_info >= (3, 9):
         # We only enable these on the lowest supported Python version
         # because if it isn't redundant there, it isn't redundant.
         flags.append("--disable-error-code=redundant-cast")
@@ -102,7 +102,7 @@ else:
 setup(
     name="faster_eth_abi",
     # *IMPORTANT*: Don't manually change the version here. See Contributing docs for the release process.
-    version="5.2.16",
+    version="5.2.22",
     description="""A ~2-6x faster fork of eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding. Implemented in C.""",
     long_description=long_description,
     long_description_content_type="text/markdown",
