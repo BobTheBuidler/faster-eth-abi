@@ -51,6 +51,7 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs,
     int_to_big_endian,
+    validate_fixed,
     validate_tuple,
 )
 from faster_eth_abi.base import (
@@ -407,17 +408,7 @@ class BaseFixedEncoder(NumberEncoder):
 
     def validate_value(self, value):
         super().validate_value(value)
-
-        with decimal.localcontext(abi_decimal_context):
-            residue = value % self.precision
-
-        if residue > 0:
-            self.invalidate_value(
-                value,
-                exc=IllegalValue,
-                msg=f"residue {residue!r} outside allowed fractional precision of "
-                f"{self.frac_places}",
-            )
+        validate_fixed(self, value)
 
     def validate(self) -> None:
         super().validate()
