@@ -42,7 +42,7 @@ if TYPE_CHECKING:
         SignedIntegerDecoder,
         SizedArrayDecoder,
         TupleDecoder,
-        UnignedFixedDecoder,
+        UnsignedFixedDecoder,
     )
 
 
