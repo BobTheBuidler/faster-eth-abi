@@ -24,7 +24,7 @@ from faster_eth_abi.io import (
 from faster_eth_abi.typing import T as T
 from faster_eth_abi.utils.numeric import (
     abi_decimal_context as abi_decimal_context,
-    ceil as ceil,
+    ceil32 as ceil32,
 )
 from typing import Final
 
