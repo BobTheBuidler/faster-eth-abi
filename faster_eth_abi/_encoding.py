@@ -25,6 +25,7 @@ from faster_eth_abi.exceptions import (
     ValueOutOfBounds,
 )
 from faster_eth_abi.utils.numeric import (
+    abi_decimal_context,
     ceil32,
 )
 from faster_eth_abi.utils.padding import (
