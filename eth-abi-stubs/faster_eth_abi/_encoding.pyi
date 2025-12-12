@@ -1,13 +1,23 @@
+import decimal
+from _typeshed import Incomplete
 from faster_eth_abi.encoding import (
     BaseEncoder as BaseEncoder,
+    BaseFixedEncoder as BaseFixedEncoder,
     TupleEncoder as TupleEncoder,
 )
-from faster_eth_abi.exceptions import ValueOutOfBounds as ValueOutOfBounds
-from faster_eth_abi.utils.numeric import ceil32 as ceil32
+from faster_eth_abi.exceptions import (
+    IllegalValue as IllegalValue,
+    ValueOutOfBounds as ValueOutOfBounds,
+)
+from faster_eth_abi.utils.numeric import (
+    abi_decimal_context as abi_decimal_context,
+    ceil32 as ceil32,
+)
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
-from typing import Any, Callable, Sequence, TypeVar
+from typing import Any, Callable, Final, Sequence, TypeVar
 
 T = TypeVar("T")
+DECIMAL_CONTEXT: Final[Incomplete]
 
 def validate_tuple(self, value: Sequence[Any]) -> None: ...
 def encode_tuple(self, values: Sequence[Any]) -> bytes: ...
@@ -26,6 +36,7 @@ def encode_tuple_no_dynamic10(self, values: Sequence[Any]) -> bytes: ...
 
 encode_tuple_no_dynamic_funcs: dict[int, Callable[[TupleEncoder, Sequence[Any]], bytes]]
 
+def validate_fixed(self, value: decimal.Decimal) -> None: ...
 def encode_fixed(
     value: Any,
     encode_fn: Callable[[Any], bytes],
