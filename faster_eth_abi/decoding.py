@@ -42,10 +42,13 @@ from typing_extensions import (
 from faster_eth_abi._decoding import (
     decode_dynamic_array,
     decode_head_tail,
+    decode_signed_fixed,
     decode_sized_array,
     decode_tuple,
+    decode_unsigned_fixed,
     decoder_fn_boolean,
     get_value_byte_size,
+    read_bytestring_from_stream,
     read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
@@ -71,8 +74,6 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
-    ceil32,
 )
 
 if TYPE_CHECKING:
@@ -474,12 +475,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder[decimal.Decimal]):
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
-        value = big_endian_to_int(data)
-
-        with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / self.denominator
-
-        return decimal_value
+        return decode_unsigned_fixed(self, data)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
@@ -510,14 +506,7 @@ class SignedFixedDecoder(BaseFixedDecoder):
         return b"\xff" * padding_size
 
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
-        value = big_endian_to_int(data)
-        if value >= self.neg_threshold:
-            value -= self.neg_offset
-
-        with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / self.denominator
-
-        return decimal_value
+        return decode_signed_fixed(self, data)
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         if value >= 0:
@@ -548,24 +537,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
         return data
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        data_length = decode_uint_256(stream)
-        padded_length = ceil32(data_length)
-
-        data = stream.read(padded_length)
-
-        if self.strict:
-            if len(data) < padded_length:
-                raise InsufficientDataBytes(
-                    f"Tried to read {padded_length} bytes, only got {len(data)} bytes"
-                )
-
-            padding_bytes = data[data_length:]
-            if padding_bytes != b"\x00" * (padded_length - data_length):
-                raise NonEmptyPaddingBytes(
-                    f"Padding bytes were not empty: {padding_bytes!r}"
-                )
-
-        return data[:data_length]
+        return read_bytestring_from_stream(self, stream)
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         pass

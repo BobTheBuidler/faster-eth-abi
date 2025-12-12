@@ -31,10 +31,6 @@ on:
           - codspeed
           - comparison
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build-wheel:
     name: Build wheel for Python3.14
@@ -42,7 +38,7 @@ jobs:
     outputs:
       artifact-name: ${{ steps.mypycify.outputs.artifact-name }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Build wheel with mypycify
         id: mypycify
         uses: BobTheBuidler/mypycify@master
@@ -66,10 +62,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
           sparse-checkout: |
@@ -108,7 +104,7 @@ jobs:
         with:
           mode: instrumentation
           run: |
-            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=16 benchmarks/
+            pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=10 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
@@ -117,10 +113,11 @@ jobs:
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'comparison' }}
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           sparse-checkout: |
             benchmarks/
+            scripts/
             setup.py
             requirements-benchmark.txt
             requirements-codspeed.txt
@@ -147,6 +144,34 @@ jobs:
 
       - name: Remove source package to force use of installed C extensions
         run: rm -rf faster_eth_abi
+
+      - name: Debug GitHub CLI and API access
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          echo "Testing gh CLI version:"
+          gh --version || echo "gh CLI not found"
+          echo "Testing gh API access to repo:"
+          gh api repos/${GITHUB_REPOSITORY} || echo "gh api repo failed"
+          echo "Testing gh API access to workflow runs:"
+          gh api repos/${GITHUB_REPOSITORY}/actions/runs || echo "gh api actions/runs failed"
+
+      - name: Exit early if newer workflow run exists (same branch only)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          # List all in-progress runs for this branch (algorithmic repo)
+          runs=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs \
+            -F branch=${GITHUB_REF#refs/heads/} \
+            -F status=in_progress \
+            --jq '.workflow_runs | map(select(.id != '${{ github.run_id }}' && .status == "in_progress" && .conclusion == null))')
+          # If any run has a higher id (newer), exit early
+          if [ "$(echo "$runs" | jq '[.[] | select(.id > '${{ github.run_id }}')] | length')" -gt 0 ]; then
+            echo "A newer workflow run is in progress for this branch. Exiting early."
+            exit 0
+          fi
 
       - name: Run Pytest Benchmark & Save Output
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/

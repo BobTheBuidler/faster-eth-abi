@@ -1,4 +1,5 @@
-"""Private helpers for ABI type string grammar and parsing, intended for C compilation.
+"""
+Private helpers for ABI type string grammar and parsing, intended for C compilation.
 
 This file exists because the original grammar.py is not ready to be fully compiled to C.
 This module contains functions and logic that we do wish to compile.
@@ -12,18 +13,15 @@ from typing import (
     NewType,
     NoReturn,
     Optional,
-    Sequence,
     Tuple,
     TypeVar,
     Union,
+    cast,
     final,
 )
 
 from eth_typing.abi import (
     TypeStr,
-)
-from mypy_extensions import (
-    mypyc_attr,
 )
 from parsimonious.nodes import (
     Node,
@@ -50,30 +48,39 @@ TYPE_ALIAS_RE: Final = re.compile(
 )
 
 
+Arrlist = Tuple[Union[int, Tuple[int, ...]], ...]
 IntSubtype = NewType("IntSubtype", int)
 FixedSubtype = NewType("FixedSubtype", Tuple[int, int])
 Subtype = Union[IntSubtype, FixedSubtype]
 TSub = TypeVar("TSub", IntSubtype, FixedSubtype, Literal[None])
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class ABIType:
     """
     Base class for results of type string parsing operations.
+
+    Notes
+    -----
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
+
     """
+
+    arrlist: Final[Optional[Arrlist]]
+    node: Final[Optional[Node]]
 
     __slots__ = ("arrlist", "node")
 
     def __init__(
-        self, arrlist: Optional[Sequence[str]] = None, node: Optional[Node] = None
+        self, arrlist: Optional[Arrlist] = None, node: Optional[Node] = None
     ) -> None:
-        self.arrlist: Final = arrlist
+        self.arrlist = arrlist
         """
         The list of array dimensions for a parsed type.  Equal to ``None`` if
         type string has no array dimensions.
         """
 
-        self.node: Final = node
+        self.node = node
         """
         The parsimonious ``Node`` instance associated with this parsed type.
         Used to generate error messages for invalid types.
@@ -149,10 +156,15 @@ class ABIType:
 TComp = TypeVar("TComp", bound=ABIType)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class TupleType(ABIType):
     """
     Represents the result of parsing a tuple type string e.g. "(int,bool)".
+
+    Notes
+    -----
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
+
     """
 
     __slots__ = ("components",)
@@ -160,7 +172,7 @@ class TupleType(ABIType):
     def __init__(
         self,
         components: Tuple[TComp, ...],
-        arrlist: Optional[Sequence[str]] = None,
+        arrlist: Optional[Arrlist] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
@@ -173,14 +185,12 @@ class TupleType(ABIType):
         """
 
     def to_type_str(self) -> TypeStr:
-        arrlist = self.arrlist
+        components = f"({','.join(c.to_type_str() for c in self.components)})"
 
-        if isinstance(arrlist, tuple):
-            arrlist = "".join(map(repr, map(list, arrlist)))
+        if isinstance(arrlist := self.arrlist, tuple):
+            return components + "".join(map(repr, map(list, arrlist)))
         else:
-            arrlist = ""
-
-        return f"({','.join(c.to_type_str() for c in self.components)}){arrlist}"
+            return components
 
     @property
     def item_type(self) -> Self:
@@ -189,10 +199,10 @@ class TupleType(ABIType):
                 f"Cannot determine item type for non-array type '{self.to_type_str()}'"
             )
 
-        arrlist = self.arrlist[:-1] or None  # type: ignore [index]
+        arrlist = cast(Arrlist, self.arrlist)[:-1] or None
         cls = type(self)
         if cls is TupleType:
-            return TupleType(self.components, arrlist, node=self.node)  # type: ignore [return-value]
+            return cast(Self, TupleType(self.components, arrlist, node=self.node))
         else:
             return cls(self.components, arrlist, node=self.node)
 
@@ -208,11 +218,16 @@ class TupleType(ABIType):
         return any(c.is_dynamic for c in self.components)
 
 
-@mypyc_attr(allow_interpreted_subclasses=True)
 class BasicType(ABIType, Generic[TSub]):
     """
     Represents the result of parsing a basic type string e.g. "uint", "address",
     "ufixed128x19[][2]".
+
+    Notes
+    -----
+        Users are unable to subclass this class. If your use case requires subclassing,
+        you will need to stick to the original `eth-abi`.
+
     """
 
     __slots__ = ("base", "sub")
@@ -221,7 +236,7 @@ class BasicType(ABIType, Generic[TSub]):
         self,
         base: str,
         sub: Optional[TSub] = None,
-        arrlist: Optional[Sequence] = None,
+        arrlist: Optional[Arrlist] = None,
         *,
         node: Optional[Node] = None,
     ) -> None:
@@ -260,9 +275,9 @@ class BasicType(ABIType, Generic[TSub]):
             )
 
         cls = type(self)
-        arrlist = self.arrlist[:-1] or None  # type: ignore [index]
+        arrlist = cast(Arrlist, self.arrlist)[:-1] or None
         if cls is BasicType:
-            return BasicType(self.base, self.sub, arrlist, node=self.node)  # type: ignore [return-value]
+            return cast(Self, BasicType(self.base, self.sub, arrlist, node=self.node))
         else:
             return cls(self.base, self.sub, arrlist, node=self.node)
 

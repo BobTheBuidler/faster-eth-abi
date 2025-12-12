@@ -6,9 +6,15 @@ according to ABI type specifications.
 import abc
 import codecs
 import decimal
+from decimal import (
+    Decimal,
+)
 from functools import (
     cached_property,
     lru_cache,
+)
+from numbers import (
+    Number,
 )
 from types import (
     MethodType,
@@ -35,25 +41,33 @@ from faster_eth_utils import (
     is_boolean,
     is_bytes,
     is_integer,
-    is_list_like,
     is_number,
     is_text,
     to_canonical_address,
 )
 from typing_extensions import (
     Self,
+    TypeGuard,
 )
 
 from faster_eth_abi._encoding import (
+    encode_bytestring,
     encode_elements,
     encode_elements_dynamic,
     encode_fixed,
     encode_signed,
+    encode_signed_fixed,
+    encode_text,
     encode_tuple,
     encode_tuple_all_dynamic,
     encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs,
+    encode_unsigned_fixed,
     int_to_big_endian,
+    validate_array,
+    validate_fixed,
+    validate_packed_array,
+    validate_sized_array,
     validate_tuple,
 )
 from faster_eth_abi.base import (
@@ -76,9 +90,6 @@ from faster_eth_abi.utils.numeric import (
     compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds,
-)
-from faster_eth_abi.utils.padding import (
-    zpad_right,
 )
 from faster_eth_abi.utils.string import (
     abbr,
@@ -194,11 +205,11 @@ class TupleEncoder(BaseEncoder):
 
 
 class FixedSizeEncoder(BaseEncoder):
-    value_bit_size = None
-    data_byte_size = None
-    encode_fn = None
-    type_check_fn = None
-    is_big_endian = None
+    value_bit_size: int = None  # type: ignore [assignment]
+    data_byte_size: int = None  # type: ignore [assignment]
+    encode_fn: Callable[..., Any] = None  # type: ignore [assignment]
+    type_check_fn: Callable[..., bool] = None  # type: ignore [assignment]
+    is_big_endian: bool = None  # type: ignore [assignment]
 
     def validate(self) -> None:
         super().validate()
@@ -268,9 +279,21 @@ class PackedBooleanEncoder(BooleanEncoder):
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = True
-    bounds_fn = None
-    illegal_value_fn = None
-    type_check_fn = None
+    bounds_fn: Callable[[int], Tuple[Number, Number]] = None  # type: ignore [assignment]
+    illegal_value_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
+    type_check_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
+
+    @cached_property
+    def bounds(self) -> Tuple[Number, Number]:
+        return self.bounds_fn(self.value_bit_size)
+
+    @cached_property
+    def lower_bound(self) -> Number:
+        return self.bounds[0]
+
+    @cached_property
+    def upper_bound(self) -> Number:
+        return self.bounds[1]
 
     def validate(self) -> None:
         super().validate()
@@ -292,13 +315,12 @@ class NumberEncoder(Fixed32ByteSizeEncoder):
         if illegal_value:
             self.invalidate_value(value, exc=IllegalValue)
 
-        lower_bound, upper_bound = self.bounds_fn(self.value_bit_size)
-        if value < lower_bound or value > upper_bound:
+        if value < self.lower_bound or value > self.upper_bound:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
                 msg=f"Cannot be encoded in {self.value_bit_size} bits. Must be bounded "
-                f"between [{lower_bound}, {upper_bound}].",
+                f"between [{self.lower_bound}, {self.upper_bound}].",
             )
 
 
@@ -329,8 +351,8 @@ class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
     @parse_type_str("uint")
     def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
         return cls(
-            value_bit_size=abi_type.sub,
-            data_byte_size=abi_type.sub // 8,
+            value_bit_size=abi_subtype,
+            data_byte_size=abi_subtype // 8,
         )
 
 
@@ -348,8 +370,12 @@ class SignedIntegerEncoder(NumberEncoder):
     bounds_fn = staticmethod(compute_signed_integer_bounds)
     type_check_fn = staticmethod(is_integer)
 
+    @cached_property
+    def modulus(self) -> int:
+        return 2**self.value_bit_size
+
     def encode_fn(self, value: int) -> bytes:
-        return int_to_big_endian(value % (2**self.value_bit_size))
+        return int_to_big_endian(value % self.modulus)
 
     def encode(self, value: int) -> bytes:
         self.validate_value(value)
@@ -392,40 +418,27 @@ class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
 
 
 class BaseFixedEncoder(NumberEncoder):
-    frac_places = None
+    frac_places: int = None  # type: ignore [assignment]
 
     @staticmethod
-    def type_check_fn(value):
+    def type_check_fn(value: Any) -> TypeGuard[Number]:
         return is_number(value) and not isinstance(value, float)
 
     @staticmethod
-    def illegal_value_fn(value):
-        if isinstance(value, decimal.Decimal):
-            return value.is_nan() or value.is_infinite()
-
-        return False
+    def illegal_value_fn(value: Number) -> bool:
+        return isinstance(value, Decimal) and (value.is_nan() or value.is_infinite())
 
     @cached_property
-    def denominator(self) -> decimal.Decimal:
+    def denominator(self) -> Decimal:
         return TEN**self.frac_places
 
     @cached_property
-    def precision(self) -> int:
+    def precision(self) -> Decimal:
         return TEN**-self.frac_places
 
     def validate_value(self, value: Any) -> None:
         super().validate_value(value)
-
-        with decimal.localcontext(abi_decimal_context):
-            residue = value % self.precision
-
-        if residue > 0:
-            self.invalidate_value(
-                value,
-                exc=IllegalValue,
-                msg=f"residue {residue!r} outside allowed fractional precision of "
-                f"{self.frac_places}",
-            )
+        validate_fixed(self, value)
 
     def validate(self) -> None:
         super().validate()
@@ -442,12 +455,8 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
-
-        return int_to_big_endian(integer_value)
+    def encode_fn(self, value: Decimal) -> bytes:
+        return encode_unsigned_fixed(self, value)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type: TypeStr, registry: "ABIRegistry") -> Self:
@@ -474,17 +483,15 @@ class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
 class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
+      
+    @cached_property
+    def modulus(self) -> int:
+        return 2**self.value_bit_size
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
+    def encode_fn(self, value: Decimal) -> bytes:
+        return encode_signed_fixed(self, value)
 
-        unsigned_integer_value = integer_value % (2**self.value_bit_size)
-
-        return int_to_big_endian(unsigned_integer_value)
-
-    def encode(self, value: decimal.Decimal) -> bytes:
+    def encode(self, value: Decimal) -> bytes:
         self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
@@ -540,16 +547,19 @@ class PackedAddressEncoder(AddressEncoder):
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = False
 
+    @cached_property
+    def value_byte_size(self) -> int:
+        return self.value_bit_size // 8
+
     def validate_value(self, value: Any) -> None:
         if not is_bytes(value):
             self.invalidate_value(value)
 
-        byte_size = self.value_bit_size // 8
-        if len(value) > byte_size:
+        if len(value) > self.value_byte_size:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
-                msg=f"exceeds total byte size for bytes{byte_size} encoding",
+                msg=f"exceeds total byte size for bytes{self.value_byte_size} encoding",
             )
 
     @staticmethod
@@ -581,12 +591,7 @@ class ByteStringEncoder(BaseEncoder):
     @classmethod
     def encode(cls, value: bytes) -> bytes:
         cls.validate_value(value)
-        value_length = len(value)
-
-        encoded_size = encode_uint_256(value_length)
-        padded_value = zpad_right(value, ceil32(value_length))
-
-        return encoded_size + padded_value
+        return encode_bytestring(value)
 
     __call__: ClassVar[Callable[[Type[Self], bytes], bytes]] = encode
 
@@ -617,14 +622,7 @@ class TextStringEncoder(BaseEncoder):
     @classmethod
     def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
-
-        value_as_bytes = codecs.encode(value, "utf8")
-        value_length = len(value_as_bytes)
-
-        encoded_size = encode_uint_256(value_length)
-        padded_value = zpad_right(value_as_bytes, ceil32(value_length))
-
-        return encoded_size + padded_value
+        return encode_text(value)
 
     __call__: ClassVar[Callable[[Type[Self], str], bytes]] = encode
 
@@ -654,15 +652,7 @@ class BaseArrayEncoder(BaseEncoder):
             raise ValueError("`item_encoder` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        if not is_list_like(value):
-            self.invalidate_value(
-                value,
-                msg="must be list-like such as array or tuple",
-            )
-
-        item_encoder = self.item_encoder
-        for item in value:
-            item_encoder.validate_value(item)
+        validate_array(self, value)
 
     def encode_elements(self, value: Sequence[Any]) -> bytes:
         self.validate_value(value)
@@ -685,18 +675,10 @@ class BaseArrayEncoder(BaseEncoder):
 
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size = None
+    array_size: Optional[int] = None
 
     def validate_value(self, value: Any) -> None:
-        super().validate_value(value)
-
-        array_size = self.array_size
-        if array_size is not None and len(value) != array_size:
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {array_size} were expected",
-            )
+        validate_packed_array(self, value)
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements(self.item_encoder, value)
@@ -718,7 +700,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
 
 
 class SizedArrayEncoder(BaseArrayEncoder):
-    array_size = None
+    array_size: int = None  # type: ignore [assignment]
 
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
@@ -732,15 +714,7 @@ class SizedArrayEncoder(BaseArrayEncoder):
             raise ValueError("`array_size` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        super().validate_value(value)
-
-        if len(value) != self.array_size:
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {self.array_size} were "
-                "expected",
-            )
+        validate_sized_array(self, value)
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements(self.item_encoder, value)

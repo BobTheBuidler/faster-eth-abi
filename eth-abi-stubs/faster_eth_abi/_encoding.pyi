@@ -1,8 +1,21 @@
+import decimal
 from faster_eth_abi.encoding import (
+    BaseArrayEncoder as BaseArrayEncoder,
     BaseEncoder as BaseEncoder,
+    BaseFixedEncoder as BaseFixedEncoder,
+    PackedArrayEncoder as PackedArrayEncoder,
+    SignedFixedEncoder as SignedFixedEncoder,
+    SizedArrayEncoder as SizedArrayEncoder,
     TupleEncoder as TupleEncoder,
+    UnsignedFixedEncoder as UnsignedFixedEncoder,
 )
-from faster_eth_abi.exceptions import ValueOutOfBounds as ValueOutOfBounds
+from faster_eth_abi.exceptions import (
+    IllegalValue as IllegalValue,
+    ValueOutOfBounds as ValueOutOfBounds,
+)
+from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
+from faster_eth_abi.utils.numeric import ceil32 as ceil32
+from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from typing import Any, Callable, Sequence, TypeVar
 
 T = TypeVar("T")
@@ -24,16 +37,28 @@ def encode_tuple_no_dynamic10(self, values: Sequence[Any]) -> bytes: ...
 
 encode_tuple_no_dynamic_funcs: dict[int, Callable[[TupleEncoder, Sequence[Any]], bytes]]
 
+def validate_fixed(self, value: decimal.Decimal) -> None: ...
 def encode_fixed(
     value: Any,
     encode_fn: Callable[[Any], bytes],
     is_big_endian: bool,
     data_byte_size: int,
 ) -> bytes: ...
+def encode_unsigned_fixed(self, value: decimal.Decimal) -> bytes: ...
+def encode_signed_fixed(self, value: decimal.Decimal) -> bytes: ...
 def encode_signed(
     value: T, encode_fn: Callable[[T], bytes], data_byte_size: int
 ) -> bytes: ...
+def encode_bytestring(value: bytes) -> bytes: ...
+def encode_text(value: str) -> bytes: ...
+def validate_array(array_encoder: BaseArrayEncoder, value: Sequence[Any]) -> None: ...
 def encode_elements(item_encoder: BaseEncoder, value: Sequence[Any]) -> bytes: ...
+def validate_packed_array(
+    array_encoder: PackedArrayEncoder, value: Sequence[Any]
+) -> None: ...
+def validate_sized_array(
+    array_encoder: SizedArrayEncoder, value: Sequence[Any]
+) -> None: ...
 def encode_elements_dynamic(
     item_encoder: BaseEncoder, value: Sequence[Any]
 ) -> bytes: ...

@@ -38,7 +38,7 @@ jobs:
         suite: ["fixed", "variable"]
     steps:
       - name: Checkout minimal code (no test data)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -53,7 +53,7 @@ jobs:
           pip install .[mypy]
 
       - name: Restore .mypy_cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: .mypy_cache
           # use an overload-test-specific key so we dont grow the base cache with a bunch of testdata stuff
@@ -97,7 +97,7 @@ jobs:
             if [ $status -ne 0 ]; then exit $status; fi
           done
 
-      # Generate and check 30% of len_3 (sample 1/20 * 6 workers)
+      # Generate and check 5% of len_3 (sample 1/20)
       - name: Generate test data for len_3 (sample 1/20)
         run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 20
       - name: Run mypy on all len_3 typecheck files (parallel, 2 jobs)
@@ -117,9 +117,9 @@ jobs:
           status=${PIPESTATUS[0]}
           if [ $status -ne 0 ]; then exit $status; fi
 
-      # Generate and check 2% of len_4 (sample 1/300 * 6 workers)
+      # Generate and check 0.33% of len_4 (sample 1/300)
       - name: Generate test data for len_4 (sample 1/300)
-        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 200
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 300
       - name: Run mypy on all len_4 typecheck files (parallel, 2 jobs)
         run: |
           set -e
@@ -139,7 +139,7 @@ jobs:
 
       - name: Save .mypy_cache (always, even on failure)
         if: always()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: .mypy_cache
           key: test-data-mypy-cache-${{ runner.os }}-x64-${{ matrix.impl }}-${{ matrix.suite }}

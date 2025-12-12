@@ -6,10 +6,13 @@ from eth_typing.abi import TypeStr as TypeStr
 from faster_eth_abi._decoding import (
     decode_dynamic_array as decode_dynamic_array,
     decode_head_tail as decode_head_tail,
+    decode_signed_fixed as decode_signed_fixed,
     decode_sized_array as decode_sized_array,
     decode_tuple as decode_tuple,
+    decode_unsigned_fixed as decode_unsigned_fixed,
     decoder_fn_boolean as decoder_fn_boolean,
     get_value_byte_size as get_value_byte_size,
+    read_bytestring_from_stream as read_bytestring_from_stream,
     read_fixed_byte_size_data_from_stream as read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size as split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size as validate_padding_bytes_fixed_byte_size,
@@ -28,11 +31,7 @@ from faster_eth_abi.from_type_str import (
 from faster_eth_abi.io import ContextFramesBytesIO as ContextFramesBytesIO
 from faster_eth_abi.registry import ABIRegistry as ABIRegistry
 from faster_eth_abi.typing import T as T
-from faster_eth_abi.utils.numeric import (
-    TEN as TEN,
-    abi_decimal_context as abi_decimal_context,
-    ceil32 as ceil32,
-)
+from faster_eth_abi.utils.numeric import TEN as TEN
 from functools import cached_property as cached_property
 from typing import Any, Callable, Final, Generic, TypeVar, final
 from typing_extensions import Self

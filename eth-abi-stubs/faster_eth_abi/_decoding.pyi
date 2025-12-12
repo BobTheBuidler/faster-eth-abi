@@ -1,12 +1,17 @@
+import decimal
 from .decoding import (
     BaseArrayDecoder as BaseArrayDecoder,
+    ByteStringDecoder as ByteStringDecoder,
     DynamicArrayDecoder as DynamicArrayDecoder,
     FixedByteSizeDecoder as FixedByteSizeDecoder,
     HeadTailDecoder as HeadTailDecoder,
+    SignedFixedDecoder as SignedFixedDecoder,
     SignedIntegerDecoder as SignedIntegerDecoder,
     SizedArrayDecoder as SizedArrayDecoder,
     TupleDecoder as TupleDecoder,
+    UnsignedFixedDecoder as UnsignedFixedDecoder,
 )
+from _typeshed import Incomplete
 from faster_eth_abi.exceptions import (
     InsufficientDataBytes as InsufficientDataBytes,
     InvalidPointer as InvalidPointer,
@@ -17,6 +22,11 @@ from faster_eth_abi.io import (
     ContextFramesBytesIO as ContextFramesBytesIO,
 )
 from faster_eth_abi.typing import T as T
+from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
+from faster_eth_abi.utils.numeric import ceil32 as ceil32
+from typing import Final
+
+Decimal: Final[Incomplete]
 
 def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     """
@@ -55,3 +65,6 @@ def validate_padding_bytes_signed_integer(
     self, value: int, padding_bytes: bytes
 ) -> None: ...
 def decoder_fn_boolean(data: bytes) -> bool: ...
+def decode_unsigned_fixed(self, data: bytes) -> decimal.Decimal: ...
+def decode_signed_fixed(self, data: bytes) -> decimal.Decimal: ...
+def read_bytestring_from_stream(self, stream: ContextFramesBytesIO) -> bytes: ...

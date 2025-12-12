@@ -3,6 +3,7 @@
 This file exists because the original decoding.py is not ready to be fully compiled to C.
 This module contains functions and logic that we wish to compile.
 """
+import decimal
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -27,17 +28,29 @@ from faster_eth_abi.io import (
 from faster_eth_abi.typing import (
     T,
 )
+from faster_eth_abi.utils.localcontext import (
+    DECIMAL_CONTEXT,
+)
+from faster_eth_abi.utils.numeric import (
+    ceil32,
+)
 
 if TYPE_CHECKING:
     from .decoding import (
         BaseArrayDecoder,
+        ByteStringDecoder,
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
+        SignedFixedDecoder,
         SignedIntegerDecoder,
         SizedArrayDecoder,
         TupleDecoder,
+        UnsignedFixedDecoder,
     )
+
+
+Decimal: Final = decimal.Decimal
 
 
 # Helpers
@@ -50,7 +63,7 @@ def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     """
     # read data from stream
     if len(data := stream.read(32)) == 32:
-        return big_endian_to_int(data)  # type: ignore [no-any-return]
+        return big_endian_to_int(data)
     raise InsufficientDataBytes(f"Tried to read 32 bytes, only got {len(data)} bytes.")
 
 
@@ -297,3 +310,47 @@ def decoder_fn_boolean(data: bytes) -> bool:
     elif data == b"\x01":
         return True
     raise NonEmptyPaddingBytes(f"Boolean must be either 0x0 or 0x1.  Got: {data!r}")
+
+
+# UnignedFixedDecoder
+def decode_unsigned_fixed(self: "UnsignedFixedDecoder", data: bytes) -> decimal.Decimal:
+    value = big_endian_to_int(data)
+
+    with DECIMAL_CONTEXT:
+        decimal_value = Decimal(value) / self.denominator
+
+    return decimal_value
+
+
+# SignedFixedDecoder
+def decode_signed_fixed(self: "SignedFixedDecoder", data: bytes) -> decimal.Decimal:
+    value = big_endian_to_int(data)
+    if value >= self.neg_threshold:
+        value -= self.neg_offset
+
+    with DECIMAL_CONTEXT:
+        decimal_value = Decimal(value) / self.denominator
+
+    return decimal_value
+
+
+# ByteStringDecoder
+def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFramesBytesIO) -> bytes:
+    data_length = decode_uint_256(stream)
+    padded_length = ceil32(data_length)
+
+    data = stream.read(padded_length)
+
+    if self.strict:
+        if len(data) < padded_length:
+            raise InsufficientDataBytes(
+                f"Tried to read {padded_length} bytes, only got {len(data)} bytes"
+            )
+
+        padding_bytes = data[data_length:]
+        if padding_bytes != b"\x00" * (padded_length - data_length):
+            raise NonEmptyPaddingBytes(
+                f"Padding bytes were not empty: {padding_bytes!r}"
+            )
+
+    return data[:data_length]

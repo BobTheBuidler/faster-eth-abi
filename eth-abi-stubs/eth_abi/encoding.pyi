@@ -1,17 +1,25 @@
 import abc
-import decimal
 from _typeshed import Incomplete
 from eth_typing.abi import TypeStr as TypeStr
+from decimal import Decimal
 from faster_eth_abi._encoding import (
+    encode_bytestring as encode_bytestring,
     encode_elements as encode_elements,
     encode_elements_dynamic as encode_elements_dynamic,
     encode_fixed as encode_fixed,
     encode_signed as encode_signed,
+    encode_signed_fixed as encode_signed_fixed,
+    encode_text as encode_text,
     encode_tuple as encode_tuple,
     encode_tuple_all_dynamic as encode_tuple_all_dynamic,
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
+    encode_unsigned_fixed as encode_unsigned_fixed,
     int_to_big_endian as int_to_big_endian,
+    validate_array as validate_array,
+    validate_fixed as validate_fixed,
+    validate_packed_array as validate_packed_array,
+    validate_sized_array as validate_sized_array,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
@@ -34,11 +42,11 @@ from faster_eth_abi.utils.numeric import (
     compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds as compute_unsigned_integer_bounds,
 )
-from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
+from numbers import Number
 from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
-from typing_extensions import Self
+from typing_extensions import Self, TypeGuard
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
     """
@@ -87,11 +95,11 @@ class TupleEncoder(BaseEncoder):
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
 
 class FixedSizeEncoder(BaseEncoder):
-    value_bit_size: Incomplete
-    data_byte_size: Incomplete
-    encode_fn: Incomplete
-    type_check_fn: Incomplete
-    is_big_endian: Incomplete
+    value_bit_size: int
+    data_byte_size: int
+    encode_fn: Callable[..., Any]
+    type_check_fn: Callable[..., bool]
+    is_big_endian: bool
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Any) -> bytes: ...
@@ -114,9 +122,15 @@ class PackedBooleanEncoder(BooleanEncoder):
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
-    bounds_fn: Incomplete
-    illegal_value_fn: Incomplete
-    type_check_fn: Incomplete
+    bounds_fn: Callable[[int], tuple[Number, Number]]
+    illegal_value_fn: Callable[[Any], bool]
+    type_check_fn: Callable[[Any], bool]
+    @cached_property
+    def bounds(self) -> tuple[Number, Number]: ...
+    @cached_property
+    def lower_bound(self) -> Number: ...
+    @cached_property
+    def upper_bound(self) -> Number: ...
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
 
@@ -144,6 +158,8 @@ class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
 class SignedIntegerEncoder(NumberEncoder):
     bounds_fn: Incomplete
     type_check_fn: Incomplete
+    @cached_property
+    def modulus(self) -> int: ...
     def encode_fn(self, value: int) -> bytes: ...
     def encode(self, value: int) -> bytes: ...
     __call__ = encode
@@ -163,30 +179,32 @@ class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class BaseFixedEncoder(NumberEncoder):
-    frac_places: Incomplete
+    frac_places: int
     @staticmethod
-    def type_check_fn(value): ...
+    def type_check_fn(value: Any) -> TypeGuard[Number]: ...
     @staticmethod
-    def illegal_value_fn(value): ...
+    def illegal_value_fn(value: Number) -> bool: ...
     @cached_property
-    def denominator(self) -> decimal.Decimal: ...
+    def denominator(self) -> Decimal: ...
     @cached_property
-    def precision(self) -> int: ...
-    def validate_value(self, value: Any) -> None: ...
+    def precision(self) -> Decimal: ...
+    def validate_value(self, value) -> None: ...
     def validate(self) -> None: ...
 
 class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
-    def encode_fn(self, value: decimal.Decimal) -> bytes: ...
-    def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
+    def encode_fn(self, value: Decimal) -> bytes: ...
+    def from_type_str(cls, abi_type, registry): ...
 
 class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
 
 class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
-    def encode_fn(self, value: decimal.Decimal) -> bytes: ...
-    def encode(self, value: decimal.Decimal) -> bytes: ...
+    @cached_property
+    def modulus(self) -> int: ...
+    def encode_fn(self, value: Decimal) -> bytes: ...
+    def encode(self, value: Decimal) -> bytes: ...
     __call__ = encode
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
 
@@ -207,6 +225,8 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
+    @cached_property
+    def value_byte_size(self) -> int: ...
     def validate_value(self, value: Any) -> None: ...
     @staticmethod
     def encode_fn(value: bytes) -> bytes: ...
@@ -253,14 +273,14 @@ class BaseArrayEncoder(BaseEncoder, metaclass=abc.ABCMeta):
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size: Incomplete
+    array_size: int | None
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Sequence[Any]) -> bytes: ...
     __call__ = encode
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...
 
 class SizedArrayEncoder(BaseArrayEncoder):
-    array_size: Incomplete
+    array_size: int
     is_dynamic: Incomplete
     def __init__(self, **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
