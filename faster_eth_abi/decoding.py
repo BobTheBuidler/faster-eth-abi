@@ -35,8 +35,10 @@ from faster_eth_utils import (
 from faster_eth_abi._decoding import (
     decode_dynamic_array,
     decode_head_tail,
+    decode_signed_fixed,
     decode_sized_array,
     decode_tuple,
+    decode_unsigned_fixed,
     decoder_fn_boolean,
     get_value_byte_size,
     read_fixed_byte_size_data_from_stream,
@@ -64,7 +66,6 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
     ceil32,
 )
 
@@ -462,12 +463,7 @@ class BaseFixedDecoder(Fixed32ByteSizeDecoder[decimal.Decimal]):
 
 class UnsignedFixedDecoder(BaseFixedDecoder):
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
-        value = big_endian_to_int(data)
-
-        with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / self.denominator
-
-        return decimal_value
+        return decode_unsigned_fixed(self, data)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type, registry):
@@ -498,14 +494,7 @@ class SignedFixedDecoder(BaseFixedDecoder):
         return b"\xff" * padding_size
 
     def decoder_fn(self, data: bytes) -> decimal.Decimal:
-        value = big_endian_to_int(data)
-        if value >= self.neg_threshold:
-            value -= self.neg_offset
-
-        with decimal.localcontext(abi_decimal_context):
-            decimal_value = decimal.Decimal(value) / self.denominator
-
-        return decimal_value
+        return decode_signed_fixed(self, data)
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         if value >= 0:

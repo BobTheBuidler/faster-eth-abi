@@ -3,6 +3,7 @@
 This file exists because the original decoding.py is not ready to be fully compiled to C.
 This module contains functions and logic that we wish to compile.
 """
+import decimal
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -27,6 +28,9 @@ from faster_eth_abi.io import (
 from faster_eth_abi.typing import (
     T,
 )
+from faster_eth_abi.utils.numeric import (
+    abi_decimal_context,
+)
 
 if TYPE_CHECKING:
     from .decoding import (
@@ -34,10 +38,17 @@ if TYPE_CHECKING:
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
+        SignedFixedDecoder,
         SignedIntegerDecoder,
         SizedArrayDecoder,
         TupleDecoder,
+        UnsignedFixedDecoder,
     )
+
+
+Decimal: Final = decimal.Decimal
+
+DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
 
 
 # Helpers
@@ -297,3 +308,25 @@ def decoder_fn_boolean(data: bytes) -> bool:
     elif data == b"\x01":
         return True
     raise NonEmptyPaddingBytes(f"Boolean must be either 0x0 or 0x1.  Got: {data!r}")
+
+
+# UnignedFixedDecoder
+def decode_unsigned_fixed(self: "UnsignedFixedDecoder", data: bytes) -> decimal.Decimal:
+    value = big_endian_to_int(data)
+
+    with DECIMAL_CONTEXT:
+        decimal_value = Decimal(value) / self.denominator
+
+    return decimal_value
+
+
+# SignedFixedDecoder
+def decode_signed_fixed(self: "SignedFixedDecoder", data: bytes) -> decimal.Decimal:
+    value = big_endian_to_int(data)
+    if value >= self.neg_threshold:
+        value -= self.neg_offset
+
+    with DECIMAL_CONTEXT:
+        decimal_value = Decimal(value) / self.denominator
+
+    return decimal_value
