@@ -3,6 +3,7 @@
 This file exists because the original encoding.py is not ready to be fully compiled to C.
 This module contains functions and logic that we do wish to compile.
 """
+import codecs
 import decimal
 from typing import (
     TYPE_CHECKING,
@@ -41,13 +42,18 @@ if TYPE_CHECKING:
         BaseArrayEncoder,
         BaseEncoder,
         BaseFixedEncoder,
+        SignedFixedEncoder,
         TupleEncoder,
+        UnsignedFixedEncoder,
     )
 
 
 T = TypeVar("T")
 
 DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
+
+__encode: Final = codecs.encode
+
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
@@ -334,6 +340,28 @@ def encode_fixed(
         return base_encoded_value.ljust(data_byte_size, b"\x00")
 
 
+# UnsignedFixedEncoder
+
+def encode_unsigned_fixed(self: "UnsignedFixedEncoder", value: decimal.Decimal) -> bytes:
+    with DECIMAL_CONTEXT:
+        scaled_value = value * self.denominator
+        integer_value = int(scaled_value)
+
+    return int_to_big_endian(integer_value)
+
+
+# SignedFixedEncoder
+
+def encode_signed_fixed(self: "SignedFixedEncoder", value: decimal.Decimal) -> bytes:
+    with DECIMAL_CONTEXT:
+        scaled_value = value * self.denominator
+        integer_value = int(scaled_value)
+
+    unsigned_integer_value = integer_value % self.modulus
+
+    return int_to_big_endian(unsigned_integer_value)
+
+
 def encode_signed(
     value: T,
     encode_fn: Callable[[T], bytes],
@@ -350,6 +378,16 @@ def encode_bytestring(value: bytes) -> bytes:
     value_length = len(value)
     encoded_size = encode_uint_256(value_length)
     padded_value = zpad_right(value, ceil32(value_length))
+    return encoded_size + padded_value
+
+
+def encode_text(value: str) -> bytes:
+    value_as_bytes = __encode(value, "utf8")
+    value_length = len(value_as_bytes)
+
+    encoded_size = encode_uint_256(value_length)
+    padded_value = zpad_right(value_as_bytes, ceil32(value_length))
+
     return encoded_size + padded_value
 
 

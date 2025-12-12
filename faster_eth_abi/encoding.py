@@ -6,7 +6,9 @@ according to ABI type specifications.
 import abc
 import codecs
 import decimal
-from decimal import Decimal
+from decimal import (
+    Decimal,
+)
 from functools import (
     cached_property,
     lru_cache,
@@ -50,10 +52,13 @@ from faster_eth_abi._encoding import (
     encode_elements_dynamic,
     encode_fixed,
     encode_signed,
+    encode_signed_fixed,
+    encode_text,
     encode_tuple,
     encode_tuple_all_dynamic,
     encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs,
+    encode_unsigned_fixed,
     int_to_big_endian,
     validate_array,
     validate_fixed,
@@ -79,9 +84,6 @@ from faster_eth_abi.utils.numeric import (
     compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds,
-)
-from faster_eth_abi.utils.padding import (
-    zpad_right,
 )
 from faster_eth_abi.utils.string import (
     abbr,
@@ -443,11 +445,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
     def encode_fn(self, value: Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
-
-        return int_to_big_endian(integer_value)
+        return encode_unsigned_fixed(self, value)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type, registry):
@@ -474,19 +472,13 @@ class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
 class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
-
+      
     @cached_property
     def modulus(self) -> int:
         return 2**self.value_bit_size
 
     def encode_fn(self, value: Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
-
-        unsigned_integer_value = integer_value % self.modulus
-
-        return int_to_big_endian(unsigned_integer_value)
+        return encode_signed_fixed(self, value)
 
     def encode(self, value: Decimal) -> bytes:
         self.validate_value(value)
@@ -619,14 +611,7 @@ class TextStringEncoder(BaseEncoder):
     @classmethod
     def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
-
-        value_as_bytes = codecs.encode(value, "utf8")
-        value_length = len(value_as_bytes)
-
-        encoded_size = encode_uint_256(value_length)
-        padded_value = zpad_right(value_as_bytes, ceil32(value_length))
-
-        return encoded_size + padded_value
+        return encode_text(value)
 
     __call__: ClassVar[Callable[[Type[Self], str], bytes]] = encode
 

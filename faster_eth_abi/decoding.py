@@ -41,6 +41,7 @@ from faster_eth_abi._decoding import (
     decode_unsigned_fixed,
     decoder_fn_boolean,
     get_value_byte_size,
+    read_bytestring_from_stream,
     read_fixed_byte_size_data_from_stream,
     split_data_and_padding_fixed_byte_size,
     validate_padding_bytes_fixed_byte_size,
@@ -66,7 +67,6 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    ceil32,
 )
 
 TByteStr = TypeVar("TByteStr", bytes, str)
@@ -525,24 +525,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
         return data
 
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
-        data_length = decode_uint_256(stream)
-        padded_length = ceil32(data_length)
-
-        data = stream.read(padded_length)
-
-        if self.strict:
-            if len(data) < padded_length:
-                raise InsufficientDataBytes(
-                    f"Tried to read {padded_length} bytes, only got {len(data)} bytes"
-                )
-
-            padding_bytes = data[data_length:]
-            if padding_bytes != b"\x00" * (padded_length - data_length):
-                raise NonEmptyPaddingBytes(
-                    f"Padding bytes were not empty: {padding_bytes!r}"
-                )
-
-        return data[:data_length]
+        return read_bytestring_from_stream(self, stream)
 
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None:
         pass

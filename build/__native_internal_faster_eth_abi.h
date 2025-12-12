@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[416];
+extern PyObject *CPyStatics[422];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -35,6 +35,7 @@ extern CPyModule *CPyModule_faster_eth_abi___utils___numeric;
 extern CPyModule *CPyModule_faster_eth_abi____encoding__internal;
 extern CPyModule *CPyModule_faster_eth_abi____encoding;
 extern PyObject *CPyStatic__encoding___globals;
+extern CPyModule *CPyModule_codecs;
 extern CPyModule *CPyModule_faster_eth_abi___utils___padding__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___padding;
 extern CPyModule *CPyModule_faster_eth_abi____grammar__internal;
@@ -117,8 +118,11 @@ extern PyObject *CPyDef__decoding___decode_unsigned_fixed(PyObject *cpy_r_self, 
 extern PyObject *CPyPy__decoding___decode_unsigned_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__decoding___decode_signed_fixed(PyObject *cpy_r_self, PyObject *cpy_r_data);
 extern PyObject *CPyPy__decoding___decode_signed_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__decoding___read_bytestring_from_stream(PyObject *cpy_r_self, PyObject *cpy_r_stream);
+extern PyObject *CPyPy__decoding___read_bytestring_from_stream(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
 extern PyObject *CPyStatic__encoding___DECIMAL_CONTEXT;
+extern PyObject *CPyStatic__encoding_____encode;
 extern char CPyDef__encoding___validate_tuple(PyObject *cpy_r_self, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___validate_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_values);
@@ -151,10 +155,16 @@ extern char CPyDef__encoding___validate_fixed(PyObject *cpy_r_self, PyObject *cp
 extern PyObject *CPyPy__encoding___validate_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
 extern PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_unsigned_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___encode_unsigned_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_signed_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___encode_signed_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
 extern PyObject *CPyPy__encoding___encode_signed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_bytestring(PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___encode_bytestring(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__encoding___encode_text(PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___encode_text(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__encoding___validate_array(PyObject *cpy_r_array_encoder, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___validate_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_elements(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);

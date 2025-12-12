@@ -8,6 +8,7 @@ from faster_eth_abi._encoding import (
     encode_fixed as encode_fixed,
     encode_signed as encode_signed,
     encode_signed_fixed as encode_signed_fixed,
+    encode_text as encode_text,
     encode_tuple as encode_tuple,
     encode_tuple_all_dynamic as encode_tuple_all_dynamic,
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
@@ -36,7 +37,6 @@ from faster_eth_abi.utils.numeric import (
     compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds as compute_unsigned_integer_bounds,
 )
-from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
 from numbers import Number

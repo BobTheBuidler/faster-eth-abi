@@ -33,11 +33,13 @@ from faster_eth_abi.utils.localcontext import (
 )
 from faster_eth_abi.utils.numeric import (
     abi_decimal_context,
+    ceil32,
 )
 
 if TYPE_CHECKING:
     from .decoding import (
         BaseArrayDecoder,
+        ByteStringDecoder,
         DynamicArrayDecoder,
         FixedByteSizeDecoder,
         HeadTailDecoder,
@@ -331,3 +333,25 @@ def decode_signed_fixed(self: "SignedFixedDecoder", data: bytes) -> decimal.Deci
         decimal_value = Decimal(value) / self.denominator
 
     return decimal_value
+
+
+# ByteStringDecoder
+def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFramesBytesIO) -> bytes:
+    data_length = decode_uint_256(stream)
+    padded_length = ceil32(data_length)
+
+    data = stream.read(padded_length)
+
+    if self.strict:
+        if len(data) < padded_length:
+            raise InsufficientDataBytes(
+                f"Tried to read {padded_length} bytes, only got {len(data)} bytes"
+            )
+
+        padding_bytes = data[data_length:]
+        if padding_bytes != b"\x00" * (padded_length - data_length):
+            raise NonEmptyPaddingBytes(
+                f"Padding bytes were not empty: {padding_bytes!r}"
+            )
+
+    return data[:data_length]
