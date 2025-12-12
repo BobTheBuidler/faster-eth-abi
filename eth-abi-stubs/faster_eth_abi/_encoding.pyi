@@ -4,6 +4,7 @@ from faster_eth_abi.encoding import (
     BaseArrayEncoder as BaseArrayEncoder,
     BaseEncoder as BaseEncoder,
     BaseFixedEncoder as BaseFixedEncoder,
+    PackedArrayEncoder as PackedArrayEncoder,
     SignedFixedEncoder as SignedFixedEncoder,
     SizedArrayEncoder as SizedArrayEncoder,
     TupleEncoder as TupleEncoder,
