@@ -39,7 +39,9 @@ if TYPE_CHECKING:
         BaseEncoder,
         BaseFixedEncoder,
         SizedArrayEncoder,
+        SignedFixedEncoder,
         TupleEncoder,
+        UnsignedFixedEncoder,
     )
 
 
@@ -330,6 +332,28 @@ def encode_fixed(
         return base_encoded_value.rjust(data_byte_size, b"\x00")
     else:
         return base_encoded_value.ljust(data_byte_size, b"\x00")
+
+
+# UnsignedFixedEncoder
+
+def encode_unsigned_fixed(self: "UnsignedFixedEncoder", value: decimal.Decimal) -> bytes:
+    with DECIMAL_CONTEXT:
+        scaled_value = value * self.denominator
+        integer_value = int(scaled_value)
+
+    return int_to_big_endian(integer_value)
+
+
+# SignedFixedEncoder
+
+def encode_signed_fixed(self: "SignedFixedEncoder", value: decimal.Decimal) -> bytes:
+    with DECIMAL_CONTEXT:
+        scaled_value = value * self.denominator
+        integer_value = int(scaled_value)
+
+    unsigned_integer_value = integer_value % self.modulus
+
+    return int_to_big_endian(unsigned_integer_value)
 
 
 def encode_signed(
