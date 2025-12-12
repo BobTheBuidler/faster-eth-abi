@@ -30,7 +30,6 @@ from faster_eth_abi.utils.localcontext import (
     DECIMAL_CONTEXT,
 )
 from faster_eth_abi.utils.numeric import (
-    abi_decimal_context,
     ceil32,
 )
 from faster_eth_abi.utils.padding import (
