@@ -31,7 +31,6 @@ from faster_eth_utils import (
     is_boolean,
     is_bytes,
     is_integer,
-    is_list_like,
     is_number,
     is_text,
     to_canonical_address,
