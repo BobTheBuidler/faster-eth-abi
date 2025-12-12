@@ -445,7 +445,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
     def encode_fn(self, value: Decimal) -> bytes:
-        encode_unsigned_fixed(self, value)
+        return encode_unsigned_fixed(self, value)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type, registry):
