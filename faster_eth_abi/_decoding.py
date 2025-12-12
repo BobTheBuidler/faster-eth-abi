@@ -28,6 +28,9 @@ from faster_eth_abi.io import (
 from faster_eth_abi.typing import (
     T,
 )
+from faster_eth_abi.utils.localcontext import (
+    DECIMAL_CONTEXT,
+)
 from faster_eth_abi.utils.numeric import (
     abi_decimal_context,
 )
@@ -47,8 +50,6 @@ if TYPE_CHECKING:
 
 
 Decimal: Final = decimal.Decimal
-
-DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
 
 
 # Helpers
