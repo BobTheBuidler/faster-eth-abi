@@ -1,17 +1,19 @@
 import abc
-import decimal
 from _typeshed import Incomplete
+from decimal import Decimal
 from faster_eth_abi._encoding import (
     encode_bytestring as encode_bytestring,
     encode_elements as encode_elements,
     encode_elements_dynamic as encode_elements_dynamic,
     encode_fixed as encode_fixed,
     encode_signed as encode_signed,
+    encode_signed_fixed as encode_signed_fixed,
     encode_text as encode_text,
     encode_tuple as encode_tuple,
     encode_tuple_all_dynamic as encode_tuple_all_dynamic,
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
+    encode_unsigned_fixed as encode_unsigned_fixed,
     int_to_big_endian as int_to_big_endian,
     validate_array as validate_array,
     validate_fixed as validate_fixed,
@@ -30,6 +32,7 @@ from faster_eth_abi.from_type_str import (
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
     abi_decimal_context as abi_decimal_context,
+    ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds,
@@ -38,7 +41,7 @@ from faster_eth_abi.utils.numeric import (
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
 from numbers import Number
-from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
+from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, TypeGuard, final
 from typing_extensions import Self
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
@@ -116,8 +119,8 @@ class PackedBooleanEncoder(BooleanEncoder):
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
     bounds_fn: Callable[[int], tuple[Number, Number]]
-    illegal_value_fn: Incomplete
-    type_check_fn: Incomplete
+    illegal_value_fn: Callable[[Any], bool]
+    type_check_fn: Callable[[Any], bool]
     @cached_property
     def bounds(self) -> tuple[Number, Number]: ...
     @cached_property
@@ -172,21 +175,21 @@ class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
     def __init__(self, maxsize: int | None = None, **kwargs: Any) -> None: ...
 
 class BaseFixedEncoder(NumberEncoder):
-    frac_places: Incomplete
+    frac_places: int
     @staticmethod
-    def type_check_fn(value): ...
+    def type_check_fn(value: Any) -> TypeGuard[Number]: ...
     @staticmethod
-    def illegal_value_fn(value): ...
+    def illegal_value_fn(value: Number) -> bool: ...
     @cached_property
-    def denominator(self) -> decimal.Decimal: ...
+    def denominator(self) -> Decimal: ...
     @cached_property
-    def precision(self) -> decimal.Decimal: ...
+    def precision(self) -> Decimal: ...
     def validate_value(self, value) -> None: ...
     def validate(self) -> None: ...
 
 class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
-    def encode_fn(self, value: decimal.Decimal) -> bytes: ...
+    def encode_fn(self, value: Decimal) -> bytes: ...
     def from_type_str(cls, abi_type, registry): ...
 
 class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
@@ -196,8 +199,8 @@ class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
     @cached_property
     def modulus(self) -> int: ...
-    def encode_fn(self, value: decimal.Decimal) -> bytes: ...
-    def encode(self, value: decimal.Decimal) -> bytes: ...
+    def encode_fn(self, value: Decimal) -> bytes: ...
+    def encode(self, value: Decimal) -> bytes: ...
     __call__ = encode
     def from_type_str(cls, abi_type, registry): ...
 
@@ -266,7 +269,7 @@ class BaseArrayEncoder(BaseEncoder, metaclass=abc.ABCMeta):
     def from_type_str(cls, abi_type, registry): ...
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size: Incomplete
+    array_size: int
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Sequence[Any]) -> bytes: ...
     __call__ = encode
