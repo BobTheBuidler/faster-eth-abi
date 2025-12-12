@@ -45,6 +45,7 @@ from faster_eth_abi._encoding import (
     encode_elements_dynamic,
     encode_fixed,
     encode_signed,
+    encode_text,
     encode_tuple,
     encode_tuple_all_dynamic,
     encode_tuple_no_dynamic,
@@ -68,14 +69,10 @@ from faster_eth_abi.from_type_str import (
 from faster_eth_abi.utils.numeric import (
     TEN,
     abi_decimal_context,
-    ceil32,
     compute_signed_fixed_bounds,
     compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds,
-)
-from faster_eth_abi.utils.padding import (
-    zpad_right,
 )
 from faster_eth_abi.utils.string import (
     abbr,
@@ -607,14 +604,7 @@ class TextStringEncoder(BaseEncoder):
     @classmethod
     def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
-
-        value_as_bytes = codecs.encode(value, "utf8")
-        value_length = len(value_as_bytes)
-
-        encoded_size = encode_uint_256(value_length)
-        padded_value = zpad_right(value_as_bytes, ceil32(value_length))
-
-        return encoded_size + padded_value
+        return encode_text(value)
 
     __call__: ClassVar[Callable[[Type[Self], str], bytes]] = encode
 
