@@ -285,7 +285,7 @@ class NumberEncoder(Fixed32ByteSizeEncoder):
         if illegal_value:
             self.invalidate_value(value, exc=IllegalValue)
 
-        lower_bound, upper_bound = self.bounds_fn(self.value_bit_size)
+        lower_bound, upper_bound = self.bounds_fn(self.value_bit_size)  # type: ignore [misc]
         if value < lower_bound or value > upper_bound:
             self.invalidate_value(
                 value,
