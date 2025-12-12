@@ -13,6 +13,7 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
     int_to_big_endian as int_to_big_endian,
     validate_array as validate_array,
+    validate_fixed as validate_fixed,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
@@ -88,11 +89,11 @@ class TupleEncoder(BaseEncoder):
     def from_type_str(cls, abi_type, registry): ...
 
 class FixedSizeEncoder(BaseEncoder):
-    value_bit_size: Incomplete
-    data_byte_size: Incomplete
-    encode_fn: Incomplete
-    type_check_fn: Incomplete
-    is_big_endian: Incomplete
+    value_bit_size: int
+    data_byte_size: int
+    encode_fn: Callable[..., Any]
+    type_check_fn: Callable[..., bool]
+    is_big_endian: bool
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Any) -> bytes: ...
@@ -180,7 +181,7 @@ class BaseFixedEncoder(NumberEncoder):
     @cached_property
     def denominator(self) -> decimal.Decimal: ...
     @cached_property
-    def precision(self) -> int: ...
+    def precision(self) -> decimal.Decimal: ...
     def validate_value(self, value) -> None: ...
     def validate(self) -> None: ...
 
