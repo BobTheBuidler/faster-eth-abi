@@ -317,7 +317,7 @@ def encode_signed(
 
 
 def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
-    validate_item = self.item_encoder.validate_value
+    validate_item = array_encoder.item_encoder.validate_value
     
     # fast path for lists
     if isinstance(value, list)
@@ -336,7 +336,7 @@ def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> N
 
     # failure path
     else:
-        self.invalidate_value(
+        array_encoder.invalidate_value(
             value,
             msg="must be list-like such as array or tuple",
         )
