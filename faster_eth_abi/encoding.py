@@ -50,6 +50,7 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs,
     int_to_big_endian,
+    validate_array,
     validate_tuple,
 )
 from faster_eth_abi.base import (
@@ -645,15 +646,7 @@ class BaseArrayEncoder(BaseEncoder):
             raise ValueError("`item_encoder` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        if not is_list_like(value):
-            self.invalidate_value(
-                value,
-                msg="must be list-like such as array or tuple",
-            )
-
-        item_encoder = self.item_encoder
-        for item in value:
-            item_encoder.validate_value(item)
+        validate_array(self, value)
 
     def encode_elements(self, value: Sequence[Any]) -> bytes:
         self.validate_value(value)
