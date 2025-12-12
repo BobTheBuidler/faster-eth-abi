@@ -2,6 +2,7 @@ import abc
 import decimal
 from _typeshed import Incomplete
 from faster_eth_abi._encoding import (
+    encode_bytestring as encode_bytestring,
     encode_elements as encode_elements,
     encode_elements_dynamic as encode_elements_dynamic,
     encode_fixed as encode_fixed,

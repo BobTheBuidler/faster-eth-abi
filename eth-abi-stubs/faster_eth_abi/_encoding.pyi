@@ -3,6 +3,8 @@ from faster_eth_abi.encoding import (
     TupleEncoder as TupleEncoder,
 )
 from faster_eth_abi.exceptions import ValueOutOfBounds as ValueOutOfBounds
+from faster_eth_abi.utils.numeric import ceil32 as ceil32
+from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from typing import Any, Callable, Sequence, TypeVar
 
 T = TypeVar("T")
@@ -33,6 +35,7 @@ def encode_fixed(
 def encode_signed(
     value: T, encode_fn: Callable[[T], bytes], data_byte_size: int
 ) -> bytes: ...
+def encode_bytestring(value: bytes) -> bytes: ...
 def encode_elements(item_encoder: BaseEncoder, value: Sequence[Any]) -> bytes: ...
 def encode_elements_dynamic(
     item_encoder: BaseEncoder, value: Sequence[Any]
