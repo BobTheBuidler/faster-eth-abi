@@ -4697,6 +4697,7 @@ static PyMethodDef _encodingmodule_methods[] = {
     {"encode_fixed", (PyCFunction)CPyPy__encoding___encode_fixed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_fixed(value, encode_fn, is_big_endian, data_byte_size)\n--\n\n") /* docstring */},
     {"encode_signed", (PyCFunction)CPyPy__encoding___encode_signed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_signed(value, encode_fn, data_byte_size)\n--\n\n") /* docstring */},
     {"encode_bytestring", (PyCFunction)CPyPy__encoding___encode_bytestring, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_bytestring(value)\n--\n\n") /* docstring */},
+    {"validate_array", (PyCFunction)CPyPy__encoding___validate_array, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("validate_array(array_encoder, value)\n--\n\n") /* docstring */},
     {"encode_elements", (PyCFunction)CPyPy__encoding___encode_elements, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_elements(item_encoder, value)\n--\n\n") /* docstring */},
     {"encode_elements_dynamic", (PyCFunction)CPyPy__encoding___encode_elements_dynamic, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_elements_dynamic(item_encoder, value)\n--\n\n") /* docstring */},
     {"encode_uint_256", (PyCFunction)CPyPy__encoding___encode_uint_256, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_uint_256(i)\n--\n\n") /* docstring */},
@@ -5288,7 +5289,7 @@ PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r4 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 71, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 72, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL103;
     }
     cpy_r_r5 = (CPyPtr)&((PyVarObject *)cpy_r_r4)->ob_size;
@@ -5303,7 +5304,7 @@ PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_
     if (likely(PyTuple_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 71, CPyStatic__encoding___globals, "tuple", cpy_r_r9);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 72, CPyStatic__encoding___globals, "tuple", cpy_r_r9);
         goto CPyL104;
     }
     cpy_r_r11 = (CPyPtr)&((PyVarObject *)cpy_r_r10)->ob_size;
@@ -5318,7 +5319,7 @@ PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_
     if (likely(PyTuple_Check(cpy_r_r15)))
         cpy_r_r16 = cpy_r_r15;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 71, CPyStatic__encoding___globals, "tuple", cpy_r_r15);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 72, CPyStatic__encoding___globals, "tuple", cpy_r_r15);
         goto CPyL105;
     }
     cpy_r_r17 = (CPyPtr)&((PyVarObject *)cpy_r_r16)->ob_size;
@@ -5365,7 +5366,7 @@ CPyL10: ;
     if (likely(PyBytes_Check(cpy_r_r34) || PyByteArray_Check(cpy_r_r34)))
         cpy_r_r35 = cpy_r_r34;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 74, CPyStatic__encoding___globals, "bytes", cpy_r_r34);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 75, CPyStatic__encoding___globals, "bytes", cpy_r_r34);
         goto CPyL109;
     }
     cpy_r_r36 = PyList_Append(cpy_r_r2, cpy_r_r35);
@@ -5389,7 +5390,7 @@ CPyL19: ;
     if (likely(PyBytes_Check(cpy_r_r40) || PyByteArray_Check(cpy_r_r40)))
         cpy_r_r41 = cpy_r_r40;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 76, CPyStatic__encoding___globals, "bytes", cpy_r_r40);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 77, CPyStatic__encoding___globals, "bytes", cpy_r_r40);
         goto CPyL109;
     }
     cpy_r_r42 = PyList_Append(cpy_r_r1, cpy_r_r41);
@@ -5421,7 +5422,7 @@ CPyL24: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r51 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 79, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 80, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL103;
     }
     cpy_r_r52 = 0;
@@ -5434,7 +5435,7 @@ CPyL24: ;
     if (likely(PyTuple_Check(cpy_r_r54)))
         cpy_r_r55 = cpy_r_r54;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 79, CPyStatic__encoding___globals, "tuple", cpy_r_r54);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 80, CPyStatic__encoding___globals, "tuple", cpy_r_r54);
         goto CPyL110;
     }
     cpy_r_r56 = (CPyPtr)&((PyVarObject *)cpy_r_r55)->ob_size;
@@ -5449,7 +5450,7 @@ CPyL24: ;
     if (likely(PyTuple_Check(cpy_r_r60)))
         cpy_r_r61 = cpy_r_r60;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 79, CPyStatic__encoding___globals, "tuple", cpy_r_r60);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 80, CPyStatic__encoding___globals, "tuple", cpy_r_r60);
         goto CPyL111;
     }
     cpy_r_r62 = (CPyPtr)&((PyVarObject *)cpy_r_r61)->ob_size;
@@ -5503,7 +5504,7 @@ CPyL31: ;
     if (likely(PyBytes_Check(cpy_r_r85) || PyByteArray_Check(cpy_r_r85)))
         cpy_r_r86 = cpy_r_r85;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 82, CPyStatic__encoding___globals, "bytes", cpy_r_r85);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 83, CPyStatic__encoding___globals, "bytes", cpy_r_r85);
         goto CPyL115;
     }
     cpy_r_r87 = PyList_Append(cpy_r_r2, cpy_r_r86);
@@ -5527,7 +5528,7 @@ CPyL40: ;
     if (likely(PyBytes_Check(cpy_r_r91) || PyByteArray_Check(cpy_r_r91)))
         cpy_r_r92 = cpy_r_r91;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 84, CPyStatic__encoding___globals, "bytes", cpy_r_r91);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 85, CPyStatic__encoding___globals, "bytes", cpy_r_r91);
         goto CPyL115;
     }
     cpy_r_r93 = PyList_Append(cpy_r_r1, cpy_r_r92);
@@ -5567,7 +5568,7 @@ CPyL45: ;
     if (likely(PyTuple_Check(cpy_r_r103)))
         cpy_r_r104 = cpy_r_r103;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 87, CPyStatic__encoding___globals, "tuple", cpy_r_r103);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 88, CPyStatic__encoding___globals, "tuple", cpy_r_r103);
         goto CPyL116;
     }
     cpy_r_r105 = (CPyPtr)&((PyVarObject *)cpy_r_r104)->ob_size;
@@ -5582,7 +5583,7 @@ CPyL45: ;
     if (likely(PyTuple_Check(cpy_r_r109)))
         cpy_r_r110 = cpy_r_r109;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 87, CPyStatic__encoding___globals, "tuple", cpy_r_r109);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 88, CPyStatic__encoding___globals, "tuple", cpy_r_r109);
         goto CPyL117;
     }
     cpy_r_r111 = (CPyPtr)&((PyVarObject *)cpy_r_r110)->ob_size;
@@ -5628,7 +5629,7 @@ CPyL51: ;
     if (likely(PyBytes_Check(cpy_r_r127) || PyByteArray_Check(cpy_r_r127)))
         cpy_r_r128 = cpy_r_r127;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 90, CPyStatic__encoding___globals, "bytes", cpy_r_r127);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 91, CPyStatic__encoding___globals, "bytes", cpy_r_r127);
         goto CPyL122;
     }
     cpy_r_r129 = PyList_Append(cpy_r_r2, cpy_r_r128);
@@ -5652,7 +5653,7 @@ CPyL60: ;
     if (likely(PyBytes_Check(cpy_r_r133) || PyByteArray_Check(cpy_r_r133)))
         cpy_r_r134 = cpy_r_r133;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 92, CPyStatic__encoding___globals, "bytes", cpy_r_r133);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 93, CPyStatic__encoding___globals, "bytes", cpy_r_r133);
         goto CPyL122;
     }
     cpy_r_r135 = PyList_Append(cpy_r_r1, cpy_r_r134);
@@ -5707,7 +5708,7 @@ CPyL67: ;
         cpy_r_r153 = NULL;
     }
     if (cpy_r_r153 != NULL) goto __LL9;
-    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 95, CPyStatic__encoding___globals, "bytes or None", cpy_r_r152);
+    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 96, CPyStatic__encoding___globals, "bytes or None", cpy_r_r152);
     goto CPyL123;
 __LL9: ;
     cpy_r_r154 = (PyObject *)&_Py_NoneStruct;
@@ -5723,7 +5724,7 @@ CPyL71: ;
     if (likely(cpy_r_r153 != Py_None))
         cpy_r_r157 = cpy_r_r153;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 95, CPyStatic__encoding___globals, "bytes", cpy_r_r153);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 96, CPyStatic__encoding___globals, "bytes", cpy_r_r153);
         goto CPyL123;
     }
     cpy_r_r158 = (CPyPtr)&((PyVarObject *)cpy_r_r157)->ob_size;
@@ -5759,7 +5760,7 @@ CPyL75: ;
     if (likely(PyList_Check(cpy_r_r167)))
         cpy_r_r168 = cpy_r_r167;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 98, CPyStatic__encoding___globals, "list", cpy_r_r167);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 99, CPyStatic__encoding___globals, "list", cpy_r_r167);
         goto CPyL126;
     }
     cpy_r_r169 = 0;
@@ -5777,7 +5778,7 @@ CPyL79: ;
     if (likely(PyBytes_Check(cpy_r_r177) || PyByteArray_Check(cpy_r_r177)))
         cpy_r_r178 = cpy_r_r177;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 98, CPyStatic__encoding___globals, "bytes", cpy_r_r177);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 99, CPyStatic__encoding___globals, "bytes", cpy_r_r177);
         goto CPyL128;
     }
     cpy_r_r179 = (CPyPtr)&((PyVarObject *)cpy_r_r178)->ob_size;
@@ -5834,7 +5835,7 @@ CPyL85: ;
         cpy_r_r201 = NULL;
     }
     if (cpy_r_r201 != NULL) goto __LL10;
-    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 102, CPyStatic__encoding___globals, "bytes or None", cpy_r_r200);
+    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 103, CPyStatic__encoding___globals, "bytes or None", cpy_r_r200);
     goto CPyL131;
 __LL10: ;
     cpy_r_r202 = (CPyPtr)&((PyListObject *)cpy_r_r163)->ob_item;
@@ -5874,7 +5875,7 @@ CPyL92: ;
     if (likely(cpy_r_r201 != Py_None))
         cpy_r_r213 = cpy_r_r201;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 103, CPyStatic__encoding___globals, "bytes", cpy_r_r201);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple", 104, CPyStatic__encoding___globals, "bytes", cpy_r_r201);
         goto CPyL131;
     }
     cpy_r_r212 = cpy_r_r213;
@@ -6259,7 +6260,7 @@ PyObject *CPyDef__encoding___encode_tuple_all_dynamic(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 112, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 113, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL49;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -6276,7 +6277,7 @@ PyObject *CPyDef__encoding___encode_tuple_all_dynamic(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r9 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 116, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 117, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL51;
     }
     cpy_r_r10 = (CPyPtr)&((PyVarObject *)cpy_r_r9)->ob_size;
@@ -6301,7 +6302,7 @@ CPyL7: ;
     if (likely(PyBytes_Check(cpy_r_r19) || PyByteArray_Check(cpy_r_r19)))
         cpy_r_r20 = cpy_r_r19;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 116, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 117, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
         goto CPyL54;
     }
     cpy_r_r21 = PyList_Append(cpy_r_r5, cpy_r_r20);
@@ -6334,7 +6335,7 @@ CPyL14: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r30 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 118, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 119, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL55;
     }
     cpy_r_r31 = 0;
@@ -6364,7 +6365,7 @@ CPyL18: ;
     if (likely(PyBytes_Check(cpy_r_r44) || PyByteArray_Check(cpy_r_r44)))
         cpy_r_r45 = cpy_r_r44;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 118, CPyStatic__encoding___globals, "bytes", cpy_r_r44);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 119, CPyStatic__encoding___globals, "bytes", cpy_r_r44);
         goto CPyL58;
     }
     cpy_r_r46 = PyList_Append(cpy_r_r26, cpy_r_r45);
@@ -6414,7 +6415,7 @@ CPyL27: ;
     if (likely(PyBytes_Check(cpy_r_r60) || PyByteArray_Check(cpy_r_r60)))
         cpy_r_r61 = cpy_r_r60;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 120, CPyStatic__encoding___globals, "bytes", cpy_r_r60);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 121, CPyStatic__encoding___globals, "bytes", cpy_r_r60);
         goto CPyL62;
     }
     cpy_r_r62 = PyList_Append(cpy_r_r50, cpy_r_r61);
@@ -6462,7 +6463,7 @@ CPyL35: ;
     if (likely(PyList_Check(cpy_r_r74)))
         cpy_r_r75 = cpy_r_r74;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 125, CPyStatic__encoding___globals, "list", cpy_r_r74);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 126, CPyStatic__encoding___globals, "list", cpy_r_r74);
         goto CPyL65;
     }
     cpy_r_r76 = 0;
@@ -6480,7 +6481,7 @@ CPyL40: ;
     if (likely(PyBytes_Check(cpy_r_r84) || PyByteArray_Check(cpy_r_r84)))
         cpy_r_r85 = cpy_r_r84;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 125, CPyStatic__encoding___globals, "bytes", cpy_r_r84);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", 126, CPyStatic__encoding___globals, "bytes", cpy_r_r84);
         goto CPyL67;
     }
     cpy_r_r86 = (CPyPtr)&((PyVarObject *)cpy_r_r85)->ob_size;
@@ -6722,7 +6723,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic(PyObject *cpy_r_self, PyObj
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 134, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 135, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -6750,7 +6751,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r13 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 138, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 139, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r14 = CPySequenceTuple_GetItem(cpy_r_r13, cpy_r_i);
@@ -6772,7 +6773,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r17) || PyByteArray_Check(cpy_r_r17)))
         cpy_r_r18 = cpy_r_r17;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 138, CPyStatic__encoding___globals, "bytes", cpy_r_r17);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 139, CPyStatic__encoding___globals, "bytes", cpy_r_r17);
         goto CPyL50;
     }
     cpy_r_r19 = PyList_Append(cpy_r_r6, cpy_r_r18);
@@ -6825,7 +6826,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r33 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 140, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 141, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r34 = CPyList_GetItem(cpy_r_r33, cpy_r_i_2);
@@ -6846,7 +6847,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r37) || PyByteArray_Check(cpy_r_r37)))
         cpy_r_r38 = cpy_r_r37;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 140, CPyStatic__encoding___globals, "bytes", cpy_r_r37);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 141, CPyStatic__encoding___globals, "bytes", cpy_r_r37);
         goto CPyL56;
     }
     cpy_r_r39 = PyList_Append(cpy_r_r26, cpy_r_r38);
@@ -6913,7 +6914,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r56) || PyByteArray_Check(cpy_r_r56)))
         cpy_r_r57 = cpy_r_r56;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 142, CPyStatic__encoding___globals, "bytes", cpy_r_r56);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic", 143, CPyStatic__encoding___globals, "bytes", cpy_r_r56);
         goto CPyL61;
     }
     cpy_r_r58 = PyList_Append(cpy_r_r45, cpy_r_r57);
@@ -7088,7 +7089,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic1(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 147, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 148, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL20;
     }
     PyObject *__tmp11;
@@ -7123,7 +7124,7 @@ __LL12: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r7 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 151, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 152, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL21;
     }
     cpy_r_r8 = CPySequenceTuple_GetItem(cpy_r_r7, 0);
@@ -7144,7 +7145,7 @@ __LL12: ;
     if (likely(PyBytes_Check(cpy_r_r11) || PyByteArray_Check(cpy_r_r11)))
         cpy_r_r12 = cpy_r_r11;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 151, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 152, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
         goto CPyL20;
     }
     return cpy_r_r12;
@@ -7157,7 +7158,7 @@ CPyL10: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r15 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 153, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 154, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL23;
     }
     cpy_r_r16 = CPyList_GetItemShort(cpy_r_r15, 0);
@@ -7177,7 +7178,7 @@ CPyL10: ;
     if (likely(PyBytes_Check(cpy_r_r19) || PyByteArray_Check(cpy_r_r19)))
         cpy_r_r20 = cpy_r_r19;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 153, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 154, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
         goto CPyL20;
     }
     return cpy_r_r20;
@@ -7203,7 +7204,7 @@ CPyL16: ;
     if (likely(PyBytes_Check(cpy_r_r26) || PyByteArray_Check(cpy_r_r26)))
         cpy_r_r27 = cpy_r_r26;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 155, CPyStatic__encoding___globals, "bytes", cpy_r_r26);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic1", 156, CPyStatic__encoding___globals, "bytes", cpy_r_r26);
         goto CPyL20;
     }
     return cpy_r_r27;
@@ -7308,7 +7309,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 160, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 161, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL39;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -7322,7 +7323,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r6 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 165, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 166, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL41;
     }
     cpy_r_r7 = CPySequenceTuple_GetItem(cpy_r_r6, 0);
@@ -7343,7 +7344,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
     if (likely(PyBytes_Check(cpy_r_r10) || PyByteArray_Check(cpy_r_r10)))
         cpy_r_r11 = cpy_r_r10;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 165, CPyStatic__encoding___globals, "bytes", cpy_r_r10);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 166, CPyStatic__encoding___globals, "bytes", cpy_r_r10);
         goto CPyL40;
     }
     cpy_r_r12 = CPySequenceTuple_GetItem(cpy_r_r3, 2);
@@ -7356,7 +7357,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r13 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 165, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 166, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL44;
     }
     cpy_r_r14 = CPySequenceTuple_GetItem(cpy_r_r13, 2);
@@ -7377,7 +7378,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
     if (likely(PyBytes_Check(cpy_r_r17) || PyByteArray_Check(cpy_r_r17)))
         cpy_r_r18 = cpy_r_r17;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 165, CPyStatic__encoding___globals, "bytes", cpy_r_r17);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 166, CPyStatic__encoding___globals, "bytes", cpy_r_r17);
         goto CPyL43;
     }
     cpy_r_r19 = CPyBytes_Concat(cpy_r_r11, cpy_r_r18);
@@ -7398,7 +7399,7 @@ CPyL16: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r22 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 167, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 168, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL46;
     }
     cpy_r_r23 = CPyList_GetItemShort(cpy_r_r22, 0);
@@ -7418,7 +7419,7 @@ CPyL16: ;
     if (likely(PyBytes_Check(cpy_r_r26) || PyByteArray_Check(cpy_r_r26)))
         cpy_r_r27 = cpy_r_r26;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 167, CPyStatic__encoding___globals, "bytes", cpy_r_r26);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 168, CPyStatic__encoding___globals, "bytes", cpy_r_r26);
         goto CPyL40;
     }
     cpy_r_r28 = CPySequenceTuple_GetItem(cpy_r_r3, 2);
@@ -7430,7 +7431,7 @@ CPyL16: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r29 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 167, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 168, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL49;
     }
     cpy_r_r30 = CPyList_GetItemShort(cpy_r_r29, 2);
@@ -7450,7 +7451,7 @@ CPyL16: ;
     if (likely(PyBytes_Check(cpy_r_r33) || PyByteArray_Check(cpy_r_r33)))
         cpy_r_r34 = cpy_r_r33;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 167, CPyStatic__encoding___globals, "bytes", cpy_r_r33);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 168, CPyStatic__encoding___globals, "bytes", cpy_r_r33);
         goto CPyL48;
     }
     cpy_r_r35 = CPyBytes_Concat(cpy_r_r27, cpy_r_r34);
@@ -7484,7 +7485,7 @@ CPyL29: ;
     if (likely(PyBytes_Check(cpy_r_r41) || PyByteArray_Check(cpy_r_r41)))
         cpy_r_r42 = cpy_r_r41;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 169, CPyStatic__encoding___globals, "bytes", cpy_r_r41);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 170, CPyStatic__encoding___globals, "bytes", cpy_r_r41);
         goto CPyL40;
     }
     cpy_r_r43 = CPySequenceTuple_GetItem(cpy_r_r3, 2);
@@ -7511,7 +7512,7 @@ CPyL29: ;
     if (likely(PyBytes_Check(cpy_r_r48) || PyByteArray_Check(cpy_r_r48)))
         cpy_r_r49 = cpy_r_r48;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 169, CPyStatic__encoding___globals, "bytes", cpy_r_r48);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", 170, CPyStatic__encoding___globals, "bytes", cpy_r_r48);
         goto CPyL53;
     }
     cpy_r_r50 = CPyBytes_Concat(cpy_r_r42, cpy_r_r49);
@@ -7673,7 +7674,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic3(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 174, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 175, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -7698,7 +7699,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 179, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 180, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -7720,7 +7721,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 179, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 180, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -7770,7 +7771,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 181, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 182, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -7791,7 +7792,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 181, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 182, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -7855,7 +7856,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 183, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic3", 184, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -8059,7 +8060,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic4(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 188, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 189, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -8084,7 +8085,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 193, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 194, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -8106,7 +8107,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 193, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 194, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -8156,7 +8157,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 195, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 196, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -8177,7 +8178,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 195, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 196, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -8241,7 +8242,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 197, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic4", 198, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -8445,7 +8446,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic5(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 202, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 203, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -8470,7 +8471,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 207, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 208, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -8492,7 +8493,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 207, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 208, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -8542,7 +8543,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 209, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 210, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -8563,7 +8564,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 209, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 210, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -8627,7 +8628,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 211, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic5", 212, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -8831,7 +8832,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic6(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 216, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 217, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -8856,7 +8857,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 221, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 222, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -8878,7 +8879,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 221, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 222, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -8928,7 +8929,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 223, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 224, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -8949,7 +8950,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 223, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 224, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -9013,7 +9014,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 225, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic6", 226, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -9217,7 +9218,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic7(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 230, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 231, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -9242,7 +9243,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 235, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 236, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -9264,7 +9265,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 235, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 236, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -9314,7 +9315,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 237, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 238, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -9335,7 +9336,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 237, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 238, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -9399,7 +9400,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 239, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic7", 240, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -9603,7 +9604,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic8(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 244, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 245, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -9628,7 +9629,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 249, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 250, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -9650,7 +9651,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 249, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 250, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -9700,7 +9701,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 251, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 252, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -9721,7 +9722,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 251, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 252, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -9785,7 +9786,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 253, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic8", 254, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -9989,7 +9990,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic9(PyObject *cpy_r_self, PyOb
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 258, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 259, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -10014,7 +10015,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 263, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 264, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -10036,7 +10037,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 263, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 264, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -10086,7 +10087,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 265, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 266, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -10107,7 +10108,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 265, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 266, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -10171,7 +10172,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 267, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic9", 268, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -10375,7 +10376,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic10(PyObject *cpy_r_self, PyO
     if (likely(PyTuple_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 272, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 273, CPyStatic__encoding___globals, "tuple", cpy_r_r2);
         goto CPyL43;
     }
     cpy_r_r4 = PyTuple_Check(cpy_r_values);
@@ -10400,7 +10401,7 @@ CPyL6: ;
     if (likely(PyTuple_Check(cpy_r_values)))
         cpy_r_r10 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 277, CPyStatic__encoding___globals, "tuple", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 278, CPyStatic__encoding___globals, "tuple", cpy_r_values);
         goto CPyL47;
     }
     cpy_r_r11 = CPySequenceTuple_GetItem(cpy_r_r10, cpy_r_i);
@@ -10422,7 +10423,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r14) || PyByteArray_Check(cpy_r_r14)))
         cpy_r_r15 = cpy_r_r14;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 277, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 278, CPyStatic__encoding___globals, "bytes", cpy_r_r14);
         goto CPyL50;
     }
     cpy_r_r16 = PyList_Append(cpy_r_r6, cpy_r_r15);
@@ -10472,7 +10473,7 @@ CPyL20: ;
     if (likely(PyList_Check(cpy_r_values)))
         cpy_r_r27 = cpy_r_values;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 279, CPyStatic__encoding___globals, "list", cpy_r_values);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 280, CPyStatic__encoding___globals, "list", cpy_r_values);
         goto CPyL53;
     }
     cpy_r_r28 = CPyList_GetItem(cpy_r_r27, cpy_r_i_2);
@@ -10493,7 +10494,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 279, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 280, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL56;
     }
     cpy_r_r33 = PyList_Append(cpy_r_r23, cpy_r_r32);
@@ -10557,7 +10558,7 @@ CPyL33: ;
     if (likely(PyBytes_Check(cpy_r_r47) || PyByteArray_Check(cpy_r_r47)))
         cpy_r_r48 = cpy_r_r47;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 281, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic10", 282, CPyStatic__encoding___globals, "bytes", cpy_r_r47);
         goto CPyL61;
     }
     cpy_r_r49 = PyList_Append(cpy_r_r39, cpy_r_r48);
@@ -10718,7 +10719,7 @@ PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r
     if (likely(PyBytes_Check(cpy_r_r2) || PyByteArray_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 306, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 307, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
         goto CPyL9;
     }
     if (!cpy_r_is_big_endian) goto CPyL6;
@@ -10738,7 +10739,7 @@ PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r
     if (likely(PyBytes_Check(cpy_r_r9) || PyByteArray_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 308, CPyStatic__encoding___globals, "bytes", cpy_r_r9);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 309, CPyStatic__encoding___globals, "bytes", cpy_r_r9);
         goto CPyL9;
     }
     return cpy_r_r10;
@@ -10759,7 +10760,7 @@ CPyL6: ;
     if (likely(PyBytes_Check(cpy_r_r16) || PyByteArray_Check(cpy_r_r16)))
         cpy_r_r17 = cpy_r_r16;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 310, CPyStatic__encoding___globals, "bytes", cpy_r_r16);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 311, CPyStatic__encoding___globals, "bytes", cpy_r_r16);
         goto CPyL9;
     }
     return cpy_r_r17;
@@ -10836,7 +10837,7 @@ PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_
     if (likely(PyBytes_Check(cpy_r_r2) || PyByteArray_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 318, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 319, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
         goto CPyL11;
     }
     cpy_r_r4 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
@@ -10871,7 +10872,7 @@ PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_
     if (likely(PyBytes_Check(cpy_r_r12) || PyByteArray_Check(cpy_r_r12)))
         cpy_r_r13 = cpy_r_r12;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 320, CPyStatic__encoding___globals, "bytes", cpy_r_r12);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 321, CPyStatic__encoding___globals, "bytes", cpy_r_r12);
         goto CPyL11;
     }
     return cpy_r_r13;
@@ -10892,7 +10893,7 @@ CPyL8: ;
     if (likely(PyBytes_Check(cpy_r_r19) || PyByteArray_Check(cpy_r_r19)))
         cpy_r_r20 = cpy_r_r19;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 322, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 323, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
         goto CPyL11;
     }
     return cpy_r_r20;
@@ -11006,6 +11007,271 @@ fail: ;
     return NULL;
 }
 
+char CPyDef__encoding___validate_array(PyObject *cpy_r_array_encoder, PyObject *cpy_r_value) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    char cpy_r_r4;
+    PyObject *cpy_r_r5;
+    int64_t cpy_r_r6;
+    CPyPtr cpy_r_r7;
+    int64_t cpy_r_r8;
+    char cpy_r_r9;
+    CPyPtr cpy_r_r10;
+    CPyPtr cpy_r_r11;
+    int64_t cpy_r_r12;
+    CPyPtr cpy_r_r13;
+    PyObject *cpy_r_r14;
+    PyObject *cpy_r_item;
+    PyObject **cpy_r_r16;
+    PyObject *cpy_r_r17;
+    int64_t cpy_r_r18;
+    char cpy_r_r19;
+    PyObject *cpy_r_r20;
+    CPyPtr cpy_r_r21;
+    int64_t cpy_r_r22;
+    int64_t cpy_r_r23;
+    char cpy_r_r24;
+    PyObject *cpy_r_r25;
+    PyObject **cpy_r_r27;
+    PyObject *cpy_r_r28;
+    int64_t cpy_r_r29;
+    PyObject *cpy_r_r30;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
+    PyObject **cpy_r_r34;
+    PyObject *cpy_r_r35;
+    char cpy_r_r36;
+    PyObject *cpy_r_r37;
+    PyObject *cpy_r_r38;
+    PyObject **cpy_r_r40;
+    PyObject *cpy_r_r41;
+    char cpy_r_r42;
+    PyObject *cpy_r_r43;
+    PyObject *cpy_r_r44;
+    PyObject **cpy_r_r46;
+    PyObject *cpy_r_r47;
+    PyObject *cpy_r_r48;
+    char cpy_r_r49;
+    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'item_encoder' */
+    cpy_r_r1 = CPyObject_GetAttr(cpy_r_array_encoder, cpy_r_r0);
+    if (unlikely(cpy_r_r1 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL27;
+    }
+    cpy_r_r2 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'validate_value' */
+    cpy_r_r3 = CPyObject_GetAttr(cpy_r_r1, cpy_r_r2);
+    CPy_DECREF(cpy_r_r1);
+    if (unlikely(cpy_r_r3 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL27;
+    }
+    cpy_r_r4 = PyList_Check(cpy_r_value);
+    if (!cpy_r_r4) goto CPyL9;
+    CPy_INCREF(cpy_r_value);
+    if (likely(PyList_Check(cpy_r_value)))
+        cpy_r_r5 = cpy_r_value;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 341, CPyStatic__encoding___globals, "list", cpy_r_value);
+        goto CPyL28;
+    }
+    cpy_r_r6 = 0;
+CPyL5: ;
+    cpy_r_r7 = (CPyPtr)&((PyVarObject *)cpy_r_r5)->ob_size;
+    cpy_r_r8 = *(int64_t *)cpy_r_r7;
+    cpy_r_r9 = cpy_r_r6 < cpy_r_r8;
+    if (!cpy_r_r9) goto CPyL29;
+    cpy_r_r10 = (CPyPtr)&((PyListObject *)cpy_r_r5)->ob_item;
+    cpy_r_r11 = *(CPyPtr *)cpy_r_r10;
+    cpy_r_r12 = cpy_r_r6 * 8;
+    cpy_r_r13 = cpy_r_r11 + cpy_r_r12;
+    cpy_r_r14 = *(PyObject * *)cpy_r_r13;
+    CPy_INCREF(cpy_r_r14);
+    cpy_r_item = cpy_r_r14;
+    PyObject *cpy_r_r15[1] = {cpy_r_item};
+    cpy_r_r16 = (PyObject **)&cpy_r_r15;
+    cpy_r_r17 = PyObject_Vectorcall(cpy_r_r3, cpy_r_r16, 1, 0);
+    if (unlikely(cpy_r_r17 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL30;
+    } else
+        goto CPyL31;
+CPyL7: ;
+    CPy_DECREF(cpy_r_item);
+    cpy_r_r18 = cpy_r_r6 + 1;
+    cpy_r_r6 = cpy_r_r18;
+    goto CPyL5;
+CPyL9: ;
+    cpy_r_r19 = PyTuple_Check(cpy_r_value);
+    if (!cpy_r_r19) goto CPyL16;
+    CPy_INCREF(cpy_r_value);
+    if (likely(PyTuple_Check(cpy_r_value)))
+        cpy_r_r20 = cpy_r_value;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 346, CPyStatic__encoding___globals, "tuple", cpy_r_value);
+        goto CPyL28;
+    }
+    cpy_r_r21 = (CPyPtr)&((PyVarObject *)cpy_r_r20)->ob_size;
+    cpy_r_r22 = *(int64_t *)cpy_r_r21;
+    cpy_r_r23 = 0;
+CPyL12: ;
+    cpy_r_r24 = cpy_r_r23 < cpy_r_r22;
+    if (!cpy_r_r24) goto CPyL32;
+    cpy_r_r25 = CPySequenceTuple_GetItemUnsafe(cpy_r_r20, cpy_r_r23);
+    cpy_r_item = cpy_r_r25;
+    PyObject *cpy_r_r26[1] = {cpy_r_item};
+    cpy_r_r27 = (PyObject **)&cpy_r_r26;
+    cpy_r_r28 = PyObject_Vectorcall(cpy_r_r3, cpy_r_r27, 1, 0);
+    if (unlikely(cpy_r_r28 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL33;
+    } else
+        goto CPyL34;
+CPyL14: ;
+    CPy_DECREF(cpy_r_item);
+    cpy_r_r29 = cpy_r_r23 + 1;
+    cpy_r_r23 = cpy_r_r29;
+    goto CPyL12;
+CPyL16: ;
+    cpy_r_r30 = CPyStatic__encoding___globals;
+    cpy_r_r31 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'is_list_like' */
+    cpy_r_r32 = CPyDict_GetItem(cpy_r_r30, cpy_r_r31);
+    if (unlikely(cpy_r_r32 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL28;
+    }
+    PyObject *cpy_r_r33[1] = {cpy_r_value};
+    cpy_r_r34 = (PyObject **)&cpy_r_r33;
+    cpy_r_r35 = PyObject_Vectorcall(cpy_r_r32, cpy_r_r34, 1, 0);
+    CPy_DECREF(cpy_r_r32);
+    if (unlikely(cpy_r_r35 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL28;
+    }
+    if (unlikely(!PyBool_Check(cpy_r_r35))) {
+        CPy_TypeError("bool", cpy_r_r35); cpy_r_r36 = 2;
+    } else
+        cpy_r_r36 = cpy_r_r35 == Py_True;
+    CPy_DECREF(cpy_r_r35);
+    if (unlikely(cpy_r_r36 == 2)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL28;
+    }
+    if (!cpy_r_r36) goto CPyL35;
+    cpy_r_r37 = PyObject_GetIter(cpy_r_value);
+    if (unlikely(cpy_r_r37 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL28;
+    }
+CPyL21: ;
+    cpy_r_r38 = PyIter_Next(cpy_r_r37);
+    if (cpy_r_r38 == NULL) goto CPyL36;
+    cpy_r_item = cpy_r_r38;
+    PyObject *cpy_r_r39[1] = {cpy_r_item};
+    cpy_r_r40 = (PyObject **)&cpy_r_r39;
+    cpy_r_r41 = PyObject_Vectorcall(cpy_r_r3, cpy_r_r40, 1, 0);
+    if (unlikely(cpy_r_r41 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL37;
+    } else
+        goto CPyL38;
+CPyL23: ;
+    CPy_DECREF(cpy_r_item);
+    goto CPyL21;
+CPyL24: ;
+    cpy_r_r42 = CPy_NoErrOccurred();
+    if (unlikely(!cpy_r_r42)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL27;
+    } else
+        goto CPyL26;
+CPyL25: ;
+    cpy_r_r43 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'must be list-like such as array or tuple' */
+    cpy_r_r44 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'invalidate_value' */
+    PyObject *cpy_r_r45[3] = {cpy_r_array_encoder, cpy_r_value, cpy_r_r43};
+    cpy_r_r46 = (PyObject **)&cpy_r_r45;
+    cpy_r_r47 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('msg',) */
+    cpy_r_r48 = PyObject_VectorcallMethod(cpy_r_r44, cpy_r_r46, 9223372036854775810ULL, cpy_r_r47);
+    if (unlikely(cpy_r_r48 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL27;
+    } else
+        goto CPyL39;
+CPyL26: ;
+    return 1;
+CPyL27: ;
+    cpy_r_r49 = 2;
+    return cpy_r_r49;
+CPyL28: ;
+    CPy_DecRef(cpy_r_r3);
+    goto CPyL27;
+CPyL29: ;
+    CPy_DECREF(cpy_r_r3);
+    CPy_DECREF_NO_IMM(cpy_r_r5);
+    goto CPyL26;
+CPyL30: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r5);
+    CPy_DecRef(cpy_r_item);
+    goto CPyL27;
+CPyL31: ;
+    CPy_DECREF(cpy_r_r17);
+    goto CPyL7;
+CPyL32: ;
+    CPy_DECREF(cpy_r_r3);
+    CPy_DECREF(cpy_r_r20);
+    goto CPyL26;
+CPyL33: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_item);
+    CPy_DecRef(cpy_r_r20);
+    goto CPyL27;
+CPyL34: ;
+    CPy_DECREF(cpy_r_r28);
+    goto CPyL14;
+CPyL35: ;
+    CPy_DECREF(cpy_r_r3);
+    goto CPyL25;
+CPyL36: ;
+    CPy_DECREF(cpy_r_r3);
+    CPy_DECREF(cpy_r_r37);
+    goto CPyL24;
+CPyL37: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_item);
+    CPy_DecRef(cpy_r_r37);
+    goto CPyL27;
+CPyL38: ;
+    CPy_DECREF(cpy_r_r41);
+    goto CPyL23;
+CPyL39: ;
+    CPy_DECREF(cpy_r_r48);
+    goto CPyL26;
+}
+
+PyObject *CPyPy__encoding___validate_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"array_encoder", "value", 0};
+    static CPyArg_Parser parser = {"OO:validate_array", kwlist, 0};
+    PyObject *obj_array_encoder;
+    PyObject *obj_value;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_array_encoder, &obj_value)) {
+        return NULL;
+    }
+    PyObject *arg_array_encoder = obj_array_encoder;
+    PyObject *arg_value = obj_value;
+    char retval = CPyDef__encoding___validate_array(arg_array_encoder, arg_value);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = Py_None;
+    CPy_INCREF(retbox);
+    return retbox;
+fail: ;
+    CPy_AddTraceback("faster_eth_abi/_encoding.py", "validate_array", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+    return NULL;
+}
+
 PyObject *CPyDef__encoding___encode_elements(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
@@ -11094,7 +11360,7 @@ CPyL2: ;
     if (likely(PyBytes_Check(cpy_r_r5) || PyByteArray_Check(cpy_r_r5)))
         cpy_r_r6 = cpy_r_r5;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 333, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 363, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
         goto CPyL39;
     }
     cpy_r_r7 = PyList_Append(cpy_r_r0, cpy_r_r6);
@@ -11177,7 +11443,7 @@ CPyL15: ;
     if (likely(PyTuple_Check(cpy_r_r25)))
         cpy_r_r26 = cpy_r_r25;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 342, CPyStatic__encoding___globals, "tuple", cpy_r_r25);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 372, CPyStatic__encoding___globals, "tuple", cpy_r_r25);
         goto CPyL42;
     }
     cpy_r_r27 = (CPyPtr)&((PyVarObject *)cpy_r_r26)->ob_size;
@@ -11190,7 +11456,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 342, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 372, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL44;
     }
     cpy_r_r33 = (CPyPtr)&((PyVarObject *)cpy_r_r32)->ob_size;
@@ -11437,7 +11703,7 @@ PyObject *CPyDef__encoding___encode_uint_256(CPyTagged cpy_r_i) {
     if (likely(PyBytes_Check(cpy_r_r6) || PyByteArray_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_uint_256", 363, CPyStatic__encoding___globals, "bytes", cpy_r_r6);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_uint_256", 393, CPyStatic__encoding___globals, "bytes", cpy_r_r6);
         goto CPyL4;
     }
     return cpy_r_r7;
@@ -11520,7 +11786,7 @@ CPyL5: ;
     if (likely(PyBytes_Check(cpy_r_r11) || PyByteArray_Check(cpy_r_r11)))
         cpy_r_r12 = cpy_r_r11;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "int_to_big_endian", 368, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "int_to_big_endian", 398, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
         goto CPyL8;
     }
     return cpy_r_r12;
@@ -28530,8 +28796,9 @@ const char * const CPyLit_Str[] = {
     "\002\035_expected_padding_bytes_cache\fis_list_like",
     "\003/must be list-like object such as array or tuple\020invalidate_value\003msg",
     "\005\nvalidators\020ValueOutOfBounds\nvalue has \f items when \016 were expected",
-    "\t\003exc\bencoders\v_is_dynamic\005rjust\005ljust\nis_dynamic\003big\bto_bytes\bCallable",
-    "\006\004List\bOptional\bSequence\aTypeVar\006ceil32\nzpad_right",
+    "\a\003exc\bencoders\v_is_dynamic\005rjust\005ljust\fitem_encoder\016validate_value",
+    "\004(must be list-like such as array or tuple\nis_dynamic\003big\bto_bytes",
+    "\a\bCallable\004List\bOptional\bSequence\aTypeVar\006ceil32\nzpad_right",
     "\002\034faster_eth_abi.utils.padding\030encode_tuple_no_dynamic1",
     "\002\030encode_tuple_no_dynamic2\030encode_tuple_no_dynamic3",
     "\002\030encode_tuple_no_dynamic4\030encode_tuple_no_dynamic5",
@@ -28607,17 +28874,17 @@ const char * const CPyLit_Int[] = {
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    53, 4, 12, 13, 14, 15, 2, 17, 18, 2, 20, 21, 3, 64, 64, 64, 1, 357,
+    53, 4, 12, 13, 14, 15, 2, 17, 18, 2, 20, 21, 3, 64, 64, 64, 1, 360,
     5, 12, 13, 67, 68, 15, 1, 24, 3, 27, 42, 57, 2, 71, 72, 1, 74, 1, 76,
-    1, 85, 2, 91, 85, 9, 12, 13, 99, 67, 100, 101, 102, 15, 103, 1, 82, 1,
-    87, 1, 104, 1, 105, 1, 145, 3, 171, 171, 171, 1, 373, 12, 13, 68, 173,
-    174, 175, 176, 101, 15, 103, 177, 178, 179, 1, 18, 1, 181, 1, 183, 1,
-    135, 1, 210, 1, 68, 1, 218, 1, 220, 3, 241, 241, 241, 1, 384, 6, 12,
-    13, 99, 101, 243, 103, 4, 208, 215, 212, 244, 1, 229, 1, 250, 1, 251,
-    1, 255, 1, 260, 2, 266, 267, 3, 266, 267, 269, 2, 271, 272, 6, 99, 68,
-    101, 15, 177, 178, 1, 275, 1, 277, 1, 263, 5, 208, 200, 215, 212, 244,
-    6, 279, 280, 281, 258, 282, 283, 1, 284, 1, 297, 4, 99, 67, 68, 15, 1,
-    316, 1, 13
+    1, 85, 2, 91, 85, 9, 12, 13, 102, 67, 103, 104, 105, 15, 106, 1, 82,
+    1, 87, 1, 107, 1, 108, 1, 148, 3, 174, 174, 174, 1, 376, 12, 13, 68,
+    176, 177, 178, 179, 104, 15, 106, 180, 181, 182, 1, 18, 1, 184, 1,
+    186, 1, 138, 1, 213, 1, 68, 1, 221, 1, 223, 3, 244, 244, 244, 1, 387,
+    6, 12, 13, 102, 104, 246, 106, 4, 211, 218, 215, 247, 1, 232, 1, 253,
+    1, 254, 1, 258, 1, 263, 2, 269, 270, 3, 269, 270, 272, 2, 274, 275, 6,
+    102, 68, 104, 15, 180, 181, 1, 278, 1, 280, 1, 266, 5, 211, 203, 218,
+    215, 247, 6, 282, 283, 284, 261, 285, 286, 1, 287, 1, 300, 4, 102, 67,
+    68, 15, 1, 319, 1, 13
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
@@ -28758,6 +29025,8 @@ PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_
 PyObject *CPyPy__encoding___encode_signed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__encoding___encode_bytestring(PyObject *cpy_r_value);
 PyObject *CPyPy__encoding___encode_bytestring(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+char CPyDef__encoding___validate_array(PyObject *cpy_r_array_encoder, PyObject *cpy_r_value);
+PyObject *CPyPy__encoding___validate_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__encoding___encode_elements(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
 PyObject *CPyPy__encoding___encode_elements(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__encoding___encode_elements_dynamic(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
