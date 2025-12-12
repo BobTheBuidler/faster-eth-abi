@@ -449,7 +449,7 @@ def validate_packed_array(array_encoder: "PackedArrayEncoder", value: Sequence[A
         )
 
 
-def validate_sized_array(array_encoder: "SizedArrayEncoder", value: Sequence[Any] -> None:
+def validate_sized_array(array_encoder: "SizedArrayEncoder", value: Sequence[Any]) -> None:
     validate_array(array_encoder, value)
     if len(value) != array_encoder.array_size:
         array_encoder.invalidate_value(
