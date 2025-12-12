@@ -6,6 +6,7 @@ according to ABI type specifications.
 import abc
 import codecs
 import decimal
+from decimal import Decimal
 from functools import (
     cached_property,
     lru_cache,
@@ -262,8 +263,8 @@ class PackedBooleanEncoder(BooleanEncoder):
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = True
     bounds_fn = None
-    illegal_value_fn = None
-    type_check_fn = None
+    illegal_value_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
+    type_check_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
 
     def validate(self) -> None:
         super().validate()
@@ -385,25 +386,22 @@ class PackedSignedIntegerEncoderCached(PackedSignedIntegerEncoder):
 
 
 class BaseFixedEncoder(NumberEncoder):
-    frac_places = None
+    frac_places: int = None  # type: ignore [assignment]
 
     @staticmethod
-    def type_check_fn(value):
+    def type_check_fn(value) -> bool:
         return is_number(value) and not isinstance(value, float)
 
     @staticmethod
-    def illegal_value_fn(value):
-        if isinstance(value, decimal.Decimal):
-            return value.is_nan() or value.is_infinite()
-
-        return False
+    def illegal_value_fn(value) -> bool:
+        return isinstance(value, Decimal) and (value.is_nan() or value.is_infinite())
 
     @cached_property
-    def denominator(self) -> decimal.Decimal:
+    def denominator(self) -> Decimal:
         return TEN**self.frac_places
 
     @cached_property
-    def precision(self) -> decimal.Decimal:
+    def precision(self) -> Decimal:
         return TEN**-self.frac_places
 
     def validate_value(self, value):
@@ -425,7 +423,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
+    def encode_fn(self, value: Decimal) -> bytes:
         with decimal.localcontext(abi_decimal_context):
             scaled_value = value * self.denominator
             integer_value = int(scaled_value)
@@ -458,7 +456,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
+    def encode_fn(self, value: Decimal) -> bytes:
         with decimal.localcontext(abi_decimal_context):
             scaled_value = value * self.denominator
             integer_value = int(scaled_value)
@@ -467,7 +465,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
 
         return int_to_big_endian(unsigned_integer_value)
 
-    def encode(self, value: decimal.Decimal) -> bytes:
+    def encode(self, value: Decimal) -> bytes:
         self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
