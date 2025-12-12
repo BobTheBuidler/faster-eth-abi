@@ -403,7 +403,7 @@ class BaseFixedEncoder(NumberEncoder):
         return TEN**self.frac_places
 
     @cached_property
-    def precision(self) -> int:
+    def precision(self) -> decimal.Decimal:
         return TEN**-self.frac_places
 
     def validate_value(self, value):
