@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[401];
+extern PyObject *CPyStatics[408];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -32,6 +32,7 @@ extern CPyModule *CPyModule_faster_eth_abi___typing;
 extern CPyModule *CPyModule_faster_eth_abi____encoding__internal;
 extern CPyModule *CPyModule_faster_eth_abi____encoding;
 extern PyObject *CPyStatic__encoding___globals;
+extern CPyModule *CPyModule_decimal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___numeric__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___numeric;
 extern CPyModule *CPyModule_faster_eth_abi___utils___padding__internal;
@@ -71,7 +72,6 @@ extern CPyModule *CPyModule_faster_eth_abi___utils__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils;
 extern PyObject *CPyStatic_utils___globals;
 extern PyObject *CPyStatic_numeric___globals;
-extern CPyModule *CPyModule_decimal;
 extern PyObject *CPyStatic_padding___globals;
 extern CPyModule *CPyModule_faster_eth_abi___utils___string__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___string;
@@ -112,6 +112,7 @@ extern PyObject *CPyPy__decoding___validate_padding_bytes_signed_integer(PyObjec
 extern char CPyDef__decoding___decoder_fn_boolean(PyObject *cpy_r_data);
 extern PyObject *CPyPy__decoding___decoder_fn_boolean(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
+extern PyObject *CPyStatic__encoding___DECIMAL_CONTEXT;
 extern char CPyDef__encoding___validate_tuple(PyObject *cpy_r_self, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___validate_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_values);
@@ -140,6 +141,8 @@ extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic9(PyObject *cpy_r_sel
 extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic9(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_tuple_no_dynamic10(PyObject *cpy_r_self, PyObject *cpy_r_values);
 extern PyObject *CPyPy__encoding___encode_tuple_no_dynamic10(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__encoding___validate_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___validate_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
 extern PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
