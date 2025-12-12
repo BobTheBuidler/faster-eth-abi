@@ -426,11 +426,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
     def encode_fn(self, value: decimal.Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
-
-        return int_to_big_endian(integer_value)
+        encode_unsigned_fixed(self, value)
 
     @parse_type_str("ufixed")
     def from_type_str(cls, abi_type, registry):
@@ -459,13 +455,7 @@ class SignedFixedEncoder(BaseFixedEncoder):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
 
     def encode_fn(self, value: decimal.Decimal) -> bytes:
-        with decimal.localcontext(abi_decimal_context):
-            scaled_value = value * self.denominator
-            integer_value = int(scaled_value)
-
-        unsigned_integer_value = integer_value % (2**self.value_bit_size)
-
-        return int_to_big_endian(unsigned_integer_value)
+        return encode_signed_fixed(self, value)
 
     def encode(self, value: decimal.Decimal) -> bytes:
         self.validate_value(value)
