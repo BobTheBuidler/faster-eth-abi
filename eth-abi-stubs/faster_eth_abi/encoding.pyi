@@ -7,10 +7,12 @@ from faster_eth_abi._encoding import (
     encode_elements_dynamic as encode_elements_dynamic,
     encode_fixed as encode_fixed,
     encode_signed as encode_signed,
+    encode_signed_fixed as encode_signed_fixed,
     encode_tuple as encode_tuple,
     encode_tuple_all_dynamic as encode_tuple_all_dynamic,
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
+    encode_unsigned_fixed as encode_unsigned_fixed,
     int_to_big_endian as int_to_big_endian,
     validate_array as validate_array,
     validate_fixed as validate_fixed,
@@ -28,7 +30,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
-    abi_decimal_context as abi_decimal_context,
     ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
