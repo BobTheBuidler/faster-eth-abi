@@ -29,7 +29,6 @@ from typing import (
     Sequence,
     Tuple,
     Type,
-    TypeGuard,
     final,
 )
 
@@ -44,6 +43,7 @@ from faster_eth_utils import (
 )
 from typing_extensions import (
     Self,
+    TypeGuard,
 )
 
 from faster_eth_abi._encoding import (
@@ -62,6 +62,8 @@ from faster_eth_abi._encoding import (
     int_to_big_endian,
     validate_array,
     validate_fixed,
+    validate_packed_array,
+    validate_sized_array,
     validate_tuple,
 )
 from faster_eth_abi.base import (
@@ -339,9 +341,10 @@ encode_uint_256 = UnsignedIntegerEncoder(value_bit_size=256, data_byte_size=32)
 class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
     @parse_type_str("uint")
     def from_type_str(cls, abi_type, registry):
+        abi_subtype = abi_type.sub
         return cls(
-            value_bit_size=abi_type.sub,
-            data_byte_size=abi_type.sub // 8,
+            value_bit_size=abi_subtype,
+            data_byte_size=abi_subtype // 8,
         )
 
 
@@ -664,18 +667,10 @@ class BaseArrayEncoder(BaseEncoder):
 
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size: int = None  # type: ignore [assignment]
+    array_size: Optional[int] = None
 
     def validate_value(self, value: Any) -> None:
-        super().validate_value(value)
-
-        array_size = self.array_size
-        if array_size is not None and len(value) != array_size:
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {array_size} were expected",
-            )
+        validate_packed_array(self, value)
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements(self.item_encoder, value)
@@ -697,7 +692,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
 
 
 class SizedArrayEncoder(BaseArrayEncoder):
-    array_size = None
+    array_size: int = None  # type: ignore [assignment]
 
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
@@ -711,15 +706,7 @@ class SizedArrayEncoder(BaseArrayEncoder):
             raise ValueError("`array_size` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        super().validate_value(value)
-
-        if len(value) != self.array_size:
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {self.array_size} were "
-                "expected",
-            )
+        validate_sized_array(self, value)
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements(self.item_encoder, value)
