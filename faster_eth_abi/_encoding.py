@@ -21,6 +21,7 @@ from faster_eth_utils import (
 )
 
 from faster_eth_abi.exceptions import (
+    IllegalValue,
     ValueOutOfBounds,
 )
 from faster_eth_abi.utils.numeric import (
