@@ -67,7 +67,6 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    ceil32,
 )
 
 TByteStr = TypeVar("TByteStr", bytes, str)
