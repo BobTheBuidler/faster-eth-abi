@@ -24,7 +24,7 @@ from faster_eth_abi.exceptions import (
     ValueOutOfBounds,
 )
 from faster_eth_abi.utils.localcontext import (
-    _DecimalContextManager,
+    DECIMAL_CONTEXT,
 )
 from faster_eth_abi.utils.numeric import (
     ceil32,
@@ -43,7 +43,6 @@ if TYPE_CHECKING:
 
 T = TypeVar("T")
 
-DECIMAL_CONTEXT: Final = _DecimalContextManager(abi_decimal_context)
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
