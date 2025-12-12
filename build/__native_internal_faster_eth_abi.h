@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[422];
+extern PyObject *CPyStatics[439];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -30,6 +30,8 @@ extern CPyModule *CPyModule_faster_eth_utils;
 extern CPyModule *CPyModule_faster_eth_abi___exceptions;
 extern CPyModule *CPyModule_faster_eth_abi___io;
 extern CPyModule *CPyModule_faster_eth_abi___typing;
+extern CPyModule *CPyModule_faster_eth_abi___utils___localcontext__internal;
+extern CPyModule *CPyModule_faster_eth_abi___utils___localcontext;
 extern CPyModule *CPyModule_faster_eth_abi___utils___numeric__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___numeric;
 extern CPyModule *CPyModule_faster_eth_abi____encoding__internal;
@@ -72,6 +74,8 @@ extern CPyModule *CPyModule_hypothesis;
 extern CPyModule *CPyModule_faster_eth_abi___utils__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils;
 extern PyObject *CPyStatic_utils___globals;
+extern PyObject *CPyStatic_localcontext___globals;
+extern CPyModule *CPyModule_types;
 extern PyObject *CPyStatic_numeric___globals;
 extern PyObject *CPyStatic_padding___globals;
 extern CPyModule *CPyModule_faster_eth_abi___utils___string__internal;
@@ -84,7 +88,6 @@ extern PyObject *CPyDef__codec___decode_c(PyObject *cpy_r_self, PyObject *cpy_r_
 extern PyObject *CPyPy__codec___decode_c(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__codec_____top_level__(void);
 extern PyObject *CPyStatic__decoding___Decimal;
-extern PyObject *CPyStatic__decoding___DECIMAL_CONTEXT;
 extern PyObject *CPyStatic__decoding____expected_padding_bytes_cache;
 extern CPyTagged CPyDef__decoding___decode_uint_256(PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_uint_256(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
@@ -121,7 +124,6 @@ extern PyObject *CPyPy__decoding___decode_signed_fixed(PyObject *self, PyObject 
 extern PyObject *CPyDef__decoding___read_bytestring_from_stream(PyObject *cpy_r_self, PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___read_bytestring_from_stream(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
-extern PyObject *CPyStatic__encoding___DECIMAL_CONTEXT;
 extern PyObject *CPyStatic__encoding_____encode;
 extern char CPyDef__encoding___validate_tuple(PyObject *cpy_r_self, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___validate_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
@@ -314,6 +316,18 @@ extern PyObject *CPyDef__strategies___get_tuple_strategy(PyObject *cpy_r_abi_typ
 extern PyObject *CPyPy__strategies___get_tuple_strategy(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__strategies_____top_level__(void);
 extern char CPyDef_utils_____top_level__(void);
+extern PyObject *CPyStatic_localcontext___getcontext;
+extern PyObject *CPyStatic_localcontext___setcontext;
+extern PyObject *CPyStatic_localcontext___DECIMAL_CONTEXT;
+extern PyTypeObject *CPyType_localcontext____DecimalContextManager;
+extern PyObject *CPyDef_localcontext____DecimalContextManager(PyObject *cpy_r_new_context);
+extern char CPyDef_localcontext____DecimalContextManager_____init__(PyObject *cpy_r_self, PyObject *cpy_r_new_context);
+extern PyObject *CPyPy_localcontext____DecimalContextManager_____init__(PyObject *self, PyObject *args, PyObject *kw);
+extern PyObject *CPyDef_localcontext____DecimalContextManager_____enter__(PyObject *cpy_r_self);
+extern PyObject *CPyPy_localcontext____DecimalContextManager_____enter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_localcontext____DecimalContextManager_____exit__(PyObject *cpy_r_self, PyObject *cpy_r_t, PyObject *cpy_r_v, PyObject *cpy_r_tb);
+extern PyObject *CPyPy_localcontext____DecimalContextManager_____exit__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_localcontext_____top_level__(void);
 extern PyObject *CPyStatic_numeric___abi_decimal_context;
 extern PyObject *CPyStatic_numeric___decimal_localcontext;
 extern PyObject *CPyStatic_numeric___ZERO;
