@@ -62,6 +62,7 @@ from faster_eth_abi._encoding import (
     int_to_big_endian,
     validate_array,
     validate_fixed,
+    validate_signed_array,
     validate_tuple,
 )
 from faster_eth_abi.base import (
@@ -697,7 +698,7 @@ class PackedArrayEncoder(BaseArrayEncoder):
 
 
 class SizedArrayEncoder(BaseArrayEncoder):
-    array_size = None
+    array_size: int = None  # type: ignore [assignment]
 
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
@@ -711,15 +712,7 @@ class SizedArrayEncoder(BaseArrayEncoder):
             raise ValueError("`array_size` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        super().validate_value(value)
-
-        if len(value) != self.array_size:
-            self.invalidate_value(
-                value,
-                exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {self.array_size} were "
-                "expected",
-            )
+        validate_sized_array(self, value)
 
     def encode(self, value: Sequence[Any]) -> bytes:
         return encode_elements(self.item_encoder, value)
