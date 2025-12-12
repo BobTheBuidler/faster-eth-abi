@@ -315,6 +315,13 @@ def encode_signed(
         return base_encoded_value.rjust(data_byte_size, b"\xff")
 
 
+def encode_bytestring(value: bytes) -> bytes:
+    value_length = len(value)
+    encoded_size = encode_uint_256(value_length)
+    padded_value = zpad_right(value, ceil32(value_length))
+    return encoded_size + padded_value
+
+
 def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     tail_chunks = tuple(item_encoder(i) for i in value)
 
