@@ -63,7 +63,7 @@ from faster_eth_abi._encoding import (
     validate_array,
     validate_fixed,
     validate_packed_array,
-    validate_szned_array,
+    validate_sized_array,
     validate_tuple,
 )
 from faster_eth_abi.base import (
