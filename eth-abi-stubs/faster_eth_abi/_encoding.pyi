@@ -4,7 +4,9 @@ from faster_eth_abi.encoding import (
     BaseArrayEncoder as BaseArrayEncoder,
     BaseEncoder as BaseEncoder,
     BaseFixedEncoder as BaseFixedEncoder,
+    SignedFixedEncoder as SignedFixedEncoder,
     TupleEncoder as TupleEncoder,
+    UnsignedFixedEncoder as UnsignedFixedEncoder,
 )
 from faster_eth_abi.exceptions import (
     IllegalValue as IllegalValue,
@@ -44,6 +46,8 @@ def encode_fixed(
     is_big_endian: bool,
     data_byte_size: int,
 ) -> bytes: ...
+def encode_unsigned_fixed(self, value: decimal.Decimal) -> bytes: ...
+def encode_signed_fixed(self, value: decimal.Decimal) -> bytes: ...
 def encode_signed(
     value: T, encode_fn: Callable[[T], bytes], data_byte_size: int
 ) -> bytes: ...
