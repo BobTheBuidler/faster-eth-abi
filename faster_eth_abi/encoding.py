@@ -266,7 +266,7 @@ class PackedBooleanEncoder(BooleanEncoder):
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = True
-    bounds_fn: Callable[[int], Tuple[Number, Number]] = None  # type: ignore [assignment] = None
+    bounds_fn: Callable[[int], Tuple[Number, Number]] = None  # type: ignore [assignment]
     illegal_value_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
     type_check_fn: Callable[[Any], bool] = None  # type: ignore [assignment]
 
