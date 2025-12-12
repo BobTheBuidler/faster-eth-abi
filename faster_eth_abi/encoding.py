@@ -354,8 +354,12 @@ class SignedIntegerEncoder(NumberEncoder):
     bounds_fn = staticmethod(compute_signed_integer_bounds)
     type_check_fn = staticmethod(is_integer)
 
+    @cached_property
+    def modulus(self) -> int:
+        return 2**self.value_bit_size
+
     def encode_fn(self, value: int) -> bytes:
-        return int_to_big_endian(value % (2**self.value_bit_size))
+        return int_to_big_endian(value % self.modulus)
 
     def encode(self, value: int) -> bytes:
         self.validate_value(value)
