@@ -31,6 +31,7 @@ from faster_eth_abi.utils.padding import (
 
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
+        BaseArrayEncoder,
         BaseEncoder,
         TupleEncoder,
     )
@@ -329,6 +330,33 @@ def encode_bytestring(value: bytes) -> bytes:
     return encoded_size + padded_value
 
 
+def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
+    # sourcery skip: merge-duplicate-blocks
+    validate_item = array_encoder.item_encoder.validate_value
+    
+    # fast path for lists
+    if isinstance(value, list):
+        for item in value:
+            validate_item(item)
+    
+    # fast path for tuples
+    elif isinstance(value, tuple):
+        for item in value:
+            validate_item(item)
+
+    # slow path for generic sequences
+    elif is_list_like(value):
+        for item in value:
+            validate_item(item)
+
+    # failure path
+    else:
+        array_encoder.invalidate_value(
+            value,
+            msg="must be list-like such as array or tuple",
+        )
+
+    
 def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     tail_chunks = tuple(item_encoder(i) for i in value)
 
