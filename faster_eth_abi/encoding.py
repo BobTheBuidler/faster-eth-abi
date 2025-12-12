@@ -467,12 +467,16 @@ class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
 
+    @cached_property
+    def modulus(self) -> int:
+        return 2**self.value_bit_size
+
     def encode_fn(self, value: decimal.Decimal) -> bytes:
         with decimal.localcontext(abi_decimal_context):
             scaled_value = value * self.denominator
             integer_value = int(scaled_value)
 
-        unsigned_integer_value = integer_value % (2**self.value_bit_size)
+        unsigned_integer_value = integer_value % self.modulus
 
         return int_to_big_endian(unsigned_integer_value)
 
