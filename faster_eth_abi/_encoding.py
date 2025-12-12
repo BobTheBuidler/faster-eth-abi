@@ -9,6 +9,7 @@ from typing import (
     Any,
     Callable,
     Dict,
+    Final,
     List,
     Optional,
     Sequence,
@@ -21,12 +22,14 @@ from faster_eth_utils import (
 )
 
 from faster_eth_abi.exceptions import (
+    IllegalValue,
     ValueOutOfBounds,
 )
 from faster_eth_abi.utils.localcontext import (
     DECIMAL_CONTEXT,
 )
 from faster_eth_abi.utils.numeric import (
+    abi_decimal_context,
     ceil32,
 )
 from faster_eth_abi.utils.padding import (
@@ -35,6 +38,7 @@ from faster_eth_abi.utils.padding import (
 
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
+        BaseArrayEncoder,
         BaseEncoder,
         BaseFixedEncoder,
         TupleEncoder,
@@ -43,6 +47,7 @@ if TYPE_CHECKING:
 
 T = TypeVar("T")
 
+DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
@@ -304,7 +309,7 @@ encode_tuple_no_dynamic_funcs: Dict[
 
 # BaseFixedEncoder
 def validate_fixed(self: "BaseFixedEncoder", value: decimal.Decimal) -> None:
-    with DECIMAL_CONTEXT::
+    with DECIMAL_CONTEXT:
         residue = value % self.precision
 
     if residue > 0:
@@ -348,6 +353,35 @@ def encode_bytestring(value: bytes) -> bytes:
     return encoded_size + padded_value
 
 
+def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
+    # sourcery skip: merge-duplicate-blocks
+    # TODO: specialize this func so we can call validate_item at the C level
+    
+    validate_item = array_encoder.item_encoder.validate_value
+    
+    # fast path for lists
+    if isinstance(value, list):
+        for item in value:
+            validate_item(item)
+    
+    # fast path for tuples
+    elif isinstance(value, tuple):
+        for item in value:
+            validate_item(item)
+
+    # slow path for generic sequences
+    elif is_list_like(value):
+        for item in value:
+            validate_item(item)
+
+    # failure path
+    else:
+        array_encoder.invalidate_value(
+            value,
+            msg="must be list-like such as array or tuple",
+        )
+
+    
 def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     tail_chunks = tuple(item_encoder(i) for i in value)
 
