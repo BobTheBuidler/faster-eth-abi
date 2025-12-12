@@ -532,16 +532,19 @@ class PackedAddressEncoder(AddressEncoder):
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = False
 
+    @cached_property
+    def value_byte_size(self) -> int:
+        return self.value_bit_size // 8
+
     def validate_value(self, value: Any) -> None:
         if not is_bytes(value):
             self.invalidate_value(value)
 
-        byte_size = self.value_bit_size // 8
-        if len(value) > byte_size:
+        if len(value) > self.value_byte_size:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
-                msg=f"exceeds total byte size for bytes{byte_size} encoding",
+                msg=f"exceeds total byte size for bytes{self.value_byte_size} encoding",
             )
 
     @staticmethod
