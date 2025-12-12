@@ -86,7 +86,7 @@ jobs:
             tox.ini
 
       - name: Download wheel
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: ${{ needs.build-wheel.outputs.artifact-name }}
           path: .
@@ -134,7 +134,7 @@ jobs:
             tox.ini
 
       - name: Download built wheel artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: ${{ needs.build-wheel.outputs.artifact-name }}
           path: .
@@ -177,7 +177,7 @@ jobs:
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
 
       - name: Upload Pytest Benchmark Results
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: pytest-benchmark-results
           path: benchmark.json
@@ -209,13 +209,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Markdown Benchmark Results
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: markdown-benchmark-results
           path: benchmarks/results/*.md
 
       - name: Upload Pytest Benchmark Diff
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: pytest-benchmark-diff
           path: pytest_benchmark_diff.json

@@ -111,7 +111,7 @@ jobs:
 
       - name: Download built wheel artifact
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}-${{ matrix.installmode }}
           path: dist
