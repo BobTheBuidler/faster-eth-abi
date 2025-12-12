@@ -17,6 +17,8 @@ from faster_eth_abi._encoding import (
     int_to_big_endian as int_to_big_endian,
     validate_array as validate_array,
     validate_fixed as validate_fixed,
+    validate_packed_array as validate_packed_array,
+    validate_signed_array as validate_signed_array,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
@@ -31,7 +33,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
-    abi_decimal_context as abi_decimal_context,
     ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
@@ -269,14 +270,14 @@ class BaseArrayEncoder(BaseEncoder, metaclass=abc.ABCMeta):
     def from_type_str(cls, abi_type, registry): ...
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size: int
+    array_size: int | None
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Sequence[Any]) -> bytes: ...
     __call__ = encode
     def from_type_str(cls, abi_type, registry): ...
 
 class SizedArrayEncoder(BaseArrayEncoder):
-    array_size: Incomplete
+    array_size: int
     is_dynamic: Incomplete
     def __init__(self, **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
