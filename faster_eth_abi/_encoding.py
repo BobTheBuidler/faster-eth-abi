@@ -317,6 +317,8 @@ def encode_signed(
 
 
 def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
+    # TODO: specialize this func so we can call validate_item at the C level
+    
     validate_item = array_encoder.item_encoder.validate_value
     
     # fast path for lists
