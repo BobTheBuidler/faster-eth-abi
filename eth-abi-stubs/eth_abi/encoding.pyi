@@ -38,6 +38,7 @@ from faster_eth_abi.utils.numeric import (
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
+from numbers import Number
 from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
 from typing_extensions import Self
 
@@ -115,9 +116,15 @@ class PackedBooleanEncoder(BooleanEncoder):
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
-    bounds_fn: Incomplete
+    bounds_fn: Callable[[int], tuple[Number, Number]]
     illegal_value_fn: Incomplete
     type_check_fn: Incomplete
+    @cached_property
+    def bounds(self) -> tuple[Number, Number]: ...
+    @cached_property
+    def lower_bound(self) -> Number: ...
+    @cached_property
+    def upper_bound(self) -> Number: ...
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
 
@@ -145,6 +152,8 @@ class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
 class SignedIntegerEncoder(NumberEncoder):
     bounds_fn: Incomplete
     type_check_fn: Incomplete
+    @cached_property
+    def modulus(self) -> int: ...
     def encode_fn(self, value: int) -> bytes: ...
     def encode(self, value: int) -> bytes: ...
     __call__ = encode
@@ -186,6 +195,8 @@ class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
 
 class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
+    @cached_property
+    def modulus(self) -> int: ...
     def encode_fn(self, value: decimal.Decimal) -> bytes: ...
     def encode(self, value: decimal.Decimal) -> bytes: ...
     __call__ = encode
@@ -208,6 +219,8 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
+    @cached_property
+    def value_byte_size(self) -> int: ...
     def validate_value(self, value: Any) -> None: ...
     @staticmethod
     def encode_fn(value: bytes) -> bytes: ...
