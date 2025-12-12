@@ -13,6 +13,7 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
     int_to_big_endian as int_to_big_endian,
     validate_array as validate_array,
+    validate_fixed as validate_fixed,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
@@ -37,6 +38,7 @@ from faster_eth_abi.utils.numeric import (
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
+from numbers import Number
 from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
 from typing_extensions import Self
 
@@ -87,11 +89,11 @@ class TupleEncoder(BaseEncoder):
     def from_type_str(cls, abi_type, registry): ...
 
 class FixedSizeEncoder(BaseEncoder):
-    value_bit_size: Incomplete
-    data_byte_size: Incomplete
-    encode_fn: Incomplete
-    type_check_fn: Incomplete
-    is_big_endian: Incomplete
+    value_bit_size: int
+    data_byte_size: int
+    encode_fn: Callable[..., Any]
+    type_check_fn: Callable[..., bool]
+    is_big_endian: bool
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
     def encode(self, value: Any) -> bytes: ...
@@ -114,9 +116,15 @@ class PackedBooleanEncoder(BooleanEncoder):
 
 class NumberEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
-    bounds_fn: Incomplete
+    bounds_fn: Callable[[int], tuple[Number, Number]]
     illegal_value_fn: Incomplete
     type_check_fn: Incomplete
+    @cached_property
+    def bounds(self) -> tuple[Number, Number]: ...
+    @cached_property
+    def lower_bound(self) -> Number: ...
+    @cached_property
+    def upper_bound(self) -> Number: ...
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
 
@@ -144,6 +152,8 @@ class PackedUnsignedIntegerEncoderCached(PackedUnsignedIntegerEncoder):
 class SignedIntegerEncoder(NumberEncoder):
     bounds_fn: Incomplete
     type_check_fn: Incomplete
+    @cached_property
+    def modulus(self) -> int: ...
     def encode_fn(self, value: int) -> bytes: ...
     def encode(self, value: int) -> bytes: ...
     __call__ = encode
@@ -171,7 +181,7 @@ class BaseFixedEncoder(NumberEncoder):
     @cached_property
     def denominator(self) -> decimal.Decimal: ...
     @cached_property
-    def precision(self) -> int: ...
+    def precision(self) -> decimal.Decimal: ...
     def validate_value(self, value) -> None: ...
     def validate(self) -> None: ...
 
@@ -185,6 +195,8 @@ class PackedUnsignedFixedEncoder(UnsignedFixedEncoder):
 
 class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size): ...
+    @cached_property
+    def modulus(self) -> int: ...
     def encode_fn(self, value: decimal.Decimal) -> bytes: ...
     def encode(self, value: decimal.Decimal) -> bytes: ...
     __call__ = encode
@@ -207,6 +219,8 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
+    @cached_property
+    def value_byte_size(self) -> int: ...
     def validate_value(self, value: Any) -> None: ...
     @staticmethod
     def encode_fn(value: bytes) -> bytes: ...
