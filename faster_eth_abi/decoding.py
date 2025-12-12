@@ -37,6 +37,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail,
     decode_signed_fixed,
     decode_sized_array,
+    decode_string,
     decode_tuple,
     decode_unsigned_fixed,
     decoder_fn_boolean,
@@ -524,6 +525,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
     def decoder_fn(data: bytes) -> bytes:
         return data
 
+    @final
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
         return read_bytestring_from_stream(self, stream)
 
@@ -545,9 +547,7 @@ class StringDecoder(ByteStringDecoder[str]):
         return cls()
 
     def decode(self, stream: ContextFramesBytesIO) -> str:
-        raw_data = self.read_data_from_stream(stream)
-        data, padding_bytes = self.split_data_and_padding(raw_data)
-        return self.decoder_fn(data, self.bytes_errors)
+        return decode_string(self, stream)
 
     __call__ = decode
 
