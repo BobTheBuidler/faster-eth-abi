@@ -322,9 +322,10 @@ encode_uint_256 = UnsignedIntegerEncoder(value_bit_size=256, data_byte_size=32)
 class PackedUnsignedIntegerEncoder(UnsignedIntegerEncoder):
     @parse_type_str("uint")
     def from_type_str(cls, abi_type, registry):
+        abi_subtype = abi_type.sub
         return cls(
-            value_bit_size=abi_type.sub,
-            data_byte_size=abi_type.sub // 8,
+            value_bit_size=abi_subtype,
+            data_byte_size=abi_subtype // 8,
         )
 
 
