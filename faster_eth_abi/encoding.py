@@ -187,11 +187,11 @@ class TupleEncoder(BaseEncoder):
 
 
 class FixedSizeEncoder(BaseEncoder):
-    value_bit_size = None
-    data_byte_size = None
-    encode_fn = None
-    type_check_fn = None
-    is_big_endian = None
+    value_bit_size: int = None  # type: ignore [assignment]
+    data_byte_size: int = None  # type: ignore [assignment]
+    encode_fn: Callable[..., Any] = None  # type: ignore [assignment]
+    type_check_fn: Callable[..., bool] = None  # type: ignore [assignment]
+    is_big_endian: bool = None  # type: ignore [assignment]
 
     def validate(self) -> None:
         super().validate()
