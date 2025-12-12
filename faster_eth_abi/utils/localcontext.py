@@ -1,7 +1,21 @@
 import decimal
-from decimal import Context
-from types import TracebackType
-from typing import Final, Optional, Type, TypeVar, final
+from decimal import (
+    Context,
+)
+from types import (
+    TracebackType,
+)
+from typing import (
+    Final,
+    Optional,
+    Type,
+    TypeVar,
+    final,
+)
+
+from faster_eth_abi.utils.numeric import (
+    abi_decimal_context,
+)
 
 
 _TExc = TypeVar("_TExc", bound=BaseException)
@@ -31,3 +45,5 @@ class _DecimalContextManager:
         tb: Optional[TracebackType],
     ) -> None:
         setcontext(self.saved_context)
+
+DECIMAL_CONTEXT: Final = _DecimalContextManager(abi_decimal_context)
