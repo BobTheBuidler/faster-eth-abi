@@ -41,6 +41,7 @@ from typing_extensions import (
 )
 
 from faster_eth_abi._encoding import (
+    encode_bytestring,
     encode_elements,
     encode_elements_dynamic,
     encode_fixed,
@@ -572,12 +573,7 @@ class ByteStringEncoder(BaseEncoder):
     @classmethod
     def encode(cls, value: bytes) -> bytes:
         cls.validate_value(value)
-        value_length = len(value)
-
-        encoded_size = encode_uint_256(value_length)
-        padded_value = zpad_right(value, ceil32(value_length))
-
-        return encoded_size + padded_value
+        return encode_bytestring(value)
 
     __call__: ClassVar[Callable[[Type[Self], bytes], bytes]] = encode
 
