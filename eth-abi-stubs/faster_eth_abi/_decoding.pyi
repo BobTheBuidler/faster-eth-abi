@@ -8,7 +8,7 @@ from .decoding import (
     SignedIntegerDecoder as SignedIntegerDecoder,
     SizedArrayDecoder as SizedArrayDecoder,
     TupleDecoder as TupleDecoder,
-    UnignedFixedDecoder as UnignedFixedDecoder,
+    UnsignedFixedDecoder as UnsignedFixedDecoder,
 )
 from _typeshed import Incomplete
 from faster_eth_abi.exceptions import (
