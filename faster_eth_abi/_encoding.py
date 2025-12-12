@@ -3,11 +3,13 @@
 This file exists because the original encoding.py is not ready to be fully compiled to C.
 This module contains functions and logic that we do wish to compile.
 """
+import codecs
 from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
     Dict,
+    Final,
     List,
     Optional,
     Sequence,
@@ -38,6 +40,8 @@ if TYPE_CHECKING:
 
 
 T = TypeVar("T")
+
+__encode: Final = codecs.encode
 
 
 # TupleEncoder
@@ -327,6 +331,16 @@ def encode_bytestring(value: bytes) -> bytes:
     value_length = len(value)
     encoded_size = encode_uint_256(value_length)
     padded_value = zpad_right(value, ceil32(value_length))
+    return encoded_size + padded_value
+
+
+def encode_text(value: str) -> bytes:
+    value_as_bytes = __encode(value, "utf8")
+    value_length = len(value_as_bytes)
+
+    encoded_size = encode_uint_256(value_length)
+    padded_value = zpad_right(value_as_bytes, ceil32(value_length))
+
     return encoded_size + padded_value
 
 
