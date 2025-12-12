@@ -5,7 +5,9 @@ according to ABI type specifications.
 """
 import abc
 import codecs
-import decimal
+from decimal import (
+    Decimal,
+)
 from functools import (
     cached_property,
     lru_cache,
@@ -70,7 +72,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
     ceil32,
     compute_signed_fixed_bounds,
     compute_signed_integer_bounds,
@@ -395,13 +396,13 @@ class BaseFixedEncoder(NumberEncoder):
 
     @staticmethod
     def illegal_value_fn(value):
-        if isinstance(value, decimal.Decimal):
+        if isinstance(value, Decimal):
             return value.is_nan() or value.is_infinite()
 
         return False
 
     @cached_property
-    def denominator(self) -> decimal.Decimal:
+    def denominator(self) -> Decimal:
         return TEN**self.frac_places
 
     @cached_property
@@ -427,7 +428,7 @@ class UnsignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_unsigned_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
+    def encode_fn(self, value: Decimal) -> bytes:
         encode_unsigned_fixed(self, value)
 
     @parse_type_str("ufixed")
@@ -456,10 +457,10 @@ class SignedFixedEncoder(BaseFixedEncoder):
     def bounds_fn(self, value_bit_size):
         return compute_signed_fixed_bounds(self.value_bit_size, self.frac_places)
 
-    def encode_fn(self, value: decimal.Decimal) -> bytes:
+    def encode_fn(self, value: Decimal) -> bytes:
         return encode_signed_fixed(self, value)
 
-    def encode(self, value: decimal.Decimal) -> bytes:
+    def encode(self, value: Decimal) -> bytes:
         self.validate_value(value)
         return encode_signed(value, self.encode_fn, self.data_byte_size)
 
