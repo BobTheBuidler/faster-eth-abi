@@ -127,6 +127,13 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    PyObject *_saved_context;
+    PyObject *_new_context;
+} faster_eth_abi___utils___localcontext____DecimalContextManagerObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
     PyObject *_scaling_factor;
     PyObject *_f;

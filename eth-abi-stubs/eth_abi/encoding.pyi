@@ -31,7 +31,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
-    abi_decimal_context as abi_decimal_context,
     ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
