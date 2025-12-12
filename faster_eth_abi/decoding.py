@@ -66,7 +66,6 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
     ceil32,
 )
 
