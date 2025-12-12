@@ -22,6 +22,12 @@ from faster_eth_utils import (
 from faster_eth_abi.exceptions import (
     ValueOutOfBounds,
 )
+from faster_eth_abi.utils.numeric import (
+    ceil32,
+)
+from faster_eth_abi.utils.padding import (
+    zpad_right,
+)
 
 if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
@@ -35,6 +41,7 @@ T = TypeVar("T")
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
+    # TODO: optimize this with fast paths like we do in encode_array
     # if we check list and tuple first it compiles to much quicker C code
     if not isinstance(value, (list, tuple)) and not is_list_like(value):
         self.invalidate_value(
@@ -313,6 +320,13 @@ def encode_signed(
         return base_encoded_value.rjust(data_byte_size, b"\x00")
     else:
         return base_encoded_value.rjust(data_byte_size, b"\xff")
+
+
+def encode_bytestring(value: bytes) -> bytes:
+    value_length = len(value)
+    encoded_size = encode_uint_256(value_length)
+    padded_value = zpad_right(value, ceil32(value_length))
+    return encoded_size + padded_value
 
 
 def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
