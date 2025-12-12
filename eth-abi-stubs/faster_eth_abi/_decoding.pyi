@@ -21,11 +21,11 @@ from faster_eth_abi.io import (
     ContextFramesBytesIO as ContextFramesBytesIO,
 )
 from faster_eth_abi.typing import T as T
+from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
 from faster_eth_abi.utils.numeric import abi_decimal_context as abi_decimal_context
 from typing import Final
 
 Decimal: Final[Incomplete]
-DECIMAL_CONTEXT: Final[Incomplete]
 
 def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     """
