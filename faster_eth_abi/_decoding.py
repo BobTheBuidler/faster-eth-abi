@@ -30,6 +30,7 @@ from faster_eth_abi.typing import (
 )
 from faster_eth_abi.utils.numeric import (
     abi_decimal_context,
+    ceil,
 )
 
 if TYPE_CHECKING:
