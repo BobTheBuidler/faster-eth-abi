@@ -41,6 +41,8 @@ if TYPE_CHECKING:
         BaseArrayEncoder,
         BaseEncoder,
         BaseFixedEncoder,
+        PackedArrayEncoder,
+        SizedArrayEncoder,
         SignedFixedEncoder,
         TupleEncoder,
         UnsignedFixedEncoder,
@@ -435,6 +437,28 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
         encode_uint_256(head_length + offset) for offset in tail_offsets
     )
     return b"".join(head_chunks) + b"".join(tail_chunks)
+
+
+def validate_packed_array(array_encoder: "PackedArrayEncoder", value: Sequence[Any]) -> None:
+    validate_array(array_encoder, value)
+    array_size = array_encoder.array_size
+    if array_size is not None and len(value) != array_size:
+        array_encoder.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {array_size} were expected",
+        )
+
+
+def validate_sized_array(array_encoder: "SizedArrayEncoder", value: Sequence[Any]) -> None:
+    validate_array(array_encoder, value)
+    if len(value) != array_encoder.array_size:
+        array_encoder.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {array_encoder.array_size} were "
+            "expected",
+        )
 
 
 def encode_elements_dynamic(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:

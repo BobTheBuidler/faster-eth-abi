@@ -171,6 +171,10 @@ extern char CPyDef__encoding___validate_array(PyObject *cpy_r_array_encoder, PyO
 extern PyObject *CPyPy__encoding___validate_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_elements(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___encode_elements(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__encoding___validate_packed_array(PyObject *cpy_r_array_encoder, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___validate_packed_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__encoding___validate_sized_array(PyObject *cpy_r_array_encoder, PyObject *cpy_r_value);
+extern PyObject *CPyPy__encoding___validate_sized_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_elements_dynamic(PyObject *cpy_r_item_encoder, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___encode_elements_dynamic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_uint_256(CPyTagged cpy_r_i);
