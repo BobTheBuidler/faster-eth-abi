@@ -380,6 +380,17 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
     return b"".join(head_chunks) + b"".join(tail_chunks)
 
 
+def validate_packed_array(array_encoder: "PackedArrayEncoder", value: Sequence[Any]) -> None:
+    validate_array(array_encoder, value)
+    array_size = array_encoder.array_size
+    if array_size is not None and len(value) != array_size:
+        array_encoder.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {array_size} were expected",
+        )
+
+
 def validate_sized_array(array_encoder: "SizedArrayEncoder", value: Sequence[Any] -> None:
     validate_array(array_encoder, value)
     if len(value) != array_encoder.array_size:
