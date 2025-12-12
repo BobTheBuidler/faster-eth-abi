@@ -39,6 +39,7 @@ if TYPE_CHECKING:
         BaseArrayEncoder,
         BaseEncoder,
         BaseFixedEncoder,
+        PackedArrayEncoder,
         SizedArrayEncoder,
         SignedFixedEncoder,
         TupleEncoder,
