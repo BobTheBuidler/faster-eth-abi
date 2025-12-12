@@ -322,7 +322,7 @@ def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> N
     validate_item = array_encoder.item_encoder.validate_value
     
     # fast path for lists
-    if isinstance(value, list)
+    if isinstance(value, list):
         for item in value:
             validate_item(item)
     
