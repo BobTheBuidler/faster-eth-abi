@@ -11,6 +11,7 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
     int_to_big_endian as int_to_big_endian,
+    validate_array as validate_array,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder

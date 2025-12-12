@@ -1,4 +1,5 @@
 from faster_eth_abi.encoding import (
+    BaseArrayEncoder as BaseArrayEncoder,
     BaseEncoder as BaseEncoder,
     TupleEncoder as TupleEncoder,
 )
@@ -33,6 +34,7 @@ def encode_fixed(
 def encode_signed(
     value: T, encode_fn: Callable[[T], bytes], data_byte_size: int
 ) -> bytes: ...
+def validate_array(array_encoder: BaseArrayEncoder, value: Sequence[Any]) -> None: ...
 def encode_elements(item_encoder: BaseEncoder, value: Sequence[Any]) -> bytes: ...
 def encode_elements_dynamic(
     item_encoder: BaseEncoder, value: Sequence[Any]
