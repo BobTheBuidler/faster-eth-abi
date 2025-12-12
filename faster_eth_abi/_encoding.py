@@ -3,6 +3,7 @@
 This file exists because the original encoding.py is not ready to be fully compiled to C.
 This module contains functions and logic that we do wish to compile.
 """
+import decimal
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -33,12 +34,14 @@ if TYPE_CHECKING:
     from faster_eth_abi.encoding import (
         BaseArrayEncoder,
         BaseEncoder,
+        BaseFixedEncoder,
         TupleEncoder,
     )
 
 
 T = TypeVar("T")
 
+DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
@@ -296,6 +299,20 @@ encode_tuple_no_dynamic_funcs: Dict[
     9: encode_tuple_no_dynamic9,
     10: encode_tuple_no_dynamic10,
 }
+
+
+# BaseFixedEncoder
+def validate_fixed(self: "BaseFixedEncoder", value: decimal.Decimal) -> None:
+    with DECIMAL_CONTEXT::
+        residue = value % self.precision
+
+    if residue > 0:
+        self.invalidate_value(
+            value,
+            exc=IllegalValue,
+            msg=f"residue {residue!r} outside allowed fractional precision of "
+            f"{self.frac_places}",
+        )
 
 
 def encode_fixed(
