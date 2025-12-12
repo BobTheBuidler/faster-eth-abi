@@ -302,7 +302,7 @@ encode_tuple_no_dynamic_funcs: Dict[
 
 # BaseFixedEncoder
 def validate_fixed(self: "BaseFixedEncoder", value: decimal.Decimal) -> None:
-    with DECIMAL_CONTEXT::
+    with DECIMAL_CONTEXT:
         residue = value % self.precision
 
     if residue > 0:
