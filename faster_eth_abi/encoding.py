@@ -29,7 +29,6 @@ from typing import (
     Sequence,
     Tuple,
     Type,
-    TypeGuard,
     final,
 )
 
@@ -44,6 +43,7 @@ from faster_eth_utils import (
 )
 from typing_extensions import (
     Self,
+    TypeGuard,
 )
 
 from faster_eth_abi._encoding import (
