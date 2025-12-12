@@ -11,6 +11,9 @@ from functools import (
     cached_property,
     lru_cache,
 )
+from numbers import (
+    Number,
+)
 from types import (
     MethodType,
 )
@@ -24,6 +27,7 @@ from typing import (
     Sequence,
     Tuple,
     Type,
+    TypeGuard,
     final,
 )
 
@@ -389,11 +393,11 @@ class BaseFixedEncoder(NumberEncoder):
     frac_places: int = None  # type: ignore [assignment]
 
     @staticmethod
-    def type_check_fn(value) -> bool:
+    def type_check_fn(value: Any) -> TypeGuard[Number]:
         return is_number(value) and not isinstance(value, float)
 
     @staticmethod
-    def illegal_value_fn(value) -> bool:
+    def illegal_value_fn(value: Number) -> bool:
         return isinstance(value, Decimal) and (value.is_nan() or value.is_infinite())
 
     @cached_property
@@ -653,7 +657,7 @@ class BaseArrayEncoder(BaseEncoder):
 
 
 class PackedArrayEncoder(BaseArrayEncoder):
-    array_size = None
+    array_size: int = None  # type: ignore [assignment]
 
     def validate_value(self, value: Any) -> None:
         super().validate_value(value)
