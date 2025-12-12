@@ -1,6 +1,7 @@
 import decimal
 from .decoding import (
     BaseArrayDecoder as BaseArrayDecoder,
+    ByteStringDecoder as ByteStringDecoder,
     DynamicArrayDecoder as DynamicArrayDecoder,
     FixedByteSizeDecoder as FixedByteSizeDecoder,
     HeadTailDecoder as HeadTailDecoder,
@@ -21,7 +22,10 @@ from faster_eth_abi.io import (
     ContextFramesBytesIO as ContextFramesBytesIO,
 )
 from faster_eth_abi.typing import T as T
-from faster_eth_abi.utils.numeric import abi_decimal_context as abi_decimal_context
+from faster_eth_abi.utils.numeric import (
+    abi_decimal_context as abi_decimal_context,
+    ceil32 as ceil32,
+)
 from typing import Final
 
 Decimal: Final[Incomplete]
@@ -66,3 +70,4 @@ def validate_padding_bytes_signed_integer(
 def decoder_fn_boolean(data: bytes) -> bool: ...
 def decode_unsigned_fixed(self, data: bytes) -> decimal.Decimal: ...
 def decode_signed_fixed(self, data: bytes) -> decimal.Decimal: ...
+def read_bytestring_from_stream(self, stream: ContextFramesBytesIO) -> bytes: ...

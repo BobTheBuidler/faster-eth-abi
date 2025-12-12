@@ -118,6 +118,8 @@ extern PyObject *CPyDef__decoding___decode_unsigned_fixed(PyObject *cpy_r_self, 
 extern PyObject *CPyPy__decoding___decode_unsigned_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__decoding___decode_signed_fixed(PyObject *cpy_r_self, PyObject *cpy_r_data);
 extern PyObject *CPyPy__decoding___decode_signed_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__decoding___read_bytestring_from_stream(PyObject *cpy_r_self, PyObject *cpy_r_stream);
+extern PyObject *CPyPy__decoding___read_bytestring_from_stream(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
 extern PyObject *CPyStatic__encoding___DECIMAL_CONTEXT;
 extern PyObject *CPyStatic__encoding_____encode;
