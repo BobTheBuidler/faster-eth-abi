@@ -50,8 +50,6 @@ if TYPE_CHECKING:
 
 T = TypeVar("T")
 
-DECIMAL_CONTEXT: Final = decimal.localcontext(abi_decimal_context)
-
 __encode: Final = codecs.encode
 
 
