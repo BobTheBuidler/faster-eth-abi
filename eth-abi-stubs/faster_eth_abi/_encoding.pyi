@@ -1,5 +1,4 @@
 import decimal
-from _typeshed import Incomplete
 from faster_eth_abi.encoding import (
     BaseArrayEncoder as BaseArrayEncoder,
     BaseEncoder as BaseEncoder,
@@ -13,15 +12,15 @@ from faster_eth_abi.exceptions import (
     IllegalValue as IllegalValue,
     ValueOutOfBounds as ValueOutOfBounds,
 )
+from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
 from faster_eth_abi.utils.numeric import (
     abi_decimal_context as abi_decimal_context,
     ceil32 as ceil32,
 )
 from faster_eth_abi.utils.padding import zpad_right as zpad_right
-from typing import Any, Callable, Final, Sequence, TypeVar
+from typing import Any, Callable, Sequence, TypeVar
 
 T = TypeVar("T")
-DECIMAL_CONTEXT: Final[Incomplete]
 
 def validate_tuple(self, value: Sequence[Any]) -> None: ...
 def encode_tuple(self, values: Sequence[Any]) -> bytes: ...
