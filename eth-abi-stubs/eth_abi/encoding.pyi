@@ -18,7 +18,7 @@ from faster_eth_abi._encoding import (
     validate_array as validate_array,
     validate_fixed as validate_fixed,
     validate_packed_array as validate_packed_array,
-    validate_signed_array as validate_signed_array,
+    validate_sized_array as validate_sized_array,
     validate_tuple as validate_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
@@ -33,6 +33,7 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
+    abi_decimal_context as abi_decimal_context,
     ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
@@ -42,8 +43,8 @@ from faster_eth_abi.utils.numeric import (
 from faster_eth_abi.utils.string import abbr as abbr
 from functools import cached_property as cached_property
 from numbers import Number
-from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, TypeGuard, final
-from typing_extensions import Self
+from typing import Any, Callable, ClassVar, Final, NoReturn, Sequence, final
+from typing_extensions import Self, TypeGuard
 
 class BaseEncoder(BaseCoder, metaclass=abc.ABCMeta):
     """
