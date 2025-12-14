@@ -32,10 +32,6 @@ for i in range(8, 257, 8):
         (max_value // 2 + max_value) // 2,  # upper fourth
         max_value,
     }
-    if 12345678901234567890 <= max_value:
-        test_data.add(12345678901234567890)
-    if 999999999999999999999999999999 <= max_value:
-        test_data.add(999999999999999999999999999999)
     for vals in uints.values():
         test_data.update(vals)
     uints[i] = sorted(test_data)
