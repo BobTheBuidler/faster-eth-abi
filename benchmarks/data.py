@@ -32,8 +32,9 @@ for i in range(8, 257, 8):
         (max_value // 2 + max_value) // 2,  # upper fourth
         max_value,
     }
-    for vals in uints.values():
-        test_data.update(vals)
+    for _i, vals in enumerate(uints.values()):
+        if _i % 2:
+            test_data.update(vals)
     uints[i] = sorted(test_data)
 
 
