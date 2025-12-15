@@ -56,37 +56,40 @@ __encode: Final = codecs.encode
 
 # TupleEncoder
 def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
+    # TODO: maybe try functools.singledispatch here
+
     validators = self.validators
+    expected_length = len(validators)
         
     # we can make more optimized C code by splitting this block by `value` type
     if isinstance(value, list):
-        if len(value) != len(validators):
+        if len(value) != expected_length:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {len(validators)} " "were expected",
+                msg=f"value has {len(value)} items when {expected_length} were expected",
             )
     
         for item, validator in zip(value, validators):
             validator(item)
 
     elif isinstance(value, tuple):
-        if len(value) != len(validators):
+        if len(value) != expected_length:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {len(validators)} " "were expected",
+                msg=f"value has {len(value)} items when {expected_length} were expected",
             )
     
         for item, validator in zip(value, validators):
             validator(item)
 
     elif is_list_like(value):
-        if len(value) != len(validators):
+        if len(value) != expected_length:
             self.invalidate_value(
                 value,
                 exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {len(validators)} " "were expected",
+                msg=f"value has {len(value)} items when {expected_length} were expected",
             )
     
         for item, validator in zip(value, validators):
