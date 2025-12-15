@@ -21,6 +21,9 @@ from typing import (
 from faster_eth_utils import (
     is_list_like,
 )
+from mypy_extensions import (
+    u8,
+)
 
 from faster_eth_abi.exceptions import (
     IllegalValue,
@@ -226,11 +229,11 @@ def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(3))
+        return b"".join(encoders[i](values[i]) for i in range(u8(3)))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(3))
+        return b"".join(encoders[i](values[i]) for i in range(u8(3)))
     else:
-        return b"".join(encoders[i](values[i]) for i in range(3))
+        return b"".join(encoders[i](values[i]) for i in range(u8(3)))
 
 
 def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
@@ -240,11 +243,11 @@ def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(4))
+        return b"".join(encoders[i](values[i]) for i in range(u8(4)))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(4))
+        return b"".join(encoders[i](values[i]) for i in range(u8(4)))
     else:
-        return b"".join(encoders[i](values[i]) for i in range(4))
+        return b"".join(encoders[i](values[i]) for i in range(u8(4)))
 
 
 def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
