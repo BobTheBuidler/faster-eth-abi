@@ -70,7 +70,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
                 msg=f"value has {len(lst)} items when {expected_length} were expected",
             )
     
-        for item, validator in zip(value, validators):
+        for item, validator in zip(lst, validators):
             validator(item)
 
     elif isinstance(value, tuple):
@@ -81,7 +81,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
                 msg=f"value has {len(tup)} items when {expected_length} were expected",
             )
     
-        for item, validator in zip(value, validators):
+        for item, validator in zip(tup, validators):
             validator(item)
 
     elif is_list_like(value):
@@ -109,7 +109,8 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     
     # we can make more optimized C code by splitting this block by `values` type
     if isinstance(values, tuple):
-        for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
+        tup = values
+        for value, encoder, is_dynamic in zip(tup, self.encoders, self._is_dynamic):
             if is_dynamic:
                 raw_head_chunks.append(None)
                 tail_chunks.append(encoder(value))
@@ -117,7 +118,8 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
                 raw_head_chunks.append(encoder(value))
                 tail_chunks.append(b"")
     elif isinstance(values, list):
-        for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
+        lst = values
+        for value, encoder, is_dynamic in zip(lst, self.encoders, self._is_dynamic):
             if is_dynamic:
                 raw_head_chunks.append(None)
                 tail_chunks.append(encoder(value))
@@ -154,9 +156,11 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+        tup = values
+        tail_chunks = [encoder(value) for encoder, value in zip(encoders, tup)]
     elif isinstance(values, list):
-        tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
+        lst = values
+        tail_chunks = [encoder(value) for encoder, value in zip(encoders, lst)]
     else:
         tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
 
@@ -176,9 +180,11 @@ def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byte
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(len(encoders)))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(len(encoders)))
     else:
         return b"".join(encoders[i](values[i]) for i in range(len(encoders)))
 
@@ -217,9 +223,11 @@ def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(3))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(3))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(3))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(3))
     else:
         return b"".join(encoders[i](values[i]) for i in range(3))
 
@@ -231,9 +239,11 @@ def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(4))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(4))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(4))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(4))
     else:
         return b"".join(encoders[i](values[i]) for i in range(4))
 
@@ -245,9 +255,11 @@ def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(5))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(5))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(5))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(5))
     else:
         return b"".join(encoders[i](values[i]) for i in range(5))
 
@@ -259,9 +271,11 @@ def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(6))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(6))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(6))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(6))
     else:
         return b"".join(encoders[i](values[i]) for i in range(6))
 
@@ -273,9 +287,11 @@ def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(7))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(7))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(7))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(7))
     else:
         return b"".join(encoders[i](values[i]) for i in range(7))
 
@@ -287,9 +303,11 @@ def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(8))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(8))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(8))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(8))
     else:
         return b"".join(encoders[i](values[i]) for i in range(8))
 
@@ -301,9 +319,11 @@ def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(9))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(9))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(9))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(9))
     else:
         return b"".join(encoders[i](values[i]) for i in range(9))
 
@@ -315,9 +335,11 @@ def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> by
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return b"".join(encoders[i](values[i]) for i in range(10))
+        tup = values
+        return b"".join(encoders[i](tup[i]) for i in range(10))
     elif isinstance(values, list):
-        return b"".join(encoders[i](values[i]) for i in range(10))
+        lst = values
+        return b"".join(encoders[i](lst[i]) for i in range(10))
     else:
         return b"".join(encoders[i](values[i]) for i in range(10))
 
@@ -446,7 +468,13 @@ def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> N
 
     
 def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
-    tail_chunks = tuple(item_encoder(i) for i in value)
+    # we can make more optimized C code by splitting this line by `values` type
+    if isinstance(value, list):
+        tail_chunks = tuple(map(item_encoder, value))
+    elif isinstance(value, tuple):
+        tail_chunks = tuple(map(item_encoder, value))
+    else:
+        tail_chunks = tuple(map(item_encoder, value))
 
     items_are_dynamic: bool = getattr(item_encoder, "is_dynamic", False)
     if not items_are_dynamic or len(value) == 0:
