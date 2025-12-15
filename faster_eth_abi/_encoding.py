@@ -63,22 +63,22 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
         
     # we can make more optimized C code by splitting this block by `value` type
     if isinstance(value, list):
-        if len(value) != expected_length:
+        if len(lst := value) != expected_length:
             self.invalidate_value(
-                value,
+                lst,
                 exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {expected_length} were expected",
+                msg=f"value has {len(lst)} items when {expected_length} were expected",
             )
     
         for item, validator in zip(value, validators):
             validator(item)
 
     elif isinstance(value, tuple):
-        if len(value) != expected_length:
+        if len(tup := value) != expected_length:
             self.invalidate_value(
-                value,
+                tup,
                 exc=ValueOutOfBounds,
-                msg=f"value has {len(value)} items when {expected_length} were expected",
+                msg=f"value has {len(tup)} items when {expected_length} were expected",
             )
     
         for item, validator in zip(value, validators):
@@ -203,9 +203,9 @@ def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> byt
     
     # we can make more optimized C code by splitting this line by `values` type
     if isinstance(values, tuple):
-        return encoders[0](values[0]) + encoders[1](values[1])
+        return encoders[0]((tup := values)[0]) + encoders[1](tup[1])
     elif isinstance(values, list):
-        return encoders[0](values[0]) + encoders[1](values[1])
+        return encoders[0]((lst := values)[0]) + encoders[1](lst[1])
     else:
         return encoders[0](values[0]) + encoders[1](values[1])
 
