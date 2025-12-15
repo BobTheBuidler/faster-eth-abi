@@ -104,6 +104,7 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
 
 def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
     validate_tuple(self, values)
+    head_length = 0
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
     
@@ -112,28 +113,36 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
         for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
             if is_dynamic:
                 raw_head_chunks.append(None)
+                head_length += 32
                 tail_chunks.append(encoder(value))
             else:
-                raw_head_chunks.append(encoder(value))
+                chunk = encoder(value)
+                raw_head_chunks.append(chunk)
+                head_length += len(chunk)
                 tail_chunks.append(b"")
     elif isinstance(values, list):
         for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
             if is_dynamic:
                 raw_head_chunks.append(None)
+                head_length += 32
                 tail_chunks.append(encoder(value))
             else:
-                raw_head_chunks.append(encoder(value))
+                chunk = encoder(value)
+                raw_head_chunks.append(chunk)
+                head_length += len(chunk)
                 tail_chunks.append(b"")
     else:
         for value, encoder, is_dynamic in zip(values, self.encoders, self._is_dynamic):
             if is_dynamic:
                 raw_head_chunks.append(None)
+                head_length += 32
                 tail_chunks.append(encoder(value))
             else:
-                raw_head_chunks.append(encoder(value))
+                chunk = encoder(value)
+                raw_head_chunks.append(chunk)
+                head_length += len(chunk)
                 tail_chunks.append(b"")
 
-    head_length = sum(32 if item is None else len(item) for item in raw_head_chunks)
     tail_offsets = [0]
     total_offset = 0
     for item in tail_chunks[:-1]:
