@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - '**.py'
-      - '.github/workflows/lint.yaml'
+      - '.github/workflows/tox-lint.yaml'
       - 'pyproject.toml'
       - 'setup.py'
       - 'tox.ini'
