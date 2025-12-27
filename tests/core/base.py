@@ -16,7 +16,7 @@ class Coder(BaseCoder):
     base = None
     sub = None
 
-    def validate(self):
+    def validate(self) -> None:
         if self.base is None:
             raise ValueError("Setting missing")
 
