@@ -1,4 +1,5 @@
 from importlib.metadata import (
+    PackageNotFoundError,
     version as __version,
 )
 
@@ -9,4 +10,7 @@ from faster_eth_abi.abi import (
     is_encodable_type,
 )
 
-__version__ = __version("faster-eth-abi")
+try:
+    __version__ = __version("faster-eth-abi")
+except PackageNotFoundError:  # pragma: no cover - fallback for source checkouts
+    __version__ = "0+unknown"
