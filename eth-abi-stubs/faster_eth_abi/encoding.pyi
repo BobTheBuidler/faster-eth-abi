@@ -106,6 +106,8 @@ class FixedSizeEncoder(BaseEncoder):
 
 class Fixed32ByteSizeEncoder(FixedSizeEncoder):
     data_byte_size: int
+    def encode(self, value: Any) -> bytes: ...
+    __call__ = encode
 
 class BooleanEncoder(Fixed32ByteSizeEncoder):
     value_bit_size: int
@@ -224,6 +226,8 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
+    def encode(self, value: Any) -> bytes: ...
+    __call__ = encode
     @cached_property
     def value_byte_size(self) -> int: ...
     def validate_value(self, value: Any) -> None: ...
