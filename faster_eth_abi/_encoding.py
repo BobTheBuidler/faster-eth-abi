@@ -361,17 +361,20 @@ def validate_fixed(self: "BaseFixedEncoder", value: decimal.Decimal) -> None:
         )
 
 
-def encode_fixed(
+def encode_fixed_bigendian(
     value: Any,
     encode_fn: Callable[[Any], bytes],
-    is_big_endian: bool,
     data_byte_size: int,
 ) -> bytes:
-    base_encoded_value = encode_fn(value)
-    if is_big_endian:
-        return base_encoded_value.rjust(data_byte_size, b"\x00")
-    else:
-        return base_encoded_value.ljust(data_byte_size, b"\x00")
+    return encode_fn(value).rjust(data_byte_size, b"\x00")
+
+
+def encode_fixed_smallendian(
+    value: Any,
+    encode_fn: Callable[[Any], bytes],
+    data_byte_size: int,
+) -> bytes:
+    return encode_fn(value).ljust(data_byte_size, b"\x00")
 
 
 # UnsignedFixedEncoder
