@@ -45,6 +45,7 @@ if TYPE_CHECKING:
         SignedFixedDecoder,
         SignedIntegerDecoder,
         SizedArrayDecoder,
+        StringDecoder,
         TupleDecoder,
         UnsignedFixedDecoder,
     )
@@ -363,3 +364,9 @@ def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFrames
             )
 
     return data[:data_length]
+
+
+# StringDecoder
+def decode_string(self: "StringDecoder", stream: ContextFramesBytesIO) -> str:
+    data, padding_bytes = self.split_data_and_padding(read_bytestring_from_stream(stream))
+    return self.decoder_fn(data, self.bytes_errors)
