@@ -4955,7 +4955,8 @@ static PyMethodDef _encodingmodule_methods[] = {
     {"encode_tuple_no_dynamic9", (PyCFunction)CPyPy__encoding___encode_tuple_no_dynamic9, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_tuple_no_dynamic9(self, values)\n--\n\n") /* docstring */},
     {"encode_tuple_no_dynamic10", (PyCFunction)CPyPy__encoding___encode_tuple_no_dynamic10, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_tuple_no_dynamic10(self, values)\n--\n\n") /* docstring */},
     {"validate_fixed", (PyCFunction)CPyPy__encoding___validate_fixed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("validate_fixed(self, value)\n--\n\n") /* docstring */},
-    {"encode_fixed", (PyCFunction)CPyPy__encoding___encode_fixed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_fixed(value, encode_fn, is_big_endian, data_byte_size)\n--\n\n") /* docstring */},
+    {"encode_fixed_bigendian", (PyCFunction)CPyPy__encoding___encode_fixed_bigendian, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_fixed_bigendian(value, encode_fn, data_byte_size)\n--\n\n") /* docstring */},
+    {"encode_fixed_smallendian", (PyCFunction)CPyPy__encoding___encode_fixed_smallendian, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_fixed_smallendian(value, encode_fn, data_byte_size)\n--\n\n") /* docstring */},
     {"encode_unsigned_fixed", (PyCFunction)CPyPy__encoding___encode_unsigned_fixed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_unsigned_fixed(self, value)\n--\n\n") /* docstring */},
     {"encode_signed_fixed", (PyCFunction)CPyPy__encoding___encode_signed_fixed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_signed_fixed(self, value)\n--\n\n") /* docstring */},
     {"encode_signed", (PyCFunction)CPyPy__encoding___encode_signed, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("encode_signed(value, encode_fn, data_byte_size)\n--\n\n") /* docstring */},
@@ -11826,7 +11827,7 @@ fail: ;
     return NULL;
 }
 
-PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size) {
+PyObject *CPyDef__encoding___encode_fixed_bigendian(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size) {
     PyObject **cpy_r_r1;
     PyObject *cpy_r_r2;
     PyObject *cpy_r_r3;
@@ -11837,26 +11838,19 @@ PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r
     PyObject *cpy_r_r9;
     PyObject *cpy_r_r10;
     PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
-    PyObject *cpy_r_r13;
-    PyObject **cpy_r_r15;
-    PyObject *cpy_r_r16;
-    PyObject *cpy_r_r17;
-    PyObject *cpy_r_r18;
     PyObject *cpy_r_r0[1] = {cpy_r_value};
     cpy_r_r1 = (PyObject **)&cpy_r_r0;
     cpy_r_r2 = PyObject_Vectorcall(cpy_r_encode_fn, cpy_r_r1, 1, 0);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
-        goto CPyL9;
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_bigendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL5;
     }
     if (likely(PyBytes_Check(cpy_r_r2) || PyByteArray_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 370, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
-        goto CPyL9;
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed_bigendian", 369, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
+        goto CPyL5;
     }
-    if (!cpy_r_is_big_endian) goto CPyL6;
     cpy_r_r4 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
     cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'rjust' */
     CPyTagged_INCREF(cpy_r_data_byte_size);
@@ -11865,79 +11859,125 @@ PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r
     cpy_r_r8 = (PyObject **)&cpy_r_r7;
     cpy_r_r9 = PyObject_VectorcallMethod(cpy_r_r5, cpy_r_r8, 9223372036854775811ULL, 0);
     if (unlikely(cpy_r_r9 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
-        goto CPyL10;
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_bigendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL6;
     }
     CPy_DECREF(cpy_r_r3);
     CPy_DECREF(cpy_r_r6);
     if (likely(PyBytes_Check(cpy_r_r9) || PyByteArray_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 372, CPyStatic__encoding___globals, "bytes", cpy_r_r9);
-        goto CPyL9;
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed_bigendian", 369, CPyStatic__encoding___globals, "bytes", cpy_r_r9);
+        goto CPyL5;
     }
     return cpy_r_r10;
+CPyL5: ;
+    cpy_r_r11 = NULL;
+    return cpy_r_r11;
 CPyL6: ;
-    cpy_r_r11 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
-    cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ljust' */
-    CPyTagged_INCREF(cpy_r_data_byte_size);
-    cpy_r_r13 = CPyTagged_StealAsObject(cpy_r_data_byte_size);
-    PyObject *cpy_r_r14[3] = {cpy_r_r3, cpy_r_r13, cpy_r_r11};
-    cpy_r_r15 = (PyObject **)&cpy_r_r14;
-    cpy_r_r16 = PyObject_VectorcallMethod(cpy_r_r12, cpy_r_r15, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r16 == NULL)) {
-        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
-        goto CPyL11;
-    }
-    CPy_DECREF(cpy_r_r3);
-    CPy_DECREF(cpy_r_r13);
-    if (likely(PyBytes_Check(cpy_r_r16) || PyByteArray_Check(cpy_r_r16)))
-        cpy_r_r17 = cpy_r_r16;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed", 374, CPyStatic__encoding___globals, "bytes", cpy_r_r16);
-        goto CPyL9;
-    }
-    return cpy_r_r17;
-CPyL9: ;
-    cpy_r_r18 = NULL;
-    return cpy_r_r18;
-CPyL10: ;
     CPy_DecRef(cpy_r_r3);
     CPy_DecRef(cpy_r_r6);
-    goto CPyL9;
-CPyL11: ;
-    CPy_DecRef(cpy_r_r3);
-    CPy_DecRef(cpy_r_r13);
-    goto CPyL9;
+    goto CPyL5;
 }
 
-PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
-    static const char * const kwlist[] = {"value", "encode_fn", "is_big_endian", "data_byte_size", 0};
-    static CPyArg_Parser parser = {"OOOO:encode_fixed", kwlist, 0};
+PyObject *CPyPy__encoding___encode_fixed_bigendian(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"value", "encode_fn", "data_byte_size", 0};
+    static CPyArg_Parser parser = {"OOO:encode_fixed_bigendian", kwlist, 0};
     PyObject *obj_value;
     PyObject *obj_encode_fn;
-    PyObject *obj_is_big_endian;
     PyObject *obj_data_byte_size;
-    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_value, &obj_encode_fn, &obj_is_big_endian, &obj_data_byte_size)) {
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_value, &obj_encode_fn, &obj_data_byte_size)) {
         return NULL;
     }
     PyObject *arg_value = obj_value;
     PyObject *arg_encode_fn = obj_encode_fn;
-    char arg_is_big_endian;
-    if (unlikely(!PyBool_Check(obj_is_big_endian))) {
-        CPy_TypeError("bool", obj_is_big_endian); goto fail;
-    } else
-        arg_is_big_endian = obj_is_big_endian == Py_True;
     CPyTagged arg_data_byte_size;
     if (likely(PyLong_Check(obj_data_byte_size)))
         arg_data_byte_size = CPyTagged_BorrowFromObject(obj_data_byte_size);
     else {
         CPy_TypeError("int", obj_data_byte_size); goto fail;
     }
-    PyObject *retval = CPyDef__encoding___encode_fixed(arg_value, arg_encode_fn, arg_is_big_endian, arg_data_byte_size);
+    PyObject *retval = CPyDef__encoding___encode_fixed_bigendian(arg_value, arg_encode_fn, arg_data_byte_size);
     return retval;
 fail: ;
-    CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+    CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_bigendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+    return NULL;
+}
+
+PyObject *CPyDef__encoding___encode_fixed_smallendian(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size) {
+    PyObject **cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject *cpy_r_r6;
+    PyObject **cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    PyObject *cpy_r_r11;
+    PyObject *cpy_r_r0[1] = {cpy_r_value};
+    cpy_r_r1 = (PyObject **)&cpy_r_r0;
+    cpy_r_r2 = PyObject_Vectorcall(cpy_r_encode_fn, cpy_r_r1, 1, 0);
+    if (unlikely(cpy_r_r2 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_smallendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL5;
+    }
+    if (likely(PyBytes_Check(cpy_r_r2) || PyByteArray_Check(cpy_r_r2)))
+        cpy_r_r3 = cpy_r_r2;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed_smallendian", 377, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
+        goto CPyL5;
+    }
+    cpy_r_r4 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'\x00' */
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ljust' */
+    CPyTagged_INCREF(cpy_r_data_byte_size);
+    cpy_r_r6 = CPyTagged_StealAsObject(cpy_r_data_byte_size);
+    PyObject *cpy_r_r7[3] = {cpy_r_r3, cpy_r_r6, cpy_r_r4};
+    cpy_r_r8 = (PyObject **)&cpy_r_r7;
+    cpy_r_r9 = PyObject_VectorcallMethod(cpy_r_r5, cpy_r_r8, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r9 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_smallendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
+        goto CPyL6;
+    }
+    CPy_DECREF(cpy_r_r3);
+    CPy_DECREF(cpy_r_r6);
+    if (likely(PyBytes_Check(cpy_r_r9) || PyByteArray_Check(cpy_r_r9)))
+        cpy_r_r10 = cpy_r_r9;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_fixed_smallendian", 377, CPyStatic__encoding___globals, "bytes", cpy_r_r9);
+        goto CPyL5;
+    }
+    return cpy_r_r10;
+CPyL5: ;
+    cpy_r_r11 = NULL;
+    return cpy_r_r11;
+CPyL6: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r6);
+    goto CPyL5;
+}
+
+PyObject *CPyPy__encoding___encode_fixed_smallendian(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"value", "encode_fn", "data_byte_size", 0};
+    static CPyArg_Parser parser = {"OOO:encode_fixed_smallendian", kwlist, 0};
+    PyObject *obj_value;
+    PyObject *obj_encode_fn;
+    PyObject *obj_data_byte_size;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_value, &obj_encode_fn, &obj_data_byte_size)) {
+        return NULL;
+    }
+    PyObject *arg_value = obj_value;
+    PyObject *arg_encode_fn = obj_encode_fn;
+    CPyTagged arg_data_byte_size;
+    if (likely(PyLong_Check(obj_data_byte_size)))
+        arg_data_byte_size = CPyTagged_BorrowFromObject(obj_data_byte_size);
+    else {
+        CPy_TypeError("int", obj_data_byte_size); goto fail;
+    }
+    PyObject *retval = CPyDef__encoding___encode_fixed_smallendian(arg_value, arg_encode_fn, arg_data_byte_size);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_fixed_smallendian", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
     return NULL;
 }
 
@@ -12527,7 +12567,7 @@ PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_
     if (likely(PyBytes_Check(cpy_r_r2) || PyByteArray_Check(cpy_r_r2)))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 404, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 407, CPyStatic__encoding___globals, "bytes", cpy_r_r2);
         goto CPyL11;
     }
     cpy_r_r4 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
@@ -12562,7 +12602,7 @@ PyObject *CPyDef__encoding___encode_signed(PyObject *cpy_r_value, PyObject *cpy_
     if (likely(PyBytes_Check(cpy_r_r12) || PyByteArray_Check(cpy_r_r12)))
         cpy_r_r13 = cpy_r_r12;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 406, CPyStatic__encoding___globals, "bytes", cpy_r_r12);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 409, CPyStatic__encoding___globals, "bytes", cpy_r_r12);
         goto CPyL11;
     }
     return cpy_r_r13;
@@ -12583,7 +12623,7 @@ CPyL8: ;
     if (likely(PyBytes_Check(cpy_r_r19) || PyByteArray_Check(cpy_r_r19)))
         cpy_r_r20 = cpy_r_r19;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 408, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_signed", 411, CPyStatic__encoding___globals, "bytes", cpy_r_r19);
         goto CPyL11;
     }
     return cpy_r_r20;
@@ -12734,7 +12774,7 @@ CPyL3: ;
     if (likely(PyBytes_Check(cpy_r_r5) || PyByteArray_Check(cpy_r_r5)))
         cpy_r_r6 = cpy_r_r5;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_text", 419, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_text", 422, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
         goto CPyL10;
     }
     cpy_r_r7 = (CPyPtr)&((PyVarObject *)cpy_r_r6)->ob_size;
@@ -12869,7 +12909,7 @@ char CPyDef__encoding___validate_array(PyObject *cpy_r_array_encoder, PyObject *
     if (likely(PyList_Check(cpy_r_value)))
         cpy_r_r5 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 436, CPyStatic__encoding___globals, "list", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 439, CPyStatic__encoding___globals, "list", cpy_r_value);
         goto CPyL28;
     }
     cpy_r_r6 = 0;
@@ -12905,7 +12945,7 @@ CPyL9: ;
     if (likely(PyTuple_Check(cpy_r_value)))
         cpy_r_r20 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 441, CPyStatic__encoding___globals, "tuple", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_array", 444, CPyStatic__encoding___globals, "tuple", cpy_r_value);
         goto CPyL28;
     }
     cpy_r_r21 = (CPyPtr)&((PyVarObject *)cpy_r_r20)->ob_size;
@@ -13156,7 +13196,7 @@ CPyL2: ;
     if (likely(PyBytes_Check(cpy_r_r5) || PyByteArray_Check(cpy_r_r5)))
         cpy_r_r6 = cpy_r_r5;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 458, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 461, CPyStatic__encoding___globals, "bytes", cpy_r_r5);
         goto CPyL39;
     }
     cpy_r_r7 = PyList_Append(cpy_r_r0, cpy_r_r6);
@@ -13239,7 +13279,7 @@ CPyL15: ;
     if (likely(PyTuple_Check(cpy_r_r25)))
         cpy_r_r26 = cpy_r_r25;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 467, CPyStatic__encoding___globals, "tuple", cpy_r_r25);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 470, CPyStatic__encoding___globals, "tuple", cpy_r_r25);
         goto CPyL42;
     }
     cpy_r_r27 = (CPyPtr)&((PyVarObject *)cpy_r_r26)->ob_size;
@@ -13252,7 +13292,7 @@ CPyL20: ;
     if (likely(PyBytes_Check(cpy_r_r31) || PyByteArray_Check(cpy_r_r31)))
         cpy_r_r32 = cpy_r_r31;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 467, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_elements", 470, CPyStatic__encoding___globals, "bytes", cpy_r_r31);
         goto CPyL44;
     }
     cpy_r_r33 = (CPyPtr)&((PyVarObject *)cpy_r_r32)->ob_size;
@@ -13471,7 +13511,7 @@ char CPyDef__encoding___validate_packed_array(PyObject *cpy_r_array_encoder, PyO
         cpy_r_r3 = NULL;
     }
     if (cpy_r_r3 != NULL) goto __LL17;
-    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_packed_array", 479, CPyStatic__encoding___globals, "int or None", cpy_r_r2);
+    CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "validate_packed_array", 482, CPyStatic__encoding___globals, "int or None", cpy_r_r2);
     goto CPyL19;
 __LL17: ;
     cpy_r_r4 = (PyObject *)&_Py_NoneStruct;
@@ -13880,7 +13920,7 @@ PyObject *CPyDef__encoding___encode_uint_256(CPyTagged cpy_r_i) {
     if (likely(PyBytes_Check(cpy_r_r6) || PyByteArray_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_uint_256", 510, CPyStatic__encoding___globals, "bytes", cpy_r_r6);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "encode_uint_256", 513, CPyStatic__encoding___globals, "bytes", cpy_r_r6);
         goto CPyL4;
     }
     return cpy_r_r7;
@@ -13963,7 +14003,7 @@ CPyL5: ;
     if (likely(PyBytes_Check(cpy_r_r11) || PyByteArray_Check(cpy_r_r11)))
         cpy_r_r12 = cpy_r_r11;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "int_to_big_endian", 515, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
+        CPy_TypeErrorTraceback("faster_eth_abi/_encoding.py", "int_to_big_endian", 518, CPyStatic__encoding___globals, "bytes", cpy_r_r11);
         goto CPyL8;
     }
     return cpy_r_r12;
@@ -32100,8 +32140,10 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic10(PyObject *cpy_r_self, PyO
 PyObject *CPyPy__encoding___encode_tuple_no_dynamic10(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__encoding___validate_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
 PyObject *CPyPy__encoding___validate_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__encoding___encode_fixed(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, char cpy_r_is_big_endian, CPyTagged cpy_r_data_byte_size);
-PyObject *CPyPy__encoding___encode_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__encoding___encode_fixed_bigendian(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
+PyObject *CPyPy__encoding___encode_fixed_bigendian(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__encoding___encode_fixed_smallendian(PyObject *cpy_r_value, PyObject *cpy_r_encode_fn, CPyTagged cpy_r_data_byte_size);
+PyObject *CPyPy__encoding___encode_fixed_smallendian(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__encoding___encode_unsigned_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
 PyObject *CPyPy__encoding___encode_unsigned_fixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__encoding___encode_signed_fixed(PyObject *cpy_r_self, PyObject *cpy_r_value);
