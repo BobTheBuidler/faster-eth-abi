@@ -5,7 +5,6 @@ according to ABI type specifications.
 """
 import abc
 import codecs
-import decimal
 from decimal import (
     Decimal,
 )
@@ -81,8 +80,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
-    ceil32,
     compute_signed_fixed_bounds,
     compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds,

@@ -53,7 +53,6 @@ from faster_eth_abi.base import (
     BaseCoder,
 )
 from faster_eth_abi.exceptions import (
-    InsufficientDataBytes,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
@@ -126,7 +125,7 @@ class HeadTailDecoder(BaseDecoder[T]):
     __call__ = decode
 
 
-class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
+class TupleDecoder(BaseDecoder[tuple[T, ...]]):
     decoders: Tuple[BaseDecoder[T], ...] = ()
 
     def __init__(self, decoders: Tuple[BaseDecoder[T], ...]) -> None:

@@ -20,10 +20,7 @@ from faster_eth_abi._decoding import (
     validate_pointers_array as validate_pointers_array,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
-from faster_eth_abi.exceptions import (
-    InsufficientDataBytes as InsufficientDataBytes,
-    NonEmptyPaddingBytes as NonEmptyPaddingBytes,
-)
+from faster_eth_abi.exceptions import NonEmptyPaddingBytes as NonEmptyPaddingBytes
 from faster_eth_abi.from_type_str import (
     parse_tuple_type_str as parse_tuple_type_str,
     parse_type_str as parse_type_str,
