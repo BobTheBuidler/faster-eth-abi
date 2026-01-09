@@ -126,7 +126,7 @@ class HeadTailDecoder(BaseDecoder[T]):
     __call__ = decode
 
 
-class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
+class TupleDecoder(BaseDecoder[tuple[T, ...]]):
     decoders: Tuple[BaseDecoder[T], ...] = ()
 
     def __init__(self, decoders: Tuple[BaseDecoder[T], ...]) -> None:
