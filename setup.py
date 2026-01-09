@@ -71,16 +71,11 @@ else:
     if sys.version_info >= (3, 9):
         mypycify_kwargs["group_name"] = "faster_eth_abi"
 
-    flags = [
-        "--pretty",
-        "--install-types",
-        # all of these are safe to disable long term
-        "--disable-error-code=override",
-        "--disable-error-code=no-any-return",
-    ]
+    flags = ["--pretty", "--install-types"]
 
     if sys.version_info >= (3, 9):
         # We only enable these on the lowest supported Python version
+        # because if it isn't redundant there, it isn't redundant.
         flags.append("--disable-error-code=redundant-cast")
         flags.append("--disable-error-code=unused-ignore")
         
