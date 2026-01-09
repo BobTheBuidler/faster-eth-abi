@@ -53,7 +53,6 @@ from faster_eth_abi.base import (
     BaseCoder,
 )
 from faster_eth_abi.exceptions import (
-    InsufficientDataBytes,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
