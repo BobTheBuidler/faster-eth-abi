@@ -7,6 +7,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail as decode_head_tail,
     decode_signed_fixed as decode_signed_fixed,
     decode_sized_array as decode_sized_array,
+    decode_string as decode_string,
     decode_tuple as decode_tuple,
     decode_unsigned_fixed as decode_unsigned_fixed,
     decoder_fn_boolean as decoder_fn_boolean,
@@ -208,6 +209,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
     is_dynamic: bool
     @staticmethod
     def decoder_fn(data: bytes) -> bytes: ...
+    @final
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes: ...
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None: ...
     def from_type_str(cls, abi_type, registry): ...
