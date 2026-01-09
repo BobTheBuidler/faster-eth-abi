@@ -368,7 +368,5 @@ def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFrames
 
 # StringDecoder
 def decode_string(self: "StringDecoder", stream: ContextFramesBytesIO) -> str:
-    data, padding_bytes = split_data_and_padding_fixed_byte_size(
-        self, read_bytestring_from_stream(self, stream)
-    )
+    data = read_bytestring_from_stream(self, stream)
     return self.decoder_fn(data, self.bytes_errors)
