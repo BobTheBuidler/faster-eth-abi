@@ -1,4 +1,4 @@
-cchecksum>=0.3.7.dev0,<0.4
+cchecksum>=0.3.9,<0.4
 faster-eth-utils==5.3.21
 eth-abi==5.2.0
 eth-typing==5.2.1
