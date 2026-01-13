@@ -11,8 +11,7 @@ requires = [
 	"eth-abi==5.2.0; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
 	"eth-typing==5.2.1",
 	"parsimonious==0.10.0",
-	"types-parsimonious==0.10.0.20240331; python_version == '3.8'",
-	"types-parsimonious==0.10.0.20250822; python_version != '3.8'",
+	"types-parsimonious==0.10.0.20250822",
 ]
 
 [tool.autoflake]
