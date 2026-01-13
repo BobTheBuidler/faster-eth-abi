@@ -5,7 +5,7 @@ requires = [
 	"mypy[mypyc]==1.14.1; python_version == '3.8'",
 	"mypy[mypyc]==1.19.0; python_version != '3.8'",
 	"mypy_extensions",
-	"cchecksum==0.3.7.dev0",
+	"cchecksum==0.3.9",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
 	# is unable to build on Python3.14 on 32-bit Linux distros
 	"faster-eth-utils==5.3.21; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
