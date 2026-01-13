@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 from typing import (
-    List,
+    Any,
 )
 
 from mypyc.build import (
@@ -12,11 +12,11 @@ from setuptools import (
     setup,
 )
 
-install_requires = []
+install_requires: list[str] = []
 
 
-def parse_requirements(filename: str) -> List[str]:
-    lines = []
+def parse_requirements(filename: str) -> list[str]:
+    lines: list[str] = []
     with open(filename) as f:
         for line in f:
             line = line.strip()
@@ -35,7 +35,7 @@ def parse_requirements(filename: str) -> List[str]:
 
 install_requires.extend(parse_requirements("requirements.txt"))
 
-extras_require = {
+extras_require: dict[str, list[str]] = {
     "dev": parse_requirements("requirements-dev.txt"),
     "docs": [
         "sphinx>=6.0.0",
@@ -67,11 +67,11 @@ skip_mypyc = any(
 if skip_mypyc:
     ext_modules = []
 else:
-    mypycify_kwargs = {"strict_dunder_typing": True}
+    mypycify_kwargs: dict[str, Any] = {"strict_dunder_typing": True}
     if sys.version_info >= (3, 9):
         mypycify_kwargs["group_name"] = "faster_eth_abi"
 
-    flags = [
+    flags: list[str] = [
         "--pretty",
         "--install-types",
         # all of these are safe to disable long term
@@ -83,7 +83,7 @@ else:
         # We only enable these on the lowest supported Python version
         flags.append("--disable-error-code=redundant-cast")
         flags.append("--disable-error-code=unused-ignore")
-        
+
     ext_modules = mypycify(
         [
             "faster_eth_abi/_codec.py",
