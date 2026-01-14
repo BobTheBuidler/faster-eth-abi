@@ -199,7 +199,7 @@ class SingleDecoder(BaseDecoder[T]):
 
 
 class BaseArrayDecoder(BaseDecoder[Tuple[T, ...]]):
-    item_decoder: BaseDecoder = None
+    item_decoder: Optional[BaseDecoder[T]] = None
 
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
