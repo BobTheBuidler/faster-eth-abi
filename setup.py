@@ -74,12 +74,9 @@ if not skip_mypyc:
         # all of these are safe to disable long term
         "--disable-error-code=override",
         "--disable-error-code=no-any-return",
+        "--disable-error-code=unused-ignore",
+        "--disable-error-code=redundant-cast",
     ]
-
-    if sys.version_info >= (3, 11):
-        # We only enable these on the lowest supported Python version (currently 3.10.x)
-        flags.append("--disable-error-code=redundant-cast")
-        flags.append("--disable-error-code=unused-ignore")
 
     ext_modules.extend(
         mypycify(
