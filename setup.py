@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 import sys
-from typing import (
-    Any,
-)
 
 from mypyc.build import (
     mypycify,
