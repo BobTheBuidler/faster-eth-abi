@@ -41,11 +41,13 @@ from faster_eth_abi.utils.numeric import (
 
 StrategyFactory = Callable[[ABIType, "StrategyRegistry"], st.SearchStrategy]
 StrategyRegistration = Union[st.SearchStrategy, StrategyFactory]
+StrategyMapping = PredicateMapping[StrategyRegistration]
 
 
 class StrategyRegistry(BaseRegistry):
     def __init__(self) -> None:
-        self._strategies = PredicateMapping("strategy registry")
+        strategies: StrategyMapping = PredicateMapping("strategy registry")
+        self._strategies: Final = strategies
 
     def register_strategy(
         self,
