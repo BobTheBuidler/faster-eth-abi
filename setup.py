@@ -8,6 +8,7 @@ from mypyc.build import (
     mypycify,
 )
 from setuptools import (
+    Extension,
     find_packages,
     setup,
 )
@@ -64,13 +65,12 @@ skip_mypyc = any(
     for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
 )
 
-if skip_mypyc:
-    ext_modules = []
-else:
-    mypycify_kwargs: dict[str, Any] = {"strict_dunder_typing": True}
-    if sys.version_info >= (3, 9):
-        mypycify_kwargs["group_name"] = "faster_eth_abi"
+ext_modules: list[Extension] = []
 
+if not skip_mypyc:
+
+    # Compile the interpreted python files to C
+    
     flags: list[str] = [
         "--pretty",
         "--install-types",
@@ -79,28 +79,31 @@ else:
         "--disable-error-code=no-any-return",
     ]
 
-    if sys.version_info >= (3, 9):
-        # We only enable these on the lowest supported Python version
+    if sys.version_info >= (3, 11):
+        # We only enable these on the lowest supported Python version (currently 3.10.x)
         flags.append("--disable-error-code=redundant-cast")
         flags.append("--disable-error-code=unused-ignore")
 
-    ext_modules = mypycify(
-        [
-            "faster_eth_abi/_codec.py",
-            "faster_eth_abi/_decoding.py",
-            "faster_eth_abi/_encoding.py",
-            "faster_eth_abi/_grammar.py",
-            "faster_eth_abi/abi.py",
-            "faster_eth_abi/constants.py",
-            # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
-            "faster_eth_abi/from_type_str.py",
-            # "faster_eth_abi/io.py",
-            "faster_eth_abi/packed.py",
-            "faster_eth_abi/tools",
-            "faster_eth_abi/utils",
-            *flags,
-        ],
-        **mypycify_kwargs,
+    ext_modules.extend(
+        mypycify(
+            [
+                "faster_eth_abi/_codec.py",
+                "faster_eth_abi/_decoding.py",
+                "faster_eth_abi/_encoding.py",
+                "faster_eth_abi/_grammar.py",
+                "faster_eth_abi/abi.py",
+                "faster_eth_abi/constants.py",
+                # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
+                "faster_eth_abi/from_type_str.py",
+                # "faster_eth_abi/io.py",
+                "faster_eth_abi/packed.py",
+                "faster_eth_abi/tools",
+                "faster_eth_abi/utils",
+                *flags,
+            ],
+            group_name="faster_eth_abi",
+            strict_dunder_typing=True,
+        )
     )
 
 
