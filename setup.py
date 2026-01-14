@@ -1,22 +1,20 @@
 #!/usr/bin/env python
 import sys
-from typing import (
-    List,
-)
 
 from mypyc.build import (
     mypycify,
 )
 from setuptools import (
+    Extension,
     find_packages,
     setup,
 )
 
-install_requires = []
+install_requires: list[str] = []
 
 
-def parse_requirements(filename: str) -> List[str]:
-    lines = []
+def parse_requirements(filename: str) -> list[str]:
+    lines: list[str] = []
     with open(filename) as f:
         for line in f:
             line = line.strip()
@@ -35,7 +33,7 @@ def parse_requirements(filename: str) -> List[str]:
 
 install_requires.extend(parse_requirements("requirements.txt"))
 
-extras_require = {
+extras_require: dict[str, list[str]] = {
     "dev": parse_requirements("requirements-dev.txt"),
     "docs": [
         "sphinx>=6.0.0",
@@ -64,50 +62,49 @@ skip_mypyc = any(
     for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
 )
 
-if skip_mypyc:
-    ext_modules = []
-else:
-    mypycify_kwargs = {"strict_dunder_typing": True}
-    if sys.version_info >= (3, 9):
-        mypycify_kwargs["group_name"] = "faster_eth_abi"
+ext_modules: list[Extension] = []
 
-    flags = [
+if not skip_mypyc:
+
+    # Compile the interpreted python files to C
+    
+    flags: list[str] = [
         "--pretty",
         "--install-types",
         # all of these are safe to disable long term
         "--disable-error-code=override",
         "--disable-error-code=no-any-return",
+        "--disable-error-code=unused-ignore",
+        "--disable-error-code=redundant-cast",
     ]
 
-    if sys.version_info >= (3, 9):
-        # We only enable these on the lowest supported Python version
-        flags.append("--disable-error-code=redundant-cast")
-        flags.append("--disable-error-code=unused-ignore")
-        
-    ext_modules = mypycify(
-        [
-            "faster_eth_abi/_codec.py",
-            "faster_eth_abi/_decoding.py",
-            "faster_eth_abi/_encoding.py",
-            "faster_eth_abi/_grammar.py",
-            "faster_eth_abi/abi.py",
-            "faster_eth_abi/constants.py",
-            # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
-            "faster_eth_abi/from_type_str.py",
-            # "faster_eth_abi/io.py",
-            "faster_eth_abi/packed.py",
-            "faster_eth_abi/tools",
-            "faster_eth_abi/utils",
-            *flags,
-        ],
-        **mypycify_kwargs,
+    ext_modules.extend(
+        mypycify(
+            [
+                "faster_eth_abi/_codec.py",
+                "faster_eth_abi/_decoding.py",
+                "faster_eth_abi/_encoding.py",
+                "faster_eth_abi/_grammar.py",
+                "faster_eth_abi/abi.py",
+                "faster_eth_abi/constants.py",
+                # "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
+                "faster_eth_abi/from_type_str.py",
+                # "faster_eth_abi/io.py",
+                "faster_eth_abi/packed.py",
+                "faster_eth_abi/tools",
+                "faster_eth_abi/utils",
+                *flags,
+            ],
+            group_name="faster_eth_abi",
+            strict_dunder_typing=True,
+        )
     )
 
 
 setup(
     name="faster_eth_abi",
     # *IMPORTANT*: Don't manually change the version here. See Contributing docs for the release process.
-    version="5.2.23",
+    version="5.2.24",
     description="""A ~2-6x faster fork of eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding. Implemented in C.""",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -126,7 +123,7 @@ setup(
     },
     include_package_data=True,
     install_requires=install_requires,
-    python_requires=">=3.8, <4",
+    python_requires=">=3.10, <4",
     extras_require=extras_require,
     license="MIT",
     zip_safe=False,
@@ -151,8 +148,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",

@@ -5,7 +5,9 @@
   ],
   "packageRules": [
     {
-      "matchDepNames": ["hypothesis"],
+      "matchDepNames": [
+        "hypothesis"
+      ],
       "enabled": false,
       "description": "Do not update hypothesis"
     },
@@ -26,11 +28,12 @@
       ]
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "pyproject.toml",
-        "requirements*.txt"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/pyproject.toml/",
+        "/requirements*.txt/"
       ],
       "matchStrings": [
         "mypy\\[mypyc\\]==1\\.14\\.1; python_version ?== ?['\\\"]3\\.8['\\\"]"
@@ -41,7 +44,10 @@
       "description": "Do not update mypy for Python 3.8 pins"
     },
     {
-      "fileMatch": ["requirements-mypy.txt"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/requirements-mypy.txt/"
+      ],
       "matchStrings": [
         "mypy>=1\\.14\\.1,<([0-9a-zA-Z\\.]+)"
       ],
@@ -53,7 +59,10 @@
       "description": "Allow Renovate to update only the upper bound of mypy, keep lower bound at 1.14.1"
     },
     {
-      "fileMatch": ["setup.py"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/setup.py/"
+      ],
       "matchStrings": [
         "python_requires\\s*=\\s*\"[>=]*([0-9.]+)"
       ],
@@ -65,7 +74,10 @@
       "description": "Extract minimum supported Python version from setup.py"
     },
     {
-      "fileMatch": [".github/workflows/stubgen.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/.github/workflows/stubgen.yaml/"
+      ],
       "matchStrings": [
         "python-version: '([0-9.]+)'"
       ],

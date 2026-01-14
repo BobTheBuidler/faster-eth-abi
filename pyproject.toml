@@ -2,18 +2,16 @@
 requires = [
 	"setuptools",
 	"wheel",
-	"mypy[mypyc]==1.14.1; python_version == '3.8'",
-	"mypy[mypyc]==1.19.0; python_version != '3.8'",
+	"mypy[mypyc]==1.19.1",
 	"mypy_extensions",
-	"cchecksum==0.3.7.dev0",
+	"cchecksum==0.3.9",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
 	# is unable to build on Python3.14 on 32-bit Linux distros
-	"faster-eth-utils==5.3.20; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
+	"faster-eth-utils==5.3.21; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
 	"eth-abi==5.2.0; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
 	"eth-typing==5.2.1",
 	"parsimonious==0.10.0",
-	"types-parsimonious==0.10.0.20240331; python_version == '3.8'",
-	"types-parsimonious==0.10.0.20250822; python_version != '3.8'",
+	"types-parsimonious==0.10.0.20250822",
 ]
 
 [tool.autoflake]
@@ -48,7 +46,7 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
-disable_error_code = ["arg-type", "call-arg", "call-overload", "assignment", "operator", "var-annotated", "attr-defined", "has-type", "union-attr", "type-arg"]
+disable_error_code = ["arg-type", "call-arg", "call-overload", "assignment", "operator", "union-attr", "type-arg"]
 
 
 [tool.pydocstyle]
@@ -144,7 +142,7 @@ name = "Removals"
 showcontent = true
 
 [tool.bumpversion]
-current_version = "5.2.22"
+current_version = "5.2.24"
 parse = """
     (?P<major>\\d+)
     \\.(?P<minor>\\d+)

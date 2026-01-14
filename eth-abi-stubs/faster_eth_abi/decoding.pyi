@@ -8,6 +8,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail as decode_head_tail,
     decode_signed_fixed as decode_signed_fixed,
     decode_sized_array as decode_sized_array,
+    decode_string as decode_string,
     decode_tuple as decode_tuple,
     decode_unsigned_fixed as decode_unsigned_fixed,
     decoder_fn_boolean as decoder_fn_boolean,
@@ -20,10 +21,7 @@ from faster_eth_abi._decoding import (
     validate_pointers_array as validate_pointers_array,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
-from faster_eth_abi.exceptions import (
-    InsufficientDataBytes as InsufficientDataBytes,
-    NonEmptyPaddingBytes as NonEmptyPaddingBytes,
-)
+from faster_eth_abi.exceptions import NonEmptyPaddingBytes as NonEmptyPaddingBytes
 from faster_eth_abi.from_type_str import (
     parse_tuple_type_str as parse_tuple_type_str,
     parse_type_str as parse_type_str,
@@ -211,6 +209,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
     is_dynamic: bool
     @staticmethod
     def decoder_fn(data: bytes) -> bytes: ...
+    @final
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes: ...
     def validate_padding_bytes(self, value: Any, padding_bytes: bytes) -> None: ...
     def from_type_str(cls, abi_type: TypeStr, registry: ABIRegistry) -> Self: ...

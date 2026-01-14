@@ -5,7 +5,8 @@ from faster_eth_abi._encoding import (
     encode_bytestring as encode_bytestring,
     encode_elements as encode_elements,
     encode_elements_dynamic as encode_elements_dynamic,
-    encode_fixed as encode_fixed,
+    encode_fixed_bigendian as encode_fixed_bigendian,
+    encode_fixed_smallendian as encode_fixed_smallendian,
     encode_signed as encode_signed,
     encode_signed_fixed as encode_signed_fixed,
     encode_text as encode_text,
@@ -34,8 +35,6 @@ from faster_eth_abi.from_type_str import (
 from faster_eth_abi.registry import ABIRegistry as ABIRegistry
 from faster_eth_abi.utils.numeric import (
     TEN as TEN,
-    abi_decimal_context as abi_decimal_context,
-    ceil32 as ceil32,
     compute_signed_fixed_bounds as compute_signed_fixed_bounds,
     compute_signed_integer_bounds as compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds as compute_unsigned_fixed_bounds,
@@ -106,6 +105,8 @@ class FixedSizeEncoder(BaseEncoder):
 
 class Fixed32ByteSizeEncoder(FixedSizeEncoder):
     data_byte_size: int
+    def encode(self, value: Any) -> bytes: ...
+    __call__ = encode
 
 class BooleanEncoder(Fixed32ByteSizeEncoder):
     value_bit_size: int
@@ -224,6 +225,8 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian: bool
+    def encode(self, value: Any) -> bytes: ...
+    __call__ = encode
     @cached_property
     def value_byte_size(self) -> int: ...
     def validate_value(self, value: Any) -> None: ...

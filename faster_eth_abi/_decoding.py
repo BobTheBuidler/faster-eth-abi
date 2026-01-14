@@ -45,6 +45,7 @@ if TYPE_CHECKING:
         SignedFixedDecoder,
         SignedIntegerDecoder,
         SizedArrayDecoder,
+        StringDecoder,
         TupleDecoder,
         UnsignedFixedDecoder,
     )
@@ -207,7 +208,10 @@ def decode_sized_array(
         raise AssertionError("`item_decoder` is None")
 
     array_size = self.array_size
-    self.validate_pointers(stream, array_size)
+    
+    if item_decoder.is_dynamic:
+        validate_pointers_array(self, stream, array_size)
+
     return tuple(item_decoder(stream) for _ in range(array_size))
 
 
@@ -215,13 +219,19 @@ def decode_sized_array(
 def decode_dynamic_array(
     self: "DynamicArrayDecoder[T]", stream: ContextFramesBytesIO
 ) -> Tuple[T, ...]:
-    array_size = decode_uint_256(stream)
-    stream.push_frame(32)
     if self.item_decoder is None:
         raise AssertionError("`item_decoder` is None")
+        
+    array_size = decode_uint_256(stream)
+    stream.push_frame(32)
 
-    self.validate_pointers(stream, array_size)
     item_decoder = self.item_decoder
+    if item_decoder is None:
+        raise AssertionError("`item_decoder` is None")
+
+    if item_decoder.is_dynamic:
+        validate_pointers_array(self, stream, array_size)
+        
     try:
         return tuple(item_decoder(stream) for _ in range(array_size))
     finally:
@@ -354,3 +364,9 @@ def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFrames
             )
 
     return data[:data_length]
+
+
+# StringDecoder
+def decode_string(self: "StringDecoder", stream: ContextFramesBytesIO) -> str:
+    data = read_bytestring_from_stream(self, stream)
+    return self.decoder_fn(data, self.bytes_errors)

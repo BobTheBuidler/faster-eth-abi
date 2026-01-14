@@ -5,7 +5,6 @@ according to ABI type specifications.
 """
 import abc
 import codecs
-import decimal
 from decimal import (
     Decimal,
 )
@@ -54,7 +53,8 @@ from faster_eth_abi._encoding import (
     encode_bytestring,
     encode_elements,
     encode_elements_dynamic,
-    encode_fixed,
+    encode_fixed_bigendian,
+    encode_fixed_smallendian,
     encode_signed,
     encode_signed_fixed,
     encode_text,
@@ -84,8 +84,6 @@ from faster_eth_abi.from_type_str import (
 )
 from faster_eth_abi.utils.numeric import (
     TEN,
-    abi_decimal_context,
-    ceil32,
     compute_signed_fixed_bounds,
     compute_signed_integer_bounds,
     compute_unsigned_fixed_bounds,
@@ -241,13 +239,24 @@ class FixedSizeEncoder(BaseEncoder):
         encode_fn = self.encode_fn
         if encode_fn is None:
             raise AssertionError("`encode_fn` is None")
-        return encode_fixed(value, encode_fn, self.is_big_endian, self.data_byte_size)
+        if self.is_big_endian:
+            return encode_fixed_bigendian(value, encode_fn, self.data_byte_size)
+        return encode_fixed_smallendian(value, encode_fn, self.data_byte_size)
 
     __call__ = encode
 
 
 class Fixed32ByteSizeEncoder(FixedSizeEncoder):
     data_byte_size = 32
+
+    def encode(self, value: Any) -> bytes:
+        self.validate_value(value)
+        encode_fn = self.encode_fn
+        if encode_fn is None:
+            raise AssertionError("`encode_fn` is None")
+        return encode_fixed_bigendian(value, encode_fn, self.data_byte_size)
+
+    __call__ = encode
 
 
 class BooleanEncoder(Fixed32ByteSizeEncoder):
@@ -547,6 +556,15 @@ class PackedAddressEncoder(AddressEncoder):
 
 class BytesEncoder(Fixed32ByteSizeEncoder):
     is_big_endian = False
+
+    def encode(self, value: Any) -> bytes:
+        self.validate_value(value)
+        encode_fn = self.encode_fn
+        if encode_fn is None:
+            raise AssertionError("`encode_fn` is None")
+        return encode_fixed_smallendian(value, encode_fn, self.data_byte_size)
+
+    __call__ = encode
 
     @cached_property
     def value_byte_size(self) -> int:

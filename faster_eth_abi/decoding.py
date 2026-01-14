@@ -44,6 +44,7 @@ from faster_eth_abi._decoding import (
     decode_head_tail,
     decode_signed_fixed,
     decode_sized_array,
+    decode_string,
     decode_tuple,
     decode_unsigned_fixed,
     decoder_fn_boolean,
@@ -59,7 +60,6 @@ from faster_eth_abi.base import (
     BaseCoder,
 )
 from faster_eth_abi.exceptions import (
-    InsufficientDataBytes,
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.from_type_str import (
@@ -137,7 +137,7 @@ class HeadTailDecoder(BaseDecoder[T]):
     __call__ = decode
 
 
-class TupleDecoder(BaseDecoder[Tuple[T, ...]]):
+class TupleDecoder(BaseDecoder[tuple[T, ...]]):
     decoders: Tuple[BaseDecoder[T], ...] = ()
 
     def __init__(self, decoders: Tuple[BaseDecoder[T], ...]) -> None:
@@ -536,6 +536,7 @@ class ByteStringDecoder(SingleDecoder[TByteStr]):
     def decoder_fn(data: bytes) -> bytes:
         return data
 
+    @final
     def read_data_from_stream(self, stream: ContextFramesBytesIO) -> bytes:
         return read_bytestring_from_stream(self, stream)
 
@@ -557,9 +558,7 @@ class StringDecoder(ByteStringDecoder[str]):
         return cls()
 
     def decode(self, stream: ContextFramesBytesIO) -> str:
-        raw_data = self.read_data_from_stream(stream)
-        data, padding_bytes = self.split_data_and_padding(raw_data)
-        return self.decoder_fn(data, self.bytes_errors)
+        return decode_string(self, stream)
 
     __call__ = decode
 

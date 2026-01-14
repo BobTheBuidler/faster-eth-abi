@@ -4,7 +4,7 @@ from setuptools import (
 
 setup(
     name="types-eth-utils",
-    version="5.2.0.20251212",
+    version="5.2.0.20260114",
     description="Type stubs for eth-abi and faster-eth-abi",
     author="BobTheBuidler",
     author_email="bobthebuidlerdefi@gmail.com",
@@ -17,7 +17,7 @@ setup(
         "eth_abi": ["*.pyi", "py.typed"],
     },
     install_requires=[],
-    python_requires=">=3.8,",
+    python_requires=">=3.10,",
     zip_safe=False,
     include_package_data=True,
     long_description=open("README.md").read(),
