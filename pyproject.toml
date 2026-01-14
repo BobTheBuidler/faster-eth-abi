@@ -46,7 +46,7 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
-disable_error_code = ["arg-type", "call-arg", "call-overload", "operator", "var-annotated", "attr-defined", "has-type", "union-attr", "type-arg"]
+disable_error_code = ["arg-type", "call-arg", "call-overload", "operator", "attr-defined", "has-type", "union-attr", "type-arg"]
 
 
 [tool.pydocstyle]

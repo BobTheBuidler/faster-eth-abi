@@ -3,6 +3,7 @@ from typing import (
     Final,
     Optional,
     Tuple,
+    TypeAlias,
     Union,
     cast,
 )
@@ -39,13 +40,15 @@ from faster_eth_abi.utils.numeric import (
     scale_places,
 )
 
-StrategyFactory = Callable[[ABIType, "StrategyRegistry"], st.SearchStrategy]
-StrategyRegistration = Union[st.SearchStrategy, StrategyFactory]
+StrategyFactory: TypeAlias = Callable[[ABIType, "StrategyRegistry"], st.SearchStrategy]
+StrategyRegistration: TypeAlias = Union[st.SearchStrategy, StrategyFactory]
+StrategyMapping: TypeAlias = PredicateMapping[StrategyRegistration]
 
 
 class StrategyRegistry(BaseRegistry):
     def __init__(self) -> None:
-        self._strategies = PredicateMapping("strategy registry")
+        strategies: StrategyMapping = PredicateMapping("strategy registry")
+        self._strategies: Final = strategies
 
     def register_strategy(
         self,

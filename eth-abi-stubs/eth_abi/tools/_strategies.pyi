@@ -18,10 +18,11 @@ from faster_eth_abi.registry import (
 )
 from faster_eth_abi.utils.numeric import scale_places as scale_places
 from hypothesis import strategies as st
-from typing import Final
+from typing import Final, TypeAlias
 
-StrategyFactory: Incomplete
-StrategyRegistration: Incomplete
+StrategyFactory: TypeAlias
+StrategyRegistration: TypeAlias
+StrategyMapping: TypeAlias = PredicateMapping[StrategyRegistration]
 
 class StrategyRegistry(BaseRegistry):
     def __init__(self) -> None: ...
