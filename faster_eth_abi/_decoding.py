@@ -68,7 +68,7 @@ def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     raise InsufficientDataBytes(f"Tried to read 32 bytes, only got {len(data)} bytes.")
 
 
-def get_value_byte_size(decoder: "FixedByteSizeDecoder") -> int:
+def get_value_byte_size(decoder: "FixedByteSizeDecoder[Any]") -> int:
     return decoder.value_bit_size // 8
 
 
@@ -138,7 +138,7 @@ def decode_tuple(
 
 
 def validate_pointers_tuple(
-    self: "TupleDecoder",
+    self: "TupleDecoder[Any]",
     stream: ContextFramesBytesIO,
 ) -> None:
     """
@@ -177,7 +177,7 @@ def validate_pointers_tuple(
 
 # BaseArrayDecoder
 def validate_pointers_array(
-    self: "BaseArrayDecoder", stream: ContextFramesBytesIO, array_size: int
+    self: "BaseArrayDecoder[Any]", stream: ContextFramesBytesIO, array_size: int
 ) -> None:
     """
     Verify that all pointers point to a valid location in the stream.
@@ -345,7 +345,9 @@ def decode_signed_fixed(self: "SignedFixedDecoder", data: bytes) -> decimal.Deci
 
 
 # ByteStringDecoder
-def read_bytestring_from_stream(self: "ByteStringDecoder", stream: ContextFramesBytesIO) -> bytes:
+def read_bytestring_from_stream(
+    self: "ByteStringDecoder[Any]", stream: ContextFramesBytesIO
+) -> bytes:
     data_length = decode_uint_256(stream)
     padded_length = ceil32(data_length)
 

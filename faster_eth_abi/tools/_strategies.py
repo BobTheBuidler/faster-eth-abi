@@ -1,4 +1,5 @@
 from typing import (
+    Any,
     Callable,
     Final,
     Optional,
@@ -87,7 +88,7 @@ class StrategyRegistry(BaseRegistry):
 
 
 def get_uint_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy:
     bits = cast(int, abi_type.sub)
 
@@ -98,7 +99,7 @@ def get_uint_strategy(
 
 
 def get_int_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy:
     bits = cast(int, abi_type.sub)
 
@@ -113,7 +114,7 @@ bool_strategy: Final = st.booleans()
 
 
 def get_ufixed_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy:
     bits, places = cast(Tuple[int, int], abi_type.sub)
 
@@ -125,7 +126,7 @@ def get_ufixed_strategy(
 
 
 def get_fixed_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy:
     bits, places = cast(Tuple[int, int], abi_type.sub)
 
@@ -137,7 +138,7 @@ def get_fixed_strategy(
 
 
 def get_bytes_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy:
     num_bytes = abi_type.sub
 
