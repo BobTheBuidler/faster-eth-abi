@@ -22,6 +22,7 @@ from typing import Final
 
 StrategyFactory: Incomplete
 StrategyRegistration: Incomplete
+StrategyMapping = PredicateMapping[StrategyRegistration]
 
 class StrategyRegistry(BaseRegistry):
     def __init__(self) -> None: ...
