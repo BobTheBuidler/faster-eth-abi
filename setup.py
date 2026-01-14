@@ -87,7 +87,7 @@ if not skip_mypyc:
                 "faster_eth_abi/_grammar.py",
                 "faster_eth_abi/abi.py",
                 "faster_eth_abi/constants.py",
-                "faster_eth_abi/exceptions.py",  segfaults on mypyc 1.18.2
+                "faster_eth_abi/exceptions.py",  # segfaults on mypyc 1.18.2
                 "faster_eth_abi/from_type_str.py",
                 # "faster_eth_abi/io.py",
                 "faster_eth_abi/packed.py",
