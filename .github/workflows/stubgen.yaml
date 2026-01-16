@@ -178,7 +178,7 @@ jobs:
 
       - name: Poosh Stubs
         if: steps.stubs_diff.outputs.changed == 'true'
-        uses: BobTheBuidler/poosh@v0.0.6
+        uses: BobTheBuidler/poosh@v0.0.8
         with:
           branch: auto/stubgen/${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           trigger-pr-number: ${{ github.event_name == 'pull_request' && github.event.pull_request.number || '' }}
