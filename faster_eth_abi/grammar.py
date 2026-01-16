@@ -23,7 +23,7 @@ from faster_eth_abi._grammar import (
     ABIType,
     BasicType,
     TupleType,
-    normalize,
+    normalize as _normalize,
 )
 from faster_eth_abi.exceptions import (
     ParseError,
@@ -156,6 +156,8 @@ class NodeVisitor(parsimonious.NodeVisitor):
 visitor: Final = NodeVisitor()
 
 parse: Final = visitor.parse
+
+normalize: Final = functools.lru_cache(maxsize=None)(_normalize)
 
 
 __all__ = [
