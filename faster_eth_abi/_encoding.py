@@ -143,7 +143,7 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
                 head_length += len(chunk)
                 tail_chunks.append(b"")
 
-    tail_offsets = [0]
+    tail_offsets: List[int] = [0]
     total_offset = 0
     for item in tail_chunks[:-1]:
         total_offset += len(item)
@@ -162,6 +162,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
     encoders = self.encoders
 
     # we can make more optimized C code by splitting this line by `values` type
+    tail_chunks: List[bytes]
     if isinstance(values, tuple):
         tail_chunks = [encoder(value) for encoder, value in zip(encoders, values)]
     elif isinstance(values, list):
@@ -171,7 +172,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
     total_offset = 0
     head_length = 32 * len(encoders)
-    head_chunks = [encode_uint_256(head_length)]
+    head_chunks: List[bytes] = [encode_uint_256(head_length)]
     for item in tail_chunks[:-1]:
         total_offset += len(item)
         head_chunks.append(encode_uint_256(head_length + total_offset))
@@ -465,7 +466,7 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
         return b"".join(tail_chunks)
 
     head_length = 32 * len(value)
-    tail_offsets = [0]
+    tail_offsets: List[int] = [0]
     total_offset = 0
     for item in tail_chunks[:-1]:
         total_offset += len(item)

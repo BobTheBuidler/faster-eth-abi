@@ -9,6 +9,7 @@ from typing import (
     Any,
     Dict,
     Final,
+    List,
     Tuple,
 )
 
@@ -108,7 +109,7 @@ def decode_tuple(
 
     end_of_offsets = current_location + 32 * self.len_of_head
     total_stream_length = len(stream.getbuffer())
-    items = []
+    items: List[T] = []
     for decoder, is_head_tail in zip(self.decoders, self._is_head_tail):
         if is_head_tail:
             # the next 32 bytes are a pointer that we should validate
