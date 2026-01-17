@@ -18,7 +18,6 @@ from eth_typing import (
 
 from faster_eth_abi.utils.validation import (
     validate_bytes_param,
-    validate_list_like_param,
 )
 
 if TYPE_CHECKING:
@@ -45,9 +44,17 @@ def encode_c(
     :returns: The head-tail encoded binary representation of the python
         values in ``args`` as values of the ABI types in ``types``.
     """
-    validate_list_like_param(args, "args")
+    if isinstance(args, list):
+        args_kind = "list"
+    elif isinstance(args, tuple):
+        args_kind = "tuple"
+    else:
+        raise TypeError(
+            f"The `args` value type must be one of list or tuple. Got {type(args)}"
+        )
 
     encoder = self._registry.get_tuple_encoder(*types)
+    encoder._set_fast_path(args, args_kind)
 
     return encoder.encode(args)
 
