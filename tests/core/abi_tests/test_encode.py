@@ -90,6 +90,10 @@ def test_abi_encode_for_single_dynamic_types(
     assert eth_abi_encoded == solidity_abi_encoded
 
 
+def test_abi_encode_empty_types_returns_empty_bytes():
+    assert encode([], []) == b""
+
+
 @pytest.mark.parametrize(
     "non_list_like_value",
     (
