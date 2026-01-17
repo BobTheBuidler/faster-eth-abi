@@ -12,15 +12,23 @@ from faster_eth_abi._encoding import (
     encode_text as encode_text,
     encode_tuple as encode_tuple,
     encode_tuple_all_dynamic as encode_tuple_all_dynamic,
+    encode_tuple_list_funcs as encode_tuple_list_funcs,
     encode_tuple_no_dynamic as encode_tuple_no_dynamic,
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
+    encode_tuple_sequence_funcs as encode_tuple_sequence_funcs,
+    encode_tuple_tuple_funcs as encode_tuple_tuple_funcs,
     encode_unsigned_fixed as encode_unsigned_fixed,
     int_to_big_endian as int_to_big_endian,
-    validate_array as validate_array,
+    validate_array_list as validate_array_list,
+    validate_array_sequence as validate_array_sequence,
+    validate_array_tuple as validate_array_tuple,
     validate_fixed as validate_fixed,
     validate_packed_array as validate_packed_array,
     validate_sized_array as validate_sized_array,
     validate_tuple as validate_tuple,
+    validate_tuple_list as validate_tuple_list,
+    validate_tuple_sequence as validate_tuple_sequence,
+    validate_tuple_tuple as validate_tuple_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
 from faster_eth_abi.exceptions import (
@@ -268,6 +276,7 @@ class PackedTextStringEncoder(TextStringEncoder):
 
 class BaseArrayEncoder(BaseEncoder, metaclass=abc.ABCMeta):
     item_encoder: BaseEncoder
+    def __init__(self, **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
     def encode_elements(self, value: Sequence[Any]) -> bytes: ...
