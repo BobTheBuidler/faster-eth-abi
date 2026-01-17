@@ -157,7 +157,7 @@ class TupleEncoder(BaseEncoder):
         if type(self).encode is TupleEncoder.encode:
             encode_func = (
                 encode_tuple_all_dynamic
-                if all(self._is_dynamic)
+                if self.encoders and all(self._is_dynamic)
                 else encode_tuple_no_dynamic_funcs.get(
                     len(self.encoders),
                     encode_tuple_no_dynamic,
