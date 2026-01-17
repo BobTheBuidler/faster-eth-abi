@@ -110,10 +110,9 @@ class PredicateMapping(Copyable, Generic[T]):
                 continue
 
             if matched_predicate is not None:
-                predicate_reprs = ", ".join(map(repr, (matched_predicate, predicate)))
                 raise MultipleEntriesFound(
                     f"Multiple matching entries for '{type_str}' in {self._name}: "
-                    f"{predicate_reprs}. This occurs when two registrations match the "
+                    f"{matched_predicate!r}, {predicate!r}. This occurs when two registrations match the "
                     "same type string. You may need to delete one of the "
                     "registrations or modify its matching behavior to ensure it "
                     'doesn\'t collide with other registrations. See the "Registry" '
@@ -124,9 +123,7 @@ class PredicateMapping(Copyable, Generic[T]):
             matched_value = value
 
         if matched_value is missing:
-            raise NoEntriesFound(
-                f"No matching entries for '{type_str}' in {self._name}"
-            )
+            raise NoEntriesFound(f"No matching entries for {type_str!r} in {self._name}")
 
         return cast(T, matched_value)
 
