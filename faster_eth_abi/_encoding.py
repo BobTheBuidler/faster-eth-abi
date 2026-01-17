@@ -428,28 +428,37 @@ def encode_text(value: str) -> bytes:
     return encoded_size + padded_value
 
 
-def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
-    # sourcery skip: merge-duplicate-blocks
-    # TODO: specialize this func so we can call validate_item at the C level
-    
+def validate_array_list(array_encoder: "BaseArrayEncoder", value: List[Any]) -> None:
     validate_item = array_encoder.item_encoder.validate_value
-    
-    # fast path for lists
+
+    for item in value:
+        validate_item(item)
+
+
+def validate_array_tuple(array_encoder: "BaseArrayEncoder", value: Tuple[Any, ...]) -> None:
+    validate_item = array_encoder.item_encoder.validate_value
+
+    for item in value:
+        validate_item(item)
+
+
+def validate_array_sequence(
+    array_encoder: "BaseArrayEncoder",
+    value: Sequence[Any],
+) -> None:
+    validate_item = array_encoder.item_encoder.validate_value
+
+    for item in value:
+        validate_item(item)
+
+
+def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
     if isinstance(value, list):
-        for item in value:
-            validate_item(item)
-    
-    # fast path for tuples
+        validate_array_list(array_encoder, value)
     elif isinstance(value, tuple):
-        for item in value:
-            validate_item(item)
-
-    # slow path for generic sequences
+        validate_array_tuple(array_encoder, value)
     elif is_list_like(value):
-        for item in value:
-            validate_item(item)
-
-    # failure path
+        validate_array_sequence(array_encoder, value)
     else:
         array_encoder.invalidate_value(
             value,
@@ -478,7 +487,8 @@ def encode_elements(item_encoder: "BaseEncoder", value: Sequence[Any]) -> bytes:
 
 
 def validate_packed_array(array_encoder: "PackedArrayEncoder", value: Sequence[Any]) -> None:
-    validate_array(array_encoder, value)
+    array_encoder._set_fast_array_path(value)
+    array_encoder._validate_array(value)
     array_size = array_encoder.array_size
     if array_size is not None and len(value) != array_size:
         array_encoder.invalidate_value(
@@ -489,7 +499,8 @@ def validate_packed_array(array_encoder: "PackedArrayEncoder", value: Sequence[A
 
 
 def validate_sized_array(array_encoder: "SizedArrayEncoder", value: Sequence[Any]) -> None:
-    validate_array(array_encoder, value)
+    array_encoder._set_fast_array_path(value)
+    array_encoder._validate_array(value)
     if len(value) != array_encoder.array_size:
         array_encoder.invalidate_value(
             value,
