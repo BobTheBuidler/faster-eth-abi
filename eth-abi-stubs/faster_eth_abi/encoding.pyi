@@ -21,6 +21,9 @@ from faster_eth_abi._encoding import (
     validate_packed_array as validate_packed_array,
     validate_sized_array as validate_sized_array,
     validate_tuple as validate_tuple,
+    validate_tuple_list as validate_tuple_list,
+    validate_tuple_sequence as validate_tuple_sequence,
+    validate_tuple_tuple as validate_tuple_tuple,
 )
 from faster_eth_abi.base import BaseCoder as BaseCoder
 from faster_eth_abi.exceptions import (
