@@ -102,8 +102,53 @@ def validate_tuple(self: "TupleEncoder", value: Sequence[Any]) -> None:
         )
 
 
+def validate_tuple_list(self: "TupleEncoder", value: List[Any]) -> None:
+    validators = self.validators
+    expected_length = len(validators)
+
+    if len(value) != expected_length:
+        self.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {expected_length} were expected",
+        )
+
+    for item, validator in zip(value, validators):
+        validator(item)
+
+
+def validate_tuple_tuple(self: "TupleEncoder", value: Tuple[Any, ...]) -> None:
+    validators = self.validators
+    expected_length = len(validators)
+
+    if len(value) != expected_length:
+        self.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {expected_length} were expected",
+        )
+
+    for item, validator in zip(value, validators):
+        validator(item)
+
+
+def validate_tuple_sequence(self: "TupleEncoder", value: Sequence[Any]) -> None:
+    validators = self.validators
+    expected_length = len(validators)
+
+    if len(value) != expected_length:
+        self.invalidate_value(
+            value,
+            exc=ValueOutOfBounds,
+            msg=f"value has {len(value)} items when {expected_length} were expected",
+        )
+
+    for item, validator in zip(value, validators):
+        validator(item)
+
+
 def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     head_length = 0
     raw_head_chunks: List[Optional[bytes]] = []
     tail_chunks: List[bytes] = []
@@ -158,7 +203,7 @@ def encode_tuple(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
 
 
 def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
 
     # we can make more optimized C code by splitting this line by `values` type
@@ -180,7 +225,7 @@ def encode_tuple_all_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     
     # we can make more optimized C code by splitting this line by `values` type
@@ -193,7 +238,7 @@ def encode_tuple_no_dynamic(self: "TupleEncoder", values: Sequence[Any]) -> byte
 
 
 def encode_tuple_no_dynamic1(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders: Tuple["BaseEncoder"] = self.encoders
     
     # we can make more optimized C code by splitting this line by `values` type
@@ -206,7 +251,7 @@ def encode_tuple_no_dynamic1(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -220,7 +265,7 @@ def encode_tuple_no_dynamic2(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -234,7 +279,7 @@ def encode_tuple_no_dynamic3(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -248,7 +293,7 @@ def encode_tuple_no_dynamic4(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -262,7 +307,7 @@ def encode_tuple_no_dynamic5(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -276,7 +321,7 @@ def encode_tuple_no_dynamic6(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -290,7 +335,7 @@ def encode_tuple_no_dynamic7(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -304,7 +349,7 @@ def encode_tuple_no_dynamic8(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     
@@ -318,7 +363,7 @@ def encode_tuple_no_dynamic9(self: "TupleEncoder", values: Sequence[Any]) -> byt
 
 
 def encode_tuple_no_dynamic10(self: "TupleEncoder", values: Sequence[Any]) -> bytes:
-    validate_tuple(self, values)
+    self.validate_value(values)
     encoders = self.encoders
     # encoders: Tuple["BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder", "BaseEncoder"] = self.encoders
     

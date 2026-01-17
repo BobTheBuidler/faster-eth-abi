@@ -36,6 +36,7 @@ from faster_eth_utils import (
     is_boolean,
     is_bytes,
     is_integer,
+    is_list_like,
     is_number,
     is_text,
     to_canonical_address,
@@ -65,6 +66,9 @@ from faster_eth_abi._encoding import (
     validate_packed_array,
     validate_sized_array,
     validate_tuple,
+    validate_tuple_list,
+    validate_tuple_sequence,
+    validate_tuple_tuple,
 )
 from faster_eth_abi.base import (
     BaseCoder,
@@ -142,6 +146,7 @@ class TupleEncoder(BaseEncoder):
             getattr(e, "is_dynamic", False) for e in self.encoders
         )
         self.is_dynamic = any(self._is_dynamic)
+        self._fast_path_kind: Optional[str] = None
 
         validators = []
         for encoder in self.encoders:
@@ -177,6 +182,34 @@ class TupleEncoder(BaseEncoder):
     @final
     def validate_value(self, value: Sequence[Any]) -> None:
         validate_tuple(self, value)
+
+    def _set_fast_path(self, values: Sequence[Any], kind: Optional[str] = None) -> None:
+        if kind is None:
+            if isinstance(values, list):
+                kind = "list"
+            elif isinstance(values, tuple):
+                kind = "tuple"
+            elif is_list_like(values):
+                kind = "sequence"
+            else:
+                self.invalidate_value(
+                    values,
+                    msg="must be list-like object such as array or tuple",
+                )
+
+        if self._fast_path_kind == kind:
+            return
+
+        if kind == "list":
+            self.validate_value = MethodType(validate_tuple_list, self)
+        elif kind == "tuple":
+            self.validate_value = MethodType(validate_tuple_tuple, self)
+        elif kind == "sequence":
+            self.validate_value = MethodType(validate_tuple_sequence, self)
+        else:
+            raise ValueError(f"Unknown tuple fast-path kind: {kind!r}")
+
+        self._fast_path_kind = kind
 
     def encode(self, values: Sequence[Any]) -> bytes:
         return encode_tuple(self, values)
