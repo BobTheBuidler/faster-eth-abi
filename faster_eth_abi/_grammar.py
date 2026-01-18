@@ -368,45 +368,10 @@ def normalize(type_str: TypeStr) -> TypeStr:
     :param type_str: The type string to be normalized.
     :returns: The canonical version of the input type string.
     """
-    if not isinstance(type_str, str):
-        return TYPE_ALIAS_RE.sub(__normalize, type_str)
-
-    aliases = TYPE_ALIASES
-    length = len(type_str)
-    last = 0
-    idx = 0
-    changed = False
-    parts: list[str] = []
-
-    while idx < length:
-        char = type_str[idx]
-        if char.isalnum() or char == "_":
-            start = idx
-            idx += 1
-            while idx < length:
-                char = type_str[idx]
-                if char.isalnum() or char == "_":
-                    idx += 1
-                else:
-                    break
-            token = type_str[start:idx]
-            replacement = aliases.get(token)
-            if replacement is not None:
-                if start > last:
-                    parts.append(type_str[last:start])
-                parts.append(replacement)
-                last = idx
-                changed = True
-        else:
-            idx += 1
-
-    if not changed:
+    if TYPE_ALIAS_RE.search(type_str) is None:
         return type_str
 
-    if last < length:
-        parts.append(type_str[last:])
-
-    return "".join(parts)
+    return TYPE_ALIAS_RE.sub(__normalize, type_str)
 
 
 def __normalize(match: "re.Match[str]") -> str:
