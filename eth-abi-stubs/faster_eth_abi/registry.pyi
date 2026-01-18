@@ -22,7 +22,7 @@ Lookup = TypeStr | Callable[[TypeStr], bool]
 EncoderCallable = Callable[[Any], bytes]
 DecoderCallable = Callable[[ContextFramesBytesIO], Any]
 Encoder = EncoderCallable | type[encoding.BaseEncoder]
-Decoder = DecoderCallable | type[decoding.BaseDecoder]
+Decoder: Incomplete
 
 class Copyable(abc.ABC, metaclass=abc.ABCMeta):
     @abc.abstractmethod
@@ -55,7 +55,7 @@ class Predicate(Generic[T]):
     def __call__(self, arg: TypeStr) -> None: ...
     def __iter__(self) -> Iterator[T]: ...
     def __hash__(self) -> int: ...
-    def __eq__(self, other: Predicate) -> bool: ...
+    def __eq__(self, other: Predicate[Any]) -> bool: ...
 
 class Equals(Predicate[str]):
     """
