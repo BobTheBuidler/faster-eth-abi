@@ -25,7 +25,7 @@ __all__ = [
 
 grammar: Final[Incomplete]
 
-class NodeVisitor(parsimonious.NodeVisitor):
+class NodeVisitor(parsimonious.NodeVisitor[ABIType]):
     """
     Parsimonious node visitor which performs both parsing of type strings and
     post-processing of parse trees.  Parsing operations are cached.
