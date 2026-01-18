@@ -1,4 +1,3 @@
-import parsimonious
 from _typeshed import Incomplete
 from faster_eth_abi._grammar import (
     ABIType as ABIType,
@@ -25,7 +24,7 @@ __all__ = [
 
 grammar: Final[Incomplete]
 
-class NodeVisitor(parsimonious.NodeVisitor[ABIType]):
+class NodeVisitor(_NodeVisitorBase):
     """
     Parsimonious node visitor which performs both parsing of type strings and
     post-processing of parse trees.  Parsing operations are cached.
