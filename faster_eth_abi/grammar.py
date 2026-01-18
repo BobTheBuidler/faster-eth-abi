@@ -6,6 +6,7 @@ import functools
 from typing import (
     Any,
     Final,
+    TYPE_CHECKING,
     final,
 )
 
@@ -56,8 +57,14 @@ grammar: Final = parsimonious.Grammar(
 )
 
 
+if TYPE_CHECKING:
+    _NodeVisitorBase = parsimonious.NodeVisitor[ABIType]
+else:
+    _NodeVisitorBase = parsimonious.NodeVisitor
+
+
 @final
-class NodeVisitor(parsimonious.NodeVisitor):
+class NodeVisitor(_NodeVisitorBase):
     """
     Parsimonious node visitor which performs both parsing of type strings and
     post-processing of parse trees.  Parsing operations are cached.
