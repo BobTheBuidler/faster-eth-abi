@@ -18434,52 +18434,84 @@ PyObject *CPyDef__grammar___normalize(PyObject *cpy_r_type_str) {
     PyObject *cpy_r_r0;
     char cpy_r_r1;
     PyObject *cpy_r_r2;
-    PyObject *cpy_r_r3;
-    PyObject *cpy_r_r4;
+    PyObject **cpy_r_r4;
     PyObject *cpy_r_r5;
-    PyObject **cpy_r_r7;
+    PyObject *cpy_r_r6;
+    char cpy_r_r7;
     PyObject *cpy_r_r8;
-    PyObject *cpy_r_r9;
+    char cpy_r_r9;
     PyObject *cpy_r_r10;
+    PyObject *cpy_r_r11;
+    PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
+    PyObject **cpy_r_r15;
+    PyObject *cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject *cpy_r_r18;
     cpy_r_r0 = CPyStatic__grammar___TYPE_ALIAS_RE;
     if (likely(cpy_r_r0 != NULL)) goto CPyL3;
     PyErr_SetString(PyExc_NameError, "value for final name \"TYPE_ALIAS_RE\" was not set");
     cpy_r_r1 = 0;
     if (unlikely(!cpy_r_r1)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "normalize", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL7;
+        goto CPyL13;
     }
     CPy_Unreachable();
 CPyL3: ;
-    cpy_r_r2 = CPyStatic__grammar___globals;
-    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__normalize' */
-    cpy_r_r4 = CPyDict_GetItem(cpy_r_r2, cpy_r_r3);
-    if (unlikely(cpy_r_r4 == NULL)) {
+    cpy_r_r2 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'search' */
+    PyObject *cpy_r_r3[2] = {cpy_r_r0, cpy_r_type_str};
+    cpy_r_r4 = (PyObject **)&cpy_r_r3;
+    cpy_r_r5 = PyObject_VectorcallMethod(cpy_r_r2, cpy_r_r4, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r5 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "normalize", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL7;
+        goto CPyL13;
     }
-    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'sub' */
-    PyObject *cpy_r_r6[3] = {cpy_r_r0, cpy_r_r4, cpy_r_type_str};
-    cpy_r_r7 = (PyObject **)&cpy_r_r6;
-    cpy_r_r8 = PyObject_VectorcallMethod(cpy_r_r5, cpy_r_r7, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r8 == NULL)) {
+    cpy_r_r6 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r7 = cpy_r_r5 == cpy_r_r6;
+    CPy_DECREF(cpy_r_r5);
+    if (!cpy_r_r7) goto CPyL6;
+    CPy_INCREF(cpy_r_type_str);
+    return cpy_r_type_str;
+CPyL6: ;
+    cpy_r_r8 = CPyStatic__grammar___TYPE_ALIAS_RE;
+    if (likely(cpy_r_r8 != NULL)) goto CPyL9;
+    PyErr_SetString(PyExc_NameError, "value for final name \"TYPE_ALIAS_RE\" was not set");
+    cpy_r_r9 = 0;
+    if (unlikely(!cpy_r_r9)) {
         CPy_AddTraceback("faster_eth_abi/_grammar.py", "normalize", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
-        goto CPyL8;
+        goto CPyL13;
     }
-    CPy_DECREF(cpy_r_r4);
-    if (likely(PyUnicode_Check(cpy_r_r8)))
-        cpy_r_r9 = cpy_r_r8;
+    CPy_Unreachable();
+CPyL9: ;
+    cpy_r_r10 = CPyStatic__grammar___globals;
+    cpy_r_r11 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__normalize' */
+    cpy_r_r12 = CPyDict_GetItem(cpy_r_r10, cpy_r_r11);
+    if (unlikely(cpy_r_r12 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_grammar.py", "normalize", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
+        goto CPyL13;
+    }
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'sub' */
+    PyObject *cpy_r_r14[3] = {cpy_r_r8, cpy_r_r12, cpy_r_type_str};
+    cpy_r_r15 = (PyObject **)&cpy_r_r14;
+    cpy_r_r16 = PyObject_VectorcallMethod(cpy_r_r13, cpy_r_r15, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r16 == NULL)) {
+        CPy_AddTraceback("faster_eth_abi/_grammar.py", "normalize", DIFFCHECK_PLACEHOLDER, CPyStatic__grammar___globals);
+        goto CPyL14;
+    }
+    CPy_DECREF(cpy_r_r12);
+    if (likely(PyUnicode_Check(cpy_r_r16)))
+        cpy_r_r17 = cpy_r_r16;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "normalize", 371, CPyStatic__grammar___globals, "str", cpy_r_r8);
-        goto CPyL7;
+        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "normalize", 374, CPyStatic__grammar___globals, "str", cpy_r_r16);
+        goto CPyL13;
     }
-    return cpy_r_r9;
-CPyL7: ;
-    cpy_r_r10 = NULL;
-    return cpy_r_r10;
-CPyL8: ;
-    CPy_DecRef(cpy_r_r4);
-    goto CPyL7;
+    return cpy_r_r17;
+CPyL13: ;
+    cpy_r_r18 = NULL;
+    return cpy_r_r18;
+CPyL14: ;
+    CPy_DecRef(cpy_r_r12);
+    goto CPyL13;
 }
 
 PyObject *CPyPy__grammar___normalize(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -18536,7 +18568,7 @@ CPyL3: ;
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "__normalize", 375, CPyStatic__grammar___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "__normalize", 378, CPyStatic__grammar___globals, "str", cpy_r_r6);
         goto CPyL8;
     }
     cpy_r_r8 = CPyDict_GetItem(cpy_r_r0, cpy_r_r7);
@@ -18548,7 +18580,7 @@ CPyL3: ;
     if (likely(PyUnicode_Check(cpy_r_r8)))
         cpy_r_r9 = cpy_r_r8;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "__normalize", 375, CPyStatic__grammar___globals, "str", cpy_r_r8);
+        CPy_TypeErrorTraceback("faster_eth_abi/_grammar.py", "__normalize", 378, CPyStatic__grammar___globals, "str", cpy_r_r8);
         goto CPyL8;
     }
     return cpy_r_r9;
@@ -33392,7 +33424,7 @@ const char * const CPyLit_Str[] = {
     "\001\'fixed size out of bounds (max 256 bits)",
     "\002 fixed size must be multiple of 8#fixed exponent size out of bounds, ",
     "\004\020 must be in 1-80\004hash$hash type must have numerical suffix\aaddress",
-    "\005\032address cannot have suffix\v__normalize\003sub\005group\002re",
+    "\006\032address cannot have suffix\006search\v__normalize\003sub\005group\002re",
     "\006\032faster_eth_abi/_grammar.py\aGeneric\aLiteral\aNewType\bNoReturn\005Union",
     "\006\004cast\005final\016eth_typing.abi\004Node\022parsimonious.nodes\004Self",
     "\005\021typing_extensions\fABITypeError\006int256\auint256\vfixed128x18",
@@ -33454,18 +33486,18 @@ const char * const CPyLit_Int[] = {
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    59, 4, 12, 13, 14, 15, 2, 17, 18, 2, 20, 21, 3, 62, 62, 62, 1, 398,
+    59, 4, 12, 13, 14, 15, 2, 17, 18, 2, 20, 21, 3, 62, 62, 62, 1, 399,
     5, 12, 13, 65, 66, 15, 1, 24, 3, 68, 69, 70, 2, 72, 73, 1, 75, 1, 77,
     1, 79, 2, 88, 89, 1, 89, 9, 12, 13, 108, 65, 109, 110, 111, 15, 112,
-    1, 90, 2, 113, 114, 1, 115, 1, 153, 3, 179, 179, 179, 1, 414, 12, 13,
-    66, 181, 182, 183, 184, 110, 15, 112, 185, 186, 187, 1, 18, 1, 189, 1,
-    191, 1, 193, 1, 219, 1, 66, 1, 227, 1, 229, 3, 243, 244, 244, 1, 425,
-    3, 265, 265, 265, 1, 427, 6, 12, 13, 108, 110, 267, 112, 4, 217, 224,
-    221, 268, 1, 253, 1, 274, 1, 275, 1, 279, 1, 284, 2, 290, 291, 3, 290,
-    291, 293, 2, 295, 296, 8, 13, 108, 66, 110, 15, 299, 185, 186, 1, 300,
-    1, 302, 1, 287, 5, 217, 209, 224, 221, 268, 6, 304, 305, 306, 282,
-    307, 308, 1, 309, 1, 323, 1, 334, 1, 335, 5, 66, 110, 267, 112, 187,
-    1, 337, 4, 108, 65, 66, 15, 1, 356, 1, 13
+    1, 90, 2, 113, 114, 1, 115, 1, 153, 3, 180, 180, 180, 1, 415, 12, 13,
+    66, 182, 183, 184, 185, 110, 15, 112, 186, 187, 188, 1, 18, 1, 190, 1,
+    192, 1, 194, 1, 220, 1, 66, 1, 228, 1, 230, 3, 244, 245, 245, 1, 426,
+    3, 266, 266, 266, 1, 428, 6, 12, 13, 108, 110, 268, 112, 4, 218, 225,
+    222, 269, 1, 254, 1, 275, 1, 276, 1, 280, 1, 285, 2, 291, 292, 3, 291,
+    292, 294, 2, 296, 297, 8, 13, 108, 66, 110, 15, 300, 186, 187, 1, 301,
+    1, 303, 1, 288, 5, 218, 210, 225, 222, 269, 6, 305, 306, 307, 283,
+    308, 309, 1, 310, 1, 324, 1, 335, 1, 336, 5, 66, 110, 268, 112, 188,
+    1, 338, 4, 108, 65, 66, 15, 1, 357, 1, 13
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_faster_eth_abi____codec__internal = NULL;
