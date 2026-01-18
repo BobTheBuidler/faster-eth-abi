@@ -5,7 +5,6 @@ from faster_eth_abi._grammar import (
     TYPE_ALIASES as TYPE_ALIASES,
     TYPE_ALIAS_RE as TYPE_ALIAS_RE,
     TupleType as TupleType,
-    normalize as normalize,
 )
 from typing import Final
 
@@ -46,3 +45,4 @@ class NodeVisitor(_NodeVisitorBase):
 
 visitor: Final[Incomplete]
 parse: Final[Incomplete]
+normalize: Final[Incomplete]
