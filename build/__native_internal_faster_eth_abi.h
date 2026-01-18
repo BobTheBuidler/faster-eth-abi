@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[459];
+extern PyObject *CPyStatics[454];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -38,7 +38,6 @@ extern CPyModule *CPyModule_faster_eth_abi___utils___numeric;
 extern CPyModule *CPyModule_faster_eth_abi____encoding__internal;
 extern CPyModule *CPyModule_faster_eth_abi____encoding;
 extern PyObject *CPyStatic__encoding___globals;
-extern CPyModule *CPyModule_codecs;
 extern CPyModule *CPyModule_faster_eth_abi___utils___padding__internal;
 extern CPyModule *CPyModule_faster_eth_abi___utils___padding;
 extern CPyModule *CPyModule_faster_eth_abi____grammar__internal;
@@ -129,7 +128,6 @@ extern PyObject *CPyPy__decoding___read_bytestring_from_stream(PyObject *self, P
 extern PyObject *CPyDef__decoding___decode_string(PyObject *cpy_r_self, PyObject *cpy_r_stream);
 extern PyObject *CPyPy__decoding___decode_string(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__decoding_____top_level__(void);
-extern PyObject *CPyStatic__encoding_____encode;
 extern char CPyDef__encoding___validate_tuple(PyObject *cpy_r_self, PyObject *cpy_r_value);
 extern PyObject *CPyPy__encoding___validate_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__encoding___encode_tuple(PyObject *cpy_r_self, PyObject *cpy_r_values);
