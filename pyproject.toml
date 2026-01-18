@@ -46,7 +46,7 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
-disable_error_code = ["arg-type", "call-arg", "call-overload", "assignment", "operator", "union-attr", "type-arg"]
+disable_error_code = ["arg-type", "call-arg", "call-overload", "assignment", "operator", "union-attr"]
 
 
 [tool.pydocstyle]
@@ -163,10 +163,10 @@ ignore_missing_version = false
 tag = true
 sign_tags = true
 tag_name = "v{new_version}"
-tag_message = "Bump version: {current_version} → {new_version}"
+tag_message = "Bump version: {current_version} 2 {new_version}"
 allow_dirty = false
 commit = true
-message = "Bump version: {current_version} → {new_version}"
+message = "Bump version: {current_version} 2 {new_version}"
 
 [tool.bumpversion.parts.stage]
 optional_value = "stable"
