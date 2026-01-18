@@ -36,6 +36,7 @@ from faster_eth_utils import (
     is_boolean,
     is_bytes,
     is_integer,
+    is_list_like,
     is_number,
     is_text,
     to_canonical_address,
@@ -60,7 +61,9 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic_funcs,
     encode_unsigned_fixed,
     int_to_big_endian,
-    validate_array,
+    validate_array_list,
+    validate_array_sequence,
+    validate_array_tuple,
     validate_fixed,
     validate_packed_array,
     validate_sized_array,
@@ -655,6 +658,15 @@ class PackedTextStringEncoder(TextStringEncoder):
 class BaseArrayEncoder(BaseEncoder):
     item_encoder: BaseEncoder = None
 
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+
+        self._fast_array_kind: Optional[str] = None
+        self._validate_array: Callable[[Sequence[Any]], None] = MethodType(
+            validate_array_sequence,
+            self,
+        )
+
     def validate(self) -> None:
         super().validate()
 
@@ -662,7 +674,40 @@ class BaseArrayEncoder(BaseEncoder):
             raise ValueError("`item_encoder` may not be none")
 
     def validate_value(self, value: Any) -> None:
-        validate_array(self, value)
+        self._set_fast_array_path(value)
+        self._validate_array(value)
+
+    def _set_fast_array_path(
+        self,
+        value: Sequence[Any],
+        kind: Optional[str] = None,
+    ) -> None:
+        if kind is None:
+            if isinstance(value, list):
+                kind = "list"
+            elif isinstance(value, tuple):
+                kind = "tuple"
+            elif is_list_like(value):
+                kind = "sequence"
+            else:
+                self.invalidate_value(
+                    value,
+                    msg="must be list-like such as array or tuple",
+                )
+
+        if self._fast_array_kind == kind:
+            return
+
+        if kind == "list":
+            self._validate_array = MethodType(validate_array_list, self)
+        elif kind == "tuple":
+            self._validate_array = MethodType(validate_array_tuple, self)
+        elif kind == "sequence":
+            self._validate_array = MethodType(validate_array_sequence, self)
+        else:
+            raise ValueError(f"Unknown array fast-path kind: {kind!r}")
+
+        self._fast_array_kind = kind
 
     def encode_elements(self, value: Sequence[Any]) -> bytes:
         self.validate_value(value)

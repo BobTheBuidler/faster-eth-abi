@@ -16,7 +16,9 @@ from faster_eth_abi._encoding import (
     encode_tuple_no_dynamic_funcs as encode_tuple_no_dynamic_funcs,
     encode_unsigned_fixed as encode_unsigned_fixed,
     int_to_big_endian as int_to_big_endian,
-    validate_array as validate_array,
+    validate_array_list as validate_array_list,
+    validate_array_sequence as validate_array_sequence,
+    validate_array_tuple as validate_array_tuple,
     validate_fixed as validate_fixed,
     validate_packed_array as validate_packed_array,
     validate_sized_array as validate_sized_array,
@@ -268,6 +270,7 @@ class PackedTextStringEncoder(TextStringEncoder):
 
 class BaseArrayEncoder(BaseEncoder, metaclass=abc.ABCMeta):
     item_encoder: BaseEncoder
+    def __init__(self, **kwargs: Any) -> None: ...
     def validate(self) -> None: ...
     def validate_value(self, value: Any) -> None: ...
     def encode_elements(self, value: Sequence[Any]) -> bytes: ...
