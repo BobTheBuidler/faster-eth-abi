@@ -18,7 +18,7 @@ from faster_eth_abi.registry import (
 )
 from faster_eth_abi.utils.numeric import scale_places as scale_places
 from hypothesis import strategies as st
-from typing import Final, TypeAlias
+from typing import Any, Final, TypeAlias
 
 StrategyFactory: TypeAlias
 StrategyRegistration: TypeAlias
@@ -45,23 +45,23 @@ class StrategyRegistry(BaseRegistry):
         """
 
 def get_uint_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy: ...
 def get_int_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy: ...
 
 address_strategy: Final[Incomplete]
 bool_strategy: Final[Incomplete]
 
 def get_ufixed_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy: ...
 def get_fixed_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy: ...
 def get_bytes_strategy(
-    abi_type: BasicType, registry: StrategyRegistry
+    abi_type: BasicType[Any], registry: StrategyRegistry
 ) -> st.SearchStrategy: ...
 
 bytes_strategy: Final[Incomplete]
