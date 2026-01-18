@@ -57,7 +57,7 @@ EncoderCallable = Callable[[Any], bytes]
 DecoderCallable = Callable[[ContextFramesBytesIO], Any]
 
 Encoder = Union[EncoderCallable, Type[encoding.BaseEncoder]]
-Decoder = Union[DecoderCallable, Type[decoding.BaseDecoder]]
+Decoder = Union[DecoderCallable, Type[decoding.BaseDecoder[Any]]]
 
 
 class Copyable(abc.ABC):
@@ -215,7 +215,7 @@ class Predicate(Generic[T]):
             self.__hash = hashval = hash(tuple(self))
         return hashval
 
-    def __eq__(self, other: "Predicate") -> bool:
+    def __eq__(self, other: "Predicate[Any]") -> bool:
         return type(self) is type(other) and tuple(self) == tuple(other)
 
 
@@ -562,7 +562,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         self,
         *type_strs: TypeStr,
         strict: bool = True,
-    ) -> decoding.TupleDecoder:
+    ) -> decoding.TupleDecoder[Any]:
         decoders = tuple(
             self.get_decoder(type_str, strict)
             for type_str in type_strs
