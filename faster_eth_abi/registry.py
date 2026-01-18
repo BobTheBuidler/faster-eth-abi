@@ -101,31 +101,31 @@ class PredicateMapping(Copyable, Generic[T]):
         self._values[predicate] = value
 
     def find(self, type_str: TypeStr) -> T:
-        results = tuple(
-            (predicate, value)
-            for predicate, value in self._values.items()
-            if predicate(type_str)
-        )
+        missing = object()
+        matched_predicate: Optional[Lookup] = None
+        matched_value: Union[object, T] = missing
 
-        if len(results) == 0:
-            raise NoEntriesFound(
-                f"No matching entries for '{type_str}' in {self._name}"
-            )
+        for predicate, value in self._values.items():
+            if not predicate(type_str):
+                continue
 
-        predicates, values = tuple(zip(*results))
+            if matched_predicate is not None:
+                raise MultipleEntriesFound(
+                    f"Multiple matching entries for '{type_str}' in {self._name}: "
+                    f"{matched_predicate!r}, {predicate!r}. This occurs when two registrations match the "
+                    "same type string. You may need to delete one of the "
+                    "registrations or modify its matching behavior to ensure it "
+                    'doesn\'t collide with other registrations. See the "Registry" '
+                    "documentation for more information."
+                )
 
-        if len(results) > 1:
-            predicate_reprs = ", ".join(map(repr, predicates))
-            raise MultipleEntriesFound(
-                f"Multiple matching entries for '{type_str}' in {self._name}: "
-                f"{predicate_reprs}. This occurs when two registrations match the "
-                "same type string. You may need to delete one of the "
-                "registrations or modify its matching behavior to ensure it "
-                'doesn\'t collide with other registrations. See the "Registry" '
-                "documentation for more information."
-            )
+            matched_predicate = predicate
+            matched_value = value
 
-        return values[0]  # type: ignore [no-any-return]
+        if matched_value is missing:
+            raise NoEntriesFound(f"No matching entries for {type_str!r} in {self._name}")
+
+        return cast(T, matched_value)
 
     def remove_by_equality(self, predicate: Lookup) -> None:
         # Delete the predicate mapping to the previously stored value

@@ -4,7 +4,6 @@ Implements classes and functions for serializing Python values into binary data
 according to ABI type specifications.
 """
 import abc
-import codecs
 from decimal import (
     Decimal,
 )
@@ -157,7 +156,7 @@ class TupleEncoder(BaseEncoder):
         if type(self).encode is TupleEncoder.encode:
             encode_func = (
                 encode_tuple_all_dynamic
-                if all(self._is_dynamic)
+                if self.encoders and all(self._is_dynamic)
                 else encode_tuple_no_dynamic_funcs.get(
                     len(self.encoders),
                     encode_tuple_no_dynamic,
@@ -647,7 +646,7 @@ class PackedTextStringEncoder(TextStringEncoder):
     @classmethod
     def encode(cls, value: str) -> bytes:
         cls.validate_value(value)
-        return codecs.encode(value, "utf8")
+        return value.encode("utf-8")
 
     __call__ = encode
 
