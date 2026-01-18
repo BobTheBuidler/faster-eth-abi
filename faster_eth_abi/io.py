@@ -71,8 +71,6 @@ class ContextFramesBytesIO:
     its enclosing object's frame (object A).
     """
 
-    __slots__ = ("_buffer", "_position", "_frames", "_total_offset")
-
     def __init__(self, initial_bytes: "ReadableBuffer"):
         self._buffer = memoryview(initial_bytes).cast("B")
         self._position = 0
