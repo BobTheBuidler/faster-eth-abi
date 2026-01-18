@@ -3,9 +3,6 @@
 Implements a lightweight frame-aware reader that avoids BytesIO overhead in
 hot decoding paths.
 """
-from io import (
-    BytesIO,
-)
 from typing import (
     TYPE_CHECKING,
     Any,
