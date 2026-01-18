@@ -25,7 +25,7 @@ from faster_eth_abi.io import (
 from faster_eth_abi.typing import T as T
 from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
 from faster_eth_abi.utils.numeric import ceil32 as ceil32
-from typing import Final
+from typing import Any, Final
 
 Decimal: Final[Incomplete]
 
@@ -37,7 +37,7 @@ def decode_uint_256(stream: ContextFramesBytesIO) -> int:
     skip a lot because we know the value of many vars.
     """
 
-def get_value_byte_size(decoder: FixedByteSizeDecoder) -> int: ...
+def get_value_byte_size(decoder: FixedByteSizeDecoder[Any]) -> int: ...
 def decode_head_tail(self, stream: ContextFramesBytesIO) -> T: ...
 def decode_tuple(self, stream: ContextFramesBytesIO) -> tuple[T, ...]: ...
 def validate_pointers_tuple(self, stream: ContextFramesBytesIO) -> None:
