@@ -1,32 +1,17 @@
-"""Context-aware byte stream for ABI decoding.
-
-Implements a BytesIO subclass that supports contextual frame management for nested ABI decoding.
 """
-from io import (
-    BytesIO,
-)
+Context-aware byte stream for ABI decoding.
+
+Implements a lightweight frame-aware reader that avoids BytesIO overhead in hot decoding paths.
+"""
 from typing import (
-    TYPE_CHECKING,
     Any,
     Final,
-    List,
-    Tuple,
     final,
 )
 
-from mypy_extensions import (
-    mypyc_attr,
-)
-
-if TYPE_CHECKING:
-    from _typeshed import (
-        ReadableBuffer,
-    )
-
 
 @final
-@mypyc_attr(allow_interpreted_subclasses=True)
-class ContextFramesBytesIO(BytesIO):
+class ContextFramesBytesIO:
     """
     A byte stream which can track a series of contextual frames in a stack. This
     data structure is necessary to perform nested decodings using the
@@ -70,11 +55,56 @@ class ContextFramesBytesIO(BytesIO):
     its enclosing object's frame (object A).
     """
 
-    def __init__(self, initial_bytes: "ReadableBuffer"):
-        super().__init__(initial_bytes)
-
-        self._frames: Final[List[Tuple[int, int]]] = []
+    def __init__(self, initial_bytes: bytes | bytearray):
+        # NOTE: Non-contiguous buffers are intentionally unsupported (regression from
+        # BytesIO) because they are rare in our decode flow and we want to keep the
+        # compiled hot path fast. Callers with sliced memoryviews should wrap with
+        # bytes(...) if needed.
+        self._buffer = memoryview(initial_bytes)
+        self._position = 0
+        self._frames: Final[list[tuple[int, int]]] = []
         self._total_offset = 0
+
+    def read(self, size: int = -1) -> bytes:
+        """
+        Read up to ``size`` bytes from the stream. If ``size`` is negative,
+        read until EOF.
+        """
+        remaining = len(self._buffer) - self._position
+        if size is None or size < 0:
+            size = remaining
+        elif size > remaining:
+            size = remaining
+
+        if size <= 0:
+            return b""
+
+        start = self._position
+        end = start + size
+        self._position = end
+        return self._buffer[start:end].tobytes()
+
+    def tell(self) -> int:
+        return self._position
+
+    def seek(self, pos: int, whence: int = 0) -> int:
+        if whence == 0:
+            new_pos = pos
+        elif whence == 1:
+            new_pos = self._position + pos
+        elif whence == 2:
+            new_pos = len(self._buffer) + pos
+        else:
+            raise ValueError(f"invalid whence ({whence}, should be 0, 1 or 2)")
+
+        if new_pos < 0:
+            raise ValueError("negative seek position")
+
+        self._position = new_pos
+        return new_pos
+
+    def getbuffer(self) -> memoryview:
+        return self._buffer
 
     def seek_in_frame(self, pos: int, *args: Any, **kwargs: Any) -> None:
         """

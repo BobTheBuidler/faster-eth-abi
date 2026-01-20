@@ -186,6 +186,15 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    PyObject *__buffer;
+    CPyTagged __position;
+    PyObject *__frames;
+    CPyTagged __total_offset;
+} faster_eth_abi___io___ContextFramesBytesIOObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *__strategies;
 } faster_eth_abi___tools____strategies___StrategyRegistryObject;
 

@@ -22,7 +22,6 @@ from faster_eth_abi.exceptions import (
     NonEmptyPaddingBytes,
 )
 from faster_eth_abi.io import (
-    BytesIO,
     ContextFramesBytesIO,
 )
 from faster_eth_abi.typing import (
@@ -241,9 +240,7 @@ def decode_dynamic_array(
 # FixedByteSizeDecoder
 def read_fixed_byte_size_data_from_stream(
     self: "FixedByteSizeDecoder[Any]",
-    # NOTE: use BytesIO here so mypyc doesn't type-check
-    # `stream` once we compile ContextFramesBytesIO.
-    stream: BytesIO,
+    stream: ContextFramesBytesIO,
 ) -> bytes:
     data_byte_size = self.data_byte_size
     if len(data := stream.read(data_byte_size)) == data_byte_size:
