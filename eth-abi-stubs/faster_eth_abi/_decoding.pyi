@@ -18,10 +18,7 @@ from faster_eth_abi.exceptions import (
     InvalidPointer as InvalidPointer,
     NonEmptyPaddingBytes as NonEmptyPaddingBytes,
 )
-from faster_eth_abi.io import (
-    BytesIO as BytesIO,
-    ContextFramesBytesIO as ContextFramesBytesIO,
-)
+from faster_eth_abi.io import ContextFramesBytesIO as ContextFramesBytesIO
 from faster_eth_abi.typing import T as T
 from faster_eth_abi.utils.localcontext import DECIMAL_CONTEXT as DECIMAL_CONTEXT
 from faster_eth_abi.utils.numeric import ceil32 as ceil32
@@ -54,7 +51,9 @@ def validate_pointers_array(
 
 def decode_sized_array(self, stream: ContextFramesBytesIO) -> tuple[T, ...]: ...
 def decode_dynamic_array(self, stream: ContextFramesBytesIO) -> tuple[T, ...]: ...
-def read_fixed_byte_size_data_from_stream(self, stream: BytesIO) -> bytes: ...
+def read_fixed_byte_size_data_from_stream(
+    self, stream: ContextFramesBytesIO
+) -> bytes: ...
 def split_data_and_padding_fixed_byte_size(
     self, raw_data: bytes
 ) -> tuple[bytes, bytes]: ...
