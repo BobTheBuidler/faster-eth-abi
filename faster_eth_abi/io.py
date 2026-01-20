@@ -23,7 +23,6 @@ if TYPE_CHECKING:
 
 
 @final
-@mypyc_attr(allow_interpreted_subclasses=True)
 class ContextFramesBytesIO:
     """
     A byte stream which can track a series of contextual frames in a stack. This
