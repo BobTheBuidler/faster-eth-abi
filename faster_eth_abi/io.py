@@ -1,3 +1,9 @@
+"""
+Context-aware byte stream for ABI decoding.
+
+Implements a lightweight frame-aware reader that avoids BytesIO overhead in
+hot decoding paths.
+"""
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -7,9 +13,6 @@ from typing import (
     final,
 )
 
-from _io import (
-    BytesIO,
-)
 from mypy_extensions import (
     mypyc_attr,
 )
@@ -21,8 +24,8 @@ if TYPE_CHECKING:
 
 
 @final
-@mypyc_attr(native_class=False)
-class ContextFramesBytesIO(BytesIO):
+@mypyc_attr(allow_interpreted_subclasses=True)
+class ContextFramesBytesIO:
     """
     A byte stream which can track a series of contextual frames in a stack. This
     data structure is necessary to perform nested decodings using the
@@ -67,10 +70,51 @@ class ContextFramesBytesIO(BytesIO):
     """
 
     def __init__(self, initial_bytes: "ReadableBuffer"):
-        super().__init__(initial_bytes)
-
+        self._buffer = memoryview(initial_bytes).cast("B")
+        self._position = 0
         self._frames: Final[List[Tuple[int, int]]] = []
         self._total_offset = 0
+
+    def read(self, size: int = -1) -> bytes:
+        """
+        Read up to ``size`` bytes from the stream. If ``size`` is negative,
+        read until EOF.
+        """
+        remaining = len(self._buffer) - self._position
+        if size is None or size < 0:
+            size = remaining
+        elif size > remaining:
+            size = remaining
+
+        if size <= 0:
+            return b""
+
+        start = self._position
+        end = start + size
+        self._position = end
+        return self._buffer[start:end].tobytes()
+
+    def tell(self) -> int:
+        return self._position
+
+    def seek(self, pos: int, whence: int = 0) -> int:
+        if whence == 0:
+            new_pos = pos
+        elif whence == 1:
+            new_pos = self._position + pos
+        elif whence == 2:
+            new_pos = len(self._buffer) + pos
+        else:
+            raise ValueError(f"invalid whence ({whence}, should be 0, 1 or 2)")
+
+        if new_pos < 0:
+            raise ValueError("negative seek position")
+
+        self._position = new_pos
+        return new_pos
+
+    def getbuffer(self) -> memoryview:
+        return self._buffer
 
     def seek_in_frame(self, pos: int, *args: Any, **kwargs: Any) -> None:
         """
@@ -89,7 +133,7 @@ class ContextFramesBytesIO(BytesIO):
 
         self.seek_in_frame(0)
 
-    def pop_frame(self):
+    def pop_frame(self) -> None:
         """
         Pops the current contextual frame off of the stack and returns the
         cursor to the frame's return position.
