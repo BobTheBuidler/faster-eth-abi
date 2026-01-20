@@ -4,16 +4,10 @@ Context-aware byte stream for ABI decoding.
 Implements a lightweight frame-aware reader that avoids BytesIO overhead in hot decoding paths.
 """
 from typing import (
-    TYPE_CHECKING,
     Any,
     Final,
     final,
 )
-
-if TYPE_CHECKING:
-    from _typeshed import (
-        ReadableBuffer,
-    )
 
 
 @final
@@ -61,8 +55,11 @@ class ContextFramesBytesIO:
     its enclosing object's frame (object A).
     """
 
-    def __init__(self, initial_bytes: "ReadableBuffer"):
-        self._buffer = memoryview(initial_bytes).cast("B")
+    def __init__(self, initial_bytes: bytes | bytearray):
+        # NOTE: Non-contiguous buffers are rare; require bytes/bytearray to keep the
+        # compiled hot path fast. Callers with sliced memoryviews should wrap with
+        # bytes(...) if needed.
+        self._buffer = memoryview(initial_bytes)
         self._position = 0
         self._frames: Final[list[tuple[int, int]]] = []
         self._total_offset = 0

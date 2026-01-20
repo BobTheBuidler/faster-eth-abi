@@ -1,4 +1,3 @@
-from _typeshed import ReadableBuffer as ReadableBuffer
 from typing import Any
 
 class ContextFramesBytesIO:
@@ -45,7 +44,7 @@ class ContextFramesBytesIO:
     its enclosing object's frame (object A).
     """
 
-    def __init__(self, initial_bytes: ReadableBuffer) -> None: ...
+    def __init__(self, initial_bytes: bytes | bytearray) -> None: ...
     def read(self, size: int = -1) -> bytes:
         """
         Read up to ``size`` bytes from the stream. If ``size`` is negative,
