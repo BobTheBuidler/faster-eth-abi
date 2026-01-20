@@ -12,10 +12,6 @@ from typing import (
     final,
 )
 
-from mypy_extensions import (
-    mypyc_attr,
-)
-
 if TYPE_CHECKING:
     from _typeshed import (
         ReadableBuffer,
