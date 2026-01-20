@@ -7,8 +7,6 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Final,
-    List,
-    Tuple,
     final,
 )
 
@@ -66,7 +64,7 @@ class ContextFramesBytesIO:
     def __init__(self, initial_bytes: "ReadableBuffer"):
         self._buffer = memoryview(initial_bytes).cast("B")
         self._position = 0
-        self._frames: Final[List[Tuple[int, int]]] = []
+        self._frames: Final[list[tuple[int, int]]] = []
         self._total_offset = 0
 
     def read(self, size: int = -1) -> bytes:
