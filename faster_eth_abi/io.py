@@ -56,7 +56,8 @@ class ContextFramesBytesIO:
     """
 
     def __init__(self, initial_bytes: bytes | bytearray):
-        # NOTE: Non-contiguous buffers are rare; require bytes/bytearray to keep the
+        # NOTE: Non-contiguous buffers are intentionally unsupported (regression from
+        # BytesIO) because they are rare in our decode flow and we want to keep the
         # compiled hot path fast. Callers with sliced memoryviews should wrap with
         # bytes(...) if needed.
         self._buffer = memoryview(initial_bytes)
