@@ -4,6 +4,7 @@ Context-aware byte stream for ABI decoding.
 Implements a lightweight frame-aware reader that avoids BytesIO overhead in
 hot decoding paths.
 """
+import io
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -16,6 +17,8 @@ from typing import (
 from mypy_extensions import (
     mypyc_attr,
 )
+
+BytesIO = io.BytesIO
 
 if TYPE_CHECKING:
     from _typeshed import (
