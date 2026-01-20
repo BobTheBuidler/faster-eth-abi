@@ -1,6 +1,7 @@
-from _typeshed import ReadableBuffer as ReadableBuffer
-from io import BytesIO as BytesIO
+from _typeshed import Incomplete, ReadableBuffer as ReadableBuffer
 from typing import Any
+
+BytesIO: Incomplete
 
 class ContextFramesBytesIO:
     """
