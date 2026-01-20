@@ -1,8 +1,8 @@
 from _typeshed import ReadableBuffer as ReadableBuffer
-from io import BytesIO
+from io import BytesIO as BytesIO
 from typing import Any
 
-class ContextFramesBytesIO(BytesIO):
+class ContextFramesBytesIO:
     """
     A byte stream which can track a series of contextual frames in a stack. This
     data structure is necessary to perform nested decodings using the
@@ -47,6 +47,15 @@ class ContextFramesBytesIO(BytesIO):
     """
 
     def __init__(self, initial_bytes: ReadableBuffer) -> None: ...
+    def read(self, size: int = -1) -> bytes:
+        """
+        Read up to ``size`` bytes from the stream. If ``size`` is negative,
+        read until EOF.
+        """
+
+    def tell(self) -> int: ...
+    def seek(self, pos: int, whence: int = 0) -> int: ...
+    def getbuffer(self) -> memoryview: ...
     def seek_in_frame(self, pos: int, *args: Any, **kwargs: Any) -> None:
         """
         Seeks relative to the total offset of the current contextual frames.
