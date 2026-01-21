@@ -7,10 +7,7 @@
 *.egg
 *.egg-info
 dist
-build/**/*.py
-build/**/*.o
-build/**/py.typed
-build/ops.txt
+build
 .build
 eggs
 .eggs
@@ -93,7 +90,6 @@ logs
 
 ## General
 .idea/*
-.worktrees
 .idea_modules/*
 
 ## File-based project format:
