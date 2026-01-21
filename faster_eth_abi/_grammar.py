@@ -14,6 +14,7 @@ from typing import (
     NoReturn,
     Optional,
     Tuple,
+    TypeAlias,
     TypeVar,
     Union,
     cast,
@@ -356,9 +357,10 @@ class BasicType(ABIType, Generic[TSub]):
                 self.invalidate("address cannot have suffix")
 
 
-BytesType = BasicType[IntSubtype]
-FixedType = BasicType[FixedSubtype]
+BytesType: TypeAlias = BasicType[IntSubtype]
+FixedType: TypeAlias = BasicType[FixedSubtype]
 
+_NORMALIZED_TYPE_STR_CACHE: Final[dict[TypeStr, TypeStr]] = {}
 
 def normalize(type_str: TypeStr) -> TypeStr:
     """
@@ -368,10 +370,19 @@ def normalize(type_str: TypeStr) -> TypeStr:
     :param type_str: The type string to be normalized.
     :returns: The canonical version of the input type string.
     """
+    cached = _NORMALIZED_TYPE_STR_CACHE.get(type_str)
+    if cached is not None:
+        return cached
+        
     if TYPE_ALIAS_RE.search(type_str) is None:
-        return type_str
+        normalized = type_str
+    else:
+        normalized = TYPE_ALIAS_RE.sub(__normalize, type_str)
 
-    return TYPE_ALIAS_RE.sub(__normalize, type_str)
+    _NORMALIZED_TYPE_STR_CACHE[type_str] = normalized
+    
+    return normalized
+    
 
 
 def __normalize(match: "re.Match[str]") -> str:
