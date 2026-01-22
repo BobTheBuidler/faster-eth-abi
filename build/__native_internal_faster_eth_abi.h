@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[460];
+extern PyObject *CPyStatics[462];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -191,6 +191,7 @@ extern PyObject *CPyPy__encoding___int_to_big_endian(PyObject *self, PyObject *c
 extern char CPyDef__encoding_____top_level__(void);
 extern PyObject *CPyStatic__grammar___TYPE_ALIASES;
 extern PyObject *CPyStatic__grammar___TYPE_ALIAS_RE;
+extern PyObject *CPyStatic__grammar____NORMALIZED_TYPE_STR_CACHE;
 extern PyTypeObject *CPyType__grammar___ABIType;
 extern PyObject *CPyDef__grammar___ABIType(PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
 extern PyTypeObject *CPyType__grammar___TupleType;

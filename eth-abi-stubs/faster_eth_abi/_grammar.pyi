@@ -2,7 +2,7 @@ from _typeshed import Incomplete
 from eth_typing.abi import TypeStr as TypeStr
 from faster_eth_abi.exceptions import ABITypeError as ABITypeError
 from parsimonious.nodes import Node as Node
-from typing import Any, Final, Generic, Literal, NoReturn, TypeVar, final
+from typing import Any, Final, Generic, Literal, NoReturn, TypeAlias, TypeVar, final
 from typing_extensions import Self
 
 TYPE_ALIASES: Final[Incomplete]
@@ -126,8 +126,8 @@ class BasicType(ABIType, Generic[TSub]):
     def is_dynamic(self) -> bool: ...
     def validate(self) -> None: ...
 
-BytesType = BasicType[IntSubtype]
-FixedType = BasicType[FixedSubtype]
+BytesType: TypeAlias = BasicType[IntSubtype]
+FixedType: TypeAlias = BasicType[FixedSubtype]
 
 def normalize(type_str: TypeStr) -> TypeStr:
     """
