@@ -4,7 +4,7 @@ requires = [
 	"wheel",
 	"mypy[mypyc]==1.19.1",
 	"mypy_extensions",
-	"cchecksum==0.3.10",
+	"cchecksum==0.4.1",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
 	# is unable to build on Python3.14 on 32-bit Linux distros
 	"faster-eth-utils==5.3.23; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
