@@ -7,7 +7,7 @@ requires = [
 	"cchecksum==0.3.10",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
 	# is unable to build on Python3.14 on 32-bit Linux distros
-	"faster-eth-utils==5.3.23; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
+	"faster-eth-utils==5.3.24; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
 	"eth-abi==5.2.0; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
 	"eth-typing==5.2.1",
 	"parsimonious==0.10.0",
