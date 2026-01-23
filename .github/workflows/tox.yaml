@@ -129,15 +129,20 @@ jobs:
           path: .mypy_cache
           key: mypy-cache-${{ runner.os }}-${{ matrix.architecture }}-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
-      - name: Cache tox environment and hypothesis examples
+      - name: Compute tox cache key
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
-        uses: actions/cache@v5
+        id: tox-cache
+        run: |
+          echo "tox_cache_key=${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.architecture }}-${{ matrix.jobtype }}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore tox environment and hypothesis examples
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
+        uses: actions/cache/restore@v5
         with:
           path: |
             .tox
             .hypothesis
-          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.architecture }}-${{ matrix.jobtype }}
-          save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
+          key: ${{ steps.tox-cache.outputs.tox_cache_key }}
 
       - name: Remove Python files so wheel will be used
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
@@ -147,3 +152,12 @@ jobs:
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }} --installpkg=$(find dist -name '*.whl' -print -quit)
         shell: bash
+
+      - name: Save tox environment and hypothesis examples
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' && env.TOX_RECREATE_FLAG == '-r' }}
+        uses: actions/cache/save@v5
+        with:
+          path: |
+            .tox
+            .hypothesis
+          key: ${{ steps.tox-cache.outputs.tox_cache_key }}
