@@ -47,6 +47,7 @@ jobs:
           hash-key: |
             pyproject.toml
             setup.py
+            requirements*.txt
             tox.ini
             faster_eth_abi/**/*.py
           pip-cache-dependency-path: |
