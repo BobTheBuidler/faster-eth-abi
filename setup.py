@@ -69,8 +69,6 @@ if not skip_mypyc:
     # Compile the interpreted python files to C
     
     flags: list[str] = [
-        "--pretty",
-        "--install-types",
         # all of these are safe to disable long term
         "--disable-error-code=override",
         "--disable-error-code=no-any-return",
