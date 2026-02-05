@@ -96,7 +96,7 @@ jobs:
       - name: Build wheel with mypycify
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         id: mypycify
-        uses: BobTheBuidler/mypycify@v0.2.6
+        uses: BobTheBuidler/mypycify@fix-arch
         with:
           python-version: ${{ matrix.python-version }}
           hash-key: |
@@ -109,11 +109,21 @@ jobs:
             setup.py
             tox.ini
 
+      - name: Compute artifact key
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
+        id: artifact_key
+        shell: bash
+        run: |
+          ARCHITECTURE="$(uname -m)"
+          ARTIFACT_HASH="${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}"
+          ARTIFACT_KEY="${{ runner.os }}-${ARCHITECTURE}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${ARTIFACT_HASH}"
+          echo "artifact-key=$ARTIFACT_KEY" >> "$GITHUB_OUTPUT"
+
       - name: Download built wheel artifact
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/download-artifact@v7
         with:
-          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}-${{ matrix.installmode }}
+          name: BobTheBuidler_mypycified_wheel-${{ steps.artifact_key.outputs.artifact-key }}
           path: dist
 
       - name: Upgrade pip and install tox
