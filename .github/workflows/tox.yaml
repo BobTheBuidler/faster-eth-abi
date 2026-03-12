@@ -109,11 +109,17 @@ jobs:
             setup.py
             tox.ini
 
+      - name: Determine wheel artifact architecture
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
+        id: artifact_arch
+        shell: bash
+        run: echo "value=$(uname -m)" >> "$GITHUB_OUTPUT"
+
       - name: Download built wheel artifact
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/download-artifact@v8
         with:
-          name: ${{ steps.mypycify.outputs.artifact-name }}
+          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}
           path: dist
 
       - name: Upgrade pip and install tox
