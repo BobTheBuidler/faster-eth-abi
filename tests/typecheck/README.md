@@ -42,11 +42,12 @@ This will regenerate all testdata files in the `abi/` and `codec/` subdirectorie
 
 ## CI Integration
 
-- The GitHub Actions workflow ([`.github/workflows/mypy.yaml`](../../.github/workflows/mypy.yaml)) uses these flags to efficiently generate and check a representative subset of testdata for large lengths.
-- See the workflow file for details on how sampling and length selection are used in CI.
+- The fast PR lane runs in [`.github/workflows/mypy.yaml`](../../.github/workflows/mypy.yaml).
+- The full assurance lane runs in [`.github/workflows/mypy-assurance.yaml`](../../.github/workflows/mypy-assurance.yaml) on a weekly schedule and on manual dispatch.
+- See both workflow files for details on how sampling and length selection are used in CI.
 
 ## More info
 
 - For technical details, see the generator script: [`scripts/generate_overload_tests.py`](../../scripts/generate_overload_tests.py)
-- For CI details, see: [`.github/workflows/mypy.yaml`](../../.github/workflows/mypy.yaml)
+- For CI details, see: [`.github/workflows/mypy.yaml`](../../.github/workflows/mypy.yaml) and [`.github/workflows/mypy-assurance.yaml`](../../.github/workflows/mypy-assurance.yaml)
 - For testdata management policy, see: [`tests/typecheck/.llm.md`](./.llm.md)
