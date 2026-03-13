@@ -5,7 +5,7 @@ requires = [
 	"mypy[mypyc]==1.19.1",
 	"mypy_extensions",
 	# for all other system configurations, cchecksum is pinned and installed with faster-eth-utils
-	"cchecksum==0.4.1; platform_system == 'Linux' and python_version == '3.14' and platform_machine == 'i686'",
+	"cchecksum==0.4.3; platform_system == 'Linux' and python_version == '3.14' and platform_machine == 'i686'",
 	# pydantic-core (installed with faster-eth-utils and eth-abi)
 	# is unable to build on Python3.14 on 32-bit Linux distros
 	"faster-eth-utils==5.3.24; platform_system != 'Linux' or python_version != '3.14' or platform_machine != 'i686'",
