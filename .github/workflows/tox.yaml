@@ -103,6 +103,7 @@ jobs:
             faster_eth_abi/**/*.py
             pyproject.toml
             setup.py
+            .github/mypycify-hash/${{ matrix.architecture }}.txt
           build-from: ${{ matrix.installmode }}
           pip-cache-dependency-path: |
             pyproject.toml
@@ -119,7 +120,7 @@ jobs:
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/download-artifact@v8
         with:
-          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py') }}
+          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py', format('.github/mypycify-hash/{0}.txt', matrix.architecture)) }}
           path: dist
 
       - name: Upgrade pip and install tox
