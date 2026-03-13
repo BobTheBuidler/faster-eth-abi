@@ -8,6 +8,10 @@ on:
   # workflow dispatch trigger will perform a dry run with no upload to pypi
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build_wheels:
     name: Build wheels using cibuildwheel
