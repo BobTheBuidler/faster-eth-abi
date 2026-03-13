@@ -1,4 +1,4 @@
-name: MyPy (Fast Lane)
+name: MyPy (Assurance Lane)
 
 on:
   push:
@@ -12,17 +12,8 @@ on:
       - "pyproject.toml"
       - "tox.ini"
       - "!eth-abi-stubs/**"
-  pull_request:
-    branches: [master, main]
-    paths:
-      - '.github/workflows/mypy.yaml'
-      - '.github/workflows/mypy-assurance.yaml'
-      - "tests/typecheck/**.py"
-      - "faster_eth_abi/**"
-      - "setup.py"
-      - "pyproject.toml"
-      - "tox.ini"
-      - "!eth-abi-stubs/**"
+  schedule:
+    - cron: '0 11 * * 1'
   workflow_dispatch:
 
 concurrency:
@@ -35,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.12"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         impl: ["codec", "abi"]
         suite: ["fixed", "variable"]
     steps:
@@ -99,9 +90,9 @@ jobs:
             if [ $status -ne 0 ]; then exit $status; fi
           done
 
-      # Generate and check 2.5% of len_3 (sample 1/40)
-      - name: Generate test data for len_3 (sample 1/40)
-        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 40
+      # Generate and check 5% of len_3 (sample 1/20)
+      - name: Generate test data for len_3 (sample 1/20)
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 3 --sample-1-of-x 20
       - name: Run mypy on all len_3 typecheck files (parallel, 2 jobs)
         run: |
           set -e
@@ -119,9 +110,9 @@ jobs:
           status=${PIPESTATUS[0]}
           if [ $status -ne 0 ]; then exit $status; fi
 
-      # Generate and check 0.17% of len_4 (sample 1/600)
-      - name: Generate test data for len_4 (sample 1/600)
-        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 600
+      # Generate and check 0.33% of len_4 (sample 1/300)
+      - name: Generate test data for len_4 (sample 1/300)
+        run: python scripts/generate_overload_tests.py --impl ${{ matrix.impl }} --suite ${{ matrix.suite }} --lengths 4 --sample-1-of-x 300
       - name: Run mypy on all len_4 typecheck files (parallel, 2 jobs)
         run: |
           set -e
@@ -138,3 +129,10 @@ jobs:
           ' > >(grep -v "cannot open /dev/tty")
           status=${PIPESTATUS[0]}
           if [ $status -ne 0 ]; then exit $status; fi
+
+      - name: Save .mypy_cache (always, even on failure)
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: .mypy_cache
+          key: test-data-mypy-cache-${{ runner.os }}-x64-${{ matrix.impl }}-${{ matrix.suite }}
