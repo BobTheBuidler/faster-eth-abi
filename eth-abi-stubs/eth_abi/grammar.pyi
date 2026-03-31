@@ -10,16 +10,16 @@ from faster_eth_abi._grammar import (
 from typing import Final
 
 __all__ = [
-    "NodeVisitor",
-    "ABIType",
-    "TupleType",
-    "BasicType",
-    "grammar",
-    "parse",
-    "normalize",
-    "visitor",
-    "TYPE_ALIASES",
     "TYPE_ALIAS_RE",
+    "TYPE_ALIASES",
+    "ABIType",
+    "BasicType",
+    "TupleType",
+    "normalize",
+    "grammar",
+    "NodeVisitor",
+    "visitor",
+    "parse",
 ]
 
 grammar: Final[Incomplete]
