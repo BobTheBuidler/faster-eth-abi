@@ -2,7 +2,7 @@
 requires = [
 	"setuptools",
 	"wheel",
-	"mypy[mypyc]==1.19.1",
+	"mypy[mypyc]==1.20.0",
 	"mypy_extensions",
 	# for all other system configurations, cchecksum is pinned and installed with faster-eth-utils
 	"cchecksum==0.4.3; platform_system == 'Linux' and python_version == '3.14' and platform_machine == 'i686'",
