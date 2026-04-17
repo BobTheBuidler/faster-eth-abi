@@ -10,7 +10,7 @@ jobs:
     if: github.event.pull_request.merged == true || github.event.pull_request.state == 'closed'
     steps:
       - name: Find open stubgen PR
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const triggerPR = context.payload.pull_request;
@@ -39,7 +39,7 @@ jobs:
             }
 
       - name: Hide stubgen comment on trigger PR as outdated
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             // Find the comment on the trigger PR that contains the stubgen PR link
