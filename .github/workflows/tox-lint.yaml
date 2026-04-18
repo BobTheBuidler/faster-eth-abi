@@ -52,14 +52,27 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install tox
 
-      - name: Cache tox environment and hypothesis examples
-        uses: actions/cache@v5
+      - name: Compute tox cache key
+        id: tox-cache
+        run: |
+          echo "tox_cache_key=${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-lint" >> "$GITHUB_OUTPUT"
+
+      - name: Restore tox environment and hypothesis examples
+        uses: actions/cache/restore@v5
         with:
           path: |
             .tox
             .hypothesis
-          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-lint
-          save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
+          key: ${{ steps.tox-cache.outputs.tox_cache_key }}
 
       - name: Run tox
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }}
+
+      - name: Save tox environment and hypothesis examples
+        if: ${{ env.TOX_RECREATE_FLAG == '-r' }}
+        uses: actions/cache/save@v5
+        with:
+          path: |
+            .tox
+            .hypothesis
+          key: ${{ steps.tox-cache.outputs.tox_cache_key }}
