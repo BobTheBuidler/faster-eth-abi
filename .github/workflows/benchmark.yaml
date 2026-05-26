@@ -9,6 +9,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "requirements*.txt"
       - "!eth-abi-stubs/**"
   push:
     branches: [main, master]
@@ -18,6 +19,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "requirements*.txt"
       - "!eth-abi-stubs/**"
   workflow_dispatch:
     inputs:
