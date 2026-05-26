@@ -18,17 +18,17 @@ concurrency:
 
 jobs:
   lint:
-    name: Lint (${{ matrix.python-version }}, ${{ matrix.os }})
+    name: Lint (3.${{ matrix.pyminor }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
+        pyminor: ["10", "11", "12", "13", "13t", "14", "14t"]
       # limit parallelism for cronjob, otherwise blast it
       max-parallel: ${{ github.event_name == 'schedule' && 4 || 1000 }}
     env:
-      TOXENV: py${{ matrix.python-version }}-lint
+      TOXENV: py3${{ matrix.pyminor }}-lint
       TOX_RECREATE_FLAG: ${{ github.event_name == 'schedule' && '-r' || '' }}
 
     steps:
@@ -40,7 +40,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.${{ matrix.pyminor }}
           cache: pip
           cache-dependency-path: |
             setup.py
@@ -58,7 +58,7 @@ jobs:
           path: |
             .tox
             .hypothesis
-          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-lint
+          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-3.${{ matrix.pyminor }}-lint
           save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
       - name: Run tox
