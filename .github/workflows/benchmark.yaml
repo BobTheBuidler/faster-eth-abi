@@ -9,6 +9,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "requirements*.txt"
       - "!eth-abi-stubs/**"
   push:
     branches: [main, master]
@@ -18,6 +19,7 @@ on:
       - "benchmarks/**"
       - "setup.py"
       - "pyproject.toml"
+      - "requirements*.txt"
       - "!eth-abi-stubs/**"
   workflow_dispatch:
     inputs:
@@ -222,7 +224,7 @@ jobs:
           path: pytest_benchmark_diff.json
 
       - name: Post Pytest Benchmark Diff as PR Comment
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
