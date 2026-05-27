@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   test:
-    name: Test (${{ matrix.jobtype }}, ${{ matrix.python-version }}, ${{ matrix.os }}, ${{ matrix.architecture }}, ${{ matrix.installmode }})
+    name: Test (${{ matrix.jobtype }}, 3.${{ matrix.pyminor }}, ${{ matrix.os }}, ${{ matrix.architecture }}, ${{ matrix.installmode }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -30,7 +30,7 @@ jobs:
         jobtype: [core, wheel]
         os: [ubuntu-latest, macos-latest, windows-latest]
         architecture: [x64, x86]
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.14t"]
+        pyminor: ["10", "11", "12", "13", "13t", "14", "14t"]
         installmode: [source, sdist]
         exclude:
           # Exclude x86 (32-bit) builds for macos, which doesn't support 32-bit at all
@@ -43,7 +43,7 @@ jobs:
       max-parallel: ${{ github.event_name == 'schedule' && 4 || 1000 }}
     env:
       IS_UBUNTU_32BIT: ${{ matrix.os == 'ubuntu-latest' && matrix.architecture == 'x86' }}
-      TOXENV: py${{ matrix.python-version }}-${{ matrix.jobtype }}
+      TOXENV: ${{ matrix.os == 'windows-latest' && matrix.jobtype == 'wheel' && 'windows-wheel' || format('py3{0}-{1}', matrix.pyminor, matrix.jobtype) }}
       TOX_RECREATE_FLAG: ${{ github.event_name == 'schedule' && '-r' || '' }}
 
     steps:
@@ -57,7 +57,7 @@ jobs:
         if: ${{ env.IS_UBUNTU_32BIT == 'true' }}
         uses: addnab/docker-run-action@v3
         with:
-          image: i386/python:${{ matrix.python-version }}
+          image: i386/python:3.${{ matrix.pyminor }}
           shell: bash
           options: -v ${{ github.workspace }}:/workspace -w /workspace
           run: |
@@ -66,14 +66,14 @@ jobs:
             python -m tox -e ${{ env.TOXENV }} ${{ env.TOX_RECREATE_FLAG }}
         # There are no prebuilt 32-bit freethreaded Python containers at the time of this commit, but
         # we will keep these runners so they will activate on their own whenever such containers exist
-        continue-on-error: ${{ matrix.python-version == '3.13t' || matrix.python-version == '3.14t' }}
+        continue-on-error: ${{ matrix.pyminor == '13t' || matrix.pyminor == '14t' }}
 
       # No architecture specified for MacOS
       - name: Set up Python (macos)
         if: ${{ matrix.os == 'macos-latest' }}
         uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.${{ matrix.pyminor }}
           cache: pip
           cache-dependency-path: |
             setup.py
@@ -85,7 +85,7 @@ jobs:
         if: ${{ matrix.os != 'macos-latest' && env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.${{ matrix.pyminor }}
           architecture: ${{ matrix.architecture }}
           cache: pip
           cache-dependency-path: |
@@ -98,7 +98,7 @@ jobs:
         id: mypycify
         uses: BobTheBuidler/mypycify@v0.4.0
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.${{ matrix.pyminor }}
           hash-key: |
             faster_eth_abi/**/*.py
             pyproject.toml
@@ -120,7 +120,7 @@ jobs:
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/download-artifact@v8
         with:
-          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py${{ matrix.python-version }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py', format('.github/mypycify-hash/{0}.txt', matrix.architecture)) }}
+          name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py3.${{ matrix.pyminor }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py', format('.github/mypycify-hash/{0}.txt', matrix.architecture)) }}
           path: dist
 
       - name: Upgrade pip and install tox
@@ -143,7 +143,7 @@ jobs:
           path: |
             .tox
             .hypothesis
-          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.architecture }}-${{ matrix.jobtype }}
+          key: ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-3.${{ matrix.pyminor }}-${{ matrix.architecture }}-${{ matrix.jobtype }}
           save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
       - name: Remove Python files so wheel will be used

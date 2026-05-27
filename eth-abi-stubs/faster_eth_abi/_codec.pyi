@@ -1,4 +1,4 @@
-from eth_typing import Decodable as Decodable, TypeStr as TypeStr
+from eth_typing import TypeStr as TypeStr
 from faster_eth_abi.codec import ABIDecoder as ABIDecoder, ABIEncoder as ABIEncoder
 from faster_eth_abi.utils.validation import (
     validate_bytes_param as validate_bytes_param,
@@ -21,7 +21,7 @@ def encode_c(self, types: Iterable[TypeStr], args: Iterable[Any]) -> bytes:
     """
 
 def decode_c(
-    self, types: Iterable[TypeStr], data: Decodable, strict: bool = True
+    self, types: Iterable[TypeStr], data: Any, strict: bool = True
 ) -> tuple[Any, ...]:
     """
     Decodes the binary value ``data`` as a sequence of values of the ABI types
