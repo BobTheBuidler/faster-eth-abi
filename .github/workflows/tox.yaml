@@ -43,7 +43,7 @@ jobs:
       max-parallel: ${{ github.event_name == 'schedule' && 4 || 1000 }}
     env:
       IS_UBUNTU_32BIT: ${{ matrix.os == 'ubuntu-latest' && matrix.architecture == 'x86' }}
-      TOXENV: py3${{ matrix.pyminor }}-${{ matrix.jobtype }}
+      TOXENV: ${{ matrix.os == 'windows-latest' && matrix.jobtype == 'wheel' && 'windows-wheel' || format('py3{0}-{1}', matrix.pyminor, matrix.jobtype) }}
       TOX_RECREATE_FLAG: ${{ github.event_name == 'schedule' && '-r' || '' }}
 
     steps:
