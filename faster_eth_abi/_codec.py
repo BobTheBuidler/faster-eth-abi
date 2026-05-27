@@ -12,7 +12,6 @@ from typing import (
 )
 
 from eth_typing import (
-    Decodable,
     TypeStr,
 )
 
@@ -55,7 +54,7 @@ def encode_c(
 def decode_c(
     self: "ABIDecoder",
     types: Iterable[TypeStr],
-    data: Decodable,
+    data: Any,
     strict: bool = True,
 ) -> Tuple[Any, ...]:
     """

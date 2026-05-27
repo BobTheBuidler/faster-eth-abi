@@ -163,15 +163,17 @@ jobs:
       - name: Exit early if newer workflow run exists (same branch only)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
         run: |
           set -e
           # List all in-progress runs for this branch (algorithmic repo)
           runs=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs \
-            -F branch=${GITHUB_REF#refs/heads/} \
+            -F branch="$BRANCH_NAME" \
             -F status=in_progress \
-            --jq '.workflow_runs | map(select(.id != '${{ github.run_id }}' && .status == "in_progress" && .conclusion == null))')
+            --jq ".workflow_runs | map(select(.id != ${CURRENT_RUN_ID} and .status == \"in_progress\" and .conclusion == null))")
           # If any run has a higher id (newer), exit early
-          if [ "$(echo "$runs" | jq '[.[] | select(.id > '${{ github.run_id }}')] | length')" -gt 0 ]; then
+          if [ "$(echo "$runs" | jq "[.[] | select(.id > ${CURRENT_RUN_ID})] | length")" -gt 0 ]; then
             echo "A newer workflow run is in progress for this branch. Exiting early."
             exit 0
           fi
