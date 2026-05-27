@@ -44,6 +44,9 @@ from faster_eth_abi.typing import (
     StringTypeStr,
     UintTypeStr,
 )
+from faster_eth_abi.utils.validation import (
+    validate_bytes_param,
+)
 
 DecodesToIntTypeStr = Union[UintTypeStr, IntTypeStr]
 
@@ -2802,6 +2805,7 @@ class ABIDecoder(BaseABICoder):
         :returns: A tuple of equivalent python values for the ABI values
             represented in ``data``.
         """
+        validate_bytes_param(data, "data")
         return decode_c(self, types, data, strict)
 
 
