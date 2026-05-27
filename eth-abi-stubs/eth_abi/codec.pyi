@@ -15,6 +15,7 @@ from faster_eth_abi.typing import (
     StringTypeStr as StringTypeStr,
     UintTypeStr as UintTypeStr,
 )
+from faster_eth_abi.utils.validation import validate_bytes_param as validate_bytes_param
 from typing import Any, Iterable, overload
 
 DecodesToIntTypeStr = UintTypeStr | IntTypeStr
