@@ -18,6 +18,10 @@ from mypy_extensions import (
 Frame: TypeAlias = tuple[int, int]
 
 
+# ContextFramesBytesIO is tuned for the decode hot path, where callers pass
+# plain bytes/bytearray payloads. User-defined bytes/bytearray subclasses can
+# retain this stream through memoryview(initial_bytes), creating cycles that
+# @mypyc_attr(acyclic=True) will not traverse; that unsupported edge case may leak.
 @final
 @mypyc_attr(acyclic=True)
 class ContextFramesBytesIO:
