@@ -26110,7 +26110,7 @@ CPyL25: ;
     if (likely(PyBytes_Check(cpy_r_r48)))
         cpy_r_r49 = cpy_r_r48;
     else {
-        CPy_TypeErrorTraceback("faster_eth_abi/io.py", "read", 94, CPyStatic_io___globals, "bytes", cpy_r_r48);
+        CPy_TypeErrorTraceback("faster_eth_abi/io.py", "read", 98, CPyStatic_io___globals, "bytes", cpy_r_r48);
         goto CPyL31;
     }
     return cpy_r_r49;
