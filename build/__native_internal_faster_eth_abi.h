@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[460];
+extern PyObject *CPyStatics[465];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -88,6 +88,7 @@ extern int CPyExec_faster_eth_abi___from_type_str(PyObject *module);
 extern PyObject *CPyInit_faster_eth_abi___from_type_str(void);
 extern PyObject *CPyInitOnly_faster_eth_abi___from_type_str(void);
 extern PyObject *CPyStatic_io___globals;
+extern CPyModule *CPyModule_mypy_extensions;
 extern int CPyExec_faster_eth_abi___io(PyObject *module);
 extern PyObject *CPyInit_faster_eth_abi___io(void);
 extern PyObject *CPyInitOnly_faster_eth_abi___io(void);
@@ -365,7 +366,7 @@ extern PyTypeObject *CPyType_io___ContextFramesBytesIO;
 extern PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_initial_bytes);
 extern char CPyDef_io___ContextFramesBytesIO_____init__(PyObject *cpy_r_self, PyObject *cpy_r_initial_bytes);
 extern PyObject *CPyPy_io___ContextFramesBytesIO_____init__(PyObject *self, PyObject *args, PyObject *kw);
-extern PyObject *CPyDef_io___ContextFramesBytesIO___read(PyObject *cpy_r_self, CPyTagged cpy_r_size);
+extern PyObject *CPyDef_io___ContextFramesBytesIO___read(PyObject *cpy_r_self, PyObject *cpy_r_size);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___read(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern CPyTagged CPyDef_io___ContextFramesBytesIO___tell(PyObject *cpy_r_self);
 extern PyObject *CPyPy_io___ContextFramesBytesIO___tell(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);

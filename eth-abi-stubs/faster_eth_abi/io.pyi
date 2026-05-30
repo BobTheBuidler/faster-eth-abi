@@ -1,4 +1,6 @@
-from typing import Any
+from typing import Any, TypeAlias
+
+Frame: TypeAlias = tuple[int, int]
 
 class ContextFramesBytesIO:
     """
@@ -45,7 +47,7 @@ class ContextFramesBytesIO:
     """
 
     def __init__(self, initial_bytes: bytes | bytearray) -> None: ...
-    def read(self, size: int = -1) -> bytes:
+    def read(self, size: int | None = -1) -> bytes:
         """
         Read up to ``size`` bytes from the stream. If ``size`` is negative,
         read until EOF.

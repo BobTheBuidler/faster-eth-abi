@@ -6,11 +6,24 @@ Implements a lightweight frame-aware reader that avoids BytesIO overhead in hot 
 from typing import (
     Any,
     Final,
+    TypeAlias,
     final,
 )
 
+from mypy_extensions import (
+    mypyc_attr,
+)
 
+
+Frame: TypeAlias = tuple[int, int]
+
+
+# ContextFramesBytesIO is tuned for the decode hot path, where callers pass
+# plain bytes/bytearray payloads. User-defined bytes/bytearray subclasses can
+# retain this stream through memoryview(initial_bytes), creating cycles that
+# @mypyc_attr(acyclic=True) will not traverse; that unsupported edge case may leak.
 @final
+@mypyc_attr(acyclic=True)
 class ContextFramesBytesIO:
     """
     A byte stream which can track a series of contextual frames in a stack. This
@@ -62,10 +75,10 @@ class ContextFramesBytesIO:
         # bytes(...) if needed.
         self._buffer = memoryview(initial_bytes)
         self._position = 0
-        self._frames: Final[list[tuple[int, int]]] = []
+        self._frames: Final[list[Frame]] = []
         self._total_offset = 0
 
-    def read(self, size: int = -1) -> bytes:
+    def read(self, size: int | None = -1) -> bytes:
         """
         Read up to ``size`` bytes from the stream. If ``size`` is negative,
         read until EOF.
