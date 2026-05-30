@@ -19,6 +19,9 @@ from typing import (
 from faster_eth_utils import (
     is_list_like,
 )
+from librt.strings import (
+    BytesWriter,
+)
 
 from faster_eth_abi.exceptions import (
     IllegalValue,
@@ -415,13 +418,16 @@ def encode_bytestring(value: bytes) -> bytes:
 
 
 def encode_text(value: str) -> bytes:
+    writer = BytesWriter()
     value_as_bytes = value.encode("utf-8")
     value_length = len(value_as_bytes)
+    padded_length = ceil32(value_length)
 
-    encoded_size = encode_uint_256(value_length)
-    padded_value = zpad_right(value_as_bytes, ceil32(value_length))
-
-    return encoded_size + padded_value
+    writer.write(encode_uint_256(value_length))
+    writer.write(value_as_bytes)
+    for _ in range(padded_length - value_length):
+        writer.append(0)
+    return writer.getvalue()
 
 
 def validate_array(array_encoder: "BaseArrayEncoder", value: Sequence[Any]) -> None:
