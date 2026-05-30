@@ -2,6 +2,7 @@
 #define MYPYC_NATIVE_faster_eth_abi_H
 #include <Python.h>
 #include <CPy.h>
+#include "strings/librt_strings.h"
 #ifndef MYPYC_DECLARED_tuple_T3OOO
 #define MYPYC_DECLARED_tuple_T3OOO
 typedef struct tuple_T3OOO {
