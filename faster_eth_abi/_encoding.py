@@ -413,9 +413,9 @@ def encode_signed(
 def encode_bytestring(value: bytes) -> bytes:
     writer = BytesWriter()
     value_length = len(value)
-    padded_length = ceil32(value_length)
     writer.write(encode_uint_256(value_length))
     writer.write(value)
+    padded_length = ceil32(value_length)
     for _ in range(padded_length - value_length):
         writer.append(0)
     return writer.getvalue()
