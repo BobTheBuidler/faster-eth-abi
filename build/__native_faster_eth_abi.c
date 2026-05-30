@@ -1,22 +1,22 @@
 #ifndef DIFFCHECK_PLACEHOLDER
 #define DIFFCHECK_PLACEHOLDER 0
 #endif
-#include "init.c"
-#include "getargs.c"
-#include "getargsfast.c"
-#include "int_ops.c"
-#include "float_ops.c"
-#include "str_ops.c"
-#include "bytes_ops.c"
-#include "list_ops.c"
-#include "dict_ops.c"
-#include "set_ops.c"
-#include "tuple_ops.c"
-#include "exc_ops.c"
-#include "misc_ops.c"
-#include "generic_ops.c"
-#include "pythonsupport.c"
-#include "function_wrapper.c"
+#include <init.c>
+#include <getargs.c>
+#include <getargsfast.c>
+#include <int_ops.c>
+#include <float_ops.c>
+#include <str_ops.c>
+#include <bytes_ops.c>
+#include <list_ops.c>
+#include <dict_ops.c>
+#include <set_ops.c>
+#include <tuple_ops.c>
+#include <exc_ops.c>
+#include <misc_ops.c>
+#include <generic_ops.c>
+#include <pythonsupport.c>
+#include <function_wrapper.c>
 #include "__native_faster_eth_abi.h"
 #include "__native_internal_faster_eth_abi.h"
 static PyMethodDef _codecmodule_methods[] = {
@@ -2819,8 +2819,10 @@ tuple_T2OO CPyDef__decoding___split_data_and_padding_fixed_byte_size(PyObject *c
     PyObject *cpy_r_data;
     PyObject *cpy_r_r13;
     PyObject *cpy_r_r14;
-    tuple_T2OO cpy_r_r15;
-    tuple_T2OO cpy_r_r16;
+    PyObject *cpy_r_r15;
+    PyObject *cpy_r_r16;
+    tuple_T2OO cpy_r_r17;
+    tuple_T2OO cpy_r_r18;
     cpy_r_r0 = CPyDef__decoding___get_value_byte_size(cpy_r_self);
     if (unlikely(cpy_r_r0 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/_decoding.py", "split_data_and_padding_fixed_byte_size", DIFFCHECK_PLACEHOLDER, CPyStatic__decoding___globals);
@@ -2870,8 +2872,8 @@ CPyL6: ;
     } else
         goto CPyL8;
 CPyL7: ;
-    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'' */
     CPy_INCREF(cpy_r_raw_data);
+    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* b'' */
     CPy_INCREF(cpy_r_r9);
     cpy_r_r10.f0 = cpy_r_raw_data;
     cpy_r_r10.f1 = cpy_r_r9;
@@ -2906,13 +2908,15 @@ CPyL11: ;
     }
     cpy_r_padding_bytes = cpy_r_r14;
 CPyL14: ;
-    cpy_r_r15.f0 = cpy_r_data;
-    cpy_r_r15.f1 = cpy_r_padding_bytes;
-    return cpy_r_r15;
+    cpy_r_r15 = cpy_r_data;
+    cpy_r_r16 = cpy_r_padding_bytes;
+    cpy_r_r17.f0 = cpy_r_r15;
+    cpy_r_r17.f1 = cpy_r_r16;
+    return cpy_r_r17;
 CPyL15: ;
     tuple_T2OO __tmp2 = { NULL, NULL };
-    cpy_r_r16 = __tmp2;
-    return cpy_r_r16;
+    cpy_r_r18 = __tmp2;
+    return cpy_r_r18;
 CPyL16: ;
     CPyTagged_DecRef(cpy_r_r0);
     goto CPyL15;
@@ -14753,31 +14757,13 @@ CPyL60: ;
                 Py_INCREF(Py_NotImplemented);
                 return Py_NotImplemented;
             }
-            PyObject *CPyDef__grammar_____mypyc__ABIType_setup(PyObject *cpy_r_type);
-            PyObject *CPyDef__grammar___ABIType(PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
-            
-            static PyObject *
-            _grammar___ABIType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-            {
-                if (type != CPyType__grammar___ABIType) {
-                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                    return NULL;
-                }
-                PyObject *self = CPyDef__grammar_____mypyc__ABIType_setup((PyObject*)type);
-                if (self == NULL)
-                    return NULL;
-                PyObject *ret = CPyPy__grammar___ABIType_____init__(self, args, kwds);
-                if (ret == NULL)
-                    return NULL;
-                return self;
-            }
-            
             static int
             _grammar___ABIType_traverse(faster_eth_abi____grammar___ABITypeObject *self, visitproc visit, void *arg)
             {
                 Py_VISIT(self->_arrlist);
                 Py_VISIT(self->_node);
-                return 0;
+                int rv = 0;
+                return rv;
             }
             
             static int
@@ -14797,6 +14783,28 @@ CPyL60: ;
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
+            }
+            
+            PyObject *CPyDef__grammar_____mypyc__ABIType_setup(PyObject *cpy_r_type);
+            PyObject *CPyDef__grammar___ABIType(PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
+            
+            static PyObject *
+            _grammar___ABIType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+            {
+                if (type != CPyType__grammar___ABIType) {
+                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                    return NULL;
+                }
+                PyObject *self = CPyDef__grammar_____mypyc__ABIType_setup((PyObject*)type);
+                if (self == NULL)
+                    return NULL;
+                PyObject *ret = CPyPy__grammar___ABIType_____init__(self, args, kwds);
+                if (ret == NULL) {
+                        Py_DECREF(self);
+                        return NULL;
+                }
+                Py_DECREF(ret);
+                return self;
             }
             
             static CPyVTableItem _grammar___ABIType_vtable[11];
@@ -15118,32 +15126,14 @@ __LL18: ;
                 Py_INCREF(Py_NotImplemented);
                 return Py_NotImplemented;
             }
-            PyObject *CPyDef__grammar_____mypyc__TupleType_setup(PyObject *cpy_r_type);
-            PyObject *CPyDef__grammar___TupleType(PyObject *cpy_r_components, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
-            
-            static PyObject *
-            _grammar___TupleType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-            {
-                if (type != CPyType__grammar___TupleType) {
-                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                    return NULL;
-                }
-                PyObject *self = CPyDef__grammar_____mypyc__TupleType_setup((PyObject*)type);
-                if (self == NULL)
-                    return NULL;
-                PyObject *ret = CPyPy__grammar___TupleType_____init__(self, args, kwds);
-                if (ret == NULL)
-                    return NULL;
-                return self;
-            }
-            
             static int
             _grammar___TupleType_traverse(faster_eth_abi____grammar___TupleTypeObject *self, visitproc visit, void *arg)
             {
                 Py_VISIT(self->_arrlist);
                 Py_VISIT(self->_node);
                 Py_VISIT(self->_components);
-                return 0;
+                int rv = 0;
+                return rv;
             }
             
             static int
@@ -15164,6 +15154,28 @@ __LL18: ;
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
+            }
+            
+            PyObject *CPyDef__grammar_____mypyc__TupleType_setup(PyObject *cpy_r_type);
+            PyObject *CPyDef__grammar___TupleType(PyObject *cpy_r_components, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
+            
+            static PyObject *
+            _grammar___TupleType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+            {
+                if (type != CPyType__grammar___TupleType) {
+                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                    return NULL;
+                }
+                PyObject *self = CPyDef__grammar_____mypyc__TupleType_setup((PyObject*)type);
+                if (self == NULL)
+                    return NULL;
+                PyObject *ret = CPyPy__grammar___TupleType_____init__(self, args, kwds);
+                if (ret == NULL) {
+                        Py_DECREF(self);
+                        return NULL;
+                }
+                Py_DECREF(ret);
+                return self;
             }
             
             static CPyVTableItem _grammar___TupleType_vtable[16];
@@ -15384,25 +15396,6 @@ __LL18: ;
                 Py_INCREF(Py_NotImplemented);
                 return Py_NotImplemented;
             }
-            PyObject *CPyDef__grammar_____mypyc__BasicType_setup(PyObject *cpy_r_type);
-            PyObject *CPyDef__grammar___BasicType(PyObject *cpy_r_base, PyObject *cpy_r_sub, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
-            
-            static PyObject *
-            _grammar___BasicType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-            {
-                if (type != CPyType__grammar___BasicType) {
-                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                    return NULL;
-                }
-                PyObject *self = CPyDef__grammar_____mypyc__BasicType_setup((PyObject*)type);
-                if (self == NULL)
-                    return NULL;
-                PyObject *ret = CPyPy__grammar___BasicType_____init__(self, args, kwds);
-                if (ret == NULL)
-                    return NULL;
-                return self;
-            }
-            
             static int
             _grammar___BasicType_traverse(faster_eth_abi____grammar___BasicTypeObject *self, visitproc visit, void *arg)
             {
@@ -15410,8 +15403,10 @@ __LL18: ;
                 Py_VISIT(self->_node);
                 Py_VISIT(self->_base);
                 Py_VISIT(self->_sub);
-                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                return 0;
+                int rv = 0;
+                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                if (rv != 0) return rv;
+                return rv;
             }
             
             static int
@@ -15434,6 +15429,28 @@ __LL18: ;
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
+            }
+            
+            PyObject *CPyDef__grammar_____mypyc__BasicType_setup(PyObject *cpy_r_type);
+            PyObject *CPyDef__grammar___BasicType(PyObject *cpy_r_base, PyObject *cpy_r_sub, PyObject *cpy_r_arrlist, PyObject *cpy_r_node);
+            
+            static PyObject *
+            _grammar___BasicType_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+            {
+                if (type != CPyType__grammar___BasicType) {
+                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                    return NULL;
+                }
+                PyObject *self = CPyDef__grammar_____mypyc__BasicType_setup((PyObject*)type);
+                if (self == NULL)
+                    return NULL;
+                PyObject *ret = CPyPy__grammar___BasicType_____init__(self, args, kwds);
+                if (ret == NULL) {
+                        Py_DECREF(self);
+                        return NULL;
+                }
+                Py_DECREF(ret);
+                return self;
             }
             
             static CPyVTableItem _grammar___BasicType_vtable[16];
@@ -22429,29 +22446,14 @@ CPyL109: ;
     goto CPyL96;
 }
                             
-                            PyObject *CPyDef_from_type_str_____mypyc__parse_type_str_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___parse_type_str_env(void);
-                            
-                            static PyObject *
-                            from_type_str___parse_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___parse_type_str_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__parse_type_str_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___parse_type_str_env_traverse(faster_eth_abi___from_type_str___parse_type_str_envObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_self__);
                                 Py_VISIT(self->_expected_base);
                                 Py_VISIT(self->_decorator);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -22481,6 +22483,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__parse_type_str_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___parse_type_str_env(void);
+                            
+                            static PyObject *
+                            from_type_str___parse_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___parse_type_str_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__parse_type_str_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___parse_type_str_env_vtable[1];
@@ -22550,22 +22568,6 @@ CPyL109: ;
                             }
                             
                             
-                            PyObject *CPyDef_from_type_str_____mypyc__decorator_parse_type_str_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___decorator_parse_type_str_env(void);
-                            
-                            static PyObject *
-                            from_type_str___decorator_parse_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___decorator_parse_type_str_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__decorator_parse_type_str_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___decorator_parse_type_str_env_traverse(faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *self, visitproc visit, void *arg)
                             {
@@ -22575,7 +22577,8 @@ CPyL109: ;
                                 Py_VISIT(self->_new_from_type_str);
                                 Py_VISIT(self->_expected_base);
                                 Py_VISIT(self->_decorator);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -22611,6 +22614,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__decorator_parse_type_str_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___decorator_parse_type_str_env(void);
+                            
+                            static PyObject *
+                            from_type_str___decorator_parse_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___decorator_parse_type_str_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__decorator_parse_type_str_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___decorator_parse_type_str_env_vtable[1];
@@ -22684,28 +22703,14 @@ CPyL109: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_from_type_str___decorator_parse_type_str_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_from_type_str_____mypyc__decorator_parse_type_str_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___decorator_parse_type_str_obj(void);
-                            
-                            static PyObject *
-                            from_type_str___decorator_parse_type_str_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___decorator_parse_type_str_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__decorator_parse_type_str_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___decorator_parse_type_str_obj_traverse(faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -22730,6 +22735,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__decorator_parse_type_str_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___decorator_parse_type_str_obj(void);
+                            
+                            static PyObject *
+                            from_type_str___decorator_parse_type_str_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___decorator_parse_type_str_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__decorator_parse_type_str_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___decorator_parse_type_str_obj_vtable[2];
@@ -22863,28 +22884,14 @@ CPyL109: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_from_type_str_____mypyc__new_from_type_str_parse_type_str_decorator_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj(void);
-                            
-                            static PyObject *
-                            from_type_str___new_from_type_str_parse_type_str_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___new_from_type_str_parse_type_str_decorator_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__new_from_type_str_parse_type_str_decorator_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___new_from_type_str_parse_type_str_decorator_obj_traverse(faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -22909,6 +22916,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__new_from_type_str_parse_type_str_decorator_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj(void);
+                            
+                            static PyObject *
+                            from_type_str___new_from_type_str_parse_type_str_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___new_from_type_str_parse_type_str_decorator_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__new_from_type_str_parse_type_str_decorator_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___new_from_type_str_parse_type_str_decorator_obj_vtable[2];
@@ -23038,29 +23061,14 @@ CPyL109: ;
                                 return 0;
                             }
                             
-                            PyObject *CPyDef_from_type_str_____mypyc__parse_tuple_type_str_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___parse_tuple_type_str_env(void);
-                            
-                            static PyObject *
-                            from_type_str___parse_tuple_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___parse_tuple_type_str_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__parse_tuple_type_str_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___parse_tuple_type_str_env_traverse(faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_self__);
                                 Py_VISIT(self->_old_from_type_str);
                                 Py_VISIT(self->_new_from_type_str);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -23088,6 +23096,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__parse_tuple_type_str_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___parse_tuple_type_str_env(void);
+                            
+                            static PyObject *
+                            from_type_str___parse_tuple_type_str_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___parse_tuple_type_str_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__parse_tuple_type_str_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___parse_tuple_type_str_env_vtable[1];
@@ -23159,28 +23183,14 @@ CPyL109: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_from_type_str_____mypyc__new_from_type_str_parse_tuple_type_str_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj(void);
-                            
-                            static PyObject *
-                            from_type_str___new_from_type_str_parse_tuple_type_str_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_from_type_str___new_from_type_str_parse_tuple_type_str_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_from_type_str_____mypyc__new_from_type_str_parse_tuple_type_str_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             from_type_str___new_from_type_str_parse_tuple_type_str_obj_traverse(faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -23205,6 +23215,22 @@ CPyL109: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_from_type_str_____mypyc__new_from_type_str_parse_tuple_type_str_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj(void);
+                            
+                            static PyObject *
+                            from_type_str___new_from_type_str_parse_tuple_type_str_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_from_type_str___new_from_type_str_parse_tuple_type_str_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_from_type_str_____mypyc__new_from_type_str_parse_tuple_type_str_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem from_type_str___new_from_type_str_parse_tuple_type_str_obj_vtable[2];
@@ -25409,25 +25435,6 @@ CPyL45: ;
                                 {
                                     return 0;
                                 }
-                                PyObject *CPyDef_io_____mypyc__ContextFramesBytesIO_setup(PyObject *cpy_r_type);
-                                PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_initial_bytes);
-                                
-                                static PyObject *
-                                io___ContextFramesBytesIO_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                {
-                                    if (type != CPyType_io___ContextFramesBytesIO) {
-                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                        return NULL;
-                                    }
-                                    PyObject *self = CPyDef_io_____mypyc__ContextFramesBytesIO_setup((PyObject*)type);
-                                    if (self == NULL)
-                                        return NULL;
-                                    PyObject *ret = CPyPy_io___ContextFramesBytesIO_____init__(self, args, kwds);
-                                    if (ret == NULL)
-                                        return NULL;
-                                    return self;
-                                }
-                                
                                 static int
                                 io___ContextFramesBytesIO_clear(faster_eth_abi___io___ContextFramesBytesIOObject *self)
                                 {
@@ -25454,6 +25461,28 @@ CPyL45: ;
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
+                                }
+                                
+                                PyObject *CPyDef_io_____mypyc__ContextFramesBytesIO_setup(PyObject *cpy_r_type);
+                                PyObject *CPyDef_io___ContextFramesBytesIO(PyObject *cpy_r_initial_bytes);
+                                
+                                static PyObject *
+                                io___ContextFramesBytesIO_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                {
+                                    if (type != CPyType_io___ContextFramesBytesIO) {
+                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                        return NULL;
+                                    }
+                                    PyObject *self = CPyDef_io_____mypyc__ContextFramesBytesIO_setup((PyObject*)type);
+                                    if (self == NULL)
+                                        return NULL;
+                                    PyObject *ret = CPyPy_io___ContextFramesBytesIO_____init__(self, args, kwds);
+                                    if (ret == NULL) {
+                                            Py_DECREF(self);
+                                            return NULL;
+                                    }
+                                    Py_DECREF(ret);
+                                    return self;
                                 }
                                 
                                 static CPyVTableItem io___ContextFramesBytesIO_vtable[8];
@@ -26633,12 +26662,12 @@ char CPyDef_io___ContextFramesBytesIO___push_frame(PyObject *cpy_r_self, CPyTagg
     char cpy_r_r12;
     cpy_r_r0 = ((faster_eth_abi___io___ContextFramesBytesIOObject *)cpy_r_self)->__frames;
     CPy_INCREF_NO_IMM(cpy_r_r0);
+    CPyTagged_INCREF(cpy_r_offset);
     cpy_r_r1 = CPyDef_io___ContextFramesBytesIO___tell(cpy_r_self);
     if (unlikely(cpy_r_r1 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_abi/io.py", "push_frame", DIFFCHECK_PLACEHOLDER, CPyStatic_io___globals);
         goto CPyL6;
     }
-    CPyTagged_INCREF(cpy_r_offset);
     cpy_r_r2.f0 = cpy_r_offset;
     cpy_r_r2.f1 = cpy_r_r1;
     cpy_r_r3 = PyTuple_New(2);
@@ -26679,6 +26708,7 @@ CPyL5: ;
     return cpy_r_r12;
 CPyL6: ;
     CPy_DecRef(cpy_r_r0);
+    CPyTagged_DecRef(cpy_r_offset);
     goto CPyL5;
 CPyL7: ;
     CPy_DecRef(cpy_r_r9);
@@ -27558,31 +27588,14 @@ CPyL11: ;
                                             {
                                                 return 0;
                                             }
-                                            PyObject *CPyDef__strategies_____mypyc__StrategyRegistry_setup(PyObject *cpy_r_type);
-                                            PyObject *CPyDef__strategies___StrategyRegistry(void);
-                                            
-                                            static PyObject *
-                                            _strategies___StrategyRegistry_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                            {
-                                                if (type != CPyType__strategies___StrategyRegistry) {
-                                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                    return NULL;
-                                                }
-                                                PyObject *self = CPyDef__strategies_____mypyc__StrategyRegistry_setup((PyObject*)type);
-                                                if (self == NULL)
-                                                    return NULL;
-                                                PyObject *ret = CPyPy__strategies___StrategyRegistry_____init__(self, args, kwds);
-                                                if (ret == NULL)
-                                                    return NULL;
-                                                return self;
-                                            }
-                                            
                                             static int
                                             _strategies___StrategyRegistry_traverse(faster_eth_abi___tools____strategies___StrategyRegistryObject *self, visitproc visit, void *arg)
                                             {
                                                 Py_VISIT(self->__strategies);
-                                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                                return 0;
+                                                int rv = 0;
+                                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                                if (rv != 0) return rv;
+                                                return rv;
                                             }
                                             
                                             static int
@@ -27602,6 +27615,28 @@ CPyL11: ;
                                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                                 CPy_TRASHCAN_END(self)
                                                 done: ;
+                                            }
+                                            
+                                            PyObject *CPyDef__strategies_____mypyc__StrategyRegistry_setup(PyObject *cpy_r_type);
+                                            PyObject *CPyDef__strategies___StrategyRegistry(void);
+                                            
+                                            static PyObject *
+                                            _strategies___StrategyRegistry_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                            {
+                                                if (type != CPyType__strategies___StrategyRegistry) {
+                                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                    return NULL;
+                                                }
+                                                PyObject *self = CPyDef__strategies_____mypyc__StrategyRegistry_setup((PyObject*)type);
+                                                if (self == NULL)
+                                                    return NULL;
+                                                PyObject *ret = CPyPy__strategies___StrategyRegistry_____init__(self, args, kwds);
+                                                if (ret == NULL) {
+                                                        Py_DECREF(self);
+                                                        return NULL;
+                                                }
+                                                Py_DECREF(ret);
+                                                return self;
                                             }
                                             
                                             static CPyVTableItem _strategies___StrategyRegistry_vtable[4];
@@ -30951,31 +30986,13 @@ CPyL4: ;
                                                     {
                                                         return 0;
                                                     }
-                                                    PyObject *CPyDef_localcontext_____mypyc___3_DecimalContextManager_setup(PyObject *cpy_r_type);
-                                                    PyObject *CPyDef_localcontext____DecimalContextManager(PyObject *cpy_r_new_context);
-                                                    
-                                                    static PyObject *
-                                                    localcontext____DecimalContextManager_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                    {
-                                                        if (type != CPyType_localcontext____DecimalContextManager) {
-                                                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                            return NULL;
-                                                        }
-                                                        PyObject *self = CPyDef_localcontext_____mypyc___3_DecimalContextManager_setup((PyObject*)type);
-                                                        if (self == NULL)
-                                                            return NULL;
-                                                        PyObject *ret = CPyPy_localcontext____DecimalContextManager_____init__(self, args, kwds);
-                                                        if (ret == NULL)
-                                                            return NULL;
-                                                        return self;
-                                                    }
-                                                    
                                                     static int
                                                     localcontext____DecimalContextManager_traverse(faster_eth_abi___utils___localcontext____DecimalContextManagerObject *self, visitproc visit, void *arg)
                                                     {
                                                         Py_VISIT(self->_saved_context);
                                                         Py_VISIT(self->_new_context);
-                                                        return 0;
+                                                        int rv = 0;
+                                                        return rv;
                                                     }
                                                     
                                                     static int
@@ -30995,6 +31012,28 @@ CPyL4: ;
                                                         Py_TYPE(self)->tp_free((PyObject *)self);
                                                         CPy_TRASHCAN_END(self)
                                                         done: ;
+                                                    }
+                                                    
+                                                    PyObject *CPyDef_localcontext_____mypyc___3_DecimalContextManager_setup(PyObject *cpy_r_type);
+                                                    PyObject *CPyDef_localcontext____DecimalContextManager(PyObject *cpy_r_new_context);
+                                                    
+                                                    static PyObject *
+                                                    localcontext____DecimalContextManager_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                    {
+                                                        if (type != CPyType_localcontext____DecimalContextManager) {
+                                                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                            return NULL;
+                                                        }
+                                                        PyObject *self = CPyDef_localcontext_____mypyc___3_DecimalContextManager_setup((PyObject*)type);
+                                                        if (self == NULL)
+                                                            return NULL;
+                                                        PyObject *ret = CPyPy_localcontext____DecimalContextManager_____init__(self, args, kwds);
+                                                        if (ret == NULL) {
+                                                                Py_DECREF(self);
+                                                                return NULL;
+                                                        }
+                                                        Py_DECREF(ret);
+                                                        return self;
                                                     }
                                                     
                                                     static CPyVTableItem localcontext____DecimalContextManager_vtable[3];
@@ -31872,22 +31911,6 @@ CPyL37: ;
     goto CPyL34;
 }
                                                         
-                                                        PyObject *CPyDef_numeric_____mypyc__scale_places_env_setup(PyObject *cpy_r_type);
-                                                        PyObject *CPyDef_numeric___scale_places_env(void);
-                                                        
-                                                        static PyObject *
-                                                        numeric___scale_places_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                        {
-                                                            if (type != CPyType_numeric___scale_places_env) {
-                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                                return NULL;
-                                                            }
-                                                            PyObject *self = CPyDef_numeric_____mypyc__scale_places_env_setup((PyObject*)type);
-                                                            if (self == NULL)
-                                                                return NULL;
-                                                            return self;
-                                                        }
-                                                        
                                                         static int
                                                         numeric___scale_places_env_traverse(faster_eth_abi___utils___numeric___scale_places_envObject *self, visitproc visit, void *arg)
                                                         {
@@ -31897,7 +31920,8 @@ CPyL37: ;
                                                             if (CPyTagged_CheckLong(self->_places)) {
                                                                 Py_VISIT(CPyTagged_LongAsObject(self->_places));
                                                             }
-                                                            return 0;
+                                                            int rv = 0;
+                                                            return rv;
                                                         }
                                                         
                                                         static int
@@ -31937,6 +31961,22 @@ CPyL37: ;
                                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                                             CPy_TRASHCAN_END(self)
                                                             done: ;
+                                                        }
+                                                        
+                                                        PyObject *CPyDef_numeric_____mypyc__scale_places_env_setup(PyObject *cpy_r_type);
+                                                        PyObject *CPyDef_numeric___scale_places_env(void);
+                                                        
+                                                        static PyObject *
+                                                        numeric___scale_places_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                        {
+                                                            if (type != CPyType_numeric___scale_places_env) {
+                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                                return NULL;
+                                                            }
+                                                            PyObject *self = CPyDef_numeric_____mypyc__scale_places_env_setup((PyObject*)type);
+                                                            if (self == NULL)
+                                                                return NULL;
+                                                            return self;
                                                         }
                                                         
                                                         static CPyVTableItem numeric___scale_places_env_vtable[1];
@@ -32009,28 +32049,14 @@ CPyL37: ;
                                                             instance = instance ? instance : Py_None;
                                                             return CPyDef_numeric___f_scale_places_obj_____get__(self, instance, owner);
                                                         }
-                                                        PyObject *CPyDef_numeric_____mypyc__f_scale_places_obj_setup(PyObject *cpy_r_type);
-                                                        PyObject *CPyDef_numeric___f_scale_places_obj(void);
-                                                        
-                                                        static PyObject *
-                                                        numeric___f_scale_places_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                        {
-                                                            if (type != CPyType_numeric___f_scale_places_obj) {
-                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                                return NULL;
-                                                            }
-                                                            PyObject *self = CPyDef_numeric_____mypyc__f_scale_places_obj_setup((PyObject*)type);
-                                                            if (self == NULL)
-                                                                return NULL;
-                                                            return self;
-                                                        }
-                                                        
                                                         static int
                                                         numeric___f_scale_places_obj_traverse(faster_eth_abi___utils___numeric___f_scale_places_objObject *self, visitproc visit, void *arg)
                                                         {
                                                             Py_VISIT(self->___mypyc_env__);
-                                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                                            return 0;
+                                                            int rv = 0;
+                                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                                            if (rv != 0) return rv;
+                                                            return rv;
                                                         }
                                                         
                                                         static int
@@ -32055,6 +32081,22 @@ CPyL37: ;
                                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                                             CPy_TRASHCAN_END(self)
                                                             done: ;
+                                                        }
+                                                        
+                                                        PyObject *CPyDef_numeric_____mypyc__f_scale_places_obj_setup(PyObject *cpy_r_type);
+                                                        PyObject *CPyDef_numeric___f_scale_places_obj(void);
+                                                        
+                                                        static PyObject *
+                                                        numeric___f_scale_places_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                        {
+                                                            if (type != CPyType_numeric___f_scale_places_obj) {
+                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                                return NULL;
+                                                            }
+                                                            PyObject *self = CPyDef_numeric_____mypyc__f_scale_places_obj_setup((PyObject*)type);
+                                                            if (self == NULL)
+                                                                return NULL;
+                                                            return self;
                                                         }
                                                         
                                                         static CPyVTableItem numeric___f_scale_places_obj_vtable[2];
@@ -32991,8 +33033,9 @@ tuple_T2OO CPyDef_numeric___compute_unsigned_fixed_bounds(CPyTagged cpy_r_num_bi
     char cpy_r_r64;
     PyObject *cpy_r_r65;
     char cpy_r_r66;
-    tuple_T2OO cpy_r_r67;
+    PyObject *cpy_r_r67;
     tuple_T2OO cpy_r_r68;
+    tuple_T2OO cpy_r_r69;
     cpy_r_r0 = CPyStatic_numeric____unsigned_fixed_bounds_cache;
     if (likely(cpy_r_r0 != NULL)) goto CPyL3;
     PyErr_SetString(PyExc_NameError, "value for final name \"_unsigned_fixed_bounds_cache\" was not set");
@@ -33309,14 +33352,15 @@ CPyL53: ;
     }
     CPy_Unreachable();
 CPyL55: ;
+    cpy_r_r67 = cpy_r_upper;
     CPy_INCREF(cpy_r_r65);
-    cpy_r_r67.f0 = cpy_r_r65;
-    cpy_r_r67.f1 = cpy_r_upper;
-    return cpy_r_r67;
+    cpy_r_r68.f0 = cpy_r_r65;
+    cpy_r_r68.f1 = cpy_r_r67;
+    return cpy_r_r68;
 CPyL56: ;
     tuple_T2OO __tmp126 = { NULL, NULL };
-    cpy_r_r68 = __tmp126;
-    return cpy_r_r68;
+    cpy_r_r69 = __tmp126;
+    return cpy_r_r69;
 CPyL57: ;
     CPy_DecRef(cpy_r_upper);
     goto CPyL56;
@@ -33523,19 +33567,21 @@ tuple_T2OO CPyDef_numeric___compute_signed_fixed_bounds(CPyTagged cpy_r_num_bits
     PyObject *cpy_r_r68;
     char cpy_r_r69;
     char cpy_r_r70;
-    char cpy_r_r71;
-    tuple_T2OO cpy_r_r72;
+    PyObject *cpy_r_r71;
+    char cpy_r_r72;
     PyObject *cpy_r_r73;
     tuple_T2OO cpy_r_r74;
     PyObject *cpy_r_r75;
-    char cpy_r_r76;
-    tuple_T2II cpy_r_r77;
-    PyObject *cpy_r_r78;
-    PyObject *cpy_r_r79;
-    int32_t cpy_r_r80;
-    char cpy_r_r81;
-    tuple_T2OO cpy_r_r82;
-    tuple_T2OO cpy_r_r83;
+    tuple_T2OO cpy_r_r76;
+    PyObject *cpy_r_r77;
+    char cpy_r_r78;
+    tuple_T2II cpy_r_r79;
+    PyObject *cpy_r_r80;
+    PyObject *cpy_r_r81;
+    int32_t cpy_r_r82;
+    char cpy_r_r83;
+    tuple_T2OO cpy_r_r84;
+    tuple_T2OO cpy_r_r85;
     cpy_r_r0 = NULL;
     cpy_r_lower = cpy_r_r0;
     cpy_r_r1 = NULL;
@@ -33878,29 +33924,31 @@ CPyL54: ;
     }
     CPy_Unreachable();
 CPyL56: ;
+    cpy_r_r71 = cpy_r_lower;
     if (cpy_r_upper == NULL) {
         goto CPyL98;
     } else
         goto CPyL59;
 CPyL57: ;
     PyErr_SetString(PyExc_UnboundLocalError, "local variable \"upper\" referenced before assignment");
-    cpy_r_r71 = 0;
-    if (unlikely(!cpy_r_r71)) {
+    cpy_r_r72 = 0;
+    if (unlikely(!cpy_r_r72)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "compute_signed_fixed_bounds", DIFFCHECK_PLACEHOLDER, CPyStatic_numeric___globals);
         goto CPyL66;
     }
     CPy_Unreachable();
 CPyL59: ;
-    cpy_r_r72.f0 = cpy_r_lower;
-    cpy_r_r72.f1 = cpy_r_upper;
-    cpy_r_r73 = PyTuple_New(2);
-    if (unlikely(cpy_r_r73 == NULL))
+    cpy_r_r73 = cpy_r_upper;
+    cpy_r_r74.f0 = cpy_r_r71;
+    cpy_r_r74.f1 = cpy_r_r73;
+    cpy_r_r75 = PyTuple_New(2);
+    if (unlikely(cpy_r_r75 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp134 = cpy_r_r72.f0;
-    PyTuple_SET_ITEM(cpy_r_r73, 0, __tmp134);
-    PyObject *__tmp135 = cpy_r_r72.f1;
-    PyTuple_SET_ITEM(cpy_r_r73, 1, __tmp135);
-    cpy_r_bounds = cpy_r_r73;
+    PyObject *__tmp134 = cpy_r_r74.f0;
+    PyTuple_SET_ITEM(cpy_r_r75, 0, __tmp134);
+    PyObject *__tmp135 = cpy_r_r74.f1;
+    PyTuple_SET_ITEM(cpy_r_r75, 1, __tmp135);
+    cpy_r_bounds = cpy_r_r75;
     PyObject *__tmp136;
     if (unlikely(!(PyTuple_Check(cpy_r_bounds) && PyTuple_GET_SIZE(cpy_r_bounds) == 2))) {
         __tmp136 = NULL;
@@ -33913,32 +33961,32 @@ CPyL59: ;
     __tmp136 = cpy_r_bounds;
 __LL137: ;
     if (unlikely(__tmp136 == NULL)) {
-        CPy_TypeError("tuple[object, object]", cpy_r_bounds); cpy_r_r74 = (tuple_T2OO) { NULL, NULL };
+        CPy_TypeError("tuple[object, object]", cpy_r_bounds); cpy_r_r76 = (tuple_T2OO) { NULL, NULL };
     } else {
         PyObject *__tmp138 = PyTuple_GET_ITEM(cpy_r_bounds, 0);
         CPy_INCREF(__tmp138);
         PyObject *__tmp139;
         __tmp139 = __tmp138;
-        cpy_r_r74.f0 = __tmp139;
+        cpy_r_r76.f0 = __tmp139;
         PyObject *__tmp140 = PyTuple_GET_ITEM(cpy_r_bounds, 1);
         CPy_INCREF(__tmp140);
         PyObject *__tmp141;
         __tmp141 = __tmp140;
-        cpy_r_r74.f1 = __tmp141;
+        cpy_r_r76.f1 = __tmp141;
     }
-    if (unlikely(cpy_r_r74.f0 == NULL)) {
+    if (unlikely(cpy_r_r76.f0 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "compute_signed_fixed_bounds", DIFFCHECK_PLACEHOLDER, CPyStatic_numeric___globals);
         goto CPyL99;
     }
-    cpy_r_r75 = CPyStatic_numeric____signed_fixed_bounds_cache;
-    if (unlikely(cpy_r_r75 == NULL)) {
+    cpy_r_r77 = CPyStatic_numeric____signed_fixed_bounds_cache;
+    if (unlikely(cpy_r_r77 == NULL)) {
         goto CPyL100;
     } else
         goto CPyL63;
 CPyL61: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_signed_fixed_bounds_cache\" was not set");
-    cpy_r_r76 = 0;
-    if (unlikely(!cpy_r_r76)) {
+    cpy_r_r78 = 0;
+    if (unlikely(!cpy_r_r78)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "compute_signed_fixed_bounds", DIFFCHECK_PLACEHOLDER, CPyStatic_numeric___globals);
         goto CPyL66;
     }
@@ -33946,27 +33994,27 @@ CPyL61: ;
 CPyL63: ;
     CPyTagged_INCREF(cpy_r_num_bits);
     CPyTagged_INCREF(cpy_r_frac_places);
-    cpy_r_r77.f0 = cpy_r_num_bits;
-    cpy_r_r77.f1 = cpy_r_frac_places;
-    cpy_r_r78 = PyTuple_New(2);
-    if (unlikely(cpy_r_r78 == NULL))
+    cpy_r_r79.f0 = cpy_r_num_bits;
+    cpy_r_r79.f1 = cpy_r_frac_places;
+    cpy_r_r80 = PyTuple_New(2);
+    if (unlikely(cpy_r_r80 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp142 = CPyTagged_StealAsObject(cpy_r_r77.f0);
-    PyTuple_SET_ITEM(cpy_r_r78, 0, __tmp142);
-    PyObject *__tmp143 = CPyTagged_StealAsObject(cpy_r_r77.f1);
-    PyTuple_SET_ITEM(cpy_r_r78, 1, __tmp143);
-    cpy_r_r79 = PyTuple_New(2);
-    if (unlikely(cpy_r_r79 == NULL))
+    PyObject *__tmp142 = CPyTagged_StealAsObject(cpy_r_r79.f0);
+    PyTuple_SET_ITEM(cpy_r_r80, 0, __tmp142);
+    PyObject *__tmp143 = CPyTagged_StealAsObject(cpy_r_r79.f1);
+    PyTuple_SET_ITEM(cpy_r_r80, 1, __tmp143);
+    cpy_r_r81 = PyTuple_New(2);
+    if (unlikely(cpy_r_r81 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp144 = cpy_r_r74.f0;
-    PyTuple_SET_ITEM(cpy_r_r79, 0, __tmp144);
-    PyObject *__tmp145 = cpy_r_r74.f1;
-    PyTuple_SET_ITEM(cpy_r_r79, 1, __tmp145);
-    cpy_r_r80 = CPyDict_SetItem(cpy_r_r75, cpy_r_r78, cpy_r_r79);
-    CPy_DECREF(cpy_r_r78);
-    CPy_DECREF(cpy_r_r79);
-    cpy_r_r81 = cpy_r_r80 >= 0;
-    if (unlikely(!cpy_r_r81)) {
+    PyObject *__tmp144 = cpy_r_r76.f0;
+    PyTuple_SET_ITEM(cpy_r_r81, 0, __tmp144);
+    PyObject *__tmp145 = cpy_r_r76.f1;
+    PyTuple_SET_ITEM(cpy_r_r81, 1, __tmp145);
+    cpy_r_r82 = CPyDict_SetItem(cpy_r_r77, cpy_r_r80, cpy_r_r81);
+    CPy_DECREF(cpy_r_r80);
+    CPy_DECREF(cpy_r_r81);
+    cpy_r_r83 = cpy_r_r82 >= 0;
+    if (unlikely(!cpy_r_r83)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "compute_signed_fixed_bounds", DIFFCHECK_PLACEHOLDER, CPyStatic_numeric___globals);
         goto CPyL99;
     }
@@ -33983,29 +34031,29 @@ CPyL64: ;
     __tmp146 = cpy_r_bounds;
 __LL147: ;
     if (unlikely(__tmp146 == NULL)) {
-        CPy_TypeError("tuple[object, object]", cpy_r_bounds); cpy_r_r82 = (tuple_T2OO) { NULL, NULL };
+        CPy_TypeError("tuple[object, object]", cpy_r_bounds); cpy_r_r84 = (tuple_T2OO) { NULL, NULL };
     } else {
         PyObject *__tmp148 = PyTuple_GET_ITEM(cpy_r_bounds, 0);
         CPy_INCREF(__tmp148);
         PyObject *__tmp149;
         __tmp149 = __tmp148;
-        cpy_r_r82.f0 = __tmp149;
+        cpy_r_r84.f0 = __tmp149;
         PyObject *__tmp150 = PyTuple_GET_ITEM(cpy_r_bounds, 1);
         CPy_INCREF(__tmp150);
         PyObject *__tmp151;
         __tmp151 = __tmp150;
-        cpy_r_r82.f1 = __tmp151;
+        cpy_r_r84.f1 = __tmp151;
     }
     CPy_DECREF(cpy_r_bounds);
-    if (unlikely(cpy_r_r82.f0 == NULL)) {
+    if (unlikely(cpy_r_r84.f0 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/utils/numeric.py", "compute_signed_fixed_bounds", DIFFCHECK_PLACEHOLDER, CPyStatic_numeric___globals);
         goto CPyL66;
     }
-    return cpy_r_r82;
+    return cpy_r_r84;
 CPyL66: ;
     tuple_T2OO __tmp152 = { NULL, NULL };
-    cpy_r_r83 = __tmp152;
-    return cpy_r_r83;
+    cpy_r_r85 = __tmp152;
+    return cpy_r_r85;
 CPyL67: ;
     CPy_XDecRef(cpy_r_lower);
     CPy_XDecRef(cpy_r_upper);
@@ -34157,15 +34205,15 @@ CPyL97: ;
     CPy_XDECREF(cpy_r_upper);
     goto CPyL54;
 CPyL98: ;
-    CPy_XDECREF(cpy_r_lower);
+    CPy_DECREF(cpy_r_r71);
     goto CPyL57;
 CPyL99: ;
     CPy_DecRef(cpy_r_bounds);
     goto CPyL66;
 CPyL100: ;
     CPy_DecRef(cpy_r_bounds);
-    CPy_DecRef(cpy_r_r74.f0);
-    CPy_DecRef(cpy_r_r74.f1);
+    CPy_DecRef(cpy_r_r76.f0);
+    CPy_DecRef(cpy_r_r76.f1);
     goto CPyL61;
 }
                                                             
@@ -37470,6 +37518,7 @@ CPyL5: ;
                                                                             }
                                                                             if (exec_faster_eth_abi__mypyc(module) < 0) {
                                                                                 Py_DECREF(module);
+                                                                                module = NULL;
                                                                                 return NULL;
                                                                             }
                                                                             return module;
