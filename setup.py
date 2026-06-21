@@ -124,6 +124,7 @@ setup(
     python_requires=">=3.10, <4",
     extras_require=extras_require,
     license="MIT",
+    license_files=["LICENSE"],
     zip_safe=False,
     keywords="ethereum",
     packages=find_packages(
@@ -143,7 +144,6 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",
