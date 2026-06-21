@@ -85,6 +85,8 @@ jobs:
             setup.py
             pyproject.toml
             README.md
+            LICENSE
+            scripts/
             MANIFEST.in
             requirements.txt
             requirements-benchmark.txt
@@ -117,8 +119,6 @@ jobs:
 
       - name: Build wheels
         env:
-          # Skip PyPy
-          CIBW_SKIP: pp*
           # On Linux: manylinux / musllinux arches
           CIBW_ARCHS_LINUX: ${{ matrix.cibw_archs_linux || '' }}
           # On Windows: AMD64 / x86
@@ -149,6 +149,8 @@ jobs:
             setup.py
             pyproject.toml
             README.md
+            LICENSE
+            scripts/
             MANIFEST.in
             requirements.txt
             requirements-benchmark.txt
