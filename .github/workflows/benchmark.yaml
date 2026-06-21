@@ -40,7 +40,7 @@ jobs:
     outputs:
       artifact-name: ${{ steps.mypycify.outputs.artifact-name }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build wheel with mypycify
         id: mypycify
         uses: BobTheBuidler/mypycify@master
@@ -68,7 +68,7 @@ jobs:
         shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
           sparse-checkout: |
@@ -115,7 +115,7 @@ jobs:
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'comparison' }}
     steps:
       - name: Checkout benchmarks
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             benchmarks/
