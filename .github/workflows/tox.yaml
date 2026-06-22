@@ -92,6 +92,7 @@ jobs:
 
       # All other builds (64-bit Linux, 32-bit and 64-bit Windows)
       - name: Set up Python
+        id: setup_python
         if: ${{ matrix.os != 'macos-latest' && env.IS_UBUNTU_32BIT != 'true' }}
         uses: actions/setup-python@v6
         with:
@@ -119,6 +120,12 @@ jobs:
             pyproject.toml
             setup.py
             tox.ini
+          build-command: >-
+            ${{
+              matrix.os == 'windows-latest' && matrix.architecture == 'x86'
+              && format('''{0}'' -m pip install --upgrade pip build && ''{0}'' -m build --wheel', steps.setup_python.outputs.python-path)
+              || 'python -m build --wheel'
+            }}
 
       - name: Determine wheel artifact architecture
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
@@ -132,6 +139,23 @@ jobs:
         with:
           name: BobTheBuidler_mypycified_wheel-${{ runner.os }}-${{ steps.artifact_arch.outputs.value }}-py3.${{ matrix.pyminor }}-${{ matrix.installmode }}-${{ hashFiles('faster_eth_abi/**/*.py', 'pyproject.toml', 'setup.py', format('.github/mypycify-hash/{0}.txt', matrix.architecture)) }}
           path: dist
+
+      - name: Validate Windows x86 wheel tag
+        if: ${{ matrix.os == 'windows-latest' && matrix.architecture == 'x86' }}
+        shell: bash
+        run: |
+          shopt -s nullglob
+          wheels=(dist/*.whl)
+          if [[ "${#wheels[@]}" -ne 1 ]]; then
+            echo "Expected exactly one wheel in dist, found ${#wheels[@]}"
+            printf '%s\n' "${wheels[@]}"
+            exit 1
+          fi
+          wheel="${wheels[0]}"
+          if [[ "$wheel" != *-win32.whl ]]; then
+            echo "Expected Windows x86 wheel tagged win32, got: $wheel"
+            exit 1
+          fi
 
       - name: Upgrade pip and install tox
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}

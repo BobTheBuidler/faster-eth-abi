@@ -1,1 +1,2 @@
 marker for matrix architecture x86
+windows x86 wheel builds must use the selected x86 Python interpreter
