@@ -19,6 +19,9 @@ from typing import (
 from faster_eth_utils import (
     is_list_like,
 )
+from librt.strings import (
+    BytesWriter,
+)
 
 from faster_eth_abi.exceptions import (
     IllegalValue,
@@ -408,10 +411,14 @@ def encode_signed(
 
 
 def encode_bytestring(value: bytes) -> bytes:
+    writer = BytesWriter()
     value_length = len(value)
-    encoded_size = encode_uint_256(value_length)
-    padded_value = zpad_right(value, ceil32(value_length))
-    return encoded_size + padded_value
+    writer.write(encode_uint_256(value_length))
+    writer.write(value)
+    padded_length = ceil32(value_length)
+    for _ in range(padded_length - value_length):
+        writer.append(0)
+    return writer.getvalue()
 
 
 def encode_text(value: str) -> bytes:
