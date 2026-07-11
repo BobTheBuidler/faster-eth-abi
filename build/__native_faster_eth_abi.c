@@ -6726,6 +6726,7 @@ CPyL87: ;
         goto CPyL128;
     }
     cpy_r_r218 = CPyBytes_Concat(cpy_r_r215, cpy_r_r217);
+    CPy_DECREF(cpy_r_r215);
     CPy_DECREF(cpy_r_r217);
     if (unlikely(cpy_r_r218 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -7370,6 +7371,7 @@ CPyL45: ;
         goto CPyL69;
     }
     cpy_r_r99 = CPyBytes_Concat(cpy_r_r96, cpy_r_r98);
+    CPy_DECREF(cpy_r_r96);
     CPy_DECREF(cpy_r_r98);
     if (unlikely(cpy_r_r99 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple_all_dynamic", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -8228,6 +8230,7 @@ PyObject *CPyDef__encoding___encode_tuple_no_dynamic2(PyObject *cpy_r_self, PyOb
         goto CPyL43;
     }
     cpy_r_r19 = CPyBytes_Concat(cpy_r_r11, cpy_r_r18);
+    CPy_DECREF(cpy_r_r11);
     CPy_DECREF(cpy_r_r18);
     if (unlikely(cpy_r_r19 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -8301,6 +8304,7 @@ CPyL16: ;
         goto CPyL48;
     }
     cpy_r_r35 = CPyBytes_Concat(cpy_r_r27, cpy_r_r34);
+    CPy_DECREF(cpy_r_r27);
     CPy_DECREF(cpy_r_r34);
     if (unlikely(cpy_r_r35 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -8362,6 +8366,7 @@ CPyL29: ;
         goto CPyL53;
     }
     cpy_r_r50 = CPyBytes_Concat(cpy_r_r42, cpy_r_r49);
+    CPy_DECREF(cpy_r_r42);
     CPy_DECREF(cpy_r_r49);
     if (unlikely(cpy_r_r50 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_tuple_no_dynamic2", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -12830,6 +12835,7 @@ PyObject *CPyDef__encoding___encode_bytestring(PyObject *cpy_r_value) {
         goto CPyL7;
     }
     cpy_r_r6 = CPyBytes_Concat(cpy_r_r3, cpy_r_r5);
+    CPy_DECREF(cpy_r_r3);
     CPy_DECREF(cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_bytestring", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -12907,6 +12913,7 @@ PyObject *CPyDef__encoding___encode_text(PyObject *cpy_r_value) {
         goto CPyL9;
     }
     cpy_r_r7 = CPyBytes_Concat(cpy_r_r4, cpy_r_r6);
+    CPy_DECREF(cpy_r_r4);
     CPy_DECREF(cpy_r_r6);
     if (unlikely(cpy_r_r7 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_text", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -13479,6 +13486,7 @@ CPyL31: ;
         goto CPyL48;
     }
     cpy_r_r61 = CPyBytes_Concat(cpy_r_r58, cpy_r_r60);
+    CPy_DECREF(cpy_r_r58);
     CPy_DECREF(cpy_r_r60);
     if (unlikely(cpy_r_r61 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_elements", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -13936,6 +13944,7 @@ PyObject *CPyDef__encoding___encode_elements_dynamic(PyObject *cpy_r_item_encode
         goto CPyL6;
     }
     cpy_r_r3 = CPyBytes_Concat(cpy_r_r1, cpy_r_r2);
+    CPy_DECREF(cpy_r_r1);
     CPy_DECREF(cpy_r_r2);
     if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AddTraceback("faster_eth_abi/_encoding.py", "encode_elements_dynamic", DIFFCHECK_PLACEHOLDER, CPyStatic__encoding___globals);
@@ -14738,13 +14747,7 @@ CPyL60: ;
                             CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                             return NULL;
                         }
-                        PyObject *arg_rhs;
-                        if (likely((Py_TYPE(obj_rhs) == CPyType__grammar___BasicType) || (Py_TYPE(obj_rhs) == CPyType__grammar___TupleType) || (Py_TYPE(obj_rhs) == CPyType__grammar___ABIType)))
-                            arg_rhs = obj_rhs;
-                        else {
-                            CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
-                            return NULL;
-                        }
+                        PyObject *arg_rhs = obj_rhs;
                         char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
                         if (retval == 2) {
                             return NULL;
@@ -15107,13 +15110,7 @@ __LL18: ;
                             CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                             return NULL;
                         }
-                        PyObject *arg_rhs;
-                        if (likely((Py_TYPE(obj_rhs) == CPyType__grammar___BasicType) || (Py_TYPE(obj_rhs) == CPyType__grammar___TupleType) || (Py_TYPE(obj_rhs) == CPyType__grammar___ABIType)))
-                            arg_rhs = obj_rhs;
-                        else {
-                            CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
-                            return NULL;
-                        }
+                        PyObject *arg_rhs = obj_rhs;
                         char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
                         if (retval == 2) {
                             return NULL;
@@ -15377,13 +15374,7 @@ __LL18: ;
                             CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_lhs); 
                             return NULL;
                         }
-                        PyObject *arg_rhs;
-                        if (likely((Py_TYPE(obj_rhs) == CPyType__grammar___BasicType) || (Py_TYPE(obj_rhs) == CPyType__grammar___TupleType) || (Py_TYPE(obj_rhs) == CPyType__grammar___ABIType)))
-                            arg_rhs = obj_rhs;
-                        else {
-                            CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
-                            return NULL;
-                        }
+                        PyObject *arg_rhs = obj_rhs;
                         char retval = CPyDef__grammar___ABIType_____ne__(arg_lhs, arg_rhs);
                         if (retval == 2) {
                             return NULL;
@@ -16680,13 +16671,7 @@ CPyL2: ;
                         CPy_TypeError("faster_eth_abi._grammar.ABIType", obj___mypyc_self__); 
                         goto fail;
                     }
-                    PyObject *arg_rhs;
-                    if (likely((Py_TYPE(obj_rhs) == CPyType__grammar___BasicType) || (Py_TYPE(obj_rhs) == CPyType__grammar___TupleType) || (Py_TYPE(obj_rhs) == CPyType__grammar___ABIType)))
-                        arg_rhs = obj_rhs;
-                    else {
-                        CPy_TypeError("faster_eth_abi._grammar.ABIType", obj_rhs); 
-                        goto fail;
-                    }
+                    PyObject *arg_rhs = obj_rhs;
                     char retval = CPyDef__grammar___ABIType_____ne__(arg___mypyc_self__, arg_rhs);
                     if (retval == 2) {
                         return NULL;
