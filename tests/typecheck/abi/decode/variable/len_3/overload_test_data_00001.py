@@ -3,12 +3,22 @@
 # To run: pip install mypy && mypy tests/typecheck
 
 # alias some things so we can minimize test data size in source control
-from typing import Any as A
-from typing import Tuple as T
-from typing import Union as U
-from typing_extensions import assert_type as ck
-from eth_typing import HexAddress as HA
-from faster_eth_abi import abi
+from typing import (
+    Any as A,
+    Tuple as T,
+    Union as U,
+)
+
+from eth_typing import (
+    HexAddress as HA,
+)
+from typing_extensions import (
+    assert_type as ck,
+)
+
+from faster_eth_abi import (
+    abi,
+)
 
 # more aliases to save a bunch more chars
 bo = bool
