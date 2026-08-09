@@ -20,4 +20,5 @@ faster-eth-abi is always compiled. PyPI wheels are compiled, setup compiles the 
 12) Centralize pytest settings (flags, markers, ignore patterns, and targets) in pyproject.toml, pytest.ini, setup.cfg, or tox.ini; workflows/hooks should call pytest without inline args.
 13) Local `pip install .` generates `build/`; clean it up before closing a worktree to avoid a dirty state.
 
+13) Replace them with ruff IF possible while ensuring behavior parity.
 Reference: https://www.conventionalcommits.org/en/v1.0.0/
