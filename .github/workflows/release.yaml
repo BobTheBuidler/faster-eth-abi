@@ -5,7 +5,10 @@ on:
     branches:
       - master
     types: [published]
-  # workflow dispatch trigger will perform a dry run with no upload to pypi
+  pull_request:
+    paths:
+      - ".github/workflows/release.yaml"
+  # workflow_dispatch trigger builds wheels only; publish remains release-gated.
   workflow_dispatch:
 
 concurrency:
@@ -30,6 +33,15 @@ jobs:
             artifact_name: "wheels-ubuntu-latest-manylinux-x64"
 
           # ----------------------------------------------------
+          # manylinux arm64
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: manylinux-arm64
+            cibw_build: "*manylinux*"
+            cibw_archs_linux: aarch64
+            artifact_name: "wheels-ubuntu-latest-manylinux-arm64"
+
+          # ----------------------------------------------------
           # manylinux 32-bit
           # ----------------------------------------------------
           - os: ubuntu-latest
@@ -37,6 +49,42 @@ jobs:
             cibw_build: "*manylinux*"
             cibw_archs_linux: i686
             artifact_name: "wheels-ubuntu-latest-manylinux-x86"
+
+          # ----------------------------------------------------
+          # manylinux ppc64le
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: manylinux-ppc64le
+            cibw_build: "*manylinux*"
+            cibw_archs_linux: ppc64le
+            artifact_name: "wheels-ubuntu-latest-manylinux-ppc64le"
+
+          # ----------------------------------------------------
+          # manylinux s390x
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: manylinux-s390x
+            cibw_build: "*manylinux*"
+            cibw_archs_linux: s390x
+            artifact_name: "wheels-ubuntu-latest-manylinux-s390x"
+
+          # ----------------------------------------------------
+          # manylinux armv7l
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: manylinux-armv7l
+            cibw_build: "*manylinux*"
+            cibw_archs_linux: armv7l
+            artifact_name: "wheels-ubuntu-latest-manylinux-armv7l"
+
+          # ----------------------------------------------------
+          # manylinux riscv64
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: manylinux-riscv64
+            cibw_build: "*manylinux*"
+            cibw_archs_linux: riscv64
+            artifact_name: "wheels-ubuntu-latest-manylinux-riscv64"
 
           # ----------------------------------------------------
           # musllinux 64-bit
@@ -48,13 +96,78 @@ jobs:
             artifact_name: "wheels-ubuntu-latest-musllinux-x64"
 
           # ----------------------------------------------------
-          # macOS (64-bit only)
+          # musllinux arm64
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-arm64
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: aarch64
+            artifact_name: "wheels-ubuntu-latest-musllinux-arm64"
+
+          # ----------------------------------------------------
+          # musllinux 32-bit
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-x86
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: i686
+            artifact_name: "wheels-ubuntu-latest-musllinux-x86"
+
+          # ----------------------------------------------------
+          # musllinux ppc64le
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-ppc64le
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: ppc64le
+            artifact_name: "wheels-ubuntu-latest-musllinux-ppc64le"
+
+          # ----------------------------------------------------
+          # musllinux s390x
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-s390x
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: s390x
+            artifact_name: "wheels-ubuntu-latest-musllinux-s390x"
+
+          # ----------------------------------------------------
+          # musllinux armv7l
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-armv7l
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: armv7l
+            artifact_name: "wheels-ubuntu-latest-musllinux-armv7l"
+
+          # ----------------------------------------------------
+          # musllinux riscv64
+          # ----------------------------------------------------
+          - os: ubuntu-latest
+            build_type: musllinux-riscv64
+            cibw_build: "*musllinux*"
+            cibw_archs_linux: riscv64
+            artifact_name: "wheels-ubuntu-latest-musllinux-riscv64"
+
+          # ----------------------------------------------------
+          # macOS 64-bit (x86_64)
           # ----------------------------------------------------
           - os: macos-latest
-            build_type: macos
+            build_type: macos-x64
             cibw_build: ""
             cibw_archs_linux: ""
-            artifact_name: "wheels-macos-latest"
+            cibw_archs_macos: x86_64
+            artifact_name: "wheels-macos-latest-x64"
+
+          # ----------------------------------------------------
+          # macOS arm64
+          # ----------------------------------------------------
+          - os: macos-latest
+            build_type: macos-arm64
+            cibw_build: ""
+            cibw_archs_linux: ""
+            cibw_archs_macos: arm64
+            artifact_name: "wheels-macos-latest-arm64"
 
           # ----------------------------------------------------
           # Windows 64-bit
@@ -64,6 +177,15 @@ jobs:
             cibw_build: ""
             cibw_archs_windows: AMD64
             artifact_name: "wheels-windows-latest-x64"
+
+          # ----------------------------------------------------
+          # Windows arm64
+          # ----------------------------------------------------
+          - os: windows-latest
+            build_type: winarm64
+            cibw_build: ""
+            cibw_archs_windows: ARM64
+            artifact_name: "wheels-windows-latest-arm64"
 
           # ----------------------------------------------------
           # Windows 32-bit
@@ -107,6 +229,12 @@ jobs:
             setup.py
             pyproject.toml
 
+      - name: Enable QEMU for Linux emulated wheel builds
+        if: runner.os == 'Linux' && (matrix.cibw_archs_linux == 'aarch64' || matrix.cibw_archs_linux == 'ppc64le' || matrix.cibw_archs_linux == 's390x' || matrix.cibw_archs_linux == 'armv7l' || matrix.cibw_archs_linux == 'riscv64')
+        uses: docker/setup-qemu-action@v4
+        with:
+          platforms: arm64,ppc64le,s390x,arm,riscv64
+
       - name: Install cibuildwheel
         run: |
           python -m pip install --upgrade pip setuptools wheel cibuildwheel
@@ -121,8 +249,10 @@ jobs:
         env:
           # On Linux: manylinux / musllinux arches
           CIBW_ARCHS_LINUX: ${{ matrix.cibw_archs_linux || '' }}
-          # On Windows: AMD64 / x86
+          # On Windows: AMD64 / ARM64 / x86
           CIBW_ARCHS_WINDOWS: ${{ matrix.cibw_archs_windows || '' }}
+          # On macOS: x86_64 / arm64
+          CIBW_ARCHS_MACOS: ${{ matrix.cibw_archs_macos || '' }}
           # Which wheels to build for Linux (manylinux vs. musllinux)
           CIBW_BUILD: ${{ matrix.cibw_build || '' }}
         run: |
@@ -137,6 +267,7 @@ jobs:
   publish_sdist_and_wheels:
     name: Publish wheels to PyPI
     needs: build_wheels
+    if: github.event_name == 'release' && github.event.action == 'published'
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -195,11 +326,41 @@ jobs:
           name: "wheels-ubuntu-latest-manylinux-x64"
           path: wheelhouse/linux-many-x64
 
+      - name: Download manylinux arm64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-manylinux-arm64"
+          path: wheelhouse/linux-many-arm64
+
       - name: Download manylinux 32-bit wheels
         uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-x86"
           path: wheelhouse/linux-many-x86
+
+      - name: Download manylinux ppc64le wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-manylinux-ppc64le"
+          path: wheelhouse/linux-many-ppc64le
+
+      - name: Download manylinux s390x wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-manylinux-s390x"
+          path: wheelhouse/linux-many-s390x
+
+      - name: Download manylinux armv7l wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-manylinux-armv7l"
+          path: wheelhouse/linux-many-armv7l
+
+      - name: Download manylinux riscv64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-manylinux-riscv64"
+          path: wheelhouse/linux-many-riscv64
 
       - name: Download musllinux 64-bit wheels
         uses: actions/download-artifact@v8
@@ -207,17 +368,65 @@ jobs:
           name: "wheels-ubuntu-latest-musllinux-x64"
           path: wheelhouse/linux-musl-x64
 
-      - name: Download macOS wheels
+      - name: Download musllinux arm64 wheels
         uses: actions/download-artifact@v8
         with:
-          name: "wheels-macos-latest"
-          path: wheelhouse/macos
+          name: "wheels-ubuntu-latest-musllinux-arm64"
+          path: wheelhouse/linux-musl-arm64
+
+      - name: Download musllinux 32-bit wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-musllinux-x86"
+          path: wheelhouse/linux-musl-x86
+
+      - name: Download musllinux ppc64le wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-musllinux-ppc64le"
+          path: wheelhouse/linux-musl-ppc64le
+
+      - name: Download musllinux s390x wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-musllinux-s390x"
+          path: wheelhouse/linux-musl-s390x
+
+      - name: Download musllinux armv7l wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-musllinux-armv7l"
+          path: wheelhouse/linux-musl-armv7l
+
+      - name: Download musllinux riscv64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-ubuntu-latest-musllinux-riscv64"
+          path: wheelhouse/linux-musl-riscv64
+
+      - name: Download macOS x86_64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-macos-latest-x64"
+          path: wheelhouse/macos-x64
+
+      - name: Download macOS arm64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-macos-latest-arm64"
+          path: wheelhouse/macos-arm64
 
       - name: Download Windows 64-bit wheels
         uses: actions/download-artifact@v8
         with:
           name: "wheels-windows-latest-x64"
           path: wheelhouse/windows-x64
+
+      - name: Download Windows arm64 wheels
+        uses: actions/download-artifact@v8
+        with:
+          name: "wheels-windows-latest-arm64"
+          path: wheelhouse/windows-arm64
 
       - name: Download Windows 32-bit wheels
         uses: actions/download-artifact@v8
@@ -226,10 +435,9 @@ jobs:
           path: wheelhouse/windows-x86
 
       # ----------------------------------------------------
-      # Publish all built artifacts to PyPI (if not dry run)
+      # Publish all built artifacts to PyPI
       # ----------------------------------------------------
       - name: Publish sdist and wheels to PyPI
-        if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
@@ -237,8 +445,21 @@ jobs:
           twine upload \
             dist/* \
             wheelhouse/linux-many-x64/*.whl \
+            wheelhouse/linux-many-arm64/*.whl \
             wheelhouse/linux-many-x86/*.whl \
+            wheelhouse/linux-many-ppc64le/*.whl \
+            wheelhouse/linux-many-s390x/*.whl \
+            wheelhouse/linux-many-armv7l/*.whl \
+            wheelhouse/linux-many-riscv64/*.whl \
             wheelhouse/linux-musl-x64/*.whl \
-            wheelhouse/macos/*.whl \
+            wheelhouse/linux-musl-arm64/*.whl \
+            wheelhouse/linux-musl-x86/*.whl \
+            wheelhouse/linux-musl-ppc64le/*.whl \
+            wheelhouse/linux-musl-s390x/*.whl \
+            wheelhouse/linux-musl-armv7l/*.whl \
+            wheelhouse/linux-musl-riscv64/*.whl \
+            wheelhouse/macos-x64/*.whl \
+            wheelhouse/macos-arm64/*.whl \
             wheelhouse/windows-x64/*.whl \
+            wheelhouse/windows-arm64/*.whl \
             wheelhouse/windows-x86/*.whl
