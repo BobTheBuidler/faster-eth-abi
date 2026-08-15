@@ -14767,9 +14767,17 @@ CPyL60: ;
                 return rv;
             }
             
-            static int
-            _grammar___ABIType_clear(faster_eth_abi____grammar___ABITypeObject *self)
+            static int32_t CPyDef__grammar___ABIType_clear(PyObject *cpy_r_self)
             {
+                faster_eth_abi____grammar___ABITypeObject *self = (faster_eth_abi____grammar___ABITypeObject *)cpy_r_self;
+                Py_CLEAR(self->_arrlist);
+                Py_CLEAR(self->_node);
+                return 0;
+            }
+            
+            static int32_t CPyDef__grammar___ABIType_clear_on_completion(PyObject *cpy_r_self)
+            {
+                faster_eth_abi____grammar___ABITypeObject *self = (faster_eth_abi____grammar___ABITypeObject *)cpy_r_self;
                 Py_CLEAR(self->_arrlist);
                 Py_CLEAR(self->_node);
                 return 0;
@@ -14780,7 +14788,7 @@ CPyL60: ;
             {
                 PyObject_GC_UnTrack(self);
                 CPy_TRASHCAN_BEGIN(self, _grammar___ABIType_dealloc)
-                _grammar___ABIType_clear(self);
+                CPyDef__grammar___ABIType_clear((PyObject *)self);
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
@@ -14904,7 +14912,7 @@ CPyL60: ;
                 .tp_new = _grammar___ABIType_new,
                 .tp_dealloc = (destructor)_grammar___ABIType_dealloc,
                 .tp_traverse = (traverseproc)_grammar___ABIType_traverse,
-                .tp_clear = (inquiry)_grammar___ABIType_clear,
+                .tp_clear = (inquiry)CPyDef__grammar___ABIType_clear,
                 .tp_getset = _grammar___ABIType_getseters,
                 .tp_methods = _grammar___ABIType_methods,
                 .tp_init = _grammar___ABIType_init,
@@ -15063,9 +15071,18 @@ CPyL60: ;
                 return rv;
             }
             
-            static int
-            _grammar___TupleType_clear(faster_eth_abi____grammar___TupleTypeObject *self)
+            static int32_t CPyDef__grammar___TupleType_clear(PyObject *cpy_r_self)
             {
+                faster_eth_abi____grammar___TupleTypeObject *self = (faster_eth_abi____grammar___TupleTypeObject *)cpy_r_self;
+                Py_CLEAR(self->_arrlist);
+                Py_CLEAR(self->_node);
+                Py_CLEAR(self->_components);
+                return 0;
+            }
+            
+            static int32_t CPyDef__grammar___TupleType_clear_on_completion(PyObject *cpy_r_self)
+            {
+                faster_eth_abi____grammar___TupleTypeObject *self = (faster_eth_abi____grammar___TupleTypeObject *)cpy_r_self;
                 Py_CLEAR(self->_arrlist);
                 Py_CLEAR(self->_node);
                 Py_CLEAR(self->_components);
@@ -15077,7 +15094,7 @@ CPyL60: ;
             {
                 PyObject_GC_UnTrack(self);
                 CPy_TRASHCAN_BEGIN(self, _grammar___TupleType_dealloc)
-                _grammar___TupleType_clear(self);
+                CPyDef__grammar___TupleType_clear((PyObject *)self);
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
@@ -15179,7 +15196,7 @@ CPyL60: ;
                 .tp_new = _grammar___TupleType_new,
                 .tp_dealloc = (destructor)_grammar___TupleType_dealloc,
                 .tp_traverse = (traverseproc)_grammar___TupleType_traverse,
-                .tp_clear = (inquiry)_grammar___TupleType_clear,
+                .tp_clear = (inquiry)CPyDef__grammar___TupleType_clear,
                 .tp_getset = _grammar___TupleType_getseters,
                 .tp_methods = _grammar___TupleType_methods,
                 .tp_init = _grammar___TupleType_init,
@@ -15303,9 +15320,20 @@ CPyL60: ;
                 return rv;
             }
             
-            static int
-            _grammar___BasicType_clear(faster_eth_abi____grammar___BasicTypeObject *self)
+            static int32_t CPyDef__grammar___BasicType_clear(PyObject *cpy_r_self)
             {
+                faster_eth_abi____grammar___BasicTypeObject *self = (faster_eth_abi____grammar___BasicTypeObject *)cpy_r_self;
+                Py_CLEAR(self->_arrlist);
+                Py_CLEAR(self->_node);
+                Py_CLEAR(self->_base);
+                Py_CLEAR(self->_sub);
+                PyObject_ClearManagedDict((PyObject *)self);
+                return 0;
+            }
+            
+            static int32_t CPyDef__grammar___BasicType_clear_on_completion(PyObject *cpy_r_self)
+            {
+                faster_eth_abi____grammar___BasicTypeObject *self = (faster_eth_abi____grammar___BasicTypeObject *)cpy_r_self;
                 Py_CLEAR(self->_arrlist);
                 Py_CLEAR(self->_node);
                 Py_CLEAR(self->_base);
@@ -15319,7 +15347,7 @@ CPyL60: ;
             {
                 PyObject_GC_UnTrack(self);
                 CPy_TRASHCAN_BEGIN(self, _grammar___BasicType_dealloc)
-                _grammar___BasicType_clear(self);
+                CPyDef__grammar___BasicType_clear((PyObject *)self);
                 Py_TYPE(self)->tp_free((PyObject *)self);
                 CPy_TRASHCAN_END(self)
                 done: ;
@@ -15427,7 +15455,7 @@ CPyL60: ;
                 .tp_new = _grammar___BasicType_new,
                 .tp_dealloc = (destructor)_grammar___BasicType_dealloc,
                 .tp_traverse = (traverseproc)_grammar___BasicType_traverse,
-                .tp_clear = (inquiry)_grammar___BasicType_clear,
+                .tp_clear = (inquiry)CPyDef__grammar___BasicType_clear,
                 .tp_getset = _grammar___BasicType_getseters,
                 .tp_methods = _grammar___BasicType_methods,
                 .tp_init = _grammar___BasicType_init,
@@ -22204,11 +22232,19 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___parse_type_str_env_clear(faster_eth_abi___from_type_str___parse_type_str_envObject *self)
+                            static int32_t CPyDef_from_type_str___parse_type_str_env_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___parse_type_str_envObject *self = (faster_eth_abi___from_type_str___parse_type_str_envObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->_expected_base);
+                                Py_CLEAR(self->_decorator);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___parse_type_str_env_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___parse_type_str_envObject *self = (faster_eth_abi___from_type_str___parse_type_str_envObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->_decorator);
                                 return 0;
                             }
@@ -22227,7 +22263,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___parse_type_str_env_dealloc)
-                                from_type_str___parse_type_str_env_clear(self);
+                                CPyDef_from_type_str___parse_type_str_env_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -22279,7 +22315,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___parse_type_str_env_new,
                                 .tp_dealloc = (destructor)from_type_str___parse_type_str_env_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___parse_type_str_env_traverse,
-                                .tp_clear = (inquiry)from_type_str___parse_type_str_env_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___parse_type_str_env_clear,
                                 .tp_methods = from_type_str___parse_type_str_env_methods,
                                 .tp_basicsize = sizeof(faster_eth_abi___from_type_str___parse_type_str_envObject),
                                 .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
@@ -22329,12 +22365,22 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___decorator_parse_type_str_env_clear(faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *self)
+                            static int32_t CPyDef_from_type_str___decorator_parse_type_str_env_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *self = (faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->___mypyc_env__);
                                 Py_CLEAR(self->_old_from_type_str);
+                                Py_CLEAR(self->_new_from_type_str);
+                                Py_CLEAR(self->_expected_base);
+                                Py_CLEAR(self->_decorator);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___decorator_parse_type_str_env_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *self = (faster_eth_abi___from_type_str___decorator_parse_type_str_envObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->_new_from_type_str);
                                 Py_CLEAR(self->_expected_base);
                                 Py_CLEAR(self->_decorator);
@@ -22358,7 +22404,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___decorator_parse_type_str_env_dealloc)
-                                from_type_str___decorator_parse_type_str_env_clear(self);
+                                CPyDef_from_type_str___decorator_parse_type_str_env_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -22410,7 +22456,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___decorator_parse_type_str_env_new,
                                 .tp_dealloc = (destructor)from_type_str___decorator_parse_type_str_env_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___decorator_parse_type_str_env_traverse,
-                                .tp_clear = (inquiry)from_type_str___decorator_parse_type_str_env_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___decorator_parse_type_str_env_clear,
                                 .tp_methods = from_type_str___decorator_parse_type_str_env_methods,
                                 .tp_basicsize = sizeof(faster_eth_abi___from_type_str___decorator_parse_type_str_envObject),
                                 .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
@@ -22461,9 +22507,17 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___decorator_parse_type_str_obj_clear(faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *self)
+                            static int32_t CPyDef_from_type_str___decorator_parse_type_str_obj_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *self = (faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_env__);
+                                PyObject_ClearManagedDict((PyObject *)self);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___decorator_parse_type_str_obj_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *self = (faster_eth_abi___from_type_str___decorator_parse_type_str_objObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_env__);
                                 PyObject_ClearManagedDict((PyObject *)self);
                                 return 0;
@@ -22479,7 +22533,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___decorator_parse_type_str_obj_dealloc)
-                                from_type_str___decorator_parse_type_str_obj_clear(self);
+                                CPyDef_from_type_str___decorator_parse_type_str_obj_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -22551,7 +22605,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___decorator_parse_type_str_obj_new,
                                 .tp_dealloc = (destructor)from_type_str___decorator_parse_type_str_obj_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___decorator_parse_type_str_obj_traverse,
-                                .tp_clear = (inquiry)from_type_str___decorator_parse_type_str_obj_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___decorator_parse_type_str_obj_clear,
                                 .tp_getset = from_type_str___decorator_parse_type_str_obj_getseters,
                                 .tp_methods = from_type_str___decorator_parse_type_str_obj_methods,
                                 .tp_call = PyVectorcall_Call,
@@ -22642,9 +22696,17 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear(faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *self)
+                            static int32_t CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *self = (faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_env__);
+                                PyObject_ClearManagedDict((PyObject *)self);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *self = (faster_eth_abi___from_type_str___new_from_type_str_parse_type_str_decorator_objObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_env__);
                                 PyObject_ClearManagedDict((PyObject *)self);
                                 return 0;
@@ -22660,7 +22722,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___new_from_type_str_parse_type_str_decorator_obj_dealloc)
-                                from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear(self);
+                                CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -22732,7 +22794,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___new_from_type_str_parse_type_str_decorator_obj_new,
                                 .tp_dealloc = (destructor)from_type_str___new_from_type_str_parse_type_str_decorator_obj_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___new_from_type_str_parse_type_str_decorator_obj_traverse,
-                                .tp_clear = (inquiry)from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___new_from_type_str_parse_type_str_decorator_obj_clear,
                                 .tp_getset = from_type_str___new_from_type_str_parse_type_str_decorator_obj_getseters,
                                 .tp_methods = from_type_str___new_from_type_str_parse_type_str_decorator_obj_methods,
                                 .tp_call = PyVectorcall_Call,
@@ -22819,11 +22881,19 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___parse_tuple_type_str_env_clear(faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *self)
+                            static int32_t CPyDef_from_type_str___parse_tuple_type_str_env_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *self = (faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->_old_from_type_str);
+                                Py_CLEAR(self->_new_from_type_str);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___parse_tuple_type_str_env_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *self = (faster_eth_abi___from_type_str___parse_tuple_type_str_envObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_self__);
                                 Py_CLEAR(self->_new_from_type_str);
                                 return 0;
                             }
@@ -22840,7 +22910,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___parse_tuple_type_str_env_dealloc)
-                                from_type_str___parse_tuple_type_str_env_clear(self);
+                                CPyDef_from_type_str___parse_tuple_type_str_env_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -22892,7 +22962,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___parse_tuple_type_str_env_new,
                                 .tp_dealloc = (destructor)from_type_str___parse_tuple_type_str_env_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___parse_tuple_type_str_env_traverse,
-                                .tp_clear = (inquiry)from_type_str___parse_tuple_type_str_env_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___parse_tuple_type_str_env_clear,
                                 .tp_methods = from_type_str___parse_tuple_type_str_env_methods,
                                 .tp_basicsize = sizeof(faster_eth_abi___from_type_str___parse_tuple_type_str_envObject),
                                 .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
@@ -22941,9 +23011,17 @@ CPyL109: ;
                                 return rv;
                             }
                             
-                            static int
-                            from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear(faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *self)
+                            static int32_t CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear(PyObject *cpy_r_self)
                             {
+                                faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *self = (faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *)cpy_r_self;
+                                Py_CLEAR(self->___mypyc_env__);
+                                PyObject_ClearManagedDict((PyObject *)self);
+                                return 0;
+                            }
+                            
+                            static int32_t CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear_on_completion(PyObject *cpy_r_self)
+                            {
+                                faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *self = (faster_eth_abi___from_type_str___new_from_type_str_parse_tuple_type_str_objObject *)cpy_r_self;
                                 Py_CLEAR(self->___mypyc_env__);
                                 PyObject_ClearManagedDict((PyObject *)self);
                                 return 0;
@@ -22959,7 +23037,7 @@ CPyL109: ;
                                     return;
                                 }
                                 CPy_TRASHCAN_BEGIN(self, from_type_str___new_from_type_str_parse_tuple_type_str_obj_dealloc)
-                                from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear(self);
+                                CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear((PyObject *)self);
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
@@ -23031,7 +23109,7 @@ CPyL109: ;
                                 .tp_new = from_type_str___new_from_type_str_parse_tuple_type_str_obj_new,
                                 .tp_dealloc = (destructor)from_type_str___new_from_type_str_parse_tuple_type_str_obj_dealloc,
                                 .tp_traverse = (traverseproc)from_type_str___new_from_type_str_parse_tuple_type_str_obj_traverse,
-                                .tp_clear = (inquiry)from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear,
+                                .tp_clear = (inquiry)CPyDef_from_type_str___new_from_type_str_parse_tuple_type_str_obj_clear,
                                 .tp_getset = from_type_str___new_from_type_str_parse_tuple_type_str_obj_getseters,
                                 .tp_methods = from_type_str___new_from_type_str_parse_tuple_type_str_obj_methods,
                                 .tp_call = PyVectorcall_Call,
@@ -25173,9 +25251,27 @@ CPyL45: ;
                                 {
                                     return 0;
                                 }
-                                static int
-                                io___ContextFramesBytesIO_clear(faster_eth_abi___io___ContextFramesBytesIOObject *self)
+                                static int32_t CPyDef_io___ContextFramesBytesIO_clear(PyObject *cpy_r_self)
                                 {
+                                    faster_eth_abi___io___ContextFramesBytesIOObject *self = (faster_eth_abi___io___ContextFramesBytesIOObject *)cpy_r_self;
+                                    Py_CLEAR(self->__buffer);
+                                    if (CPyTagged_CheckLong(self->__position)) {
+                                        CPyTagged __tmp = self->__position;
+                                        self->__position = CPY_INT_TAG;
+                                        Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+                                    }
+                                    Py_CLEAR(self->__frames);
+                                    if (CPyTagged_CheckLong(self->__total_offset)) {
+                                        CPyTagged __tmp = self->__total_offset;
+                                        self->__total_offset = CPY_INT_TAG;
+                                        Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+                                    }
+                                    return 0;
+                                }
+                                
+                                static int32_t CPyDef_io___ContextFramesBytesIO_clear_on_completion(PyObject *cpy_r_self)
+                                {
+                                    faster_eth_abi___io___ContextFramesBytesIOObject *self = (faster_eth_abi___io___ContextFramesBytesIOObject *)cpy_r_self;
                                     Py_CLEAR(self->__buffer);
                                     if (CPyTagged_CheckLong(self->__position)) {
                                         CPyTagged __tmp = self->__position;
@@ -25195,7 +25291,7 @@ CPyL45: ;
                                 io___ContextFramesBytesIO_dealloc(faster_eth_abi___io___ContextFramesBytesIOObject *self)
                                 {
                                     CPy_TRASHCAN_BEGIN(self, io___ContextFramesBytesIO_dealloc)
-                                    io___ContextFramesBytesIO_clear(self);
+                                    CPyDef_io___ContextFramesBytesIO_clear((PyObject *)self);
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
@@ -27304,9 +27400,17 @@ CPyL11: ;
                                                 return rv;
                                             }
                                             
-                                            static int
-                                            _strategies___StrategyRegistry_clear(faster_eth_abi___tools____strategies___StrategyRegistryObject *self)
+                                            static int32_t CPyDef__strategies___StrategyRegistry_clear(PyObject *cpy_r_self)
                                             {
+                                                faster_eth_abi___tools____strategies___StrategyRegistryObject *self = (faster_eth_abi___tools____strategies___StrategyRegistryObject *)cpy_r_self;
+                                                Py_CLEAR(self->__strategies);
+                                                PyObject_ClearManagedDict((PyObject *)self);
+                                                return 0;
+                                            }
+                                            
+                                            static int32_t CPyDef__strategies___StrategyRegistry_clear_on_completion(PyObject *cpy_r_self)
+                                            {
+                                                faster_eth_abi___tools____strategies___StrategyRegistryObject *self = (faster_eth_abi___tools____strategies___StrategyRegistryObject *)cpy_r_self;
                                                 Py_CLEAR(self->__strategies);
                                                 PyObject_ClearManagedDict((PyObject *)self);
                                                 return 0;
@@ -27317,7 +27421,7 @@ CPyL11: ;
                                             {
                                                 PyObject_GC_UnTrack(self);
                                                 CPy_TRASHCAN_BEGIN(self, _strategies___StrategyRegistry_dealloc)
-                                                _strategies___StrategyRegistry_clear(self);
+                                                CPyDef__strategies___StrategyRegistry_clear((PyObject *)self);
                                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                                 CPy_TRASHCAN_END(self)
                                                 done: ;
@@ -27401,7 +27505,7 @@ CPyL11: ;
                                                 .tp_new = _strategies___StrategyRegistry_new,
                                                 .tp_dealloc = (destructor)_strategies___StrategyRegistry_dealloc,
                                                 .tp_traverse = (traverseproc)_strategies___StrategyRegistry_traverse,
-                                                .tp_clear = (inquiry)_strategies___StrategyRegistry_clear,
+                                                .tp_clear = (inquiry)CPyDef__strategies___StrategyRegistry_clear,
                                                 .tp_getset = _strategies___StrategyRegistry_getseters,
                                                 .tp_methods = _strategies___StrategyRegistry_methods,
                                                 .tp_init = _strategies___StrategyRegistry_init,
@@ -30647,9 +30751,17 @@ CPyL4: ;
                                                         return rv;
                                                     }
                                                     
-                                                    static int
-                                                    localcontext____DecimalContextManager_clear(faster_eth_abi___utils___localcontext____DecimalContextManagerObject *self)
+                                                    static int32_t CPyDef_localcontext____DecimalContextManager_clear(PyObject *cpy_r_self)
                                                     {
+                                                        faster_eth_abi___utils___localcontext____DecimalContextManagerObject *self = (faster_eth_abi___utils___localcontext____DecimalContextManagerObject *)cpy_r_self;
+                                                        Py_CLEAR(self->_saved_context);
+                                                        Py_CLEAR(self->_new_context);
+                                                        return 0;
+                                                    }
+                                                    
+                                                    static int32_t CPyDef_localcontext____DecimalContextManager_clear_on_completion(PyObject *cpy_r_self)
+                                                    {
+                                                        faster_eth_abi___utils___localcontext____DecimalContextManagerObject *self = (faster_eth_abi___utils___localcontext____DecimalContextManagerObject *)cpy_r_self;
                                                         Py_CLEAR(self->_saved_context);
                                                         Py_CLEAR(self->_new_context);
                                                         return 0;
@@ -30660,7 +30772,7 @@ CPyL4: ;
                                                     {
                                                         PyObject_GC_UnTrack(self);
                                                         CPy_TRASHCAN_BEGIN(self, localcontext____DecimalContextManager_dealloc)
-                                                        localcontext____DecimalContextManager_clear(self);
+                                                        CPyDef_localcontext____DecimalContextManager_clear((PyObject *)self);
                                                         Py_TYPE(self)->tp_free((PyObject *)self);
                                                         CPy_TRASHCAN_END(self)
                                                         done: ;
@@ -30746,7 +30858,7 @@ CPyL4: ;
                                                         .tp_new = localcontext____DecimalContextManager_new,
                                                         .tp_dealloc = (destructor)localcontext____DecimalContextManager_dealloc,
                                                         .tp_traverse = (traverseproc)localcontext____DecimalContextManager_traverse,
-                                                        .tp_clear = (inquiry)localcontext____DecimalContextManager_clear,
+                                                        .tp_clear = (inquiry)CPyDef_localcontext____DecimalContextManager_clear,
                                                         .tp_getset = localcontext____DecimalContextManager_getseters,
                                                         .tp_methods = localcontext____DecimalContextManager_methods,
                                                         .tp_init = localcontext____DecimalContextManager_init,
@@ -31545,11 +31657,24 @@ CPyL37: ;
                                                             return rv;
                                                         }
                                                         
-                                                        static int
-                                                        numeric___scale_places_env_clear(faster_eth_abi___utils___numeric___scale_places_envObject *self)
+                                                        static int32_t CPyDef_numeric___scale_places_env_clear(PyObject *cpy_r_self)
                                                         {
+                                                            faster_eth_abi___utils___numeric___scale_places_envObject *self = (faster_eth_abi___utils___numeric___scale_places_envObject *)cpy_r_self;
                                                             Py_CLEAR(self->___mypyc_self__);
                                                             Py_CLEAR(self->_scaling_factor);
+                                                            Py_CLEAR(self->_f);
+                                                            if (CPyTagged_CheckLong(self->_places)) {
+                                                                CPyTagged __tmp = self->_places;
+                                                                self->_places = CPY_INT_TAG;
+                                                                Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+                                                            }
+                                                            return 0;
+                                                        }
+                                                        
+                                                        static int32_t CPyDef_numeric___scale_places_env_clear_on_completion(PyObject *cpy_r_self)
+                                                        {
+                                                            faster_eth_abi___utils___numeric___scale_places_envObject *self = (faster_eth_abi___utils___numeric___scale_places_envObject *)cpy_r_self;
+                                                            Py_CLEAR(self->___mypyc_self__);
                                                             Py_CLEAR(self->_f);
                                                             if (CPyTagged_CheckLong(self->_places)) {
                                                                 CPyTagged __tmp = self->_places;
@@ -31578,7 +31703,7 @@ CPyL37: ;
                                                                 return;
                                                             }
                                                             CPy_TRASHCAN_BEGIN(self, numeric___scale_places_env_dealloc)
-                                                            numeric___scale_places_env_clear(self);
+                                                            CPyDef_numeric___scale_places_env_clear((PyObject *)self);
                                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                                             CPy_TRASHCAN_END(self)
                                                             done: ;
@@ -31630,7 +31755,7 @@ CPyL37: ;
                                                             .tp_new = numeric___scale_places_env_new,
                                                             .tp_dealloc = (destructor)numeric___scale_places_env_dealloc,
                                                             .tp_traverse = (traverseproc)numeric___scale_places_env_traverse,
-                                                            .tp_clear = (inquiry)numeric___scale_places_env_clear,
+                                                            .tp_clear = (inquiry)CPyDef_numeric___scale_places_env_clear,
                                                             .tp_methods = numeric___scale_places_env_methods,
                                                             .tp_basicsize = sizeof(faster_eth_abi___utils___numeric___scale_places_envObject),
                                                             .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
@@ -31680,9 +31805,17 @@ CPyL37: ;
                                                             return rv;
                                                         }
                                                         
-                                                        static int
-                                                        numeric___f_scale_places_obj_clear(faster_eth_abi___utils___numeric___f_scale_places_objObject *self)
+                                                        static int32_t CPyDef_numeric___f_scale_places_obj_clear(PyObject *cpy_r_self)
                                                         {
+                                                            faster_eth_abi___utils___numeric___f_scale_places_objObject *self = (faster_eth_abi___utils___numeric___f_scale_places_objObject *)cpy_r_self;
+                                                            Py_CLEAR(self->___mypyc_env__);
+                                                            PyObject_ClearManagedDict((PyObject *)self);
+                                                            return 0;
+                                                        }
+                                                        
+                                                        static int32_t CPyDef_numeric___f_scale_places_obj_clear_on_completion(PyObject *cpy_r_self)
+                                                        {
+                                                            faster_eth_abi___utils___numeric___f_scale_places_objObject *self = (faster_eth_abi___utils___numeric___f_scale_places_objObject *)cpy_r_self;
                                                             Py_CLEAR(self->___mypyc_env__);
                                                             PyObject_ClearManagedDict((PyObject *)self);
                                                             return 0;
@@ -31698,7 +31831,7 @@ CPyL37: ;
                                                                 return;
                                                             }
                                                             CPy_TRASHCAN_BEGIN(self, numeric___f_scale_places_obj_dealloc)
-                                                            numeric___f_scale_places_obj_clear(self);
+                                                            CPyDef_numeric___f_scale_places_obj_clear((PyObject *)self);
                                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                                             CPy_TRASHCAN_END(self)
                                                             done: ;
@@ -31770,7 +31903,7 @@ CPyL37: ;
                                                             .tp_new = numeric___f_scale_places_obj_new,
                                                             .tp_dealloc = (destructor)numeric___f_scale_places_obj_dealloc,
                                                             .tp_traverse = (traverseproc)numeric___f_scale_places_obj_traverse,
-                                                            .tp_clear = (inquiry)numeric___f_scale_places_obj_clear,
+                                                            .tp_clear = (inquiry)CPyDef_numeric___f_scale_places_obj_clear,
                                                             .tp_getset = numeric___f_scale_places_obj_getseters,
                                                             .tp_methods = numeric___f_scale_places_obj_methods,
                                                             .tp_call = PyVectorcall_Call,
