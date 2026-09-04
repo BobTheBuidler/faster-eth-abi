@@ -39,7 +39,7 @@ extras_require: dict[str, list[str]] = {
         "sphinx>=6.0.0",
         "sphinx-autobuild>=2021.3.14",
         "sphinx_rtd_theme>=1.0.0",
-        "towncrier>=24,<26",
+        "towncrier>=26,<27",
     ],
     "test": parse_requirements("requirements-test.txt"),
     "tools": parse_requirements("requirements-tools.txt"),
