@@ -4,7 +4,7 @@ from setuptools import (
 
 setup(
     name="types-eth-utils",
-    version="5.2.0.20260803",
+    version="5.2.0.20261022",
     description="Type stubs for eth-abi and faster-eth-abi",
     author="BobTheBuidler",
     author_email="bobthebuidlerdefi@gmail.com",
