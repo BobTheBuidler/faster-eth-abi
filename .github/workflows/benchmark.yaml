@@ -35,7 +35,7 @@ on:
 
 jobs:
   build-wheel:
-    name: Build wheel for Python3.14
+    name: Build wheel for Python3.15
     runs-on: ubuntu-latest
     outputs:
       artifact-name: ${{ steps.mypycify.outputs.artifact-name }}
@@ -45,7 +45,7 @@ jobs:
         id: mypycify
         uses: BobTheBuidler/mypycify@master
         with:
-          python-version: "3.14"
+          python-version: "3.15"
           hash-key: |
             pyproject.toml
             setup.py
